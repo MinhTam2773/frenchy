@@ -145,8 +145,33 @@ A phone-first web app (PWA) that sits next to the book. **Everything French in t
 - `word_status` (user, lemma, new/learning/known)
 - `translation_cache` (hash, text, result)
 
-## 5. Open questions
-- [ ] App name / look-and-feel preferences?
-- [ ] Which AI provider(s) to wire first (keys available)?
-- [ ] Gamification: streaks only, or XP/levels too?
-- [ ] English as the only base language, or also Vietnamese?
+## 5. Decisions
+
+| Topic | Decision |
+|---|---|
+| Name | Frenchy |
+| Look | Duolingo-like: bright, playful, rounded "chunky" buttons with a bottom shadow, a big friendly path map, bold colors, small celebratory animations. Own mascot and colors; no Duolingo assets or trademarks. |
+| Gamification | Daily streak only (+ streak freeze). No XP, leagues or hearts. |
+| Base language | English only |
+
+### AI providers
+
+The app talks to AI through one `AiProvider` interface: `translate()`, `explain()`, `chat()`. Each task is routed to a provider in settings, so providers can be mixed.
+
+| Driver | How it works | Where it runs | Use for |
+|---|---|---|---|
+| `anthropic` | Anthropic API key | Local + deployed | Tutor (Sonnet-class), translations (Haiku-class) |
+| `openai-compatible` | Any OpenAI-style endpoint + key: OpenAI, OpenRouter, Gemini, Groq, … | Local + deployed | Free-tier keys, cheap fast translations |
+| `ollama` | Local model over HTTP | Local only | Offline / free experimentation |
+| `cli-bridge` | Runs `claude -p` (Claude Code) or `codex exec` (Codex CLI) on **your own machine** with your subscription login | Local only (`npm run dev` on your laptop) | Personal tutor sessions, content generation |
+
+Notes on `cli-bridge`:
+- **Personal use only.** Subscriptions are licensed to you, not to other users of the app. The deployed app never uses this driver.
+- **Slow.** Each call takes several seconds to start an agent. It works fine for the tutor and for batch content generation, but it is too slow for tap-to-translate.
+- **Cursor** has no supported way to call it from another program, so it is not a driver. Use it to *build* the app instead.
+
+Default routing:
+- **Tap a word**: offline dictionary (no AI).
+- **Translate or explain a sentence**: a fast, cheap model, then cached.
+- **Tutor chat**: the strongest model available. When running locally, this can be the `cli-bridge`.
+- **Lesson texts and starter decks**: generated ahead of time with Claude Code, reviewed, and committed as JSON. Zero runtime cost.
