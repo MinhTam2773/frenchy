@@ -190,7 +190,7 @@ T-01 is done (moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-01 | T-30 (and safe merging for all) | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-02-ci`
+**Status:** in progress · **Claimed by:** local session · **Branch:** `task/T-02-ci`
 **Owns:** `.github/workflows/ci.yml`, `.github/pull_request_template.md`, `.nvmrc`
 **Goal:** Every PR runs lint, typecheck, tests and build; merging requires green CI.
 **Done when:** a PR shows a passing `ci` check; a deliberately failing test makes it red.
