@@ -236,7 +236,7 @@ T-01 is done (moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-01 | T-06, T-07, T-08, T-09, T-10, T-11, T-15 | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-04-contracts`
+**Status:** in progress · **Claimed by:** T-04 subagent (lead session) · **Branch:** `task/T-04-contracts`
 **Owns:** `src/shared/schemas/**`, `src/shared/fixtures/**`, `src/shared/constants.ts`, `docs/api-contract.md`
 **Goal:** One typed contract (zod schemas + inferred types) that the client, the worker, the content pipeline and the mocks all import, so parallel tasks agree without talking to each other.
 **Done when:** every schema has a valid fixture and a rejected invalid case in tests, and `docs/api-contract.md` lists every MVP endpoint.
