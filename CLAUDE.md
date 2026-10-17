@@ -104,7 +104,7 @@ T-01 creates these. Until it merges, there is no app code.
 
 ## Testing
 
-- Vitest for logic and components; `@cloudflare/vitest-pool-workers` for API routes against local D1; Playwright for E2E (T-27).
+- Vitest for logic and components; `@cloudflare/vitest-plugin` (formerly `vitest-pool-workers`, see L-07) for API routes against local D1; Playwright for E2E (T-27).
 - In cloud sessions, Playwright uses the preinstalled Chromium. Never run `playwright install`.
 - A bug fix starts with a failing test that reproduces it.
 
