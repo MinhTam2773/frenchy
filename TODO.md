@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 6 · NEXT 30 (1 ready) · BACKLOG 20
+**Progress:** DONE 7 · NEXT 29 (4 ready) · BACKLOG 20
 
 ---
 
@@ -144,20 +144,12 @@ flowchart LR
 - [x] Created `main` from the working branch
 - [ ] Set `main` as the default branch and protect it (human: see H-01)
 
----
-
-## NEXT (MVP)
-
-Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 content, installable as a PWA and deployed on Cloudflare.
-
-### Wave 0
-
-#### T-01 · Scaffold the app
+### T-01 · Scaffold the app
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | — | all NEXT tasks | 0 |
 
-**Status:** in review · **Claimed by:** local session · **Branch:** `task/T-01-scaffold`
+**Status:** done · **Claimed by:** local session · **Branch:** `task/T-01-scaffold` · **PR:** https://github.com/MinhTam2773/frenchy/pull/1
 **Owns:** `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `wrangler.jsonc`, `index.html`, `eslint.config.js`, `.prettierrc`, `vitest.config.ts` (or workspace), `.gitignore`, `.dev.vars.example`, `README.md`, `src/client/main.tsx`, `src/client/App.tsx`, `src/client/styles.css`, `src/worker/index.ts`, `src/worker/routes/health.ts`, `src/shared/index.ts`
 **Goal:** One repo that runs the React SPA and the Hono API together with one `npm run dev`, with strict TypeScript, lint and tests wired up.
 **Done when:** `npm run dev` serves the SPA at `/` (deep links like `/path` too) and `{ "ok": true }` at `/api/health`; `npm run check` is green.
@@ -179,7 +171,17 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 - [x] Manually verify: `/`, `/path` (SPA) and `/api/health` (JSON)
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged (CI does not exist yet: paste local `npm run check` output in the PR)
+- [x] Finish: PR to `main` merged (CI does not exist yet: paste local `npm run check` output in the PR)
+
+---
+
+## NEXT (MVP)
+
+Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 content, installable as a PWA and deployed on Cloudflare.
+
+### Wave 0
+
+T-01 is done (moved to DONE).
 
 ### Wave 1
 
@@ -188,7 +190,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-01 | T-30 (and safe merging for all) | 1 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-02-ci`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-02-ci`
 **Owns:** `.github/workflows/ci.yml`, `.github/pull_request_template.md`, `.nvmrc`
 **Goal:** Every PR runs lint, typecheck, tests and build; merging requires green CI.
 **Done when:** a PR shows a passing `ci` check; a deliberately failing test makes it red.
@@ -209,7 +211,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-01 | T-09, T-12 | 1 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-03-ui-kit`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-03-ui-kit`
 **Owns:** `src/client/styles.css` (theme), `src/client/ui/**`
 **Goal:** Reusable components that match the mockups exactly, so screens are just composition.
 **Done when:** every component in the list renders in `Gallery.tsx` in all its states, tests pass, and no component uses raw hex colors.
@@ -234,7 +236,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-01 | T-06, T-07, T-08, T-09, T-10, T-11, T-15 | 1 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-04-contracts`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-04-contracts`
 **Owns:** `src/shared/schemas/**`, `src/shared/fixtures/**`, `src/shared/constants.ts`, `docs/api-contract.md`
 **Goal:** One typed contract (zod schemas + inferred types) that the client, the worker, the content pipeline and the mocks all import, so parallel tasks agree without talking to each other.
 **Done when:** every schema has a valid fixture and a rejected invalid case in tests, and `docs/api-contract.md` lists every MVP endpoint.
@@ -258,7 +260,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-01 | T-25 | 1 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-05-tts`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-05-tts`
 **Owns:** `src/client/lib/tts/**`
 **Goal:** One small module that speaks French well on every device that can.
 **Done when:** `useTts()` speaks with the best available fr-FR voice, reports `supported=false` cleanly where it can't, and tests pass.
