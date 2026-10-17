@@ -157,7 +157,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | — | all NEXT tasks | 0 |
 
-**Status:** in progress · **Claimed by:** local session · **Branch:** `task/T-01-scaffold`
+**Status:** in review · **Claimed by:** local session · **Branch:** `task/T-01-scaffold`
 **Owns:** `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `wrangler.jsonc`, `index.html`, `eslint.config.js`, `.prettierrc`, `vitest.config.ts` (or workspace), `.gitignore`, `.dev.vars.example`, `README.md`, `src/client/main.tsx`, `src/client/App.tsx`, `src/client/styles.css`, `src/worker/index.ts`, `src/worker/routes/health.ts`, `src/shared/index.ts`
 **Goal:** One repo that runs the React SPA and the Hono API together with one `npm run dev`, with strict TypeScript, lint and tests wired up.
 **Done when:** `npm run dev` serves the SPA at `/` (deep links like `/path` too) and `{ "ok": true }` at `/api/health`; `npm run check` is green.
@@ -178,7 +178,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 - [x] README: prerequisites, `npm install`, `npm run dev`, `npm run check`
 - [x] Manually verify: `/`, `/path` (SPA) and `/api/health` (JSON)
 - [x] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged (CI does not exist yet: paste local `npm run check` output in the PR)
 
 ### Wave 1
