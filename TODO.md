@@ -157,7 +157,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | — | all NEXT tasks | 0 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-01-scaffold`
+**Status:** in progress · **Claimed by:** local session · **Branch:** `task/T-01-scaffold`
 **Owns:** `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `wrangler.jsonc`, `index.html`, `eslint.config.js`, `.prettierrc`, `vitest.config.ts` (or workspace), `.gitignore`, `.dev.vars.example`, `README.md`, `src/client/main.tsx`, `src/client/App.tsx`, `src/client/styles.css`, `src/worker/index.ts`, `src/worker/routes/health.ts`, `src/shared/index.ts`
 **Goal:** One repo that runs the React SPA and the Hono API together with one `npm run dev`, with strict TypeScript, lint and tests wired up.
 **Done when:** `npm run dev` serves the SPA at `/` (deep links like `/path` too) and `{ "ok": true }` at `/api/health`; `npm run check` is green.
@@ -1185,7 +1185,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 
 | ID | What | Needed by | Status |
 |---|---|---|---|
-| H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging | T-02 onward | open |
+| H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging. `main` is now the default branch (done); requiring `ci` waits until T-02 lands | T-02 onward | open |
 | H-02 | Install wrangler and run `wrangler login` once | T-30 | open |
 | H-03 | Create a Google OAuth client (client id/secret, redirect URIs) | T-13 (optional locally), T-30 | open |
 | H-04 | Provide AI API keys (Anthropic and/or an OpenAI-compatible provider) | T-23 (real calls), T-30 | open |
