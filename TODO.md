@@ -211,7 +211,7 @@ T-01 is done (moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-01 | T-09, T-12 | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-03-ui-kit`
+**Status:** in progress · **Claimed by:** T-03 subagent (lead session) · **Branch:** `task/T-03-ui-kit`
 **Owns:** `src/client/styles.css` (theme), `src/client/ui/**`
 **Goal:** Reusable components that match the mockups exactly, so screens are just composition.
 **Done when:** every component in the list renders in `Gallery.tsx` in all its states, tests pass, and no component uses raw hex colors.
