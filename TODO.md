@@ -260,7 +260,7 @@ T-01 is done (moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-01 | T-25 | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-05-tts`
+**Status:** in progress · **Claimed by:** T-05 subagent (lead session) · **Branch:** `task/T-05-tts`
 **Owns:** `src/client/lib/tts/**`
 **Goal:** One small module that speaks French well on every device that can.
 **Done when:** `useTts()` speaks with the best available fr-FR voice, reports `supported=false` cleanly where it can't, and tests pass.
