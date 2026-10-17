@@ -190,20 +190,20 @@ T-01 is done (moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-01 | T-30 (and safe merging for all) | 1 |
 
-**Status:** in progress · **Claimed by:** local session · **Branch:** `task/T-02-ci`
+**Status:** in review · **Claimed by:** local session · **Branch:** `task/T-02-ci`
 **Owns:** `.github/workflows/ci.yml`, `.github/pull_request_template.md`, `.nvmrc`
 **Goal:** Every PR runs lint, typecheck, tests and build; merging requires green CI.
 **Done when:** a PR shows a passing `ci` check; a deliberately failing test makes it red.
 
-- [ ] `.nvmrc` with the Node LTS used locally
-- [ ] Workflow on `pull_request` and `push` to `main`: checkout, setup-node from `.nvmrc` with npm cache, `npm ci`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`
-- [ ] Concurrency group that cancels superseded runs on the same branch
-- [ ] Confirm the workers-pool tests run in CI without Cloudflare credentials
-- [ ] PR template: task ID, what changed, how it was verified, "TODO.md updated" checkbox
-- [ ] Prove it: push a commit with a failing test on a scratch branch, see red, revert
-- [ ] Note in the PR that the user should require the `ci` check on `main` (H-01)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `.nvmrc` with the Node LTS used locally
+- [x] Workflow on `pull_request` and `push` to `main`: checkout, setup-node from `.nvmrc` with npm cache, `npm ci`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`
+- [x] Concurrency group that cancels superseded runs on the same branch
+- [x] Confirm the workers-pool tests run in CI without Cloudflare credentials
+- [x] PR template: task ID, what changed, how it was verified, "TODO.md updated" checkbox
+- [x] Prove it: push a commit with a failing test on a scratch branch, see red, revert
+- [x] Note in the PR that the user should require the `ci` check on `main` (H-01)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-03 · UI kit and design tokens
@@ -1215,6 +1215,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-12 | Reviews need a connection in MVP | No subway reviews | B-08 |
 | G-13 | ESLint is held at 9 (npm marks it unsupported) because `eslint-plugin-jsx-a11y` hasn't released ESLint 10 support since 2024 | No ESLint security fixes; a11y lint may need a replacement | later (re-check before T-28) |
 | G-14 | Local Node 22.15 is below jsdom 30's minimum (22.22.2), so jsdom stays at 29 | Can't take jsdom updates until Node is upgraded | T-02 (`.nvmrc`) |
+| G-15 | npm 11 (Node 24) warns on `npm ci` that `esbuild` and `workerd` have install scripts "not yet covered by allowScripts"; a later npm major may skip them unless allowed | Installs could silently lack the workerd binary after an npm upgrade | re-check on npm major bumps |
 
 ---
 
@@ -1235,3 +1236,5 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-09 · 2026-10-16 · worker · T-01` — **Any `compatibility_date` on or after 2026-08-04 turns on `nodejs_compat` (v2) by default, even without the flag in `wrangler.jsonc`. Wrangler then asks for `@types/node`.** → Don't add the flag. Node built-ins are available in the Worker, and `@types/node` is in the worker tsconfig.
 - `L-10 · 2026-10-16 · tooling · T-01` — **`wrangler types` writes `GlobalProps.mainModule` (which types `exports.default` in worker tests) only if the `main` file exists when it runs. The first run, before `src/worker/index.ts` existed, broke typecheck.** → Run `npm run cf-typegen` after changing `wrangler.jsonc` or the worker entry, and commit `worker-configuration.d.ts`.
 - `L-11 · 2026-10-16 · worker · T-01` — **By default, a browser navigation (`Sec-Fetch-Mode: navigate`) to an unmatched path gets the SPA `index.html` without running the Worker, so `/api/*` typed in the address bar would return HTML. The array form `assets.run_worker_first: ["/api/*"]` turns that off for matching paths.** → Keep `/api/*` in `run_worker_first`. Anything else that needs the Worker on navigation (OAuth callbacks outside `/api`) must be added there too.
+- `L-12 · 2026-10-17 · ci · T-02` — **A workflow triggered by `pull_request` plus `push` to `main` never runs for a plain push to another branch, so the "prove it" red run needs a (draft) PR.** → To test CI, push a scratch branch and open a draft PR, then close it with `gh pr close --delete-branch`.
+- `L-13 · 2026-10-17 · ci · T-02` — **`actions/checkout` and `actions/setup-node` are at v7 (node24 runtime), and `.nvmrc` = `24` resolved to Node 24.21.0 on the first run. The worker tests pass in workerd on the runner with no Cloudflare credentials. `ubuntu-latest` moves to Ubuntu 26 on 2026-10-19.** → Keep the job id `ci` (it is the required-check name for H-01). Upgrade local Node to match `.nvmrc` (at least 22.22.2) before taking jsdom 30 (G-14).
