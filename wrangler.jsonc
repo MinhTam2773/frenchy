@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "frenchy",
+  "main": "./src/worker/index.ts",
+  "compatibility_date": "2026-10-12",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    // The array form also skips the Sec-Fetch-Mode: navigate shortcut, so a browser
+    // navigation to /api/* reaches the Worker instead of getting index.html.
+    "run_worker_first": ["/api/*"],
+  },
+  // Local-only placeholders. T-30 creates the real resources and fills in the ids.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "frenchy",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "AUDIO",
+      "bucket_name": "frenchy-audio",
+    },
+  ],
+}

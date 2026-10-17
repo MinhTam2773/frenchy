@@ -157,28 +157,28 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | — | all NEXT tasks | 0 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-01-scaffold`
+**Status:** in review · **Claimed by:** local session · **Branch:** `task/T-01-scaffold`
 **Owns:** `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `wrangler.jsonc`, `index.html`, `eslint.config.js`, `.prettierrc`, `vitest.config.ts` (or workspace), `.gitignore`, `.dev.vars.example`, `README.md`, `src/client/main.tsx`, `src/client/App.tsx`, `src/client/styles.css`, `src/worker/index.ts`, `src/worker/routes/health.ts`, `src/shared/index.ts`
 **Goal:** One repo that runs the React SPA and the Hono API together with one `npm run dev`, with strict TypeScript, lint and tests wired up.
 **Done when:** `npm run dev` serves the SPA at `/` (deep links like `/path` too) and `{ "ok": true }` at `/api/health`; `npm run check` is green.
 
-- [ ] Create `src/client/`, `src/worker/`, `src/shared/` per PLAN §4 repo layout; `index.html` at the root
-- [ ] Vite + React + TypeScript (strict) for the client
-- [ ] Tailwind CSS (current stable, Vite plugin) with an empty theme in `src/client/styles.css` (T-03 fills it)
-- [ ] Hono app in `src/worker/index.ts` exporting `app` and `type AppType`; `GET /api/health` in `src/worker/routes/health.ts`; each feature later mounts with one line
-- [ ] `@cloudflare/vite-plugin` + `wrangler.jsonc`: `main` = worker entry, recent `compatibility_date`, static assets with SPA fallback, and `/api/*` always routed to the Worker first (check the current option name in Cloudflare docs; navigation requests to `/api/*` must not get `index.html`)
-- [ ] Local-only bindings in wrangler config: D1 `DB` (placeholder id), R2 `AUDIO` (placeholder). Do **not** create remote resources
-- [ ] Path aliases `@client/*`, `@worker/*`, `@shared/*` in tsconfig and Vite
-- [ ] Separate tsconfigs for client (DOM types) and worker (types from `wrangler types`)
-- [ ] ESLint (typescript-eslint, react-hooks, jsx-a11y) + Prettier
-- [ ] Vitest with two projects: `client` (jsdom + Testing Library) and `worker` (`@cloudflare/vitest-pool-workers`); one passing sample test in each
-- [ ] npm scripts: `dev`, `build`, `preview`, `test`, `test:watch`, `lint`, `typecheck`, `format`, `check` (lint + typecheck + test + build), `cf-typegen`
-- [ ] `.gitignore`: add `node_modules`, `dist`, `.wrangler`, `.dev.vars`, `coverage`, `playwright-report`; keep `*.pdf` and `book/`
-- [ ] `.dev.vars.example` listing the secrets later tasks need (names only, no values)
-- [ ] README: prerequisites, `npm install`, `npm run dev`, `npm run check`
-- [ ] Manually verify: `/`, `/path` (SPA) and `/api/health` (JSON)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Create `src/client/`, `src/worker/`, `src/shared/` per PLAN §4 repo layout; `index.html` at the root
+- [x] Vite + React + TypeScript (strict) for the client
+- [x] Tailwind CSS (current stable, Vite plugin) with an empty theme in `src/client/styles.css` (T-03 fills it)
+- [x] Hono app in `src/worker/index.ts` exporting `app` and `type AppType`; `GET /api/health` in `src/worker/routes/health.ts`; each feature later mounts with one line
+- [x] `@cloudflare/vite-plugin` + `wrangler.jsonc`: `main` = worker entry, recent `compatibility_date`, static assets with SPA fallback, and `/api/*` always routed to the Worker first (check the current option name in Cloudflare docs; navigation requests to `/api/*` must not get `index.html`)
+- [x] Local-only bindings in wrangler config: D1 `DB` (placeholder id), R2 `AUDIO` (placeholder). Do **not** create remote resources
+- [x] Path aliases `@client/*`, `@worker/*`, `@shared/*` in tsconfig and Vite
+- [x] Separate tsconfigs for client (DOM types) and worker (types from `wrangler types`)
+- [x] ESLint (typescript-eslint, react-hooks, jsx-a11y) + Prettier
+- [x] Vitest with two projects: `client` (jsdom + Testing Library) and `worker` (`@cloudflare/vitest-pool-workers`); one passing sample test in each
+- [x] npm scripts: `dev`, `build`, `preview`, `test`, `test:watch`, `lint`, `typecheck`, `format`, `check` (lint + typecheck + test + build), `cf-typegen`
+- [x] `.gitignore`: add `node_modules`, `dist`, `.wrangler`, `.dev.vars`, `coverage`, `playwright-report`; keep `*.pdf` and `book/`
+- [x] `.dev.vars.example` listing the secrets later tasks need (names only, no values)
+- [x] README: prerequisites, `npm install`, `npm run dev`, `npm run check`
+- [x] Manually verify: `/`, `/path` (SPA) and `/api/health` (JSON)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged (CI does not exist yet: paste local `npm run check` output in the PR)
 
 ### Wave 1
@@ -1185,7 +1185,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 
 | ID | What | Needed by | Status |
 |---|---|---|---|
-| H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging | T-02 onward | open |
+| H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging. `main` is now the default branch (done); requiring `ci` waits until T-02 lands | T-02 onward | open |
 | H-02 | Install wrangler and run `wrangler login` once | T-30 | open |
 | H-03 | Create a Google OAuth client (client id/secret, redirect URIs) | T-13 (optional locally), T-30 | open |
 | H-04 | Provide AI API keys (Anthropic and/or an OpenAI-compatible provider) | T-23 (real calls), T-30 | open |
@@ -1211,6 +1211,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-10 | AI cost control is a simple rate limit until a daily cap exists | Possible surprise bills | T-23, T-29 |
 | G-11 | FSRS runs on default parameters, with no per-user optimization | Slightly less efficient reviews | later |
 | G-12 | Reviews need a connection in MVP | No subway reviews | B-08 |
+| G-13 | ESLint is held at 9 (npm marks it unsupported) because `eslint-plugin-jsx-a11y` hasn't released ESLint 10 support since 2024 | No ESLint security fixes; a11y lint may need a replacement | later (re-check before T-28) |
+| G-14 | Local Node 22.15 is below jsdom 30's minimum (22.22.2), so jsdom stays at 29 | Can't take jsdom updates until Node is upgraded | T-02 (`.nvmrc`) |
 
 ---
 
@@ -1226,3 +1228,8 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-04 · 2026-10-17 · design · D-05` — **White text failed WCAG AA on the bright flame orange `#FF7A1A`, mid green `#178A4C` and amber `#B86E00`.** → White text only on the dark tokens (`#13804A`, `#9A5B00`, `#D6335B`, `#2B59F0`); dark text on bright fills. T-03 has a contrast test.
 - `L-05 · 2026-10-16 · ai · D-02` — **Coding-agent subscriptions are licensed to you, not to the app's users, and each call takes seconds to start.** → `cli-bridge` is local and personal only (B-04), never for tap-to-translate or deployed users.
 - `L-06 · 2026-10-17 · design · D-05` — **Exact word taps need to know each word's lemma and form, and generic lookup is ambiguous (*a* / *à*, *est*).** → Lesson texts carry per-token annotations generated at build time (T-14); the lexicon lookup (T-08/T-15) is the fallback for imported text.
+- `L-07 · 2026-10-16 · testing · T-01` — **`@cloudflare/vitest-pool-workers` is deprecated on npm and renamed `@cloudflare/vitest-plugin` (1.x, supports Vitest 4 and 5). Its config is the `cloudflareTest()` Vite plugin (`defineWorkersConfig` is gone), and `SELF`/`env` from `cloudflare:test` are deprecated.** → Use `@cloudflare/vitest-plugin`. Worker tests call `exports.default.fetch()` and read `env` from `cloudflare:workers`, as `src/worker/index.test.ts` does.
+- `L-08 · 2026-10-16 · tooling · T-01` — **"Latest" doesn't always install together. `typescript-eslint` caps TypeScript at `<6.1`, so TS 7 is out. `eslint-plugin-jsx-a11y` (last release 2024) caps ESLint at 9, which npm now marks as unsupported. jsdom 30 needs Node ≥ 22.22.2, so npm quietly picks jsdom 29 on Node 22.15.** → Run `npm view <pkg> peerDependencies engines` before a major bump. Current holds: TypeScript 6.0, ESLint 9, jsdom 29 (see G-13, G-14).
+- `L-09 · 2026-10-16 · worker · T-01` — **Any `compatibility_date` on or after 2026-08-04 turns on `nodejs_compat` (v2) by default, even without the flag in `wrangler.jsonc`. Wrangler then asks for `@types/node`.** → Don't add the flag. Node built-ins are available in the Worker, and `@types/node` is in the worker tsconfig.
+- `L-10 · 2026-10-16 · tooling · T-01` — **`wrangler types` writes `GlobalProps.mainModule` (which types `exports.default` in worker tests) only if the `main` file exists when it runs. The first run, before `src/worker/index.ts` existed, broke typecheck.** → Run `npm run cf-typegen` after changing `wrangler.jsonc` or the worker entry, and commit `worker-configuration.d.ts`.
+- `L-11 · 2026-10-16 · worker · T-01` — **By default, a browser navigation (`Sec-Fetch-Mode: navigate`) to an unmatched path gets the SPA `index.html` without running the Worker, so `/api/*` typed in the address bar would return HTML. The array form `assets.run_worker_first: ["/api/*"]` turns that off for matching paths.** → Keep `/api/*` in `run_worker_first`. Anything else that needs the Worker on navigation (OAuth callbacks outside `/api`) must be added there too.

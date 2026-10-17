@@ -1,0 +1,15 @@
+# Copy to .dev.vars (gitignored) and fill in values for local dev.
+# Production uses `wrangler secret put <NAME>`.
+
+# Auth (T-13)
+BETTER_AUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# AI (T-23): provider per task is one of anthropic | openai-compatible | mock
+AI_TRANSLATE_PROVIDER=
+AI_EXPLAIN_PROVIDER=
+ANTHROPIC_API_KEY=
+OPENAI_COMPATIBLE_BASE_URL=
+OPENAI_COMPATIBLE_API_KEY=
+OPENAI_COMPATIBLE_MODEL=

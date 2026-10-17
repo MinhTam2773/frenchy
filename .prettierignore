@@ -1,0 +1,6 @@
+# Docs and specs are hand-formatted; generated files stay as generated.
+*.md
+design/
+docs/
+package-lock.json
+worker-configuration.d.ts

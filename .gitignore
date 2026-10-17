@@ -1,2 +1,8 @@
 *.pdf
 book/
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+coverage/
+playwright-report/
