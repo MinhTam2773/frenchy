@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: where are you in the book</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button{font:inherit;cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+.press:active{transform:translateY(4px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140; display: flex; flex-direction: column">
+  <div style="display: flex; align-items: center; gap: 14px; padding: 18px 20px 8px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #5A6285; border-radius: 12px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </a>
+    <div role="progressbar" aria-label="Setup progress" aria-valuenow="2" aria-valuemin="0" aria-valuemax="2" style="flex: 1; height: 16px; border-radius: 999px; background: #E3E7F5; overflow: hidden">
+      <div style="width: 100%; height: 100%; background: #2B59F0; border-radius: 999px; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.12)"></div>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: flex-end; gap: 10px; padding: 4px 20px 14px">
+    <svg width="72" height="57" viewBox="0 0 140 110" aria-hidden="true">
+      <rect x="14" y="74" width="118" height="24" rx="12" fill="#FFB84D"></rect>
+      <line x1="112" y1="50" x2="104" y2="26" stroke="#FFB84D" stroke-width="5" stroke-linecap="round"></line>
+      <line x1="124" y1="50" x2="132" y2="26" stroke="#FFB84D" stroke-width="5" stroke-linecap="round"></line>
+      <circle cx="118" cy="62" r="18" fill="#FFB84D"></circle>
+      <circle cx="104" cy="24" r="7" fill="#FFFFFF" stroke="#1B2140" stroke-width="2"></circle>
+      <circle cx="132" cy="24" r="7" fill="#FFFFFF" stroke="#1B2140" stroke-width="2"></circle>
+      <circle cx="105" cy="25" r="3.2" fill="#1B2140"></circle>
+      <circle cx="133" cy="25" r="3.2" fill="#1B2140"></circle>
+      <path d="M114 68 q6 6 12 0" fill="none" stroke="#1B2140" stroke-width="2.5" stroke-linecap="round"></path>
+      <circle cx="62" cy="56" r="34" fill="#2B59F0"></circle>
+      <path d="M62 56 m-4 0 a4 4 0 1 1 8 0 a10 10 0 1 1 -20 0 a16 16 0 1 1 32 0 a22 22 0 1 1 -44 0" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"></path>
+    </svg>
+    <div style="flex: 1; background: #FFFFFF; border: 2px solid #E3E7F5; border-radius: 16px 16px 16px 4px; padding: 10px 14px; font-weight: 700; font-size: 16px; line-height: 1.35">Which chapter are you on in the book?</div>
+  </div>
+
+  <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 7px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 2px 2px">
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6285">Stage 1 · Foundations</h2>
+      <span style="font-size: 13px; font-weight: 700; color: #5A6285">Book order, beginner route</span>
+    </div>
+    <sc-for list="{{chapters}}" as="ch" hint-placeholder-count="8">
+      <button type="button" onClick="{{ch.pick}}" aria-pressed="{{ch.selected}}" style="{{ch.style}}">
+        <span style="{{ch.badgeStyle}}">{{ch.num}}</span>
+        <span style="flex: 1; text-align: left; font-weight: 700; font-size: 15px">{{ch.title}}</span>
+        <sc-if value="{{ch.selected}}" hint-placeholder-val="{{ false }}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B59F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+        </sc-if>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="padding: 16px 20px 0; display: flex; flex-direction: column; gap: 8px">
+    <h2 style="margin: 0; padding: 0 2px; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6285">Daily goal</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{goals}}" as="g" hint-placeholder-count="4">
+        <button type="button" onClick="{{g.pick}}" aria-pressed="{{g.selected}}" style="{{g.style}}">{{g.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 28px; background: #FFFFFF; border-top: 2px solid #E3E7F5">
+    <a href="Today.dc.html" class="press" style="display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 16px; background: #2B59F0; color: #FFFFFF; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 0 #1A3CB8">Start learning</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 'c10', goal: 45 };
+  }
+  renderVals() {
+    const list = [
+      { id: 'cA', num: 'A', title: 'Pronunciation' },
+      { id: 'c1', num: '1', title: 'Articles' },
+      { id: 'c2', num: '2', title: 'Basic gender endings' },
+      { id: 'c12', num: '12', title: 'Être, avoir, irregular verbs' },
+      { id: 'c10', num: '10', title: 'Present tense of -er verbs' },
+      { id: 'c4', num: '4', title: 'Numbers' },
+      { id: 'c7', num: '7', title: 'Asking questions' },
+      { id: 'c33', num: '33', title: 'Conversation: meeting people' }
+    ];
+    const chapters = list.map((c) => {
+      const sel = c.id === this.state.picked;
+      return {
+        ...c,
+        selected: sel,
+        pick: () => this.setState({ picked: c.id }),
+        style: 'display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 6px 14px 6px 8px; border-radius: 14px; color: #1B2140; ' +
+          (sel ? 'background: #EEF3FF; border: 2px solid #2B59F0; box-shadow: 0 3px 0 #2B59F0;' : 'background: #FFFFFF; border: 2px solid #E3E7F5; box-shadow: 0 3px 0 #E3E7F5;'),
+        badgeStyle: 'min-width: 34px; height: 34px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: Fredoka, Nunito, sans-serif; font-weight: 700; font-size: 15px; ' +
+          (sel ? 'background: #2B59F0; color: #FFFFFF;' : 'background: #F1F3FA; color: #3A4266;')
+      };
+    });
+    const goals = [15, 30, 45, 60].map((m) => {
+      const sel = m === this.state.goal;
+      return {
+        label: m + ' min',
+        selected: sel,
+        pick: () => this.setState({ goal: m }),
+        style: 'height: 48px; border-radius: 14px; font-weight: 800; font-size: 15px; ' +
+          (sel ? 'background: #FFF4DC; color: #8A5300; border: 2px solid #FFB020; box-shadow: 0 3px 0 #FFB020;' : 'background: #FFFFFF; color: #3A4266; border: 2px solid #E3E7F5; box-shadow: 0 3px 0 #E3E7F5;')
+      };
+    });
+    return { chapters, goals };
+  }
+}
+</script>
+</body>
+</html>

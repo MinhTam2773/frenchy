@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: my words</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+input::placeholder{color:#8A91B0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 6px">
+    <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 26px">My words</h1>
+    <span style="height: 32px; padding: 0 12px; border-radius: 999px; background: #F1F3FA; font-size: 13px; font-weight: 800; color: #3A4266; display: flex; align-items: center">12 saved sentences</span>
+  </header>
+
+  <section style="padding: 6px 20px 0; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; align-items: baseline; gap: 8px">
+      <span style="font-family: Fredoka, Nunito, sans-serif; font-weight: 700; font-size: 34px; line-height: 1; color: #13804A">146</span>
+      <span style="font-size: 15px; font-weight: 700; color: #3A4266">words known · 206 seen</span>
+    </div>
+    <div aria-label="146 known, 38 learning, 22 new" style="display: flex; height: 14px; border-radius: 999px; overflow: hidden; gap: 3px">
+      <div style="flex: 146; background: #13804A"></div>
+      <div style="flex: 38; background: #FFB020"></div>
+      <div style="flex: 22; background: #E8436A"></div>
+    </div>
+  </section>
+
+  <div style="padding: 14px 20px 0">
+    <label style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 14px; border-radius: 14px; background: #F6F8FF; border: 2px solid #E3E7F5; color: #5A6285">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search words</span>
+      <input type="search" placeholder="Search in French or English" style="flex: 1; border: none; outline: none; background: transparent; font-size: 16px; font-weight: 600; color: #1B2140">
+    </label>
+  </div>
+
+  <div role="tablist" aria-label="Filter by status" style="margin: 12px 20px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 14px; background: #F1F3FA">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+      <button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+    </sc-for>
+  </div>
+
+  <ul style="list-style: none; margin: 10px 0 0; padding: 0 20px; display: flex; flex-direction: column">
+    <sc-for list="{{rows}}" as="w" hint-placeholder-count="8">
+      <li style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 2px solid #F1F3FA">
+        <span style="{{w.dotStyle}}"></span>
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+          <span lang="fr" style="font-weight: 800; font-size: 17px"><span style="{{w.artStyle}}">{{w.art}}</span>{{w.word}}</span>
+          <span style="font-size: 14px; font-weight: 600; color: #5A6285; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{w.tr}}</span>
+        </span>
+        <span style="{{w.pillStyle}}">{{w.status}}</span>
+      </li>
+    </sc-for>
+  </ul>
+
+  <nav aria-label="Main" style="position: absolute; left: 0; right: 0; bottom: 0; height: 78px; background: #FFFFFF; border-top: 2px solid #E3E7F5; display: flex; justify-content: space-around; align-items: flex-start; padding: 8px 6px 0">
+    <a href="Today.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 2px; width: 70px; text-decoration: none; color: #5A6285; font-size: 12px; font-weight: 800">
+      <span style="width: 52px; height: 34px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h5v-6h4v6h5V10"></path></svg></span>
+      Today
+    </a>
+    <a href="Path.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 2px; width: 70px; text-decoration: none; color: #5A6285; font-size: 12px; font-weight: 800">
+      <span style="width: 52px; height: 34px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"></path></svg></span>
+      Path
+    </a>
+    <a href="Practice.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 2px; width: 70px; text-decoration: none; color: #5A6285; font-size: 12px; font-weight: 800">
+      <span style="width: 52px; height: 34px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="3"></rect><path d="M8 3h10a3 3 0 0 1 3 3v11"></path></svg></span>
+      Practice
+    </a>
+    <a href="Words.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 2px; width: 70px; text-decoration: none; color: #2B59F0; font-size: 12px; font-weight: 800">
+      <span style="width: 52px; height: 34px; border-radius: 12px; background: #EEF3FF; border: 2px solid #C9D6FF; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"></path><path d="M8 7h7M8 11h5"></path></svg></span>
+      Words
+    </a>
+    <a href="Settings.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 2px; width: 70px; text-decoration: none; color: #5A6285; font-size: 12px; font-weight: 800">
+      <span style="width: 52px; height: 34px; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span>
+      Me
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all' };
+  }
+  renderVals() {
+    const words = [
+      { art: 'la ', word: 'tartine', g: 'f', tr: 'slice of bread with butter or jam', s: 'new' },
+      { art: 'le ', word: 'voisin', g: 'm', tr: 'neighbor', s: 'new' },
+      { art: '', word: 'préférer', g: 'v', tr: 'to prefer', s: 'new' },
+      { art: '', word: 'écouter', g: 'v', tr: 'to listen to', s: 'learning' },
+      { art: 'l’', word: 'heure', g: 'f', tr: 'hour; o’clock', s: 'learning' },
+      { art: 'le ', word: 'travail', g: 'm', tr: 'work, job', s: 'learning' },
+      { art: '', word: 'parler', g: 'v', tr: 'to speak, to talk', s: 'known' },
+      { art: 'la ', word: 'maison', g: 'f', tr: 'house, home', s: 'known' },
+      { art: 'le ', word: 'chat', g: 'm', tr: 'cat', s: 'known' },
+      { art: '', word: 'avoir', g: 'v', tr: 'to have', s: 'known' },
+      { art: 'la ', word: 'radio', g: 'f', tr: 'radio', s: 'known' },
+      { art: 'le ', word: 'café', g: 'm', tr: 'coffee; café', s: 'known' }
+    ];
+    const f = this.state.filter;
+    const statusLook = {
+      new: { label: 'New', css: 'background: #FDE8EE; color: #A3203F;' },
+      learning: { label: 'Learning', css: 'background: #FFF4DC; color: #7A4B00;' },
+      known: { label: 'Known', css: 'background: #E4F6EC; color: #0F6436;' }
+    };
+    const gColor = { m: '#2B59F0', f: '#E8436A', v: '#8A91B0' };
+    const artColor = { m: '#2048C8', f: '#B0244B', v: '#5A6285' };
+    const rows = words.filter((w) => f === 'all' || w.s === f).slice(0, 9).map((w) => ({
+      art: w.art,
+      word: w.word,
+      tr: w.tr,
+      status: statusLook[w.s].label,
+      artStyle: 'color: ' + artColor[w.g] + ';',
+      dotStyle: 'width: 10px; height: 10px; flex-shrink: 0; border-radius: 999px; background: ' + gColor[w.g] + ';',
+      pillStyle: 'height: 28px; padding: 0 10px; border-radius: 999px; font-size: 13px; font-weight: 800; display: flex; align-items: center; ' + statusLook[w.s].css
+    }));
+    const tabs = [
+      { id: 'all', label: 'All' },
+      { id: 'new', label: 'New' },
+      { id: 'learning', label: 'Learning' },
+      { id: 'known', label: 'Known' }
+    ].map((t) => {
+      const sel = t.id === f;
+      return {
+        label: t.label,
+        selected: sel,
+        pick: () => this.setState({ filter: t.id }),
+        style: 'height: 40px; border-radius: 10px; border: none; font-size: 14px; font-weight: 800; ' +
+          (sel ? 'background: #FFFFFF; color: #1B2140; box-shadow: 0 2px 0 #D7DCEC;' : 'background: transparent; color: #5A6285;')
+      };
+    });
+    return { rows: rows, tabs: tabs };
+  }
+}
+</script>
+</body>
+</html>

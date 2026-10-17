@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: review</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button{font:inherit;cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+.press:active{transform:translateY(4px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140; display: flex; flex-direction: column">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 18px 20px 8px">
+    <a href="Today.dc.html" aria-label="End review" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #5A6285; border-radius: 12px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+    <div role="progressbar" aria-label="Review progress" aria-valuemin="0" aria-valuemax="18" aria-valuenow="{{doneCount}}" style="flex: 1; height: 16px; border-radius: 999px; background: #E3E7F5; overflow: hidden">
+      <div style="{{barStyle}}"></div>
+    </div>
+    <span style="font-size: 14px; font-weight: 800; color: #5A6285; min-width: 44px; text-align: right">{{doneCount}}/18</span>
+  </div>
+
+  <sc-if value="{{hasCard}}" hint-placeholder-val="{{ true }}">
+    <div style="flex: 1; display: flex; flex-direction: column; padding: 8px 20px 0; gap: 14px">
+      <span style="align-self: flex-start; height: 30px; padding: 0 12px; border-radius: 999px; background: #EEF3FF; color: #2048C8; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; display: flex; align-items: center">{{card.type}}</span>
+
+      <section aria-live="polite" style="flex: 1; max-height: 470px; background: #FFFFFF; border: 2px solid #E3E7F5; border-radius: 26px; box-shadow: 0 6px 0 #E3E7F5; padding: 24px 22px; display: flex; flex-direction: column; gap: 18px">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 14px">
+          <p lang="{{card.frontLang}}" style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 28px; line-height: 1.3; text-align: center">{{card.before}}<sc-if value="{{card.isCloze}}" hint-placeholder-val="{{ false }}"><span style="{{blankStyle}}">{{blankText}}</span>{{card.after}}</sc-if></p>
+          <sc-if value="{{card.hasHint}}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; color: #5A6285">{{card.hint}}</p>
+          </sc-if>
+          <sc-if value="{{card.frontIsFr}}" hint-placeholder-val="{{ true }}">
+            <button type="button" aria-label="Play audio" style="align-self: center; width: 52px; height: 52px; border-radius: 16px; border: 2px solid #C9D6FF; background: #EEF3FF; color: #2B59F0; display: flex; align-items: center; justify-content: center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 6a8.5 8.5 0 0 1 0 12"></path></svg>
+            </button>
+          </sc-if>
+        </div>
+        <sc-if value="{{revealed}}" hint-placeholder-val="{{ false }}">
+          <div style="border-top: 2px dashed #E3E7F5; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; align-items: center; text-align: center">
+            <p lang="{{card.backLang}}" style="margin: 0; font-size: 21px; font-weight: 800; line-height: 1.35; color: #1B2140">{{card.back}}</p>
+            <p style="margin: 0; font-size: 14px; font-weight: 700; color: #5A6285; line-height: 1.4">{{card.note}}</p>
+          </div>
+        </sc-if>
+      </section>
+    </div>
+
+    <div style="padding: 18px 20px 30px">
+      <sc-if value="{{notRevealed}}" hint-placeholder-val="{{ true }}">
+        <button type="button" onClick="{{reveal}}" class="press" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: #2B59F0; color: #FFFFFF; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 4px 0 #1A3CB8">Show answer</button>
+      </sc-if>
+      <sc-if value="{{revealed}}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+          <sc-for list="{{grades}}" as="g" hint-placeholder-count="4">
+            <button type="button" onClick="{{g.pick}}" class="press" style="{{g.style}}"><span style="font-size: 15px; font-weight: 800">{{g.label}}</span><span style="font-size: 12px; font-weight: 700; opacity: 0.9">{{g.interval}}</span></button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{finished}}" hint-placeholder-val="{{ false }}">
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 0 32px; text-align: center">
+      <svg width="150" height="118" viewBox="0 0 140 110" aria-hidden="true">
+        <rect x="14" y="74" width="118" height="24" rx="12" fill="#FFB84D"></rect>
+        <line x1="112" y1="50" x2="104" y2="26" stroke="#FFB84D" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="124" y1="50" x2="132" y2="26" stroke="#FFB84D" stroke-width="5" stroke-linecap="round"></line>
+        <circle cx="118" cy="62" r="18" fill="#FFB84D"></circle>
+        <circle cx="104" cy="24" r="7" fill="#FFFFFF" stroke="#1B2140" stroke-width="2"></circle>
+        <circle cx="132" cy="24" r="7" fill="#FFFFFF" stroke="#1B2140" stroke-width="2"></circle>
+        <circle cx="105" cy="25" r="3.2" fill="#1B2140"></circle>
+        <circle cx="133" cy="25" r="3.2" fill="#1B2140"></circle>
+        <path d="M112 66 q8 9 16 0" fill="#1B2140" stroke="#1B2140" stroke-width="2" stroke-linecap="round"></path>
+        <circle cx="62" cy="56" r="34" fill="#2B59F0"></circle>
+        <path d="M62 56 m-4 0 a4 4 0 1 1 8 0 a10 10 0 1 1 -20 0 a16 16 0 1 1 32 0 a22 22 0 1 1 -44 0" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"></path>
+      </svg>
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 26px">That was the last card</h2>
+      <p style="margin: 0; font-size: 16px; font-weight: 600; color: #5A6285">This demo has 3 cards. A real session has every card due today.</p>
+    </div>
+    <div style="padding: 18px 20px 30px">
+      <a href="ReviewDone.dc.html" class="press" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 16px; background: #2B59F0; color: #FFFFFF; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 0 #1A3CB8">See results</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { idx: 0, revealed: false };
+  }
+  renderVals() {
+    const cards = [
+      { type: 'Sentence → meaning', before: 'Elle écoute la radio.', frontLang: 'fr', back: 'She listens to the radio.', backLang: 'en', note: 'écouter = to listen to. No extra word for "to".', iv: ['1m', '6m', '1d', '3d'] },
+      { type: 'Cloze', isCloze: true, before: 'Nous ', answer: 'parlons', after: ' français à la maison.', hint: 'parler · We speak French at home.', frontLang: 'fr', back: 'Nous parlons français à la maison.', backLang: 'fr', note: 'nous takes the -ons ending.', iv: ['1m', '10m', '2d', '5d'] },
+      { type: 'Meaning → sentence', before: 'I have a cat and a small apartment.', frontLang: 'en', back: 'J’ai un chat et un petit appartement.', backLang: 'fr', note: 'je + ai becomes j’ai.', iv: ['1m', '8m', '1d', '4d'] }
+    ];
+    const idx = this.state.idx;
+    const revealed = this.state.revealed;
+    const c = cards[idx];
+    const doneCount = 3 + Math.min(idx, cards.length);
+    const card = c ? {
+      type: c.type,
+      before: c.before,
+      after: c.after || '',
+      isCloze: !!c.isCloze,
+      hint: c.hint || '',
+      hasHint: !!c.hint,
+      frontLang: c.frontLang,
+      frontIsFr: c.frontLang === 'fr',
+      back: c.back,
+      backLang: c.backLang,
+      note: c.note
+    } : {};
+    const next = () => this.setState({ idx: idx + 1, revealed: false });
+    const looks = [
+      { label: 'Again', bg: '#D6335B', sh: '#A5213F' },
+      { label: 'Hard', bg: '#9A5B00', sh: '#6E4100' },
+      { label: 'Good', bg: '#13804A', sh: '#0C5C34' },
+      { label: 'Easy', bg: '#2B59F0', sh: '#1A3CB8' }
+    ];
+    const grades = c ? looks.map((g, i) => ({
+      label: g.label,
+      interval: c.iv[i],
+      pick: next,
+      style: 'height: 64px; border-radius: 14px; border: none; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: ' + g.bg + '; box-shadow: 0 4px 0 ' + g.sh + ';'
+    })) : [];
+    return {
+      hasCard: !!c,
+      finished: !c,
+      card: card,
+      revealed: revealed,
+      notRevealed: !revealed,
+      blankText: revealed ? (c && c.answer) : '______',
+      blankStyle: revealed ? 'color: #178A4C; border-bottom: 3px solid #178A4C;' : 'color: #8A91B0;',
+      reveal: () => this.setState({ revealed: true }),
+      grades: grades,
+      doneCount: doneCount,
+      barStyle: 'height: 100%; border-radius: 999px; background: #178A4C; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15); width: ' + Math.round(doneCount / 18 * 100) + '%;'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: sentence translation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button{font:inherit;cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+.press:active{transform:translateY(4px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140">
+  <div aria-hidden="true" style="padding: 14px 16px 0">
+    <div style="display: flex; align-items: center; justify-content: center; height: 50px; font-weight: 800; font-size: 16px">Le matin de Léa</div>
+    <div lang="fr" style="padding: 18px 6px 0; display: flex; flex-direction: column; gap: 14px; font-size: 21px; line-height: 1.7; font-weight: 600">
+      <p style="margin: 0">Léa habite à Lyon. Elle a un petit appartement et un chat.</p>
+      <p style="margin: 0">Le matin, elle mange une tartine et elle écoute la radio.</p>
+      <p style="margin: 0">Elle parle avec son voisin, Karim. <span style="background: #C9D6FF; border-radius: 6px; padding: 2px 0">Il aime le café, mais Léa préfère le thé.</span></p>
+    </div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(27,33,64,0.42)"></div>
+
+  <section aria-label="Sentence translation" style="position: absolute; left: 0; right: 0; bottom: 0; top: 200px; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 10px 20px 26px; display: flex; flex-direction: column; gap: 14px">
+    <div aria-hidden="true" style="align-self: center; width: 44px; height: 5px; border-radius: 999px; background: #D7DCEC"></div>
+    <div style="display: flex; align-items: flex-start; gap: 10px">
+      <p lang="fr" style="margin: 0; flex: 1; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 23px; line-height: 1.3">Il aime le café, mais Léa préfère le thé.</p>
+      <a href="Reader.dc.html" aria-label="Close" style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; color: #5A6285; display: flex; align-items: center; justify-content: center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </a>
+    </div>
+    <div style="display: flex; gap: 8px">
+      <button type="button" style="display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border-radius: 12px; border: 2px solid #C9D6FF; background: #EEF3FF; color: #2B59F0; font-weight: 800; font-size: 14px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path></svg>
+        Listen
+      </button>
+      <button type="button" style="display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border-radius: 12px; border: 2px solid #E3E7F5; background: #FFFFFF; color: #3A4266; font-weight: 800; font-size: 14px">Slow</button>
+    </div>
+    <p style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.4; color: #1B2140">He likes coffee, but Léa prefers tea.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6285">Word by word</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px">
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #F6F8FF; border: 2px solid #E3E7F5"><span lang="fr" style="font-weight: 800; font-size: 16px">Il</span><span style="font-size: 12px; font-weight: 700; color: #5A6285">he</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #F6F8FF; border: 2px solid #E3E7F5"><span lang="fr" style="font-weight: 800; font-size: 16px">aime</span><span style="font-size: 12px; font-weight: 700; color: #5A6285">likes</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #EEF3FF; border: 2px solid #C9D6FF"><span lang="fr" style="font-weight: 800; font-size: 16px; color: #2048C8">le café</span><span style="font-size: 12px; font-weight: 700; color: #5A6285">coffee</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #F6F8FF; border: 2px solid #E3E7F5"><span lang="fr" style="font-weight: 800; font-size: 16px">mais</span><span style="font-size: 12px; font-weight: 700; color: #5A6285">but</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #F6F8FF; border: 2px solid #E3E7F5"><span lang="fr" style="font-weight: 800; font-size: 16px">Léa</span><span style="font-size: 12px; font-weight: 700; color: #5A6285">Léa</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #FFF0C7; border: 2px solid #F2B322"><span lang="fr" style="font-weight: 800; font-size: 16px">préfère</span><span style="font-size: 12px; font-weight: 700; color: #6B4A12">prefers</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; background: #EEF3FF; border: 2px solid #C9D6FF"><span lang="fr" style="font-weight: 800; font-size: 16px; color: #2048C8">le thé</span><span style="font-size: 12px; font-weight: 700; color: #5A6285">tea</span></div>
+      </div>
+    </div>
+
+    <div style="background: #FFF8E8; border: 2px solid #FFE2A8; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+      <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5300">Grammar note</span>
+      <p style="margin: 0; font-size: 14px; line-height: 1.45; font-weight: 600; color: #3A2A08">French keeps the article for likes and dislikes: <b lang="fr">aimer le café</b> means "to like coffee" in general.</p>
+      <p style="margin: 0; font-size: 14px; line-height: 1.45; font-weight: 600; color: #3A2A08"><b lang="fr">préférer</b> changes é to è before a silent ending: <span lang="fr">je préfère</span>, but <span lang="fr">nous préférons</span>.</p>
+    </div>
+
+    <div style="flex: 1"></div>
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <a href="Reader.dc.html" class="press" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; border-radius: 14px; background: #2B59F0; color: #FFFFFF; font-weight: 800; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 0 #1A3CB8">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        Save sentence
+      </a>
+      <span style="align-self: center; font-size: 12px; font-weight: 700; color: #5A6285">Explained by AI · saved for next time</span>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

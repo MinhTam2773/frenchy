@@ -1,0 +1,202 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Chapter.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Chapter detail",
+      "w": 390,
+      "x": 940,
+      "y": 1244
+    },
+    "Drills.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Conjugation drill (Phase 2)",
+      "w": 390,
+      "x": 470,
+      "y": 3732
+    },
+    "Main.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Welcome / sign in",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "Onboarding.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Onboarding: where are you in the book?",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "Path.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Course map",
+      "w": 390,
+      "x": 470,
+      "y": 1244
+    },
+    "Practice.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Practice hub",
+      "w": 390,
+      "x": 0,
+      "y": 2488
+    },
+    "Reader.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Reader: tap a word",
+      "w": 390,
+      "x": 1410,
+      "y": 1244
+    },
+    "Review.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "SRS review",
+      "w": 390,
+      "x": 470,
+      "y": 2488
+    },
+    "ReviewDone.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Session complete",
+      "w": 390,
+      "x": 940,
+      "y": 2488
+    },
+    "Sentence.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Reader: long-press a sentence",
+      "w": 390,
+      "x": 1880,
+      "y": 1244
+    },
+    "Settings.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Me / settings",
+      "w": 390,
+      "x": 1410,
+      "y": 3732
+    },
+    "Streak.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Streak",
+      "w": 390,
+      "x": 1410,
+      "y": 2488
+    },
+    "Today.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "Today (daily screen)",
+      "w": 390,
+      "x": 0,
+      "y": 1244
+    },
+    "Tutor.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "AI tutor (Phase 3)",
+      "w": 390,
+      "x": 940,
+      "y": 3732
+    },
+    "Words.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 32,
+      "title": "My words (Phase 2)",
+      "w": 390,
+      "x": 0,
+      "y": 3732
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-17T12:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "row0": {
+      "kind": "title1",
+      "maxW": 860,
+      "text": "Getting started",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "row1": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "Daily loop: today, path, chapter, reader",
+      "w": 240,
+      "x": 0,
+      "y": 944
+    },
+    "row2": {
+      "kind": "title1",
+      "maxW": 1800,
+      "text": "Review & streak",
+      "w": 240,
+      "x": 0,
+      "y": 2188
+    },
+    "row3": {
+      "kind": "title1",
+      "maxW": 1800,
+      "text": "Words, drills, tutor & settings",
+      "w": 240,
+      "x": 0,
+      "y": 3432
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Onboarding.dc.html",
+    "Today.dc.html",
+    "Path.dc.html",
+    "Chapter.dc.html",
+    "Reader.dc.html",
+    "Sentence.dc.html",
+    "Practice.dc.html",
+    "Review.dc.html",
+    "ReviewDone.dc.html",
+    "Streak.dc.html",
+    "Words.dc.html",
+    "Drills.dc.html",
+    "Tutor.dc.html",
+    "Settings.dc.html"
+  ],
+  "pages": [],
+  "title": "Frenchy App Mockups"
+}

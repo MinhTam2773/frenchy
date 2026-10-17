@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: conjugation drill</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+input::placeholder{color:#8A91B0}
+.press:active{transform:translateY(4px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140; display: flex; flex-direction: column">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 18px 20px 8px">
+    <a href="Practice.dc.html" aria-label="End drill" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #5A6285; border-radius: 12px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+    <div role="progressbar" aria-label="Drill progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="{{step}}" style="flex: 1; height: 16px; border-radius: 999px; background: #E3E7F5; overflow: hidden">
+      <div style="{{barStyle}}"></div>
+    </div>
+    <span style="font-size: 14px; font-weight: 800; color: #5A6285; min-width: 40px; text-align: right">{{step}}/10</span>
+  </div>
+
+  <div style="padding: 10px 20px 0; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; gap: 8px">
+      <span style="height: 30px; padding: 0 12px; border-radius: 999px; background: #E4F6EC; color: #0F6436; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; display: flex; align-items: center">Présent</span>
+      <span style="height: 30px; padding: 0 12px; border-radius: 999px; background: #F1F3FA; color: #3A4266; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; display: flex; align-items: center">-er verbs</span>
+    </div>
+    <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 22px">Type the right form</h1>
+
+    <section style="border: 2px solid #E3E7F5; border-radius: 24px; box-shadow: 0 5px 0 #E3E7F5; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span lang="fr" style="font-weight: 800; font-size: 18px">{{q.verb}}</span>
+        <span style="font-size: 15px; font-weight: 700; color: #5A6285">· {{q.meaning}}</span>
+        <span style="flex: 1"></span>
+        <button type="button" aria-label="Play verb" style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid #C9D6FF; background: #EEF3FF; color: #2B59F0; display: flex; align-items: center; justify-content: center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path></svg>
+        </button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span lang="fr" style="font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 30px">{{q.pronoun}}</span>
+        <label style="flex: 1">
+          <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Your answer</span>
+          <input lang="fr" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type here" value="{{answer}}" onChange="{{onType}}" disabled="{{isChecked}}" style="{{inputStyle}}">
+        </label>
+      </div>
+      <p style="margin: 0; font-size: 15px; font-weight: 700; color: #5A6285">{{q.english}}</p>
+    </section>
+
+    <div aria-label="Accent keys" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{keys}}" as="k" hint-placeholder-count="6">
+        <button type="button" onClick="{{k.add}}" aria-label="{{k.label}}" class="press" style="height: 48px; border-radius: 12px; border: 2px solid #E3E7F5; background: #FFFFFF; box-shadow: 0 3px 0 #E3E7F5; font-size: 20px; font-weight: 800; color: #1B2140">{{k.ch}}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="flex: 1"></div>
+
+  <sc-if value="{{notChecked}}" hint-placeholder-val="{{ true }}">
+    <div style="padding: 16px 20px 30px; border-top: 2px solid #E3E7F5">
+      <button type="button" onClick="{{check}}" class="press" style="{{checkStyle}}">Check</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{isRight}}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="padding: 16px 20px 30px; background: #E4F6EC; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span style="width: 36px; height: 36px; border-radius: 999px; background: #13804A; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span>
+        <span style="font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 22px; color: #0F6436">Correct!</span>
+      </div>
+      <p style="margin: 0; font-size: 15px; font-weight: 700; color: #164D2E">{{q.note}}</p>
+      <button type="button" onClick="{{next}}" class="press" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: #13804A; color: #FFFFFF; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 4px 0 #0C5C34">Continue</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{isWrong}}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="padding: 16px 20px 30px; background: #FDE8EE; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 22px; color: #A3203F">Not quite</span>
+      <p style="margin: 0; font-size: 16px; font-weight: 800; color: #5E1226">Answer: <span lang="fr">{{q.pronoun}} {{q.answer}}</span></p>
+      <p style="margin: 0; font-size: 15px; font-weight: 700; color: #6E1F33">{{q.note}}</p>
+      <button type="button" onClick="{{next}}" class="press" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: #D6335B; color: #FFFFFF; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 4px 0 #A5213F">Got it</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { idx: 0, answer: '', checked: null };
+  }
+  renderVals() {
+    const qs = [
+      { verb: 'manger', meaning: 'to eat', pronoun: 'nous', answer: 'mangeons', english: 'we eat', note: 'Verbs ending in -ger keep the e before -ons, so the g stays soft: nous mangeons.' },
+      { verb: 'préférer', meaning: 'to prefer', pronoun: 'tu', answer: 'préfères', english: 'you prefer', note: 'é becomes è before a silent ending: je préfère, tu préfères.' },
+      { verb: 'parler', meaning: 'to speak', pronoun: 'vous', answer: 'parlez', english: 'you speak (formal or plural)', note: 'vous always ends in -ez for -er verbs.' }
+    ];
+    const s = this.state;
+    const q = qs[s.idx % qs.length];
+    const checked = s.checked;
+    const keys = ['é', 'è', 'ê', 'à', 'ç', 'ô'].map((ch) => ({
+      ch: ch,
+      label: 'Type ' + ch,
+      add: () => { if (!this.state.checked) this.setState({ answer: this.state.answer + ch }); }
+    }));
+    const hasText = s.answer.trim().length > 0;
+    let inputStyle = 'width: 100%; height: 52px; padding: 0 14px; border-radius: 14px; font-size: 22px; font-weight: 800; outline: none; ';
+    if (checked === 'right') inputStyle += 'border: 2px solid #13804A; background: #E4F6EC; color: #0F6436;';
+    else if (checked === 'wrong') inputStyle += 'border: 2px solid #D6335B; background: #FDE8EE; color: #A3203F; text-decoration: line-through;';
+    else inputStyle += 'border: 2px solid #2B59F0; background: #FFFFFF; color: #1B2140;';
+    return {
+      q: q,
+      step: 4 + s.idx,
+      barStyle: 'height: 100%; border-radius: 999px; background: #13804A; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15); width: ' + Math.min(100, (4 + s.idx) * 10) + '%;',
+      answer: s.answer,
+      onType: (e) => this.setState({ answer: e.target.value }),
+      keys: keys,
+      isChecked: !!checked,
+      notChecked: !checked,
+      isRight: checked === 'right',
+      isWrong: checked === 'wrong',
+      inputStyle: inputStyle,
+      checkStyle: 'width: 100%; height: 56px; border-radius: 16px; border: none; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; ' +
+        (hasText ? 'background: #13804A; color: #FFFFFF; box-shadow: 0 4px 0 #0C5C34;' : 'background: #E3E7F5; color: #5A6285; box-shadow: 0 4px 0 #CDD3E6;'),
+      check: () => {
+        const a = this.state.answer.trim().toLowerCase();
+        if (!a) return;
+        this.setState({ checked: a === q.answer ? 'right' : 'wrong' });
+      },
+      next: () => this.setState({ idx: this.state.idx + 1, answer: '', checked: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

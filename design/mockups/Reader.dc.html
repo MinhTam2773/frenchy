@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: reader</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button{font:inherit;cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+.press:active{transform:translateY(4px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140">
+  <header lang="en" style="display: flex; align-items: center; gap: 8px; padding: 14px 16px 6px">
+    <a href="Chapter.dc.html" aria-label="Close reader" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #5A6285; border-radius: 12px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center">
+      <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6285">Ch 10 · Reading 1</span>
+      <span style="font-weight: 800; font-size: 16px">Le matin de Léa</span>
+    </div>
+    <button type="button" aria-label="Text settings" style="width: 44px; height: 44px; border-radius: 12px; border: none; background: transparent; color: #5A6285; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 18px">Aa</button>
+  </header>
+
+  <div lang="en" style="margin: 4px 16px 0; display: flex; align-items: center; gap: 12px; background: #F6F8FF; border: 2px solid #E3E7F5; border-radius: 16px; padding: 8px 12px 8px 8px">
+    <button type="button" onClick="{{togglePlay}}" aria-label="{{playLabel}}" class="press" style="width: 44px; height: 44px; border-radius: 12px; border: none; background: #2B59F0; color: #FFFFFF; box-shadow: 0 3px 0 #1A3CB8; display: flex; align-items: center; justify-content: center">
+      <sc-if value="{{playing}}" hint-placeholder-val="{{ false }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
+      </sc-if>
+      <sc-if value="{{paused}}" hint-placeholder-val="{{ true }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+      </sc-if>
+    </button>
+    <div style="flex: 1; height: 8px; border-radius: 999px; background: #E3E7F5; overflow: hidden"><div style="width: 34%; height: 100%; background: #2B59F0; border-radius: 999px"></div></div>
+    <span style="font-size: 13px; font-weight: 800; color: #5A6285">0:41</span>
+    <button type="button" aria-label="Playback speed" style="height: 32px; padding: 0 8px; border-radius: 10px; border: 2px solid #E3E7F5; background: #FFFFFF; font-size: 13px; font-weight: 800; color: #3A4266">0.8×</button>
+  </div>
+
+  <article style="padding: 18px 22px 0; display: flex; flex-direction: column; gap: 14px">
+    <sc-for list="{{paragraphs}}" as="para" hint-placeholder-count="4"><p style="margin: 0; font-size: 21px; line-height: 1.7; font-weight: 600; color: #1B2140"><sc-for list="{{para.tokens}}" as="tok" hint-placeholder-count="12"><sc-if value="{{tok.isWord}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{tok.pick}}" style="{{tok.style}}">{{tok.text}}</button></sc-if><sc-if value="{{tok.isSep}}" hint-placeholder-val="{{ false }}"><span>{{tok.text}}</span></sc-if></sc-for></p></sc-for>
+    <div lang="en" style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #5A6285">
+      <span style="width: 14px; height: 14px; border-radius: 4px; background: #FFF0C7; box-shadow: inset 0 -2px 0 #F2B322"></span>
+      New word · tap any word · long-press a sentence
+    </div>
+  </article>
+
+  <sc-if value="{{showSheet}}" hint-placeholder-val="{{ true }}">
+    <section lang="en" aria-label="Word details" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 28px 28px 0 0; border-top: 2px solid #E3E7F5; box-shadow: 0 -10px 30px rgba(27,33,64,0.12); padding: 10px 20px 26px; display: flex; flex-direction: column; gap: 10px">
+      <div aria-hidden="true" style="align-self: center; width: 44px; height: 5px; border-radius: 999px; background: #D7DCEC"></div>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span lang="fr" style="font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 32px; line-height: 1">{{sheet.word}}</span>
+        <button type="button" aria-label="Play pronunciation" style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid #C9D6FF; background: #EEF3FF; color: #2B59F0; display: flex; align-items: center; justify-content: center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path></svg>
+        </button>
+        <span style="flex: 1"></span>
+        <button type="button" onClick="{{closeSheet}}" aria-label="Close word details" style="width: 40px; height: 40px; border-radius: 12px; border: none; background: transparent; color: #5A6285; display: flex; align-items: center; justify-content: center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px">
+        <span style="height: 28px; padding: 0 10px; border-radius: 999px; background: #F1F3FA; color: #3A4266; font-size: 13px; font-weight: 800; display: flex; align-items: center">{{sheet.pos}}</span>
+        <sc-if value="{{sheet.hasLemma}}" hint-placeholder-val="{{ true }}">
+          <span style="height: 28px; padding: 0 10px; border-radius: 999px; background: #F1F3FA; color: #3A4266; font-size: 13px; font-weight: 800; display: flex; align-items: center">from <span lang="fr" style="margin-left: 4px; color: #1B2140">{{sheet.lemma}}</span></span>
+        </sc-if>
+        <sc-if value="{{sheet.isM}}" hint-placeholder-val="{{ false }}">
+          <span style="height: 28px; padding: 0 10px; border-radius: 999px; background: #EEF3FF; color: #2048C8; font-size: 13px; font-weight: 800; display: flex; align-items: center">le · masculine</span>
+        </sc-if>
+        <sc-if value="{{sheet.isF}}" hint-placeholder-val="{{ false }}">
+          <span style="height: 28px; padding: 0 10px; border-radius: 999px; background: #FDE8EE; color: #B0244B; font-size: 13px; font-weight: 800; display: flex; align-items: center">la · feminine</span>
+        </sc-if>
+        <sc-if value="{{sheet.isNew}}" hint-placeholder-val="{{ false }}">
+          <span style="height: 28px; padding: 0 10px; border-radius: 999px; background: #FFF0C7; color: #7A4B00; font-size: 13px; font-weight: 800; display: flex; align-items: center">New</span>
+        </sc-if>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 20px; font-weight: 800">{{sheet.tr}}</span>
+        <sc-if value="{{sheet.hasForm}}" hint-placeholder-val="{{ true }}">
+          <span style="font-size: 14px; font-weight: 700; color: #5A6285">{{sheet.form}}</span>
+        </sc-if>
+      </div>
+      <div style="display: flex; gap: 10px; padding-top: 4px">
+        <button type="button" onClick="{{toggleSave}}" class="press" style="{{saveStyle}}">
+          <sc-if value="{{isSaved}}" hint-placeholder-val="{{ false }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+          </sc-if>
+          <sc-if value="{{notSaved}}" hint-placeholder-val="{{ true }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+          </sc-if>
+          {{saveLabel}}
+        </button>
+        <a href="Sentence.dc.html" class="press" style="display: flex; align-items: center; justify-content: center; height: 50px; padding: 0 16px; border-radius: 14px; background: #FFFFFF; color: #2B59F0; border: 2px solid #E3E7F5; box-shadow: 0 4px 0 #E3E7F5; font-weight: 800; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none">Sentence</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{noSheet}}" hint-placeholder-val="{{ false }}">
+    <div lang="en" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 28px; border-top: 2px solid #E3E7F5; background: #FFFFFF">
+      <a href="Today.dc.html" class="press" style="display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 16px; background: #2B59F0; color: #FFFFFF; font-weight: 800; font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 0 #1A3CB8">Finish reading</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 'va', selText: 'va', saved: { voisin: true }, playing: false };
+  }
+  lexicon() {
+    return {
+      'léa': { pos: 'name', tr: 'Léa (a name)' },
+      'habite': { pos: 'verb', lemma: 'habiter', tr: 'lives', form: 'il / elle · present · -er verb' },
+      'à': { pos: 'preposition', tr: 'in, at, to' },
+      'lyon': { pos: 'name', tr: 'Lyon (a city in France)' },
+      'elle': { pos: 'pronoun', tr: 'she; it', form: 'subject pronoun · 3rd person singular' },
+      'a': { pos: 'verb', lemma: 'avoir', tr: 'has', form: 'il / elle · present · irregular' },
+      'un': { pos: 'article', g: 'm', tr: 'a, an', form: 'indefinite article' },
+      'petit': { pos: 'adjective', g: 'm', tr: 'small, little', form: 'feminine: petite' },
+      'appartement': { pos: 'noun', g: 'm', tr: 'apartment, flat' },
+      'et': { pos: 'conjunction', tr: 'and' },
+      'chat': { pos: 'noun', g: 'm', tr: 'cat' },
+      'le': { pos: 'article', g: 'm', tr: 'the', form: 'definite article' },
+      'matin': { pos: 'noun', g: 'm', tr: 'morning', form: 'le matin = in the morning' },
+      'mange': { pos: 'verb', lemma: 'manger', tr: 'eats', form: 'il / elle · present · -er verb' },
+      'une': { pos: 'article', g: 'f', tr: 'a, an', form: 'indefinite article' },
+      'tartine': { pos: 'noun', g: 'f', tr: 'slice of bread with butter or jam', isNew: true },
+      'écoute': { pos: 'verb', lemma: 'écouter', tr: 'listens to', form: 'il / elle · present · -er verb', isNew: true },
+      'la': { pos: 'article', g: 'f', tr: 'the', form: 'definite article' },
+      'radio': { pos: 'noun', g: 'f', tr: 'radio' },
+      'parle': { pos: 'verb', lemma: 'parler', tr: 'speaks, talks', form: 'il / elle · present · -er verb' },
+      'avec': { pos: 'preposition', tr: 'with' },
+      'son': { pos: 'possessive', g: 'm', tr: 'his, her', form: 'before a masculine noun (sa before feminine)' },
+      'voisin': { pos: 'noun', g: 'm', tr: 'neighbor', form: 'feminine: voisine', isNew: true },
+      'karim': { pos: 'name', tr: 'Karim (a name)' },
+      'il': { pos: 'pronoun', tr: 'he; it', form: 'subject pronoun · 3rd person singular' },
+      'aime': { pos: 'verb', lemma: 'aimer', tr: 'likes, loves', form: 'il / elle · present · -er verb' },
+      'café': { pos: 'noun', g: 'm', tr: 'coffee; café' },
+      'mais': { pos: 'conjunction', tr: 'but' },
+      'préfère': { pos: 'verb', lemma: 'préférer', tr: 'prefers', form: 'il / elle · present · é becomes è before a silent ending', isNew: true },
+      'thé': { pos: 'noun', g: 'm', tr: 'tea' },
+      'huit': { pos: 'number', tr: 'eight' },
+      'heures': { pos: 'noun', g: 'f', lemma: 'heure', tr: 'hours; o’clock', form: 'plural · à huit heures = at eight o’clock', isNew: true },
+      'va': { pos: 'verb', lemma: 'aller', tr: 'goes', form: 'il / elle · present · irregular' },
+      'au': { pos: 'contraction', tr: 'to the, at the', form: 'à + le becomes au' },
+      'travail': { pos: 'noun', g: 'm', tr: 'work, job', isNew: true }
+    };
+  }
+  renderVals() {
+    const L = this.lexicon();
+    const sel = this.state.sel;
+    const texts = [
+      'Léa habite à Lyon. Elle a un petit appartement et un chat.',
+      'Le matin, elle mange une tartine et elle écoute la radio.',
+      'Elle parle avec son voisin, Karim. Il aime le café, mais Léa préfère le thé.',
+      'À huit heures, elle va au travail.'
+    ];
+    const wordRe = /^[A-Za-zÀ-ÖØ-öø-ÿ]+$/;
+    const base = 'display: inline; font: inherit; color: inherit; border: none; margin: 0 -1px; padding: 0 1px; border-radius: 6px; cursor: pointer; ';
+    const paragraphs = texts.map((t) => ({
+      tokens: t.split(/([A-Za-zÀ-ÖØ-öø-ÿ]+)/).filter((s) => s.length > 0).map((s) => {
+        const isWord = wordRe.test(s);
+        const key = s.toLowerCase();
+        const e = L[key] || {};
+        let style = base + 'background: transparent;';
+        if (isWord && e.isNew) style = base + 'background: #FFF0C7; box-shadow: inset 0 -2px 0 #F2B322;';
+        if (isWord && key === sel) style = base + 'background: #2B59F0; color: #FFFFFF;';
+        return {
+          text: s,
+          isWord: isWord,
+          isSep: !isWord,
+          style: style,
+          pick: () => this.setState({ sel: key, selText: s })
+        };
+      })
+    }));
+    const e = sel ? (L[sel] || { pos: 'word', tr: '' }) : null;
+    const isSaved = !!(sel && this.state.saved[sel]);
+    const sheet = e ? {
+      word: this.state.selText,
+      pos: e.pos,
+      lemma: e.lemma || '',
+      hasLemma: !!e.lemma,
+      isM: e.g === 'm',
+      isF: e.g === 'f',
+      isNew: !!e.isNew,
+      tr: e.tr,
+      form: e.form || '',
+      hasForm: !!e.form
+    } : {};
+    const saveStyle = 'flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; height: 50px; border-radius: 14px; border: none; font-weight: 800; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: #FFFFFF; ' +
+      (isSaved ? 'background: #178A4C; box-shadow: 0 4px 0 #0F6436;' : 'background: #2B59F0; box-shadow: 0 4px 0 #1A3CB8;');
+    return {
+      paragraphs: paragraphs,
+      showSheet: !!e,
+      noSheet: !e,
+      sheet: sheet,
+      isSaved: isSaved,
+      notSaved: !isSaved,
+      saveLabel: isSaved ? 'Saved to reviews' : 'Save word',
+      saveStyle: saveStyle,
+      toggleSave: () => {
+        const saved = Object.assign({}, this.state.saved);
+        saved[sel] = !saved[sel];
+        this.setState({ saved: saved });
+      },
+      closeSheet: () => this.setState({ sel: null }),
+      playing: this.state.playing,
+      paused: !this.state.playing,
+      playLabel: this.state.playing ? 'Pause audio' : 'Play audio',
+      togglePlay: () => this.setState({ playing: !this.state.playing })
+    };
+  }
+}
+</script>
+</body>
+</html>

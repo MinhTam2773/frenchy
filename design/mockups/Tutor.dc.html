@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: AI tutor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+input::placeholder{color:#8A91B0}
+.press:active{transform:translateY(3px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F8FF; font-family: Nunito, system-ui, sans-serif; color: #1B2140; display: flex; flex-direction: column">
+  <header style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 10px; background: #FFFFFF; border-bottom: 2px solid #E3E7F5">
+    <a href="Practice.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #5A6285; border-radius: 12px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </a>
+    <span style="width: 44px; height: 44px; border-radius: 999px; background: #EEF3FF; display: flex; align-items: center; justify-content: center; overflow: hidden">
+      <svg width="40" height="32" viewBox="0 0 140 110" aria-hidden="true">
+        <rect x="14" y="74" width="118" height="24" rx="12" fill="#FFB84D"></rect>
+        <circle cx="118" cy="62" r="18" fill="#FFB84D"></circle>
+        <line x1="112" y1="50" x2="104" y2="26" stroke="#FFB84D" stroke-width="6" stroke-linecap="round"></line>
+        <line x1="124" y1="50" x2="132" y2="26" stroke="#FFB84D" stroke-width="6" stroke-linecap="round"></line>
+        <circle cx="104" cy="24" r="8" fill="#FFFFFF" stroke="#1B2140" stroke-width="3"></circle>
+        <circle cx="132" cy="24" r="8" fill="#FFFFFF" stroke="#1B2140" stroke-width="3"></circle>
+        <circle cx="62" cy="56" r="34" fill="#2B59F0"></circle>
+        <path d="M62 56 m-4 0 a4 4 0 1 1 8 0 a10 10 0 1 1 -20 0 a16 16 0 1 1 32 0 a22 22 0 1 1 -44 0" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"></path>
+      </svg>
+    </span>
+    <div style="flex: 1; display: flex; flex-direction: column">
+      <span style="font-weight: 800; font-size: 17px">Tutor</span>
+      <span style="font-size: 13px; font-weight: 700; color: #5A6285">Uses grammar up to Ch 10</span>
+    </div>
+    <button type="button" aria-label="Tutor settings" style="width: 44px; height: 44px; border-radius: 12px; border: none; background: transparent; color: #5A6285; display: flex; align-items: center; justify-content: center">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle></svg>
+    </button>
+  </header>
+
+  <main aria-label="Conversation" style="flex: 1; padding: 14px 16px 0; display: flex; flex-direction: column; gap: 10px; overflow: hidden">
+    <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; border: 2px solid #E3E7F5; border-radius: 18px 18px 18px 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+      <span lang="fr" style="font-size: 17px; font-weight: 700">Salut ! Tu habites où ?</span>
+      <span style="font-size: 13px; font-weight: 600; color: #5A6285">Hi! Where do you live?</span>
+    </div>
+
+    <div style="align-self: flex-end; max-width: 82%; background: #2B59F0; color: #FFFFFF; border-radius: 18px 18px 6px 18px; padding: 10px 14px">
+      <span lang="fr" style="font-size: 17px; font-weight: 700">Je habite à Toronto.</span>
+    </div>
+    <div style="align-self: flex-end; width: 86%; background: #FFF8E8; border: 2px solid #FFE2A8; border-radius: 16px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800">
+        <span lang="fr" style="color: #A3203F; text-decoration: line-through">Je habite</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B4A12" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        <span lang="fr" style="color: #0F6436">J’habite à Toronto.</span>
+      </div>
+      <span style="font-size: 13px; font-weight: 700; color: #5C410F">je becomes j’ before a vowel or a silent h.</span>
+      <button type="button" class="press" style="align-self: flex-start; display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 10px; border: 2px solid #FFC24D; background: #FFFFFF; color: #6B4A12; font-size: 13px; font-weight: 800; box-shadow: 0 2px 0 #FFC24D">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        Save to reviews
+      </button>
+    </div>
+
+    <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; border: 2px solid #E3E7F5; border-radius: 18px 18px 18px 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+      <span lang="fr" style="font-size: 17px; font-weight: 700">Super ! Tu aimes le café ou le thé ?</span>
+      <span style="font-size: 13px; font-weight: 600; color: #5A6285">Great! Do you like coffee or tea?</span>
+    </div>
+
+    <div style="align-self: flex-end; max-width: 82%; background: #2B59F0; color: #FFFFFF; border-radius: 18px 18px 6px 18px; padding: 10px 14px">
+      <span lang="fr" style="font-size: 17px; font-weight: 700">J’aime le thé. Je ne aime pas le café.</span>
+    </div>
+    <div style="align-self: flex-end; width: 86%; background: #FFF8E8; border: 2px solid #FFE2A8; border-radius: 16px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 16px; font-weight: 800">
+        <span lang="fr" style="color: #A3203F; text-decoration: line-through">ne aime</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B4A12" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        <span lang="fr" style="color: #0F6436">Je n’aime pas le café.</span>
+      </div>
+      <span style="font-size: 13px; font-weight: 700; color: #5C410F">ne becomes n’ before a vowel, just like je.</span>
+      <span style="align-self: flex-start; display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 10px; background: #13804A; color: #FFFFFF; font-size: 13px; font-weight: 800">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+        Saved
+      </span>
+    </div>
+
+    <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; border: 2px solid #E3E7F5; border-radius: 18px 18px 18px 6px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+      <span lang="fr" style="font-size: 17px; font-weight: 700">Moi aussi ! Tu parles français avec qui ?</span>
+      <span style="font-size: 13px; font-weight: 600; color: #5A6285">Me too! Who do you speak French with?</span>
+    </div>
+  </main>
+
+  <div style="padding: 10px 12px 26px; background: #FFFFFF; border-top: 2px solid #E3E7F5; display: flex; align-items: center; gap: 8px">
+    <label style="flex: 1; height: 50px; display: flex; align-items: center; padding: 0 14px; border-radius: 16px; background: #F6F8FF; border: 2px solid #E3E7F5">
+      <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message the tutor</span>
+      <input lang="fr" type="text" placeholder="Écris en français…" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-size: 16px; font-weight: 600; color: #1B2140">
+    </label>
+    <button type="button" aria-label="Speak" style="width: 50px; height: 50px; border-radius: 16px; border: 2px solid #E3E7F5; background: #FFFFFF; color: #3A4266; display: flex; align-items: center; justify-content: center">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
+    </button>
+    <button type="button" aria-label="Send" class="press" style="width: 50px; height: 50px; border-radius: 16px; border: none; background: #2B59F0; color: #FFFFFF; box-shadow: 0 3px 0 #1A3CB8; display: flex; align-items: center; justify-content: center">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l16-8-6 16-3-7z"></path></svg>
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

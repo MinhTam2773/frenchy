@@ -28,6 +28,4 @@ Context for continuing this project in a new session (local or cloud). Read with
 - Tradeoffs accepted: D1 has no row-level security (scope every query by user id), Better Auth is added because Cloudflare has no consumer auth, and `cli-bridge` stays a local Node server.
 
 ## Next steps
-1. Before creating any Cloudflare resources (D1 database, R2 bucket, Worker deploy), confirm with the user. The user runs `wrangler login` once; Cloudflare isn't connected as an MCP tool.
-2. Scaffold the MVP (Vite + React + Hono + Cloudflare Vite plugin, Drizzle, Better Auth) with local D1.
-3. Generate Stage 1 content as reviewed JSON, including *aller* and *faire*, which Ch 12 doesn't cover.
+Moved to `TODO.md` (tasks, dependencies, waves, model/effort) and `CLAUDE.md` (working rules). Mockups are in `design/mockups/`, explained in `design/README.md`. Start with T-01.

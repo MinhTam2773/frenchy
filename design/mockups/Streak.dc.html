@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frenchy: streak</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+button{font:inherit;cursor:pointer}
+a{color:#2B59F0}a:hover{color:#1A3CB8}
+.press:active{transform:translateY(4px);box-shadow:none !important}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Nunito, system-ui, sans-serif; color: #1B2140">
+  <header style="display: flex; align-items: center; gap: 8px; padding: 14px 16px 4px">
+    <a href="Today.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #5A6285; border-radius: 12px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </a>
+    <h1 style="margin: 0; flex: 1; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 22px">Streak</h1>
+  </header>
+
+  <section style="margin: 6px 16px 0; padding: 18px; border-radius: 24px; background: #FF7A1A; box-shadow: 0 5px 0 #C9560A; color: #FFFFFF; display: flex; align-items: center; gap: 14px; position: relative; overflow: hidden">
+    <div aria-hidden="true" style="position: absolute; right: -24px; bottom: -40px; width: 140px; height: 140px; border-radius: 999px; background: rgba(255,255,255,0.12)"></div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+      <span style="font-family: Fredoka, Nunito, sans-serif; font-weight: 700; font-size: 56px; line-height: 1; color: #3B1600">12</span>
+      <span style="font-size: 18px; font-weight: 800; color: #3B1600">day streak</span>
+      <span style="font-size: 14px; font-weight: 700; color: #3B1600">Best so far: 21 days</span>
+    </div>
+    <svg width="96" height="96" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.8 3.4 4.5 5.2 4.5 10a4.5 4.5 0 0 1-9 0c0-1.9.8-3.2 1.9-4.2.1 1.6.8 2.6 1.9 2.9-.2-3.6-.6-6 .7-8.7z" fill="#FFE2A8"></path><path d="M12 11c.4 1.6 2.2 2.5 2.2 4.6a2.2 2.2 0 0 1-4.4 0c0-1 .5-1.6 1-2 .1.8.4 1.2 1 1.3-.1-1.6-.3-2.8.2-3.9z" fill="#FFFFFF"></path></svg>
+  </section>
+
+  <div style="margin: 14px 16px 0; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: #FFF4E8; border: 2px solid #FFC999">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A3470A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+    <span style="flex: 1; font-size: 14px; font-weight: 700; color: #6B2E05">Do one review session today to keep it going.</span>
+  </div>
+
+  <section style="margin: 14px 16px 0; padding: 14px 14px 12px; border-radius: 20px; border: 2px solid #E3E7F5; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h2 style="margin: 0; font-weight: 800; font-size: 17px">October 2026</h2>
+      <div style="display: flex; gap: 4px">
+        <button type="button" aria-label="Previous month" style="width: 36px; height: 36px; border-radius: 10px; border: 2px solid #E3E7F5; background: #FFFFFF; color: #5A6285; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+        <button type="button" aria-label="Next month" style="width: 36px; height: 36px; border-radius: 10px; border: 2px solid #E3E7F5; background: #FFFFFF; color: #5A6285; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; text-align: center; font-size: 12px; font-weight: 800; color: #5A6285">
+      <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+      <sc-for list="{{cells}}" as="c" hint-placeholder-count="35">
+        <div aria-label="{{c.label}}" style="{{c.style}}">
+          <sc-if value="{{c.isFreeze}}" hint-placeholder-val="{{ false }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4.9 7l14.2 10M19.1 7L4.9 17"></path></svg>
+          </sc-if>
+          <sc-if value="{{c.showNum}}" hint-placeholder-val="{{ true }}">{{c.day}}</sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; font-weight: 700; color: #5A6285; padding-top: 2px">
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 4px; background: #FF7A1A"></span>Practiced</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 4px; background: #2A8BD0"></span>Freeze used</span>
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 4px; border: 2px solid #FF7A1A"></span>Today</span>
+    </div>
+  </section>
+
+  <section style="margin: 14px 16px 0; display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 20px; background: #EAF5FD; border: 2px solid #B5DBF5">
+    <span style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 16px; background: #2A8BD0; display: flex; align-items: center; justify-content: center">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4.9 7l14.2 10M19.1 7L4.9 17"></path></svg>
+    </span>
+    <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+      <span style="font-weight: 800; font-size: 17px; color: #0E3F63">2 streak freezes</span>
+      <span style="font-size: 14px; font-weight: 700; color: #24506F; line-height: 1.35">A freeze covers a day you miss. You earn one every 7 days, up to 2.</span>
+    </span>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const cells = [];
+    const base = 'height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; ';
+    for (let i = 0; i < 3; i++) cells.push({ day: '', label: '', showNum: false, isFreeze: false, style: base });
+    for (let d = 1; d <= 31; d++) {
+      let kind = 'none';
+      if (d === 1 || d === 2) kind = 'done';
+      if (d >= 5 && d <= 16) kind = 'done';
+      if (d === 11) kind = 'freeze';
+      if (d === 17) kind = 'today';
+      if (d > 17) kind = 'future';
+      let style = base;
+      let label = 'October ' + d;
+      if (kind === 'done') { style += 'background: #FF7A1A; color: #3B1600;'; label += ', practiced'; }
+      else if (kind === 'freeze') { style += 'background: #2A8BD0; color: #FFFFFF;'; label += ', freeze used'; }
+      else if (kind === 'today') { style += 'background: #FFFFFF; color: #A3470A; border: 2px solid #FF7A1A;'; label += ', today'; }
+      else if (kind === 'future') { style += 'color: #A5ABC4;'; }
+      else { style += 'background: #F1F3FA; color: #5A6285;'; label += ', missed'; }
+      cells.push({ day: String(d), label: label, showNum: kind !== 'freeze', isFreeze: kind === 'freeze', style: style });
+    }
+    cells.push({ day: '', label: '', showNum: false, isFreeze: false, style: base });
+    return { cells: cells };
+  }
+}
+</script>
+</body>
+</html>
