@@ -31,7 +31,7 @@ The book is ordered by topic, not by difficulty, so a beginner should **not** go
 - App. A Pronunciation (spread across the first weeks)
 - Ch 1 Articles
 - Ch 2 Basic gender endings
-- Ch 12 *Être, avoir*, irregular verbs (only être, avoir, aller, faire at first)
+- Ch 12 *Être, avoir*, irregular verbs (être, avoir first; savoir/connaître, pouvoir/vouloir, devoir later in the stage). The chapter does **not** cover *aller* or *faire*, but the Ch 33 dialogues use them, so the app teaches both in Stage 1.
 - Ch 10 Present tense of -er verbs
 - Ch 4 Numbers
 - Ch 7 Asking questions
@@ -75,6 +75,24 @@ The book is ordered by topic, not by difficulty, so a beginner should **not** go
 
 App. C verb tables: use as a reference throughout. The app's conjugation drills follow the stage you are in.
 
+### Finding chapters in the PDF
+PDF page = printed page + 11 (printed p. 1 = PDF p. 12). Chapter start pages (PDF):
+
+| Ch | PDF | Ch | PDF | Ch | PDF | Ch | PDF |
+|---|---|---|---|---|---|---|---|
+| 1 | 12 | 11 | 197 | 21 | 296 | 31 | 445 |
+| 2 | 24 | 12 | 208 | 22 | 326 | 32 | 476 |
+| 3 | 48 | 13 | 222 | 23 | 339 | 33 | 489 |
+| 4 | 89 | 14 | 232 | 24 | 347 | 34 | 502 |
+| 5 | 98 | 15 | 238 | 25 | 354 | 35 | 521 |
+| 6 | 132 | 16 | 248 | 26 | 372 | 36 | 536 |
+| 7 | 140 | 17 | 260 | 27 | 395 | 37 | 548 |
+| 8 | 160 | 18 | 269 | 28 | 405 | App. A | 564 |
+| 9 | 170 | 19 | 279 | 29 | 417 | App. C | 572 |
+| 10 | 185 | 20 | 286 | 30 | 426 | Answer key | 622 |
+
+The book's example sentences are not graded by difficulty (Ch 1 already uses the passé composé), so the app writes its own leveled texts. The extracted text layer drops the "fi", "fl" and "Th" ligatures and mixes up two-column French/English layouts, so use it only as a reference.
+
 ## 3. App vision
 
 A phone-first web app (PWA) that sits next to the book. **Everything French in the app can be tapped.**
@@ -115,17 +133,77 @@ A phone-first web app (PWA) that sits next to the book. **Everything French in t
 | Speak / Praktika | AI voice conversation flow |
 | Busuu | Corrections on written exercises |
 
-## 4. Technical design (proposal)
+## 4. Technical design
+
+Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
 
 | Layer | Choice | Why |
 |---|---|---|
-| Frontend | Next.js + TypeScript + Tailwind, PWA | Phone-first, installable, one codebase |
-| Auth + DB | Supabase (Postgres + Auth + row-level security) | Sync, multi-user ready |
-| Hosting | Vercel | Simple deploys from GitHub |
-| SRS | `ts-fsrs` | Open-source FSRS implementation |
-| TTS | Browser Web Speech API (fr-FR) first; a better voice later | Free, good enough for MVP |
-| Dictionary | Pre-built offline lexicon (Wiktionary-derived data; license to verify) + lemmatizer | Instant, free word taps |
-| AI | **Provider-agnostic layer** (see below) | Swap providers without code changes |
+| Frontend | Vite + React + TypeScript + Tailwind, single-page app | App behind a login, no SEO need, so no SSR; fast taps |
+| Routing / data | React Router (SPA mode) + TanStack Query | Client routes; caching and retry for API calls |
+| PWA | `vite-plugin-pwa` (service worker + manifest) | Installable on every platform; offline later |
+| API | Hono on Cloudflare Workers | Small router built for Workers |
+| Hosting | One Worker serves the static SPA **and** `/api/*` (Cloudflare Vite plugin) | One project, one `npm run dev`, one `wrangler deploy` |
+| DB | Cloudflare D1 (SQLite) + Drizzle ORM and migrations | Free tier, no pausing; typed queries |
+| Auth | Better Auth (email + Google), sessions stored in D1 | Cloudflare has no consumer auth; runs on Workers |
+| Files | Cloudflare R2 | Pre-generated TTS audio (later) |
+| SRS | `ts-fsrs` on the client | Open-source FSRS implementation |
+| TTS | Browser Web Speech API (fr-FR) first; R2 audio later | Free, good enough for MVP |
+| Dictionary | Pre-built offline lexicon (Wiktionary-derived data; license to verify) + lemmatizer, shipped as static JSON | Instant, free word taps |
+| AI | **Provider-agnostic layer** (see below), called only from the Worker | Keys stay server-side; swap providers without code changes |
+| Tests | Vitest; `@cloudflare/vitest-pool-workers` for the API | Tests run in the real Workers runtime |
+
+### Platforms
+- **Now:** one PWA for iPhone, Android, Windows, Mac and Linux. On phones it is installed with "Add to Home Screen".
+- Limits: no app-store listing. On iPhone, push notifications only work after the app is installed to the Home Screen, and iOS may clear local data for apps that haven't been opened in a while (the server copy is the source of truth).
+- **Later, if needed:** wrap the same React app with **Capacitor** to get iOS and Android store apps with native notifications. The backend does not change.
+
+### Architecture
+
+```
+ Phone / laptop browser (PWA)
+ ┌──────────────────────────────────────────┐
+ │ React SPA                                │
+ │  - course map, reader, SRS, daily screen │
+ │  - ts-fsrs scheduling                    │
+ │  - lexicon + lesson JSON (cached by SW)  │
+ └───────────────┬──────────────────────────┘
+                 │ HTTPS, same origin
+ ┌───────────────▼──────────────────────────┐
+ │ Cloudflare Worker                        │
+ │  static assets ── SPA files              │
+ │  Hono /api/*                             │
+ │   /api/auth/*   Better Auth              │
+ │   /api/sync     cards, reviews, status   │
+ │   /api/ai/*     translate, explain, chat │
+ └──┬──────────────┬──────────────┬─────────┘
+    │ D1           │ R2           │ fetch
+    ▼              ▼              ▼
+ users, cards,   TTS audio     AI providers
+ reviews, cache  (later)       (Anthropic, OpenAI-compatible, …)
+```
+
+- **Static content** (lesson texts, starter decks, grammar notes, lexicon) is JSON in the repo, built into the SPA and cached by the service worker. It never touches D1.
+- **User data** lives in D1. Every query is scoped by the session's user id through one helper, because D1 has no row-level security.
+- **Reviews**: the client grades a card and computes the next due date with `ts-fsrs`, then posts the review. The server stores it and updates the card. For MVP the app needs a connection; offline review (queue in IndexedDB, sync later) is a follow-up.
+- **Streak**: one row per user per day with activity. The streak and freeze are computed from those rows in the user's time zone.
+- **Secrets** (AI keys, auth secret) are set with `wrangler secret put` and never sent to the client.
+
+### Environments
+| Env | How | Data |
+|---|---|---|
+| Local | `npm run dev` (Vite + local Worker via `workerd`) | Local D1 file; `cli-bridge` available |
+| Production | `wrangler deploy` (later: deploy on push to `main`) | Production D1 + R2 |
+
+### Repo layout (planned)
+```
+src/client/    React app
+src/worker/    Hono API, auth, AI drivers
+src/shared/    types and schemas shared by both
+content/       generated + reviewed lesson JSON, lexicon
+migrations/    Drizzle / D1 migrations
+scripts/       content generation, cli-bridge
+```
 
 ### AI strategy
 - **Content generation at build time.** Chapter texts, starter decks and grammar notes are generated once, reviewed, and stored as static JSON in the repo. Zero runtime cost.
@@ -137,13 +215,19 @@ A phone-first web app (PWA) that sits next to the book. **Everything French in t
 - Coding-agent subscriptions (Claude Code / Cursor / Codex) are for **building** the app and generating content, not for serving app users at runtime. Their terms and rate limits are not designed for that.
 
 ### Data model (sketch)
-- `profiles` (user, current chapter, settings)
-- `lexemes` (lemma, pos, gender, translations, forms) — static
-- `texts` (chapter, title, body, translation, audio) — static
-- `cards` (user, front/back/cloze, source, FSRS state)
-- `reviews` (card, rating, timestamp) — for stats
-- `word_status` (user, lemma, new/learning/known)
-- `translation_cache` (hash, text, result)
+Static JSON in `content/` (not in the DB):
+- `lexemes` (lemma, pos, gender, translations, forms)
+- `texts` (chapter, title, body, translation, audio key)
+- starter decks per chapter
+
+D1 tables:
+- `user`, `session`, `account`, `verification` (created by Better Auth)
+- `profiles` (user id, current chapter, time zone, settings JSON)
+- `cards` (user id, type sentence/meaning/cloze, front, back, source, FSRS state, due, updated_at)
+- `reviews` (card id, user id, rating, reviewed_at) for stats
+- `word_status` (user id, lemma, new/learning/known)
+- `daily_activity` (user id, date, minutes, reviews, freeze_used) for the streak
+- `translation_cache` (text hash, text, result, provider, created_at)
 
 ## 5. Decisions
 
@@ -153,6 +237,7 @@ A phone-first web app (PWA) that sits next to the book. **Everything French in t
 | Look | Duolingo-like: bright, playful, rounded "chunky" buttons with a bottom shadow, a big friendly path map, bold colors, small celebratory animations. Own mascot and colors; no Duolingo assets or trademarks. |
 | Gamification | Daily streak only (+ streak freeze). No XP, leagues or hearts. |
 | Base language | English only |
+| Stack | Vite + React PWA, Hono API, Cloudflare Workers + D1 + R2, Better Auth (see §4) |
 
 ### AI providers
 
@@ -167,6 +252,7 @@ The app talks to AI through one `AiProvider` interface: `translate()`, `explain(
 
 Notes on `cli-bridge`:
 - **Personal use only.** Subscriptions are licensed to you, not to other users of the app. The deployed app never uses this driver.
+- **A small local Node server** (`scripts/cli-bridge`). Workers cannot start processes, so the local Worker calls this server over `http://localhost`, and only when a dev-only env var is set.
 - **Slow.** Each call takes several seconds to start an agent. It works fine for the tutor and for batch content generation, but it is too slow for tap-to-translate.
 - **Cursor** has no supported way to call it from another program, so it is not a driver. Use it to *build* the app instead.
 
