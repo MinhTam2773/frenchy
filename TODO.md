@@ -675,7 +675,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Opus 5.5 · High | M | T-06, T-07, T-13 | T-26 | 4 |
 
-**Status:** in progress · **Claimed by:** T-23 agent (wave 4 lead session) · **Branch:** `task/T-23-ai`
+**Status:** in review · **Claimed by:** T-23 agent (wave 4 lead session) · **Branch:** `task/T-23-ai` · **PR:** https://github.com/MinhTam2773/frenchy/pull/29
 **Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`
 **Goal:** Sentence translation and explanation for any text through one provider-agnostic interface, cached so each sentence costs at most once.
 **Done when:** the tests show a cache hit skips the provider, invalid JSON is retried once, and the rate limit works, all with the mock driver.
