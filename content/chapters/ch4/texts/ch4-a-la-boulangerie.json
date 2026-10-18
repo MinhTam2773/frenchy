@@ -1,0 +1,915 @@
+{
+  "id": "ch4-a-la-boulangerie",
+  "chapterId": "ch4",
+  "title": "À la boulangerie",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Marc",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "madam"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, madam!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "baguette",
+              "lemma": "baguette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "baguette (French loaf)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatre",
+              "lemma": "quatre",
+              "pos": "number",
+              "gloss": "four"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "croissants",
+              "lemma": "croissant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "croissants",
+              "form": "masculine plural"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "s'",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "il",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vous",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plaît",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "A baguette and four croissants, please."
+        }
+      ]
+    },
+    {
+      "speaker": "Marc",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here you are",
+              "form": "voilà = here is, there is"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here you are."
+        },
+        {
+          "tokens": [
+            {
+              "t": "La",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "baguette",
+              "lemma": "baguette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "baguette (French loaf)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "coûte",
+              "lemma": "coûter",
+              "pos": "verb",
+              "gloss": "costs",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "number",
+              "gloss": "one"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euro",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euro",
+              "form": "un euro vingt = €1.20: the cents come after euro",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vingt",
+              "lemma": "vingt",
+              "pos": "number",
+              "gloss": "twenty"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The baguette costs one euro twenty."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "croissant",
+              "lemma": "croissant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "croissant"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "coûte",
+              "lemma": "coûter",
+              "pos": "verb",
+              "gloss": "costs",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "number",
+              "gloss": "one"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euro",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euro",
+              "form": "un euro vingt = €1.20: the cents come after euro",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix",
+              "lemma": "dix",
+              "pos": "number",
+              "gloss": "ten"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "A croissant costs one euro ten."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ça",
+              "lemma": "ça",
+              "pos": "pronoun",
+              "gloss": "that",
+              "form": "ça fait … = that comes to …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "comes to",
+              "form": "il / elle · present · irregular · ça fait … = that comes to …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinq",
+              "lemma": "cinq",
+              "pos": "number",
+              "gloss": "five"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euros",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euros",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soixante",
+              "lemma": "soixante",
+              "pos": "number",
+              "gloss": "sixty",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "That comes to five euros sixty."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "voici = here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "billet",
+              "lemma": "billet",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "note, bill",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "for, of",
+              "form": "un billet de dix euros = a ten-euro note"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix",
+              "lemma": "dix",
+              "pos": "number",
+              "gloss": "ten"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euros",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euros",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is a ten-euro note."
+        }
+      ]
+    },
+    {
+      "speaker": "Marc",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thank you."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "voilà = here is, there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatre",
+              "lemma": "quatre",
+              "pos": "number",
+              "gloss": "four"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euros",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euros",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quarante",
+              "lemma": "quarante",
+              "pos": "number",
+              "gloss": "forty",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is four euros forty."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there are",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "are",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tartelettes",
+              "lemma": "tartelette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "small tarts",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "with (flavour)",
+              "form": "à + les becomes aux · aux fraises = strawberry"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fraises",
+              "lemma": "fraise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "strawberries",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh, there are strawberry tarts too!"
+        }
+      ]
+    },
+    {
+      "speaker": "Marc",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "elles",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular · être à + price = to cost"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "(no translation)",
+              "form": "être à + price = to cost"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "deux",
+              "lemma": "deux",
+              "pos": "number",
+              "gloss": "two"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euros",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euros",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinquante",
+              "lemma": "cinquante",
+              "pos": "number",
+              "gloss": "fifty",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, they are two euros fifty."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "so, then"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tartelette",
+              "lemma": "tartelette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "small tart"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "s'",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "il",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vous",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plaît",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then one tart, please."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "voilà = here is, there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "deux",
+              "lemma": "deux",
+              "pos": "number",
+              "gloss": "two"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euros",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euros",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinquante",
+              "lemma": "cinquante",
+              "pos": "number",
+              "gloss": "fifty"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is two euros fifty."
+        }
+      ]
+    },
+    {
+      "speaker": "Marc",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "madam"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thank you, madam."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bonne",
+              "lemma": "bonne journée",
+              "pos": "phrase",
+              "gloss": "have a nice day",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "journée",
+              "lemma": "bonne journée",
+              "pos": "phrase",
+              "gloss": "have a nice day",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Have a nice day!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thank you."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "revoir",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Goodbye!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "coûter",
+    "euro",
+    "soixante",
+    "billet",
+    "quarante",
+    "tartelette",
+    "fraise",
+    "cinquante"
+  ],
+  "grammarTags": [
+    "numbers.0-100",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.contractions",
+    "phrases.greetings",
+    "phrases.c-est",
+    "er.present",
+    "faire.present",
+    "etre.present"
+  ]
+}

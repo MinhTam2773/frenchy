@@ -1,0 +1,750 @@
+{
+  "id": "ch1-ardoise-du-cafe",
+  "chapterId": "ch1",
+  "title": "L'ardoise du café",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · le or la before a vowel sound"
+            },
+            {
+              "t": "ardoise",
+              "lemma": "ardoise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "chalkboard menu",
+              "form": "literally: slate",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "café"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the café's chalkboard menu."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "entrées",
+              "lemma": "entrée",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "starters",
+              "form": "feminine plural · on a menu, une entrée is a starter",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soupe",
+              "lemma": "soupe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "soup",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jour",
+              "lemma": "jour",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "day",
+              "form": "du jour = of the day, today's",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le or la before a vowel sound"
+            },
+            {
+              "t": "œuf",
+              "lemma": "œuf",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "egg"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mayonnaise",
+              "lemma": "mayonnaise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mayonnaise",
+              "form": "œuf mayonnaise = hard-boiled egg with mayonnaise"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Starters: soup of the day, egg mayonnaise."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plats",
+              "lemma": "plat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "main courses",
+              "form": "masculine plural",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sandwich",
+              "lemma": "sandwich",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sandwich"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jambon",
+              "lemma": "jambon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "ham",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quiche",
+              "lemma": "quiche",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "quiche"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + les becomes aux · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "légumes",
+              "lemma": "légume",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "vegetables",
+              "form": "masculine plural"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · le or la before a vowel sound"
+            },
+            {
+              "t": "omelette",
+              "lemma": "omelette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "omelette"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fromage",
+              "lemma": "fromage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cheese"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Main courses: ham sandwich, vegetable quiche, cheese omelette."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plat",
+              "lemma": "plat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dish",
+              "form": "le plat du jour = today's special"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jour",
+              "lemma": "jour",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "day",
+              "form": "du jour = of the day, today's"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "poulet",
+              "lemma": "poulet",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chicken"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + les becomes aux · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "champignons",
+              "lemma": "champignon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "mushrooms",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Today's special: chicken with mushrooms."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "desserts",
+              "lemma": "dessert",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "desserts",
+              "form": "masculine plural"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tarte",
+              "lemma": "tarte",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tart"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + les becomes aux · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pommes",
+              "lemma": "pomme",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "apples",
+              "form": "feminine plural"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "glace",
+              "lemma": "glace",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "ice cream",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "with",
+              "form": "à la before a feminine noun: no contraction"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vanille",
+              "lemma": "vanille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "vanilla"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mousse",
+              "lemma": "mousse",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mousse"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chocolat",
+              "lemma": "chocolat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chocolate"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Desserts: apple tart, vanilla ice cream, chocolate mousse."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boissons",
+              "lemma": "boisson",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "drinks",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coffee"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lait",
+              "lemma": "lait",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "milk",
+              "form": "café au lait = coffee with milk"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "thé",
+              "lemma": "thé",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "tea"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "with",
+              "form": "à la before a feminine noun: no contraction"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "menthe",
+              "lemma": "menthe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mint"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jus",
+              "lemma": "jus",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "juice"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "d'",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "de before a vowel sound"
+            },
+            {
+              "t": "orange",
+              "lemma": "orange",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "orange"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Drinks: coffee with milk, mint tea, orange juice."
+        }
+      ]
+    }
+  ],
+  "newWords": ["ardoise", "entrée", "soupe", "jour", "plat", "jambon", "glace", "boisson"],
+  "grammarTags": ["articles.definite", "articles.contractions", "nouns.plural", "phrases.c-est"]
+}

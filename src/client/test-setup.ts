@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom/vitest';
-import { cleanup } from '@testing-library/react';
+import { cleanup, configure } from '@testing-library/react';
 import { afterAll, afterEach, beforeAll } from 'vitest';
 import { resetMockState } from './mocks/handlers/base';
 import { server } from './mocks/server';
+
+// findBy* waits 1 s by default, which a loaded machine can miss (L-74).
+configure({ asyncUtilTimeout: 5_000 });
 
 // A test that calls an API with no handler should fail, not hit the network.
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }));
