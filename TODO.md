@@ -376,18 +376,18 @@ Wave 1 is done (T-02 to T-05 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-04 | T-18, T-22 | 2 |
 
-**Status:** in progress · **Claimed by:** T-10 subagent (lead session) · **Branch:** `task/T-10-fsrs`
+**Status:** in review · **Claimed by:** T-10 subagent (lead session) · **Branch:** `task/T-10-fsrs`
 **Owns:** `src/shared/srs/**`
 **Goal:** A thin, tested wrapper around `ts-fsrs` shared by the client (interval previews) and the worker (authoritative scheduling).
 **Done when:** grading is deterministic under a fixed clock with fuzz off, and the interval labels match the format in the Review mockup ("1m", "6m", "1d", "4d").
 
-- [ ] Add `ts-fsrs`; one config object (target retention 0.9, max interval, fuzz on in production)
-- [ ] `newCard()`, `previewIntervals(card, now)` → the 4 labels, `grade(card, rating, now)` → next card state + review log
-- [ ] Mapping between ts-fsrs cards and the shared `Card` FSRS fields (dates as epoch ms)
-- [ ] Interval label formatter (m, h, d, mo, y)
-- [ ] Tests: new card + Good is due in the future; Again lowers stability; labels; deterministic with a fixed `now` and fuzz off
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Add `ts-fsrs`; one config object (target retention 0.9, max interval, fuzz on in production)
+- [x] `newCard()`, `previewIntervals(card, now)` → the 4 labels, `grade(card, rating, now)` → next card state + review log
+- [x] Mapping between ts-fsrs cards and the shared `Card` FSRS fields (dates as epoch ms)
+- [x] Interval label formatter (m, h, d, mo, y)
+- [x] Tests: new card + Good is due in the future; Again lowers stability; labels; deterministic with a fixed `now` and fuzz off
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-11 · Streak and freeze logic
@@ -1226,6 +1226,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-18 | Some mockup targets are under 44 px (streak chip 40, sheet buttons 40, toggle 32, calendar arrows 36) and the Path "done" node is a white check on gold `#FFB020` (about 1.9:1, below the 3:1 for icons). The kit uses 44 px targets; the Path node is not built yet | Screens that copy the mockup literally fail the touch-target and contrast rules | T-17, T-19, T-28 |
 | G-19 | The contract (T-04) adds read-text tracking and per-minute ping dedupe that PLAN §4's data model lacks: T-06 needs a `text_reads` table (`user_id`, `text_id`, `finished_at`, unique per user + text) and a way to count at most one active minute per clock minute in `daily_activity` | Today's "next unread text" and the streak's reading rule need them | T-06, T-22 |
 | G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 (decided: client-held default) |
+| G-29 | `previewIntervals` and `grade` use fuzz, and ts-fsrs seeds it from the review time, card reps and difficulty x stability. The client's preview at time A and the server's grade at time B give different day counts (usually off by a day or so for intervals beyond about a week) | A grade button can say "8d" and the stored due can be 7d or 9d | T-18, T-22 (the server should grade at `ReviewInput.reviewedAt`; the client should preview at the same `now` it later posts) |
+| G-30 | `ts-fsrs` is on `^5.4.2`; 6.0 is only in beta. 6 removes `elapsed_days` (L-19) and the max interval (365 days), default weights and learning steps (1m, 10m) are product defaults nobody has confirmed | Moving to 6 needs a `Card` schema change and a D1 migration; the interval cap may feel short or long | later (re-check when 6.0 is stable) |
 
 ---
 
@@ -1257,3 +1259,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-20 · 2026-10-18 · content · T-04` — **The mockups' dummy data breaks the app's own rules: the Streak calendar can't come from the T-11 default rule (a freeze on Oct 11 after 6 days, missed Oct 3–4 with no freeze), "Au café" claims 9 new words (cap is 8), and "Le matin de Léa" uses a number (Ch 4) in a Ch 10 text.** → Fixtures copy the mockup values as drawn and say so; T-11 tests and T-14 content must follow the rules, not the mockups' numbers.
 - `L-21 · 2026-10-18 · tooling · T-04` — **`@cloudflare/vitest-plugin` pins `zod` to an exact version (4.6.5), so adding current `zod` (4.6.7) leaves a second, dev-only copy nested under the plugin. zod 4's `z.uuid()` also accepts the nil UUID.** → Harmless; don't try to dedupe by pinning our zod down. Don't use the nil UUID as an "invalid id" test case.
 - `L-22 · 2026-10-18 · orchestration · lead` — **All three Wave 1 agents numbered their lessons and gaps from the same "next free" L-NN / G-NN, so every parallel PR collided (and also conflicted at the same append point in TODO.md).** → When dispatching a wave, the lead reserves a block of L- and G- numbers for each task (written in the agent's brief). To merge a wave, chain the branches (each PR merges the one ahead of it) so CI runs once per PR and every merge is clean.
+- `L-35 · 2026-10-18 · srs · T-10` — **ts-fsrs forces Hard < Good < Easy in days *after* clamping to `maximum_interval`, so at the cap Hard is 365 but Good is 366 and Easy 367.** → Don't assert `scheduledDays <= maximumInterval` for every rating; the max interval is a soft cap by up to 2 days. `srs.test.ts` pins this.
+- `L-36 · 2026-10-18 · srs · T-10` — **The Review mockup's grade intervals ("1m 6m 1d 3d", "1m 10m 2d 5d") are illustrative and don't come out of FSRS with the default steps: a new card gives 1m / 6m / 10m / 8d, and a card on its first learning step gives about 10m / 8d / 11d / 19d after the second Good.** → Match only the label format (m, h, d, mo, y), never the mockup's numbers. T-18 tests should assert labels from `previewIntervals`, not hard-coded mockup strings.
+- `L-37 · 2026-10-18 · srs · T-10` — **ts-fsrs's `ReviewLog.due` is the previous review time (the due time only for a new card), not the card's due date, and its fuzz is seeded from the review time, so grading the same card twice at the same `now` is repeatable but at a different `now` is not.** → `ReviewLogEntry.due` keeps ts-fsrs's meaning (T-22: don't use it as "was due at"; store the card's own `due` if that is needed). Pass the same `now` to `grade` when you need the same result.
