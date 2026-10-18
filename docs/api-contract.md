@@ -44,6 +44,7 @@ Better Auth's routes keep their own error format.
 | Method | Path | Request | Response | Owner |
 |---|---|---|---|---|
 | GET | `/api/health` | — | `{ ok: true }` (public) | T-01 |
+| GET | `/api/auth/config` | — | `AuthConfig` (public) | T-13 |
 | * | `/api/auth/*` | Better Auth | Better Auth | T-13 |
 | GET | `/api/profile` | — | `Profile` | T-22 |
 | PATCH | `/api/profile` | `ProfilePatch` | `Profile` | T-22 |
@@ -61,7 +62,12 @@ Better Auth's routes keep their own error format.
 | POST | `/api/ai/translate` | `TranslateRequest` | `TranslateResponse` | T-23 |
 | POST | `/api/ai/explain` | `ExplainRequest` | `ExplainResponse` | T-23 |
 
-T-13 also adds a small public config endpoint (whether Google sign-in is on); it defines that shape itself.
+### Auth
+
+- `GET /api/auth/config` → `AuthConfig` `{ google }`: `true` only when the server has `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`. The welcome screen hides "Continue with Google" otherwise.
+- Everything else under `/api/auth/*` is Better Auth's (`/sign-up/email`, `/sign-in/email`, `/sign-in/social`, `/get-session`, `/sign-out`, ...); use `better-auth/react`'s client with the default base path. Passwords are at least 8 characters. Sign-in and sign-up allow 5 attempts per IP per minute, then answer `429`.
+- The session is the `better-auth.session_token` cookie (`__Secure-better-auth.session_token` over https): httpOnly, `SameSite=Lax`, Secure on https. POSTs must come from the app's own origin or one in `BETTER_AUTH_TRUSTED_ORIGINS` (`403` otherwise).
+- The first sign-in creates the `Profile` row (`currentChapterId: null`, 30 min goal, time zone from Cloudflare's guess or `UTC`).
 
 ### Profile
 

@@ -40,13 +40,18 @@ describe('migrations', () => {
       "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE '\\_%' ESCAPE '\\' AND name NOT LIKE 'sqlite%' AND name != 'd1_migrations' ORDER BY name",
     ).all<{ name: string }>();
     expect(results.map((row) => row.name)).toEqual([
+      'account',
       'activity_minutes',
       'cards',
       'daily_activity',
       'profiles',
+      'rate_limit',
       'reviews',
+      'session',
       'text_reads',
       'translation_cache',
+      'user',
+      'verification',
       'word_status',
     ]);
   });
@@ -56,9 +61,15 @@ describe('migrations', () => {
       "SELECT name FROM sqlite_master WHERE type = 'index' AND name NOT LIKE 'sqlite_autoindex%' ORDER BY name",
     ).all<{ name: string }>();
     expect(results.map((row) => row.name)).toEqual([
+      'account_userId_idx',
       'cards_user_due_idx',
       'cards_user_type_front_uq',
+      'rate_limit_key_unique',
       'reviews_user_reviewed_at_idx',
+      'session_token_unique',
+      'session_userId_idx',
+      'user_email_unique',
+      'verification_identifier_idx',
     ]);
   });
 });
