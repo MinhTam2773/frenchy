@@ -2,8 +2,8 @@ import { fireEvent, screen } from '@testing-library/react';
 import { expect, test } from 'vitest';
 import { renderAt } from './mocks/renderAt';
 
+// /today is tested in features/today/TodayPage.test.tsx: its heading is the greeting, not "Today".
 const tabRoutes = [
-  ['/today', 'Today'],
   ['/path', 'Path'],
   ['/practice', 'Practice'],
   ['/words', 'Words'],

@@ -515,23 +515,23 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-11 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today`
+**Status:** in review · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today`
 **Owns:** `src/client/features/today/**`, `src/client/lib/activity/**`, `src/client/mocks/handlers/today.ts`
 **Goal:** The daily screen from `Today.dc.html`: review first, then the book, reading and output.
 **Done when:** it matches the mockup at 390 px with fixture data, the edge states work, and tests pass.
 
-- [ ] Header: wordmark, streak chip, freeze chip (both link to `/streak`)
-- [ ] Greeting and daily minutes progress against the goal
-- [ ] Review card: due count, estimated minutes (≈ 35 s per card), Start review → `/review`
-- [ ] Book card: current chapter, current section, PDF page → `/chapter/:id`
-- [ ] Reading card: next unread text of the current chapter → `/read/:id`
-- [ ] Output card: "Write 3–5 sentences" (links to the tutor once B-03 lands; until then a simple notes prompt or hidden, decide in the PR)
-- [ ] `useToday()` combining profile, due count, streak summary and next text; MSW handler
-- [ ] Edge states: 0 due ("All caught up", next due time), streak at risk, no chapter set → onboarding
-- [ ] `useActiveMinutes()`: visibility-aware minute tracking that pings the activity API (mocked for now)
-- [ ] Tests: due count, links, empty state, at-risk state
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Header: wordmark, streak chip, freeze chip (both link to `/streak`). Chips are the kit's 44 px high, not the mockup's 40 (L-18)
+- [x] Greeting and daily minutes progress against the goal
+- [x] Review card: due count, estimated minutes (≈ 35 s per card), Start review → `/review`
+- [x] Book card: current chapter, PDF pages → `/chapter/:id`. "Current section" is not shown: nothing tracks which section the learner is on (G-37)
+- [x] Reading card: next unread text of the current chapter → `/read/:id`; also "all texts read" and "no texts yet" states (content has none until T-14)
+- [x] Output card: "Write 3–5 sentences" (links to the tutor once B-03 lands; until then a simple notes prompt or hidden, decide in the PR). Decision: a static prompt card with no link and no chevron, detail "Use today’s new words in your own notes"; B-03 turns it into a link to the tutor
+- [x] `useToday()` combining profile, due count, streak summary and next text; MSW handler (no `mocks/handlers/today.ts`: `base.ts` already serves every endpoint, and tests override with `server.use`)
+- [x] Edge states: 0 due ("All caught up", next due time), streak at risk, no chapter set → onboarding; also no cards at all, loading and error with retry
+- [x] `useActiveMinutes()`: visibility-aware minute tracking that pings the activity API (mocked for now). Mounted by the Today page only (G-38)
+- [x] Tests: due count, links, empty state, at-risk state
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-17 · Course map and chapter screens
@@ -1246,6 +1246,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-22 | `scripts/**` is in no tsconfig, so `tsc -b` doesn't typecheck scripts (only ESLint sees them). T-06 keeps the seed logic in `src/worker/db/seed.ts` and `scripts/db/seed.ts` as thin glue | Type errors in scripts (T-07, T-08 too) show up only at run time | T-07, T-08 (add `scripts` to `tsconfig.node.json`) (resolved: T-07 added `scripts` to `tsconfig.node.json`; `scripts/db` is checked by `tsconfig.worker.json` because it uses D1 types) |
 | G-33 | Workbox precaches the app shell and every JS chunk (514 KiB now) but silently skips files over 2 MiB. Nothing fetches `/content/**` or `/lexicon/**` yet, so the stale-while-revalidate rule for those paths is untested; if T-14/T-08 bundle content as JS chunks instead, it is precached and the size can blow past the limit | Offline start may miss content, or the first visit after a deploy downloads all of it | T-07, T-08, T-14 (check `precache` size in the build output; raise `maximumFileSizeToCacheInBytes` or move content to runtime-cached fetches) |
 | G-34 | The PWA is verified only in Chromium (installability errors empty, offline shell works). Not checked: real iOS Safari (no `beforeinstallprompt`; the Share-sheet hint is the only install path, and iOS may clear storage after inactivity, see G-04) and Lighthouse (not installed here). Fonts still come from Google Fonts at runtime; the first offline visit before they were cached falls back to system fonts | Install and offline behavior on iPhone is unproven | T-30 (test on a real device), B-20 |
+| G-37 | Today's book and reading cards need content the repo doesn't have: the mockup's "Section 2 of 4" needs per-section progress (nothing stores which section the learner is on, and `course.json` has `sections: []` until G-06 closes), and "next unread text" needs an order for a chapter's texts (`getChapterTexts` sorts by id, so *Au café* would come before *Le matin de Léa*). The card shows PDF pages and takes the first unread text in that order | The book card shows less than the mockup; the next text may not be the one the author intended | T-14, T-17 (add `order` to `Text` or number the ids; decide with the section model) |
+| G-38 | `useActiveMinutes` (`src/client/lib/activity`) is mounted only by the Today page, so time spent in the reader, the review or on other tabs is never pinged and `todayMinutes` undercounts. The base mock's ping always answers 8 minutes | The daily-minutes bar is wrong for a learner who reads or reviews more than they sit on Today | T-26 (mount it once in `TabLayout` and `FullScreenLayout`, which T-16 doesn't own) |
 
 ---
 
@@ -1296,3 +1298,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-41 · 2026-10-18 · tooling · T-12` — **`vite-plugin-pwa` 2.0 supports Vite 8 and works with `@cloudflare/vite-plugin`: `sw.js` lands in `dist/client` (the assets directory), but it also copies `manifest.webmanifest` into the Worker output `dist/frenchy` (harmless). It needs `workbox-build` and `workbox-window` installed as peers, injects `<link rel="manifest">` itself (a second one in `index.html` duplicates it), and with `includeManifestIcons` on it lists the icons twice in the precache.** → Keep the plugin config in `vite.config.ts`, don't hand-write the manifest link, and use `injectRegister: false` + `src/client/pwa/register.ts` (no virtual module, no extra tsconfig types).
 - `L-42 · 2026-10-18 · testing · T-12` — **A Workbox `urlPattern` RegExp is matched against the full URL, so `/^\/api\//` never matches. Playwright's `setOffline` does not stop requests made by the service worker, so an "offline" test returned 200 for `/api/health`. A default Playwright context reports `in-incognito` from `Page.getInstallabilityErrors`.** → Match with a function on `url.pathname` (as `vite.config.ts` does). Test offline by stopping the preview server, and check installability in a `launchPersistentContext` profile (no `in-incognito`).
 - `L-43 · 2026-10-18 · tooling · T-12` — **`vite preview` (workerd) keeps serving the asset manifest of the first build: after a rebuild, the new `index.html` pointed at hashed files it answered with HTML ("Expected a JavaScript module but the server responded with text/html"). `pkill -f "vite preview"` inside a Bash call also kills that call's own shell.** → Restart `vite preview` after every build you test, and stop it with the background-task controls, not `pkill -f`.
+- `L-48 · 2026-10-18 · client · T-16` — **Replacing a placeholder page breaks tests that look for its placeholder heading (`routes.test.tsx` and `RequireSession.test.tsx` both wait for a heading named "Today"), and `TabLayout` already renders the `<main>` landmark, so a page that adds its own nests two.** → A screen task that changes its page heading edits those two tests (one line each; other screens will hit the same lines, so keep the hunks tiny) and uses a `<div>`/`<section>`, never `<main>`, inside `TabLayout`.
+- `L-49 · 2026-10-18 · testing · T-16` — **Testing Library does not normalize the no-break space in an accessible `name`, so `findByRole('heading', { name: 'Bonjour !' })` misses "Bonjour&nbsp;!". The base mock's `POST /api/activity/ping` always answers 8 minutes, and `useActiveMinutes` copies the ping's minutes into the cached streak, so a test that sets `todayMinutes` through `/api/streak` alone gets overwritten.** → Match French text with a regexp (`/Bonjour/`). A test that needs other minutes overrides both `/api/streak` and `/api/activity/ping` with `server.use`.
+- `L-50 · 2026-10-18 · testing · T-16` — **MSW's browser worker answers API calls inside the service worker, so Playwright's `page.route` never sees them and can't force an edge state (nothing due, no chapter) in a `npm run dev` page.** → For a browser check of edge states, start a second dev server with `VITE_USE_MOCKS=false` on another port and stub `/api/**` with `page.route` (the app doesn't call the Worker in that case); use the default mocks for the fixture state. Stop the servers with `fuser -k <port>/tcp`, not `pkill -f` (L-43).

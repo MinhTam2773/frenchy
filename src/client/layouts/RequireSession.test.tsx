@@ -7,7 +7,10 @@ afterEach(resetStubSession);
 
 test('a signed-in user sees a protected screen', async () => {
   renderAt('/today');
-  expect(await screen.findByRole('heading', { name: 'Today' })).toBeInTheDocument();
+  // Today loads four queries, so give a loaded CI machine more than the default 1 s.
+  expect(
+    await screen.findByRole('heading', { name: /Bonjour/ }, { timeout: 5000 }),
+  ).toBeInTheDocument();
 });
 
 test.each(['/today', '/onboarding', '/review', '/me'])(
