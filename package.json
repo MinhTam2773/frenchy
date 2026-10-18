@@ -11,6 +11,7 @@
     "test:watch": "vitest",
     "lint": "eslint .",
     "typecheck": "tsc -b",
+    "content:check": "tsx scripts/content/check.ts",
     "format": "prettier --write .",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
     "cf-typegen": "wrangler types"
@@ -40,6 +41,7 @@
     "jsdom": "^29.1.1",
     "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "~6.0",
     "typescript-eslint": "^8.71.2",
     "vite": "^8.3.4",

@@ -309,20 +309,20 @@ Wave 1 is done (T-02 to T-05 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-04 | T-14, T-17, T-23, T-25 | 2 |
 
-**Status:** in progress · **Claimed by:** T-07 subagent (lead session) · **Branch:** `task/T-07-course-content`
+**Status:** in review · **Claimed by:** T-07 subagent (lead session) · **Branch:** `task/T-07-course-content`
 **Owns:** `content/course.json`, `content/grammar.json`, `scripts/content/check.ts`, `src/shared/content/**` (loaders)
 **Goal:** The course map and the "allowed grammar per chapter" list as validated JSON, plus a checker every content task must pass.
 **Done when:** `npm run content:check` validates the course and grammar files, rejects the bad fixtures, and runs in CI.
 
-- [ ] `content/course.json`: all 4 stages with chapters in the beginner route order from PLAN §2, each with book chapter number, PDF start page, PDF end page (next chapter's start − 1), title, kind and week range
-- [ ] Chapter sections: if the book is available locally in `book/`, add section labels and PDF pages for Stage 1; otherwise leave `sections: []` and keep G-06 open. Never copy book text
-- [ ] `content/grammar.json`: ordered grammar tags introduced per chapter (e.g. `articles.definite`, `gender.basic`, `etre.present`, `avoir.present`, `aller.present`, `faire.present`, `er.present`, `numbers.0-100`, `questions.intonation`, `questions.est-ce-que`), including *aller* and *faire* in Stage 1 (L-02)
-- [ ] Loaders in `src/shared/content/` (typed, used by client and worker): `getCourse()`, `allowedGrammar(chapterId)`, `getText(id)`
-- [ ] `scripts/content/check.ts` + `npm run content:check`: zod-validates every content file; unique ids; valid route order; each text uses only allowed grammar tags; every word token has a lemma; every sentence has a translation; ≤ 8 new words per text; deck cards point to existing texts
-- [ ] Add `npm run content:check` to `.github/workflows/ci.yml` (hot file)
-- [ ] Tests: validator accepts good fixtures and names the exact problem for each bad one
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `content/course.json`: all 4 stages with chapters in the beginner route order from PLAN §2, each with book chapter number, PDF start page, PDF end page (next chapter's start − 1), title, kind and week range
+- [x] Chapter sections: if the book is available locally in `book/`, add section labels and PDF pages for Stage 1; otherwise leave `sections: []` and keep G-06 open. Never copy book text
+- [x] `content/grammar.json`: ordered grammar tags introduced per chapter (e.g. `articles.definite`, `gender.basic`, `etre.present`, `avoir.present`, `aller.present`, `faire.present`, `er.present`, `numbers.0-100`, `questions.intonation`, `questions.est-ce-que`), including *aller* and *faire* in Stage 1 (L-02)
+- [x] Loaders in `src/shared/content/` (typed, used by client and worker): `getCourse()`, `allowedGrammar(chapterId)`, `getText(id)`
+- [x] `scripts/content/check.ts` + `npm run content:check`: zod-validates every content file; unique ids; valid route order; each text uses only allowed grammar tags; every word token has a lemma; every sentence has a translation; ≤ 8 new words per text; deck cards point to existing texts
+- [x] Add `npm run content:check` to `.github/workflows/ci.yml` (hot file)
+- [x] Tests: validator accepts good fixtures and names the exact problem for each bad one
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-08 · Offline lexicon pipeline
@@ -1226,6 +1226,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-18 | Some mockup targets are under 44 px (streak chip 40, sheet buttons 40, toggle 32, calendar arrows 36) and the Path "done" node is a white check on gold `#FFB020` (about 1.9:1, below the 3:1 for icons). The kit uses 44 px targets; the Path node is not built yet | Screens that copy the mockup literally fail the touch-target and contrast rules | T-17, T-19, T-28 |
 | G-19 | The contract (T-04) adds read-text tracking and per-minute ping dedupe that PLAN §4's data model lacks: T-06 needs a `text_reads` table (`user_id`, `text_id`, `finished_at`, unique per user + text) and a way to count at most one active minute per clock minute in `daily_activity` | Today's "next unread text" and the streak's reading rule need them | T-06, T-22 |
 | G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 (decided: client-held default) |
+| G-23 | The grammar inventory (`content/grammar.json`, 98 tags) and the chapter week ranges for Stages 2 to 4 are my proposal, not read from the book. Stage 1 has a few tags the book may introduce later, added so A1 texts can exist: `phrases.greetings`, `phrases.c-est`, `phrases.introductions`, `negation.ne-pas`, `adjectives.basic`, `prepositions.basic`. `appC` (verb tables) sits last in Stage 4 as a reference node; PLAN only says "use throughout" | Texts may use grammar the learner hasn't met in the book yet; T-17 must show `kind: "appendix"` as a reference, not a step to finish | T-14, T-17, T-24 (re-check against the book when G-06 closes) |
+| G-24 | `getText` is synchronous and `import.meta.glob` is eager, so every text ships in the main bundle (about 37 chapters x 4 texts x annotated tokens could reach several hundred KB) | Slower first load and a bigger service-worker precache | T-29 (measure; move to per-chapter lazy chunks if over budget) |
 
 ---
 
@@ -1257,3 +1259,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-20 · 2026-10-18 · content · T-04` — **The mockups' dummy data breaks the app's own rules: the Streak calendar can't come from the T-11 default rule (a freeze on Oct 11 after 6 days, missed Oct 3–4 with no freeze), "Au café" claims 9 new words (cap is 8), and "Le matin de Léa" uses a number (Ch 4) in a Ch 10 text.** → Fixtures copy the mockup values as drawn and say so; T-11 tests and T-14 content must follow the rules, not the mockups' numbers.
 - `L-21 · 2026-10-18 · tooling · T-04` — **`@cloudflare/vitest-plugin` pins `zod` to an exact version (4.6.5), so adding current `zod` (4.6.7) leaves a second, dev-only copy nested under the plugin. zod 4's `z.uuid()` also accepts the nil UUID.** → Harmless; don't try to dedupe by pinning our zod down. Don't use the nil UUID as an "invalid id" test case.
 - `L-22 · 2026-10-18 · orchestration · lead` — **All three Wave 1 agents numbered their lessons and gaps from the same "next free" L-NN / G-NN, so every parallel PR collided (and also conflicted at the same append point in TODO.md).** → When dispatching a wave, the lead reserves a block of L- and G- numbers for each task (written in the agent's brief). To merge a wave, chain the branches (each PR merges the one ahead of it) so CI runs once per PR and every merge is clean.
+- `L-26 · 2026-10-18 · content · T-07` — **Ch 1 and Ch 2 come before any verb chapter in the route, so the grammar allowed in App. A, Ch 1 and Ch 2 contains no verb at all (not even *être*).** → Texts for those three chapters are labels, captions and fixed phrases. `grammar.json` gives them `phrases.greetings` and `phrases.c-est` (*c'est*, *voici*, *il y a*) so there is something to write; T-14 must not use *est* or *a* there.
+- `L-27 · 2026-10-18 · tooling · T-07` — **Node 22's `--experimental-strip-types` cannot run our TypeScript scripts: the shared modules import each other without file extensions (`./common`), which Node does not resolve. Shared code that uses `import.meta.glob` also needs `/// <reference types="vite/client" />`, because the worker tsconfig does not load `vite/client`.** → Run TS scripts with `tsx` (devDependency, `npm run content:check`); keep shared imports extensionless. Add `scripts` to `tsconfig.node.json` so scripts are typechecked.
+- `L-28 · 2026-10-18 · content · T-07` — **zod 4 reports a word token without a `lemma` as three unrelated issues (gap token with letters, unrecognized keys, ...) because tokens are a union. The same file also cascaded: an invalid text made its deck cards "point to a missing text".** → `validate.ts` says "word token X has no lemma" in plain words and drops zod's noise under that path, and deck cards check text *file names*, not parsed texts. When adding a check, write the test with the exact message and assert there are no extra problems.
