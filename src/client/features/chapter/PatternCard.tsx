@@ -49,7 +49,7 @@ export function PatternCard({ note, voice }: PatternCardProps) {
         {note.rows.map((row, i) => {
           const stem = row.ending ? row.fr.slice(0, row.fr.length - row.ending.length) : row.fr;
           return (
-            <div key={`${row.label}-${i}`} className="flex gap-1.5">
+            <div key={`${row.label}-${i}`} className="flex flex-wrap gap-x-1.5 wrap-anywhere">
               <dt className="text-muted">{row.label}</dt>
               <dd>
                 {stem}
