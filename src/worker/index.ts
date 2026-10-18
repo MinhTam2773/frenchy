@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { activityRoute, streakRoute } from './routes/activity';
 import { auth } from './routes/auth';
 import { cardsRoute } from './routes/cards';
 import { health } from './routes/health';
@@ -14,7 +15,9 @@ export const app = new Hono<{ Bindings: Env }>()
   .route('/profile', profile)
   .route('/cards', cardsRoute)
   .route('/reviews', reviewsRoute)
-  .route('/words', wordsRoute);
+  .route('/words', wordsRoute)
+  .route('/activity', activityRoute)
+  .route('/streak', streakRoute);
 
 export type AppType = typeof app;
 
