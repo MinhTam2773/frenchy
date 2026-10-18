@@ -1,4 +1,5 @@
 import type { RouteObject } from 'react-router';
+import { SignInPage, SignUpPage } from '@client/features/auth/EmailAuthPage';
 import { WelcomePage } from '@client/features/auth/WelcomePage';
 import { ChapterPage } from '@client/features/chapter/ChapterPage';
 import { NotFoundPage } from '@client/features/not-found/NotFoundPage';
@@ -24,6 +25,8 @@ export const routes: RouteObject[] = [
         element: <FullScreenLayout />,
         children: [
           { path: '/', element: <WelcomePage /> },
+          { path: '/sign-up', element: <SignUpPage /> },
+          { path: '/sign-in', element: <SignInPage /> },
           {
             element: <RequireSession />,
             children: [
