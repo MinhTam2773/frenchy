@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { finishOnboarding, newUser, signUp } from './helpers';
+import { expect } from '@playwright/test';
+import { finishOnboarding, newUser, signUp, test } from './helpers';
 
 test('settings changes persist across a reload and a new sign-in', async ({ page }, testInfo) => {
   const user = newUser(testInfo);

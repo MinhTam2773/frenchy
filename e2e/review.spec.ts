@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { addStarterDeck, finishOnboarding, gradeAllCards, newUser, signUp } from './helpers';
+import { expect } from '@playwright/test';
+import { addStarterDeck, finishOnboarding, gradeAllCards, newUser, signUp, test } from './helpers';
 
 test('a review session runs to completion and leaves nothing due', async ({ page }, testInfo) => {
   await signUp(page, newUser(testInfo));

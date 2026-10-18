@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { finishOnboarding, newUser, openReader, signUp } from './helpers';
+import { expect } from '@playwright/test';
+import { finishOnboarding, newUser, openReader, signUp, test } from './helpers';
 
 test.describe('reader', () => {
   test.beforeEach(async ({ page }, testInfo) => {

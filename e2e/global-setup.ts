@@ -23,6 +23,9 @@ export default async function globalSetup(config: FullConfig) {
   try {
     const context = await browser.newContext({ baseURL });
     const page = await context.newPage();
+    // The first request to each route makes Vite transform and bundle it, which is slow on a busy box.
+    page.setDefaultNavigationTimeout(180_000);
+    page.setDefaultTimeout(180_000);
     const signUp = await page.request.post('/api/auth/sign-up/email', {
       headers: { origin: baseURL },
       data: {
@@ -33,6 +36,7 @@ export default async function globalSetup(config: FullConfig) {
     });
     if (!signUp.ok()) throw new Error(`warm-up sign-up failed: ${signUp.status()}`);
     for (const path of ROUTES) {
+      console.log(`warm-up ${path}`);
       await page.goto(path);
       await page.waitForLoadState('networkidle');
     }

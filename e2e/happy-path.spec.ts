@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect } from '@playwright/test';
 import {
   addStarterDeck,
   finishOnboarding,
@@ -6,6 +6,7 @@ import {
   newUser,
   openReader,
   signUp,
+  test,
 } from './helpers';
 
 // The whole MVP loop on a fresh account: sign up, onboarding, starter deck, review, reader, review

@@ -28,3 +28,25 @@ jobs:
       - run: npm run content:check
       - run: npm test
       - run: npm run build
+
+  # T-27: browser tests against `vite dev` on a fresh local D1 (e2e/server.ts); no Cloudflare login.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

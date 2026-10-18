@@ -1,4 +1,18 @@
-import { expect, type Page, type TestInfo } from '@playwright/test';
+import { expect, test as base, type Page, type TestInfo } from '@playwright/test';
+
+const octet = () => 1 + Math.floor(Math.random() * 254);
+
+/**
+ * `test` with a client IP of its own. The Worker allows 5 sign-ups per minute per client IP
+ * (`AUTH_ATTEMPTS`), and every spec shares localhost; Cloudflare sets `cf-connecting-ip` in
+ * production, and the dev Worker trusts the header as is. The limit itself stays on.
+ */
+export const test = base.extend({
+  // eslint-disable-next-line no-empty-pattern -- Playwright requires the destructured first argument
+  extraHTTPHeaders: async ({}, use) => {
+    await use({ 'cf-connecting-ip': `10.${octet()}.${octet()}.${octet()}` });
+  },
+});
 
 export type TestUser = { name: string; email: string; password: string };
 
