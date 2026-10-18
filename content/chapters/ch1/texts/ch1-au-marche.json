@@ -1,0 +1,613 @@
+{
+  "id": "ch1-au-marche",
+  "chapterId": "ch1",
+  "title": "Au marché",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Bruno",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Anaïs",
+              "lemma": "Anaïs",
+              "pos": "name",
+              "gloss": "Anaïs (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, Anaïs!"
+        }
+      ]
+    },
+    {
+      "speaker": "Anaïs",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Bruno",
+              "lemma": "Bruno",
+              "pos": "name",
+              "gloss": "Bruno (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, Bruno!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tomates",
+              "lemma": "tomate",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tomatoes",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "s'",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "il",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vous",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plaît",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Some tomatoes, please."
+        }
+      ]
+    },
+    {
+      "speaker": "Bruno",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "here are",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tomates",
+              "lemma": "tomate",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tomatoes",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here are the tomatoes."
+        }
+      ]
+    },
+    {
+      "speaker": "Anaïs",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thanks"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thanks!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salade",
+              "lemma": "salade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lettuce",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "some",
+              "form": "partitive article · masculine: du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "persil",
+              "lemma": "persil",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "parsley",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la, de l'"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "some (with de)",
+              "form": "partitive article · de la before a feminine noun"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ciboulette",
+              "lemma": "ciboulette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "chives",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la, de l'"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "some (with de)",
+              "form": "partitive article · de l' before a vowel sound"
+            },
+            {
+              "t": "ail",
+              "lemma": "ail",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "garlic",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "s'",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "il",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vous",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plaît",
+              "lemma": "s'il vous plaît",
+              "pos": "phrase",
+              "gloss": "please",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "A lettuce, some parsley, some chives and some garlic, please."
+        }
+      ]
+    },
+    {
+      "speaker": "Bruno",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salade",
+              "lemma": "salade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lettuce"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "persil",
+              "lemma": "persil",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "parsley"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ciboulette",
+              "lemma": "ciboulette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "chives"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le or la before a vowel sound"
+            },
+            {
+              "t": "ail",
+              "lemma": "ail",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "garlic"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's the lettuce, the parsley, the chives and the garlic."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "here are",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fraises",
+              "lemma": "fraise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "strawberries",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "c'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce before a vowel · c'est = it is, this is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · être (fixed phrase c'est)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cadeau",
+              "lemma": "cadeau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "free",
+              "form": "un cadeau = a gift · c'est cadeau = it's free, on the house",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Here are some strawberries, on the house!"
+        }
+      ]
+    },
+    {
+      "speaker": "Anaïs",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Bruno",
+              "lemma": "Bruno",
+              "pos": "name",
+              "gloss": "Bruno (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh, thank you, Bruno!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed greeting"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "revoir",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed greeting"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Goodbye!"
+        }
+      ]
+    },
+    {
+      "speaker": "Bruno",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed greeting"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "revoir",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed greeting"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Anaïs",
+              "lemma": "Anaïs",
+              "pos": "name",
+              "gloss": "Anaïs (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Goodbye, Anaïs!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["tomate", "salade", "persil", "ciboulette", "ail", "fraise", "cadeau"],
+  "grammarTags": [
+    "articles.definite",
+    "articles.indefinite",
+    "articles.partitive",
+    "nouns.plural",
+    "phrases.c-est",
+    "phrases.greetings"
+  ]
+}

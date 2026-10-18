@@ -1,0 +1,641 @@
+{
+  "id": "ch1-la-vitrine",
+  "chapterId": "ch1",
+  "title": "La vitrine",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boulangerie",
+              "lemma": "boulangerie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bakery",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quartier",
+              "lemma": "quartier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighborhood",
+              "form": "du quartier = local, of the neighborhood",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the neighborhood bakery."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there is",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vitrine",
+              "lemma": "vitrine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "shop window",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's the shop window."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce before a vowel · c'est = it is, this is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · être (fixed phrase c'est)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gâteau",
+              "lemma": "gâteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cake",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chocolat",
+              "lemma": "chocolat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chocolate"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It's a chocolate cake."
+        },
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce before a vowel · c'est = it is, this is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · être (fixed phrase c'est)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tarte",
+              "lemma": "tarte",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tart",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + les becomes aux · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fraises",
+              "lemma": "fraise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "strawberries",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It's a strawberry tart."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ce",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "those",
+              "form": "ce sont = those are, they are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · être (fixed phrase ce sont)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "éclairs",
+              "lemma": "éclair",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "éclairs",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coffee"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Those are coffee éclairs."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there are",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "croissants",
+              "lemma": "croissant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "croissants",
+              "form": "masculine plural"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pains",
+              "lemma": "pain",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "pastries",
+              "form": "masculine plural · pain au chocolat = chocolate pastry"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + le becomes au · in dish names: made with, flavored with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chocolat",
+              "lemma": "chocolat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chocolate"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "brioches",
+              "lemma": "brioche",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "brioches (sweet buns)",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There are the croissants, the chocolate pastries and the brioches."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "coin",
+              "lemma": "coin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "corner"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "des",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + les becomes des"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "plural · un enfant, une enfant"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bonbons",
+              "lemma": "bonbon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sweets, candy",
+              "form": "masculine plural",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sucettes",
+              "lemma": "sucette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lollipops",
+              "form": "feminine plural"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "biscuits",
+              "lemma": "biscuit",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cookies",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the children's corner: sweets, lollipops and cookies."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there is",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boulangère",
+              "lemma": "boulangère",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "baker",
+              "form": "feminine · masculine: boulanger",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mrs.",
+              "form": "before a surname: Mrs."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Lemoine",
+              "lemma": "Lemoine",
+              "pos": "name",
+              "gloss": "Lemoine (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's the baker, Mrs. Lemoine."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "madam",
+              "form": "a polite way to address a woman"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, madam!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "boulangerie",
+    "quartier",
+    "vitrine",
+    "gâteau",
+    "tarte",
+    "fraise",
+    "bonbon",
+    "boulangère"
+  ],
+  "grammarTags": [
+    "articles.definite",
+    "articles.indefinite",
+    "articles.contractions",
+    "nouns.plural",
+    "phrases.c-est",
+    "phrases.greetings"
+  ]
+}

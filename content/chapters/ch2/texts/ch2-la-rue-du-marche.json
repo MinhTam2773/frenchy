@@ -1,0 +1,448 @@
+{
+  "id": "ch2-la-rue-du-marche",
+  "chapterId": "ch2",
+  "title": "La rue du marché",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rue",
+              "lemma": "rue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "street",
+              "form": "feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the market street."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ici",
+              "lemma": "ici",
+              "pos": "adverb",
+              "gloss": "here"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boulangerie",
+              "lemma": "boulangerie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bakery",
+              "form": "feminine singular · -erie ending",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "some",
+              "form": "partitive article · masculine (de + le)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pain",
+              "lemma": "pain",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bread",
+              "form": "masculine singular"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "baguettes",
+              "lemma": "baguette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "baguettes (long loaves of bread)",
+              "form": "feminine plural · -ette ending"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "croissants",
+              "lemma": "croissant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "croissants",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here, the bakery: bread, baguettes and croissants."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "next"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boucherie",
+              "lemma": "boucherie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "butcher's shop",
+              "form": "feminine singular · -erie ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fromagerie",
+              "lemma": "fromagerie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "cheese shop",
+              "form": "feminine singular · -erie ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Next, the butcher's and the cheese shop."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pharmacie",
+              "lemma": "pharmacie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "pharmacy",
+              "form": "feminine singular · -ie ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "librairie",
+              "lemma": "librairie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bookshop (not a library)",
+              "form": "feminine singular · -ie ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's also the pharmacy and the bookshop."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au · au coin = on the corner"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "coin",
+              "lemma": "coin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "corner",
+              "form": "masculine singular"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "garage",
+              "lemma": "garage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "garage",
+              "form": "masculine singular · -age ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On the corner, a garage."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quartier",
+              "lemma": "quartier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighbourhood",
+              "form": "masculine singular · -ier ending",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "And there's the neighbourhood!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "boulangerie",
+    "boucherie",
+    "fromagerie",
+    "pharmacie",
+    "librairie",
+    "garage",
+    "quartier"
+  ],
+  "grammarTags": [
+    "gender.basic",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "nouns.plural",
+    "phrases.c-est"
+  ]
+}

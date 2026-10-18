@@ -1,0 +1,38 @@
+{
+  "chapterId": "ch10",
+  "title": "parler",
+  "subtitle": "to speak",
+  "rows": [
+    {
+      "label": "je",
+      "fr": "je parle",
+      "ending": "e"
+    },
+    {
+      "label": "tu",
+      "fr": "tu parles",
+      "ending": "es"
+    },
+    {
+      "label": "il / elle",
+      "fr": "il parle",
+      "ending": "e"
+    },
+    {
+      "label": "nous",
+      "fr": "nous parlons",
+      "ending": "ons"
+    },
+    {
+      "label": "vous",
+      "fr": "vous parlez",
+      "ending": "ez"
+    },
+    {
+      "label": "ils / elles",
+      "fr": "ils parlent",
+      "ending": "ent"
+    }
+  ],
+  "tip": "Je parle, tu parles, il parle and ils parlent all sound the same; only nous and vous change the sound."
+}
