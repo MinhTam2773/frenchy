@@ -1,0 +1,616 @@
+{
+  "id": "ch1-la-visite",
+  "chapterId": "ch1",
+  "title": "La visite",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi, Hugo!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le or la before a vowel sound"
+            },
+            {
+              "t": "appartement",
+              "lemma": "appartement",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "apartment",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Here's the apartment!"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi, Inès!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salon",
+              "lemma": "salon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "living room",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "canapé",
+              "lemma": "canapé",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sofa",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "télé",
+              "lemma": "télé",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "TV",
+              "form": "short for télévision"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plantes",
+              "lemma": "plante",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "plants",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's the living room: a sofa, a TV and some plants."
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "livres",
+              "lemma": "livre",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "books",
+              "form": "masculine plural"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh, books!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "kitchen",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "frigo",
+              "lemma": "frigo",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "fridge",
+              "form": "informal for réfrigérateur",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "four",
+              "lemma": "four",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "oven"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "placards",
+              "lemma": "placard",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cupboards",
+              "form": "masculine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's the kitchen: the fridge, the oven and the cupboards."
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "ah"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "du",
+              "lemma": "de",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "some",
+              "form": "partitive article · masculine: du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coffee"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Ah, some coffee!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "interjection",
+              "gloss": "great",
+              "form": "informal"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "points something out · voilà = there is, here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chambre",
+              "lemma": "chambre",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bedroom",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lit",
+              "lemma": "lit",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bed"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bureau",
+              "lemma": "bureau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "desk"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "armoire",
+              "lemma": "armoire",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "wardrobe"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's the bedroom: a bed, a desk and a wardrobe."
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thank you, Inès!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "phrase",
+              "gloss": "here are",
+              "form": "points something out · voici = here is, here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "clés",
+              "lemma": "clé",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "keys",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here are the keys."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bienvenue",
+              "lemma": "bienvenue",
+              "pos": "interjection",
+              "gloss": "welcome"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Welcome, Hugo!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["appartement", "salon", "canapé", "cuisine", "frigo", "placard", "chambre", "clé"],
+  "grammarTags": [
+    "articles.definite",
+    "articles.indefinite",
+    "articles.partitive",
+    "nouns.plural",
+    "phrases.c-est",
+    "phrases.greetings"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "chapterId": "ch1",
+  "title": "le, un, du",
+  "subtitle": "the, a, some",
+  "rows": [
+    {
+      "label": "the · masculine",
+      "fr": "le fromage"
+    },
+    {
+      "label": "the · feminine",
+      "fr": "la soupe"
+    },
+    {
+      "label": "the · before a vowel",
+      "fr": "l'omelette"
+    },
+    {
+      "label": "the · plural",
+      "fr": "les fraises",
+      "ending": "s"
+    },
+    {
+      "label": "a · masculine, feminine",
+      "fr": "un lit, une armoire"
+    },
+    {
+      "label": "some · plural",
+      "fr": "des tomates",
+      "ending": "s"
+    },
+    {
+      "label": "some · an amount of",
+      "fr": "du persil, de la ciboulette, de l'ail"
+    },
+    {
+      "label": "à, de + le, les",
+      "fr": "au lait, aux pommes, du jour, des enfants"
+    }
+  ],
+  "tip": "À and de fuse with le and les (au, aux, du, des) but never with la or l'."
+}
