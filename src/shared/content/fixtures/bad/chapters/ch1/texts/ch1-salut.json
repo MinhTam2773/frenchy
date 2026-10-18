@@ -1,0 +1,22 @@
+{
+  "id": "ch1-salut",
+  "chapterId": "ch1",
+  "title": "Salut",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            { "t": "Salut", "lemma": "salut", "pos": "interjection", "gloss": "hi" },
+            { "t": "." }
+          ],
+          "en": "Hi."
+        }
+      ]
+    }
+  ],
+  "newWords": [],
+  "grammarTags": ["etre.present"]
+}

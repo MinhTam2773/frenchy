@@ -1,0 +1,38 @@
+{
+  "stages": [
+    {
+      "id": "stage1",
+      "number": 1,
+      "title": "Foundations",
+      "level": "A1",
+      "weekStart": 1,
+      "weekEnd": 8,
+      "chapters": [
+        {
+          "id": "ch1",
+          "number": "1",
+          "title": "Articles",
+          "shortTitle": "Articles",
+          "kind": "grammar",
+          "pdfStart": 12,
+          "pdfEnd": 23,
+          "weekStart": 1,
+          "weekEnd": 1,
+          "sections": []
+        },
+        {
+          "id": "ch2",
+          "number": "2",
+          "title": "Basic gender endings",
+          "shortTitle": "Gender",
+          "kind": "grammar",
+          "pdfStart": 30,
+          "pdfEnd": 47,
+          "weekStart": 2,
+          "weekEnd": 2,
+          "sections": []
+        }
+      ]
+    }
+  ]
+}
