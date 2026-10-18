@@ -717,7 +717,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-05, T-07, T-09, T-15 | T-26 | 4 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-25-reader`
+**Status:** in progress · **Claimed by:** T-25 agent (wave 4 lead session) · **Branch:** `task/T-25-reader`
 **Owns:** `src/client/features/reader/**`, `src/client/mocks/handlers/reader.ts`
 **Goal:** `Reader.dc.html` and `Sentence.dc.html`: every French word is tappable, sentences can be long-pressed, and anything can be saved to SRS.
 **Done when:** tapping a word shows the right sheet, long-press selects the sentence, saving creates a card (mocked), and it all works with the keyboard.
