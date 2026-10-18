@@ -456,8 +456,8 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 - [ ] Create the `profiles` row on first sign-in (onboarding fills it)
 - [ ] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
 - [ ] Tests (workers pool) for the flows in "Done when"
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-14 · Stage 1 content generation (fan-out per chapter)
@@ -539,18 +539,20 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-07 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
+**Status:** in review · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
 **Owns:** `src/client/features/path/**`, `src/client/features/chapter/**`, `src/client/mocks/handlers/path.ts`
 **Goal:** `Path.dc.html` and `Chapter.dc.html`: the winding stage path and the chapter page that sits next to the book.
 **Done when:** both match their mockups with the real `course.json`, setting the current chapter works (mocked), and tests pass.
 
-- [ ] Path: stage banner with stage switcher, winding node path (done / current / locked / conversation node styles), labels, "You're here" bubble, mascot
-- [ ] States from `course.json` + `profile.currentChapterId`: before current = done, current, after = locked (locked chapters still open read-only; see G-07)
-- [ ] Chapter: header, title, PDF page range, section progress, pattern / grammar note card, readings list, starter deck "Add to reviews" (calls the starter-deck endpoint)
-- [ ] "Make this my current chapter" action
-- [ ] Hide the drill button until B-01
-- [ ] Desktop: centered column, max width ~480 px
-- [ ] Tests: node states, current-chapter change, readings links
+**Decisions:** appendices are reference nodes (book icon, never done or locked, left out of "n of m chapters done"; G-23); the done node is ink on gold (about 8.6:1) because white on gold is 1.8:1 (L-51); all chapters open from every node (G-07); the mockup's "§2 now" has no data behind it (G-39); `routes.test.tsx` lost its `/path` and `/chapter/ch10` rows because those screens have their own tests now (L-53).
+
+- [x] Path: stage banner with stage switcher, winding node path (done / current / locked / conversation node styles), labels, "You're here" bubble, mascot
+- [x] States from `course.json` + `profile.currentChapterId`: before current = done, current, after = locked (locked chapters still open read-only; see G-07)
+- [x] Chapter: header, title, PDF page range, section progress, pattern / grammar note card, readings list, starter deck "Add to reviews" (calls the starter-deck endpoint)
+- [x] "Make this my current chapter" action
+- [x] Hide the drill button until B-01
+- [x] Desktop: centered column, max width ~480 px
+- [x] Tests: node states, current-chapter change, readings links
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1287,6 +1289,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
 | G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
 | G-43 | Streak and Practice follow the mockups except: the "~10 min" chip on the flashcards card is not rendered (no rule for estimating minutes), the freeze card uses `text-freeze-ink` (`#1f6fa8`) instead of the mockup's darker `#0E3F63`/`#24506F` (no token), and future calendar days use `text-faint` (about 3.3:1, inactive cells) | Small visual and contrast differences from the mockups | T-19, T-28 |
+| G-39 | Nothing records progress inside a chapter's book sections, so the Chapter strip can only show all sections done (the learner has moved past the chapter) or none. The mockup's "§2 now" with a part-filled bar has no data behind it. `chapters[].sections` is empty for every chapter until G-06 closes, so the strip is not drawn yet | Section progress is coarse | T-17, B-05 (a per-user `chapter_sections` record if wanted), G-06 |
+| G-40 | `getChapterTexts` returns texts sorted by id, so the chapter page lists readings alphabetically (the fixtures give "Au café" before "Le matin de Léa", the mockup's order is the reverse). The text schema has no `order` field | Readings may not be in the intended reading order | T-14, T-07 (add `order` to `Text`, or number the ids), T-17 reads whatever order `getChapterTexts` gives |
 
 ---
 
@@ -1349,3 +1353,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-57 · 2026-10-18 · client · T-19` — **`@testing-library/user-event` is not installed, and the calendar's cells have no text role.** → Tests click with `fireEvent` from `@testing-library/react`; calendar cells are `role="img"` with an `aria-label` such as `October 11, freeze used`, which is what tests query.
 - `L-58 · 2026-10-18 · streak · T-19` — **`StreakResponse.calendar` has no entries for days before the first active day, today (until practiced) or the future, so a client that treats "no entry" as "missed" paints grey cells on days the user never owed.** → `features/streak/calendar.ts` `buildMonth` decides: server status wins, else today, else future, else `none` (no status). A practiced today keeps the practiced fill and adds the today ring. The previous-month button stops at the first calendar month.
 - `L-59 · 2026-10-18 · testing · T-19` — **`getByText('12')` on the Streak page matched both the hero number and the calendar's day 12.** → Query the hero through its label (`getByText('day streak').previousElementSibling`) and build test data with `computeStreak` and `addDays`, not the mockup's numbers (L-20).
+- `L-51 · 2026-10-18 · design · T-17` — **The Path mockup counts Appendix A as a done chapter ("4 of 8") and draws the done check white on gold (1.83:1, below 3:1), while G-23 says appendices are references, not steps to finish.** → Appendices are reference nodes: book icon, never done or locked, left out of "n of m chapters done" (Ch 10 reads "3 of 7"), unless one is the current chapter. The done node is `text-ink` on `bg-gold` (8.58:1); `PathPage.test.tsx` pins that white on gold stays under 3:1 and ink passes 4.5:1.
+- `L-52 · 2026-10-18 · testing · T-17` — **`findByRole('button')` returns a button that is still `disabled`, and `fireEvent.click` on it does nothing, so a "Make this my current chapter" test clicked before the profile had loaded and then waited for a state change that never came. A profile 500 also retries once after 1 s (the query client's retry), so `findByRole('alert')` with the default 1 s timeout misses the error state.** → When a control is disabled until a query settles, `await waitFor(() => expect(button).toBeEnabled())` before clicking; for an error state behind a retry, pass `{ timeout: 4000 }`.
+- `L-53 · 2026-10-18 · client · T-17` — **Replacing a placeholder page breaks `routes.test.tsx`, which finds each route by the placeholder's heading (`Path`, `Chapter`), and Tailwind 4's `-translate-x-1/2` and `active:translate-y-[5px]` share one `translate` property, so a node centred with `-translate-y-1/2` jumps when pressed.** → A screen task removes its row from `routes.test.tsx` (one-line hunks, called out in the PR) and covers its route, layout and tab state in its own test. Centre an absolutely positioned pressable with a wrapper div and put the press translate on the inner link.

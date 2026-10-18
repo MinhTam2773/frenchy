@@ -2,9 +2,9 @@ import { fireEvent, screen } from '@testing-library/react';
 import { expect, test } from 'vitest';
 import { renderAt } from './mocks/renderAt';
 
+// /path and /chapter/:id have their own tests (features/path, features/chapter).
 const tabRoutes = [
   ['/today', 'Today'],
-  ['/path', 'Path'],
   ['/practice', 'Practice'],
   ['/words', 'Words'],
   ['/me', 'Me'],
@@ -13,7 +13,6 @@ const tabRoutes = [
 const fullScreenRoutes = [
   ['/', 'Welcome'],
   ['/onboarding', 'Onboarding'],
-  ['/chapter/ch10', 'Chapter'],
   ['/read/ch10-le-matin-de-lea', 'Reader'],
   ['/review', 'Review'],
   ['/review/done', 'Session complete'],
@@ -53,6 +52,6 @@ test.each(tabRoutes)('the tab bar marks %s as the current tab', async (path, tit
 test('tab links navigate without a page reload', async () => {
   renderAt('/today');
   fireEvent.click(await screen.findByRole('link', { name: 'Path' }));
-  expect(await screen.findByRole('heading', { name: 'Path' })).toBeInTheDocument();
+  expect(await screen.findByRole('heading', { name: 'Your path' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Path' })).toHaveAttribute('aria-current', 'page');
 });
