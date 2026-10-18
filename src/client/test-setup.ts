@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import { cleanup, configure } from '@testing-library/react';
 import { afterAll, afterEach, beforeAll } from 'vitest';
+import { resetAuthMock } from './mocks/handlers/auth';
 import { resetMockState } from './mocks/handlers/base';
 import { server } from './mocks/server';
 
@@ -16,4 +17,5 @@ afterEach(() => {
   cleanup();
   server.resetHandlers();
   resetMockState();
+  resetAuthMock();
 });

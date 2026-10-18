@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import {
   ApiError,
+  AuthConfig,
   Card,
   CardStats,
   DailyActivity,
@@ -92,6 +93,9 @@ const Health = z.object({ ok: z.literal(true) });
  */
 export const api = {
   health: () => call('/health', Health),
+  auth: {
+    config: () => call('/auth/config', AuthConfig),
+  },
   profile: {
     get: () => call('/profile', Profile),
     patch: (patch: ProfilePatch) => call('/profile', Profile, { method: 'PATCH', body: patch }),

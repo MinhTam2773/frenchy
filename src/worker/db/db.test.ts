@@ -42,6 +42,7 @@ describe('migrations', () => {
     expect(results.map((row) => row.name)).toEqual([
       'account',
       'activity_minutes',
+      'ai_usage',
       'cards',
       'daily_activity',
       'profiles',
