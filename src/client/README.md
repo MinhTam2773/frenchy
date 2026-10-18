@@ -35,6 +35,6 @@ Every MVP route already exists with a placeholder page, so building a screen is 
 
 ## Mocks on and off
 
-MSW runs in the browser when `VITE_USE_MOCKS=true`, and by default in `npm run dev` (set `VITE_USE_MOCKS=false` to talk to the real Worker). It is off in production builds. Vitest always starts it (`test-setup.ts`).
+`npm run dev` talks to the real Worker and local D1 (run `npm run db:migrate:local` once and copy `.dev.vars.example` to `.dev.vars` with a `BETTER_AUTH_SECRET`). MSW runs in the browser only when `VITE_USE_MOCKS=true` (`VITE_USE_MOCKS=true npm run dev` shows the fixture data). Vitest always starts it (`test-setup.ts`).
 
 The service worker script is `public/mockServiceWorker.js`. After upgrading `msw`, refresh it with `npx msw init public --no-save`.

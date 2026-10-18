@@ -1,7 +1,6 @@
-// On in dev unless VITE_USE_MOCKS=false; off in production unless VITE_USE_MOCKS=true.
-// T-26 flips the dev default.
-const flag = import.meta.env.VITE_USE_MOCKS as string | undefined;
-const mocksEnabled = flag === undefined ? import.meta.env.DEV : flag === 'true';
+// Off unless VITE_USE_MOCKS=true: `npm run dev` talks to the real Worker and local D1 (T-26).
+// Vitest starts MSW itself (test-setup.ts).
+const mocksEnabled = import.meta.env.VITE_USE_MOCKS === 'true';
 
 export async function enableMocking() {
   if (!mocksEnabled) return;

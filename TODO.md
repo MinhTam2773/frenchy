@@ -759,7 +759,7 @@ QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") hav
 **Goal:** The whole MVP runs against the local Worker and local D1 with no mocks.
 **Done when:** the full flow works locally on a fresh database: sign up → onboarding → Today → review → reader save word → review that card → streak updates.
 
-- [ ] Dev default `VITE_USE_MOCKS=false` when the Worker runs; mocks stay for tests
+- [x] Dev default `VITE_USE_MOCKS=false` when the Worker runs; mocks stay for tests (`npm run dev` always runs the Worker through the Cloudflare Vite plugin, so MSW now starts only with `VITE_USE_MOCKS=true`)
 - [ ] Walk every screen against the real API with seed data
 - [ ] Fix contract mismatches by changing the shared schema and both sides together
 - [ ] Loading skeletons, error + retry, offline banner on every screen
