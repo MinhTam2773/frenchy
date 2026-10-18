@@ -826,7 +826,7 @@ Wave 5 is done (T-26 moved to DONE).
 **Goal:** No cross-user data access, no leaked secrets and no abusable endpoints before anything is public.
 **Done when:** `docs/security-review.md` lists the findings and every P0/P1 finding is fixed.
 
-- [ ] Every database access goes through `scopedDb` (search routes for raw table access)
+- [x] Every database access goes through `scopedDb` (search routes for raw table access). Every route reaches user rows only through `userDb`/`scopedDb`; `routes/ai.ts` uses the raw `Db` only for the shared `translationCacheDb`. New guard in `src/worker/index.test.ts`: every route in `app.routes` except `/api/health` and `/api/auth/*` answers 401 without a session
 - [ ] Auth: cookie flags, CSRF posture (SameSite + origin check), session expiry, password policy, rate limits
 - [x] No secrets in the client bundle (inspect `dist/`); `.dev.vars` is gitignored (G-72: `vite build` copies `.dev.vars` into `dist/frenchy/`; fix it before T-30). Fixed: a `keep-local-secrets-out-of-dist` plugin in `vite.config.ts` drops the file from every build (preview reads the root `.dev.vars`); `npm run check:dist` fails on a secrets file or any local secret value in `dist/`, and CI runs it after building with a canary `.dev.vars`; `.env*` and `.dev.vars.*` are gitignored too
 - [ ] AI endpoints: user text handled as data, output validated, rate limits and a daily cost cap
