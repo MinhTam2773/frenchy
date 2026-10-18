@@ -666,8 +666,8 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [x] `POST /api/activity/ping` (minute deltas, idempotent per minute), `GET`/`POST /api/activity/readings` (in the contract) and `GET /api/streak` (T-11 over every `daily_activity` row, not 400 days: G-31)
 - [x] Every route uses `requireUser` + `scopedDb` + zod validation; one error JSON shape
 - [x] Tests per endpoint, including cross-user isolation
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 Notes for T-26:
