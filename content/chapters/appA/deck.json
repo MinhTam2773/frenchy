@@ -1,0 +1,135 @@
+{
+  "chapterId": "appA",
+  "cards": [
+    {
+      "id": "appA-salut-ca-va",
+      "type": "sentence_meaning",
+      "front": "Salut, ça va ?",
+      "back": "Hi, how are you?",
+      "note": "The t of salut is silent.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-pas-mal",
+      "type": "sentence_meaning",
+      "front": "Pas mal.",
+      "back": "Not bad.",
+      "note": "The s of pas is silent; the l of mal is said.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-bonne-nuit",
+      "type": "sentence_meaning",
+      "front": "Bonne nuit !",
+      "back": "Good night!",
+      "note": "Bonne is not nasal: you hear the n.",
+      "textId": "appA-pain-bonbon-maman"
+    },
+    {
+      "id": "appA-pain-vin-main-lapin",
+      "type": "sentence_meaning",
+      "front": "Pain, vin, main, lapin.",
+      "back": "Bread, wine, hand, rabbit.",
+      "note": "The spellings ain and in make the same nasal sound.",
+      "textId": "appA-pain-bonbon-maman"
+    },
+    {
+      "id": "appA-dessus-dessous",
+      "type": "sentence_meaning",
+      "front": "Dessus, dessous.",
+      "back": "On top, underneath.",
+      "note": "Dessus has u, dessous has ou.",
+      "textId": "appA-rue-ou-roue"
+    },
+    {
+      "id": "appA-merci-beaucoup",
+      "type": "meaning_sentence",
+      "front": "Thank you very much!",
+      "back": "Merci beaucoup !",
+      "note": "The p of beaucoup is silent.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-a-tout-a-l-heure",
+      "type": "meaning_sentence",
+      "front": "See you later!",
+      "back": "À tout à l'heure !",
+      "note": "Liaison: tout à sounds like tou-ta.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-bonsoir",
+      "type": "meaning_sentence",
+      "front": "Good evening!",
+      "back": "Bonsoir !",
+      "note": "The on in bonsoir is a nasal vowel.",
+      "textId": "appA-pain-bonbon-maman"
+    },
+    {
+      "id": "appA-tres-bien-merci",
+      "type": "meaning_sentence",
+      "front": "Very well, thanks.",
+      "back": "Très bien, merci.",
+      "note": "The s of très is silent.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-jus-joue",
+      "type": "meaning_sentence",
+      "front": "Juice, cheek.",
+      "back": "Jus, joue.",
+      "note": "Jus has u, joue has ou.",
+      "textId": "appA-rue-ou-roue"
+    },
+    {
+      "id": "appA-bon-anniversaire",
+      "type": "cloze",
+      "front": "Bon ___ !",
+      "back": "Bon anniversaire !",
+      "clozeAnswer": "anniversaire",
+      "hint": "Happy birthday!",
+      "note": "Liaison: bo-na-ni-ver-saire.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-et-toi",
+      "type": "cloze",
+      "front": "Et ___ ?",
+      "back": "Et toi ?",
+      "clozeAnswer": "toi",
+      "hint": "And you? (to a friend)",
+      "note": "The t of et is always silent.",
+      "textId": "appA-salut-arnaud"
+    },
+    {
+      "id": "appA-rue-ou-roue",
+      "type": "cloze",
+      "front": "Rue ou ___ ?",
+      "back": "Rue ou roue ?",
+      "clozeAnswer": "roue",
+      "hint": "Street or wheel?",
+      "note": "Rue has u, roue has ou.",
+      "textId": "appA-rue-ou-roue"
+    },
+    {
+      "id": "appA-soupe-poule-loup",
+      "type": "cloze",
+      "front": "Soupe, poule, ___, bisou.",
+      "back": "Soupe, poule, loup, bisou.",
+      "clozeAnswer": "loup",
+      "hint": "Soup, hen, wolf, kiss.",
+      "note": "The p of loup is silent.",
+      "textId": "appA-rue-ou-roue"
+    },
+    {
+      "id": "appA-lundi-parfum-brun",
+      "type": "cloze",
+      "front": "Lundi, ___, brun.",
+      "back": "Lundi, parfum, brun.",
+      "clozeAnswer": "parfum",
+      "hint": "Monday, perfume, brown.",
+      "note": "In parfum, um sounds like un.",
+      "textId": "appA-pain-bonbon-maman"
+    }
+  ]
+}

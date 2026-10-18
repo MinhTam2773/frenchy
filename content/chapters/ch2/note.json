@@ -1,0 +1,48 @@
+{
+  "chapterId": "ch2",
+  "title": "le ou la",
+  "subtitle": "masculine or feminine",
+  "rows": [
+    {
+      "label": "-age",
+      "fr": "le fromage",
+      "ending": "age"
+    },
+    {
+      "label": "-tion",
+      "fr": "la natation",
+      "ending": "tion"
+    },
+    {
+      "label": "-eau",
+      "fr": "le gâteau",
+      "ending": "eau"
+    },
+    {
+      "label": "-ette",
+      "fr": "la fourchette",
+      "ending": "ette"
+    },
+    {
+      "label": "-ment",
+      "fr": "le vêtement",
+      "ending": "ment"
+    },
+    {
+      "label": "-ie",
+      "fr": "la pharmacie",
+      "ending": "ie"
+    },
+    {
+      "label": "-isme",
+      "fr": "le cyclisme",
+      "ending": "isme"
+    },
+    {
+      "label": "-ure",
+      "fr": "la chaussure",
+      "ending": "ure"
+    }
+  ],
+  "tip": "Learn each noun with un or une, not l': une assiette shows the gender, l'assiette hides it."
+}

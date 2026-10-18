@@ -1,0 +1,1140 @@
+{
+  "id": "ch12-le-quartier",
+  "chapterId": "ch12",
+  "title": "Le quartier",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Julie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Julie",
+              "lemma": "Julie",
+              "pos": "name",
+              "gloss": "Julie (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voisine",
+              "lemma": "voisin",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "neighbor",
+              "form": "feminine · masculine: voisin",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm Julie, the neighbor."
+        }
+      ]
+    },
+    {
+      "speaker": "Karim",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Julie",
+              "lemma": "Julie",
+              "pos": "name",
+              "gloss": "Julie (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, Julie!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Karim",
+              "lemma": "Karim",
+              "pos": "name",
+              "gloss": "Karim (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm Karim."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bienvenue",
+              "lemma": "bienvenue",
+              "pos": "interjection",
+              "gloss": "welcome",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Welcome!"
+        }
+      ]
+    },
+    {
+      "speaker": "Julie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thank you!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular · connaître = to know a person or a place",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quartier",
+              "lemma": "quartier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighborhood",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don't know the neighborhood."
+        }
+      ]
+    },
+    {
+      "speaker": "Karim",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular · here it means le quartier"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "calme",
+              "lemma": "calme",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "quiet",
+              "form": "masculine singular · feminine: calme (same)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It's very quiet."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "on",
+              "gender": "m",
+              "form": "le + day = on that day, every week"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dimanche",
+              "lemma": "dimanche",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Sunday"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's a market on Sundays."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "f",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boulangerie",
+              "lemma": "boulangerie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bakery",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's also a bakery."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pain",
+              "lemma": "pain",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bread"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "excellent",
+              "lemma": "excellent",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "excellent",
+              "form": "masculine singular · feminine: excellente"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "The bread is excellent!"
+        }
+      ]
+    },
+    {
+      "speaker": "Julie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person · polite here (one person)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connaissez",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "vous · present · irregular · connaître = to know a person or a place"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quartier",
+              "lemma": "quartier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighborhood"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "You know the neighborhood well!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular · connaître = to know a person or a place"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voisins",
+              "lemma": "voisin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighbors",
+              "form": "masculine plural · feminine: voisine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don't know the neighbors."
+        }
+      ]
+    },
+    {
+      "speaker": "Karim",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular · connaître = to know a person or a place"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mrs.",
+              "form": "Madame + family name = Mrs. …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Roux",
+              "lemma": "Roux",
+              "pos": "name",
+              "gloss": "Roux (a family name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I know Mrs. Roux."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gentille",
+              "lemma": "gentil",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "kind, nice",
+              "form": "feminine singular · masculine: gentil",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She is very kind."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sait",
+              "lemma": "savoir",
+              "pos": "verb",
+              "gloss": "knows",
+              "form": "il / elle · present · irregular · savoir = to know facts",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tout",
+              "lemma": "tout",
+              "pos": "pronoun",
+              "gloss": "everything",
+              "form": "pronoun"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "She knows everything!"
+        }
+      ]
+    },
+    {
+      "speaker": "Julie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sais",
+              "lemma": "savoir",
+              "pos": "verb",
+              "gloss": "know how",
+              "form": "je · present · irregular · savoir + infinitive = to know how to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faire",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "make",
+              "form": "infinitive · after savoir"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "crêpes",
+              "lemma": "crêpe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "crêpes",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I know how to make crêpes."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elles",
+              "lemma": "elles",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, feminine · here it means les crêpes"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bonnes",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "good",
+              "form": "feminine plural · masculine: bon"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "They're very good!"
+        }
+      ]
+    },
+    {
+      "speaker": "Karim",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person · polite here (one person)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "savez",
+              "lemma": "savoir",
+              "pos": "verb",
+              "gloss": "know how",
+              "form": "vous · present · irregular · savoir + infinitive = to know how to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faire",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "make",
+              "form": "infinitive · after savoir"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural of un, une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "crêpes",
+              "lemma": "crêpe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "crêpes",
+              "form": "feminine plural"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh, you know how to make crêpes!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sais",
+              "lemma": "savoir",
+              "pos": "verb",
+              "gloss": "know how",
+              "form": "je · present · irregular · savoir + infinitive = to know how to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faire",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "do",
+              "form": "infinitive · faire la cuisine = to cook"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "cooking",
+              "form": "faire la cuisine = to cook"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don't know how to cook."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person · polite here (one person)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "êtes",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "vous · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voisine",
+              "lemma": "voisin",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "neighbor",
+              "form": "feminine · masculine: voisin"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "idéale",
+              "lemma": "idéal",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "perfect, ideal",
+              "form": "feminine singular · masculine: idéal"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "You're the perfect neighbor!"
+        }
+      ]
+    },
+    {
+      "speaker": "Julie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person · polite here (one person)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "êtes",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "vous · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gentil",
+              "lemma": "gentil",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "kind, nice",
+              "form": "masculine singular · feminine: gentille"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Karim",
+              "lemma": "Karim",
+              "pos": "name",
+              "gloss": "Karim (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "You're very kind, Karim!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "connaître",
+    "savoir",
+    "voisin",
+    "quartier",
+    "boulangerie",
+    "bienvenue",
+    "crêpe",
+    "gentil"
+  ],
+  "grammarTags": [
+    "pronouns.subject",
+    "savoir.present",
+    "etre.present",
+    "faire.present",
+    "negation.ne-pas",
+    "adjectives.basic",
+    "phrases.c-est",
+    "phrases.greetings",
+    "articles.definite",
+    "articles.indefinite"
+  ]
+}

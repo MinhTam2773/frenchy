@@ -473,15 +473,15 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 - [x] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
 - [x] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
 - [ ] Fan out, one sub-agent per chapter (tick when that chapter passes `content:check`):
-  - [ ] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
-  - [ ] Ch 1 · Articles
-  - [ ] Ch 2 · Basic gender endings
-  - [ ] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
-  - [ ] Ch 10 · Present tense of -er verbs
-  - [ ] Ch 4 · Numbers
-  - [ ] Ch 7 · Asking questions
+  - [x] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
+  - [x] Ch 1 · Articles
+  - [x] Ch 2 · Basic gender endings
+  - [x] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
+  - [x] Ch 10 · Present tense of -er verbs
+  - [x] Ch 4 · Numbers
+  - [x] Ch 7 · Asking questions
   - [ ] Ch 33 · Conversation: meeting people (dialogues)
-- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json`
+- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json` (7 of 8 so far; ch33 in progress)
 - [ ] `npm run content:check` green for all chapters
 - [ ] Do not self-approve: hand over to T-24 (a different agent)
 - [ ] Finish: `npm run check` green
@@ -598,19 +598,19 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-09 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings`
+**Status:** in review · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings`
 **Owns:** `src/client/features/settings/**`, `src/client/mocks/handlers/settings.ts`
 **Goal:** The MVP subset of `Settings.dc.html`.
 **Done when:** changing a setting persists through the (mocked) profile API and tests pass.
 
-- [ ] Profile row (name, sync status, streak chip)
-- [ ] Learning: book chapter (opens the chapter picker), daily goal, time zone (auto-detected, editable)
-- [ ] Audio: voice picker (from T-05 voices), speed 0.6–1.0, "Play words when tapped"
-- [ ] Sign out (mocked until T-26)
-- [ ] Not in MVP, so not rendered: daily reminder (B-12), AI providers (B-13)
-- [ ] Tests: settings round-trip through the profile mock
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Profile row (name, sync status, streak chip)
+- [x] Learning: book chapter (opens the chapter picker), daily goal, time zone (auto-detected, editable)
+- [x] Audio: voice picker (from T-05 voices), speed 0.6–1.0, "Play words when tapped"
+- [x] Sign out (mocked until T-26)
+- [x] Not in MVP, so not rendered: daily reminder (B-12), AI providers (B-13)
+- [x] Tests: settings round-trip through the profile mock
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 ### Wave 4
@@ -1206,6 +1206,24 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-22 · Content typography and token-join checks in `content:check`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
+**Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
+
+- [ ] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
+- [ ] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
+- [ ] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
+- [ ] No curly apostrophe in French tokens
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1264,6 +1282,10 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-34 | The PWA is verified only in Chromium (installability errors empty, offline shell works). Not checked: real iOS Safari (no `beforeinstallprompt`; the Share-sheet hint is the only install path, and iOS may clear storage after inactivity, see G-04) and Lighthouse (not installed here). Fonts still come from Google Fonts at runtime; the first offline visit before they were cached falls back to system fonts | Install and offline behavior on iPhone is unproven | T-30 (test on a real device), B-20 |
 | G-25 | G-01 checked (T-08): the lexicon uses Wiktionary via kaikki.org and Lexique 3.83, both CC BY-SA 4.0, so `content/lexicon/` is CC BY-SA 4.0 and needs visible attribution (texts in `docs/LICENSES.md`). Nothing in the app shows it yet | Shipping publicly without the credits screen breaks the license | B-21, T-29, T-30 |
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | T-26 (decide: keep precaching for offline taps and raise `maximumFileSizeToCacheInBytes`, or add `**/forms-*.js` / `**/lemmas-*.js` to `globIgnores` and runtime-cache them) |
+| G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
+| G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
+| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
+| G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
 | G-43 | Streak and Practice follow the mockups except: the "~10 min" chip on the flashcards card is not rendered (no rule for estimating minutes), the freeze card uses `text-freeze-ink` (`#1f6fa8`) instead of the mockup's darker `#0E3F63`/`#24506F` (no token), and future calendar days use `text-faint` (about 3.3:1, inactive cells) | Small visual and contrast differences from the mockups | T-19, T-28 |
 
 ---
@@ -1318,6 +1340,12 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-29 · 2026-10-18 · licensing · T-08` — **Decision: the lexicon is built from Wiktionary (kaikki.org's French extract, CC BY-SA 4.0 / GFDL, used under CC BY-SA 4.0) and Lexique 3.83 frequencies (CC BY-SA 4.0). hermitdave/FrequencyWords is also CC BY-SA 4.0 (only its code is MIT), but it ranks surface forms, not lemmas.** → `content/lexicon/` is CC BY-SA 4.0 data; the app code is not affected. Keep `docs/LICENSES.md` current and show its attribution texts in the app before any public release (B-21, G-25). Any new data source needs a compatible license recorded there first.
 - `L-30 · 2026-10-18 · content · T-08` — **The raw dictionaries are messier than they look. kaikki verb tables list only the bare past participle (*allé*); *allée/allés/allées* sit in the participle's own entry. Pronoun "forms" are other pronouns (*nous* lists *je* as its singular). Lexique lemmatizes *la, les, cet, ils* as their own lemmas, stores elided forms without the apostrophe (*l, s, qu*) and files the conjunction *que* under its pronouns. Wiktionary glosses for function words are usage notes ("Forms the partitive article.").** → The build skips a table form that is itself a lemma with the same part of speech, follows participles to their agreement forms, hand-writes elisions, contractions and a few glosses, and is checked by `lookup.test.ts`. T-24 extends `GLOSS_OVERRIDES` in `scripts/lexicon/build.ts` instead of editing shards by hand.
 - `L-31 · 2026-10-18 · tooling · T-08` — **A template-literal `import(\`../../../content/lexicon/forms-${shard}.json\`)` makes Vite emit one lazy chunk per shard and also works in Vitest (no fetch, so MSW is not involved), with no `import.meta.glob` typing in the worker tsconfig. Prettier reads only the root `.gitignore`, so a nested `scripts/lexicon/.gitignore` didn't stop `prettier .` from choking on the 584 MB raw dump. I first ran the scripts with Node's type stripping (`.ts` import extensions, own tsconfig), then switched to `tsx` when T-07's convention (L-27) landed in `main`.** → Lazy-load static JSON by template-literal `import()`, and make every shard id exist as a file (even `{}`) so no import can miss. Put ignore rules for big local files in the root `.gitignore`. Scripts use `tsx` and extensionless imports.
+- `L-60 · 2026-10-18 · testing · T-20` — **The MSW profile state in `mocks/handlers/base.ts` lives in page memory, so it survives in-app navigation but a full browser reload resets it to the fixture. In jsdom, `Intl.supportedValuesOf('timeZone')` works (Node 22) and `speechSynthesis` is absent, so voice tests must `vi.stubGlobal('speechSynthesis', ...)` and `SpeechSynthesisUtterance`.** → "Change a setting, reload, see it kept" is verified by re-rendering the app (`cleanup()` then `renderAt('/me')` in a test) or by navigating away and back in the browser, not by a real reload. A persisted mock (sessionStorage) was not added; do it in `mocks/handlers/settings.ts` only if someone needs it.
+- `L-61 · 2026-10-18 · client · T-20` — **`ProfilePatch` takes `dailyGoalMinutes` as the literal union of `DAILY_GOAL_OPTIONS`, so a callback typed `(minutes: number)` needs a cast to patch it.** → Type the picker callback as `(typeof DAILY_GOAL_OPTIONS)[number]` and map over the constant; no cast needed.
+- `L-74 · 2026-10-18 · testing · lead` — **With ~15 agents running test suites on one 4-core box (load average 30–45), Vitest's 5 s test timeout and Testing Library's 1 s `findBy*` wait failed tests that pass alone (lexicon shard parsing takes seconds; screens render slowly).** → The client and worker projects use `testTimeout: 30_000`, and `test-setup.ts` sets `asyncUtilTimeout: 5_000`. Treat a failure that only appears under load as a timing problem, but still confirm it in isolation before calling it that.
+- `L-75 · 2026-10-18 · testing · lead` — **A T-07 test asserted that the repo had no texts yet, so the first T-14 chapter broke `npm run check` on all eight content branches at once. The brief also showed lemma `de` for indefinite *des* while the T-08 lexicon uses `un`.** → Tests use fixtures or a tree built with `createContent`, never the absence of real content. Indefinite *des* → lemma `un` (brief corrected). Before a fan-out, grep for tests that pin the current state of the folders being filled.
+- `L-76 · 2026-10-18 · content · T-14` — **Under the strict Stage 1 ceiling, early chapters can't use possessives, questions, numbers, *mais* or stressed pronouns, so agents wrote statement-only dialogues and name-heavy texts; several also found the brief's lemma examples drifted from the T-08 lexicon. `content:check` caught neither typography slips (a space after `l'`) nor lemma drift.** → Chapter agents run `npm run lexicon:coverage` and check function words against `content/lexicon/forms-*.json` before picking lemmas; B-22 adds the typography checks; G-57 holds the ceiling question.
+- `L-77 · 2026-10-18 · orchestration · lead` — **Running ~15 agents at once hit the session's rate limit: six agents stopped mid-task at the same moment (work saved), and the load made full `npm run check` runs slow and flaky.** → Keep a wave to about 6–8 concurrent agents; resume stopped agents with SendMessage after the reset instead of starting new ones; let CI run the full suite and use lint/typecheck/targeted tests locally while many agents are running.
 - `L-57 · 2026-10-18 · client · T-19` — **`@testing-library/user-event` is not installed, and the calendar's cells have no text role.** → Tests click with `fireEvent` from `@testing-library/react`; calendar cells are `role="img"` with an `aria-label` such as `October 11, freeze used`, which is what tests query.
 - `L-58 · 2026-10-18 · streak · T-19` — **`StreakResponse.calendar` has no entries for days before the first active day, today (until practiced) or the future, so a client that treats "no entry" as "missed" paints grey cells on days the user never owed.** → `features/streak/calendar.ts` `buildMonth` decides: server status wins, else today, else future, else `none` (no status). A practiced today keeps the practiced fill and adds the today ring. The previous-month button stops at the first calendar month.
 - `L-59 · 2026-10-18 · testing · T-19` — **`getByText('12')` on the Streak page matched both the hero number and the calendar's day 12.** → Query the hero through its label (`getByText('day streak').previousElementSibling`) and build test data with `computeStreak` and `addDays`, not the mockup's numbers (L-20).

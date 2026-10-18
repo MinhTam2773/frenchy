@@ -1,0 +1,219 @@
+{
+  "chapterId": "ch10",
+  "cards": [
+    {
+      "id": "ch10-nous-adorons-le-marche",
+      "type": "sentence_meaning",
+      "front": "Nous adorons le marché.",
+      "back": "We love the market.",
+      "note": "nous takes -ons.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-malik-prefere-les-fruits",
+      "type": "sentence_meaning",
+      "front": "Malik préfère les fruits.",
+      "back": "Malik prefers fruit.",
+      "note": "préférer: é becomes è before a silent ending.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-il-commence-tot",
+      "type": "sentence_meaning",
+      "front": "Il commence tôt le matin.",
+      "back": "He starts early in the morning.",
+      "textId": "ch10-la-journee-de-thomas"
+    },
+    {
+      "id": "ch10-ils-parlent-du-week-end",
+      "type": "sentence_meaning",
+      "front": "Ils parlent du week-end.",
+      "back": "They talk about the weekend.",
+      "note": "de + le becomes du.",
+      "textId": "ch10-la-journee-de-thomas"
+    },
+    {
+      "id": "ch10-paul-ne-mange-pas-de-viande",
+      "type": "sentence_meaning",
+      "front": "Paul ne mange pas de viande.",
+      "back": "Paul doesn’t eat meat.",
+      "note": "After ne … pas, un, une, du, de la and des become de.",
+      "textId": "ch10-un-diner-entre-amis"
+    },
+    {
+      "id": "ch10-vous-chantez-tres-bien",
+      "type": "sentence_meaning",
+      "front": "Vous chantez très bien.",
+      "back": "You sing very well.",
+      "note": "vous takes -ez.",
+      "textId": "ch10-le-cours-de-chant"
+    },
+    {
+      "id": "ch10-emma-gagne-toujours",
+      "type": "sentence_meaning",
+      "front": "Emma gagne toujours.",
+      "back": "Emma always wins.",
+      "textId": "ch10-le-soir-chez-les-moreau"
+    },
+    {
+      "id": "ch10-elles-chantent-avec-la-radio",
+      "type": "sentence_meaning",
+      "front": "Elles chantent avec la radio.",
+      "back": "They sing along with the radio.",
+      "note": "The -ent ending is silent: chantent sounds like chante.",
+      "textId": "ch10-le-soir-chez-les-moreau"
+    },
+    {
+      "id": "ch10-i-buy-tomatoes",
+      "type": "meaning_sentence",
+      "front": "I buy tomatoes and onions.",
+      "back": "J'achète des tomates et des oignons.",
+      "note": "acheter: e becomes è before a silent ending.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-we-eat-the-soup",
+      "type": "meaning_sentence",
+      "front": "We eat the soup in the kitchen.",
+      "back": "Nous mangeons la soupe dans la cuisine.",
+      "note": "manger keeps an e before -ons: mangeons.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-thomas-works-in-a-bank",
+      "type": "meaning_sentence",
+      "front": "Thomas works in a bank.",
+      "back": "Thomas travaille dans une banque.",
+      "textId": "ch10-la-journee-de-thomas"
+    },
+    {
+      "id": "ch10-thomas-goes-home-by-bus",
+      "type": "meaning_sentence",
+      "front": "In the evening, Thomas goes home by bus.",
+      "back": "Le soir, Thomas rentre à la maison en bus.",
+      "note": "en bus = by bus.",
+      "textId": "ch10-la-journee-de-thomas"
+    },
+    {
+      "id": "ch10-i-am-inviting-paul-and-nora",
+      "type": "meaning_sentence",
+      "front": "On Saturday evening, I’m inviting Paul and Nora.",
+      "back": "Samedi soir, j'invite Paul et Nora.",
+      "note": "je becomes j' before a vowel.",
+      "textId": "ch10-un-diner-entre-amis"
+    },
+    {
+      "id": "ch10-we-start-the-meal",
+      "type": "meaning_sentence",
+      "front": "We start the meal with a salad.",
+      "back": "Nous commençons le repas avec une salade.",
+      "note": "commencer: c becomes ç before -ons.",
+      "textId": "ch10-un-diner-entre-amis"
+    },
+    {
+      "id": "ch10-i-dont-dance-i-sing",
+      "type": "meaning_sentence",
+      "front": "I don’t dance: I sing!",
+      "back": "Je ne danse pas : je chante !",
+      "textId": "ch10-un-diner-entre-amis"
+    },
+    {
+      "id": "ch10-the-children-play-cards",
+      "type": "meaning_sentence",
+      "front": "The children play cards in the living room.",
+      "back": "Les enfants jouent aux cartes dans le salon.",
+      "note": "jouer aux cartes = to play cards (à + les becomes aux).",
+      "textId": "ch10-le-soir-chez-les-moreau"
+    },
+    {
+      "id": "ch10-cloze-mangeons",
+      "type": "cloze",
+      "front": "Le soir, nous ___ les fraises avec de la crème.",
+      "back": "Le soir, nous mangeons les fraises avec de la crème.",
+      "clozeAnswer": "mangeons",
+      "hint": "manger",
+      "note": "manger keeps an e before -ons: mangeons.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-cloze-au-marche",
+      "type": "cloze",
+      "front": "Le samedi matin, je vais ___ marché avec Malik.",
+      "back": "Le samedi matin, je vais au marché avec Malik.",
+      "clozeAnswer": "au",
+      "hint": "to the",
+      "note": "à + le becomes au.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-cloze-rentrons",
+      "type": "cloze",
+      "front": "Ensuite, nous ___ chez Malik.",
+      "back": "Ensuite, nous rentrons chez Malik.",
+      "clozeAnswer": "rentrons",
+      "hint": "rentrer",
+      "note": "nous takes -ons.",
+      "textId": "ch10-au-marche"
+    },
+    {
+      "id": "ch10-cloze-prefere",
+      "type": "cloze",
+      "front": "Thomas ___ les pâtes.",
+      "back": "Thomas préfère les pâtes.",
+      "clozeAnswer": "préfère",
+      "hint": "préférer",
+      "note": "é becomes è before a silent ending: il préfère.",
+      "textId": "ch10-la-journee-de-thomas"
+    },
+    {
+      "id": "ch10-cloze-achete",
+      "type": "cloze",
+      "front": "Et j'___ une tarte aux pommes à la boulangerie.",
+      "back": "Et j'achète une tarte aux pommes à la boulangerie.",
+      "clozeAnswer": "achète",
+      "hint": "acheter",
+      "note": "e becomes è before a silent ending: j'achète.",
+      "textId": "ch10-un-diner-entre-amis"
+    },
+    {
+      "id": "ch10-cloze-commencons",
+      "type": "cloze",
+      "front": "Aujourd'hui, nous ___ une chanson française.",
+      "back": "Aujourd'hui, nous commençons une chanson française.",
+      "clozeAnswer": "commençons",
+      "hint": "commencer",
+      "note": "c becomes ç before -ons to keep the soft s sound.",
+      "textId": "ch10-le-cours-de-chant"
+    },
+    {
+      "id": "ch10-cloze-repetez",
+      "type": "cloze",
+      "front": "Ensuite, vous ___ le refrain.",
+      "back": "Ensuite, vous répétez le refrain.",
+      "clozeAnswer": "répétez",
+      "hint": "répéter",
+      "note": "vous takes -ez, and the é stays: répétez.",
+      "textId": "ch10-le-cours-de-chant"
+    },
+    {
+      "id": "ch10-cloze-appelle",
+      "type": "cloze",
+      "front": "Monsieur Moreau ___ les enfants : le dîner est prêt.",
+      "back": "Monsieur Moreau appelle les enfants : le dîner est prêt.",
+      "clozeAnswer": "appelle",
+      "hint": "appeler",
+      "note": "appeler doubles the l before a silent ending: il appelle.",
+      "textId": "ch10-le-soir-chez-les-moreau"
+    },
+    {
+      "id": "ch10-cloze-jouent",
+      "type": "cloze",
+      "front": "Lucas et Emma ___ aux cartes dans le salon.",
+      "back": "Lucas et Emma jouent aux cartes dans le salon.",
+      "clozeAnswer": "jouent",
+      "hint": "jouer",
+      "note": "ils / elles take -ent, which is silent.",
+      "textId": "ch10-le-soir-chez-les-moreau"
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "chapterId": "ch4",
+  "cards": [
+    {
+      "id": "ch4-elle-a-quatre-vingt-deux-ans",
+      "type": "sentence_meaning",
+      "front": "Elle a quatre-vingt-deux ans.",
+      "back": "She is eighty-two.",
+      "note": "Age uses avoir: avoir … ans.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-sept-heures-et-demie",
+      "type": "sentence_meaning",
+      "front": "Il est sept heures et demie.",
+      "back": "It’s half past seven.",
+      "textId": "ch4-vite-emma"
+    },
+    {
+      "id": "ch4-la-baguette-coute",
+      "type": "sentence_meaning",
+      "front": "La baguette coûte un euro vingt.",
+      "back": "The baguette costs one euro twenty.",
+      "note": "Say the euros, then the cents: un euro vingt = €1.20.",
+      "textId": "ch4-a-la-boulangerie"
+    },
+    {
+      "id": "ch4-moins-le-quart",
+      "type": "sentence_meaning",
+      "front": "Le bus passe à huit heures moins le quart.",
+      "back": "The bus comes at a quarter to eight.",
+      "note": "moins le quart = a quarter to.",
+      "textId": "ch4-vite-emma"
+    },
+    {
+      "id": "ch4-immeuble-de-cinq-etages",
+      "type": "sentence_meaning",
+      "front": "Il y a un immeuble de cinq étages.",
+      "back": "There is a five-storey building.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-le-premier-avril",
+      "type": "sentence_meaning",
+      "front": "Le premier avril, c'est l'anniversaire de Chloé.",
+      "back": "April first is Chloé’s birthday.",
+      "note": "Only the 1st takes an ordinal in dates: le premier avril, but le deux avril.",
+      "textId": "ch4-l-anniversaire-de-leo"
+    },
+    {
+      "id": "ch4-au-quatrieme-etage",
+      "type": "sentence_meaning",
+      "front": "Hugo habite au quatrième étage.",
+      "back": "Hugo lives on the fourth floor.",
+      "note": "Floors count from the rez-de-chaussée (ground floor), so the premier étage is one floor up.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-le-numero-de-mamie",
+      "type": "sentence_meaning",
+      "front": "Le numéro de Mamie, c'est le zéro quatre, soixante-dix, vingt-deux, quinze, quatre-vingt-un.",
+      "back": "Grandma’s number is 04 70 22 15 81.",
+      "note": "French phone numbers are read in pairs.",
+      "textId": "ch4-vite-emma"
+    },
+    {
+      "id": "ch4-vingt-et-un-ans",
+      "type": "sentence_meaning",
+      "front": "Il a vingt et un ans.",
+      "back": "He is twenty-one.",
+      "note": "21, 31, 41, 51, 61 and 71 take et: vingt et un."
+    },
+    {
+      "id": "ch4-ca-fait-cinq-euros-soixante",
+      "type": "meaning_sentence",
+      "front": "That comes to five euros sixty.",
+      "back": "Ça fait cinq euros soixante.",
+      "note": "ça fait … = that comes to …",
+      "textId": "ch4-a-la-boulangerie"
+    },
+    {
+      "id": "ch4-nous-sommes-le-quinze-mars",
+      "type": "meaning_sentence",
+      "front": "Today is March fifteenth.",
+      "back": "Aujourd'hui, nous sommes le quinze mars.",
+      "note": "Dates use le + a plain number: le quinze mars.",
+      "textId": "ch4-l-anniversaire-de-leo"
+    },
+    {
+      "id": "ch4-leo-a-neuf-ans",
+      "type": "meaning_sentence",
+      "front": "Léo is nine years old.",
+      "back": "Léo a neuf ans.",
+      "note": "French says “has nine years”: avoir … ans.",
+      "textId": "ch4-l-anniversaire-de-leo"
+    },
+    {
+      "id": "ch4-la-fete-commence",
+      "type": "meaning_sentence",
+      "front": "The party starts at 2 p.m.",
+      "back": "La fête commence à quatorze heures.",
+      "note": "Times are often given on the 24-hour clock: quatorze heures = 2 p.m.",
+      "textId": "ch4-l-anniversaire-de-leo"
+    },
+    {
+      "id": "ch4-pas-d-ascenseur",
+      "type": "meaning_sentence",
+      "front": "There is no elevator.",
+      "back": "Il n'y a pas d'ascenseur.",
+      "note": "After ne … pas, un becomes de (d’ before a vowel).",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-six-neuf-et-onze-ans",
+      "type": "meaning_sentence",
+      "front": "The children are six, nine and eleven.",
+      "back": "Les enfants ont six, neuf et onze ans.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-un-billet-de-dix-euros",
+      "type": "meaning_sentence",
+      "front": "Here is a ten-euro note.",
+      "back": "Voici un billet de dix euros.",
+      "textId": "ch4-a-la-boulangerie"
+    },
+    {
+      "id": "ch4-quatre-heures-dix",
+      "type": "meaning_sentence",
+      "front": "It’s ten past four.",
+      "back": "Il est quatre heures dix.",
+      "note": "The minutes simply follow heures."
+    },
+    {
+      "id": "ch4-soixante-et-onze-ans",
+      "type": "meaning_sentence",
+      "front": "Grandma is seventy-one.",
+      "back": "Mamie a soixante et onze ans.",
+      "note": "71 = 60 + 11: soixante et onze."
+    },
+    {
+      "id": "ch4-tartelettes-deux-euros-cinquante",
+      "type": "meaning_sentence",
+      "front": "The tarts are two euros fifty.",
+      "back": "Les tartelettes sont à deux euros cinquante.",
+      "note": "être à + price = to cost.",
+      "textId": "ch4-a-la-boulangerie"
+    },
+    {
+      "id": "ch4-et-demie",
+      "type": "cloze",
+      "front": "Il est sept heures et ___.",
+      "back": "Il est sept heures et demie.",
+      "clozeAnswer": "demie",
+      "hint": "7:30 · half past seven",
+      "note": "demie agrees with heure, which is feminine.",
+      "textId": "ch4-vite-emma"
+    },
+    {
+      "id": "ch4-le-quart",
+      "type": "cloze",
+      "front": "Le bus passe à huit heures moins le ___.",
+      "back": "Le bus passe à huit heures moins le quart.",
+      "clozeAnswer": "quart",
+      "hint": "7:45 · a quarter to eight",
+      "textId": "ch4-vite-emma"
+    },
+    {
+      "id": "ch4-madame-roux-82",
+      "type": "cloze",
+      "front": "Madame Roux a ___ ans.",
+      "back": "Madame Roux a quatre-vingt-deux ans.",
+      "clozeAnswer": "quatre-vingt-deux",
+      "hint": "82",
+      "note": "82 = 4 × 20 + 2.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-premier-avril",
+      "type": "cloze",
+      "front": "Le ___ avril, c'est l'anniversaire de Chloé.",
+      "back": "Le premier avril, c'est l'anniversaire de Chloé.",
+      "clozeAnswer": "premier",
+      "hint": "April 1st",
+      "note": "le premier avril, but le deux avril, le trois avril…",
+      "textId": "ch4-l-anniversaire-de-leo"
+    },
+    {
+      "id": "ch4-deuxieme-etage",
+      "type": "cloze",
+      "front": "La famille Diallo habite au ___ étage.",
+      "back": "La famille Diallo habite au deuxième étage.",
+      "clozeAnswer": "deuxième",
+      "hint": "deux · 2nd floor",
+      "note": "Add -ième to the number: deux → deuxième.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-ca-fait",
+      "type": "cloze",
+      "front": "Ça ___ cinq euros soixante.",
+      "back": "Ça fait cinq euros soixante.",
+      "clozeAnswer": "fait",
+      "hint": "faire · That comes to €5.60.",
+      "textId": "ch4-a-la-boulangerie"
+    },
+    {
+      "id": "ch4-un-croissant-coute",
+      "type": "cloze",
+      "front": "Un croissant ___ un euro dix.",
+      "back": "Un croissant coûte un euro dix.",
+      "clozeAnswer": "coûte",
+      "hint": "coûter · A croissant costs €1.10.",
+      "textId": "ch4-a-la-boulangerie"
+    },
+    {
+      "id": "ch4-quatre-vingts-marches",
+      "type": "cloze",
+      "front": "Hugo monte ___ marches.",
+      "back": "Hugo monte quatre-vingts marches.",
+      "clozeAnswer": "quatre-vingts",
+      "hint": "80",
+      "note": "quatre-vingts keeps its -s only when no number follows: quatre-vingt-deux.",
+      "textId": "ch4-au-douze-rue-des-lilas"
+    },
+    {
+      "id": "ch4-nous-sommes",
+      "type": "cloze",
+      "front": "Aujourd'hui, nous ___ le quinze mars.",
+      "back": "Aujourd'hui, nous sommes le quinze mars.",
+      "clozeAnswer": "sommes",
+      "hint": "être · Today is March 15th.",
+      "textId": "ch4-l-anniversaire-de-leo"
+    }
+  ]
+}

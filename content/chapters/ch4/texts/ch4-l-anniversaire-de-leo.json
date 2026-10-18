@@ -1,0 +1,1001 @@
+{
+  "id": "ch4-l-anniversaire-de-leo",
+  "chapterId": "ch4",
+  "title": "L'anniversaire de Léo",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Aujourd'hui",
+              "lemma": "aujourd'hui",
+              "pos": "adverb",
+              "gloss": "today"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · nous sommes le … = it’s the … (date)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sommes",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "nous · present · irregular · nous sommes le … = it’s the … (date)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · dates take le: le quinze mars"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quinze",
+              "lemma": "quinze",
+              "pos": "number",
+              "gloss": "fifteenth",
+              "form": "dates use plain numbers: le quinze mars = March 15th"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mars",
+              "lemma": "mars",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "March",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Today is March fifteenth."
+        },
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c’ before a vowel"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le before a vowel"
+            },
+            {
+              "t": "anniversaire",
+              "lemma": "anniversaire",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "birthday",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "de + noun = ’s (l’anniversaire de Léo = Léo’s birthday)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular · avoir … ans = to be … years old"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "neuf",
+              "lemma": "neuf",
+              "pos": "number",
+              "gloss": "nine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ans",
+              "lemma": "an",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "years (old)",
+              "form": "masculine plural · avoir … ans = to be … years old"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s Léo’s birthday: he is nine."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "La",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fête",
+              "lemma": "fête",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "party",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commence",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "starts",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatorze",
+              "lemma": "quatorze",
+              "pos": "number",
+              "gloss": "fourteen",
+              "form": "quatorze heures = 2 p.m. (24-hour clock)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · à quatorze heures = at 2 p.m.",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "chez",
+              "lemma": "chez",
+              "pos": "preposition",
+              "gloss": "at (someone’s) home",
+              "form": "chez Léo = at Léo’s house"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The party starts at two p.m., at Léo’s house."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there are",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "are",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "douze",
+              "lemma": "douze",
+              "pos": "number",
+              "gloss": "twelve"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There are twelve children."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "À",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quinze",
+              "lemma": "quinze",
+              "pos": "number",
+              "gloss": "fifteen"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hours",
+              "form": "feminine plural · the minutes come after heures: sept heures quarante-deux = 7:42"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trente",
+              "lemma": "trente",
+              "pos": "number",
+              "gloss": "thirty"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mangent",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eat",
+              "form": "ils / elles · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gâteau",
+              "lemma": "gâteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cake",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with (flavour)",
+              "form": "à + le becomes au · un gâteau au chocolat = a chocolate cake"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chocolat",
+              "lemma": "chocolat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chocolate"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "At three thirty, the children eat a chocolate cake."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there are",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "are",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "neuf",
+              "lemma": "neuf",
+              "pos": "number",
+              "gloss": "nine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bougies",
+              "lemma": "bougie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "candles",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There are nine candles."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "premier",
+              "lemma": "premier",
+              "pos": "number",
+              "gloss": "first",
+              "form": "ordinal · masculine (feminine: première)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cadeau",
+              "lemma": "cadeau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "present, gift",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "livre",
+              "lemma": "livre",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "book"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The first present is a book."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "deuxième",
+              "lemma": "deuxième",
+              "pos": "number",
+              "gloss": "second",
+              "form": "ordinal · deux + -ième"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ballon",
+              "lemma": "ballon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "ball"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "foot",
+              "lemma": "foot",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "football, soccer",
+              "form": "short for football"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The second is a football."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "troisième",
+              "lemma": "troisième",
+              "pos": "number",
+              "gloss": "third",
+              "form": "ordinal · trois + -ième"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jeu",
+              "lemma": "jeu",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "game"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vidéo",
+              "lemma": "vidéo",
+              "pos": "adjective",
+              "gloss": "video",
+              "form": "never changes: un jeu vidéo, des jeux vidéo"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The third is a video game."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "À",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix-huit",
+              "lemma": "dix-huit",
+              "pos": "number",
+              "gloss": "eighteen",
+              "form": "18 = 10 + 8 · dix-huit heures = 6 p.m."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · à quatorze heures = at 2 p.m."
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parents",
+              "lemma": "parent",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "parents",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "arrivent",
+              "lemma": "arriver",
+              "pos": "verb",
+              "gloss": "arrive",
+              "form": "ils / elles · present · -er verb"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "At six p.m., the parents arrive."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fatigué",
+              "lemma": "fatigué",
+              "pos": "adjective",
+              "gloss": "tired",
+              "form": "masculine singular (feminine: fatiguée)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "content",
+              "lemma": "content",
+              "pos": "adjective",
+              "gloss": "happy",
+              "form": "masculine singular (feminine: contente)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Léo is tired and very happy."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "premier",
+              "lemma": "premier",
+              "pos": "number",
+              "gloss": "first",
+              "form": "ordinal · the 1st is the only ordinal in dates: le premier avril, le deux avril"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avril",
+              "lemma": "avril",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "April"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "c'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c’ before a vowel"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le before a vowel"
+            },
+            {
+              "t": "anniversaire",
+              "lemma": "anniversaire",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "birthday",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "de + noun = ’s (l’anniversaire de Léo = Léo’s birthday)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Chloé",
+              "lemma": "Chloé",
+              "pos": "name",
+              "gloss": "Chloé (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sœur",
+              "lemma": "sœur",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "sister"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "de + noun = ’s (l’anniversaire de Léo = Léo’s birthday)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "April first is the birthday of Chloé, Léo’s sister."
+        }
+      ]
+    }
+  ],
+  "newWords": ["mars", "anniversaire", "fête", "heure", "gâteau", "bougie", "premier", "cadeau"],
+  "grammarTags": [
+    "time.clock",
+    "numbers.0-100",
+    "numbers.ordinal",
+    "etre.present",
+    "avoir.present",
+    "er.present",
+    "phrases.c-est",
+    "articles.contractions",
+    "prepositions.basic",
+    "adjectives.basic"
+  ]
+}
