@@ -5,12 +5,16 @@ import { profile } from '../../shared/fixtures/user';
 import { wordCardCreate } from '../../shared/fixtures/srs';
 import { words } from '../../shared/fixtures/words';
 import type { Card, CardCreate, DailyActivity, Profile, WordStatus } from '../../shared/schemas';
+import { hashPassword } from 'better-auth/crypto';
+import { account, user as authUser } from '../auth/schema';
 import { scopedDb, type Db } from './index';
 
 // Relative imports so `scripts/db/seed.ts` runs under tsx without the tsconfig path aliases.
 
-/** Not a Better Auth user yet (T-13); sign-in can't reach this row until auth links it. */
 export const DEMO_USER_ID = 'demo-user';
+
+/** Sign in locally with these after `npm run db:seed:local` (T-26). Never seeded in production. */
+export const DEMO_LOGIN = { name: 'Léa', email: 'demo@frenchy.local', password: 'frenchy-demo' };
 
 const MINUTE = 60_000;
 const DAY = 24 * 60 * MINUTE;
@@ -43,7 +47,23 @@ export function buildDemoData(now: number): DemoData {
 export async function seedDemo(db: Db, now = Date.now()): Promise<DemoData> {
   const data = buildDemoData(now);
   const user = scopedDb(db, DEMO_USER_ID);
+  const password = await hashPassword(DEMO_LOGIN.password);
   await user.batch([
+    // A Better Auth user with an email + password account, so the app can sign in as the demo.
+    db
+      .insert(authUser)
+      .values({ id: DEMO_USER_ID, name: DEMO_LOGIN.name, email: DEMO_LOGIN.email })
+      .onConflictDoNothing(),
+    db
+      .insert(account)
+      .values({
+        id: `${DEMO_USER_ID}-credential`,
+        accountId: DEMO_USER_ID,
+        providerId: 'credential',
+        userId: DEMO_USER_ID,
+        password,
+      })
+      .onConflictDoUpdate({ target: account.id, set: { password } }),
     user.reviews.delete(),
     user.cards.delete(),
     user.profiles.delete(),
