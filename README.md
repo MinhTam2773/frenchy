@@ -17,7 +17,12 @@ You don't need a Cloudflare account to run the app locally. Wrangler runs the Wo
 npm install
 ```
 
-Copy `.dev.vars.example` to `.dev.vars` once later tasks need secrets.
+Copy `.dev.vars.example` to `.dev.vars` and set `BETTER_AUTH_SECRET` (`openssl rand -base64 32`). Then create the local database:
+
+```sh
+npm run db:migrate:local
+npm run db:seed:local   # optional: a demo account, demo@frenchy.local / frenchy-demo
+```
 
 ## Develop
 
@@ -25,7 +30,7 @@ Copy `.dev.vars.example` to `.dev.vars` once later tasks need secrets.
 npm run dev
 ```
 
-Opens Vite with the local Worker. The SPA is at `/` and the API is under `/api/*` (try `/api/health`).
+Opens Vite with the local Worker and local D1, no mocks. The SPA is at `/` and the API is under `/api/*` (try `/api/health`). `VITE_USE_MOCKS=true npm run dev` serves fixture data from MSW instead.
 
 ## Check before a PR
 
