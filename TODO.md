@@ -632,7 +632,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-13 | T-26 | 4 |
 
-**Status:** in progress · **Claimed by:** T-21 agent (wave 4 lead session) · **Branch:** `task/T-21-auth-ui`
+**Status:** in review · **Claimed by:** T-21 agent (wave 4 lead session) · **Branch:** `task/T-21-auth-ui` · **PR:** https://github.com/MinhTam2773/frenchy/pull/30
 **Owns:** `src/client/features/auth/**`, `src/client/features/onboarding/**`, `src/client/lib/session.ts` (replaces the T-09 stub)
 **Goal:** `Main.dc.html` and `Onboarding.dc.html` working with the real Better Auth client.
 **Done when:** a new user can sign up with email locally, pick a chapter and goal, and land on `/today`; tests pass.
