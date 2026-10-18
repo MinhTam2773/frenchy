@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { addStarterDeck, finishOnboarding, gradeAllCards, newUser, signUp, test } from './helpers';
+import { addStarterDeck, finishOnboarding, gradeCards, newUser, signUp, test } from './helpers';
 
 test('a review session runs to completion and leaves nothing due', async ({ page }, testInfo) => {
   await signUp(page, newUser(testInfo));
@@ -18,7 +18,7 @@ test('a review session runs to completion and leaves nothing due', async ({ page
   await page.getByRole('button', { name: /^Good,/ }).click();
   await expect(progress).toBeVisible();
 
-  const rest = await gradeAllCards(page);
+  const rest = await gradeCards(page);
   const total = rest.length + 1;
   await expect(page.getByText(`${total}/${total}`)).toBeVisible();
 

@@ -56,12 +56,20 @@ export async function addStarterDeck(page: Page) {
   await expect(page.getByRole('link', { name: 'Start review' })).toBeVisible();
 }
 
-/** Grade every card Good until the "last card" screen. Returns the text of each revealed card. */
-export async function gradeAllCards(page: Page) {
+/**
+ * Grade cards Good until the "last card" screen, or until `max` cards if given (then the session is
+ * ended early, which posts the held last grade). Returns the text of each revealed card.
+ */
+export async function gradeCards(page: Page, max = Infinity) {
   const showAnswer = page.getByRole('button', { name: 'Show answer' });
   const seeResults = page.getByRole('button', { name: 'See results' });
   const revealed: string[] = [];
   for (;;) {
+    if (revealed.length >= max) {
+      await page.getByRole('button', { name: 'End review' }).click();
+      await expect(page).toHaveURL(/\/today$/);
+      return revealed;
+    }
     // Wait for a landmark first (L-108): the next card or the end screen, never a guess.
     await expect(showAnswer.or(seeResults)).toBeVisible();
     if (await seeResults.isVisible()) return revealed;

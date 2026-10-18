@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import {
   addStarterDeck,
   finishOnboarding,
-  gradeAllCards,
+  gradeCards,
   newUser,
   openReader,
   signUp,
@@ -23,12 +23,9 @@ test('sign up, review the starter deck, save a word while reading, review it, st
   await addStarterDeck(page);
   await page.getByRole('link', { name: 'Start review' }).click();
   await expect(page.getByRole('button', { name: 'Show answer' })).toBeVisible();
-  const first = await gradeAllCards(page);
-  expect(first.length).toBeGreaterThan(0);
-  await page.getByRole('button', { name: 'See results' }).click();
-  await expect(page.getByRole('heading', { name: 'Session complete!' })).toBeVisible();
-  await page.getByRole('link', { name: 'Continue' }).click();
-  await expect(page).toHaveURL(/\/today$/);
+  // Nine of the ten new cards allowed per day, so one slot is left for the saved word below.
+  const first = await gradeCards(page, 9);
+  expect(first).toHaveLength(9);
   await expect(page.getByRole('link', { name: '1 day streak' })).toBeVisible();
 
   // Read, tap a word, save it.
@@ -45,11 +42,12 @@ test('sign up, review the starter deck, save a word while reading, review it, st
   await page.getByRole('button', { name: 'Finish reading' }).click();
   await expect(page).toHaveURL(/\/today$/);
 
-  // The saved card comes before starter cards under the daily new-card cap (L-106).
+  // One new-card slot is left: the saved word takes it, not a starter card (L-106).
   await page.getByRole('link', { name: 'Start review' }).click();
   await expect(page.getByRole('button', { name: 'Show answer' })).toBeVisible();
-  const second = await gradeAllCards(page);
-  expect(second.some((text) => /voici/i.test(text))).toBe(true);
+  const second = await gradeCards(page);
+  expect(second).toHaveLength(1);
+  expect(second[0]).toMatch(/voici/i);
   await page.getByRole('button', { name: 'See results' }).click();
   await expect(page.getByRole('heading', { name: 'Session complete!' })).toBeVisible();
 
