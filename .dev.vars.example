@@ -11,7 +11,7 @@ BETTER_AUTH_TRUSTED_ORIGINS=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
-# AI (T-23): provider per task is one of anthropic | openai-compatible | mock
+# AI (T-23): provider per task is one of anthropic | openai-compatible | mock (unset: mock)
 AI_TRANSLATE_PROVIDER=
 AI_EXPLAIN_PROVIDER=
 ANTHROPIC_API_KEY=
