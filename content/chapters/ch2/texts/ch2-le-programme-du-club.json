@@ -1,0 +1,467 @@
+{
+  "id": "ch2-le-programme-du-club",
+  "chapterId": "ch2",
+  "title": "Le programme du club",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "programme",
+              "lemma": "programme",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "programme, schedule",
+              "form": "masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "club",
+              "lemma": "club",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "club",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the club's programme."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on (every)",
+              "form": "definite article · le lundi = on Mondays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lundi",
+              "lemma": "lundi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Monday",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "natation",
+              "lemma": "natation",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "swimming",
+              "form": "feminine singular · -tion ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musculation",
+              "lemma": "musculation",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "weight training",
+              "form": "feminine singular · -tion ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Mondays: swimming and weight training."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on (every)",
+              "form": "definite article · le mercredi = on Wednesdays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mercredi",
+              "lemma": "mercredi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Wednesday",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · l' before a vowel (here feminine)"
+            },
+            {
+              "t": "équitation",
+              "lemma": "équitation",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "horse riding",
+              "form": "feminine singular · -tion ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gymnastique",
+              "lemma": "gymnastique",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "gymnastics",
+              "form": "feminine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Wednesdays: horse riding and gymnastics."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on (every)",
+              "form": "definite article · le vendredi = on Fridays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vendredi",
+              "lemma": "vendredi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Friday",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "patinage",
+              "lemma": "patinage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "skating",
+              "form": "masculine singular · -age ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cyclisme",
+              "lemma": "cyclisme",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cycling",
+              "form": "masculine singular · -isme ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Fridays: skating and cycling."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on (every)",
+              "form": "definite article · le samedi = on Saturdays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "randonnée",
+              "lemma": "randonnée",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hiking",
+              "form": "feminine singular · -ée ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · l' before a vowel (here feminine)"
+            },
+            {
+              "t": "escalade",
+              "lemma": "escalade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "climbing",
+              "form": "feminine singular · -ade ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Saturdays: hiking and climbing."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on (every)",
+              "form": "definite article · le dimanche = on Sundays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dimanche",
+              "lemma": "dimanche",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Sunday",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "repos",
+              "lemma": "repos",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "rest",
+              "form": "masculine singular"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "And on Sundays: rest!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "natation",
+    "musculation",
+    "équitation",
+    "patinage",
+    "cyclisme",
+    "randonnée",
+    "escalade"
+  ],
+  "grammarTags": ["gender.basic", "articles.definite", "phrases.c-est"]
+}

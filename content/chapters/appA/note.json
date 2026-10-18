@@ -1,0 +1,47 @@
+{
+  "chapterId": "appA",
+  "title": "Sons",
+  "subtitle": "key sounds and spellings",
+  "rows": [
+    {
+      "label": "u",
+      "fr": "menu",
+      "ending": "u"
+    },
+    {
+      "label": "ou",
+      "fr": "bisou",
+      "ending": "ou"
+    },
+    {
+      "label": "on",
+      "fr": "citron",
+      "ending": "on"
+    },
+    {
+      "label": "an / en",
+      "fr": "maman",
+      "ending": "an"
+    },
+    {
+      "label": "in / ain",
+      "fr": "pain",
+      "ending": "ain"
+    },
+    {
+      "label": "un / um",
+      "fr": "parfum",
+      "ending": "um"
+    },
+    {
+      "label": "silent end",
+      "fr": "beaucoup",
+      "ending": "p"
+    },
+    {
+      "label": "liaison",
+      "fr": "bon anniversaire"
+    }
+  ],
+  "tip": "A final consonant is usually silent (salut, beaucoup), but c, r, f and l are often said: think CaReFuL."
+}

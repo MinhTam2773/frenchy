@@ -1,0 +1,954 @@
+{
+  "id": "ch10-le-cours-de-chant",
+  "chapterId": "ch10",
+  "title": "Le cours de chant",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Hélène",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "to",
+              "form": "bonjour à tous = hello everyone"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tous",
+              "lemma": "tous",
+              "pos": "pronoun",
+              "gloss": "everyone",
+              "form": "bonjour à tous = hello everyone"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, everyone!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Aujourd'hui",
+              "lemma": "aujourd'hui",
+              "pos": "adverb",
+              "gloss": "today"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commençons",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "start",
+              "form": "nous · present · -er verb (ç before -ons)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chanson",
+              "lemma": "chanson",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "song",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "française",
+              "lemma": "français",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "French",
+              "form": "feminine singular · masculine: français"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Today we’re starting a French song."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "écoutez",
+              "lemma": "écouter",
+              "pos": "verb",
+              "gloss": "listen to",
+              "form": "vous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chanson",
+              "lemma": "chanson",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "song"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "then, next"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "répétez",
+              "lemma": "répéter",
+              "pos": "verb",
+              "gloss": "repeat",
+              "form": "vous · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "refrain",
+              "lemma": "refrain",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chorus",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "You listen to the song and then you repeat the chorus."
+        }
+      ]
+    },
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chanson",
+              "lemma": "chanson",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "song"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I know the song."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular (la chanson is feminine)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "belle",
+              "lemma": "beau",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "beautiful",
+              "form": "feminine singular · masculine: beau"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s very beautiful."
+        }
+      ]
+    },
+    {
+      "speaker": "Amina",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chanson",
+              "lemma": "chanson",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "song"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don’t know the song."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "préfère",
+              "lemma": "préférer",
+              "pos": "verb",
+              "gloss": "prefer",
+              "form": "je · present · -er verb (è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rap",
+              "lemma": "rap",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "rap"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I prefer rap."
+        }
+      ]
+    },
+    {
+      "speaker": "Hélène",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "no",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "(no word in English)",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "problème",
+              "lemma": "problème",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "problem"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Amina",
+              "lemma": "Amina",
+              "pos": "name",
+              "gloss": "Amina (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No problem, Amina."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "écoutes",
+              "lemma": "écouter",
+              "pos": "verb",
+              "gloss": "listen",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chantes",
+              "lemma": "chanter",
+              "pos": "verb",
+              "gloss": "sing",
+              "form": "tu · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "You listen and you sing with Léo."
+        }
+      ]
+    },
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chantons",
+              "lemma": "chanter",
+              "pos": "verb",
+              "gloss": "sing",
+              "form": "nous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ensemble",
+              "lemma": "ensemble",
+              "pos": "adverb",
+              "gloss": "together",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Amina",
+              "lemma": "Amina",
+              "pos": "name",
+              "gloss": "Amina (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "We’re singing together, Amina."
+        },
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c' before a vowel · c'est = it is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "facile",
+              "lemma": "facile",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "easy",
+              "form": "the same for masculine and feminine",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s easy."
+        }
+      ]
+    },
+    {
+      "speaker": "Hélène",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bravo",
+              "lemma": "bravo",
+              "pos": "interjection",
+              "gloss": "well done"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Well done!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chantez",
+              "lemma": "chanter",
+              "pos": "verb",
+              "gloss": "sing",
+              "form": "vous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ensemble",
+              "lemma": "ensemble",
+              "pos": "adverb",
+              "gloss": "together"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "You sing very well together."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travaillez",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "work",
+              "form": "vous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beaucoup",
+              "lemma": "beaucoup",
+              "pos": "adverb",
+              "gloss": "a lot"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "You work hard."
+        }
+      ]
+    },
+    {
+      "speaker": "Amina",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "aime",
+              "lemma": "aimer",
+              "pos": "verb",
+              "gloss": "like",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "really",
+              "form": "aimer bien = to like"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chanson",
+              "lemma": "chanson",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "song"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "maintenant",
+              "lemma": "maintenant",
+              "pos": "adverb",
+              "gloss": "now"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "I like the song now!"
+        }
+      ]
+    },
+    {
+      "speaker": "Hélène",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "interjection",
+              "gloss": "great"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "La",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "semaine",
+              "lemma": "semaine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "week",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prochaine",
+              "lemma": "prochain",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "next",
+              "form": "feminine singular · masculine: prochain",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "écoutons",
+              "lemma": "écouter",
+              "pos": "verb",
+              "gloss": "listen to",
+              "form": "nous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rap",
+              "lemma": "rap",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "rap"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Next week, we’re listening to some rap."
+        }
+      ]
+    },
+    {
+      "speaker": "Amina",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Génial",
+              "lemma": "génial",
+              "pos": "interjection",
+              "gloss": "awesome"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Awesome!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "chanson",
+    "répéter",
+    "refrain",
+    "chanter",
+    "ensemble",
+    "facile",
+    "semaine",
+    "prochain"
+  ],
+  "grammarTags": [
+    "er.present",
+    "pronouns.subject",
+    "articles.definite",
+    "er.spelling-changes",
+    "prepositions.basic",
+    "articles.indefinite",
+    "articles.partitive",
+    "savoir.present",
+    "etre.present",
+    "negation.ne-pas",
+    "adjectives.basic",
+    "phrases.greetings",
+    "phrases.c-est"
+  ]
+}

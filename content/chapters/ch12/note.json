@@ -1,0 +1,32 @@
+{
+  "chapterId": "ch12",
+  "title": "être",
+  "subtitle": "to be",
+  "rows": [
+    {
+      "label": "je",
+      "fr": "je suis"
+    },
+    {
+      "label": "tu",
+      "fr": "tu es"
+    },
+    {
+      "label": "il / elle",
+      "fr": "il est"
+    },
+    {
+      "label": "nous",
+      "fr": "nous sommes"
+    },
+    {
+      "label": "vous",
+      "fr": "vous êtes"
+    },
+    {
+      "label": "ils / elles",
+      "fr": "ils sont"
+    }
+  ],
+  "tip": "Don't mix up ils sont (they are, a hard s sound) and ils ont (they have, a z sound)."
+}

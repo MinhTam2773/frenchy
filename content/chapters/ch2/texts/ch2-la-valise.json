@@ -1,0 +1,574 @@
+{
+  "id": "ch2-la-valise",
+  "chapterId": "ch2",
+  "title": "La valise",
+  "kind": "dialogue",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bon",
+              "lemma": "bon",
+              "pos": "interjection",
+              "gloss": "right, OK"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vêtements",
+              "lemma": "vêtement",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "clothes",
+              "form": "masculine plural · -ment ending",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Right, the clothes!"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chemise",
+              "lemma": "chemise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "shirt",
+              "form": "feminine singular",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ceinture",
+              "lemma": "ceinture",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "belt",
+              "form": "feminine singular · -ure ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chaussettes",
+              "lemma": "chaussette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "socks",
+              "form": "feminine plural · -ette ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's the shirt, the belt and the socks."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chaussures",
+              "lemma": "chaussure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "shoes",
+              "form": "feminine plural · -ure ending",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "And the shoes?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chaussures",
+              "lemma": "chaussure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "shoes",
+              "form": "feminine plural · -ure ending"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here are the shoes."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "manteau",
+              "lemma": "manteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coat",
+              "form": "masculine singular · -eau ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chapeau",
+              "lemma": "chapeau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "hat",
+              "form": "masculine singular · -eau ending",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "The coat and the hat?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "manteau",
+              "lemma": "manteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coat",
+              "form": "masculine singular · -eau ending"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's the coat."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chapeau",
+              "lemma": "chapeau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "hat",
+              "form": "masculine singular · -eau ending"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "And there's the hat."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "billet",
+              "lemma": "billet",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "ticket",
+              "form": "masculine singular · -et ending",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "And the ticket?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "billet",
+              "lemma": "billet",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "ticket",
+              "form": "masculine singular · -et ending"
+            },
+            {
+              "t": "… "
+            },
+            {
+              "t": "Euh",
+              "lemma": "euh",
+              "pos": "interjection",
+              "gloss": "um"
+            },
+            {
+              "t": "… "
+            },
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "ah"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "billet",
+              "lemma": "billet",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "ticket",
+              "form": "masculine singular · -et ending"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "The ticket… um… ah, here's the ticket!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Parfait",
+              "lemma": "parfait",
+              "pos": "adjective",
+              "gloss": "perfect",
+              "form": "used on its own as an exclamation"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Perfect."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bon",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "good",
+              "form": "fixed phrase · bon voyage = have a good trip"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voyage",
+              "lemma": "voyage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "trip",
+              "form": "masculine singular · -age ending"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Have a good trip, Hugo!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "vêtement",
+    "chemise",
+    "ceinture",
+    "chaussette",
+    "chaussure",
+    "manteau",
+    "chapeau",
+    "billet"
+  ],
+  "grammarTags": [
+    "gender.basic",
+    "articles.definite",
+    "nouns.plural",
+    "phrases.c-est",
+    "phrases.greetings"
+  ]
+}

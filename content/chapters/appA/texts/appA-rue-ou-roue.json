@@ -1,0 +1,282 @@
+{
+  "id": "appA-rue-ou-roue",
+  "chapterId": "appA",
+  "title": "Rue ou roue ?",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "hi",
+              "form": "informal hello or bye · the final t is silent"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Lucie",
+              "lemma": "Lucie",
+              "pos": "name",
+              "gloss": "Lucie",
+              "form": "a name · u: round your lips and say \"ee\""
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi, Lucie!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello",
+              "form": "ou sounds like \"oo\" in food"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Lou",
+              "lemma": "Lou",
+              "pos": "name",
+              "gloss": "Lou",
+              "form": "a name · ou sounds like \"oo\""
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, Lou!"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Lune",
+              "lemma": "lune",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "moon",
+              "form": "u: round your lips and say \"ee\"",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "sucre",
+              "lemma": "sucre",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sugar"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "menu",
+              "lemma": "menu",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "menu"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "tortue",
+              "lemma": "tortue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tortoise, turtle"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Moon, sugar, menu, tortoise."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Soupe",
+              "lemma": "soupe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "soup",
+              "form": "ou sounds like \"oo\" in food",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "poule",
+              "lemma": "poule",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hen"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "loup",
+              "lemma": "loup",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "wolf",
+              "form": "the final p is silent"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "bisou",
+              "lemma": "bisou",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "kiss",
+              "form": "informal"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Soup, hen, wolf, kiss."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Rue",
+              "lemma": "rue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "street",
+              "form": "u sound",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "roue",
+              "lemma": "roue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "wheel",
+              "form": "ou sound",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Street, wheel."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Jus",
+              "lemma": "jus",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "juice",
+              "form": "u sound · the final s is silent"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "joue",
+              "lemma": "joue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "cheek",
+              "form": "ou sound"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Juice, cheek."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Mule",
+              "lemma": "mule",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mule",
+              "form": "u sound"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "moule",
+              "lemma": "moule",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mussel",
+              "form": "ou sound"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mule, mussel."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Dessus",
+              "lemma": "dessus",
+              "pos": "adverb",
+              "gloss": "on top",
+              "form": "u sound · the final s is silent"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "dessous",
+              "lemma": "dessous",
+              "pos": "adverb",
+              "gloss": "underneath",
+              "form": "ou sound · the final s is silent",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On top, underneath."
+        }
+      ]
+    }
+  ],
+  "newWords": ["lune", "soupe", "rue", "roue", "dessous"],
+  "grammarTags": ["sounds.basic", "phrases.greetings"]
+}
