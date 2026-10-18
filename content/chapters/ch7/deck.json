@@ -1,0 +1,227 @@
+{
+  "chapterId": "ch7",
+  "cards": [
+    {
+      "id": "ch7-tu-es-nouveau",
+      "type": "sentence_meaning",
+      "front": "Tu es nouveau ?",
+      "back": "Are you new?",
+      "note": "A statement said with a rising voice is a question.",
+      "textId": "ch7-le-premier-jour"
+    },
+    {
+      "id": "ch7-est-ce-que-tu-habites-a-lille",
+      "type": "sentence_meaning",
+      "front": "Est-ce que tu habites à Lille ?",
+      "back": "Do you live in Lille?",
+      "note": "est-ce que at the start turns a statement into a question.",
+      "textId": "ch7-le-premier-jour"
+    },
+    {
+      "id": "ch7-ou-est-le-chat",
+      "type": "sentence_meaning",
+      "front": "Où est le chat ?",
+      "back": "Where is the cat?",
+      "note": "où = where.",
+      "textId": "ch7-les-questions-de-zoe"
+    },
+    {
+      "id": "ch7-pourquoi-la-soupe-est-verte",
+      "type": "sentence_meaning",
+      "front": "Pourquoi est-ce que la soupe est verte ?",
+      "back": "Why is the soup green?",
+      "note": "Question word + est-ce que + statement.",
+      "textId": "ch7-les-questions-de-zoe"
+    },
+    {
+      "id": "ch7-qui-veut-une-histoire",
+      "type": "sentence_meaning",
+      "front": "Qui veut une histoire ?",
+      "back": "Who wants a story?",
+      "note": "qui = who. The verb comes straight after it.",
+      "textId": "ch7-les-questions-de-zoe"
+    },
+    {
+      "id": "ch7-est-il-ouvert-le-lundi",
+      "type": "sentence_meaning",
+      "front": "Est-il ouvert le lundi ?",
+      "back": "Is it open on Mondays?",
+      "note": "Inversion: the verb comes first, joined to the pronoun with a hyphen.",
+      "textId": "ch7-a-l-office-de-tourisme"
+    },
+    {
+      "id": "ch7-combien-coute-l-entree",
+      "type": "sentence_meaning",
+      "front": "Combien coûte l'entrée ?",
+      "back": "How much is admission?",
+      "note": "combien = how much, how many.",
+      "textId": "ch7-a-l-office-de-tourisme"
+    },
+    {
+      "id": "ch7-comment-trouvez-vous-le-marche",
+      "type": "sentence_meaning",
+      "front": "Comment trouvez-vous le marché ?",
+      "back": "What do you think of the market?",
+      "note": "Comment trouvez-vous… ? asks for an opinion.",
+      "textId": "ch7-l-enquete-d-ines"
+    },
+    {
+      "id": "ch7-ou-va-t-il",
+      "type": "sentence_meaning",
+      "front": "Où va-t-il ?",
+      "back": "Where is he going?",
+      "note": "-t- goes between two vowels (va-t-il). It has no meaning."
+    },
+    {
+      "id": "ch7-tu-aimes-le-cafe",
+      "type": "meaning_sentence",
+      "front": "Do you like coffee?",
+      "back": "Est-ce que tu aimes le café ?",
+      "hint": "Use est-ce que.",
+      "textId": "ch7-le-premier-jour"
+    },
+    {
+      "id": "ch7-quand-est-ce-que-maman-arrive",
+      "type": "meaning_sentence",
+      "front": "When is Mom coming?",
+      "back": "Quand est-ce que maman arrive ?",
+      "hint": "Use quand + est-ce que.",
+      "textId": "ch7-les-questions-de-zoe"
+    },
+    {
+      "id": "ch7-combien-de-gateaux",
+      "type": "meaning_sentence",
+      "front": "How many cakes are you making?",
+      "back": "Combien de gâteaux est-ce que tu fais ?",
+      "hint": "Use combien de + est-ce que.",
+      "note": "combien de + noun, with no article.",
+      "textId": "ch7-les-questions-de-zoe"
+    },
+    {
+      "id": "ch7-parlez-vous-anglais",
+      "type": "meaning_sentence",
+      "front": "Do you speak English?",
+      "back": "Parlez-vous anglais ?",
+      "hint": "Use vous and inversion.",
+      "textId": "ch7-a-l-office-de-tourisme"
+    },
+    {
+      "id": "ch7-avez-vous-un-plan",
+      "type": "meaning_sentence",
+      "front": "Do you have a map of the town?",
+      "back": "Avez-vous un plan de la ville ?",
+      "hint": "Use vous and inversion.",
+      "textId": "ch7-a-l-office-de-tourisme"
+    },
+    {
+      "id": "ch7-ou-habitez-vous",
+      "type": "meaning_sentence",
+      "front": "Where do you live?",
+      "back": "Où habitez-vous ?",
+      "hint": "Use où, vous and inversion.",
+      "textId": "ch7-l-enquete-d-ines"
+    },
+    {
+      "id": "ch7-qu-est-ce-que-vous-achetez",
+      "type": "meaning_sentence",
+      "front": "What are you buying?",
+      "back": "Qu'est-ce que vous achetez ?",
+      "hint": "Use qu'est-ce que and vous.",
+      "note": "qu'est-ce que = what.",
+      "textId": "ch7-l-enquete-d-ines"
+    },
+    {
+      "id": "ch7-tu-es-journaliste",
+      "type": "meaning_sentence",
+      "front": "Are you a journalist?",
+      "back": "Tu es journaliste ?",
+      "hint": "Use tu and a rising voice.",
+      "note": "No article before a job after être.",
+      "textId": "ch7-l-enquete-d-ines"
+    },
+    {
+      "id": "ch7-que-fait-il",
+      "type": "meaning_sentence",
+      "front": "What is he doing?",
+      "back": "Que fait-il ?",
+      "hint": "Use que and inversion.",
+      "note": "que + inversion = what."
+    },
+    {
+      "id": "ch7-ou-est-le-musee",
+      "type": "cloze",
+      "front": "___ est le musée ?",
+      "back": "Où est le musée ?",
+      "clozeAnswer": "Où",
+      "hint": "Where is the museum?"
+    },
+    {
+      "id": "ch7-est-ce-que-tu-manges",
+      "type": "cloze",
+      "front": "Est-ce ___ tu manges à la cantine ?",
+      "back": "Est-ce que tu manges à la cantine ?",
+      "clozeAnswer": "que",
+      "note": "est-ce que: three words, always together.",
+      "textId": "ch7-le-premier-jour"
+    },
+    {
+      "id": "ch7-est-ce-qu-elle-est-bonne",
+      "type": "cloze",
+      "front": "Est-ce ___'elle est bonne ?",
+      "back": "Est-ce qu'elle est bonne ?",
+      "clozeAnswer": "qu",
+      "note": "que becomes qu' before a vowel.",
+      "textId": "ch7-le-premier-jour"
+    },
+    {
+      "id": "ch7-qu-est-ce-que-tu-fais",
+      "type": "cloze",
+      "front": "Qu'est-ce que tu ___ ?",
+      "back": "Qu'est-ce que tu fais ?",
+      "clozeAnswer": "fais",
+      "hint": "faire · What are you doing?"
+    },
+    {
+      "id": "ch7-pourquoi-tu-rigoles",
+      "type": "cloze",
+      "front": "___ est-ce que tu rigoles ?",
+      "back": "Pourquoi est-ce que tu rigoles ?",
+      "clozeAnswer": "Pourquoi",
+      "hint": "Why are you laughing?"
+    },
+    {
+      "id": "ch7-combien-de-frites",
+      "type": "cloze",
+      "front": "Combien ___ frites est-ce que tu veux ?",
+      "back": "Combien de frites est-ce que tu veux ?",
+      "clozeAnswer": "de",
+      "note": "combien de + noun, with no article."
+    },
+    {
+      "id": "ch7-restez-vous-longtemps",
+      "type": "cloze",
+      "front": "Restez-___ longtemps ici ?",
+      "back": "Restez-vous longtemps ici ?",
+      "clozeAnswer": "vous",
+      "note": "-ez goes with vous.",
+      "textId": "ch7-a-l-office-de-tourisme"
+    },
+    {
+      "id": "ch7-ou-vas-tu",
+      "type": "cloze",
+      "front": "Où ___-tu ?",
+      "back": "Où vas-tu ?",
+      "clozeAnswer": "vas",
+      "hint": "aller · Where are you going?"
+    },
+    {
+      "id": "ch7-ou-habite-t-il",
+      "type": "cloze",
+      "front": "Où habite-___-il ?",
+      "back": "Où habite-t-il ?",
+      "clozeAnswer": "t",
+      "hint": "Where does he live?",
+      "note": "Between two vowels, add -t-: habite-t-il."
+    }
+  ]
+}
