@@ -419,18 +419,18 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-03 | T-30 | 2 |
 
-**Status:** in progress · **Claimed by:** T-12 subagent (lead session) · **Branch:** `task/T-12-pwa`
+**Status:** in review · **Claimed by:** T-12 subagent (lead session) · **Branch:** `task/T-12-pwa`
 **Owns:** PWA section of `vite.config.ts` (hot file), `public/icons/**`, `src/client/pwa/**`, PWA meta tags in `index.html`
 **Goal:** Frenchy installs to the home screen on iPhone, Android and desktop, and loads fast from cache.
 **Done when:** Chrome reports the app as installable, the service worker caches the shell and content, and `/api/*` is never cached.
 
-- [ ] `vite-plugin-pwa`; manifest: name "Frenchy", short name, theme `#2B59F0`, background `#F6F8FF`, display standalone, icons 192/512 + maskable made from the mascot
-- [ ] Runtime caching: app shell, fonts, `content/**` and lexicon shards (stale-while-revalidate); `/api/*` network-only
-- [ ] "New version available" toast with reload
-- [ ] iOS: `apple-touch-icon`, web-app meta tags, a one-time "Add to Home Screen" hint in Safari
-- [ ] Run Lighthouse installability locally and paste the result in the PR
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `vite-plugin-pwa`; manifest: name "Frenchy", short name, theme `#2B59F0`, background `#F6F8FF`, display standalone, icons 192/512 + maskable made from the mascot
+- [x] Runtime caching: app shell, fonts, `content/**` and lexicon shards (stale-while-revalidate); `/api/*` network-only
+- [x] "New version available" toast with reload (`<PwaPrompts />`, mounted in `main.tsx`)
+- [x] iOS: `apple-touch-icon`, web-app meta tags, a one-time "Add to Home Screen" hint in Safari
+- [x] Installability checked without Lighthouse (Lighthouse not installed here): Chrome DevTools Protocol `Page.getInstallabilityErrors` is empty in a persistent profile, the manifest parses with no errors, `navigator.serviceWorker.ready` resolves, the page is controlled after reload, the shell loads offline, `/api/*` is never cached. Paste in the PR (G-34)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 ### Wave 3
@@ -1242,6 +1242,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-30 | `ts-fsrs` is on `^5.4.2`; 6.0 is only in beta. 6 removes `elapsed_days` (L-19) and the max interval (365 days), default weights and learning steps (1m, 10m) are product defaults nobody has confirmed | Moving to 6 needs a `Card` schema change and a D1 migration; the interval cap may feel short or long | later (re-check when 6.0 is stable) |
 | G-21 | T-23's per-user AI rate limit (60 requests/hour) has no storage: T-06 made no table for it, and T-23 doesn't own `migrations/` | T-23 must add a migration (minimal out-of-Owns hunk) or use the Workers Rate Limiting binding | T-23 |
 | G-22 | `scripts/**` is in no tsconfig, so `tsc -b` doesn't typecheck scripts (only ESLint sees them). T-06 keeps the seed logic in `src/worker/db/seed.ts` and `scripts/db/seed.ts` as thin glue | Type errors in scripts (T-07, T-08 too) show up only at run time | T-07, T-08 (add `scripts` to `tsconfig.node.json`) (resolved: T-07 added `scripts` to `tsconfig.node.json`; `scripts/db` is checked by `tsconfig.worker.json` because it uses D1 types) |
+| G-33 | Workbox precaches the app shell and every JS chunk (514 KiB now) but silently skips files over 2 MiB. Nothing fetches `/content/**` or `/lexicon/**` yet, so the stale-while-revalidate rule for those paths is untested; if T-14/T-08 bundle content as JS chunks instead, it is precached and the size can blow past the limit | Offline start may miss content, or the first visit after a deploy downloads all of it | T-07, T-08, T-14 (check `precache` size in the build output; raise `maximumFileSizeToCacheInBytes` or move content to runtime-cached fetches) |
+| G-34 | The PWA is verified only in Chromium (installability errors empty, offline shell works). Not checked: real iOS Safari (no `beforeinstallprompt`; the Share-sheet hint is the only install path, and iOS may clear storage after inactivity, see G-04) and Lighthouse (not installed here). Fonts still come from Google Fonts at runtime; the first offline visit before they were cached falls back to system fonts | Install and offline behavior on iPhone is unproven | T-30 (test on a real device), B-20 |
 
 ---
 
@@ -1289,3 +1291,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-24 · 2026-10-18 · testing · T-06` — **Worker tests start with an empty D1. `@cloudflare/vitest-plugin` reads migrations in Node (`readD1Migrations('./migrations')`) and applies them in workerd (`applyD1Migrations` from `cloudflare:test`).** → `vitest.config.ts` passes them as the `TEST_MIGRATIONS` binding and `src/worker/db/test-setup.ts` applies them before every worker test file. New migrations need no test changes; use a fresh random user id per test instead of relying on per-test storage reset.
 - `L-25 · 2026-10-18 · tooling · T-06` — **Latest stable Drizzle is `drizzle-orm` 0.45 / `drizzle-kit` 0.31 (1.0 is still rc). drizzle-kit 0.31 depends on the deprecated `@esbuild-kit/*` loaders, which make `npm audit` report 4 moderate esbuild advisories (dev-server only, dev dependency).** → Ignore those advisories (don't run `npm audit fix --force`, it downgrades drizzle-kit to 0.18); re-check when drizzle-kit 1.0 is stable.
 - `L-44 · 2026-10-18 · tooling · lead` — **T-07 added `scripts` to `tsconfig.node.json`, which pulled T-06's `scripts/db/seed.ts` (it imports Worker code with `D1Database`) into the Node project and broke `tsc -b` only after both merged.** → A script that imports `src/worker/**` belongs to `tsconfig.worker.json` (`scripts/db` is excluded from the Node project). Re-run `npm run check` after every merge of `main`, not just before it.
+- `L-41 · 2026-10-18 · tooling · T-12` — **`vite-plugin-pwa` 2.0 supports Vite 8 and works with `@cloudflare/vite-plugin`: `sw.js` lands in `dist/client` (the assets directory), but it also copies `manifest.webmanifest` into the Worker output `dist/frenchy` (harmless). It needs `workbox-build` and `workbox-window` installed as peers, injects `<link rel="manifest">` itself (a second one in `index.html` duplicates it), and with `includeManifestIcons` on it lists the icons twice in the precache.** → Keep the plugin config in `vite.config.ts`, don't hand-write the manifest link, and use `injectRegister: false` + `src/client/pwa/register.ts` (no virtual module, no extra tsconfig types).
+- `L-42 · 2026-10-18 · testing · T-12` — **A Workbox `urlPattern` RegExp is matched against the full URL, so `/^\/api\//` never matches. Playwright's `setOffline` does not stop requests made by the service worker, so an "offline" test returned 200 for `/api/health`. A default Playwright context reports `in-incognito` from `Page.getInstallabilityErrors`.** → Match with a function on `url.pathname` (as `vite.config.ts` does). Test offline by stopping the preview server, and check installability in a `launchPersistentContext` profile (no `in-incognito`).
+- `L-43 · 2026-10-18 · tooling · T-12` — **`vite preview` (workerd) keeps serving the asset manifest of the first build: after a rebuild, the new `index.html` pointed at hashed files it answered with HTML ("Expected a JavaScript module but the server responded with text/html"). `pkill -f "vite preview"` inside a Bash call also kills that call's own shell.** → Restart `vite preview` after every build you test, and stop it with the background-task controls, not `pkill -f`.

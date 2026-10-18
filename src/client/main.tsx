@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { enableMocking } from './mocks/enable';
+import { PwaPrompts } from './pwa';
 import './styles.css';
 
 const root = document.getElementById('root');
@@ -12,6 +13,7 @@ void enableMocking().then(() => {
   createRoot(root).render(
     <StrictMode>
       <App />
+      <PwaPrompts />
     </StrictMode>,
   );
 });
