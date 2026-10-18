@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 11 · NEXT 25 (7 in progress: T-06 to T-12) · BACKLOG 20
+**Progress:** DONE 17 · NEXT 19 (8 in progress: T-08, T-13, T-14, T-16 to T-20) · BACKLOG 20
 
 ---
 
@@ -266,6 +266,135 @@ ANSWER (lead, 2026-10-18): keep the default (client holds the last grade). No un
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [x] Finish: PR to `main` merged with CI green
 
+### T-06 · Database schema, migrations and user scoping
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · Medium | M | T-04 | T-13, T-22, T-23 | 2 |
+
+**Status:** done · **Claimed by:** T-06 subagent (lead session) · **Branch:** `task/T-06-db` · **PR:** https://github.com/MinhTam2773/frenchy/pull/14
+**Owns:** `src/worker/db/**`, `migrations/**`, `drizzle.config.ts`, `scripts/db/seed.ts`
+**Goal:** D1 tables for all MVP user data, plus one helper that makes cross-user reads impossible by construction.
+**Done when:** migrations apply on a fresh local D1, the seed loads mockup-like data, and an isolation test proves user A can't read user B's rows.
+
+- [x] Drizzle ORM + drizzle-kit for D1 (sqlite dialect)
+- [x] Tables from PLAN §4: `profiles`, `cards`, `reviews`, `word_status`, `daily_activity`, `translation_cache`, matching the T-04 schemas (ids as text UUIDs, timestamps as integer ms UTC, local dates as `YYYY-MM-DD` text)
+- [x] Indexes/uniques: `cards(user_id, due)`, `reviews(user_id, reviewed_at)`, unique `word_status(user_id, lemma)`, unique `daily_activity(user_id, date)`, unique `translation_cache(key)`
+- [x] Leave the Better Auth tables to T-13, but use `user_id text` that will reference `user.id`
+- [x] `scopedDb(db, userId)` exposing per-table query helpers that always filter by `user_id`; routes never touch raw tables
+- [x] Scripts: `db:generate`, `db:migrate:local`, `db:seed:local`
+- [x] Seed: a demo profile on Ch 10, 18 due cards, 12 days of activity with one freeze (matches the mockups)
+- [x] Tests (workers pool + local D1): migrations apply cleanly; `scopedDb` isolation between two users
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+Notes for T-13 / T-22 / T-23:
+- Tables: `profiles`, `cards`, `reviews`, `word_status`, `daily_activity`, plus `activity_minutes` (PK user + minute start, for ping dedupe) and `text_reads` (PK user + text + local date; the earliest `finished_at` per text is the first finish). That resolves G-19; `text_reads` is keyed per day because the contract counts a reading once per text per day, not only the first time. `translation_cache` is shared (not user data) and goes through `translationCacheDb(db)`.
+- API: `scopedDb(createDb(env.DB), userId)` returns `{ userId, profiles, cards, reviews, wordStatus, dailyActivity, activityMinutes, textReads, batch }`; each table has `select(where?)`, `insert(rows)`, `update(set, where?)`, `delete(where?)`, returning un-awaited drizzle queries pinned to the user (await one, or pass several to `batch([...])`). Column refs for `where` come from `schema` (exported from `src/worker/db`).
+- T-13: Better Auth tables are not created. Add your schema file to `schema` in `drizzle.config.ts` (or export it from `src/worker/db/schema.ts`) so `npm run db:generate` writes one migration chain, and add the `user_id` foreign keys then if wanted.
+- Worker tests get every migration applied by `src/worker/db/test-setup.ts` (see L-24).
+
+### T-07 · Course structure, grammar inventory and content validator
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | M | T-04 | T-14, T-17, T-23, T-25 | 2 |
+
+**Status:** done · **Claimed by:** T-07 subagent (lead session) · **Branch:** `task/T-07-course-content` · **PR:** https://github.com/MinhTam2773/frenchy/pull/13
+**Owns:** `content/course.json`, `content/grammar.json`, `scripts/content/check.ts`, `src/shared/content/**` (loaders)
+**Goal:** The course map and the "allowed grammar per chapter" list as validated JSON, plus a checker every content task must pass.
+**Done when:** `npm run content:check` validates the course and grammar files, rejects the bad fixtures, and runs in CI.
+
+- [x] `content/course.json`: all 4 stages with chapters in the beginner route order from PLAN §2, each with book chapter number, PDF start page, PDF end page (next chapter's start − 1), title, kind and week range
+- [x] Chapter sections: if the book is available locally in `book/`, add section labels and PDF pages for Stage 1; otherwise leave `sections: []` and keep G-06 open. Never copy book text
+- [x] `content/grammar.json`: ordered grammar tags introduced per chapter (e.g. `articles.definite`, `gender.basic`, `etre.present`, `avoir.present`, `aller.present`, `faire.present`, `er.present`, `numbers.0-100`, `questions.intonation`, `questions.est-ce-que`), including *aller* and *faire* in Stage 1 (L-02)
+- [x] Loaders in `src/shared/content/` (typed, used by client and worker): `getCourse()`, `allowedGrammar(chapterId)`, `getText(id)`
+- [x] `scripts/content/check.ts` + `npm run content:check`: zod-validates every content file; unique ids; valid route order; each text uses only allowed grammar tags; every word token has a lemma; every sentence has a translation; ≤ 8 new words per text; deck cards point to existing texts
+- [x] Add `npm run content:check` to `.github/workflows/ci.yml` (hot file)
+- [x] Tests: validator accepts good fixtures and names the exact problem for each bad one
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-09 · App shell, routing, data layer and mocks
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | M | T-03, T-04 | T-16 to T-21, T-25 | 2 |
+
+**Status:** done · **Claimed by:** T-09 subagent (lead session) · **Branch:** `task/T-09-app-shell` · **PR:** https://github.com/MinhTam2773/frenchy/pull/12
+**Owns:** `src/client/App.tsx`, `src/client/routes.tsx`, `src/client/layouts/**`, `src/client/lib/api.ts`, `src/client/lib/query.ts`, `src/client/lib/session.ts`, `src/client/mocks/**`, placeholder pages in `src/client/features/*/`, `src/client/README.md`
+**Goal:** Every MVP route exists with the right layout, typed API calls work, and MSW serves fixture data so screen tasks can run in parallel without a backend.
+**Done when:** every route renders its placeholder inside the right layout, `/dev/ui` shows the gallery, and a sample query returns fixture data through MSW.
+
+- [x] React Router (SPA) routes: `/` welcome, `/onboarding`, `/today`, `/path`, `/chapter/:chapterId`, `/read/:textId`, `/practice`, `/review`, `/review/done`, `/streak`, `/me`, `/dev/ui` (dev only, mounts T-03 `Gallery`); plus a `/words` placeholder (the kit's tab bar links to it, G-28) and a not-found page
+- [x] One placeholder page per route at `src/client/features/<feature>/<Name>Page.tsx`
+- [x] Layouts: tab layout (TabBar) for Today, Path, Practice, Words (Phase 2), Me; full-screen layout for onboarding, chapter, reader, review, streak
+- [x] TanStack Query provider with defaults (sensible `staleTime`, retry once)
+- [x] Typed API client with normalized errors (`ApiClientError`). Deviation: typed by the shared zod schemas, not `hc<AppType>` (L-32)
+- [x] MSW for browser and Node, on when `VITE_USE_MOCKS=true` (default in dev until T-26); `handlers/base.ts` serves every contract endpoint from `src/shared/fixtures`, feature handlers go in `src/client/mocks/handlers/<feature>.ts` and `handlers/index.ts` picks them up by glob (no registration edit)
+- [x] `useSession()` stub (mock signed-in user) and a guard that sends signed-out users to `/`
+- [x] Lazy-load the reader and review routes
+- [x] `src/client/README.md`: how to add a screen (folder, route line, mock handler file)
+- [x] Tests: each route renders; TabBar marks the current route
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-10 · FSRS scheduling module
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | S | T-04 | T-18, T-22 | 2 |
+
+**Status:** done · **Claimed by:** T-10 subagent (lead session) · **Branch:** `task/T-10-fsrs` · **PR:** https://github.com/MinhTam2773/frenchy/pull/11
+**Owns:** `src/shared/srs/**`
+**Goal:** A thin, tested wrapper around `ts-fsrs` shared by the client (interval previews) and the worker (authoritative scheduling).
+**Done when:** grading is deterministic under a fixed clock with fuzz off, and the interval labels match the format in the Review mockup ("1m", "6m", "1d", "4d").
+
+- [x] Add `ts-fsrs`; one config object (target retention 0.9, max interval, fuzz on in production)
+- [x] `newCard()`, `previewIntervals(card, now)` → the 4 labels, `grade(card, rating, now)` → next card state + review log
+- [x] Mapping between ts-fsrs cards and the shared `Card` FSRS fields (dates as epoch ms)
+- [x] Interval label formatter (m, h, d, mo, y)
+- [x] Tests: new card + Good is due in the future; Again lowers stability; labels; deterministic with a fixed `now` and fuzz off
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-11 · Streak and freeze logic
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | S | T-04 | T-16, T-19, T-22 | 2 |
+
+**Status:** done · **Claimed by:** T-11 subagent (lead session) · **Branch:** `task/T-11-streak` · **PR:** https://github.com/MinhTam2773/frenchy/pull/10
+**Owns:** `src/shared/streak/**`
+**Goal:** A pure function that turns daily activity rows into the streak, best streak, freezes and calendar, in the user's time zone.
+**Done when:** the tests cover gaps, freezes, the 2-freeze cap, DST changes and time-zone changes, and all pass.
+
+- [x] Rule (default until H-07 confirms): a day counts when ≥ 1 review is graded or ≥ 1 reading is finished. One freeze is earned per 7 counted days in a row, at most 2 held, and a freeze is spent automatically on a missed day. Implemented as: `current` counts counted days in the run (a freeze day keeps the run alive but adds 0); a freeze is earned on every 7th counted day of a run (7, 14, 21, …); minutes alone don't count; a broken run restarts at 0 with no freezes; today never breaks the streak
+- [x] `computeStreak(rows, todayLocalDate)` → `{ current, best, freezesLeft, todayDone, calendar }`, fully derived from the rows (deterministic). `freezeUsed` on the rows is **ignored** (it is an output, not an input; see L-38)
+- [x] Local-date helpers using `Intl.DateTimeFormat` with the IANA time zone (no heavy date library)
+- [x] Tests: simple run, missed day with and without a freeze, cap of 2, today not done yet doesn't break the streak, DST (America/Toronto in March and November), user changes time zone
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-12 · PWA (installable app)
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | T-03 | T-30 | 2 |
+
+**Status:** done · **Claimed by:** T-12 subagent (lead session) · **Branch:** `task/T-12-pwa` · **PR:** https://github.com/MinhTam2773/frenchy/pull/15
+**Owns:** PWA section of `vite.config.ts` (hot file), `public/icons/**`, `src/client/pwa/**`, PWA meta tags in `index.html`
+**Goal:** Frenchy installs to the home screen on iPhone, Android and desktop, and loads fast from cache.
+**Done when:** Chrome reports the app as installable, the service worker caches the shell and content, and `/api/*` is never cached.
+
+- [x] `vite-plugin-pwa`; manifest: name "Frenchy", short name, theme `#2B59F0`, background `#F6F8FF`, display standalone, icons 192/512 + maskable made from the mascot
+- [x] Runtime caching: app shell, fonts, `content/**` and lexicon shards (stale-while-revalidate); `/api/*` network-only
+- [x] "New version available" toast with reload (`<PwaPrompts />`, mounted in `main.tsx`)
+- [x] iOS: `apple-touch-icon`, web-app meta tags, a one-time "Add to Home Screen" hint in Safari
+- [x] Installability checked without Lighthouse (Lighthouse not installed here): Chrome DevTools Protocol `Page.getInstallabilityErrors` is empty in a persistent profile, the manifest parses with no errors, `navigator.serviceWorker.ready` resolves, the page is controlled after reload, the shell loads offline, `/api/*` is never cached. Paste in the PR (G-34)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
 ---
 
 ## NEXT (MVP)
@@ -282,54 +411,7 @@ Wave 1 is done (T-02 to T-05 moved to DONE).
 
 ### Wave 2
 
-#### T-06 · Database schema, migrations and user scoping
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · Medium | M | T-04 | T-13, T-22, T-23 | 2 |
-
-**Status:** in review · **Claimed by:** T-06 subagent (lead session) · **Branch:** `task/T-06-db`
-**Owns:** `src/worker/db/**`, `migrations/**`, `drizzle.config.ts`, `scripts/db/seed.ts`
-**Goal:** D1 tables for all MVP user data, plus one helper that makes cross-user reads impossible by construction.
-**Done when:** migrations apply on a fresh local D1, the seed loads mockup-like data, and an isolation test proves user A can't read user B's rows.
-
-- [x] Drizzle ORM + drizzle-kit for D1 (sqlite dialect)
-- [x] Tables from PLAN §4: `profiles`, `cards`, `reviews`, `word_status`, `daily_activity`, `translation_cache`, matching the T-04 schemas (ids as text UUIDs, timestamps as integer ms UTC, local dates as `YYYY-MM-DD` text)
-- [x] Indexes/uniques: `cards(user_id, due)`, `reviews(user_id, reviewed_at)`, unique `word_status(user_id, lemma)`, unique `daily_activity(user_id, date)`, unique `translation_cache(key)`
-- [x] Leave the Better Auth tables to T-13, but use `user_id text` that will reference `user.id`
-- [x] `scopedDb(db, userId)` exposing per-table query helpers that always filter by `user_id`; routes never touch raw tables
-- [x] Scripts: `db:generate`, `db:migrate:local`, `db:seed:local`
-- [x] Seed: a demo profile on Ch 10, 18 due cards, 12 days of activity with one freeze (matches the mockups)
-- [x] Tests (workers pool + local D1): migrations apply cleanly; `scopedDb` isolation between two users
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-Notes for T-13 / T-22 / T-23:
-- Tables: `profiles`, `cards`, `reviews`, `word_status`, `daily_activity`, plus `activity_minutes` (PK user + minute start, for ping dedupe) and `text_reads` (PK user + text + local date; the earliest `finished_at` per text is the first finish). That resolves G-19; `text_reads` is keyed per day because the contract counts a reading once per text per day, not only the first time. `translation_cache` is shared (not user data) and goes through `translationCacheDb(db)`.
-- API: `scopedDb(createDb(env.DB), userId)` returns `{ userId, profiles, cards, reviews, wordStatus, dailyActivity, activityMinutes, textReads, batch }`; each table has `select(where?)`, `insert(rows)`, `update(set, where?)`, `delete(where?)`, returning un-awaited drizzle queries pinned to the user (await one, or pass several to `batch([...])`). Column refs for `where` come from `schema` (exported from `src/worker/db`).
-- T-13: Better Auth tables are not created. Add your schema file to `schema` in `drizzle.config.ts` (or export it from `src/worker/db/schema.ts`) so `npm run db:generate` writes one migration chain, and add the `user_id` foreign keys then if wanted.
-- Worker tests get every migration applied by `src/worker/db/test-setup.ts` (see L-24).
-
-#### T-07 · Course structure, grammar inventory and content validator
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | M | T-04 | T-14, T-17, T-23, T-25 | 2 |
-
-**Status:** in review · **Claimed by:** T-07 subagent (lead session) · **Branch:** `task/T-07-course-content`
-**Owns:** `content/course.json`, `content/grammar.json`, `scripts/content/check.ts`, `src/shared/content/**` (loaders)
-**Goal:** The course map and the "allowed grammar per chapter" list as validated JSON, plus a checker every content task must pass.
-**Done when:** `npm run content:check` validates the course and grammar files, rejects the bad fixtures, and runs in CI.
-
-- [x] `content/course.json`: all 4 stages with chapters in the beginner route order from PLAN §2, each with book chapter number, PDF start page, PDF end page (next chapter's start − 1), title, kind and week range
-- [x] Chapter sections: if the book is available locally in `book/`, add section labels and PDF pages for Stage 1; otherwise leave `sections: []` and keep G-06 open. Never copy book text
-- [x] `content/grammar.json`: ordered grammar tags introduced per chapter (e.g. `articles.definite`, `gender.basic`, `etre.present`, `avoir.present`, `aller.present`, `faire.present`, `er.present`, `numbers.0-100`, `questions.intonation`, `questions.est-ce-que`), including *aller* and *faire* in Stage 1 (L-02)
-- [x] Loaders in `src/shared/content/` (typed, used by client and worker): `getCourse()`, `allowedGrammar(chapterId)`, `getText(id)`
-- [x] `scripts/content/check.ts` + `npm run content:check`: zod-validates every content file; unique ids; valid route order; each text uses only allowed grammar tags; every word token has a lemma; every sentence has a translation; ≤ 8 new words per text; deck cards point to existing texts
-- [x] Add `npm run content:check` to `.github/workflows/ci.yml` (hot file)
-- [x] Tests: validator accepts good fixtures and names the exact problem for each bad one
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 
 #### T-08 · Offline lexicon pipeline
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
@@ -353,86 +435,6 @@ Notes for T-13 / T-22 / T-23:
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
-#### T-09 · App shell, routing, data layer and mocks
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | M | T-03, T-04 | T-16 to T-21, T-25 | 2 |
-
-**Status:** in review · **Claimed by:** T-09 subagent (lead session) · **Branch:** `task/T-09-app-shell`
-**Owns:** `src/client/App.tsx`, `src/client/routes.tsx`, `src/client/layouts/**`, `src/client/lib/api.ts`, `src/client/lib/query.ts`, `src/client/lib/session.ts`, `src/client/mocks/**`, placeholder pages in `src/client/features/*/`, `src/client/README.md`
-**Goal:** Every MVP route exists with the right layout, typed API calls work, and MSW serves fixture data so screen tasks can run in parallel without a backend.
-**Done when:** every route renders its placeholder inside the right layout, `/dev/ui` shows the gallery, and a sample query returns fixture data through MSW.
-
-- [x] React Router (SPA) routes: `/` welcome, `/onboarding`, `/today`, `/path`, `/chapter/:chapterId`, `/read/:textId`, `/practice`, `/review`, `/review/done`, `/streak`, `/me`, `/dev/ui` (dev only, mounts T-03 `Gallery`); plus a `/words` placeholder (the kit's tab bar links to it, G-28) and a not-found page
-- [x] One placeholder page per route at `src/client/features/<feature>/<Name>Page.tsx`
-- [x] Layouts: tab layout (TabBar) for Today, Path, Practice, Words (Phase 2), Me; full-screen layout for onboarding, chapter, reader, review, streak
-- [x] TanStack Query provider with defaults (sensible `staleTime`, retry once)
-- [x] Typed API client with normalized errors (`ApiClientError`). Deviation: typed by the shared zod schemas, not `hc<AppType>` (L-32)
-- [x] MSW for browser and Node, on when `VITE_USE_MOCKS=true` (default in dev until T-26); `handlers/base.ts` serves every contract endpoint from `src/shared/fixtures`, feature handlers go in `src/client/mocks/handlers/<feature>.ts` and `handlers/index.ts` picks them up by glob (no registration edit)
-- [x] `useSession()` stub (mock signed-in user) and a guard that sends signed-out users to `/`
-- [x] Lazy-load the reader and review routes
-- [x] `src/client/README.md`: how to add a screen (folder, route line, mock handler file)
-- [x] Tests: each route renders; TabBar marks the current route
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-10 · FSRS scheduling module
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | S | T-04 | T-18, T-22 | 2 |
-
-**Status:** in review · **Claimed by:** T-10 subagent (lead session) · **Branch:** `task/T-10-fsrs`
-**Owns:** `src/shared/srs/**`
-**Goal:** A thin, tested wrapper around `ts-fsrs` shared by the client (interval previews) and the worker (authoritative scheduling).
-**Done when:** grading is deterministic under a fixed clock with fuzz off, and the interval labels match the format in the Review mockup ("1m", "6m", "1d", "4d").
-
-- [x] Add `ts-fsrs`; one config object (target retention 0.9, max interval, fuzz on in production)
-- [x] `newCard()`, `previewIntervals(card, now)` → the 4 labels, `grade(card, rating, now)` → next card state + review log
-- [x] Mapping between ts-fsrs cards and the shared `Card` FSRS fields (dates as epoch ms)
-- [x] Interval label formatter (m, h, d, mo, y)
-- [x] Tests: new card + Good is due in the future; Again lowers stability; labels; deterministic with a fixed `now` and fuzz off
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-11 · Streak and freeze logic
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | S | T-04 | T-16, T-19, T-22 | 2 |
-
-**Status:** in review · **Claimed by:** T-11 subagent (lead session) · **Branch:** `task/T-11-streak`
-**Owns:** `src/shared/streak/**`
-**Goal:** A pure function that turns daily activity rows into the streak, best streak, freezes and calendar, in the user's time zone.
-**Done when:** the tests cover gaps, freezes, the 2-freeze cap, DST changes and time-zone changes, and all pass.
-
-- [x] Rule (default until H-07 confirms): a day counts when ≥ 1 review is graded or ≥ 1 reading is finished. One freeze is earned per 7 counted days in a row, at most 2 held, and a freeze is spent automatically on a missed day. Implemented as: `current` counts counted days in the run (a freeze day keeps the run alive but adds 0); a freeze is earned on every 7th counted day of a run (7, 14, 21, …); minutes alone don't count; a broken run restarts at 0 with no freezes; today never breaks the streak
-- [x] `computeStreak(rows, todayLocalDate)` → `{ current, best, freezesLeft, todayDone, calendar }`, fully derived from the rows (deterministic). `freezeUsed` on the rows is **ignored** (it is an output, not an input; see L-38)
-- [x] Local-date helpers using `Intl.DateTimeFormat` with the IANA time zone (no heavy date library)
-- [x] Tests: simple run, missed day with and without a freeze, cap of 2, today not done yet doesn't break the streak, DST (America/Toronto in March and November), user changes time zone
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-12 · PWA (installable app)
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Sonnet 5.5 · High | S | T-03 | T-30 | 2 |
-
-**Status:** in review · **Claimed by:** T-12 subagent (lead session) · **Branch:** `task/T-12-pwa`
-**Owns:** PWA section of `vite.config.ts` (hot file), `public/icons/**`, `src/client/pwa/**`, PWA meta tags in `index.html`
-**Goal:** Frenchy installs to the home screen on iPhone, Android and desktop, and loads fast from cache.
-**Done when:** Chrome reports the app as installable, the service worker caches the shell and content, and `/api/*` is never cached.
-
-- [x] `vite-plugin-pwa`; manifest: name "Frenchy", short name, theme `#2B59F0`, background `#F6F8FF`, display standalone, icons 192/512 + maskable made from the mascot
-- [x] Runtime caching: app shell, fonts, `content/**` and lexicon shards (stale-while-revalidate); `/api/*` network-only
-- [x] "New version available" toast with reload (`<PwaPrompts />`, mounted in `main.tsx`)
-- [x] iOS: `apple-touch-icon`, web-app meta tags, a one-time "Add to Home Screen" hint in Safari
-- [x] Installability checked without Lighthouse (Lighthouse not installed here): Chrome DevTools Protocol `Page.getInstallabilityErrors` is empty in a persistent profile, the manifest parses with no errors, `navigator.serviceWorker.ready` resolves, the page is controlled after reload, the shell loads offline, `/api/*` is never cached. Paste in the PR (G-34)
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
 ### Wave 3
 
 #### T-13 · Auth backend (Better Auth on Workers + D1)
@@ -440,7 +442,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-06 | T-21, T-22, T-23 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-13-auth-api`
+**Status:** in progress · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
 **Owns:** `src/worker/auth/**`, `src/worker/middleware/session.ts`, `src/worker/routes/auth.ts`, auth migrations in `migrations/`
 **Goal:** Email and Google sign-in with sessions stored in D1, and a `requireUser` middleware every API route uses.
 **Done when:** the workers-pool tests cover sign up, sign in, session read, a protected route (401 vs 200) and sign out.
@@ -463,13 +465,13 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High (one agent per chapter) | L total, M per chapter | T-07 | T-24 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-14-stage1-<chapterId>` (one per chapter)
+**Status:** in progress · **Claimed by:** lead (briefs) + one T-14 subagent per chapter · **Branch:** `task/T-14-stage1-<chapterId>` (one per chapter)
 **Owns:** `scripts/content/prompts/**` (lead only), `content/chapters/<chapterId>/**` (each sub-agent owns exactly one chapter folder)
 **Goal:** Original, leveled Stage 1 lessons: 3–5 texts per chapter, a grammar note and a starter deck, with every token annotated so the reader is exact.
 **Done when:** all 8 Stage 1 chapters pass `npm run content:check` and are handed to T-24 for QA.
 
-- [ ] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
-- [ ] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
+- [x] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
+- [x] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
 - [ ] Fan out, one sub-agent per chapter (tick when that chapter passes `content:check`):
   - [ ] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
   - [ ] Ch 1 · Articles
@@ -491,7 +493,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-04, T-08 | T-25 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-15-tokenizer`
+**Status:** blocked (waiting on T-08) · **Claimed by:** — · **Branch:** `task/T-15-tokenizer`
 **Owns:** `src/shared/text/**`
 **Goal:** Turn any French text into tappable tokens and sentences, and give each word the best lemma and form info available.
 **Done when:** a table-driven test of tricky inputs passes (elision, hyphenated inversion, French punctuation, compounds, abbreviations).
@@ -513,7 +515,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-11 | T-26 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-16-today`
+**Status:** in progress · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today`
 **Owns:** `src/client/features/today/**`, `src/client/lib/activity/**`, `src/client/mocks/handlers/today.ts`
 **Goal:** The daily screen from `Today.dc.html`: review first, then the book, reading and output.
 **Done when:** it matches the mockup at 390 px with fixture data, the edge states work, and tests pass.
@@ -537,7 +539,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-07 | T-26 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-17-path-chapter`
+**Status:** in progress · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
 **Owns:** `src/client/features/path/**`, `src/client/features/chapter/**`, `src/client/mocks/handlers/path.ts`
 **Goal:** `Path.dc.html` and `Chapter.dc.html`: the winding stage path and the chapter page that sits next to the book.
 **Done when:** both match their mockups with the real `course.json`, setting the current chapter works (mocked), and tests pass.
@@ -558,7 +560,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-10 | T-26 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-18-review`
+**Status:** in progress · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review`
 **Owns:** `src/client/features/review/**`, `src/client/mocks/handlers/review.ts`
 **Goal:** `Review.dc.html` and `ReviewDone.dc.html`: a fast SRS session with the 3 card types and FSRS interval previews.
 **Done when:** a mocked session can be completed end to end, the stats math is tested, and the screens match the mockups.
@@ -579,7 +581,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-09, T-11 | T-26 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-19-streak-practice`
+**Status:** in progress · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice`
 **Owns:** `src/client/features/streak/**`, `src/client/features/practice/**`, `src/client/mocks/handlers/streak.ts`
 **Goal:** `Streak.dc.html` and `Practice.dc.html`.
 **Done when:** both match their mockups with fixture data and tests pass.
@@ -596,7 +598,7 @@ Notes for T-13 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-09 | T-26 | 3 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-20-settings`
+**Status:** in progress · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings`
 **Owns:** `src/client/features/settings/**`, `src/client/mocks/handlers/settings.ts`
 **Goal:** The MVP subset of `Settings.dc.html`.
 **Done when:** changing a setting persists through the (mocked) profile API and tests pass.
