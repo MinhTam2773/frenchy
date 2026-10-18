@@ -662,7 +662,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [x] `POST /api/cards` (from a saved word or sentence; dedupe on type + front)
 - [x] `POST /api/cards/starter/:chapterId` (adds the chapter's starter deck; idempotent)
 - [x] `POST /api/reviews`: validate the rating, recompute the next state on the server with T-10 (the client's preview is not trusted), update the card and insert the review in one D1 batch
-- [ ] `PUT /api/words/:lemma` (status)
+- [x] `PUT /api/words/:lemma` (status), plus `GET /api/words` (in the contract)
 - [ ] `POST /api/activity/ping` (minute deltas, idempotent per minute) and `GET /api/streak` (T-11 over about the last 400 days)
 - [ ] Every route uses `requireUser` + `scopedDb` + zod validation; one error JSON shape
 - [ ] Tests per endpoint, including cross-user isolation
