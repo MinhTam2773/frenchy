@@ -1,7 +1,7 @@
 {
   "id": "ch33-le-premier-jour",
   "chapterId": "ch33",
-  "title": "Le premier jour",
+  "title": "Bienvenue dans l'équipe",
   "kind": "dialogue",
   "minutes": 2,
   "paragraphs": [
@@ -41,8 +41,7 @@
               "t": "bienvenue",
               "lemma": "bienvenue",
               "pos": "interjection",
-              "gloss": "welcome",
-              "isNew": true
+              "gloss": "welcome"
             },
             {
               "t": " !"
@@ -374,8 +373,7 @@
               "pos": "adjective",
               "gender": "m",
               "gloss": "new",
-              "form": "masculine singular · feminine: nouvelle",
-              "isNew": true
+              "form": "masculine singular · feminine: nouvelle"
             },
             {
               "t": " "
@@ -426,8 +424,7 @@
               "lemma": "commencer",
               "pos": "verb",
               "gloss": "start",
-              "form": "je · present · -er verb (c becomes ç before -ons)",
-              "isNew": true
+              "form": "je · present · -er verb (c becomes ç before -ons)"
             },
             {
               "t": " "
@@ -436,8 +433,7 @@
               "t": "aujourd'hui",
               "lemma": "aujourd'hui",
               "pos": "adverb",
-              "gloss": "today",
-              "isNew": true
+              "gloss": "today"
             },
             {
               "t": "."
@@ -614,7 +610,8 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "train",
-              "form": "masculine singular"
+              "form": "masculine singular",
+              "isNew": true
             },
             {
               "t": "."
@@ -661,7 +658,8 @@
               "pos": "adjective",
               "gender": "m",
               "gloss": "handy, convenient",
-              "form": "same form in the masculine and feminine"
+              "form": "same form in the masculine and feminine",
+              "isNew": true
             },
             {
               "t": "."
@@ -882,7 +880,8 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "Spanish (the language)",
-              "form": "masculine singular · languages are masculine"
+              "form": "masculine singular · languages are masculine",
+              "isNew": true
             },
             {
               "t": "."
@@ -928,8 +927,7 @@
               "lemma": "déjeuner",
               "pos": "verb",
               "gloss": "have lunch",
-              "form": "nous · present · -er verb",
-              "isNew": true
+              "form": "nous · present · -er verb"
             },
             {
               "t": " "
@@ -1109,16 +1107,7 @@
       ]
     }
   ],
-  "newWords": [
-    "bienvenue",
-    "directeur",
-    "équipe",
-    "nouveau",
-    "comptable",
-    "commencer",
-    "aujourd'hui",
-    "déjeuner"
-  ],
+  "newWords": ["directeur", "équipe", "comptable", "train", "pratique", "espagnol"],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",
