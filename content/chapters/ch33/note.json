@@ -1,0 +1,40 @@
+{
+  "chapterId": "ch33",
+  "title": "se présenter",
+  "subtitle": "to introduce yourself",
+  "rows": [
+    {
+      "label": "Your name",
+      "fr": "Je m'appelle Inès."
+    },
+    {
+      "label": "Ask a friend",
+      "fr": "Tu t'appelles comment ?"
+    },
+    {
+      "label": "Ask politely",
+      "fr": "Comment vous appelez-vous ?"
+    },
+    {
+      "label": "Where from",
+      "fr": "Je suis de Nantes."
+    },
+    {
+      "label": "Where you live",
+      "fr": "J'habite à Lille."
+    },
+    {
+      "label": "Your job",
+      "fr": "Je suis infirmière."
+    },
+    {
+      "label": "What you like",
+      "fr": "J'aime le jazz."
+    },
+    {
+      "label": "Nice to meet you",
+      "fr": "Enchanté ! / Enchantée !"
+    }
+  ],
+  "tip": "No article before a job or a nationality: je suis cuisinier, je suis canadienne."
+}

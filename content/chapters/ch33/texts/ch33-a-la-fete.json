@@ -1,0 +1,1129 @@
+{
+  "id": "ch33-a-la-fete",
+  "chapterId": "ch33",
+  "title": "À la fête",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Théo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "hi"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "m'",
+              "lemma": "me",
+              "pos": "pronoun",
+              "gloss": "myself",
+              "form": "reflexive pronoun · je m'appelle = my name is"
+            },
+            {
+              "t": "appelle",
+              "lemma": "appeler",
+              "pos": "verb",
+              "gloss": "am called",
+              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Théo",
+              "lemma": "Théo",
+              "pos": "name",
+              "gloss": "Théo (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "My name is Théo."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "t'",
+              "lemma": "te",
+              "pos": "pronoun",
+              "gloss": "yourself",
+              "form": "reflexive pronoun · tu t'appelles = your name is"
+            },
+            {
+              "t": "appelles",
+              "lemma": "appeler",
+              "pos": "verb",
+              "gloss": "are called",
+              "form": "tu · present · -er verb (l becomes ll) · s'appeler · tu t'appelles = your name is",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "comment",
+              "lemma": "comment",
+              "pos": "adverb",
+              "gloss": "how",
+              "form": "question word"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "What's your name?"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "m'",
+              "lemma": "me",
+              "pos": "pronoun",
+              "gloss": "myself",
+              "form": "reflexive pronoun · je m'appelle = my name is"
+            },
+            {
+              "t": "appelle",
+              "lemma": "appeler",
+              "pos": "verb",
+              "gloss": "am called",
+              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "My name is Inès."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Enchantée",
+              "lemma": "enchanté",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "nice to meet you",
+              "form": "feminine singular · said by a woman (a man writes enchanté)",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Nice to meet you!"
+        }
+      ]
+    },
+    {
+      "speaker": "Théo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Enchanté",
+              "lemma": "enchanté",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice to meet you",
+              "form": "masculine singular · said by a man (a woman writes enchantée)",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Nice to meet you, Inès."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "d'",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from",
+              "form": "de becomes d' before a vowel"
+            },
+            {
+              "t": "où",
+              "lemma": "où",
+              "pos": "adverb",
+              "gloss": "where",
+              "form": "question word"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Where are you from?"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Nantes",
+              "lemma": "Nantes",
+              "pos": "name",
+              "gloss": "Nantes (a city in western France)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "live",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "in",
+              "form": "à + a city = in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Lille",
+              "lemma": "Lille",
+              "pos": "name",
+              "gloss": "Lille (a city in northern France)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm from Nantes and I live in Lille."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "d'",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from",
+              "form": "de becomes d' before a vowel"
+            },
+            {
+              "t": "ici",
+              "lemma": "ici",
+              "pos": "adverb",
+              "gloss": "here",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you from here?"
+        }
+      ]
+    },
+    {
+      "speaker": "Théo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lillois",
+              "lemma": "lillois",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "from Lille",
+              "form": "masculine singular · feminine: lilloise"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, I'm from Lille."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudiante",
+              "lemma": "étudiant",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "student",
+              "form": "feminine singular · masculine: étudiant",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you a student?"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "étudie",
+              "lemma": "étudier",
+              "pos": "verb",
+              "gloss": "study",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "médecine",
+              "lemma": "médecine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "medicine",
+              "form": "feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · feminine · la becomes l' before a vowel",
+              "gender": "f"
+            },
+            {
+              "t": "université",
+              "lemma": "université",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "university",
+              "form": "feminine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, I study medicine at the university."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "qu'",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "what",
+              "form": "what (asking about a thing)"
+            },
+            {
+              "t": "est",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "what (asking about a thing)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "it",
+              "form": "what (asking about a thing)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "that",
+              "form": "what (asking about a thing)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fais",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "do",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vie",
+              "lemma": "vie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "life",
+              "form": "feminine singular · dans la vie = for a living",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "And what do you do for a living?"
+        }
+      ]
+    },
+    {
+      "speaker": "Théo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisinier",
+              "lemma": "cuisinier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cook",
+              "form": "masculine singular · feminine: cuisinière",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm a cook."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travaille",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "work",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "m",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "restaurant",
+              "lemma": "restaurant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "restaurant",
+              "form": "masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "italien",
+              "lemma": "italien",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "Italian",
+              "form": "masculine singular · feminine: italienne"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I work in an Italian restaurant."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "adjective",
+              "gloss": "great",
+              "form": "invariable · informal"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "adore",
+              "lemma": "adorer",
+              "pos": "verb",
+              "gloss": "love",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "food, cooking",
+              "form": "feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "italienne",
+              "lemma": "italien",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "Italian",
+              "form": "feminine singular · masculine: italien"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I love Italian food."
+        }
+      ]
+    },
+    {
+      "speaker": "Théo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "so, then"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "peux",
+              "lemma": "pouvoir",
+              "pos": "verb",
+              "gloss": "can",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "passer",
+              "lemma": "passer",
+              "pos": "verb",
+              "gloss": "drop by",
+              "form": "infinitive · -er verb · after pouvoir",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "restaurant",
+              "lemma": "restaurant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "restaurant",
+              "form": "masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday",
+              "form": "masculine singular · samedi = this Saturday"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "masculine singular · samedi soir = on Saturday evening"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then you can drop by the restaurant on Saturday evening."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "(it)",
+              "form": "there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "is, are",
+              "form": "there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "m",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "concert",
+              "lemma": "concert",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "concert",
+              "form": "masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "un concert de jazz = a jazz concert"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jazz",
+              "lemma": "jazz",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "jazz",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's a jazz concert."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Avec",
+              "lemma": "avec plaisir",
+              "pos": "phrase",
+              "gloss": "with",
+              "form": "with pleasure, I'd love to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plaisir",
+              "lemma": "avec plaisir",
+              "pos": "phrase",
+              "gloss": "pleasure",
+              "form": "with pleasure, I'd love to",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "I'd love to!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "aime",
+              "lemma": "aimer",
+              "pos": "verb",
+              "gloss": "like",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beaucoup",
+              "lemma": "beaucoup",
+              "pos": "adverb",
+              "gloss": "a lot",
+              "form": "aimer beaucoup = to really like"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jazz",
+              "lemma": "jazz",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "jazz",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I really like jazz."
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "appeler",
+    "enchanté",
+    "ici",
+    "étudiant",
+    "vie",
+    "cuisinier",
+    "passer",
+    "avec plaisir"
+  ],
+  "grammarTags": [
+    "phrases.greetings",
+    "phrases.introductions",
+    "pronouns.subject",
+    "etre.present",
+    "er.present",
+    "pouvoir.present",
+    "faire.present",
+    "questions.intonation",
+    "questions.est-ce-que",
+    "questions.words",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.contractions",
+    "prepositions.basic",
+    "adjectives.basic",
+    "phrases.c-est"
+  ]
+}

@@ -472,7 +472,7 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High (one agent per chapter) | L total, M per chapter | T-07 | T-24 | 3 |
 
-**Status:** in progress · **Claimed by:** lead (briefs) + one T-14 subagent per chapter · **Branch:** `task/T-14-stage1-<chapterId>` (one per chapter)
+**Status:** in review · **Claimed by:** lead (briefs) + one T-14 subagent per chapter · **Branch:** `task/T-14-stage1-<chapterId>` (one per chapter)
 **Owns:** `scripts/content/prompts/**` (lead only), `content/chapters/<chapterId>/**` (each sub-agent owns exactly one chapter folder)
 **Goal:** Original, leveled Stage 1 lessons: 3–5 texts per chapter, a grammar note and a starter deck, with every token annotated so the reader is exact.
 **Done when:** all 8 Stage 1 chapters pass `npm run content:check` and are handed to T-24 for QA.
@@ -487,12 +487,12 @@ Notes for T-21 / T-22 / T-23:
   - [x] Ch 10 · Present tense of -er verbs
   - [x] Ch 4 · Numbers
   - [x] Ch 7 · Asking questions
-  - [ ] Ch 33 · Conversation: meeting people (dialogues)
-- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json` (7 of 8 so far; ch33 in progress)
-- [ ] `npm run content:check` green for all chapters
-- [ ] Do not self-approve: hand over to T-24 (a different agent)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+  - [x] Ch 33 · Conversation: meeting people (dialogues)
+- [x] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json`
+- [x] `npm run content:check` green for all chapters
+- [x] Do not self-approve: hand over to T-24 (a different agent). Each chapter agent's doubts are in its PR (#20, this PR) for T-24
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR(s) to `main` merged with CI green
 
 #### T-15 · French tokenizer and word annotation
@@ -1384,3 +1384,4 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-71 · 2026-10-18 · text · T-15` — **A character class built by interpolation, `[${APOSTROPHES}${HYPHENS}]` with `HYPHENS = '-‐‑'`, put `ʼ-‐` next to each other, which is a range (U+02BC to U+2010), not three characters. ASCII `-` was no longer a connector, so *peut-être* and *rendez-vous* split while every test of *parles-tu* still passed.** → Escape `-` when interpolating characters into a regex class (`\\${HYPHENS}`), and test the "stays whole" cases, not only the "splits" ones.
 - `L-72 · 2026-10-18 · tooling · T-15` — **`\u00A0` escapes I wrote in regex literals reached the file as real no-break spaces; the code looked identical, and ESLint's `no-irregular-whitespace` was the only thing that noticed.** → In source, write invisible characters as escapes (`'\u00A0'`, a `NBSP` const in tests) and check with `grep -nP '\xA0'` when lint flags whitespace.
 - `L-73 · 2026-10-18 · testing · T-15` — **Lexicon-backed tests timed out at Vitest's 5 s default (12 of 40 in `annotate.test.ts`) during a parallel run: each shard is a 1 to 2 MB JSON module that Vite transforms on its first import, which took 5 to 8 s on a busy 4-core machine.** → A test file that looks up many words warms the shards it needs once in `beforeAll(..., 120_000)` (see `src/shared/text/annotate.test.ts`), instead of raising every test's timeout.
+- `L-78 · 2026-10-18 · content · T-14` — **Chapter agents marked `isNew` on words an earlier chapter already introduced (*étage*, *commencer*, *voisin*…), the lexicon lacks *où* and *bonsoir*, and the brief still described *est-ce que* as three ordinary tokens after the phrase-lemma convention.** → T-24 decides whether `isNew` means "new to the course" (then dedupe across the route) and fixes the brief line; lexicon gaps go to G-58.
