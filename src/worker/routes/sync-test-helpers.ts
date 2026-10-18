@@ -3,7 +3,7 @@ import { createDb, scopedDb } from '../db';
 
 // Test-only helpers for the T-22 route tests (not imported by the Worker).
 
-const ORIGIN = 'https://frenchy.test';
+export const ORIGIN = 'https://frenchy.test';
 const COOKIE_NAME = '__Secure-better-auth.session_token';
 
 function randomIp(): string {
@@ -36,7 +36,7 @@ export async function newUser() {
     });
   }
 
-  return { id: user.id, api, db: scopedDb(createDb(env.DB), user.id) };
+  return { id: user.id, cookie, api, db: scopedDb(createDb(env.DB), user.id) };
 }
 export type TestUser = Awaited<ReturnType<typeof newUser>>;
 
