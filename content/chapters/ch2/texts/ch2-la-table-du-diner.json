@@ -1,0 +1,470 @@
+{
+  "id": "ch2-la-table-du-diner",
+  "chapterId": "ch2",
+  "title": "La table du dîner",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "table",
+              "lemma": "table",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "table",
+              "form": "feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dîner",
+              "lemma": "dîner",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dinner",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the dinner table."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "assiette",
+              "lemma": "assiette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "plate",
+              "form": "feminine singular · -ette ending",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fourchette",
+              "lemma": "fourchette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "fork",
+              "form": "feminine singular · -ette ending",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "couteau",
+              "lemma": "couteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "knife",
+              "form": "masculine singular · -eau ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "serviette",
+              "lemma": "serviette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "napkin",
+              "form": "feminine singular · -ette ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here's a plate, a fork, a knife and a napkin."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "menu",
+              "lemma": "menu",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "menu",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a",
+              "form": "indefinite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salade",
+              "lemma": "salade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "salad",
+              "form": "feminine singular · -ade ending"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "an",
+              "form": "indefinite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "omelette",
+              "lemma": "omelette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "omelette",
+              "form": "feminine singular · -ette ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "some",
+              "form": "partitive article · masculine (de + le)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fromage",
+              "lemma": "fromage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cheese",
+              "form": "masculine singular · -age ending",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On the menu: a salad, an omelette and some cheese."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "baguette",
+              "lemma": "baguette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "baguette (long loaf of bread)",
+              "form": "feminine singular · -ette ending"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "limonade",
+              "lemma": "limonade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lemonade",
+              "form": "feminine singular · -ade ending"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's also the baguette and the lemonade."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voilà",
+              "lemma": "voilà",
+              "pos": "preposition",
+              "gloss": "here is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dessert",
+              "lemma": "dessert",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dessert",
+              "form": "masculine singular"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a",
+              "form": "indefinite article · masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gâteau",
+              "lemma": "gâteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cake",
+              "form": "masculine singular · -eau ending",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "with (flavour)",
+              "form": "à + le becomes au · un gâteau au chocolat = a chocolate cake"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chocolat",
+              "lemma": "chocolat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "chocolate",
+              "form": "masculine singular"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "And here's dessert: a chocolate cake!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["assiette", "fourchette", "couteau", "serviette", "omelette", "fromage", "gâteau"],
+  "grammarTags": [
+    "gender.basic",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "phrases.c-est"
+  ]
+}
