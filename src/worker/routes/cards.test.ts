@@ -153,6 +153,23 @@ describe('GET /api/cards/due', () => {
     });
   });
 
+  test('a card the learner saved starts before the starter deck under the daily cap', async () => {
+    const user = await newUser();
+    const now = Date.now();
+    await insertCards(
+      user,
+      Array.from({ length: NEW_CARDS_PER_DAY + 5 }, (_, i) => ({
+        source: { kind: 'starter' as const, ref: `ch1-card-${i}` },
+        due: now - DAY,
+        createdAt: now - DAY,
+      })),
+    );
+    const [saved] = await insertCards(user, [{ source: { kind: 'word', ref: 'voici' } }]);
+    const cards = await due(user, '?limit=100');
+    expect(cards).toHaveLength(NEW_CARDS_PER_DAY);
+    expect(cards.map((card) => card.id)).toContain(saved?.id);
+  });
+
   test.each(['?limit=0', '?limit=101', '?limit=ten'])('refuses %s', async (query) => {
     const user = await newUser();
     const res = await user.api(`/cards/due${query}`);

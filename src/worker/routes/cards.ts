@@ -1,4 +1,4 @@
-import { and, asc, eq, gt, gte, like, lte, ne } from 'drizzle-orm';
+import { and, asc, eq, gt, gte, like, lte, ne, sql } from 'drizzle-orm';
 import { NEW_CARDS_PER_DAY } from '../../shared/constants';
 import { getChapter, getDeck } from '../../shared/content';
 import {
@@ -56,10 +56,14 @@ async function newCardsLeftToday(db: ScopedDb, now: number): Promise<number> {
   return Math.max(0, NEW_CARDS_PER_DAY - startedToday);
 }
 
+/**
+ * New cards in the order the daily cap lets them in: cards the learner saved (a reader word or
+ * sentence) before starter-deck cards, so a saved word isn't stuck behind a 24-card deck for days.
+ */
 function dueNew(db: ScopedDb, now: number) {
   return db.cards
     .select(and(eq(cards.state, 'new'), lte(cards.due, now)))
-    .orderBy(asc(cards.due), asc(cards.createdAt));
+    .orderBy(sql`${cards.sourceKind} = 'starter'`, asc(cards.due), asc(cards.createdAt));
 }
 
 function dueStarted(db: ScopedDb, now: number) {

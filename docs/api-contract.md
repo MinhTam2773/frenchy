@@ -77,7 +77,7 @@ Better Auth's routes keep their own error format.
 
 ### Cards and reviews
 
-- `GET /api/cards/due?limit=20` → `{ cards: Card[] }`, most overdue first. `limit` is 1–100 (default 20, `DUE_LIMIT`). New cards count against `NEW_CARDS_PER_DAY` (10) per local day.
+- `GET /api/cards/due?limit=20` → `{ cards: Card[] }`, most overdue first. `limit` is 1–100 (default 20, `DUE_LIMIT`). New cards count against `NEW_CARDS_PER_DAY` (10) per local day; under that cap, cards the learner saved (`source.kind` other than `starter`) are let in before starter-deck cards.
 - `GET /api/cards/stats` → `CardStats`: how many cards are due now (`due`), split into `new`, `learning` (includes relearning) and `review`, with the same new-card cap as `/due`, so `due` is what a session would show. `nextDueAt` is the earliest future due time, or `null` with no cards.
 - `POST /api/cards` with `CardCreate` → `Card`. Dedupes on `type` + `front`: an existing card comes back with `200`, a new one with `201`. The server sets the id and a new FSRS state (due now).
 - `POST /api/cards/starter/:chapterId` → `{ added, total }`. Adds the chapter's `deck.json` cards with `source = { kind: 'starter', ref: <deck card id> }`. Idempotent: cards already added are skipped (`added: 0` the second time). `404` for an unknown chapter.
