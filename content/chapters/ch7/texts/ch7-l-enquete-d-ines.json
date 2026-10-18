@@ -1,0 +1,1012 @@
+{
+  "id": "ch7-l-enquete-d-ines",
+  "chapterId": "ch7",
+  "title": "L'enquête d'Inès",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudiante",
+              "lemma": "étudiant",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "student",
+              "form": "feminine singular · masculine: étudiant",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Inès is a student."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Aujourd'hui",
+              "lemma": "aujourd'hui",
+              "pos": "adverb",
+              "gloss": "today"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "is doing",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enquête",
+              "lemma": "enquête",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "survey",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "at the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Today, she is doing a survey at the market."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "has",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "liste",
+              "lemma": "liste",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "list",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "questions",
+              "lemma": "question",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "questions",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She has a list of questions."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "(to)",
+              "form": "demander à quelqu'un = to ask someone"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "man, gentleman",
+              "form": "polite word for a man"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Où",
+              "lemma": "où",
+              "pos": "adverb",
+              "gloss": "where",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habitez",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "live",
+              "form": "vous · present · -er verb · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · vous · after the verb in an inverted question"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "She asks a man, “Where do you live?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "lives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quartier",
+              "lemma": "quartier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighbourhood",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He lives in the neighbourhood."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Comment",
+              "lemma": "comment",
+              "pos": "adverb",
+              "gloss": "how",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trouvez",
+              "lemma": "trouver",
+              "pos": "verb",
+              "gloss": "find",
+              "form": "vous · present · -er verb · inverted question (verb-pronoun) · comment trouvez-vous … ? = what do you think of … ?",
+              "isNew": true
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · vous · after the verb in an inverted question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "She also asks, “What do you think of the market?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "man, gentleman",
+              "form": "polite word for a man"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trouve",
+              "lemma": "trouver",
+              "pos": "verb",
+              "gloss": "finds",
+              "form": "il / elle · present · -er verb · trouver + noun + adjective = to think something is …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sympa",
+              "lemma": "sympa",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice",
+              "form": "same form for masculine and feminine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The man thinks the market is really nice."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "next, then"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parle",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "talks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dame",
+              "lemma": "dame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lady, woman",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Next, Inès talks to a woman."
+        },
+        {
+          "tokens": [
+            {
+              "t": "« "
+            },
+            {
+              "t": "Qu'",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "what",
+              "form": "qu'est-ce que = what (object of the verb)"
+            },
+            {
+              "t": "est",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "what",
+              "form": "qu'est-ce que = what (object of the verb)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "what",
+              "form": "qu'est-ce que = what (object of the verb)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "what",
+              "form": "qu'est-ce que = what (object of the verb)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person formal or plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "achetez",
+              "lemma": "acheter",
+              "pos": "verb",
+              "gloss": "are buying",
+              "form": "vous · present · -er verb"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "“What are you buying?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "La",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dame",
+              "lemma": "dame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lady, woman"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "achète",
+              "lemma": "acheter",
+              "pos": "verb",
+              "gloss": "is buying",
+              "form": "il / elle · present · -er verb (e becomes è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural (often not translated)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tomates",
+              "lemma": "tomate",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tomatoes",
+              "form": "feminine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "some",
+              "form": "partitive article · masculine (often not translated)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fromage",
+              "lemma": "fromage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cheese"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The woman is buying tomatoes and cheese."
+        },
+        {
+          "tokens": [
+            {
+              "t": "« "
+            },
+            {
+              "t": "Quand",
+              "lemma": "quand",
+              "pos": "adverb",
+              "gloss": "when",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faites",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "do",
+              "form": "vous · present · irregular · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · vous · after the verb in an inverted question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "courses",
+              "lemma": "course",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "shopping",
+              "form": "feminine plural · faire les courses = to do the shopping",
+              "isNew": true
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "“When do you do your shopping?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "« "
+            },
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on",
+              "form": "le + day = every …day"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday",
+              "form": "le samedi = on Saturdays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "matin",
+              "lemma": "matin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "morning",
+              "form": "le samedi matin = on Saturday mornings"
+            },
+            {
+              "t": ". »"
+            }
+          ],
+          "en": "“On Saturday mornings.”"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "garçon",
+              "lemma": "garçon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "boy"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "regarde",
+              "lemma": "regarder",
+              "pos": "verb",
+              "gloss": "looks at",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "A boy looks at Inès."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "journaliste",
+              "lemma": "journaliste",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "journalist",
+              "form": "same form for a man or a woman · no article after être"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "He asks, “Are you a journalist?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rigole",
+              "lemma": "rigoler",
+              "pos": "verb",
+              "gloss": "laughs",
+              "form": "il / elle · present · -er verb · informal"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "interjection",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudiante",
+              "lemma": "étudiant",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "student",
+              "form": "feminine singular · masculine: étudiant"
+            },
+            {
+              "t": " ! »"
+            }
+          ],
+          "en": "Inès laughs: “No, I’m a student!”"
+        }
+      ]
+    }
+  ],
+  "newWords": ["étudiant", "enquête", "liste", "quartier", "trouver", "dame", "course"],
+  "grammarTags": [
+    "questions.intonation",
+    "questions.est-ce-que",
+    "questions.inversion",
+    "questions.words",
+    "pronouns.subject",
+    "etre.present",
+    "avoir.present",
+    "faire.present",
+    "er.present",
+    "er.spelling-changes",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "nouns.plural",
+    "prepositions.basic"
+  ]
+}

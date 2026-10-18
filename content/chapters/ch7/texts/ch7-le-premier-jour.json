@@ -1,0 +1,972 @@
+{
+  "id": "ch7-le-premier-jour",
+  "chapterId": "ch7",
+  "title": "Le premier jour",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Sophie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "nouveau",
+              "lemma": "nouveau",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "new",
+              "form": "masculine singular · feminine: nouvelle",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you new?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "interjection",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commence",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "am starting",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aujourd'hui",
+              "lemma": "aujourd'hui",
+              "pos": "adverb",
+              "gloss": "today",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, I’m starting today."
+        }
+      ]
+    },
+    {
+      "speaker": "Sophie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travailles",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "are working",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Claire",
+              "lemma": "Claire",
+              "pos": "name",
+              "gloss": "Claire (a name)"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you working with Claire?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "interjection",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travaille",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "work",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Paul",
+              "lemma": "Paul",
+              "pos": "name",
+              "gloss": "Paul (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "deuxième",
+              "lemma": "deuxième",
+              "pos": "number",
+              "gloss": "second",
+              "form": "ordinal number"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étage",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floor (of a building)",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No, I work with Paul, on the second floor."
+        }
+      ]
+    },
+    {
+      "speaker": "Sophie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aimes",
+              "lemma": "aimer",
+              "pos": "verb",
+              "gloss": "like",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coffee"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you like coffee?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "interjection",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "adore",
+              "lemma": "adorer",
+              "pos": "verb",
+              "gloss": "love",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "coffee"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Yes, I love coffee!"
+        }
+      ]
+    },
+    {
+      "speaker": "Sophie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habites",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "live",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Lille",
+              "lemma": "Lille",
+              "pos": "name",
+              "gloss": "Lille (a city in northern France)"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you live in Lille?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "interjection",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "live",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Roubaix",
+              "lemma": "Roubaix",
+              "pos": "name",
+              "gloss": "Roubaix (a town next to Lille)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No, I live in Roubaix."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Lille",
+              "lemma": "Lille",
+              "pos": "name",
+              "gloss": "Lille (a city in northern France)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don’t know Lille."
+        }
+      ]
+    },
+    {
+      "speaker": "Sophie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "manges",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eat",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cantine",
+              "lemma": "cantine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "canteen, cafeteria",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you eat in the canteen?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sais",
+              "lemma": "savoir",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don’t know."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "qu'",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que becomes est-ce qu' before a vowel"
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular feminine (la cantine)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bonne",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "good",
+              "form": "feminine singular · masculine: bon"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Is it good?"
+        }
+      ]
+    },
+    {
+      "speaker": "Sophie",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "interjection",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular feminine (la cantine)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bonne",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "good",
+              "form": "feminine singular · masculine: bon"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Yes, it’s very good!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on",
+              "form": "le + day = every …day"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jeudi",
+              "lemma": "jeudi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Thursday",
+              "form": "le jeudi = on Thursdays"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "is, are",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural (often not translated)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "frites",
+              "lemma": "frite",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "fries, chips",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Thursdays, there are fries."
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "interjection",
+              "gloss": "great"
+            },
+            {
+              "t": " ! "
+            },
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Sophie",
+              "lemma": "Sophie",
+              "pos": "name",
+              "gloss": "Sophie (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Great! Thanks, Sophie."
+        }
+      ]
+    }
+  ],
+  "newWords": ["nouveau", "commencer", "aujourd'hui", "étage", "adorer", "cantine", "frite"],
+  "grammarTags": [
+    "questions.intonation",
+    "questions.est-ce-que",
+    "pronouns.subject",
+    "etre.present",
+    "er.present",
+    "savoir.present",
+    "negation.ne-pas",
+    "adjectives.basic",
+    "numbers.ordinal",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.contractions",
+    "phrases.c-est",
+    "prepositions.basic"
+  ]
+}

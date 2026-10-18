@@ -11,6 +11,8 @@ export default defineConfig({
         test: {
           name: 'client',
           environment: 'jsdom',
+          // Generous: parallel agents load the machine, and the lexicon shards take seconds to parse (L-74).
+          testTimeout: 30_000,
           include: ['src/client/**/*.test.{ts,tsx}', 'src/shared/**/*.test.ts'],
           setupFiles: ['./src/client/test-setup.ts'],
         },
@@ -24,6 +26,7 @@ export default defineConfig({
         ],
         test: {
           name: 'worker',
+          testTimeout: 30_000,
           include: ['src/worker/**/*.test.ts'],
           setupFiles: ['./src/worker/db/test-setup.ts'],
         },

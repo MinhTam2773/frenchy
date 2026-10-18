@@ -1,0 +1,962 @@
+{
+  "id": "ch4-vite-emma",
+  "chapterId": "ch4",
+  "title": "Vite, Emma !",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Paul",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "il est … heures = it’s … o’clock"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sept",
+              "lemma": "sept",
+              "pos": "number",
+              "gloss": "seven"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hours",
+              "form": "feminine plural · the minutes come after heures: sept heures quarante-deux = 7:42"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "past (and)",
+              "form": "et demie = half past"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demie",
+              "lemma": "demi",
+              "pos": "adjective",
+              "gloss": "half",
+              "form": "feminine, agrees with heure · et demie = half past",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Emma, it’s half past seven!"
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "non",
+              "lemma": "non",
+              "pos": "adverb",
+              "gloss": "no"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh no!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bus",
+              "lemma": "bus",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bus"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "passe",
+              "lemma": "passer",
+              "pos": "verb",
+              "gloss": "comes (by)",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "huit",
+              "lemma": "huit",
+              "pos": "number",
+              "gloss": "eight"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hours",
+              "form": "feminine plural · the minutes come after heures: sept heures quarante-deux = 7:42"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "moins",
+              "lemma": "moins",
+              "pos": "adverb",
+              "gloss": "to (minus)",
+              "form": "huit heures moins le quart = a quarter to eight",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a (quarter)",
+              "form": "definite article · moins le quart = quarter to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quart",
+              "lemma": "quart",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "quarter",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The bus comes at a quarter to eight."
+        }
+      ]
+    },
+    {
+      "speaker": "Paul",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "as",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quinze",
+              "lemma": "quinze",
+              "pos": "number",
+              "gloss": "fifteen"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "minutes",
+              "lemma": "minute",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "minutes",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "You have fifteen minutes."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "voilà = here is, there is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tartine",
+              "lemma": "tartine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "slice of bread with butter or jam"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here’s a slice of bread and butter."
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Papa",
+              "lemma": "papa",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Dad"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thanks, Dad!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cours",
+              "lemma": "cours",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "lesson",
+              "form": "same in the plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "(no translation)",
+              "form": "le cours de piano = the piano lesson"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "piano",
+              "lemma": "piano",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "piano"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commence",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "starts",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix-sept",
+              "lemma": "dix-sept",
+              "pos": "number",
+              "gloss": "seventeen",
+              "form": "17 = 10 + 7 · dix-sept heures = 5 p.m."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · à quatorze heures = at 2 p.m."
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The piano lesson starts at five p.m."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rentre",
+              "lemma": "rentrer",
+              "pos": "verb",
+              "gloss": "get home",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix-huit",
+              "lemma": "dix-huit",
+              "pos": "number",
+              "gloss": "eighteen",
+              "form": "18 = 10 + 8 · dix-huit heures = 6 p.m."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hours",
+              "form": "feminine plural · the minutes come after heures: sept heures quarante-deux = 7:42"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trente",
+              "lemma": "trente",
+              "pos": "number",
+              "gloss": "thirty"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I get home at six thirty."
+        }
+      ]
+    },
+    {
+      "speaker": "Paul",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Aujourd'hui",
+              "lemma": "aujourd'hui",
+              "pos": "adverb",
+              "gloss": "today"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travaille",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "work",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tard",
+              "lemma": "tard",
+              "pos": "adverb",
+              "gloss": "late"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Today, I’m working late."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rentre",
+              "lemma": "rentrer",
+              "pos": "verb",
+              "gloss": "get home",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vingt",
+              "lemma": "vingt",
+              "pos": "number",
+              "gloss": "twenty",
+              "form": "vingt heures = 8 p.m."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · à quatorze heures = at 2 p.m."
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I get home at eight p.m."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Mamie",
+              "lemma": "mamie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Grandma"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "arrive",
+              "lemma": "arriver",
+              "pos": "verb",
+              "gloss": "arrives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix-huit",
+              "lemma": "dix-huit",
+              "pos": "number",
+              "gloss": "eighteen",
+              "form": "18 = 10 + 8 · dix-huit heures = 6 p.m."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hours",
+              "form": "feminine plural · the minutes come after heures: sept heures quarante-deux = 7:42"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quinze",
+              "lemma": "quinze",
+              "pos": "number",
+              "gloss": "fifteen"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Grandma arrives at a quarter past six."
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "D'",
+              "lemma": "d'accord",
+              "pos": "phrase",
+              "gloss": "OK",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "accord",
+              "lemma": "d'accord",
+              "pos": "phrase",
+              "gloss": "OK",
+              "form": "fixed phrase"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "OK."
+        }
+      ]
+    },
+    {
+      "speaker": "Paul",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "numéro",
+              "lemma": "numéro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "number",
+              "form": "le numéro de téléphone = the phone number",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "de + noun = ’s (l’anniversaire de Léo = Léo’s birthday)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Mamie",
+              "lemma": "mamie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Grandma"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "c'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c’ before a vowel"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · c’est le … = the number is …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "zéro",
+              "lemma": "zéro",
+              "pos": "number",
+              "gloss": "zero",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatre",
+              "lemma": "quatre",
+              "pos": "number",
+              "gloss": "four"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "soixante-dix",
+              "lemma": "soixante-dix",
+              "pos": "number",
+              "gloss": "seventy",
+              "form": "70 = 60 + 10"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "vingt-deux",
+              "lemma": "vingt-deux",
+              "pos": "number",
+              "gloss": "twenty-two"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "quinze",
+              "lemma": "quinze",
+              "pos": "number",
+              "gloss": "fifteen"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "quatre-vingt-un",
+              "lemma": "quatre-vingt-un",
+              "pos": "number",
+              "gloss": "eighty-one",
+              "form": "81 = 4 × 20 + 1 · no et, unlike vingt et un"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Grandma’s number is 04 70 22 15 81."
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sais",
+              "lemma": "savoir",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Papa",
+              "lemma": "papa",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Dad"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "I know, Dad!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "il est … heures = it’s … o’clock"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sept",
+              "lemma": "sept",
+              "pos": "number",
+              "gloss": "seven"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hours",
+              "form": "feminine plural · the minutes come after heures: sept heures quarante-deux = 7:42"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quarante-deux",
+              "lemma": "quarante-deux",
+              "pos": "number",
+              "gloss": "forty-two"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Oh, it’s seven forty-two."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "revoir",
+              "lemma": "au revoir",
+              "pos": "phrase",
+              "gloss": "goodbye",
+              "form": "fixed phrase"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Bye!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["demi", "passer", "moins", "quart", "minute", "rentrer", "numéro", "zéro"],
+  "grammarTags": [
+    "time.clock",
+    "numbers.0-100",
+    "er.present",
+    "avoir.present",
+    "etre.present",
+    "savoir.present",
+    "phrases.greetings",
+    "phrases.c-est",
+    "pronouns.subject"
+  ]
+}
