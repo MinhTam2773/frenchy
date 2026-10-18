@@ -133,7 +133,7 @@
             {
               "t": "Voilà",
               "lemma": "voilà",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here are",
               "form": "points something out · voilà = there is, here is"
             },
@@ -209,7 +209,7 @@
             },
             {
               "t": "du",
-              "lemma": "de",
+              "lemma": "du",
               "pos": "article",
               "gender": "m",
               "gloss": "some",
@@ -340,7 +340,7 @@
             {
               "t": "Voici",
               "lemma": "voici",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here is",
               "form": "points something out · voici = here is, here are"
             },
@@ -436,7 +436,7 @@
             {
               "t": "Voilà",
               "lemma": "voilà",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here are",
               "form": "points something out · voilà = there is, here is"
             },
