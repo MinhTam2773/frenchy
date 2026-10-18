@@ -802,7 +802,7 @@ Wave 5 is done (T-26 moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-26 | — | 6 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-28-a11y`
+**Status:** in progress · **Claimed by:** Wave 6 agent (T-28) · **Branch:** `task/T-28-a11y`
 **Owns:** a11y fixes across `src/client/**`, `e2e/a11y.spec.ts`
 **Goal:** WCAG 2.1 AA on every screen, on real phone widths.
 **Done when:** axe reports no violations on any route and the manual checks below pass.
