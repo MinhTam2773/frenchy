@@ -698,7 +698,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Extra | M | T-14, T-08 | T-30 | 4 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-24-content-qa`
+**Status:** in progress · **Claimed by:** T-24 agent (wave 4 lead session) · **Branch:** `task/T-24-content-qa`
 **Owns:** fixes in `content/chapters/**`, `docs/content-qa.md`
 **Goal:** An independent check (fresh agent, not the T-14 author) that every Stage 1 text and card is correct, natural and at the right level.
 **Done when:** `docs/content-qa.md` lists every finding with its fix, lexicon coverage is ≥ 98%, and `content:check` is green.
