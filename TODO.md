@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 26 · NEXT 10 (5 ready: T-21 to T-25) · BACKLOG 26
+**Progress:** DONE 32 · NEXT 5 (T-26 in progress; T-27 to T-30 blocked) · BACKLOG 29
 
 ---
 
@@ -581,6 +581,149 @@ Notes for T-21 / T-22 / T-23:
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [x] Finish: PR to `main` merged with CI green
 
+### T-08 · Offline lexicon pipeline
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Opus 5.5 · High | L | T-04 | T-15, T-24 | 2 |
+
+**Status:** done · **Claimed by:** T-08 subagent (lead session) · **Branch:** `task/T-08-lexicon` · **PR:** https://github.com/MinhTam2773/frenchy/pull/17
+**Owns:** `scripts/lexicon/**`, `content/lexicon/**`, `src/shared/lexicon/**`, `docs/LICENSES.md`
+**Goal:** Instant, free word taps: a compact French → English lexicon with form → lemma lookup, shipped as static JSON.
+**Done when:** `lookupForm('vais')` returns *aller* (1st person singular, present), the shards fit the size budget, and the license and attribution are recorded.
+
+- [x] Research the source: Wiktionary-derived data (e.g. wiktextract / kaikki.org French entries with English glosses). Record the license (Wiktionary text is CC BY-SA and GFDL) and the attribution needed in `docs/LICENSES.md`; log the decision as a lesson (kaikki.org French extract of 2026-10-03, used under CC BY-SA 4.0; L-29)
+- [x] If the license blocks what PLAN wants (sharing the app with others), stop, write a `QUESTION:` under this task and in G-01, and propose alternatives (not needed: the owner accepts CC BY-SA attribution + share-alike on the lexicon data; the remaining duty is a credits screen, B-21, see G-25)
+- [x] Build script reads the raw dump from a local path (gitignored, never committed) and keeps French entries for the parts of speech we need (`npm run lexicon:build`; dumps in `scripts/lexicon/raw/`, URLs in the script header)
+- [x] Frequency: pick a frequency list with a compatible license; keep the top ~10k lemmas plus every lemma used in `content/` (Lexique 3.83 lemma frequencies, CC BY-SA 4.0; top 10,000 lemma + pos pairs)
+- [x] Output `content/lexicon/lemmas-<shard>.json` (lemma → pos, gender, ≤ 3 glosses, rank) and `content/lexicon/forms-<shard>.json` (form → candidates with person, number, tense, mood), sharded by first letter; budget ≤ 2 MB gzipped total (27 shards each, a–z + `other`; 10,102 lexemes, 97,544 forms; 14.1 MB raw, 1.04 MB gzipped)
+- [x] `src/shared/lexicon/lookup.ts`: `lookupForm(form)` lazy-loads one shard and returns candidates by frequency (also `lookupLemma(lemma)` for glosses; keys via `formKey()` in `key.ts`)
+- [x] Coverage report script: % of word tokens in `content/` found; list the misses (`npm run lexicon:coverage`; 0 tokens until T-14)
+- [x] Tests: *vais* → aller, *préfère* → préférer, *heures* → heure (f, pl), *l'* → le/la, *au* = à + le (`lookup.test.ts`; `shards.test.ts` checks every shard against the zod schemas and the budget)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-29 to L-31, G-25, G-26, B-21)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-21 · Welcome, sign-in and onboarding UI
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | M | T-09, T-13 | T-26 | 4 |
+
+**Status:** done · **Claimed by:** T-21 agent (wave 4 lead session) · **Branch:** `task/T-21-auth-ui` · **PR:** https://github.com/MinhTam2773/frenchy/pull/30
+**Owns:** `src/client/features/auth/**`, `src/client/features/onboarding/**`, `src/client/lib/session.ts` (replaces the T-09 stub)
+**Goal:** `Main.dc.html` and `Onboarding.dc.html` working with the real Better Auth client.
+**Done when:** a new user can sign up with email locally, pick a chapter and goal, and land on `/today`; tests pass.
+
+- [x] Welcome: Continue with email, Continue with Google (hidden when Google isn't configured), I already have an account
+- [x] Email sign-up and sign-in forms: labels, validation, errors announced to screen readers
+- [x] Onboarding: Stage 1 chapter list (plus "show later stages"), daily goal, save profile, go to `/today`
+- [x] Replace the `useSession()` stub with the real session; keep the guard
+- [x] Password reset is not in MVP (G-08): show "Forgot password?" only once B-18 lands
+- [x] Tests: form validation, onboarding saves the profile, guard redirects
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-22 · Sync API (profile, cards, reviews, words, activity)
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · High | L | T-06, T-10, T-11, T-13 | T-26 | 4 |
+
+**Status:** done · **Claimed by:** T-22 agent (wave 4 lead session) · **Branch:** `task/T-22-sync-api` · **PR:** https://github.com/MinhTam2773/frenchy/pull/32
+**Owns:** `src/worker/routes/profile.ts`, `cards.ts`, `reviews.ts`, `words.ts`, `activity.ts` (+ one mount line each in `src/worker/index.ts`)
+**Goal:** Every MVP endpoint from `docs/api-contract.md`, user-scoped and validated.
+**Done when:** each endpoint has tests, including one proving cross-user isolation, and responses match the shared schemas.
+
+- [x] `GET /api/profile`, `PATCH /api/profile`
+- [x] `GET /api/cards/due?limit=`, `GET /api/cards/stats` (new / learning / review counts)
+- [x] `POST /api/cards` (from a saved word or sentence; dedupe on type + front)
+- [x] `POST /api/cards/starter/:chapterId` (adds the chapter's starter deck; idempotent)
+- [x] `POST /api/reviews`: validate the rating, recompute the next state on the server with T-10 (the client's preview is not trusted), update the card and insert the review in one D1 batch
+- [x] `PUT /api/words/:lemma` (status), plus `GET /api/words` (in the contract)
+- [x] `POST /api/activity/ping` (minute deltas, idempotent per minute), `GET`/`POST /api/activity/readings` (in the contract) and `GET /api/streak` (T-11 over every `daily_activity` row, not 400 days: G-31)
+- [x] Every route uses `requireUser` + `scopedDb` + zod validation; one error JSON shape
+- [x] Tests per endpoint, including cross-user isolation
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+Notes for T-26:
+- Outside `Owns`: two new files, `src/worker/routes/sync-common.ts` (shared router, errors, validation, row mapping) and `sync-test-helpers.ts` (test-only `newUser()`). Routers: `profile`, `cardsRoute`, `reviewsRoute`, `wordsRoute`, `activityRoute`, `streakRoute`, one mount line each.
+- Where the MSW mocks (`mocks/handlers/base.ts`, `review.ts`) differ from the real API (not edited, T-26 owns them): `POST /api/cards` always answers 201 (real: 200 with the existing card for the same type + front); `POST /api/cards/starter/:chapterId` ignores the chapter and always adds the fixture deck (real: 404 unknown chapter, `{ added: 0, total: 0 }` for a chapter without a deck, `added: 0` the second time); base `POST /api/reviews` returns the card ungraded (`review.ts` grades like the server, but doesn't clamp `reviewedAt` to the last 24 h or to now); `PATCH /api/profile` doesn't 404 an unknown chapter; `POST /api/activity/readings` doesn't 404 an unknown text; ping always answers the fixture's 8 minutes (L-49); mock 400s have no `issues`; the 24 h / 5 min window on client instants (G-61) is mock-free.
+- `GET /api/cards/due` mixes new and started cards, most overdue first; new cards are capped by `NEW_CARDS_PER_DAY` minus cards first graded today (G-62).
+
+### T-23 · AI layer: translate and explain
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Opus 5.5 · High | M | T-06, T-07, T-13 | T-26 | 4 |
+
+**Status:** done · **Claimed by:** T-23 agent (wave 4 lead session) · **Branch:** `task/T-23-ai` · **PR:** https://github.com/MinhTam2773/frenchy/pull/29
+**Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`
+**Goal:** Sentence translation and explanation for any text through one provider-agnostic interface, cached so each sentence costs at most once.
+**Done when:** the tests show a cache hit skips the provider, invalid JSON is retried once, and the rate limit works, all with the mock driver.
+
+- [x] Load the `claude-api` skill before writing any Anthropic API code and use the model ids it gives
+- [x] `AiProvider` interface: `translate()`, `explain()`, plus a `chat()` signature for B-03
+- [x] Drivers: `anthropic`, `openai-compatible` (base URL + key + model), `mock` (tests and local dev without keys)
+- [x] Routing by env (`AI_TRANSLATE_PROVIDER`, `AI_EXPLAIN_PROVIDER`); keys only as Worker secrets (H-04)
+- [x] Explain prompt returns strict JSON (translation, word gloss, ≤ 2 notes) pitched at the learner's chapter (from `allowedGrammar`); validate with zod; one retry on invalid JSON
+- [x] `translation_cache` key = hash of task + normalized text + level
+- [x] Per-user rate limit (start at 60 requests/hour)
+- [x] User text is treated as data inside the prompt, never as instructions
+- [x] Tests for the "Done when" cases
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+Notes for T-25 / T-26 / T-29 / B-03:
+- `POST /api/ai/translate` and `POST /api/ai/explain` (behind `requireUser`) match the T-04 contract. Errors use `ApiError`: 400 `bad_request` (body or unknown chapter), 401, 429 `rate_limited` with `Retry-After` (seconds to the next clock hour), 502 `upstream_error` (provider failed or invalid JSON twice), 500 `internal` (bad AI env).
+- Results are cached in `translation_cache` (shared) under SHA-256 of prompt version + task + normalized text (NFC, apostrophes, spacing) + level (`''` for translate, `chapterId` for explain). Cache hits don't count toward the 60 per hour.
+- Env: `AI_TRANSLATE_PROVIDER` / `AI_EXPLAIN_PROVIDER` = `anthropic` | `openai-compatible` | `mock` (unset: `mock`, G-63); secrets `ANTHROPIC_API_KEY`, `OPENAI_COMPATIBLE_BASE_URL` / `_API_KEY` / `_MODEL`. The Anthropic model is `claude-haiku-5-5` (L-90).
+- `AiProvider.chat(messages, chapterId)` exists for B-03 but has no route.
+
+### T-24 · Stage 1 content QA
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · Extra | M | T-14, T-08 | T-30 | 4 |
+
+**Status:** done · **Claimed by:** T-24 agent (wave 4 lead session) · **Branch:** `task/T-24-content-qa` · **PR:** https://github.com/MinhTam2773/frenchy/pull/33
+**Owns:** fixes in `content/chapters/**`, `docs/content-qa.md`
+**Goal:** An independent check (fresh agent, not the T-14 author) that every Stage 1 text and card is correct, natural and at the right level.
+**Notes (decisions, see `docs/content-qa.md`):** `isNew` means new to the course: one text per lemma, the first along the route (L-94). Fixed phrases are a closed list in `text.md`, and the brief's *est-ce que* line now says its tokens are phrase tokens (L-95). Out-of-Owns hunks: `scripts/content/prompts/text.md` (brief), `scripts/lexicon/build.ts` and `coverage.ts` (G-58 fixes, phrase-aware coverage), and `content/lexicon/**`, rebuilt from the same raw dumps as T-08. Coverage went from 87.8 % to 99.2 %.
+**Done when:** `docs/content-qa.md` lists every finding with its fix, lexicon coverage is ≥ 98%, and `content:check` is green.
+
+- [x] For each text: only allowed grammar, natural French, correct gender, agreement and elision, accurate English translation, correct token annotations
+- [x] For each deck: one unambiguous cloze answer, correct translations, no duplicates
+- [x] Run the T-08 coverage report; fix misses (annotations or lexicon additions)
+- [x] Write `docs/content-qa.md` (finding, location, fix); apply the fixes
+- [x] List anything a native speaker should still check under G-02
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-25 · Reader with tap-to-translate
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · Medium | M | T-05, T-07, T-09, T-15 | T-26 | 4 |
+
+**Status:** done · **Claimed by:** T-25 agent (wave 4 lead session) · **Branch:** `task/T-25-reader` · **PR:** https://github.com/MinhTam2773/frenchy/pull/31
+**Owns:** `src/client/features/reader/**`, `src/client/mocks/handlers/reader.ts`
+**Goal:** `Reader.dc.html` and `Sentence.dc.html`: every French word is tappable, sentences can be long-pressed, and anything can be saved to SRS.
+**Done when:** tapping a word shows the right sheet, long-press selects the sentence, saving creates a card (mocked), and it all works with the keyboard.
+
+- [x] Top bar and audio bar (TTS for the whole text with sentence highlight where supported, speed control)
+- [x] Paragraphs of token buttons (keyboard reachable), new-word highlight, selected-word style
+- [x] Word sheet: word + play, pos / lemma / gender / new chips, translation, form, "Save word" (creates a card and sets the word to learning), "Sentence" button
+- [x] Sentence selection: long-press (~500 ms) selects the sentence; drag selects a range; desktop click-drag or Shift+click
+- [x] Sentence sheet: translation (from content for lessons, `/api/ai/explain` otherwise), word-by-word gloss, grammar note, "Save sentence" (sentence or cloze card)
+- [x] "Finish reading" marks the text read (activity) and returns to Today
+- [x] Performance: memoized tokens; lexicon shards loaded lazily
+- [x] Tests: tap → sheet data, long-press → sentence, save → card request
+QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") have no spec; left out (B-31). The bar shows sentences read ("2/6") instead.
+
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
 ---
 
 ## NEXT (MVP)
@@ -597,29 +740,8 @@ Wave 1 is done (T-02 to T-05 moved to DONE).
 
 ### Wave 2
 
-T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
+Wave 2 is done (T-06 to T-12 moved to DONE).
 
-#### T-08 · Offline lexicon pipeline
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Opus 5.5 · High | L | T-04 | T-15, T-24 | 2 |
-
-**Status:** in review · **Claimed by:** T-08 subagent (lead session) · **Branch:** `task/T-08-lexicon`
-**Owns:** `scripts/lexicon/**`, `content/lexicon/**`, `src/shared/lexicon/**`, `docs/LICENSES.md`
-**Goal:** Instant, free word taps: a compact French → English lexicon with form → lemma lookup, shipped as static JSON.
-**Done when:** `lookupForm('vais')` returns *aller* (1st person singular, present), the shards fit the size budget, and the license and attribution are recorded.
-
-- [x] Research the source: Wiktionary-derived data (e.g. wiktextract / kaikki.org French entries with English glosses). Record the license (Wiktionary text is CC BY-SA and GFDL) and the attribution needed in `docs/LICENSES.md`; log the decision as a lesson (kaikki.org French extract of 2026-10-03, used under CC BY-SA 4.0; L-29)
-- [x] If the license blocks what PLAN wants (sharing the app with others), stop, write a `QUESTION:` under this task and in G-01, and propose alternatives (not needed: the owner accepts CC BY-SA attribution + share-alike on the lexicon data; the remaining duty is a credits screen, B-21, see G-25)
-- [x] Build script reads the raw dump from a local path (gitignored, never committed) and keeps French entries for the parts of speech we need (`npm run lexicon:build`; dumps in `scripts/lexicon/raw/`, URLs in the script header)
-- [x] Frequency: pick a frequency list with a compatible license; keep the top ~10k lemmas plus every lemma used in `content/` (Lexique 3.83 lemma frequencies, CC BY-SA 4.0; top 10,000 lemma + pos pairs)
-- [x] Output `content/lexicon/lemmas-<shard>.json` (lemma → pos, gender, ≤ 3 glosses, rank) and `content/lexicon/forms-<shard>.json` (form → candidates with person, number, tense, mood), sharded by first letter; budget ≤ 2 MB gzipped total (27 shards each, a–z + `other`; 10,102 lexemes, 97,544 forms; 14.1 MB raw, 1.04 MB gzipped)
-- [x] `src/shared/lexicon/lookup.ts`: `lookupForm(form)` lazy-loads one shard and returns candidates by frequency (also `lookupLemma(lemma)` for glosses; keys via `formKey()` in `key.ts`)
-- [x] Coverage report script: % of word tokens in `content/` found; list the misses (`npm run lexicon:coverage`; 0 tokens until T-14)
-- [x] Tests: *vais* → aller, *préfère* → préférer, *heures* → heure (f, pl), *l'* → le/la, *au* = à + le (`lookup.test.ts`; `shards.test.ts` checks every shard against the zod schemas and the budget)
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-29 to L-31, G-25, G-26, B-21)
-- [ ] Finish: PR to `main` merged with CI green
 
 ### Wave 3
 
@@ -627,125 +749,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 
 ### Wave 4
 
-#### T-21 · Welcome, sign-in and onboarding UI
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | M | T-09, T-13 | T-26 | 4 |
-
-**Status:** in review · **Claimed by:** T-21 agent (wave 4 lead session) · **Branch:** `task/T-21-auth-ui` · **PR:** https://github.com/MinhTam2773/frenchy/pull/30
-**Owns:** `src/client/features/auth/**`, `src/client/features/onboarding/**`, `src/client/lib/session.ts` (replaces the T-09 stub)
-**Goal:** `Main.dc.html` and `Onboarding.dc.html` working with the real Better Auth client.
-**Done when:** a new user can sign up with email locally, pick a chapter and goal, and land on `/today`; tests pass.
-
-- [x] Welcome: Continue with email, Continue with Google (hidden when Google isn't configured), I already have an account
-- [x] Email sign-up and sign-in forms: labels, validation, errors announced to screen readers
-- [x] Onboarding: Stage 1 chapter list (plus "show later stages"), daily goal, save profile, go to `/today`
-- [x] Replace the `useSession()` stub with the real session; keep the guard
-- [x] Password reset is not in MVP (G-08): show "Forgot password?" only once B-18 lands
-- [x] Tests: form validation, onboarding saves the profile, guard redirects
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-22 · Sync API (profile, cards, reviews, words, activity)
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · High | L | T-06, T-10, T-11, T-13 | T-26 | 4 |
-
-**Status:** in review · **Claimed by:** T-22 agent (wave 4 lead session) · **Branch:** `task/T-22-sync-api` · **PR:** https://github.com/MinhTam2773/frenchy/pull/32
-**Owns:** `src/worker/routes/profile.ts`, `cards.ts`, `reviews.ts`, `words.ts`, `activity.ts` (+ one mount line each in `src/worker/index.ts`)
-**Goal:** Every MVP endpoint from `docs/api-contract.md`, user-scoped and validated.
-**Done when:** each endpoint has tests, including one proving cross-user isolation, and responses match the shared schemas.
-
-- [x] `GET /api/profile`, `PATCH /api/profile`
-- [x] `GET /api/cards/due?limit=`, `GET /api/cards/stats` (new / learning / review counts)
-- [x] `POST /api/cards` (from a saved word or sentence; dedupe on type + front)
-- [x] `POST /api/cards/starter/:chapterId` (adds the chapter's starter deck; idempotent)
-- [x] `POST /api/reviews`: validate the rating, recompute the next state on the server with T-10 (the client's preview is not trusted), update the card and insert the review in one D1 batch
-- [x] `PUT /api/words/:lemma` (status), plus `GET /api/words` (in the contract)
-- [x] `POST /api/activity/ping` (minute deltas, idempotent per minute), `GET`/`POST /api/activity/readings` (in the contract) and `GET /api/streak` (T-11 over every `daily_activity` row, not 400 days: G-31)
-- [x] Every route uses `requireUser` + `scopedDb` + zod validation; one error JSON shape
-- [x] Tests per endpoint, including cross-user isolation
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-Notes for T-26:
-- Outside `Owns`: two new files, `src/worker/routes/sync-common.ts` (shared router, errors, validation, row mapping) and `sync-test-helpers.ts` (test-only `newUser()`). Routers: `profile`, `cardsRoute`, `reviewsRoute`, `wordsRoute`, `activityRoute`, `streakRoute`, one mount line each.
-- Where the MSW mocks (`mocks/handlers/base.ts`, `review.ts`) differ from the real API (not edited, T-26 owns them): `POST /api/cards` always answers 201 (real: 200 with the existing card for the same type + front); `POST /api/cards/starter/:chapterId` ignores the chapter and always adds the fixture deck (real: 404 unknown chapter, `{ added: 0, total: 0 }` for a chapter without a deck, `added: 0` the second time); base `POST /api/reviews` returns the card ungraded (`review.ts` grades like the server, but doesn't clamp `reviewedAt` to the last 24 h or to now); `PATCH /api/profile` doesn't 404 an unknown chapter; `POST /api/activity/readings` doesn't 404 an unknown text; ping always answers the fixture's 8 minutes (L-49); mock 400s have no `issues`; the 24 h / 5 min window on client instants (G-61) is mock-free.
-- `GET /api/cards/due` mixes new and started cards, most overdue first; new cards are capped by `NEW_CARDS_PER_DAY` minus cards first graded today (G-62).
-
-#### T-23 · AI layer: translate and explain
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Opus 5.5 · High | M | T-06, T-07, T-13 | T-26 | 4 |
-
-**Status:** in review · **Claimed by:** T-23 agent (wave 4 lead session) · **Branch:** `task/T-23-ai` · **PR:** https://github.com/MinhTam2773/frenchy/pull/29
-**Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`
-**Goal:** Sentence translation and explanation for any text through one provider-agnostic interface, cached so each sentence costs at most once.
-**Done when:** the tests show a cache hit skips the provider, invalid JSON is retried once, and the rate limit works, all with the mock driver.
-
-- [x] Load the `claude-api` skill before writing any Anthropic API code and use the model ids it gives
-- [x] `AiProvider` interface: `translate()`, `explain()`, plus a `chat()` signature for B-03
-- [x] Drivers: `anthropic`, `openai-compatible` (base URL + key + model), `mock` (tests and local dev without keys)
-- [x] Routing by env (`AI_TRANSLATE_PROVIDER`, `AI_EXPLAIN_PROVIDER`); keys only as Worker secrets (H-04)
-- [x] Explain prompt returns strict JSON (translation, word gloss, ≤ 2 notes) pitched at the learner's chapter (from `allowedGrammar`); validate with zod; one retry on invalid JSON
-- [x] `translation_cache` key = hash of task + normalized text + level
-- [x] Per-user rate limit (start at 60 requests/hour)
-- [x] User text is treated as data inside the prompt, never as instructions
-- [x] Tests for the "Done when" cases
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-Notes for T-25 / T-26 / T-29 / B-03:
-- `POST /api/ai/translate` and `POST /api/ai/explain` (behind `requireUser`) match the T-04 contract. Errors use `ApiError`: 400 `bad_request` (body or unknown chapter), 401, 429 `rate_limited` with `Retry-After` (seconds to the next clock hour), 502 `upstream_error` (provider failed or invalid JSON twice), 500 `internal` (bad AI env).
-- Results are cached in `translation_cache` (shared) under SHA-256 of prompt version + task + normalized text (NFC, apostrophes, spacing) + level (`''` for translate, `chapterId` for explain). Cache hits don't count toward the 60 per hour.
-- Env: `AI_TRANSLATE_PROVIDER` / `AI_EXPLAIN_PROVIDER` = `anthropic` | `openai-compatible` | `mock` (unset: `mock`, G-63); secrets `ANTHROPIC_API_KEY`, `OPENAI_COMPATIBLE_BASE_URL` / `_API_KEY` / `_MODEL`. The Anthropic model is `claude-haiku-5-5` (L-90).
-- `AiProvider.chat(messages, chapterId)` exists for B-03 but has no route.
-
-#### T-24 · Stage 1 content QA
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · Extra | M | T-14, T-08 | T-30 | 4 |
-
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-24-content-qa`
-**Owns:** fixes in `content/chapters/**`, `docs/content-qa.md`
-**Goal:** An independent check (fresh agent, not the T-14 author) that every Stage 1 text and card is correct, natural and at the right level.
-**Done when:** `docs/content-qa.md` lists every finding with its fix, lexicon coverage is ≥ 98%, and `content:check` is green.
-
-- [ ] For each text: only allowed grammar, natural French, correct gender, agreement and elision, accurate English translation, correct token annotations
-- [ ] For each deck: one unambiguous cloze answer, correct translations, no duplicates
-- [ ] Run the T-08 coverage report; fix misses (annotations or lexicon additions)
-- [ ] Write `docs/content-qa.md` (finding, location, fix); apply the fixes
-- [ ] List anything a native speaker should still check under G-02
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-25 · Reader with tap-to-translate
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · Medium | M | T-05, T-07, T-09, T-15 | T-26 | 4 |
-
-**Status:** in review ([PR #31](https://github.com/MinhTam2773/frenchy/pull/31)) · **Claimed by:** T-25 agent (wave 4 lead session) · **Branch:** `task/T-25-reader`
-**Owns:** `src/client/features/reader/**`, `src/client/mocks/handlers/reader.ts`
-**Goal:** `Reader.dc.html` and `Sentence.dc.html`: every French word is tappable, sentences can be long-pressed, and anything can be saved to SRS.
-**Done when:** tapping a word shows the right sheet, long-press selects the sentence, saving creates a card (mocked), and it all works with the keyboard.
-
-- [x] Top bar and audio bar (TTS for the whole text with sentence highlight where supported, speed control)
-- [x] Paragraphs of token buttons (keyboard reachable), new-word highlight, selected-word style
-- [x] Word sheet: word + play, pos / lemma / gender / new chips, translation, form, "Save word" (creates a card and sets the word to learning), "Sentence" button
-- [x] Sentence selection: long-press (~500 ms) selects the sentence; drag selects a range; desktop click-drag or Shift+click
-- [x] Sentence sheet: translation (from content for lessons, `/api/ai/explain` otherwise), word-by-word gloss, grammar note, "Save sentence" (sentence or cloze card)
-- [x] "Finish reading" marks the text read (activity) and returns to Today
-- [x] Performance: memoized tokens; lexicon shards loaded lazily
-- [x] Tests: tap → sheet data, long-press → sentence, save → card request
-QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") have no spec; left out (B-31). The bar shows sentences read ("2/6") instead.
-
-- [x] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+Wave 4 is done (T-21 to T-25 moved to DONE).
 
 ### Wave 5
 
@@ -1316,6 +1320,41 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-29 · `content:check` enforces course-wide `isNew` and the phrase list
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | B-22 (same file) | B-10, B-11 (helps) |
+
+**Status:** blocked · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Stage 2 to 4 content follows T-24's decisions without a QA pass having to find them by hand (L-94, L-95, G-67).
+**Done when:** `content:check` names the file and sentence for each case below, and Stage 1 passes.
+
+- [ ] A lemma is `isNew` in at most one text, the first along the route (chapter order in `course.json`, then text id order), and the message names the earlier text
+- [ ] A token with pos `phrase` uses a lemma from the closed list in `scripts/content/prompts/text.md` (move the list into a constant the brief points to), and has more than one word in the phrase
+- [ ] A listed phrase (*il y a*, *s'il vous plaît*…) is never annotated word by word
+- [ ] Tests with a tree built by `createContent` (L-75), one per rule
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-30 · Lexicon rebuild hygiene: pinned dumps, no vulgar glosses, coverage in CI
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Opus 5.5 · Medium | S | T-08 | B-10, B-11 (helps), T-30 |
+
+**Status:** blocked (T-08 is done; needs the user to decide where an archived dump may live, G-65) · **Owns:** `scripts/lexicon/**`, `content/lexicon/**`, `docs/LICENSES.md`, one job line in `.github/workflows/ci.yml` (hot file)
+**Goal:** A content task can rebuild the lexicon and get only the changes its content causes, the glosses are fit for learners, and stale shards fail CI (G-65, G-66, G-67).
+**Done when:** a rebuild with an unchanged dump reproduces the shards byte for byte, a different dump fails loudly, and CI fails when coverage drops below 98 %.
+
+- [ ] Record each raw dump's size, Last-Modified and sha256 in `build.ts` and fail on a mismatch; ask the user where an archived copy of the 2026-10-03 kaikki extract may live (it is not committed, rule 5)
+- [ ] Skip senses tagged `vulgar`, `slang`, `offensive` or `derogatory` from the three glosses (*nœud* lists a vulgar sense today), and re-check the content's glosses after the rebuild
+- [ ] `npm run lexicon:coverage -- --min 98` exits non-zero below the threshold; add it to CI
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 #### B-33 · Load lesson texts per chapter, not in the main bundle
 
 | Priority | Model · effort | Size | Depends on | Blocks |
@@ -1358,7 +1397,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | ID | Gap / risk | Impact | Owner task |
 |---|---|---|---|
 | G-01 | Lexicon source license and attribution not verified (Wiktionary text is CC BY-SA / GFDL) | Can't ship the lexicon publicly until checked | T-08, T-29 |
-| G-02 | French content correctness relies on AI QA; nobody on the team is a native speaker | Learner could learn mistakes | T-24, H-08 |
+| G-02 | French content correctness relies on AI QA; nobody on the team is a native speaker. T-24 lists 8 judgment calls for a native speaker in `docs/content-qa.md` → "For a native speaker" (natural short questions, register of *rigoler*, menu articles, the fiction phone range, …) | Learner could learn mistakes | T-24, H-08 |
 | G-03 | Web Speech fr-FR voice quality and availability vary by device (weak on some Android and Linux) | Bad audio for some users | T-05, B-09 |
 | G-04 | iOS PWA limits: storage can be cleared after inactivity; push only for installed apps | Server must stay the source of truth | T-12, B-12 |
 | G-05 | Better Auth on Workers + D1 not yet proven in this repo | Auth plan may change | T-13 |
@@ -1393,8 +1432,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | **Resolved (T-26, L-104):** the shards are in `globIgnores` and runtime-cached (`CacheFirst`, cache `lexicon-shards`, 60 entries) on first lookup; precache is now 12 entries / 1,027 KiB |
 | G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
 | G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
-| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
-| G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
+| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*). T-24 kept the lead's reading (adding *Et toi ?* to the greeting exception) and rewrote the four questions found before ch7; the stiffness stays a product choice | Texts can read stiff; QA may flag the same things | the user (or adjust `content/grammar.json`, G-23) |
+| G-58 | ~~Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 %~~ **Resolved by T-24:** the shards predated the content; Lexique spells œ as *oe*, so no œ word had a rank; *où* and *bonsoir* differ in part of speech between the sources; feminine nouns are form-of entries. `build.ts` fixes all four and the lexicon was rebuilt; coverage is 99.2 % (L-96, L-97) | none | T-24 |
 | G-43 | Streak and Practice follow the mockups except: the "~10 min" chip on the flashcards card is not rendered (no rule for estimating minutes), the freeze card uses `text-freeze-ink` (`#1f6fa8`) instead of the mockup's darker `#0E3F63`/`#24506F` (no token), and future calendar days use `text-faint` (about 3.3:1, inactive cells) | Small visual and contrast differences from the mockups | T-19, T-28 |
 | G-39 | Nothing records progress inside a chapter's book sections, so the Chapter strip can only show all sections done (the learner has moved past the chapter) or none. The mockup's "§2 now" with a part-filled bar has no data behind it. `chapters[].sections` is empty for every chapter until G-06 closes, so the strip is not drawn yet | Section progress is coarse | T-17, B-05 (a per-user `chapter_sections` record if wanted), G-06 |
 | G-40 | `getChapterTexts` returns texts sorted by id, so the chapter page lists readings alphabetically (the fixtures give "Au café" before "Le matin de Léa", the mockup's order is the reverse). The text schema has no `order` field | Readings may not be in the intended reading order | T-14, T-07 (add `order` to `Text`, or number the ids), T-17 reads whatever order `getChapterTexts` gives |
@@ -1404,8 +1443,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-26 made "Up next" use Today's `nextUnreadText` (one rule now); "More due" and the Time tile are unchanged |
 | G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
 | G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
-| G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons | T-14, T-24 (add these rules to `text.md`; optionally move the token check into `content:check`) |
-| G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins) | B-07 (measure on real imported text), T-24 (`GLOSS_OVERRIDES` for function words) |
+| G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons. T-24 added the token rules to `text.md` and split *Super ! Merci, Sophie.* in the content; the *Le billet… Euh…* case is left to the splitter | T-24 (done), the token check in `content:check` is optional |
+| G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins). T-24 added `GLOSS_OVERRIDES` for *voici*, *voilà*, *il y a*, *ce*, *en*, *après* and *œil*; `PHRASES` in `annotate()` still knows only *est-ce que* and *qu'est-ce que*, not the rest of the closed phrase list | B-07 (measure on real imported text; add the phrase list to `PHRASES`) |
 | G-59 | `MIN_PASSWORD_LENGTH` (8) is defined twice: `src/worker/auth/index.ts` (enforces it) and `src/client/features/auth/validate.ts` (explains it early). T-21 doesn't own the Worker, so it couldn't move the constant to `src/shared/constants.ts` | The two can drift; the Worker's answer still wins, shown as a generic error | T-21, later (move to `@shared/constants`) |
 | G-60 | Google sign-in is only tested against a mocked `/api/auth/sign-in/social`. Nothing checks the real round trip (needs H-03 keys): `callbackURL: '/'` relies on the welcome screen redirecting a signed-in user to Today or onboarding, and a failed Google login (user cancels) lands wherever Better Auth's default error page sends it, with no `errorCallbackURL` set | A cancelled Google login may show a raw error page | T-26, T-30 (try it with real keys) |
 | G-61 | T-22 refuses client instants (`ActivityPing.at`, `ReviewInput.reviewedAt`, `Reading.finishedAt`) more than 24 h in the past or 5 min in the future (`400` with the field as the issue path) and clamps a slightly-ahead one to the server's now, so a bad clock can't put a day of activity years away and stretch the streak calendar. A review is also never graded before the card's `lastReview`. None of this is in `docs/api-contract.md` or the MSW mocks yet | A review held offline for more than a day (B-08) or a device with a wrong clock gets a 400; the client shows a generic error | T-26 (add the rule to `docs/api-contract.md` and `mocks/handlers/base.ts`), B-08 |
@@ -1414,6 +1453,9 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-64 | `translation_cache` is shared and has no expiry: it stores the normalized text of everything sent to `/api/ai/*`, including text a learner imports (B-07), unscoped. Another user only gets the row back by sending the exact same text, but the table keeps personal text forever and grows without bound. Answers are never refreshed unless `PROMPT_VERSION` in `src/worker/ai/cache.ts` is bumped | Privacy (account deletion, G-36) and D1 size | T-29 (decide: TTL / store only the hash for imported text), B-07 |
 | G-68 | The sentence sheet takes translation and word-by-word gloss from the lesson's own tokens and calls `/api/ai/explain` only for the grammar note. Selections always snap to whole sentences, so the "translation from `/api/ai/explain` otherwise" path (imported text, a range inside a sentence) is not built; the per-token gloss also can't group *le café* the way the mockup (and `ExplainResponse.gloss`) does | Imported text (B-07) needs that path; T-26 checks the note still loads (and fails quietly) against the real T-23 route | B-07, T-26 |
 | G-69 | The reader imports `annotate()`, so the client build now emits the 54 lexicon shards as lazy chunks (G-26) even though lesson words never load them (every lesson token is annotated). The build now reports `precache 66 entries (15442.83 KiB)` (was about 514 KiB); the largest shard is `forms-r` at 1.64 MB, so none is skipped yet | G-26's cost is now real in the shipped bundle | **Resolved (T-26, L-104):** see G-26; the build reports `precache 12 entries (1026.88 KiB)`, checked in a `vite preview` browser (0 shards precached, a fetched shard lands in `lexicon-shards`) |
+| G-65 | kaikki.org serves only its latest French extract. T-24's rebuild was reproducible only because the 2026-10-03 file was still online (same size and Last-Modified); once it is replaced, `npm run lexicon:build` will also rewrite entries the content didn't touch, and the raw dumps are not archived anywhere | Content tasks that need a rebuild (B-10, B-11) get large unrelated shard diffs, or can't rebuild at all | B-30 |
+| G-66 | The lexicon keeps Wiktionary's vulgar and slang senses among a word's three glosses (*nœud* lists one); `SKIPPED_SENSE_TAGS` in `build.ts` doesn't skip `vulgar` or `slang` | A learner tapping a word in imported text can see a vulgar gloss | B-30 |
+| G-67 | `content:check` doesn't enforce T-24's rules (`isNew` once per course, the closed phrase list), and `lexicon:coverage` isn't in CI, so stale shards (content lemmas added without a rebuild) go unnoticed | Stage 2 to 4 content can repeat Stage 1's problems | B-29, B-30 |
 | G-70 | `src/shared/content` bundles every lesson text eagerly (`import.meta.glob`, L-91), so they sit in the main JS chunk: 895 kB raw / 220 kB gzipped with 8 chapters (texts are ~724 kB of JSON), about 90 kB more per chapter. After G-26 this chunk is most of the 1,027 KiB precache. The Worker bundle has them too (2.46 MB raw / 478 KB gzipped): `routes/cards.ts` imports `getChapter`/`getDeck` from `src/shared/content` (the L-91 trap), still under the 3 MB gzipped free-plan limit | First load and every deploy's update grow with the course; the parse cost hits Today on low-end phones | B-33 |
 | G-71 | The demo seed's fixtures say "12-day streak with one freeze" (`seed.ts`, mockups), but the server recomputes freezes from the history (T-11: one earned per 7 practiced days), ignores the seeded `freezeUsed` row, and shows a 5-day streak (best 6) for `demo@frenchy.local` | Screenshots or E2E checks against the seed won't match the mockup numbers | T-27 (assert what the server computes, or reshape the seed's activity) |
 | G-72 | `vite build` (Cloudflare Vite plugin) copies `.dev.vars` into `dist/frenchy/.dev.vars` so `vite preview` has the local secrets. `dist/` is gitignored and `wrangler deploy` reads secrets from `wrangler secret`, but any step that uploads or archives `dist/` (CI artifact, a static host) would ship the local secrets | A local `BETTER_AUTH_SECRET` or AI key could leak through a build artifact | T-29, T-30 (never upload `dist/` wholesale; CI builds have no `.dev.vars`) |
@@ -1509,6 +1551,12 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-99 · 2026-10-18 · a11y · T-25` — **G-17: the kit's `BottomSheet` is modal (scrim, focus trap), so with it a tap on another word only closed the sheet. The mockup draws the word sheet as a plain `<section>` with no scrim, and the sentence sheet with one.** → The word sheet is a non-modal `region` ("Word details") in a sticky bottom bar: focus stays on the tapped word, a polite live region announces word + meaning, Escape or Close returns focus to the word, and the next tap just switches it. Only the sentence sheet uses the modal `BottomSheet`. Use a modal sheet only where the page behind it should be inert.
 - `L-100 · 2026-10-18 · client · T-25` — **Sentence highlighting from `onboundary` is unreliable (L-15), but speaking one utterance per sentence always knows which sentence is playing, and pause/resume is just "stop, then restart from that sentence".** → `useReadAloud` queues sentences with a run id (a newer play or a pause wins, like `useTts`). Any whole-text audio with a highlight should do the same; the cost is a short gap between sentences.
 - `L-101 · 2026-10-18 · client · T-25` — **A text of ~100 word buttons is ~100 tab stops before "Finish reading"; and a long-press on touch fires no `click`, so a "skip the click after a long-press" flag left set swallowed the next real tap.** → Word buttons use a roving tabindex (one tab stop, ←/→/Home/End move). Reset gesture flags at `pointerdown`, never only in the `click` they were meant to skip. To let a touch drag extend a selection instead of scrolling, `preventDefault` a non-passive `touchmove` only while selecting.
+- `L-94 · 2026-10-18 · content · T-24` — **Each chapter agent marked `isNew` for its own text, so 44 marks repeated words an earlier text had already taught (*fraise* was new four times), and the reader would flag familiar words as new.** → Decision: `isNew` means new to the course. A lemma is marked in one text only, the first along the route (`course.json` order, then text id order); check earlier `newWords` before marking. B-29 makes `content:check` enforce it.
+- `L-95 · 2026-10-18 · content · T-24` — **The phrase convention gave five examples, so agents guessed the rest: *il y a* was word by word in ch12 and a phrase elsewhere, *un peu*, *pas de problème* and *merci beaucoup* went both ways, *voici* and *voilà* got pos `phrase`, and the brief still described *est-ce que* as three ordinary tokens. Wiktionary has an entry for almost every formula, so "it has an entry" can't decide.** → Decision: `text.md` now has a closed list of fixed phrases (*est-ce que* included); everything else is word by word, and a single word is never pos `phrase`. Extend the list in the brief instead of deciding text by text.
+- `L-96 · 2026-10-18 · lexicon · T-24` — **No word with œ was in the lexicon (*cœur*, *sœur*, *œil*), and *où* and *bonsoir* were missing too: Lexique 3.83 spells œ as *oe* and files *où* as a pronoun (Wiktionary: adverb), so the lemma + part-of-speech frequency join gave them no rank and they fell out of the top 10,000. G-58 suspected key normalization, but `formKey()` was fine.** → When joining two dictionaries, test spelling variants (œ / oe) and words whose part of speech differs between the sources, and check the rank of a few core words after `npm run lexicon:build`, not only whether they are present.
+- `L-97 · 2026-10-18 · lexicon · T-24` — **The shards were built before T-14 wrote any content, so the build's "keep every content lemma" rule had nothing to keep, and coverage was 87.8 %. `lexicon:coverage` also counted all 171 phrase tokens as misses, because no single form can carry *il y a*. The raw dumps aren't in the repo, but kaikki.org still served the identical 2026-10-03 extract (same size and Last-Modified), so a rebuild was possible.** → Rerun `npm run lexicon:build` after content adds lemmas (dump URLs in `build.ts`; first check the kaikki file's Last-Modified, see G-65), then `npm run lexicon:coverage`, which now counts a phrase token by its word.
+- `L-98 · 2026-10-18 · content · T-24` — **A ch4 dialogue read out a realistic, dialable French landline (04 70 22 15 81).** → Phone numbers in content use a range reserved for fiction (04 65 71 xx xx and its siblings; confirm with ARCEP before launch). Never invent a realistic number, address or email that could belong to a real person.
+- `L-109 · 2026-10-18 · orchestration · lead` — **All five Wave 4 agents hit the session limit within the same minute. Two had pushed only their claim commit (T-24 had 43 uncommitted files) despite a brief that said "push after every ticked step", because their first step was a long review or build with nothing to tick yet. The worker restarted, but the worktrees under `.claude/worktrees/` survived and SendMessage resumed every agent where it stopped. The scheduled check-in that fired during the limit did nothing useful.** → Briefs say "commit and push at least every ~30 minutes of work, ticked or not". After a limit, resume agents with SendMessage first; re-dispatch from the pushed branch only when the worktree is gone. Chain wave PRs by merging each branch into the next one before CI (L-22) — Wave 4's five PRs merged with one CI run each. Don't run `npm run lint` from the main checkout while agent worktrees exist: ESLint's flat config doesn't read `.gitignore`, so it lints every nested `.claude/worktrees/*` copy and fails; run checks inside a worktree instead.
 - `L-104 · 2026-10-18 · pwa · T-26` — **G-26 decision: lesson tokens carry their own annotations, so the reader never loads a lexicon shard for a lesson word, yet Workbox's `**/*.js` glob precached all 54 shards (15.4 MB) on the first visit. Precaching "for offline taps" only helps imported text, which is Phase 2 (B-07).** → Shards are in `globIgnores` and runtime-cached (`CacheFirst`, `lexicon-shards`, 60 entries; hashed names, so never stale): precache went from 66 entries / 15,484 KiB to 12 / 1,027 KiB. A lookup outside lesson tokens needs the network once per shard. Check the build's `precache` line whenever a lazy chunk is added.
 - `L-105 · 2026-10-18 · pwa · T-26` — **Workbox writes each `runtimeCaching[].urlPattern` function into `sw.js` as source text, so my first version, which tested a regex constant declared in `vite.config.ts`, built cleanly but would throw `ReferenceError: LEXICON_SHARD is not defined` inside the service worker.** → Keep `urlPattern` functions self-contained (inline literals only), and grep `dist/client/sw.js` for the rule after a change; `t26-sw.mjs`-style browser checks (`vite preview`, read `caches`) prove it.
 - `L-106 · 2026-10-18 · srs · T-26` — **The end-to-end walk failed at "review that card": a word saved in the reader never came up, because `/api/cards/due` let new cards in by `due` then `createdAt` under the 10-a-day cap, and the 24-card Ch 1 starter deck added a minute earlier filled every slot. The saved word would have waited until day 3. Every unit test passed because none mixed a deck with a saved card.** → Under the cap, cards the learner saved come before starter-deck cards (`dueNew` orders by `source_kind = 'starter'` first; `cards.test.ts` reproduces it). Integration bugs hide between features: walk the real flow on a fresh database before calling a wave done.

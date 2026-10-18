@@ -76,8 +76,7 @@
               "lemma": "marché",
               "pos": "noun",
               "gender": "m",
-              "gloss": "market",
-              "isNew": true
+              "gloss": "market"
             },
             {
               "t": " "
@@ -428,8 +427,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "strawberries",
-              "form": "feminine plural",
-              "isNew": true
+              "form": "feminine plural"
             },
             {
               "t": "."
@@ -561,7 +559,8 @@
               "lemma": "parler",
               "pos": "verb",
               "gloss": "talks",
-              "form": "il / elle · present · -er verb"
+              "form": "il / elle · present · -er verb",
+              "isNew": true
             },
             {
               "t": " "
@@ -790,7 +789,8 @@
               "lemma": "manger",
               "pos": "verb",
               "gloss": "eat",
-              "form": "nous · present · -er verb (ge before -ons)"
+              "form": "nous · present · -er verb (ge before -ons)",
+              "isNew": true
             },
             {
               "t": " "
@@ -1016,14 +1016,14 @@
     }
   ],
   "newWords": [
-    "marché",
     "acheter",
     "préférer",
-    "fraise",
     "marchand",
     "rentrer",
     "couper",
-    "légume"
+    "légume",
+    "parler",
+    "manger"
   ],
   "grammarTags": [
     "er.present",

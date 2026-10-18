@@ -96,8 +96,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "bakery",
-              "form": "feminine singular · -erie ending",
-              "isNew": true
+              "form": "feminine singular · -erie ending"
             },
             {
               "t": " : "
@@ -140,7 +139,8 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "baguettes (long loaves of bread)",
-              "form": "feminine plural · -ette ending"
+              "form": "feminine plural · -ette ending",
+              "isNew": true
             },
             {
               "t": " "
@@ -205,7 +205,7 @@
               "lemma": "boucherie",
               "pos": "noun",
               "gender": "f",
-              "gloss": "butcher's shop",
+              "gloss": "butcher shop",
               "form": "feminine singular · -erie ending",
               "isNew": true
             },
@@ -245,7 +245,7 @@
               "t": "."
             }
           ],
-          "en": "Next, the butcher's and the cheese shop."
+          "en": "Next, the butcher shop and the cheese shop."
         },
         {
           "tokens": [
@@ -315,7 +315,7 @@
               "lemma": "librairie",
               "pos": "noun",
               "gender": "f",
-              "gloss": "bookshop (not a library)",
+              "gloss": "bookstore (not a library)",
               "form": "feminine singular · -ie ending",
               "isNew": true
             },
@@ -323,7 +323,7 @@
               "t": "."
             }
           ],
-          "en": "There's also the pharmacy and the bookshop."
+          "en": "There's also the pharmacy and the bookstore."
         }
       ]
     },
@@ -414,28 +414,19 @@
               "lemma": "quartier",
               "pos": "noun",
               "gender": "m",
-              "gloss": "neighbourhood",
-              "form": "masculine singular · -ier ending",
-              "isNew": true
+              "gloss": "neighborhood",
+              "form": "masculine singular · -ier ending"
             },
             {
               "t": " !"
             }
           ],
-          "en": "And there's the neighbourhood!"
+          "en": "And there's the neighborhood!"
         }
       ]
     }
   ],
-  "newWords": [
-    "boulangerie",
-    "boucherie",
-    "fromagerie",
-    "pharmacie",
-    "librairie",
-    "garage",
-    "quartier"
-  ],
+  "newWords": ["boucherie", "fromagerie", "pharmacie", "librairie", "garage", "baguette"],
   "grammarTags": [
     "gender.basic",
     "articles.definite",

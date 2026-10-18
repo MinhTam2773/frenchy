@@ -72,8 +72,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "neighbor",
-              "form": "feminine singular · masculine: voisin",
-              "isNew": true
+              "form": "feminine singular · masculine: voisin"
             },
             {
               "t": " ?"
@@ -204,8 +203,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "floor (of a building)",
-              "form": "masculine singular",
-              "isNew": true
+              "form": "masculine singular"
             },
             {
               "t": "."
@@ -596,32 +594,11 @@
               "t": " "
             },
             {
-              "t": "ne",
-              "lemma": "ne",
-              "pos": "adverb",
-              "gloss": "not",
-              "form": "ne … pas = not"
-            },
-            {
-              "t": " "
-            },
-            {
               "t": "joue",
               "lemma": "jouer",
               "pos": "verb",
               "gloss": "play",
-              "form": "je · present · -er verb",
-              "isNew": true
-            },
-            {
-              "t": " "
-            },
-            {
-              "t": "pas",
-              "lemma": "pas",
-              "pos": "adverb",
-              "gloss": "not",
-              "form": "ne … pas = not"
+              "form": "je · present · -er verb"
             },
             {
               "t": " "
@@ -630,9 +607,41 @@
               "t": "le",
               "lemma": "le",
               "pos": "article",
-              "gloss": "the",
               "gender": "m",
-              "form": "definite article · masculine · le soir = in the evening"
+              "gloss": "in the",
+              "form": "definite article · le matin = in the morning"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "matin",
+              "lemma": "matin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "morning",
+              "form": "masculine singular"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "pas + a noun = not (no ne in this short form)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "in the",
+              "form": "definite article · le soir = in the evening"
             },
             {
               "t": " "
@@ -643,13 +652,13 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "evening",
-              "form": "masculine singular · le soir = in the evening"
+              "form": "masculine singular"
             },
             {
               "t": " !"
             }
           ],
-          "en": "I don't play in the evening!"
+          "en": "I play in the morning, not in the evening!"
         }
       ]
     },
@@ -663,7 +672,8 @@
               "lemma": "pas de problème",
               "pos": "phrase",
               "gloss": "no",
-              "form": "no problem"
+              "form": "no problem",
+              "isNew": true
             },
             {
               "t": " "
@@ -673,7 +683,8 @@
               "lemma": "pas de problème",
               "pos": "phrase",
               "gloss": "of",
-              "form": "no problem"
+              "form": "no problem",
+              "isNew": true
             },
             {
               "t": " "
@@ -779,8 +790,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "children",
-              "form": "masculine plural",
-              "isNew": true
+              "form": "masculine plural"
             },
             {
               "t": " ?"
@@ -1143,16 +1153,7 @@
       ]
     }
   ],
-  "newWords": [
-    "voisin",
-    "étage",
-    "gauche",
-    "professeur",
-    "jouer",
-    "pas de problème",
-    "enfant",
-    "école"
-  ],
+  "newWords": ["gauche", "professeur", "pas de problème", "école"],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",

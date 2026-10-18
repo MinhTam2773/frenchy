@@ -35,7 +35,8 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "table",
-              "form": "feminine singular"
+              "form": "feminine singular",
+              "isNew": true
             },
             {
               "t": " "
@@ -425,8 +426,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "cake",
-              "form": "masculine singular · -eau ending",
-              "isNew": true
+              "form": "masculine singular · -eau ending"
             },
             {
               "t": " "
@@ -435,7 +435,7 @@
               "t": "au",
               "lemma": "au",
               "pos": "contraction",
-              "gloss": "with (flavour)",
+              "gloss": "with (flavor)",
               "form": "à + le becomes au · un gâteau au chocolat = a chocolate cake"
             },
             {
@@ -458,7 +458,7 @@
       ]
     }
   ],
-  "newWords": ["assiette", "fourchette", "couteau", "serviette", "omelette", "fromage", "gâteau"],
+  "newWords": ["assiette", "fourchette", "couteau", "serviette", "omelette", "fromage", "table"],
   "grammarTags": [
     "gender.basic",
     "articles.definite",

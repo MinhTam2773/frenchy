@@ -438,8 +438,8 @@
           "tokens": [
             {
               "t": "Pas",
-              "lemma": "pas",
-              "pos": "adverb",
+              "lemma": "pas de problème",
+              "pos": "phrase",
               "gloss": "no",
               "form": "pas de problème = no problem"
             },
@@ -448,8 +448,8 @@
             },
             {
               "t": "de",
-              "lemma": "de",
-              "pos": "preposition",
+              "lemma": "pas de problème",
+              "pos": "phrase",
               "gloss": "(no word in English)",
               "form": "pas de problème = no problem"
             },
@@ -458,10 +458,10 @@
             },
             {
               "t": "problème",
-              "lemma": "problème",
-              "pos": "noun",
-              "gender": "m",
-              "gloss": "problem"
+              "lemma": "pas de problème",
+              "pos": "phrase",
+              "gloss": "problem",
+              "form": "pas de problème = no problem"
             },
             {
               "t": ", "
@@ -767,8 +767,8 @@
               "t": "bien",
               "lemma": "bien",
               "pos": "adverb",
-              "gloss": "really",
-              "form": "aimer bien = to like"
+              "gloss": "quite",
+              "form": "aimer bien = to like (softer than aimer, which can mean to love)"
             },
             {
               "t": " "

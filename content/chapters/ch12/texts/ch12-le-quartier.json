@@ -234,8 +234,7 @@
               "lemma": "quartier",
               "pos": "noun",
               "gender": "m",
-              "gloss": "neighborhood",
-              "isNew": true
+              "gloss": "neighborhood"
             },
             {
               "t": "."
@@ -297,30 +296,30 @@
           "tokens": [
             {
               "t": "Il",
-              "lemma": "il",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
@@ -374,30 +373,30 @@
           "tokens": [
             {
               "t": "Il",
-              "lemma": "il",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
@@ -427,8 +426,7 @@
               "lemma": "boulangerie",
               "pos": "noun",
               "gender": "f",
-              "gloss": "bakery",
-              "isNew": true
+              "gloss": "bakery"
             },
             {
               "t": "."
@@ -637,12 +635,12 @@
               "t": " "
             },
             {
-              "t": "Madame",
+              "t": "madame",
               "lemma": "madame",
               "pos": "noun",
               "gender": "f",
               "gloss": "Mrs.",
-              "form": "Madame + family name = Mrs. …"
+              "form": "madame + family name = Mrs. … (small m inside a sentence)"
             },
             {
               "t": " "
@@ -773,7 +771,8 @@
               "lemma": "faire",
               "pos": "verb",
               "gloss": "make",
-              "form": "infinitive · after savoir"
+              "form": "infinitive · after savoir",
+              "isNew": true
             },
             {
               "t": " "
@@ -1115,16 +1114,7 @@
       ]
     }
   ],
-  "newWords": [
-    "connaître",
-    "savoir",
-    "voisin",
-    "quartier",
-    "boulangerie",
-    "bienvenue",
-    "crêpe",
-    "gentil"
-  ],
+  "newWords": ["connaître", "savoir", "voisin", "bienvenue", "crêpe", "gentil", "faire"],
   "grammarTags": [
     "pronouns.subject",
     "savoir.present",

@@ -32,7 +32,7 @@
               "t": ", "
             },
             {
-              "t": "Madame",
+              "t": "madame",
               "lemma": "madame",
               "pos": "noun",
               "gender": "f",
@@ -781,7 +781,7 @@
               "t": " "
             },
             {
-              "t": "Madame",
+              "t": "madame",
               "lemma": "madame",
               "pos": "noun",
               "gender": "f",
@@ -827,8 +827,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "dishes",
-              "form": "laver la vaisselle = to do the dishes",
-              "isNew": true
+              "form": "laver la vaisselle = to do the dishes"
             },
             {
               "t": "."
@@ -912,7 +911,7 @@
               "t": " "
             },
             {
-              "t": "Monsieur",
+              "t": "monsieur",
               "lemma": "monsieur",
               "pos": "noun",
               "gender": "m",
@@ -1043,7 +1042,7 @@
       ]
     }
   ],
-  "newWords": ["jouer", "carte", "gagner", "raconter", "histoire", "laver", "vaisselle", "ranger"],
+  "newWords": ["jouer", "carte", "gagner", "raconter", "histoire", "laver", "ranger"],
   "grammarTags": [
     "er.present",
     "pronouns.subject",

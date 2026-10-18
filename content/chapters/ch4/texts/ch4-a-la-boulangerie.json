@@ -153,9 +153,9 @@
             {
               "t": "Voilà",
               "lemma": "voilà",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here you are",
-              "form": "voilà = here is, there is"
+              "form": "points something out · voilà = here you are, there is"
             },
             {
               "t": "."
@@ -222,7 +222,8 @@
               "t": "vingt",
               "lemma": "vingt",
               "pos": "number",
-              "gloss": "twenty"
+              "gloss": "twenty",
+              "isNew": true
             },
             {
               "t": "."
@@ -289,7 +290,8 @@
               "t": "dix",
               "lemma": "dix",
               "pos": "number",
-              "gloss": "ten"
+              "gloss": "ten",
+              "isNew": true
             },
             {
               "t": "."
@@ -362,9 +364,9 @@
             {
               "t": "Voici",
               "lemma": "voici",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here is",
-              "form": "voici = here is"
+              "form": "points something out · voici = here is, here are"
             },
             {
               "t": " "
@@ -385,8 +387,7 @@
               "lemma": "billet",
               "pos": "noun",
               "gender": "m",
-              "gloss": "note, bill",
-              "isNew": true
+              "gloss": "note, bill"
             },
             {
               "t": " "
@@ -448,9 +449,9 @@
             {
               "t": "Voilà",
               "lemma": "voilà",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here is",
-              "form": "voilà = here is, there is"
+              "form": "points something out · voilà = here you are, there is"
             },
             {
               "t": " "
@@ -569,7 +570,7 @@
               "t": "aux",
               "lemma": "aux",
               "pos": "contraction",
-              "gloss": "with (flavour)",
+              "gloss": "with (flavor)",
               "form": "à + les becomes aux · aux fraises = strawberry"
             },
             {
@@ -581,8 +582,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "strawberries",
-              "form": "feminine plural",
-              "isNew": true
+              "form": "feminine plural"
             },
             {
               "t": " !"
@@ -608,7 +608,7 @@
             },
             {
               "t": "elles",
-              "lemma": "elle",
+              "lemma": "elles",
               "pos": "pronoun",
               "gloss": "they",
               "form": "subject pronoun · 3rd person plural, feminine"
@@ -751,9 +751,9 @@
             {
               "t": "Voilà",
               "lemma": "voilà",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here is",
-              "form": "voilà = here is, there is"
+              "form": "points something out · voilà = here you are, there is"
             },
             {
               "t": " "
@@ -891,16 +891,7 @@
       ]
     }
   ],
-  "newWords": [
-    "coûter",
-    "euro",
-    "soixante",
-    "billet",
-    "quarante",
-    "tartelette",
-    "fraise",
-    "cinquante"
-  ],
+  "newWords": ["coûter", "euro", "soixante", "quarante", "tartelette", "cinquante", "vingt", "dix"],
   "grammarTags": [
     "numbers.0-100",
     "articles.definite",

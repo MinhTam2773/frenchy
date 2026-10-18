@@ -14,7 +14,7 @@
               "lemma": "maman",
               "pos": "noun",
               "gender": "f",
-              "gloss": "mum",
+              "gloss": "mom",
               "form": "an: nasal vowel"
             },
             {
@@ -54,7 +54,7 @@
               "t": "."
             }
           ],
-          "en": "Mum, child, orange, Sunday."
+          "en": "Mom, child, orange, Sunday."
         }
       ]
     },
@@ -67,7 +67,7 @@
               "lemma": "bonbon",
               "pos": "noun",
               "gender": "m",
-              "gloss": "sweet, candy",
+              "gloss": "candy",
               "form": "on: nasal vowel, twice"
             },
             {
@@ -106,7 +106,7 @@
               "t": "."
             }
           ],
-          "en": "Sweet, house, lemon, uncle."
+          "en": "Candy, house, lemon, uncle."
         }
       ]
     },

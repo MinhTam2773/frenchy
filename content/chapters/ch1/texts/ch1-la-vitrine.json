@@ -228,8 +228,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "strawberries",
-              "form": "feminine plural",
-              "isNew": true
+              "form": "feminine plural"
             },
             {
               "t": "."
@@ -478,7 +477,7 @@
               "lemma": "bonbon",
               "pos": "noun",
               "gender": "m",
-              "gloss": "sweets, candy",
+              "gloss": "candy",
               "form": "masculine plural",
               "isNew": true
             },
@@ -528,7 +527,7 @@
               "t": "."
             }
           ],
-          "en": "Here is the children's corner: sweets, lollipops and cookies."
+          "en": "Here is the children's corner: candy, lollipops and cookies."
         }
       ]
     },
@@ -559,7 +558,7 @@
             },
             {
               "t": "boulangère",
-              "lemma": "boulangère",
+              "lemma": "boulanger",
               "pos": "noun",
               "gender": "f",
               "gloss": "baker",
@@ -620,16 +619,7 @@
       ]
     }
   ],
-  "newWords": [
-    "boulangerie",
-    "quartier",
-    "vitrine",
-    "gâteau",
-    "tarte",
-    "fraise",
-    "bonbon",
-    "boulangère"
-  ],
+  "newWords": ["boulangerie", "quartier", "vitrine", "gâteau", "tarte", "bonbon", "boulanger"],
   "grammarTags": [
     "articles.definite",
     "articles.indefinite",

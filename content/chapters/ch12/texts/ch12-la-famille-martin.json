@@ -12,9 +12,9 @@
             {
               "t": "Voici",
               "lemma": "voici",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here is",
-              "form": "voici = here is / here are"
+              "form": "points something out · voici = here is, here are"
             },
             {
               "t": " "
@@ -447,8 +447,8 @@
             },
             {
               "t": "un",
-              "lemma": "un",
-              "pos": "article",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "a",
               "form": "un peu = a little"
             },
@@ -457,8 +457,8 @@
             },
             {
               "t": "peu",
-              "lemma": "peu",
-              "pos": "adverb",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "little",
               "form": "un peu = a little"
             },
@@ -744,8 +744,8 @@
             },
             {
               "t": "un",
-              "lemma": "un",
-              "pos": "article",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "a",
               "form": "un peu = a little"
             },
@@ -754,8 +754,8 @@
             },
             {
               "t": "peu",
-              "lemma": "peu",
-              "pos": "adverb",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "little",
               "form": "un peu = a little"
             },

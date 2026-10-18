@@ -309,7 +309,8 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "noon",
-              "form": "à midi = at noon"
+              "form": "à midi = at noon",
+              "isNew": true
             },
             {
               "t": ", "
@@ -351,8 +352,7 @@
               "lemma": "soupe",
               "pos": "noun",
               "gender": "f",
-              "gloss": "soup",
-              "isNew": true
+              "gloss": "soup"
             },
             {
               "t": "."
@@ -386,7 +386,8 @@
               "lemma": "pourquoi",
               "pos": "adverb",
               "gloss": "why",
-              "form": "question word"
+              "form": "question word",
+              "isNew": true
             },
             {
               "t": " "
@@ -752,8 +753,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "cakes",
-              "form": "masculine plural · gâteau + x",
-              "isNew": true
+              "form": "masculine plural · gâteau + x"
             },
             {
               "t": "."
@@ -1023,8 +1023,7 @@
               "lemma": "histoire",
               "pos": "noun",
               "gender": "f",
-              "gloss": "story",
-              "isNew": true
+              "gloss": "story"
             },
             {
               "t": " ? »"
@@ -1125,7 +1124,7 @@
       ]
     }
   ],
-  "newWords": ["poser", "papi", "soupe", "vert", "rigoler", "épinard", "gâteau", "histoire"],
+  "newWords": ["poser", "papi", "vert", "rigoler", "épinard", "midi", "pourquoi"],
   "grammarTags": [
     "questions.words",
     "questions.est-ce-que",

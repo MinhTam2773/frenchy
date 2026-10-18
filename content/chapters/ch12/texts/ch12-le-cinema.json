@@ -207,30 +207,30 @@
           "tokens": [
             {
               "t": "Il",
-              "lemma": "il",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is / there are"
+              "form": "il y a = there is, there are"
             },
             {
               "t": " "

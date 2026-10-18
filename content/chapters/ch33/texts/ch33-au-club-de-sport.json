@@ -399,8 +399,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "cycling, bike",
-              "form": "masculine singular · faire du vélo = to cycle",
-              "isNew": true
+              "form": "masculine singular · faire du vélo = to cycle"
             },
             {
               "t": "."
@@ -1212,7 +1211,7 @@
       ]
     }
   ],
-  "newWords": ["club", "sport", "vélo", "basket", "mardi", "jeudi", "assez", "match"],
+  "newWords": ["club", "sport", "basket", "mardi", "jeudi", "assez", "match"],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",
