@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 32 · NEXT 5 (T-26 in review; T-27 to T-30 blocked) · BACKLOG 29
+**Progress:** DONE 33 · NEXT 4 (3 ready: T-27 to T-29; T-30 blocked on human gates) · BACKLOG 29
 
 ---
 
@@ -724,6 +724,28 @@ QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") hav
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [x] Finish: PR to `main` merged with CI green
 
+
+### T-26 · Integration: swap mocks for the real API
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · Medium | M | T-16 to T-23, T-25 | T-27, T-28, T-29, T-30 | 5 |
+
+**Status:** done · **Claimed by:** T-26 agent (wave 4/5 lead session) · **Branch:** `task/T-26-integration` · **PR:** https://github.com/MinhTam2773/frenchy/pull/35
+**Owns:** cross-cutting fixes; `src/client/mocks/` config; contract fixes in `src/shared/schemas/` (both sides in the same PR)
+**Goal:** The whole MVP runs against the local Worker and local D1 with no mocks.
+**Done when:** the full flow works locally on a fresh database: sign up → onboarding → Today → review → reader save word → review that card → streak updates.
+
+- [x] Dev default `VITE_USE_MOCKS=false` when the Worker runs; mocks stay for tests (`npm run dev` always runs the Worker through the Cloudflare Vite plugin, so MSW now starts only with `VITE_USE_MOCKS=true`)
+- [x] Walk every screen against the real API with seed data (the seed now makes a Better Auth login, `demo@frenchy.local` / `frenchy-demo`, L-107; every screen as the demo user and as a new account, 0 failed API calls or console errors; the sentence sheet's grammar note loads from the real `/api/ai/explain`, G-68; Google sign-in skipped, G-60)
+- [x] Fix contract mismatches by changing the shared schema and both sides together (every T-22 "Notes for T-26" item except the ping's fixed minutes, kept so page tests don't depend on the clock; G-61 window as `CLIENT_INSTANT_WINDOW` + `clampClientInstant` in `src/shared`, used by the Worker and the mocks, in `docs/api-contract.md`; saved cards before starter cards under the daily cap, L-106)
+- [x] Loading skeletons, error + retry, offline banner on every screen (audited every page: each data screen already had a `role="status"` loading line and an error + retry except Practice, which now has one; there is no skeleton spec in `design/`, so the text loaders stay; an offline banner in both layouts, `OfflineBanner.tsx`)
+- [x] Remove leftover placeholders and dead mock code (the Words placeholder and `layouts/Placeholder.tsx`, G-28; `mockServiceWorker.js` dropped from real builds, G-27; Session complete's copy of the next-unread rule, G-42)
+- [x] Finish: `npm run check` green (65 files, 1,029 tests; build `precache 12 entries (1028.04 KiB)`), after merging `main`
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-104 to L-108, G-70 to G-72, B-33)
+- [x] Finish: PR to `main` merged with CI green
+
+QUESTION: a word saved in the reader now starts before starter-deck cards, but still counts against `NEW_CARDS_PER_DAY` (L-106), so after a full 10-card session it waits until tomorrow. Should saved cards skip the cap? Default: no (reversible: one `orderBy`/limit in `cards.ts`).
+
 ---
 
 ## NEXT (MVP)
@@ -753,26 +775,7 @@ Wave 4 is done (T-21 to T-25 moved to DONE).
 
 ### Wave 5
 
-#### T-26 · Integration: swap mocks for the real API
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · Medium | M | T-16 to T-23, T-25 | T-27, T-28, T-29, T-30 | 5 |
-
-**Status:** in review · **Claimed by:** T-26 agent (wave 4/5 lead session) · **Branch:** `task/T-26-integration` · **PR:** https://github.com/MinhTam2773/frenchy/pull/35
-**Owns:** cross-cutting fixes; `src/client/mocks/` config; contract fixes in `src/shared/schemas/` (both sides in the same PR)
-**Goal:** The whole MVP runs against the local Worker and local D1 with no mocks.
-**Done when:** the full flow works locally on a fresh database: sign up → onboarding → Today → review → reader save word → review that card → streak updates.
-
-- [x] Dev default `VITE_USE_MOCKS=false` when the Worker runs; mocks stay for tests (`npm run dev` always runs the Worker through the Cloudflare Vite plugin, so MSW now starts only with `VITE_USE_MOCKS=true`)
-- [x] Walk every screen against the real API with seed data (the seed now makes a Better Auth login, `demo@frenchy.local` / `frenchy-demo`, L-107; every screen as the demo user and as a new account, 0 failed API calls or console errors; the sentence sheet's grammar note loads from the real `/api/ai/explain`, G-68; Google sign-in skipped, G-60)
-- [x] Fix contract mismatches by changing the shared schema and both sides together (every T-22 "Notes for T-26" item except the ping's fixed minutes, kept so page tests don't depend on the clock; G-61 window as `CLIENT_INSTANT_WINDOW` + `clampClientInstant` in `src/shared`, used by the Worker and the mocks, in `docs/api-contract.md`; saved cards before starter cards under the daily cap, L-106)
-- [x] Loading skeletons, error + retry, offline banner on every screen (audited every page: each data screen already had a `role="status"` loading line and an error + retry except Practice, which now has one; there is no skeleton spec in `design/`, so the text loaders stay; an offline banner in both layouts, `OfflineBanner.tsx`)
-- [x] Remove leftover placeholders and dead mock code (the Words placeholder and `layouts/Placeholder.tsx`, G-28; `mockServiceWorker.js` dropped from real builds, G-27; Session complete's copy of the next-unread rule, G-42)
-- [x] Finish: `npm run check` green (65 files, 1,029 tests; build `precache 12 entries (1028.04 KiB)`), after merging `main`
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-104 to L-108, G-70 to G-72, B-33)
-- [ ] Finish: PR to `main` merged with CI green
-
-QUESTION: a word saved in the reader now starts before starter-deck cards, but still counts against `NEW_CARDS_PER_DAY` (L-106), so after a full 10-card session it waits until tomorrow. Should saved cards skip the cap? Default: no (reversible: one `orderBy`/limit in `cards.ts`).
+Wave 5 is done (T-26 moved to DONE).
 
 ### Wave 6
 
@@ -781,7 +784,7 @@ QUESTION: a word saved in the reader now starts before starter-deck cards, but s
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | M | T-26 | — | 6 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-27-e2e`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-27-e2e`
 **Owns:** `e2e/**`, `playwright.config.ts`, an e2e job in `.github/workflows/ci.yml`
 **Goal:** The core flows are protected by browser tests at phone and desktop sizes.
 **Done when:** the specs pass locally and in CI.
@@ -799,7 +802,7 @@ QUESTION: a word saved in the reader now starts before starter-deck cards, but s
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-26 | — | 6 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-28-a11y`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-28-a11y`
 **Owns:** a11y fixes across `src/client/**`, `e2e/a11y.spec.ts`
 **Goal:** WCAG 2.1 AA on every screen, on real phone widths.
 **Done when:** axe reports no violations on any route and the manual checks below pass.
@@ -818,14 +821,14 @@ QUESTION: a word saved in the reader now starts before starter-deck cards, but s
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Extra | M | T-26 | T-30 | 6 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-29-security`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-29-security`
 **Owns:** `docs/security-review.md`, fixes anywhere
 **Goal:** No cross-user data access, no leaked secrets and no abusable endpoints before anything is public.
 **Done when:** `docs/security-review.md` lists the findings and every P0/P1 finding is fixed.
 
 - [ ] Every database access goes through `scopedDb` (search routes for raw table access)
 - [ ] Auth: cookie flags, CSRF posture (SameSite + origin check), session expiry, password policy, rate limits
-- [ ] No secrets in the client bundle (inspect `dist/`); `.dev.vars` is gitignored
+- [ ] No secrets in the client bundle (inspect `dist/`); `.dev.vars` is gitignored (G-72: `vite build` copies `.dev.vars` into `dist/frenchy/`; fix it before T-30)
 - [ ] AI endpoints: user text handled as data, output validated, rate limits and a daily cost cap
 - [ ] Input validation on every endpoint; errors don't leak internals
 - [ ] `npm audit`; lexicon license attribution present (G-01)
