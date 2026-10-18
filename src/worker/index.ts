@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { ai } from './routes/ai';
 import { auth } from './routes/auth';
 import { health } from './routes/health';
 
@@ -6,7 +7,8 @@ import { health } from './routes/health';
 export const app = new Hono<{ Bindings: Env }>()
   .basePath('/api')
   .route('/health', health)
-  .route('/auth', auth);
+  .route('/auth', auth)
+  .route('/ai', ai);
 
 export type AppType = typeof app;
 
