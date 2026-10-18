@@ -36,7 +36,7 @@
       "id": "ch4-immeuble-de-cinq-etages",
       "type": "sentence_meaning",
       "front": "Il y a un immeuble de cinq étages.",
-      "back": "There is a five-storey building.",
+      "back": "There is a five-story building.",
       "textId": "ch4-au-douze-rue-des-lilas"
     },
     {
@@ -58,8 +58,8 @@
     {
       "id": "ch4-le-numero-de-mamie",
       "type": "sentence_meaning",
-      "front": "Le numéro de Mamie, c'est le zéro quatre, soixante-dix, vingt-deux, quinze, quatre-vingt-un.",
-      "back": "Grandma’s number is 04 70 22 15 81.",
+      "front": "Le numéro de Mamie, c'est le zéro quatre, soixante-cinq, soixante et onze, vingt-deux, quatre-vingt-un.",
+      "back": "Grandma’s number is 04 65 71 22 81.",
       "note": "French phone numbers are read in pairs.",
       "textId": "ch4-vite-emma"
     },
@@ -107,7 +107,7 @@
       "type": "meaning_sentence",
       "front": "There is no elevator.",
       "back": "Il n'y a pas d'ascenseur.",
-      "note": "After ne … pas, un becomes de (d’ before a vowel).",
+      "note": "After ne … pas, un becomes de (d' before a vowel).",
       "textId": "ch4-au-douze-rue-des-lilas"
     },
     {
