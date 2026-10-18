@@ -5,7 +5,6 @@ import { TTS_RATE } from '@shared/constants';
 import { getChapter, getChapterTexts, getText } from '@shared/content';
 import type { Text, WordsResponse } from '@shared/schemas';
 import { annotate } from '@shared/text';
-import { useActiveMinutes } from '@client/lib/activity';
 import { api } from '@client/lib/api';
 import { queryKeys, useProfile } from '@client/lib/query';
 import { Button, TopBar } from '@client/ui';
@@ -52,7 +51,6 @@ export function ReaderPage() {
 type Selection = SentenceRange & { anchor: number; open: boolean };
 
 function Reader({ text }: { text: Text }) {
-  useActiveMinutes();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const profile = useProfile().data;

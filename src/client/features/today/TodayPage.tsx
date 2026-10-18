@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router';
 import type { Chapter } from '@shared/schemas';
-import { useActiveMinutes } from '@client/lib/activity';
 import { Button, ProgressBar, StreakChip } from '@client/ui';
 import { ReviewCard } from './ReviewCard';
 import { BookCard, OutputCard, ReadingCard } from './StepCards';
@@ -65,7 +64,6 @@ export function TodayPage() {
   const today = useToday();
   // Fixed at mount so "Next card due in 3 h" doesn't change on every render.
   const [now] = useState(Date.now);
-  useActiveMinutes();
 
   if (today.status === 'loading') {
     return (

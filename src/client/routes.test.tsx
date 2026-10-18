@@ -7,7 +7,6 @@ import { renderAt } from './mocks/renderAt';
 // / and /onboarding (features/auth, features/onboarding).
 const tabRoutes = [
   ['/practice', 'Practice'],
-  ['/words', 'Words'],
   ['/me', 'Me'],
 ] as const;
 
@@ -31,6 +30,14 @@ test.each(fullScreenRoutes)('%s renders inside the full-screen layout', async (p
 test('/dev/ui shows the UI kit gallery in dev', async () => {
   renderAt('/dev/ui');
   expect(await screen.findByRole('heading', { name: 'UI kit' })).toBeInTheDocument();
+});
+
+test('the Words tab is not in the MVP (B-02)', async () => {
+  renderAt('/words');
+  expect(await screen.findByRole('heading', { name: 'Page not found' })).toBeInTheDocument();
+  renderAt('/me');
+  await screen.findByRole('heading', { name: 'Me' });
+  expect(screen.queryByRole('link', { name: 'Words' })).not.toBeInTheDocument();
 });
 
 test('an unknown path shows the not-found page', async () => {

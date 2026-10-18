@@ -9,7 +9,6 @@ import { PracticePage } from '@client/features/practice/PracticePage';
 import { SettingsPage } from '@client/features/settings/SettingsPage';
 import { StreakPage } from '@client/features/streak/StreakPage';
 import { TodayPage } from '@client/features/today/TodayPage';
-import { WordsPage } from '@client/features/words/WordsPage';
 import { FullScreenLayout } from '@client/layouts/FullScreenLayout';
 import { RequireSession } from '@client/layouts/RequireSession';
 import { TabLayout } from '@client/layouts/TabLayout';
@@ -65,7 +64,6 @@ export const routes: RouteObject[] = [
               { path: '/today', element: <TodayPage /> },
               { path: '/path', element: <PathPage /> },
               { path: '/practice', element: <PracticePage /> },
-              { path: '/words', element: <WordsPage /> },
               { path: '/me', element: <SettingsPage /> },
             ],
           },

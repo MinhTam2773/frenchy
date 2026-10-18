@@ -1,7 +1,10 @@
 import { Outlet, useLocation } from 'react-router';
-import { TabBar } from '@client/ui';
+import { MAIN_TABS, TabBar } from '@client/ui';
 
-/** Screens with the bottom tab bar: Today, Path, Practice, Words, Me. */
+// The Words screen is Phase 2 (B-02, G-28).
+const MVP_TABS = MAIN_TABS.filter((tab) => tab.to !== '/words');
+
+/** Screens with the bottom tab bar: Today, Path, Practice, Me. */
 export function TabLayout() {
   const { pathname } = useLocation();
   return (
@@ -9,7 +12,7 @@ export function TabLayout() {
       <main className="min-h-0 flex-1 overflow-y-auto">
         <Outlet />
       </main>
-      <TabBar current={pathname} />
+      <TabBar current={pathname} items={MVP_TABS} />
     </div>
   );
 }
