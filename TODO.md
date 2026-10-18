@@ -709,7 +709,7 @@ Notes for T-25 / T-26 / T-29 / B-03:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Extra | M | T-14, T-08 | T-30 | 4 |
 
-**Status:** in progress · **Claimed by:** T-24 agent (wave 4 lead session) · **Branch:** `task/T-24-content-qa`
+**Status:** in review · **Claimed by:** T-24 agent (wave 4 lead session) · **Branch:** `task/T-24-content-qa` · **PR:** https://github.com/MinhTam2773/frenchy/pull/33
 **Owns:** fixes in `content/chapters/**`, `docs/content-qa.md`
 **Goal:** An independent check (fresh agent, not the T-14 author) that every Stage 1 text and card is correct, natural and at the right level.
 **Notes (decisions, see `docs/content-qa.md`):** `isNew` means new to the course: one text per lemma, the first along the route (L-94). Fixed phrases are a closed list in `text.md`, and the brief's *est-ce que* line now says its tokens are phrase tokens (L-95). Out-of-Owns hunks: `scripts/content/prompts/text.md` (brief), `scripts/lexicon/build.ts` and `coverage.ts` (G-58 fixes, phrase-aware coverage), and `content/lexicon/**`, rebuilt from the same raw dumps as T-08. Coverage went from 87.8 % to 99.2 %.
