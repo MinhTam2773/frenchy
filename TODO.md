@@ -784,7 +784,7 @@ Wave 5 is done (T-26 moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | M | T-26 | — | 6 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-27-e2e`
+**Status:** in progress · **Claimed by:** Wave 6 agent (T-27) · **Branch:** `task/T-27-e2e`
 **Owns:** `e2e/**`, `playwright.config.ts`, an e2e job in `.github/workflows/ci.yml`
 **Goal:** The core flows are protected by browser tests at phone and desktop sizes.
 **Done when:** the specs pass locally and in CI.
