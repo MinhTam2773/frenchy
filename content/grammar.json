@@ -1,0 +1,275 @@
+[
+  { "id": "sounds.basic", "label": "Letters, accents and common sound pairs", "chapterId": "appA" },
+  {
+    "id": "phrases.greetings",
+    "label": "Fixed greetings: bonjour, merci, s’il vous plaît",
+    "chapterId": "appA"
+  },
+
+  { "id": "articles.definite", "label": "Definite articles: le, la, l’, les", "chapterId": "ch1" },
+  { "id": "articles.indefinite", "label": "Indefinite articles: un, une, des", "chapterId": "ch1" },
+  {
+    "id": "articles.partitive",
+    "label": "Partitive articles: du, de la, de l’",
+    "chapterId": "ch1"
+  },
+  { "id": "articles.contractions", "label": "Contractions: au, aux, du, des", "chapterId": "ch1" },
+  { "id": "nouns.plural", "label": "Regular plurals: add -s", "chapterId": "ch1" },
+  {
+    "id": "phrases.c-est",
+    "label": "Pointing things out: c’est, voici, voilà, il y a",
+    "chapterId": "ch1"
+  },
+
+  { "id": "gender.basic", "label": "Noun gender from common endings", "chapterId": "ch2" },
+
+  {
+    "id": "pronouns.subject",
+    "label": "Subject pronouns: je, tu, il, elle, nous, vous, ils, elles",
+    "chapterId": "ch12"
+  },
+  { "id": "etre.present", "label": "être in the present", "chapterId": "ch12" },
+  { "id": "avoir.present", "label": "avoir in the present", "chapterId": "ch12" },
+  { "id": "aller.present", "label": "aller in the present", "chapterId": "ch12" },
+  { "id": "faire.present", "label": "faire in the present", "chapterId": "ch12" },
+  { "id": "savoir.present", "label": "savoir and connaître in the present", "chapterId": "ch12" },
+  { "id": "pouvoir.present", "label": "pouvoir and vouloir in the present", "chapterId": "ch12" },
+  { "id": "devoir.present", "label": "devoir in the present", "chapterId": "ch12" },
+  {
+    "id": "adjectives.basic",
+    "label": "Common adjectives that agree in gender and number",
+    "chapterId": "ch12"
+  },
+  { "id": "negation.ne-pas", "label": "Simple negation: ne … pas", "chapterId": "ch12" },
+
+  { "id": "er.present", "label": "Regular -er verbs in the present", "chapterId": "ch10" },
+  {
+    "id": "er.spelling-changes",
+    "label": "Spelling changes: manger, commencer, acheter, appeler",
+    "chapterId": "ch10"
+  },
+  {
+    "id": "prepositions.basic",
+    "label": "Basic prepositions: à, de, en, dans, chez",
+    "chapterId": "ch10"
+  },
+
+  { "id": "numbers.0-100", "label": "Numbers 0 to 100", "chapterId": "ch4" },
+  { "id": "numbers.ordinal", "label": "Ordinal numbers: premier, deuxième, …", "chapterId": "ch4" },
+  { "id": "time.clock", "label": "Telling the time and giving dates", "chapterId": "ch4" },
+
+  { "id": "questions.intonation", "label": "Questions by intonation", "chapterId": "ch7" },
+  { "id": "questions.est-ce-que", "label": "Questions with est-ce que", "chapterId": "ch7" },
+  {
+    "id": "questions.words",
+    "label": "Question words: qui, que, où, quand, pourquoi, comment, combien",
+    "chapterId": "ch7"
+  },
+  { "id": "questions.inversion", "label": "Questions by inversion", "chapterId": "ch7" },
+
+  {
+    "id": "phrases.introductions",
+    "label": "Introducing yourself: je m’appelle, enchanté",
+    "chapterId": "ch33"
+  },
+
+  { "id": "ir.present", "label": "Regular -ir verbs in the present", "chapterId": "ch11" },
+  { "id": "re.present", "label": "Regular -re verbs in the present", "chapterId": "ch11" },
+  {
+    "id": "ir-re.irregular",
+    "label": "Common irregular -ir and -re verbs: prendre, venir, partir",
+    "chapterId": "ch11"
+  },
+
+  {
+    "id": "adjectives.position",
+    "label": "Adjective position before and after the noun",
+    "chapterId": "ch28"
+  },
+  {
+    "id": "adjectives.possessive",
+    "label": "Possessive adjectives: mon, ma, mes, …",
+    "chapterId": "ch28"
+  },
+  {
+    "id": "adjectives.demonstrative",
+    "label": "Demonstrative adjectives: ce, cet, cette, ces",
+    "chapterId": "ch28"
+  },
+  {
+    "id": "adjectives.comparative",
+    "label": "Comparing: plus, moins, aussi … que",
+    "chapterId": "ch28"
+  },
+  {
+    "id": "adjectives.superlative",
+    "label": "The superlative: le plus, le moins",
+    "chapterId": "ch28"
+  },
+
+  {
+    "id": "negation.other",
+    "label": "More negations: ne … jamais, rien, personne, plus",
+    "chapterId": "ch6"
+  },
+  {
+    "id": "sentences.conjunctions",
+    "label": "Linking sentences: et, mais, ou, parce que",
+    "chapterId": "ch6"
+  },
+
+  {
+    "id": "future.aller-inf",
+    "label": "Immediate future: aller + infinitive",
+    "chapterId": "ch13"
+  },
+  { "id": "past.venir-de", "label": "Recent past: venir de + infinitive", "chapterId": "ch13" },
+
+  { "id": "pronominal.present", "label": "Pronominal verbs in the present", "chapterId": "ch14" },
+
+  {
+    "id": "prepositions.place",
+    "label": "Prepositions of place: devant, derrière, sur, sous",
+    "chapterId": "ch21"
+  },
+  {
+    "id": "prepositions.countries",
+    "label": "Countries and cities: à, en, au, aux",
+    "chapterId": "ch21"
+  },
+  {
+    "id": "prepositions.time",
+    "label": "Prepositions of time: pendant, depuis, dans, en",
+    "chapterId": "ch21"
+  },
+
+  { "id": "passe-compose.avoir", "label": "Passé composé with avoir", "chapterId": "ch15" },
+  { "id": "passe-compose.etre", "label": "Passé composé with être", "chapterId": "ch15" },
+  { "id": "passe-compose.irregular", "label": "Irregular past participles", "chapterId": "ch15" },
+  { "id": "passe-compose.agreement", "label": "Past participle agreement", "chapterId": "ch15" },
+
+  {
+    "id": "phrases.suggestions",
+    "label": "Suggesting and arranging: on peut, si on, rendez-vous",
+    "chapterId": "ch34"
+  },
+
+  {
+    "id": "gender.exceptions",
+    "label": "Gender exceptions and nouns with two genders",
+    "chapterId": "ch3"
+  },
+  {
+    "id": "nouns.plural-irregular",
+    "label": "Irregular plurals: -aux, -x, -s",
+    "chapterId": "ch3"
+  },
+
+  { "id": "imparfait.formation", "label": "The imparfait", "chapterId": "ch16" },
+  {
+    "id": "imparfait.vs-passe-compose",
+    "label": "Imparfait or passé composé",
+    "chapterId": "ch16"
+  },
+  { "id": "plus-que-parfait", "label": "The plus-que-parfait", "chapterId": "ch16" },
+
+  {
+    "id": "pronouns.object-direct",
+    "label": "Direct object pronouns: le, la, les",
+    "chapterId": "ch26"
+  },
+  {
+    "id": "pronouns.object-indirect",
+    "label": "Indirect object pronouns: lui, leur",
+    "chapterId": "ch26"
+  },
+  { "id": "pronouns.y-en", "label": "The pronouns y and en", "chapterId": "ch26" },
+  {
+    "id": "pronouns.stressed",
+    "label": "Stressed pronouns: moi, toi, lui, …",
+    "chapterId": "ch26"
+  },
+
+  { "id": "relative.qui-que", "label": "Relative pronouns qui and que", "chapterId": "ch27" },
+  { "id": "relative.dont-ou", "label": "Relative pronouns dont and où", "chapterId": "ch27" },
+  { "id": "relative.ce-qui", "label": "Ce qui, ce que, ce dont", "chapterId": "ch27" },
+
+  { "id": "future.simple", "label": "The simple future", "chapterId": "ch17" },
+  { "id": "future.irregular", "label": "Irregular future stems", "chapterId": "ch17" },
+  { "id": "future.anterior", "label": "The futur antérieur", "chapterId": "ch17" },
+
+  { "id": "imperative.present", "label": "The imperative", "chapterId": "ch23" },
+  { "id": "imperative.pronouns", "label": "Pronouns with the imperative", "chapterId": "ch23" },
+
+  { "id": "exclamations.basic", "label": "Exclamations: quel, que, comme", "chapterId": "ch8" },
+  { "id": "commands.polite", "label": "Polite requests and commands", "chapterId": "ch8" },
+
+  { "id": "adverbs.formation", "label": "Adverbs ending in -ment", "chapterId": "ch29" },
+  { "id": "adverbs.position", "label": "Where adverbs go in the sentence", "chapterId": "ch29" },
+
+  { "id": "conditional.present", "label": "The present conditional", "chapterId": "ch18" },
+  { "id": "conditional.si-clauses", "label": "Si clauses", "chapterId": "ch18" },
+  { "id": "conditional.past", "label": "The past conditional", "chapterId": "ch18" },
+
+  {
+    "id": "clauses.subordinate",
+    "label": "Subordinate clauses: que, parce que, si",
+    "chapterId": "ch9"
+  },
+  {
+    "id": "clauses.temporal",
+    "label": "Time clauses: quand, dès que, pendant que",
+    "chapterId": "ch9"
+  },
+
+  { "id": "phrases.requests", "label": "Asking for help and directions", "chapterId": "ch36" },
+
+  { "id": "subjunctive.present", "label": "The present subjunctive", "chapterId": "ch20" },
+  { "id": "subjunctive.irregular", "label": "Irregular subjunctive forms", "chapterId": "ch20" },
+  {
+    "id": "subjunctive.triggers",
+    "label": "Expressions that take the subjunctive",
+    "chapterId": "ch20"
+  },
+  { "id": "subjunctive.past", "label": "The past subjunctive", "chapterId": "ch20" },
+
+  {
+    "id": "modals.conditional",
+    "label": "Could, should, would: pourrais, devrais, voudrais",
+    "chapterId": "ch19"
+  },
+  { "id": "modals.past", "label": "Past modals: aurais dû, aurais pu", "chapterId": "ch19" },
+
+  {
+    "id": "infinitive.after-verbs",
+    "label": "Infinitive after verbs, with and without à or de",
+    "chapterId": "ch22"
+  },
+  {
+    "id": "infinitive.after-prepositions",
+    "label": "Infinitive after prepositions: pour, sans, avant de",
+    "chapterId": "ch22"
+  },
+  { "id": "infinitive.past", "label": "The past infinitive", "chapterId": "ch22" },
+
+  { "id": "participle.present", "label": "The present participle", "chapterId": "ch24" },
+  { "id": "gerund.en", "label": "The gerund: en + present participle", "chapterId": "ch24" },
+
+  { "id": "verbs.confusing", "label": "Verbs that are easy to mix up", "chapterId": "ch31" },
+
+  { "id": "written.formal", "label": "Formal written register", "chapterId": "ch30" },
+  { "id": "written.letters", "label": "Letters and emails", "chapterId": "ch30" },
+
+  { "id": "phrases.current-events", "label": "Talking about the news", "chapterId": "ch35" },
+
+  { "id": "oddities.idioms", "label": "Common idioms", "chapterId": "ch32" },
+  {
+    "id": "oddities.impersonal",
+    "label": "Impersonal expressions: il faut, il paraît",
+    "chapterId": "ch32"
+  },
+
+  { "id": "passe-simple", "label": "The passé simple", "chapterId": "ch25" },
+  { "id": "passive.voice", "label": "The passive voice", "chapterId": "ch25" },
+  { "id": "indirect-speech", "label": "Indirect speech", "chapterId": "ch25" }
+]
