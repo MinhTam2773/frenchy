@@ -717,7 +717,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-05, T-07, T-09, T-15 | T-26 | 4 |
 
-**Status:** in progress · **Claimed by:** T-25 agent (wave 4 lead session) · **Branch:** `task/T-25-reader`
+**Status:** in review ([PR #31](https://github.com/MinhTam2773/frenchy/pull/31)) · **Claimed by:** T-25 agent (wave 4 lead session) · **Branch:** `task/T-25-reader`
 **Owns:** `src/client/features/reader/**`, `src/client/mocks/handlers/reader.ts`
 **Goal:** `Reader.dc.html` and `Sentence.dc.html`: every French word is tappable, sentences can be long-pressed, and anything can be saved to SRS.
 **Done when:** tapping a word shows the right sheet, long-press selects the sentence, saving creates a card (mocked), and it all works with the keyboard.
@@ -732,7 +732,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [x] Tests: tap → sheet data, long-press → sentence, save → card request
 QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") have no spec; left out (B-31). The bar shows sentences read ("2/6") instead.
 
-- [ ] Finish: `npm run check` green
+- [x] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
