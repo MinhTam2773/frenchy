@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { activityRoute, streakRoute } from './routes/activity';
+import { ai } from './routes/ai';
 import { auth } from './routes/auth';
 import { cardsRoute } from './routes/cards';
 import { health } from './routes/health';
@@ -12,6 +13,7 @@ export const app = new Hono<{ Bindings: Env }>()
   .basePath('/api')
   .route('/health', health)
   .route('/auth', auth)
+  .route('/ai', ai)
   .route('/profile', profile)
   .route('/cards', cardsRoute)
   .route('/reviews', reviewsRoute)

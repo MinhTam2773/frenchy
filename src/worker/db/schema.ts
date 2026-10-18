@@ -139,3 +139,18 @@ export const translationCache = sqliteTable('translation_cache', {
   provider: text('provider').notNull(),
   createdAt: integer('created_at').notNull(),
 });
+
+/**
+ * Per-user AI requests per clock hour (T-23 rate limit, G-21). A fixed window: the route adds one
+ * per provider call and deletes the user's older windows in the same batch.
+ */
+export const aiUsage = sqliteTable(
+  'ai_usage',
+  {
+    userId: text('user_id').notNull(),
+    /** Epoch ms at the start of the clock hour. */
+    windowStart: integer('window_start').notNull(),
+    requests: integer('requests').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.windowStart] })],
+);
