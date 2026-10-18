@@ -262,19 +262,19 @@ T-02 is done (moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-01 | T-25 | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-05-tts`
+**Status:** in review · **Claimed by:** T-05 subagent (lead session) · **Branch:** `task/T-05-tts`
 **Owns:** `src/client/lib/tts/**`
 **Goal:** One small module that speaks French well on every device that can.
 **Done when:** `useTts()` speaks with the best available fr-FR voice, reports `supported=false` cleanly where it can't, and tests pass.
 
-- [ ] `speak(text, { rate, voiceURI })` on the Web Speech API; cancels any utterance in progress
-- [ ] Voice choice: saved voice → best local `fr-FR` → any `fr-*`; handle voices loading late (`voiceschanged`)
-- [ ] Default rate 0.8; allowed range 0.6–1.0
-- [ ] `useTts()` hook: `speak`, `stop`, `speaking`, `supported`, `voices`
-- [ ] Sentence boundary callback (where `onboundary` is supported) so the reader can highlight the spoken sentence
-- [ ] Tests with a mocked `speechSynthesis`
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `speak(text, { rate, voiceURI })` on the Web Speech API; cancels any utterance in progress
+- [x] Voice choice: saved voice → best local `fr-FR` → any `fr-*`; handle voices loading late (`voiceschanged`)
+- [x] Default rate 0.8; allowed range 0.6–1.0
+- [x] `useTts()` hook: `speak`, `stop`, `speaking`, `supported`, `voices`
+- [x] Sentence boundary callback (where `onboundary` is supported) so the reader can highlight the spoken sentence
+- [x] Tests with a mocked `speechSynthesis`
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 ### Wave 2
@@ -1241,3 +1241,4 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-12 · 2026-10-17 · ci · T-02` — **A workflow triggered by `pull_request` plus `push` to `main` never runs for a plain push to another branch, so the "prove it" red run needs a (draft) PR.** → To test CI, push a scratch branch and open a draft PR, then close it with `gh pr close --delete-branch`.
 - `L-13 · 2026-10-17 · ci · T-02` — **`actions/checkout` and `actions/setup-node` are at v7 (node24 runtime), and `.nvmrc` = `24` resolved to Node 24.21.0 on the first run. The worker tests pass in workerd on the runner with no Cloudflare credentials. `ubuntu-latest` moves to Ubuntu 26 on 2026-10-19.** → Keep the job id `ci` (it is the required-check name for H-01). Upgrade local Node to match `.nvmrc` (at least 22.22.2) before taking jsdom 30 (G-14).
 - `L-14 · 2026-10-17 · tooling · lead` — **In cloud sessions the git proxy lets you push new branches but hangs up on branch deletes (`git push --delete`), so a scratch branch can't be removed from the session.** → Don't push throwaway branches from a cloud session; delete leftovers in the GitHub UI (or with `gh` locally).
+- `L-15 · 2026-10-17 · client · T-05` — **`speechSynthesis.cancel()` fires `error` (not `end`) on the interrupted utterance, after the next one has started, so a naive `speaking` flag flips to false mid-speech. Browsers also rarely emit `onboundary` with `name: "sentence"` (mostly `word`).** → `useTts` guards state with a per-call id, so only the latest `speak()` clears `speaking`. T-25 must treat sentence highlighting as optional and keep a no-highlight path.
