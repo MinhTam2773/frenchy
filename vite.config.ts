@@ -1,3 +1,5 @@
+import { rmSync } from 'node:fs';
+import { join } from 'node:path';
 import { cloudflare } from '@cloudflare/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
@@ -12,6 +14,16 @@ export default defineConfig({
     react(),
     tailwindcss(),
     cloudflare(),
+    {
+      // G-27: MSW's worker (public/) is only for VITE_USE_MOCKS=true; keep it out of real builds.
+      name: 'drop-msw-worker',
+      apply: 'build',
+      writeBundle({ dir }) {
+        if (dir && process.env.VITE_USE_MOCKS !== 'true') {
+          rmSync(join(dir, 'mockServiceWorker.js'), { force: true });
+        }
+      },
+    },
     // PWA (T-12). Registration lives in src/client/pwa, so no virtual module is injected.
     VitePWA({
       registerType: 'prompt',
@@ -44,7 +56,9 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
         // G-27: the dev-only MSW worker is copied from public/; never precache it.
-        globIgnores: ['**/mockServiceWorker.js'],
+        // G-26: lesson words carry their own annotations, so the 15 MB of lexicon shards are
+        // fetched only when a word needs a lookup, then cached (runtime rule below).
+        globIgnores: ['**/mockServiceWorker.js', '**/assets/forms-*.js', '**/assets/lemmas-*.js'],
         navigateFallback: '/index.html',
         // L-11: /api/* must always reach the Worker, never the cached index.html.
         navigateFallbackDenylist: [/^\/api\//],
@@ -54,6 +68,15 @@ export default defineConfig({
             // A function: a RegExp is matched against the full URL, so ^\/api would never hit.
             urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/api/'),
             handler: 'NetworkOnly',
+          },
+          {
+            // The lexicon shard chunks (`forms-a-<hash>.js`). Hashed names, so a cached shard never
+            // goes stale; old builds' shards age out. Inline regex: Workbox copies this function's
+            // source into sw.js, where nothing from this file is in scope.
+            urlPattern: ({ url, sameOrigin }) =>
+              sameOrigin && /^\/assets\/(?:forms|lemmas)-[a-z]+-[\w-]+\.js$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: { cacheName: 'lexicon-shards', expiration: { maxEntries: 60 } },
           },
           {
             urlPattern: ({ url, sameOrigin }) =>

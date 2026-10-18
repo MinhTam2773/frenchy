@@ -3,7 +3,8 @@ import { eq, sql } from 'drizzle-orm';
 import { describe, expect, test } from 'vitest';
 import { Card, DailyActivity, Profile, WordStatus } from '../../shared/schemas';
 import { createDb, schema, scopedDb, translationCacheDb } from './index';
-import { buildDemoData, DEMO_USER_ID, seedDemo } from './seed';
+import { app } from '../index';
+import { buildDemoData, DEMO_LOGIN, DEMO_USER_ID, seedDemo } from './seed';
 
 const db = createDb(env.DB);
 const NOW = Date.UTC(2026, 9, 18, 12, 0);
@@ -199,5 +200,25 @@ describe('demo seed', () => {
     expect(await demo.dailyActivity.select()).toHaveLength(15);
     expect(await demo.wordStatus.select()).toHaveLength(12);
     expect(await demo.textReads.select()).toHaveLength(1);
+  });
+
+  test('makes a demo login the app can sign in with', async () => {
+    await seedDemo(db, NOW);
+    await seedDemo(db, NOW);
+    const res = await app.request(
+      'https://frenchy.test/api/auth/sign-in/email',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          origin: 'https://frenchy.test',
+          'cf-connecting-ip': `10.0.${Math.floor(Math.random() * 250)}.1`,
+        },
+        body: JSON.stringify({ email: DEMO_LOGIN.email, password: DEMO_LOGIN.password }),
+      },
+      env,
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({ user: { id: DEMO_USER_ID } });
   });
 });

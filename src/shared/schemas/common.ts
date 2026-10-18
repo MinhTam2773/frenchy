@@ -1,10 +1,25 @@
 import { z } from 'zod';
+import { CLIENT_INSTANT_WINDOW } from '../constants';
 
 /** Ids of user data rows (cards, reviews). */
 export const Uuid = z.uuid();
 
 /** A UTC instant as integer milliseconds since the epoch. */
 export const EpochMs = z.int().nonnegative();
+
+/** The issue message of a `400` for a client instant outside `CLIENT_INSTANT_WINDOW`. */
+export const CLIENT_INSTANT_MESSAGE = 'Must be within the last 24 hours';
+
+/**
+ * A client-reported instant clamped to the server's `now`, or `null` when it is outside
+ * `CLIENT_INSTANT_WINDOW` (the server answers `400` with the field as the issue path).
+ */
+export function clampClientInstant(at: number, now: number): number | null {
+  if (at < now - CLIENT_INSTANT_WINDOW.pastMs || at > now + CLIENT_INSTANT_WINDOW.futureMs) {
+    return null;
+  }
+  return Math.min(at, now);
+}
 
 /** A calendar date in the user's time zone, `YYYY-MM-DD`. */
 export const LocalDate = z.iso.date();

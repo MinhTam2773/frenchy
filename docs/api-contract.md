@@ -15,6 +15,7 @@ To change the contract, edit the schema and both sides (client and worker) in on
 | User data ids | UUID strings (`Uuid`). The server makes card ids; the client makes review ids so a retried POST is applied once. |
 | Content ids | Chapter `ch10` / `appA` (`ChapterId`). Texts and deck cards `<chapterId>-<slug>`, e.g. `ch10-le-matin-de-lea` (`ContentId`). Grammar tags are dotted lowercase, e.g. `er.present` (`GrammarTagId`). |
 | Instants | Integer milliseconds since the epoch, UTC (`EpochMs`). Same in D1 (`integer`). |
+| Client instants | `ActivityPing.at`, `ReviewInput.reviewedAt` and `Reading.finishedAt` come from the device clock, so the server checks them (`clampClientInstant`, `CLIENT_INSTANT_WINDOW`): more than 24 h in the past or more than 5 min in the future is `400 bad_request` with the field as the issue path; a time up to 5 min ahead is clamped to the server's now. A review is never graded before the card's `lastReview` (G-61). |
 | Local days | `YYYY-MM-DD` in the profile's IANA time zone (`LocalDate`). Same in D1 (`text`). |
 | Missing values | Optional fields are left out, never `null`. Only fields typed `.nullable()` use `null`: `Profile.currentChapterId`, `ProfileSettings.voiceURI`, `Card.lastReview`, `CardStats.nextDueAt`. |
 | Lists | Wrapped in an object (`{ cards: [...] }`), so a field can be added later without breaking clients. |
@@ -76,7 +77,7 @@ Better Auth's routes keep their own error format.
 
 ### Cards and reviews
 
-- `GET /api/cards/due?limit=20` → `{ cards: Card[] }`, most overdue first. `limit` is 1–100 (default 20, `DUE_LIMIT`). New cards count against `NEW_CARDS_PER_DAY` (10) per local day.
+- `GET /api/cards/due?limit=20` → `{ cards: Card[] }`, most overdue first. `limit` is 1–100 (default 20, `DUE_LIMIT`). New cards count against `NEW_CARDS_PER_DAY` (10) per local day; under that cap, cards the learner saved (`source.kind` other than `starter`) are let in before starter-deck cards.
 - `GET /api/cards/stats` → `CardStats`: how many cards are due now (`due`), split into `new`, `learning` (includes relearning) and `review`, with the same new-card cap as `/due`, so `due` is what a session would show. `nextDueAt` is the earliest future due time, or `null` with no cards.
 - `POST /api/cards` with `CardCreate` → `Card`. Dedupes on `type` + `front`: an existing card comes back with `200`, a new one with `201`. The server sets the id and a new FSRS state (due now).
 - `POST /api/cards/starter/:chapterId` → `{ added, total }`. Adds the chapter's `deck.json` cards with `source = { kind: 'starter', ref: <deck card id> }`. Idempotent: cards already added are skipped (`added: 0` the second time). `404` for an unknown chapter.
