@@ -1,0 +1,222 @@
+{
+  "chapterId": "ch33",
+  "cards": [
+    {
+      "id": "ch33-tu-t-appelles-comment",
+      "type": "sentence_meaning",
+      "front": "Tu t'appelles comment ?",
+      "back": "What's your name?",
+      "note": "Informal. Word for word: you call yourself how?",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-tu-es-d-ou",
+      "type": "sentence_meaning",
+      "front": "Tu es d'où ?",
+      "back": "Where are you from?",
+      "note": "d'où = de + où: from where.",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-qu-est-ce-que-tu-fais-dans-la-vie",
+      "type": "sentence_meaning",
+      "front": "Qu'est-ce que tu fais dans la vie ?",
+      "back": "What do you do for a living?",
+      "note": "dans la vie = in life, for a living.",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-comment-allez-vous",
+      "type": "sentence_meaning",
+      "front": "Comment allez-vous ?",
+      "back": "How are you?",
+      "note": "Polite form. With friends: Ça va ?",
+      "textId": "ch33-le-premier-jour"
+    },
+    {
+      "id": "ch33-c-est-la-premiere-fois-ici",
+      "type": "sentence_meaning",
+      "front": "C'est la première fois ici ?",
+      "back": "Is this your first time here?",
+      "textId": "ch33-au-cafe-des-langues"
+    },
+    {
+      "id": "ch33-tu-connais-le-musee-rodin",
+      "type": "sentence_meaning",
+      "front": "Tu connais le musée Rodin ?",
+      "back": "Do you know the Rodin Museum?",
+      "note": "connaître = to know a place or a person.",
+      "textId": "ch33-au-cafe-des-langues"
+    },
+    {
+      "id": "ch33-je-ne-joue-pas-le-soir",
+      "type": "sentence_meaning",
+      "front": "Je ne joue pas le soir.",
+      "back": "I don't play in the evening.",
+      "note": "le soir = in the evening.",
+      "textId": "ch33-la-nouvelle-voisine"
+    },
+    {
+      "id": "ch33-qu-est-ce-que-tu-fais-comme-sport",
+      "type": "sentence_meaning",
+      "front": "Qu'est-ce que tu fais comme sport ?",
+      "back": "What sports do you do?",
+      "textId": "ch33-au-club-de-sport"
+    },
+    {
+      "id": "ch33-salut-je-m-appelle-theo",
+      "type": "meaning_sentence",
+      "front": "Hi! My name is Théo.",
+      "back": "Salut ! Je m'appelle Théo.",
+      "note": "Word for word: I call myself Théo.",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-je-suis-de-nantes",
+      "type": "meaning_sentence",
+      "front": "I'm from Nantes, but I live in Lille.",
+      "back": "Je suis de Nantes, mais j'habite à Lille.",
+      "note": "de + a city = from, à + a city = in.",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-je-suis-cuisinier",
+      "type": "meaning_sentence",
+      "front": "I'm a cook in an Italian restaurant.",
+      "back": "Je suis cuisinier dans un restaurant italien.",
+      "note": "No article before a job: je suis cuisinier.",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-vous-parlez-anglais",
+      "type": "meaning_sentence",
+      "front": "Do you speak English?",
+      "back": "Est-ce que vous parlez anglais ?",
+      "hint": "polite · est-ce que",
+      "note": "Languages take no capital letter: anglais, français.",
+      "textId": "ch33-le-premier-jour"
+    },
+    {
+      "id": "ch33-je-suis-canadien",
+      "type": "meaning_sentence",
+      "front": "I'm Canadian, from Toronto.",
+      "back": "Je suis canadien, de Toronto.",
+      "hint": "a man speaking",
+      "note": "No capital letter on a nationality adjective.",
+      "textId": "ch33-au-cafe-des-langues"
+    },
+    {
+      "id": "ch33-j-adore-les-musees",
+      "type": "meaning_sentence",
+      "front": "I love museums.",
+      "back": "J'adore les musées.",
+      "note": "French keeps the article: les musées.",
+      "textId": "ch33-au-cafe-des-langues"
+    },
+    {
+      "id": "ch33-vous-avez-des-enfants",
+      "type": "meaning_sentence",
+      "front": "Do you have children?",
+      "back": "Vous avez des enfants ?",
+      "hint": "polite · vous",
+      "textId": "ch33-la-nouvelle-voisine"
+    },
+    {
+      "id": "ch33-elle-a-huit-ans",
+      "type": "meaning_sentence",
+      "front": "She's eight years old.",
+      "back": "Elle a huit ans.",
+      "note": "Age uses avoir: she has eight years.",
+      "textId": "ch33-la-nouvelle-voisine"
+    },
+    {
+      "id": "ch33-je-m-appelle-zoe",
+      "type": "cloze",
+      "front": "Je m'___ Zoé.",
+      "back": "Je m'appelle Zoé.",
+      "clozeAnswer": "appelle",
+      "hint": "s'appeler · My name is Zoé.",
+      "note": "je m'appelle: double l.",
+      "textId": "ch33-au-club-de-sport"
+    },
+    {
+      "id": "ch33-enchantee",
+      "type": "cloze",
+      "front": "Je m'appelle Inès. ___ !",
+      "back": "Je m'appelle Inès. Enchantée !",
+      "clozeAnswer": "Enchantée",
+      "hint": "a woman speaking · Nice to meet you!",
+      "note": "A woman writes enchantée, a man enchanté.",
+      "textId": "ch33-a-la-fete"
+    },
+    {
+      "id": "ch33-je-suis-de-toulouse",
+      "type": "cloze",
+      "front": "Je suis ___ Toulouse.",
+      "back": "Je suis de Toulouse.",
+      "clozeAnswer": "de",
+      "hint": "I'm from Toulouse.",
+      "note": "être de + a city = to be from.",
+      "textId": "ch33-la-nouvelle-voisine"
+    },
+    {
+      "id": "ch33-j-habite-a-versailles",
+      "type": "cloze",
+      "front": "J'habite ___ Versailles.",
+      "back": "J'habite à Versailles.",
+      "clozeAnswer": "à",
+      "hint": "I live in Versailles.",
+      "note": "à + a city = in.",
+      "textId": "ch33-le-premier-jour"
+    },
+    {
+      "id": "ch33-vous-etes-d-ou",
+      "type": "cloze",
+      "front": "Vous ___ d'où ?",
+      "back": "Vous êtes d'où ?",
+      "clozeAnswer": "êtes",
+      "hint": "être · Where are you from?",
+      "textId": "ch33-la-nouvelle-voisine"
+    },
+    {
+      "id": "ch33-nadia-est-professeure",
+      "type": "cloze",
+      "front": "Nadia ___ professeure de piano.",
+      "back": "Nadia est professeure de piano.",
+      "clozeAnswer": "est",
+      "hint": "être · Nadia is a piano teacher.",
+      "note": "No article before a job.",
+      "textId": "ch33-la-nouvelle-voisine"
+    },
+    {
+      "id": "ch33-tu-joues-bien",
+      "type": "cloze",
+      "front": "Tu ___ bien ?",
+      "back": "Tu joues bien ?",
+      "clozeAnswer": "joues",
+      "hint": "jouer · Do you play well?",
+      "note": "tu takes -es.",
+      "textId": "ch33-au-club-de-sport"
+    },
+    {
+      "id": "ch33-nous-dejeunons",
+      "type": "cloze",
+      "front": "Nous ___ à midi et demi.",
+      "back": "Nous déjeunons à midi et demi.",
+      "clozeAnswer": "déjeunons",
+      "hint": "déjeuner · We have lunch at half past twelve.",
+      "note": "nous takes -ons.",
+      "textId": "ch33-le-premier-jour"
+    },
+    {
+      "id": "ch33-je-fais-du-yoga",
+      "type": "cloze",
+      "front": "Je fais ___ yoga.",
+      "back": "Je fais du yoga.",
+      "clozeAnswer": "du",
+      "hint": "I do yoga.",
+      "note": "faire du + a masculine sport.",
+      "textId": "ch33-au-club-de-sport"
+    }
+  ]
+}

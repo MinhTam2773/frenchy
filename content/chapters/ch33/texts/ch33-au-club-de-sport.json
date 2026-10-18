@@ -1,0 +1,1204 @@
+{
+  "id": "ch33-au-club-de-sport",
+  "chapterId": "ch33",
+  "title": "Au club de sport",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "hi"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "nouvelle",
+              "lemma": "nouveau",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "new",
+              "form": "feminine singular · masculine: nouveau"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "at the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "club",
+              "lemma": "club",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "club",
+              "form": "masculine singular",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you new at the club?"
+        }
+      ]
+    },
+    {
+      "speaker": "Zoé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "nouvelle",
+              "lemma": "nouveau",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "new",
+              "form": "feminine singular · masculine: nouveau"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, I'm new."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "m'",
+              "lemma": "me",
+              "pos": "pronoun",
+              "gloss": "myself",
+              "form": "reflexive pronoun · je m'appelle = my name is"
+            },
+            {
+              "t": "appelle",
+              "lemma": "s'appeler",
+              "pos": "verb",
+              "gloss": "am called",
+              "form": "je · present · -er verb (l becomes ll) · je m'appelle = my name is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "My name is Zoé."
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Enchanté",
+              "lemma": "enchanté",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice to meet you",
+              "form": "masculine singular · said by a man (a woman writes enchantée)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Nice to meet you, Zoé."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "m'",
+              "lemma": "me",
+              "pos": "pronoun",
+              "gloss": "myself",
+              "form": "reflexive pronoun · je m'appelle = my name is"
+            },
+            {
+              "t": "appelle",
+              "lemma": "s'appeler",
+              "pos": "verb",
+              "gloss": "am called",
+              "form": "je · present · -er verb (l becomes ll) · je m'appelle = my name is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Malik",
+              "lemma": "Malik",
+              "pos": "name",
+              "gloss": "Malik (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "My name is Malik."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Qu'",
+              "lemma": "que",
+              "pos": "pronoun",
+              "gloss": "what",
+              "form": "question word · que becomes qu' before a vowel · qu'est-ce que = what"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "(question marker)",
+              "form": "il / elle · present · irregular · est-ce que = question marker, not translated"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "part of est-ce que"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "que",
+              "pos": "conjunction",
+              "gloss": "that",
+              "form": "part of est-ce que"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fais",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "do",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "comme",
+              "lemma": "comme",
+              "pos": "preposition",
+              "gloss": "as, for",
+              "form": "faire … comme sport = do … for sport"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sport",
+              "lemma": "sport",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sport",
+              "form": "masculine singular",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "What sports do you do?"
+        }
+      ]
+    },
+    {
+      "speaker": "Zoé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fais",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "do",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "form": "partitive article · masculine · faire du sport = to do a sport"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "yoga",
+              "lemma": "yoga",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "yoga",
+              "form": "masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "form": "partitive article · masculine · faire du sport = to do a sport"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vélo",
+              "lemma": "vélo",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cycling, bike",
+              "form": "masculine singular · faire du vélo = to cycle",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I do yoga and cycling."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fais",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "do",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "form": "partitive article · masculine · faire du sport = to do a sport"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "yoga",
+              "lemma": "yoga",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "yoga",
+              "form": "masculine singular"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you do yoga?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "adverb",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "préfère",
+              "lemma": "préférer",
+              "pos": "verb",
+              "gloss": "prefer",
+              "form": "je · present · -er verb (é becomes è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "basket",
+              "lemma": "basket",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "basketball",
+              "form": "masculine singular · short for basket-ball",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No, I prefer basketball."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "joue",
+              "lemma": "jouer",
+              "pos": "verb",
+              "gloss": "play",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "f",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "équipe",
+              "lemma": "équipe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "team",
+              "form": "feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine · le + a day = every week on that day"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mardi",
+              "lemma": "mardi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Tuesday",
+              "form": "masculine singular · le mardi = on Tuesdays",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine · le + a day = every week on that day"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jeudi",
+              "lemma": "jeudi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Thursday",
+              "form": "masculine singular · le jeudi = on Thursdays",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I play on a team on Tuesdays and Thursdays."
+        }
+      ]
+    },
+    {
+      "speaker": "Zoé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "joues",
+              "lemma": "jouer",
+              "pos": "verb",
+              "gloss": "play",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you play well?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Assez",
+              "lemma": "assez",
+              "pos": "adverb",
+              "gloss": "quite, fairly",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "mais",
+              "lemma": "mais",
+              "pos": "conjunction",
+              "gloss": "but"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "petit",
+              "lemma": "petit",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "short, small",
+              "form": "masculine singular · feminine: petite"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pour",
+              "lemma": "pour",
+              "pos": "preposition",
+              "gloss": "for"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "basket",
+              "lemma": "basket",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "basketball",
+              "form": "masculine singular · short for basket-ball",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Fairly well, but I'm short for basketball!"
+        }
+      ]
+    },
+    {
+      "speaker": "Zoé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "part of il y a"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some (often not translated)",
+              "form": "indefinite article · plural of un / une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "filles",
+              "lemma": "fille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "girls",
+              "form": "feminine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "on, in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · feminine · la becomes l' before a vowel",
+              "gender": "f"
+            },
+            {
+              "t": "équipe",
+              "lemma": "équipe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "team",
+              "form": "feminine singular"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are there girls on the team?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "part of il y a"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trois",
+              "lemma": "trois",
+              "pos": "number",
+              "gloss": "three"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "filles",
+              "lemma": "fille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "girls",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, there are three girls."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "veux",
+              "lemma": "vouloir",
+              "pos": "verb",
+              "gloss": "want",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jouer",
+              "lemma": "jouer",
+              "pos": "verb",
+              "gloss": "play",
+              "form": "infinitive · -er verb · after vouloir"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · feminine · la becomes l' before a vowel",
+              "gender": "f"
+            },
+            {
+              "t": "équipe",
+              "lemma": "équipe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "team",
+              "form": "feminine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jeudi",
+              "lemma": "jeudi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Thursday",
+              "form": "masculine singular · jeudi = this Thursday"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you want to play with the team on Thursday?"
+        }
+      ]
+    },
+    {
+      "speaker": "Zoé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pourquoi",
+              "lemma": "pourquoi",
+              "pos": "adverb",
+              "gloss": "why",
+              "form": "pourquoi pas ! = why not!"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "pourquoi pas ! = why not!"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Why not!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "match",
+              "lemma": "match",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "game, match",
+              "form": "masculine singular",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commence",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "starts",
+              "form": "il / elle · present · -er verb (c becomes ç before -ons)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quand",
+              "lemma": "quand",
+              "pos": "adverb",
+              "gloss": "when",
+              "form": "question word"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "When does the game start?"
+        }
+      ]
+    },
+    {
+      "speaker": "Malik",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "À",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à + a time = at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix-neuf",
+              "lemma": "dix-neuf",
+              "pos": "number",
+              "gloss": "nineteen"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o'clock",
+              "form": "feminine plural · à dix-neuf heures = at 7 p.m."
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "ici",
+              "lemma": "ici",
+              "pos": "adverb",
+              "gloss": "here"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "At seven p.m., here."
+        }
+      ]
+    },
+    {
+      "speaker": "Zoé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "D'",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "in",
+              "form": "d'accord = OK"
+            },
+            {
+              "t": "accord",
+              "lemma": "accord",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "agreement",
+              "form": "masculine singular · d'accord = OK"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "see you",
+              "form": "à + a day = see you on …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jeudi",
+              "lemma": "jeudi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Thursday",
+              "form": "masculine singular · à jeudi ! = see you Thursday!"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "OK, see you Thursday!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["club", "sport", "vélo", "basket", "mardi", "jeudi", "assez", "match"],
+  "grammarTags": [
+    "phrases.greetings",
+    "phrases.introductions",
+    "pronouns.subject",
+    "etre.present",
+    "faire.present",
+    "pouvoir.present",
+    "er.present",
+    "er.spelling-changes",
+    "questions.intonation",
+    "questions.est-ce-que",
+    "questions.words",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "adjectives.basic",
+    "prepositions.basic",
+    "numbers.0-100",
+    "time.clock",
+    "phrases.c-est"
+  ]
+}

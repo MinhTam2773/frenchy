@@ -1,0 +1,1175 @@
+{
+  "id": "ch33-la-nouvelle-voisine",
+  "chapterId": "ch33",
+  "title": "La nouvelle voisine",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person (formal or plural)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "êtes",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "vous · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "nouvelle",
+              "lemma": "nouveau",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "new",
+              "form": "feminine singular · masculine: nouveau"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voisine",
+              "lemma": "voisin",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "neighbor",
+              "form": "feminine singular · masculine: voisin",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you the new neighbor?"
+        }
+      ]
+    },
+    {
+      "speaker": "Nadia",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Yes, hello!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "m'",
+              "lemma": "me",
+              "pos": "pronoun",
+              "gloss": "myself",
+              "form": "reflexive pronoun · je m'appelle = my name is"
+            },
+            {
+              "t": "appelle",
+              "lemma": "s'appeler",
+              "pos": "verb",
+              "gloss": "am called",
+              "form": "je · present · -er verb (l becomes ll) · je m'appelle = my name is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Nadia",
+              "lemma": "Nadia",
+              "pos": "name",
+              "gloss": "Nadia (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Benali",
+              "lemma": "Benali",
+              "pos": "name",
+              "gloss": "Benali (a family name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "My name is Nadia Benali."
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "live",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatrième",
+              "lemma": "quatrième",
+              "pos": "number",
+              "gloss": "fourth",
+              "form": "ordinal number"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étage",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floor (of a building)",
+              "form": "masculine singular",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I live on the fourth floor."
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Enchanté",
+              "lemma": "enchanté",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice to meet you",
+              "form": "masculine singular · said by a man (a woman writes enchantée)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Nice to meet you, I'm Hugo."
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "live",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "deuxième",
+              "lemma": "deuxième",
+              "pos": "number",
+              "gloss": "second",
+              "form": "ordinal number · au deuxième = on the second floor"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "on",
+              "form": "à gauche = on the left"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gauche",
+              "lemma": "gauche",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "left",
+              "form": "feminine singular · à gauche = on the left",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I live on the second floor, on the left."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person (formal or plural)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "êtes",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "vous · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "d'",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from",
+              "form": "de becomes d' before a vowel"
+            },
+            {
+              "t": "où",
+              "lemma": "où",
+              "pos": "adverb",
+              "gloss": "where",
+              "form": "question word"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Where are you from?"
+        }
+      ]
+    },
+    {
+      "speaker": "Nadia",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Toulouse",
+              "lemma": "Toulouse",
+              "pos": "name",
+              "gloss": "Toulouse (a city in southern France)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm from Toulouse."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "professeure",
+              "lemma": "professeur",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "teacher",
+              "form": "feminine singular · masculine: professeur",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "professeure de piano = piano teacher"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "piano",
+              "lemma": "piano",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "piano",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm a piano teacher."
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person (formal or plural)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avez",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "vous · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "m",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "piano",
+              "lemma": "piano",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "piano",
+              "form": "masculine singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · masculine · le becomes l' before a vowel",
+              "gender": "m"
+            },
+            {
+              "t": "appartement",
+              "lemma": "appartement",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "apartment",
+              "form": "masculine singular"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Oh, you have a piano in the apartment?"
+        }
+      ]
+    },
+    {
+      "speaker": "Nadia",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "mais",
+              "lemma": "mais",
+              "pos": "conjunction",
+              "gloss": "but"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "joue",
+              "lemma": "jouer",
+              "pos": "verb",
+              "gloss": "play",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine · le soir = in the evening"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "masculine singular · le soir = in the evening"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Yes, but I don't play in the evening!"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "no",
+              "form": "pas de … = no …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "form": "after pas, un / une / des become de"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "problème",
+              "lemma": "problème",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "problem",
+              "form": "masculine singular · masculine despite -e",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "aime",
+              "lemma": "aimer",
+              "pos": "verb",
+              "gloss": "like",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beaucoup",
+              "lemma": "beaucoup",
+              "pos": "adverb",
+              "gloss": "a lot",
+              "form": "aimer beaucoup = to really like"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musique",
+              "lemma": "musique",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "music",
+              "form": "feminine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No problem, I really like music."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person (formal or plural)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avez",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "vous · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some (often not translated)",
+              "form": "indefinite article · plural of un / une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "masculine plural",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you have children?"
+        }
+      ]
+    },
+    {
+      "speaker": "Nadia",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "f",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fille",
+              "lemma": "fille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "daughter",
+              "form": "feminine singular"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Lina",
+              "lemma": "Lina",
+              "pos": "name",
+              "gloss": "Lina (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, I have a daughter, Lina."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is (age)",
+              "form": "il / elle · present · irregular · avoir … ans = to be … years old"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "huit",
+              "lemma": "huit",
+              "pos": "number",
+              "gloss": "eight"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ans",
+              "lemma": "an",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "years",
+              "form": "masculine plural · avoir huit ans = to be eight years old"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She's eight years old."
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "part of il y a"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "f",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "école",
+              "lemma": "école",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "school",
+              "form": "feminine singular",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "away",
+              "form": "à cinq minutes = five minutes away"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinq",
+              "lemma": "cinq",
+              "pos": "number",
+              "gloss": "five"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "minutes",
+              "lemma": "minute",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "minutes",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's a school five minutes away."
+        }
+      ]
+    },
+    {
+      "speaker": "Nadia",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "c'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c' before a vowel · c'est = it is, this is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parfait",
+              "lemma": "parfait",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "perfect",
+              "form": "masculine singular · feminine: parfaite"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Oh, that's perfect."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bonne",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "good, nice",
+              "form": "feminine singular · masculine: bon"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "journée",
+              "lemma": "journée",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "day",
+              "form": "feminine singular · bonne journée = have a nice day"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thank you, Hugo, and have a nice day!"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonne",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "good, nice",
+              "form": "feminine singular · masculine: bon"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "journée",
+              "lemma": "journée",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "day",
+              "form": "feminine singular · bonne journée = have a nice day"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bienvenue",
+              "lemma": "bienvenue",
+              "pos": "interjection",
+              "gloss": "welcome"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Have a nice day, and welcome!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["voisin", "étage", "gauche", "professeur", "jouer", "problème", "enfant", "école"],
+  "grammarTags": [
+    "phrases.greetings",
+    "phrases.introductions",
+    "pronouns.subject",
+    "etre.present",
+    "avoir.present",
+    "er.present",
+    "negation.ne-pas",
+    "questions.intonation",
+    "questions.words",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.contractions",
+    "adjectives.basic",
+    "prepositions.basic",
+    "numbers.0-100",
+    "numbers.ordinal",
+    "phrases.c-est"
+  ]
+}

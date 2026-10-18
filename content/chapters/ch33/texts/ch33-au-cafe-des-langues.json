@@ -1,0 +1,1182 @@
+{
+  "id": "ch33-au-cafe-des-langues",
+  "chapterId": "ch33",
+  "title": "Au café des langues",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonsoir",
+              "lemma": "bonsoir",
+              "pos": "interjection",
+              "gloss": "good evening"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Good evening!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c' before a vowel · c'est = it is, this is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "première",
+              "lemma": "premier",
+              "pos": "number",
+              "gloss": "first",
+              "gender": "f",
+              "form": "ordinal number · feminine · masculine: premier"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fois",
+              "lemma": "fois",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "time (occasion)",
+              "form": "feminine singular · la première fois = the first time",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ici",
+              "lemma": "ici",
+              "pos": "adverb",
+              "gloss": "here"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Is this your first time here?"
+        }
+      ]
+    },
+    {
+      "speaker": "Daniel",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "adverb",
+              "gloss": "yes"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "m'",
+              "lemma": "me",
+              "pos": "pronoun",
+              "gloss": "myself",
+              "form": "reflexive pronoun · je m'appelle = my name is"
+            },
+            {
+              "t": "appelle",
+              "lemma": "s'appeler",
+              "pos": "verb",
+              "gloss": "am called",
+              "form": "je · present · -er verb (l becomes ll) · je m'appelle = my name is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Daniel",
+              "lemma": "Daniel",
+              "pos": "name",
+              "gloss": "Daniel (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "My name is Daniel."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "canadien",
+              "lemma": "canadien",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "Canadian",
+              "form": "masculine singular · feminine: canadienne · no capital letter",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Toronto",
+              "lemma": "Toronto",
+              "pos": "name",
+              "gloss": "Toronto (a city in Canada)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm Canadian, from Toronto."
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Enchantée",
+              "lemma": "enchanté",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "nice to meet you",
+              "form": "feminine singular · said by a woman (a man writes enchanté)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Daniel",
+              "lemma": "Daniel",
+              "pos": "name",
+              "gloss": "Daniel (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Nice to meet you, Daniel!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Chloé",
+              "lemma": "Chloé",
+              "pos": "name",
+              "gloss": "Chloé (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm Chloé."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parles",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "speak",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "français",
+              "lemma": "français",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "French (the language)",
+              "form": "masculine singular · languages are masculine"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "You speak French very well!"
+        }
+      ]
+    },
+    {
+      "speaker": "Daniel",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thanks!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudiant",
+              "lemma": "étudiant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "student",
+              "form": "masculine singular · feminine: étudiante"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ici",
+              "lemma": "ici",
+              "pos": "adverb",
+              "gloss": "here"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "in",
+              "form": "à + a city = in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Paris",
+              "lemma": "Paris",
+              "pos": "name",
+              "gloss": "Paris"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm a student here in Paris."
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "qu'",
+              "lemma": "que",
+              "pos": "pronoun",
+              "gloss": "what",
+              "form": "question word · que becomes qu' before a vowel · qu'est-ce que = what"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "(question marker)",
+              "form": "il / elle · present · irregular · est-ce que = question marker, not translated"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "part of est-ce que"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "que",
+              "pos": "conjunction",
+              "gloss": "that",
+              "form": "part of est-ce que"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudies",
+              "lemma": "étudier",
+              "pos": "verb",
+              "gloss": "study",
+              "form": "tu · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Oh, what are you studying?"
+        }
+      ]
+    },
+    {
+      "speaker": "Daniel",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "L'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · feminine · la becomes l' before a vowel",
+              "gender": "f"
+            },
+            {
+              "t": "histoire",
+              "lemma": "histoire",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "history",
+              "form": "feminine singular · l'histoire de l'art = art history",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · masculine · le becomes l' before a vowel",
+              "gender": "m"
+            },
+            {
+              "t": "art",
+              "lemma": "art",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "art",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Art history."
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "adore",
+              "lemma": "adorer",
+              "pos": "verb",
+              "gloss": "love",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musées",
+              "lemma": "musée",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "museums",
+              "form": "masculine plural · musée is masculine despite -ée",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I love museums."
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "connais",
+              "lemma": "connaître",
+              "pos": "verb",
+              "gloss": "know",
+              "form": "tu · present · irregular · connaître = to know a place or a person",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musée",
+              "lemma": "musée",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "museum",
+              "form": "masculine singular · masculine despite -ée",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Rodin",
+              "lemma": "Rodin",
+              "pos": "name",
+              "gloss": "Rodin (a French sculptor)"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you know the Rodin Museum?"
+        }
+      ]
+    },
+    {
+      "speaker": "Daniel",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "adverb",
+              "gloss": "no"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular · il = it for a masculine noun (le musée)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "où",
+              "lemma": "où",
+              "pos": "adverb",
+              "gloss": "where",
+              "form": "question word"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Where is it?"
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "septième",
+              "lemma": "septième",
+              "pos": "number",
+              "gloss": "seventh",
+              "form": "ordinal number"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "arrondissement",
+              "lemma": "arrondissement",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "district (of Paris)",
+              "form": "masculine singular"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the seventh arrondissement."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular · il = it for a masculine noun (le musée)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beau",
+              "lemma": "beau",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "beautiful, lovely",
+              "form": "masculine singular · feminine: belle"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It's very beautiful."
+        }
+      ]
+    },
+    {
+      "speaker": "Daniel",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "adjective",
+              "gloss": "great",
+              "form": "invariable · informal"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parles",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "speak",
+              "form": "tu · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "anglais",
+              "lemma": "anglais",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "English (the language)",
+              "form": "masculine singular · languages are masculine"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Chloé",
+              "lemma": "Chloé",
+              "pos": "name",
+              "gloss": "Chloé (a name)"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "And do you speak English, Chloé?"
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "gender": "m",
+              "form": "un peu = a little"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "peu",
+              "lemma": "peu",
+              "pos": "adverb",
+              "gloss": "little",
+              "form": "un peu = a little"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "A little."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "infirmière",
+              "lemma": "infirmier",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "nurse",
+              "form": "feminine singular · masculine: infirmier",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some (often not translated)",
+              "form": "indefinite article · plural of un / une"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "patients",
+              "lemma": "patient",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "patients",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "américains",
+              "lemma": "américain",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "American",
+              "form": "masculine plural · feminine: américaine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm a nurse, and I have American patients."
+        }
+      ]
+    },
+    {
+      "speaker": "Daniel",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "so, then"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "dix",
+              "lemma": "dix",
+              "pos": "number",
+              "gloss": "ten"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "minutes",
+              "lemma": "minute",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "minutes",
+              "form": "feminine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "en",
+              "lemma": "en",
+              "pos": "preposition",
+              "gloss": "in",
+              "form": "en anglais = in English"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "anglais",
+              "lemma": "anglais",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "English (the language)",
+              "form": "masculine singular · languages are masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "maintenant",
+              "lemma": "maintenant",
+              "pos": "adverb",
+              "gloss": "now",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "So, ten minutes in English now?"
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "D'",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "in",
+              "form": "d'accord = OK"
+            },
+            {
+              "t": "accord",
+              "lemma": "accord",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "agreement",
+              "form": "masculine singular · d'accord = OK"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "OK!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Mais",
+              "lemma": "mais",
+              "pos": "conjunction",
+              "gloss": "but"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "après",
+              "lemma": "après",
+              "pos": "adverb",
+              "gloss": "afterwards"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parlons",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "speak",
+              "form": "nous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "français",
+              "lemma": "français",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "French (the language)",
+              "form": "masculine singular · languages are masculine"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "But afterwards, we speak French!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "fois",
+    "canadien",
+    "étudier",
+    "histoire",
+    "musée",
+    "connaître",
+    "infirmier",
+    "maintenant"
+  ],
+  "grammarTags": [
+    "phrases.greetings",
+    "phrases.introductions",
+    "pronouns.subject",
+    "etre.present",
+    "avoir.present",
+    "er.present",
+    "savoir.present",
+    "questions.intonation",
+    "questions.est-ce-que",
+    "questions.words",
+    "articles.definite",
+    "articles.indefinite",
+    "adjectives.basic",
+    "prepositions.basic",
+    "numbers.0-100",
+    "numbers.ordinal",
+    "phrases.c-est"
+  ]
+}
