@@ -184,7 +184,9 @@ test('shows how far the daily goal is', async () => {
 test('without a current chapter it sends the learner to onboarding', async () => {
   server.use(http.get('/api/profile', () => HttpResponse.json(newProfile)));
   renderAt('/today');
-  expect(await screen.findByRole('heading', { name: 'Onboarding' })).toBeInTheDocument();
+  expect(
+    await screen.findByRole('heading', { name: 'Which chapter are you on in the book?' }),
+  ).toBeInTheDocument();
 });
 
 test('a failed load shows an error with a way to retry', async () => {

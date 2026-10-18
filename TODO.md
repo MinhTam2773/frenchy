@@ -643,8 +643,8 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [x] Replace the `useSession()` stub with the real session; keep the guard
 - [x] Password reset is not in MVP (G-08): show "Forgot password?" only once B-18 lands
 - [x] Tests: form validation, onboarding saves the profile, guard redirects
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-22 · Sync API (profile, cards, reviews, words, activity)
