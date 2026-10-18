@@ -1,3 +1,5 @@
+import { rmSync } from 'node:fs';
+import { join } from 'node:path';
 import { cloudflare } from '@cloudflare/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
@@ -12,6 +14,16 @@ export default defineConfig({
     react(),
     tailwindcss(),
     cloudflare(),
+    {
+      // G-27: MSW's worker (public/) is only for VITE_USE_MOCKS=true; keep it out of real builds.
+      name: 'drop-msw-worker',
+      apply: 'build',
+      writeBundle({ dir }) {
+        if (dir && process.env.VITE_USE_MOCKS !== 'true') {
+          rmSync(join(dir, 'mockServiceWorker.js'), { force: true });
+        }
+      },
+    },
     // PWA (T-12). Registration lives in src/client/pwa, so no virtual module is injected.
     VitePWA({
       registerType: 'prompt',
