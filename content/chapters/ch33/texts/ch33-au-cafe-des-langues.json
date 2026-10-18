@@ -25,40 +25,12 @@
         {
           "tokens": [
             {
-              "t": "C'",
-              "lemma": "ce",
-              "pos": "pronoun",
-              "gloss": "it",
-              "form": "ce becomes c' before a vowel · c'est = it is, this is"
-            },
-            {
-              "t": "est",
-              "lemma": "être",
-              "pos": "verb",
-              "gloss": "is",
-              "form": "il / elle · present · irregular"
-            },
-            {
-              "t": " "
-            },
-            {
-              "t": "la",
-              "lemma": "le",
-              "pos": "article",
-              "gloss": "the",
-              "gender": "f",
-              "form": "definite article · feminine"
-            },
-            {
-              "t": " "
-            },
-            {
-              "t": "première",
+              "t": "Première",
               "lemma": "premier",
               "pos": "number",
-              "gloss": "first",
               "gender": "f",
-              "form": "ordinal number · feminine · masculine: premier"
+              "gloss": "first",
+              "form": "ordinal number · feminine (la première fois) · masculine: premier"
             },
             {
               "t": " "
@@ -85,7 +57,7 @@
               "t": " ?"
             }
           ],
-          "en": "Is this your first time here?"
+          "en": "First time here?"
         }
       ]
     },
@@ -501,8 +473,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "history",
-              "form": "feminine singular · l'histoire de l'art = art history",
-              "isNew": true
+              "form": "feminine singular · l'histoire de l'art = art history"
             },
             {
               "t": " "
@@ -573,8 +544,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "museums",
-              "form": "masculine plural · musée is masculine despite -ée",
-              "isNew": true
+              "form": "masculine plural · musée is masculine despite -ée"
             },
             {
               "t": "."
@@ -604,8 +574,7 @@
               "lemma": "connaître",
               "pos": "verb",
               "gloss": "know",
-              "form": "tu · present · irregular · connaître = to know a place or a person",
-              "isNew": true
+              "form": "tu · present · irregular · connaître = to know a place or a person"
             },
             {
               "t": " "
@@ -627,8 +596,7 @@
               "pos": "noun",
               "gender": "m",
               "gloss": "museum",
-              "form": "masculine singular · masculine despite -ée",
-              "isNew": true
+              "form": "masculine singular · masculine despite -ée"
             },
             {
               "t": " "
@@ -923,7 +891,7 @@
             },
             {
               "t": "infirmière",
-              "lemma": "infirmier",
+              "lemma": "infirmière",
               "pos": "noun",
               "gender": "f",
               "gloss": "nurse",
@@ -1139,16 +1107,7 @@
       ]
     }
   ],
-  "newWords": [
-    "fois",
-    "canadien",
-    "étudier",
-    "histoire",
-    "musée",
-    "connaître",
-    "infirmier",
-    "maintenant"
-  ],
+  "newWords": ["fois", "canadien", "étudier", "maintenant", "infirmière"],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",

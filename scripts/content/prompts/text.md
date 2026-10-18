@@ -61,9 +61,11 @@ Rules for tokens:
 - Elisions are their own word token: `l'` (lemma `le` or `la` per the noun), `j'` (lemma `je`), `n'`, `d'`, `qu'`, `c'`. The apostrophe stays inside the elided token (`"t": "l'"`), and the next word follows with no gap token.
 - Articles follow the T-08 lexicon: indefinite *des* → lemma `un` (pos `article`); partitive *du* / *de la* → lemma `du` / `de` (pos `article`).
 - Contractions: `au` → lemma `au`, pos `contraction`, gloss "to the" / "at the"; same for `aux`, `du`, `des` (when it means *de + le* / *de + les*).
-- Hyphenated inversion (`vas-tu`) is two word tokens with a `-` gap token between them; `est-ce que` is three word tokens (`est`, `ce`, `que`) with gaps, all tagged `questions.est-ce-que` in the text.
+- Hyphenated inversion (`vas-tu`) is two word tokens with a `-` gap token between them; `est-ce que` is three word tokens (`est`, `ce`, `que`, or `qu'` before a vowel) with gaps, and each one is a fixed-phrase token (lemma `est-ce que`, pos `phrase`; see Conventions); the text lists `questions.est-ce-que`.
+- Tokens must match `tokenize()` (`src/shared/text/`; `tokenize.test.ts` checks every lesson): `M.` / `Mme` are one token with their period, a clock time (`8 h 30`) or a number (`12,50`) is one token, and *a-t-il* is five tokens (`a` `-` `t` `-` `il`).
 - **Gap tokens** hold only spaces and punctuation, including the no-break space before `? ! : ;`.
 - `isNew: true` on at most **8** key words per text (the vocabulary the text teaches). `newWords` lists exactly their lemmas.
+- `isNew` means new to the course: a lemma is marked in one text only, the first along the route (chapter order in `course.json`, then text id order within a chapter) that marks it. Check earlier chapters' `newWords` before marking. A word may appear unmarked before the text that teaches it. Mark every token of a new phrase.
 - `grammarTags` lists the tags the text practises; every one must be allowed for the chapter.
 - `en` is a natural English translation of the whole sentence.
 
@@ -77,6 +79,6 @@ Rules for tokens:
 
 - **Apostrophe:** straight `'` in French tokens and cards (the tokenizer accepts `’` too).
 - **Articles:** definite *le/la/l'/les* → lemma `le` (gender on the token). Indefinite *des* → `un`. Partitive *du* → `du`, *de la* / *de l'* → `de` + `le`. *du/des/au/aux* meaning de/à + le/les → pos `contraction`.
-- **Fixed multi-word phrases** (*s'il vous plaît*, *au revoir*, *il y a*, *d'accord*, *bonne journée*): every token carries the whole phrase as `lemma`, pos `phrase`, and the phrase meaning in `form`; `gloss` is that word's part.
+- **Fixed multi-word phrases** (*s'il vous plaît*, *au revoir*, *il y a*, *d'accord*, *bonne journée*): every token carries the whole phrase as `lemma`, pos `phrase`, and the phrase meaning in `form`; `gloss` is that word's part. The list is closed (T-24): those five plus *est-ce que*, *qu'est-ce que*, *à tout à l'heure*, *un peu*, *merci beaucoup*, *pas de problème*, *avec plaisir*, *pourquoi pas*. In *il n'y a pas*, `ne` and `pas` stay words. Everything else is word by word with the expression in `form` (*ça va*, *bon voyage*, *avoir faim*), because its words agree or conjugate. A single word is never pos `phrase` (*voici* and *voilà* are prepositions).
 - **Single tokens:** *aujourd'hui*, *rez-de-chaussée*, *après-midi* and hyphenated numbers (*quatre-vingt-deux*).
-- **Grammar-ceiling readings for Stage 1** (QA confirms; see G-57): *et* may join nouns, adjectives and short clauses; *à* with places is fine from ch10 (and inside *aller à* in ch12); infinitives after *pouvoir/vouloir/devoir/savoir* are fine in ch12; questions wait for ch7 except *Ça va ?*; possessives, demonstratives, stressed pronouns and *mais* wait for their chapters.
+- **Grammar-ceiling readings for Stage 1** (QA confirms; see G-57): *et* may join nouns, adjectives and short clauses; *à* with places is fine from ch10 (and inside *aller à* in ch12); infinitives after *pouvoir/vouloir/devoir/savoir* are fine in ch12; questions wait for ch7 except *Ça va ?* / *Et toi ?* (T-24 confirmed this reading); possessives, demonstratives, stressed pronouns and *mais* wait for their chapters.

@@ -148,13 +148,13 @@
         {
           "tokens": [
             {
-              "t": "Et",
-              "lemma": "et",
-              "pos": "conjunction",
-              "gloss": "and"
+              "t": "Maintenant",
+              "lemma": "maintenant",
+              "pos": "adverb",
+              "gloss": "now"
             },
             {
-              "t": " "
+              "t": ", "
             },
             {
               "t": "les",
@@ -176,10 +176,10 @@
               "isNew": true
             },
             {
-              "t": " ?"
+              "t": "."
             }
           ],
-          "en": "And the shoes?"
+          "en": "Now the shoes."
         }
       ]
     },
@@ -229,7 +229,16 @@
         {
           "tokens": [
             {
-              "t": "Le",
+              "t": "Ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "next"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "le",
               "lemma": "le",
               "pos": "article",
               "gender": "m",
@@ -281,10 +290,10 @@
               "isNew": true
             },
             {
-              "t": " ?"
+              "t": "."
             }
           ],
-          "en": "The coat and the hat?"
+          "en": "Next, the coat and the hat."
         }
       ]
     },
@@ -409,10 +418,10 @@
               "isNew": true
             },
             {
-              "t": " ?"
+              "t": " !"
             }
           ],
-          "en": "And the ticket?"
+          "en": "And the ticket!"
         }
       ]
     },

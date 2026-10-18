@@ -36,9 +36,10 @@
     {
       "id": "ch33-c-est-la-premiere-fois-ici",
       "type": "sentence_meaning",
-      "front": "C'est la première fois ici ?",
-      "back": "Is this your first time here?",
-      "textId": "ch33-au-cafe-des-langues"
+      "front": "Première fois ici ?",
+      "back": "First time here?",
+      "textId": "ch33-au-cafe-des-langues",
+      "note": "Spoken French often drops the verb in a short question."
     },
     {
       "id": "ch33-tu-connais-le-musee-rodin",
@@ -90,10 +91,10 @@
     {
       "id": "ch33-vous-parlez-anglais",
       "type": "meaning_sentence",
-      "front": "Do you speak English?",
-      "back": "Est-ce que vous parlez anglais ?",
+      "front": "Do you speak Spanish?",
+      "back": "Est-ce que vous parlez espagnol ?",
       "hint": "polite · est-ce que",
-      "note": "Languages take no capital letter: anglais, français.",
+      "note": "Languages take no capital letter: anglais, espagnol.",
       "textId": "ch33-le-premier-jour"
     },
     {

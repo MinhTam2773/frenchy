@@ -83,8 +83,8 @@
               "lemma": "entrée",
               "pos": "noun",
               "gender": "f",
-              "gloss": "starters",
-              "form": "feminine plural · on a menu, une entrée is a starter",
+              "gloss": "appetizers",
+              "form": "feminine plural · on a French menu, une entrée is an appetizer, not a main course",
               "isNew": true
             },
             {
@@ -106,8 +106,7 @@
               "lemma": "soupe",
               "pos": "noun",
               "gender": "f",
-              "gloss": "soup",
-              "isNew": true
+              "gloss": "soup"
             },
             {
               "t": " "
@@ -164,7 +163,7 @@
               "t": "."
             }
           ],
-          "en": "Starters: soup of the day, egg mayonnaise."
+          "en": "Appetizers: soup of the day, egg mayonnaise."
         }
       ]
     },
@@ -745,6 +744,6 @@
       ]
     }
   ],
-  "newWords": ["ardoise", "entrée", "soupe", "jour", "plat", "jambon", "glace", "boisson"],
+  "newWords": ["ardoise", "entrée", "jour", "plat", "jambon", "glace", "boisson"],
   "grammarTags": ["articles.definite", "articles.contractions", "nouns.plural", "phrases.c-est"]
 }

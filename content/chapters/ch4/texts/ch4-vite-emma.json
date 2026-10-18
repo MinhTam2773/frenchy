@@ -267,9 +267,9 @@
             {
               "t": "Voilà",
               "lemma": "voilà",
-              "pos": "phrase",
+              "pos": "preposition",
               "gloss": "here is",
-              "form": "voilà = here is, there is"
+              "form": "points something out · voilà = here is, there is"
             },
             {
               "t": " "
@@ -432,8 +432,7 @@
               "lemma": "rentrer",
               "pos": "verb",
               "gloss": "get home",
-              "form": "je · present · -er verb",
-              "isNew": true
+              "form": "je · present · -er verb"
             },
             {
               "t": " "
@@ -546,8 +545,7 @@
               "lemma": "rentrer",
               "pos": "verb",
               "gloss": "get home",
-              "form": "je · present · -er verb",
-              "isNew": true
+              "form": "je · present · -er verb"
             },
             {
               "t": " "
@@ -776,11 +774,40 @@
               "t": ", "
             },
             {
-              "t": "soixante-dix",
-              "lemma": "soixante-dix",
+              "t": "soixante-cinq",
+              "lemma": "soixante-cinq",
               "pos": "number",
-              "gloss": "seventy",
-              "form": "70 = 60 + 10"
+              "gloss": "sixty-five",
+              "form": "65 = 60 + 5"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "soixante",
+              "lemma": "soixante",
+              "pos": "number",
+              "gloss": "sixty",
+              "form": "soixante et onze = 71 (60 + 11)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and",
+              "form": "21, 31, 41, 51, 61 and 71 take et"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "onze",
+              "lemma": "onze",
+              "pos": "number",
+              "gloss": "eleven"
             },
             {
               "t": ", "
@@ -790,15 +817,6 @@
               "lemma": "vingt-deux",
               "pos": "number",
               "gloss": "twenty-two"
-            },
-            {
-              "t": ", "
-            },
-            {
-              "t": "quinze",
-              "lemma": "quinze",
-              "pos": "number",
-              "gloss": "fifteen"
             },
             {
               "t": ", "
@@ -814,7 +832,7 @@
               "t": "."
             }
           ],
-          "en": "Grandma’s number is 04 70 22 15 81."
+          "en": "Grandma’s number is 04 65 71 22 81."
         }
       ]
     },
@@ -947,7 +965,7 @@
       ]
     }
   ],
-  "newWords": ["demi", "passer", "moins", "quart", "minute", "rentrer", "numéro", "zéro"],
+  "newWords": ["demi", "passer", "moins", "quart", "minute", "numéro", "zéro"],
   "grammarTags": [
     "time.clock",
     "numbers.0-100",

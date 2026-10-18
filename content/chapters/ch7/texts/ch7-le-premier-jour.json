@@ -90,8 +90,7 @@
               "lemma": "commencer",
               "pos": "verb",
               "gloss": "am starting",
-              "form": "je · present · -er verb",
-              "isNew": true
+              "form": "je · present · -er verb"
             },
             {
               "t": " "
@@ -236,8 +235,7 @@
               "lemma": "étage",
               "pos": "noun",
               "gender": "m",
-              "gloss": "floor (of a building)",
-              "isNew": true
+              "gloss": "floor (of a building)"
             },
             {
               "t": "."
@@ -257,7 +255,8 @@
               "lemma": "est-ce que",
               "pos": "phrase",
               "gloss": "question marker (not translated)",
-              "form": "est-ce que + statement = question"
+              "form": "est-ce que + statement = question",
+              "isNew": true
             },
             {
               "t": "-"
@@ -267,7 +266,8 @@
               "lemma": "est-ce que",
               "pos": "phrase",
               "gloss": "question marker (not translated)",
-              "form": "est-ce que + statement = question"
+              "form": "est-ce que + statement = question",
+              "isNew": true
             },
             {
               "t": " "
@@ -277,7 +277,8 @@
               "lemma": "est-ce que",
               "pos": "phrase",
               "gloss": "question marker (not translated)",
-              "form": "est-ce que + statement = question"
+              "form": "est-ce que + statement = question",
+              "isNew": true
             },
             {
               "t": " "
@@ -926,8 +927,13 @@
               "gloss": "great"
             },
             {
-              "t": " ! "
-            },
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
             {
               "t": "Merci",
               "lemma": "merci",
@@ -947,12 +953,12 @@
               "t": "."
             }
           ],
-          "en": "Great! Thanks, Sophie."
+          "en": "Thanks, Sophie."
         }
       ]
     }
   ],
-  "newWords": ["nouveau", "commencer", "aujourd'hui", "étage", "adorer", "cantine", "frite"],
+  "newWords": ["nouveau", "aujourd'hui", "adorer", "cantine", "frite", "est-ce que"],
   "grammarTags": [
     "questions.intonation",
     "questions.est-ce-que",

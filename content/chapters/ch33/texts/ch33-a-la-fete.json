@@ -46,8 +46,7 @@
               "lemma": "appeler",
               "pos": "verb",
               "gloss": "am called",
-              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is",
-              "isNew": true
+              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is"
             },
             {
               "t": " "
@@ -88,8 +87,7 @@
               "lemma": "appeler",
               "pos": "verb",
               "gloss": "are called",
-              "form": "tu · present · -er verb (l becomes ll) · s'appeler · tu t'appelles = your name is",
-              "isNew": true
+              "form": "tu · present · -er verb (l becomes ll) · s'appeler · tu t'appelles = your name is"
             },
             {
               "t": " "
@@ -136,8 +134,7 @@
               "lemma": "appeler",
               "pos": "verb",
               "gloss": "am called",
-              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is",
-              "isNew": true
+              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is"
             },
             {
               "t": " "
@@ -457,8 +454,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "student",
-              "form": "feminine singular · masculine: étudiant",
-              "isNew": true
+              "form": "feminine singular · masculine: étudiant"
             },
             {
               "t": " ?"
@@ -880,8 +876,7 @@
               "lemma": "passer",
               "pos": "verb",
               "gloss": "drop by",
-              "form": "infinitive · -er verb · after pouvoir",
-              "isNew": true
+              "form": "infinitive · -er verb · after pouvoir"
             },
             {
               "t": " "
@@ -1022,7 +1017,8 @@
               "lemma": "avec plaisir",
               "pos": "phrase",
               "gloss": "with",
-              "form": "with pleasure, I'd love to"
+              "form": "with pleasure, I'd love to",
+              "isNew": true
             },
             {
               "t": " "
@@ -1098,16 +1094,7 @@
       ]
     }
   ],
-  "newWords": [
-    "appeler",
-    "enchanté",
-    "ici",
-    "étudiant",
-    "vie",
-    "cuisinier",
-    "passer",
-    "avec plaisir"
-  ],
+  "newWords": ["enchanté", "ici", "vie", "cuisinier", "avec plaisir"],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",

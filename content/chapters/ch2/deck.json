@@ -13,7 +13,7 @@
       "type": "sentence_meaning",
       "front": "Voici une assiette, une fourchette, un couteau et une serviette.",
       "back": "Here's a plate, a fork, a knife and a napkin.",
-      "note": "-ette is feminine (une assiette, une fourchette); -eau is masculine (un couteau).",
+      "note": "-ette is feminine (une assiette, une fourchette); -eau is usually masculine (un couteau).",
       "textId": "ch2-la-table-du-diner"
     },
     {
@@ -42,8 +42,8 @@
       "id": "ch2-la-librairie",
       "type": "sentence_meaning",
       "front": "Voilà aussi la pharmacie et la librairie.",
-      "back": "There's also the pharmacy and the bookshop.",
-      "note": "Une librairie is a bookshop; a library is une bibliothèque.",
+      "back": "There's also the pharmacy and the bookstore.",
+      "note": "Une librairie is a bookstore; a library is une bibliothèque.",
       "textId": "ch2-la-rue-du-marche"
     },
     {
@@ -80,7 +80,7 @@
       "type": "meaning_sentence",
       "front": "Here's the coat and the hat.",
       "back": "Voici le manteau et le chapeau.",
-      "note": "-eau is a masculine ending.",
+      "note": "-eau is usually masculine (but l'eau and la peau are feminine).",
       "textId": "ch2-la-valise"
     },
     {
@@ -101,14 +101,14 @@
     {
       "id": "ch2-boucherie-fromagerie",
       "type": "meaning_sentence",
-      "front": "Next, the butcher's and the cheese shop.",
+      "front": "Next, the butcher shop and the cheese shop.",
       "back": "Ensuite, la boucherie et la fromagerie.",
       "textId": "ch2-la-rue-du-marche"
     },
     {
       "id": "ch2-le-quartier",
       "type": "meaning_sentence",
-      "front": "And there's the neighbourhood!",
+      "front": "And there's the neighborhood!",
       "back": "Et voilà le quartier !",
       "textId": "ch2-la-rue-du-marche"
     },
@@ -117,7 +117,7 @@
       "type": "meaning_sentence",
       "front": "On Fridays: skating and cycling.",
       "back": "Le vendredi : le patinage et le cyclisme.",
-      "note": "-age and -isme are masculine endings.",
+      "note": "-isme is a masculine ending, and so is -age, with a few exceptions (la plage).",
       "textId": "ch2-le-programme-du-club"
     },
     {
@@ -144,7 +144,7 @@
       "back": "Et voilà le dessert : un gâteau au chocolat !",
       "clozeAnswer": "un",
       "hint": "a",
-      "note": "-eau is a masculine ending.",
+      "note": "-eau is usually masculine (but l'eau and la peau are feminine).",
       "textId": "ch2-la-table-du-diner"
     },
     {
@@ -191,7 +191,7 @@
       "back": "Au coin, un garage.",
       "clozeAnswer": "un",
       "hint": "a",
-      "note": "-age is a masculine ending.",
+      "note": "-age is usually masculine (but la plage, la page, l'image).",
       "textId": "ch2-la-rue-du-marche"
     },
     {

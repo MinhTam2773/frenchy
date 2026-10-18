@@ -200,19 +200,21 @@
             },
             {
               "t": "merci",
-              "lemma": "merci",
-              "pos": "interjection",
-              "gloss": "thanks"
+              "lemma": "merci beaucoup",
+              "pos": "phrase",
+              "gloss": "thanks",
+              "form": "merci beaucoup = thank you very much",
+              "isNew": true
             },
             {
               "t": " "
             },
             {
               "t": "beaucoup",
-              "lemma": "beaucoup",
-              "pos": "adverb",
+              "lemma": "merci beaucoup",
+              "pos": "phrase",
               "gloss": "very much",
-              "form": "the final p is silent",
+              "form": "merci beaucoup = thank you very much · the final p of beaucoup is silent",
               "isNew": true
             },
             {
@@ -230,48 +232,51 @@
           "tokens": [
             {
               "t": "À",
-              "lemma": "à",
-              "pos": "preposition",
+              "lemma": "à tout à l'heure",
+              "pos": "phrase",
               "gloss": "at",
-              "form": "À tout à l’heure ! = See you later!"
+              "form": "à tout à l'heure = see you later (the same day)",
+              "isNew": true
             },
             {
               "t": " "
             },
             {
               "t": "tout",
-              "lemma": "tout",
-              "pos": "adverb",
+              "lemma": "à tout à l'heure",
+              "pos": "phrase",
               "gloss": "just",
-              "form": "liaison: tout à sounds like tou-ta · tout à l’heure = in a little while"
+              "form": "à tout à l'heure = see you later · liaison: tout à sounds like tou-ta",
+              "isNew": true
             },
             {
               "t": " "
             },
             {
               "t": "à",
-              "lemma": "à",
-              "pos": "preposition",
-              "gloss": "at"
+              "lemma": "à tout à l'heure",
+              "pos": "phrase",
+              "gloss": "at",
+              "form": "à tout à l'heure = see you later (the same day)",
+              "isNew": true
             },
             {
               "t": " "
             },
             {
               "t": "l'",
-              "lemma": "le",
-              "pos": "article",
-              "gender": "f",
+              "lemma": "à tout à l'heure",
+              "pos": "phrase",
               "gloss": "the",
-              "form": "la becomes l’ before a vowel or a silent h"
+              "form": "à tout à l'heure = see you later · la becomes l' before a vowel or a silent h",
+              "isNew": true
             },
             {
               "t": "heure",
-              "lemma": "heure",
-              "pos": "noun",
-              "gender": "f",
+              "lemma": "à tout à l'heure",
+              "pos": "phrase",
               "gloss": "hour",
-              "form": "the h is silent",
+              "form": "à tout à l'heure = see you later · the h is silent",
               "isNew": true
             },
             {
@@ -313,6 +318,14 @@
       ]
     }
   ],
-  "newWords": ["salut", "très", "bien", "mal", "anniversaire", "beaucoup", "heure"],
+  "newWords": [
+    "salut",
+    "très",
+    "bien",
+    "mal",
+    "anniversaire",
+    "merci beaucoup",
+    "à tout à l'heure"
+  ],
   "grammarTags": ["phrases.greetings", "sounds.basic"]
 }

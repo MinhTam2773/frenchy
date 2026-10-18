@@ -105,8 +105,7 @@
               "lemma": "anniversaire",
               "pos": "noun",
               "gender": "m",
-              "gloss": "birthday",
-              "isNew": true
+              "gloss": "birthday"
             },
             {
               "t": " "
@@ -412,8 +411,7 @@
               "lemma": "gâteau",
               "pos": "noun",
               "gender": "m",
-              "gloss": "cake",
-              "isNew": true
+              "gloss": "cake"
             },
             {
               "t": " "
@@ -422,7 +420,7 @@
               "t": "au",
               "lemma": "au",
               "pos": "contraction",
-              "gloss": "with (flavour)",
+              "gloss": "with (flavor)",
               "form": "à + le becomes au · un gâteau au chocolat = a chocolate cake"
             },
             {
@@ -519,8 +517,7 @@
               "lemma": "premier",
               "pos": "number",
               "gloss": "first",
-              "form": "ordinal · masculine (feminine: première)",
-              "isNew": true
+              "form": "ordinal · masculine (feminine: première)"
             },
             {
               "t": " "
@@ -530,8 +527,7 @@
               "lemma": "cadeau",
               "pos": "noun",
               "gender": "m",
-              "gloss": "present, gift",
-              "isNew": true
+              "gloss": "present, gift"
             },
             {
               "t": " "
@@ -638,14 +634,14 @@
               "lemma": "foot",
               "pos": "noun",
               "gender": "m",
-              "gloss": "football, soccer",
-              "form": "short for football"
+              "gloss": "soccer",
+              "form": "short for football (soccer)"
             },
             {
               "t": "."
             }
           ],
-          "en": "The second is a football."
+          "en": "The second is a soccer ball."
         },
         {
           "tokens": [
@@ -777,7 +773,8 @@
               "lemma": "arriver",
               "pos": "verb",
               "gloss": "arrive",
-              "form": "ils / elles · present · -er verb"
+              "form": "ils / elles · present · -er verb",
+              "isNew": true
             },
             {
               "t": "."
@@ -879,7 +876,8 @@
               "lemma": "avril",
               "pos": "noun",
               "gender": "m",
-              "gloss": "April"
+              "gloss": "April",
+              "isNew": true
             },
             {
               "t": ", "
@@ -914,8 +912,7 @@
               "lemma": "anniversaire",
               "pos": "noun",
               "gender": "m",
-              "gloss": "birthday",
-              "isNew": true
+              "gloss": "birthday"
             },
             {
               "t": " "
@@ -955,7 +952,8 @@
               "lemma": "sœur",
               "pos": "noun",
               "gender": "f",
-              "gloss": "sister"
+              "gloss": "sister",
+              "isNew": true
             },
             {
               "t": " "
@@ -985,7 +983,7 @@
       ]
     }
   ],
-  "newWords": ["mars", "anniversaire", "fête", "heure", "gâteau", "bougie", "premier", "cadeau"],
+  "newWords": ["mars", "fête", "heure", "bougie", "arriver", "avril", "sœur"],
   "grammarTags": [
     "time.clock",
     "numbers.0-100",
