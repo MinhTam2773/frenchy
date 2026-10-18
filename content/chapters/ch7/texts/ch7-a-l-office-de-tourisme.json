@@ -1,0 +1,1115 @@
+{
+  "id": "ch7-a-l-office-de-tourisme",
+  "chapterId": "ch7",
+  "title": "À l'office de tourisme",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "madam",
+              "form": "polite way to address a woman"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello, madam!"
+        }
+      ]
+    },
+    {
+      "speaker": "Anna",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Hello."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Parlez",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "speak",
+              "form": "vous · present · -er verb · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · vous · after the verb in an inverted question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "anglais",
+              "lemma": "anglais",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "English",
+              "form": "languages are masculine"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you speak English?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "interjection",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "désolé",
+              "lemma": "désolé",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "sorry",
+              "form": "masculine singular · feminine: désolée",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parle",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "speak",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "anglais",
+              "lemma": "anglais",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "English",
+              "form": "languages are masculine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No, sorry, I don’t speak English."
+        }
+      ]
+    },
+    {
+      "speaker": "Anna",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pas",
+              "lemma": "pas de problème",
+              "pos": "phrase",
+              "gloss": "no",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "pas de problème",
+              "pos": "phrase",
+              "gloss": "(of)",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "problème",
+              "lemma": "pas de problème",
+              "pos": "phrase",
+              "gloss": "problem",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "No problem!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cherche",
+              "lemma": "chercher",
+              "pos": "verb",
+              "gloss": "am looking for",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musée",
+              "lemma": "musée",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "museum",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "la",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Mer",
+              "lemma": "mer",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "sea",
+              "form": "part of the museum’s name"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I’m looking for the Sea Museum."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Où",
+              "lemma": "où",
+              "pos": "adverb",
+              "gloss": "where",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · il (le musée) · after the verb in an inverted question"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Where is it?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular masculine (le musée)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "la",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rue",
+              "lemma": "rue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "street"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Port",
+              "lemma": "port",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "harbour",
+              "form": "part of the street’s name"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "away",
+              "form": "à dix minutes = ten minutes away"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix",
+              "lemma": "dix",
+              "pos": "number",
+              "gloss": "ten"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "minutes",
+              "lemma": "minute",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "minutes",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s on Rue du Port, ten minutes away."
+        }
+      ]
+    },
+    {
+      "speaker": "Anna",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · il (le musée) · after the verb in an inverted question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ouvert",
+              "lemma": "ouvert",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "open",
+              "form": "masculine singular · feminine: ouverte",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on",
+              "form": "le + day = every …day"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lundi",
+              "lemma": "lundi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Monday",
+              "form": "le lundi = on Mondays"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Is it open on Mondays?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "interjection",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular masculine (le musée)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fermé",
+              "lemma": "fermé",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "closed",
+              "form": "masculine singular · feminine: fermée",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "on",
+              "form": "le + day = every …day"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lundi",
+              "lemma": "lundi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Monday",
+              "form": "le lundi = on Mondays"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No, it’s closed on Mondays."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "subject pronoun · 3rd person singular masculine (le musée)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ouvert",
+              "lemma": "ouvert",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "open",
+              "form": "masculine singular · feminine: ouverte"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "from",
+              "form": "de + le becomes du · du … au = from … to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mardi",
+              "lemma": "mardi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Tuesday"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to",
+              "form": "à + le becomes au · du … au = from … to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dimanche",
+              "lemma": "dimanche",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Sunday"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "from",
+              "form": "de … à = from … to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "neuf",
+              "lemma": "neuf",
+              "pos": "number",
+              "gloss": "nine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · neuf heures = nine o’clock"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "to",
+              "form": "de … à = from … to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dix-huit",
+              "lemma": "dix-huit",
+              "pos": "number",
+              "gloss": "eighteen",
+              "form": "dix-huit heures = 6 p.m."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · neuf heures = nine o’clock"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s open from Tuesday to Sunday, from 9 a.m. to 6 p.m."
+        }
+      ]
+    },
+    {
+      "speaker": "Anna",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Combien",
+              "lemma": "combien",
+              "pos": "adverb",
+              "gloss": "how much",
+              "form": "question word · combien coûte … ? = how much is … ?"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "coûte",
+              "lemma": "coûter",
+              "pos": "verb",
+              "gloss": "cost",
+              "form": "il / elle · present · -er verb · the subject l'entrée comes after the verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "la",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · la becomes l' before a vowel"
+            },
+            {
+              "t": "entrée",
+              "lemma": "entrée",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "admission, entrance",
+              "isNew": true
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "How much is admission?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Huit",
+              "lemma": "huit",
+              "pos": "number",
+              "gloss": "eight"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "euros",
+              "lemma": "euro",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "euros",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Eight euros."
+        },
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c' before a vowel · c'est = it is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular · c'est = it is"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gratuit",
+              "lemma": "gratuit",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "free (no cost)",
+              "form": "masculine singular · feminine: gratuite",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pour",
+              "lemma": "pour",
+              "pos": "preposition",
+              "gloss": "for"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s free for children."
+        }
+      ]
+    },
+    {
+      "speaker": "Anna",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Avez",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "vous · present · irregular · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · vous · after the verb in an inverted question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "plan",
+              "lemma": "plan",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "map (of a town)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "la",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ville",
+              "lemma": "ville",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "town, city"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Do you have a map of the town?"
+        }
+      ]
+    },
+    {
+      "speaker": "Hugo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oui",
+              "lemma": "oui",
+              "pos": "interjection",
+              "gloss": "yes"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "voilà",
+              "lemma": "voilà",
+              "pos": "phrase",
+              "gloss": "here you are"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Yes, here you are."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Restez",
+              "lemma": "rester",
+              "pos": "verb",
+              "gloss": "are staying",
+              "form": "vous · present · -er verb · inverted question (verb-pronoun)"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "vous",
+              "lemma": "vous",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · vous · after the verb in an inverted question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "longtemps",
+              "lemma": "longtemps",
+              "pos": "adverb",
+              "gloss": "long, a long time",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ici",
+              "lemma": "ici",
+              "pos": "adverb",
+              "gloss": "here"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "Are you staying here long?"
+        }
+      ]
+    },
+    {
+      "speaker": "Anna",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Non",
+              "lemma": "non",
+              "pos": "interjection",
+              "gloss": "no"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "reste",
+              "lemma": "rester",
+              "pos": "verb",
+              "gloss": "am staying",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trois",
+              "lemma": "trois",
+              "pos": "number",
+              "gloss": "three"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jours",
+              "lemma": "jour",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "days",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No, I’m staying for three days."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sir",
+              "form": "polite way to address a man"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thank you, sir!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["désolé", "musée", "ouvert", "fermé", "entrée", "gratuit", "plan", "longtemps"],
+  "grammarTags": [
+    "questions.inversion",
+    "questions.words",
+    "pronouns.subject",
+    "etre.present",
+    "avoir.present",
+    "er.present",
+    "negation.ne-pas",
+    "adjectives.basic",
+    "numbers.0-100",
+    "time.clock",
+    "articles.definite",
+    "articles.indefinite",
+    "articles.contractions",
+    "nouns.plural",
+    "phrases.c-est",
+    "phrases.greetings",
+    "prepositions.basic"
+  ]
+}

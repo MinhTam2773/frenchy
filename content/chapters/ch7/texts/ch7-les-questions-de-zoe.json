@@ -1,0 +1,1148 @@
+{
+  "id": "ch7-les-questions-de-zoe",
+  "chapterId": "ch7",
+  "title": "Les questions de Zoé",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is (age)",
+              "form": "il / elle · present · irregular · avoir … ans = to be … years old"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "six",
+              "lemma": "six",
+              "pos": "number",
+              "gloss": "six"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ans",
+              "lemma": "an",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "years",
+              "form": "masculine plural · avoir six ans = to be six"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Zoé is six years old."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pose",
+              "lemma": "poser",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb · poser une question = to ask a question",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beaucoup",
+              "lemma": "beaucoup",
+              "pos": "adverb",
+              "gloss": "a lot",
+              "form": "beaucoup de + noun = a lot of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "(of)",
+              "form": "beaucoup de + noun = a lot of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "questions",
+              "lemma": "question",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "questions",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She asks a lot of questions."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "matin",
+              "lemma": "matin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "morning",
+              "form": "le matin = in the morning"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "(to)",
+              "form": "demander à quelqu'un = to ask someone"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "papi",
+              "lemma": "papi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Grandpa",
+              "form": "family word, used like a name",
+              "isNew": true
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Où",
+              "lemma": "où",
+              "pos": "adverb",
+              "gloss": "where",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chat",
+              "lemma": "chat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cat"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "In the morning, she asks Grandpa, “Where is the cat?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chat",
+              "lemma": "chat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cat"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jardin",
+              "lemma": "jardin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "garden"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The cat is in the garden."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "À",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "midi",
+              "lemma": "midi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "noon",
+              "form": "à midi = at noon"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "papi",
+              "lemma": "papi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Grandpa",
+              "form": "family word, used like a name"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prépare",
+              "lemma": "préparer",
+              "pos": "verb",
+              "gloss": "makes",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soupe",
+              "lemma": "soupe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "soup",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "At noon, Grandpa makes soup."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Pourquoi",
+              "lemma": "pourquoi",
+              "pos": "adverb",
+              "gloss": "why",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "la",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soupe",
+              "lemma": "soupe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "soup"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "verte",
+              "lemma": "vert",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "green",
+              "form": "feminine singular · masculine: vert",
+              "isNew": true
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "Zoé asks, “Why is the soup green?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Papi",
+              "lemma": "papi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Grandpa",
+              "form": "family word, used like a name"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rigole",
+              "lemma": "rigoler",
+              "pos": "verb",
+              "gloss": "laughs",
+              "form": "il / elle · present · -er verb · informal",
+              "isNew": true
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "is, are",
+              "form": "il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural (often not translated)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "épinards",
+              "lemma": "épinard",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "spinach",
+              "form": "masculine plural · des épinards = spinach",
+              "isNew": true
+            },
+            {
+              "t": " ! »"
+            }
+          ],
+          "en": "Grandpa laughs: “There’s spinach in it!”"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "L'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le becomes l' before a vowel"
+            },
+            {
+              "t": "après-midi",
+              "lemma": "après-midi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "afternoon",
+              "form": "l'après-midi = in the afternoon"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Quand",
+              "lemma": "quand",
+              "pos": "adverb",
+              "gloss": "when",
+              "form": "question word"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "maman",
+              "lemma": "maman",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mom",
+              "form": "family word, used like a name"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "arrive",
+              "lemma": "arriver",
+              "pos": "verb",
+              "gloss": "is coming",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "In the afternoon, Zoé asks, “When is Mom coming?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Maman",
+              "lemma": "maman",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mom",
+              "form": "family word, used like a name"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "arrive",
+              "lemma": "arriver",
+              "pos": "verb",
+              "gloss": "arrives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinq",
+              "lemma": "cinq",
+              "pos": "number",
+              "gloss": "five"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heures",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "o’clock",
+              "form": "feminine plural · à cinq heures = at five o’clock"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mom arrives at five o’clock."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Papi",
+              "lemma": "papi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Grandpa",
+              "form": "family word, used like a name"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "makes",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural (often not translated)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gâteaux",
+              "lemma": "gâteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cakes",
+              "form": "masculine plural · gâteau + x",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Grandpa is making cakes."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Combien",
+              "lemma": "combien",
+              "pos": "adverb",
+              "gloss": "how many",
+              "form": "question word · combien de + noun"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "(of)",
+              "form": "combien de + noun = how many"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gâteaux",
+              "lemma": "gâteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cakes",
+              "form": "masculine plural · gâteau + x"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": "-"
+            },
+            {
+              "t": "ce",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "que",
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "question marker (not translated)",
+              "form": "est-ce que + statement = question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular (informal)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fais",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "are making",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "Zoé asks, “How many cakes are you making?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "makes",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatre",
+              "lemma": "quatre",
+              "pos": "number",
+              "gloss": "four"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gâteaux",
+              "lemma": "gâteau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cakes",
+              "form": "masculine plural · gâteau + x"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "deux",
+              "lemma": "deux",
+              "pos": "number",
+              "gloss": "two"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pour",
+              "lemma": "pour",
+              "pos": "preposition",
+              "gloss": "for"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "He makes four cakes: two for Zoé!"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "le soir = in the evening"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "papi",
+              "lemma": "papi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Grandpa",
+              "form": "family word, used like a name"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demande",
+              "lemma": "demander",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " : « "
+            },
+            {
+              "t": "Qui",
+              "lemma": "qui",
+              "pos": "pronoun",
+              "gloss": "who",
+              "form": "question word · subject"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "veut",
+              "lemma": "vouloir",
+              "pos": "verb",
+              "gloss": "wants",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article · feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "histoire",
+              "lemma": "histoire",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "story",
+              "isNew": true
+            },
+            {
+              "t": " ? »"
+            }
+          ],
+          "en": "In the evening, Grandpa asks, “Who wants a story?”"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pose",
+              "lemma": "poser",
+              "pos": "verb",
+              "gloss": "asks",
+              "form": "il / elle · present · -er verb · poser une question = to ask a question"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "any",
+              "form": "un, une, des become de after ne … pas"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "question",
+              "lemma": "question",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "question",
+              "form": "ne … pas de question = no questions"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Zoé doesn’t ask a single question."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "écoute",
+              "lemma": "écouter",
+              "pos": "verb",
+              "gloss": "listens",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She listens."
+        }
+      ]
+    }
+  ],
+  "newWords": ["poser", "papi", "soupe", "vert", "rigoler", "épinard", "gâteau", "histoire"],
+  "grammarTags": [
+    "questions.words",
+    "questions.est-ce-que",
+    "pronouns.subject",
+    "avoir.present",
+    "etre.present",
+    "faire.present",
+    "pouvoir.present",
+    "er.present",
+    "negation.ne-pas",
+    "numbers.0-100",
+    "time.clock",
+    "adjectives.basic",
+    "articles.definite",
+    "articles.indefinite",
+    "nouns.plural",
+    "phrases.c-est",
+    "prepositions.basic"
+  ]
+}
