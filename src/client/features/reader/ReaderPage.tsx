@@ -148,6 +148,7 @@ function Reader({ text }: { text: Text }) {
     <div className="flex min-h-dvh flex-col bg-surface">
       <TopBar
         title={text.title}
+        titleLang="fr"
         overline={overline || undefined}
         align="center"
         nav={{ icon: 'close', label: 'Close reader', to: `/chapter/${text.chapterId}` }}
@@ -189,7 +190,11 @@ function Reader({ text }: { text: Text }) {
       </div>
 
       <p aria-live="polite" className="sr-only">
-        {pickedToken && info ? `${pickedToken.t}: ${info.glosses.join('; ')}` : ''}
+        {pickedToken && info && (
+          <>
+            <span lang="fr">{pickedToken.t}</span>: {info.glosses.join('; ')}
+          </>
+        )}
       </p>
 
       <div className="sticky bottom-0">

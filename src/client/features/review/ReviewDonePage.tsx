@@ -38,10 +38,10 @@ function SessionComplete({ stats }: { stats: SessionStats }) {
   const left = cardStats.isFetching ? undefined : cardStats.data?.due;
   const subtitle =
     left === undefined
-      ? 'Très bien.'
+      ? ''
       : left > 0
-        ? `Très bien. ${left} more ${left === 1 ? 'card is' : 'cards are'} due right now.`
-        : 'Très bien. You’re all caught up.';
+        ? ` ${left} more ${left === 1 ? 'card is' : 'cards are'} due right now.`
+        : ' You’re all caught up.';
 
   return (
     <div className="relative flex min-h-dvh flex-col overflow-hidden bg-surface">
@@ -55,7 +55,10 @@ function SessionComplete({ stats }: { stats: SessionStats }) {
           <h1 className="font-display text-[32px] leading-[1.1] font-semibold">
             Session complete!
           </h1>
-          <p className="text-[17px] font-bold text-muted">{subtitle}</p>
+          <p className="text-[17px] font-bold text-muted">
+            <span lang="fr">Très bien.</span>
+            {subtitle}
+          </p>
         </div>
 
         {streak.data && <StreakNote streak={streak.data} before={stats.streakBefore} />}
@@ -143,7 +146,14 @@ function UpNext() {
   const text = pick.kind === 'next' ? pick.text : undefined;
   const chapter = getChapter(chapterId);
   const target = text
-    ? { to: `/read/${text.id}`, title: `Read: ${text.title}` }
+    ? {
+        to: `/read/${text.id}`,
+        title: (
+          <>
+            Read: <span lang="fr">{text.title}</span>
+          </>
+        ),
+      }
     : chapter && {
         to: `/chapter/${chapterId}`,
         title: `Chapter ${chapter.number}: ${chapter.title}`,
