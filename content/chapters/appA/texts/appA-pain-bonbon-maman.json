@@ -1,0 +1,272 @@
+{
+  "id": "appA-pain-bonbon-maman",
+  "chapterId": "appA",
+  "title": "Pain, bonbon, maman",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Maman",
+              "lemma": "maman",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mum",
+              "form": "an: nasal vowel"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "enfant",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "child",
+              "form": "masculine or feminine (un enfant, une enfant) · en and an sound the same · the final t is silent",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "orange",
+              "lemma": "orange",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "orange",
+              "form": "the fruit"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "dimanche",
+              "lemma": "dimanche",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Sunday"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mum, child, orange, Sunday."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonbon",
+              "lemma": "bonbon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sweet, candy",
+              "form": "on: nasal vowel, twice"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "maison",
+              "lemma": "maison",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "house",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "citron",
+              "lemma": "citron",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "lemon",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "oncle",
+              "lemma": "oncle",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "uncle"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Sweet, house, lemon, uncle."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pain",
+              "lemma": "pain",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bread",
+              "form": "ain sounds like the in of vin",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "vin",
+              "lemma": "vin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "wine",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "main",
+              "lemma": "main",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hand"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "lapin",
+              "lemma": "lapin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "rabbit"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Bread, wine, hand, rabbit."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Lundi",
+              "lemma": "lundi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Monday",
+              "form": "un: nasal vowel (many speakers say it like in)",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "parfum",
+              "lemma": "parfum",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "perfume",
+              "form": "um sounds like un"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "brun",
+              "lemma": "brun",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "brown",
+              "form": "masculine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Monday, perfume, brown."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bonjour",
+              "lemma": "bonjour",
+              "pos": "interjection",
+              "gloss": "hello",
+              "form": "bon + jour · on is nasal"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hello!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bonsoir",
+              "lemma": "bonsoir",
+              "pos": "interjection",
+              "gloss": "good evening",
+              "form": "bon + soir · on is nasal"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Good evening!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bonne",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "good",
+              "form": "feminine · nn: not nasal, you hear the n"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "nuit",
+              "lemma": "nuit",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "night",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Good night!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["enfant", "maison", "citron", "pain", "vin", "lundi", "nuit"],
+  "grammarTags": ["sounds.basic", "phrases.greetings"]
+}

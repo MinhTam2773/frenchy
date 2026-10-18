@@ -1,0 +1,1000 @@
+{
+  "id": "ch12-le-cinema",
+  "chapterId": "ch12",
+  "title": "Le cinéma",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "hi",
+              "form": "informal: hi or bye"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi, Emma!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ça",
+              "lemma": "ça",
+              "pos": "pronoun",
+              "gloss": "it, things",
+              "form": "ça va = how are you / I'm fine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "il / elle · present · irregular · ça va = how are you / I'm fine"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "How are you?"
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "hi",
+              "form": "informal: hi or bye"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi, Léo!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ça",
+              "lemma": "ça",
+              "pos": "pronoun",
+              "gloss": "it, things",
+              "form": "ça va = how are you / I'm fine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "il / elle · present · irregular · ça va = how are you / I'm fine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm fine."
+        }
+      ]
+    },
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "veux",
+              "lemma": "vouloir",
+              "pos": "verb",
+              "gloss": "want",
+              "form": "je · present · irregular · vouloir + infinitive = to want to",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aller",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "infinitive · after vouloir, pouvoir, devoir"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinéma",
+              "lemma": "cinéma",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "movies, cinema",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "demain",
+              "lemma": "demain",
+              "pos": "adverb",
+              "gloss": "tomorrow",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "demain soir = tomorrow evening"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I want to go to the movies tomorrow evening."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "film",
+              "lemma": "film",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "movie, film"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "drôle",
+              "lemma": "drôle",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "funny",
+              "form": "masculine singular · feminine: drôle (same)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's a very funny movie."
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Demain",
+              "lemma": "demain",
+              "pos": "adverb",
+              "gloss": "tomorrow"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "peux",
+              "lemma": "pouvoir",
+              "pos": "verb",
+              "gloss": "can",
+              "form": "je · present · irregular",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Tomorrow, I can't."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dois",
+              "lemma": "devoir",
+              "pos": "verb",
+              "gloss": "have to",
+              "form": "je · present · irregular · devoir + infinitive = to have to, must",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aller",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "infinitive · after vouloir, pouvoir, devoir"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "to",
+              "form": "à la, à l' = to the"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bibliothèque",
+              "lemma": "bibliothèque",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "library",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I have to go to the library."
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "examen",
+              "lemma": "examen",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "exam",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lundi",
+              "lemma": "lundi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Monday",
+              "form": "a day with no article = this coming one"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I have an exam on Monday."
+        }
+      ]
+    },
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "occupée",
+              "lemma": "occupé",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "busy",
+              "form": "feminine singular · masculine: occupé",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh, you're very busy!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pouvons",
+              "lemma": "pouvoir",
+              "pos": "verb",
+              "gloss": "can",
+              "form": "nous · present · irregular · pouvoir + infinitive = can, to be able to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aller",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "infinitive · after vouloir, pouvoir, devoir"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinéma",
+              "lemma": "cinéma",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "movies, cinema"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Saturday",
+              "form": "a day with no article = this coming one"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "then, so"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "We can go to the movies on Saturday, then."
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Saturday",
+              "form": "a day with no article = this coming one"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "veux",
+              "lemma": "vouloir",
+              "pos": "verb",
+              "gloss": "would like",
+              "form": "je · present · irregular · je veux bien = I'd like that, gladly"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "gladly",
+              "form": "je veux bien = I'd like that, gladly"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Saturday, I'd love to!"
+        }
+      ]
+    },
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "interjection",
+              "gloss": "great"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Paul",
+              "lemma": "Paul",
+              "pos": "name",
+              "gloss": "Paul (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Sara",
+              "lemma": "Sara",
+              "pos": "name",
+              "gloss": "Sara (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vont",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "are going",
+              "form": "ils / elles · present · irregular · the present can describe a plan"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinéma",
+              "lemma": "cinéma",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "movies, cinema"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Saturday",
+              "form": "a day with no article = this coming one"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Paul and Sara are going to the movies on Saturday too."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "ils",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, masculine or mixed group"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sympas",
+              "lemma": "sympa",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice, friendly",
+              "form": "masculine plural · informal · same form for feminine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They're really nice."
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "then, so"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Saturday",
+              "form": "a day with no article = this coming one"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "allons",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "are going",
+              "form": "nous · present · irregular · the present can describe a plan"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinéma",
+              "lemma": "cinéma",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "movies, cinema"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ensemble",
+              "lemma": "ensemble",
+              "pos": "adverb",
+              "gloss": "together"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "So on Saturday, we're going to the movies together!"
+        }
+      ]
+    },
+    {
+      "speaker": "Léo",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Parfait",
+              "lemma": "parfait",
+              "pos": "interjection",
+              "gloss": "perfect"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Perfect!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bon",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gloss": "good",
+              "gender": "m",
+              "form": "bon courage = good luck, hang in there"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "courage",
+              "lemma": "courage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "courage",
+              "form": "bon courage = good luck, hang in there"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Good luck, Emma!"
+        }
+      ]
+    },
+    {
+      "speaker": "Emma",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thank you"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Léo",
+              "lemma": "Léo",
+              "pos": "name",
+              "gloss": "Léo (a name)"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Thanks, Léo!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "bye",
+              "form": "informal: hi or bye"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Bye!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "pouvoir",
+    "vouloir",
+    "devoir",
+    "cinéma",
+    "bibliothèque",
+    "examen",
+    "demain",
+    "occupé"
+  ],
+  "grammarTags": [
+    "pronouns.subject",
+    "pouvoir.present",
+    "devoir.present",
+    "aller.present",
+    "avoir.present",
+    "etre.present",
+    "negation.ne-pas",
+    "adjectives.basic",
+    "phrases.greetings",
+    "phrases.c-est",
+    "articles.contractions"
+  ]
+}

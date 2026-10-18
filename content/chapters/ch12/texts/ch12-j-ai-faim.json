@@ -1,0 +1,1118 @@
+{
+  "id": "ch12-j-ai-faim",
+  "chapterId": "ch12",
+  "title": "J'ai faim !",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Lucas",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Inès",
+              "lemma": "Inès",
+              "pos": "name",
+              "gloss": "Inès (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular · avoir faim = to be hungry"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faim",
+              "lemma": "faim",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hunger",
+              "form": "avoir faim = to be hungry",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Inès, I'm hungry!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ah",
+              "lemma": "ah",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular · avoir faim = to be hungry"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faim",
+              "lemma": "faim",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hunger",
+              "form": "avoir faim = to be hungry"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Oh, I'm hungry too."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "some",
+              "gender": "m",
+              "form": "partitive article · masculine (de + le)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pain",
+              "lemma": "pain",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bread"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "some",
+              "gender": "m",
+              "form": "partitive article · masculine (de + le)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fromage",
+              "lemma": "fromage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cheese"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's bread and cheese."
+        }
+      ]
+    },
+    {
+      "speaker": "Lucas",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "n'",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "any",
+              "form": "pas de = no, not any (du, de la, un, une become de after ne … pas)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beurre",
+              "lemma": "beurre",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "butter",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's no butter."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "n'",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "feel",
+              "form": "je · present · irregular · avoir envie de = to feel like"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "envie",
+              "lemma": "envie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "desire",
+              "form": "avoir envie de = to feel like",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "(not translated)",
+              "form": "avoir envie de = to feel like"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fromage",
+              "lemma": "fromage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cheese"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I don't feel like cheese."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "as",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular · avoir de la chance = to be lucky"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "form": "partitive article · avoir de la chance = to be lucky"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "gender": "f",
+              "form": "partitive article · avoir de la chance = to be lucky"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chance",
+              "lemma": "chance",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "luck",
+              "form": "avoir de la chance = to be lucky",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la, de l' = some"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "some",
+              "gender": "f",
+              "form": "partitive article · de la = some (feminine)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "confiture",
+              "lemma": "confiture",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "jam",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "You're lucky: there's jam!"
+        }
+      ]
+    },
+    {
+      "speaker": "Lucas",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "interjection",
+              "gloss": "great"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular · avoir soif = to be thirsty"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soif",
+              "lemma": "soif",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "thirst",
+              "form": "avoir soif = to be thirsty",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm thirsty too."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "veux",
+              "lemma": "vouloir",
+              "pos": "verb",
+              "gloss": "want",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "some",
+              "gender": "m",
+              "form": "partitive article · masculine (de + le)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lait",
+              "lemma": "lait",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "milk"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I want some milk."
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "n'",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "any",
+              "form": "pas de = no, not any (du, de la, un, une become de after ne … pas)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lait",
+              "lemma": "lait",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "milk"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's no milk."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "y",
+              "pos": "pronoun",
+              "gloss": "there",
+              "form": "il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is, are",
+              "form": "il / elle · present · irregular · il y a = there is / there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la, de l' = some"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "some",
+              "gender": "f",
+              "form": "partitive article · de l' = some (before a vowel)"
+            },
+            {
+              "t": "eau",
+              "lemma": "eau",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "water"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There's water."
+        }
+      ]
+    },
+    {
+      "speaker": "Lucas",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Bon",
+              "lemma": "bon",
+              "pos": "interjection",
+              "gloss": "OK, fine",
+              "form": "bon = well, OK (to accept something)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la, de l' = some"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "some",
+              "gender": "f",
+              "form": "partitive article · de l' = some (before a vowel)"
+            },
+            {
+              "t": "eau",
+              "lemma": "eau",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "water"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "OK, water, then."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular · avoir froid = to be cold"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "froid",
+              "lemma": "froid",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cold",
+              "form": "avoir froid = to be cold",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "And I'm cold!"
+        }
+      ]
+    },
+    {
+      "speaker": "Inès",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "as",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular · avoir faim = to be hungry"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "faim",
+              "lemma": "faim",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hunger",
+              "form": "avoir faim = to be hungry"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "as",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular · avoir soif = to be thirsty"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soif",
+              "lemma": "soif",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "thirst",
+              "form": "avoir soif = to be thirsty"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "as",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular · avoir froid = to be cold"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "froid",
+              "lemma": "froid",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cold",
+              "form": "avoir froid = to be cold"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "You're hungry, you're thirsty and you're cold."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tu",
+              "lemma": "tu",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "subject pronoun · 2nd person singular, informal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "es",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "tu · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bébé",
+              "lemma": "bébé",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "baby",
+              "form": "always masculine, even for a girl"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "You're a baby!"
+        }
+      ]
+    },
+    {
+      "speaker": "Lucas",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "suis",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bébé",
+              "lemma": "bébé",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "baby",
+              "form": "always masculine, even for a girl"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "I'm not a baby!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular · je becomes j' before a vowel"
+            },
+            {
+              "t": "ai",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "am",
+              "form": "je · present · irregular · avoir sommeil = to be sleepy"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sommeil",
+              "lemma": "sommeil",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "sleep",
+              "form": "avoir sommeil = to be sleepy",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "c'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "c'est = it is · ce becomes c' before a vowel"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tout",
+              "lemma": "tout",
+              "pos": "pronoun",
+              "gloss": "all",
+              "form": "c'est tout = that's all"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I'm sleepy, that's all."
+        }
+      ]
+    }
+  ],
+  "newWords": ["faim", "soif", "froid", "sommeil", "chance", "envie", "beurre", "confiture"],
+  "grammarTags": [
+    "pronouns.subject",
+    "avoir.present",
+    "etre.present",
+    "pouvoir.present",
+    "negation.ne-pas",
+    "articles.partitive",
+    "articles.indefinite",
+    "phrases.c-est"
+  ]
+}

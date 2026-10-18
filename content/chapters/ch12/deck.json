@@ -1,0 +1,223 @@
+{
+  "chapterId": "ch12",
+  "cards": [
+    {
+      "id": "ch12-il-est-grand",
+      "type": "sentence_meaning",
+      "front": "Il est grand et très calme.",
+      "back": "He is tall and very calm.",
+      "textId": "ch12-la-famille-martin"
+    },
+    {
+      "id": "ch12-ils-ont-une-fille",
+      "type": "sentence_meaning",
+      "front": "Les Martin ont une fille et un fils.",
+      "back": "The Martins have a daughter and a son.",
+      "note": "ils ont (they have) is not ils sont (they are).",
+      "textId": "ch12-la-famille-martin"
+    },
+    {
+      "id": "ch12-j-ai-faim",
+      "type": "sentence_meaning",
+      "front": "J'ai faim !",
+      "back": "I'm hungry!",
+      "note": "French says “I have hunger”: avoir faim.",
+      "textId": "ch12-j-ai-faim"
+    },
+    {
+      "id": "ch12-pas-de-beurre",
+      "type": "sentence_meaning",
+      "front": "Il n'y a pas de beurre.",
+      "back": "There's no butter.",
+      "note": "After ne … pas, du / de la / un / une become de.",
+      "textId": "ch12-j-ai-faim"
+    },
+    {
+      "id": "ch12-il-fait-beau",
+      "type": "sentence_meaning",
+      "front": "Aujourd'hui, il fait beau et chaud.",
+      "back": "Today the weather is nice and warm.",
+      "note": "Weather uses faire: il fait beau.",
+      "textId": "ch12-le-samedi-de-chloe"
+    },
+    {
+      "id": "ch12-elle-fait-la-cuisine",
+      "type": "sentence_meaning",
+      "front": "Le soir, elle fait la cuisine.",
+      "back": "In the evening, she cooks.",
+      "note": "faire la cuisine = to cook.",
+      "textId": "ch12-le-samedi-de-chloe"
+    },
+    {
+      "id": "ch12-je-ne-connais-pas-le-quartier",
+      "type": "sentence_meaning",
+      "front": "Je ne connais pas le quartier.",
+      "back": "I don't know the neighborhood.",
+      "note": "connaître is for people and places.",
+      "textId": "ch12-le-quartier"
+    },
+    {
+      "id": "ch12-je-dois-aller",
+      "type": "sentence_meaning",
+      "front": "Je dois aller à la bibliothèque.",
+      "back": "I have to go to the library.",
+      "note": "devoir + infinitive = to have to.",
+      "textId": "ch12-le-cinema"
+    },
+    {
+      "id": "ch12-tom-n-est-pas-serieux",
+      "type": "meaning_sentence",
+      "front": "Tom is not serious.",
+      "back": "Tom n'est pas sérieux.",
+      "note": "ne becomes n' before a vowel: n'est pas.",
+      "textId": "ch12-la-famille-martin"
+    },
+    {
+      "id": "ch12-elle-est-serieuse",
+      "type": "meaning_sentence",
+      "front": "She is serious and a little shy.",
+      "back": "Elle est sérieuse et un peu timide.",
+      "note": "sérieux becomes sérieuse for a woman.",
+      "textId": "ch12-la-famille-martin"
+    },
+    {
+      "id": "ch12-tu-as-de-la-chance",
+      "type": "meaning_sentence",
+      "front": "You're lucky!",
+      "back": "Tu as de la chance !",
+      "note": "avoir de la chance = to be lucky.",
+      "textId": "ch12-j-ai-faim"
+    },
+    {
+      "id": "ch12-j-ai-sommeil",
+      "type": "meaning_sentence",
+      "front": "I'm sleepy, that's all.",
+      "back": "J'ai sommeil, c'est tout.",
+      "note": "avoir sommeil = to be sleepy.",
+      "textId": "ch12-j-ai-faim"
+    },
+    {
+      "id": "ch12-elle-va-a-la-piscine",
+      "type": "meaning_sentence",
+      "front": "In the morning, she goes to the pool.",
+      "back": "Le matin, elle va à la piscine.",
+      "textId": "ch12-le-samedi-de-chloe"
+    },
+    {
+      "id": "ch12-ils-vont-au-cafe",
+      "type": "meaning_sentence",
+      "front": "They go to the café, too.",
+      "back": "Ils vont aussi au café.",
+      "note": "à + le becomes au.",
+      "textId": "ch12-le-samedi-de-chloe"
+    },
+    {
+      "id": "ch12-elle-sait-tout",
+      "type": "meaning_sentence",
+      "front": "She knows everything!",
+      "back": "Elle sait tout !",
+      "note": "savoir is for facts and skills.",
+      "textId": "ch12-le-quartier"
+    },
+    {
+      "id": "ch12-demain-je-ne-peux-pas",
+      "type": "meaning_sentence",
+      "front": "Tomorrow, I can't.",
+      "back": "Demain, je ne peux pas.",
+      "textId": "ch12-le-cinema"
+    },
+    {
+      "id": "ch12-je-suis-julie",
+      "type": "cloze",
+      "front": "Je ___ Julie, la voisine.",
+      "back": "Je suis Julie, la voisine.",
+      "clozeAnswer": "suis",
+      "hint": "être",
+      "textId": "ch12-le-quartier"
+    },
+    {
+      "id": "ch12-vous-etes-tres-gentil",
+      "type": "cloze",
+      "front": "Vous ___ très gentil, Karim !",
+      "back": "Vous êtes très gentil, Karim !",
+      "clozeAnswer": "êtes",
+      "hint": "être",
+      "textId": "ch12-le-quartier"
+    },
+    {
+      "id": "ch12-ils-sont-fatigues",
+      "type": "cloze",
+      "front": "Ils ___ fatigués et heureux.",
+      "back": "Ils sont fatigués et heureux.",
+      "clozeAnswer": "sont",
+      "hint": "être",
+      "textId": "ch12-la-famille-martin"
+    },
+    {
+      "id": "ch12-nous-avons-faim",
+      "type": "cloze",
+      "front": "Nous ___ faim.",
+      "back": "Nous avons faim.",
+      "clozeAnswer": "avons",
+      "hint": "avoir",
+      "note": "avoir faim = to be hungry."
+    },
+    {
+      "id": "ch12-nous-allons-au-cinema",
+      "type": "cloze",
+      "front": "Alors, samedi, nous ___ au cinéma ensemble !",
+      "back": "Alors, samedi, nous allons au cinéma ensemble !",
+      "clozeAnswer": "allons",
+      "hint": "aller",
+      "textId": "ch12-le-cinema"
+    },
+    {
+      "id": "ch12-ils-font-du-velo",
+      "type": "cloze",
+      "front": "L'après-midi, Hugo et Chloé ___ du vélo au parc.",
+      "back": "L'après-midi, Hugo et Chloé font du vélo au parc.",
+      "clozeAnswer": "font",
+      "hint": "faire",
+      "note": "faire du vélo = to ride a bike.",
+      "textId": "ch12-le-samedi-de-chloe"
+    },
+    {
+      "id": "ch12-je-sais-faire-des-crepes",
+      "type": "cloze",
+      "front": "Je ___ faire des crêpes.",
+      "back": "Je sais faire des crêpes.",
+      "clozeAnswer": "sais",
+      "hint": "savoir or connaître?",
+      "note": "Skills take savoir.",
+      "textId": "ch12-le-quartier"
+    },
+    {
+      "id": "ch12-je-connais-madame-roux",
+      "type": "cloze",
+      "front": "Je ___ Madame Roux.",
+      "back": "Je connais Madame Roux.",
+      "clozeAnswer": "connais",
+      "hint": "savoir or connaître?",
+      "note": "People take connaître.",
+      "textId": "ch12-le-quartier"
+    },
+    {
+      "id": "ch12-je-veux-du-lait",
+      "type": "cloze",
+      "front": "Je ___ du lait.",
+      "back": "Je veux du lait.",
+      "clozeAnswer": "veux",
+      "hint": "vouloir",
+      "textId": "ch12-j-ai-faim"
+    },
+    {
+      "id": "ch12-nous-pouvons-aller",
+      "type": "cloze",
+      "front": "Nous ___ aller au cinéma samedi, alors.",
+      "back": "Nous pouvons aller au cinéma samedi, alors.",
+      "clozeAnswer": "pouvons",
+      "hint": "pouvoir",
+      "textId": "ch12-le-cinema"
+    }
+  ]
+}

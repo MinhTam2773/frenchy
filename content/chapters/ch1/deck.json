@@ -1,0 +1,206 @@
+{
+  "chapterId": "ch1",
+  "cards": [
+    {
+      "id": "ch1-boulangerie-du-quartier",
+      "type": "sentence_meaning",
+      "front": "Voici la boulangerie du quartier.",
+      "back": "Here is the neighborhood bakery.",
+      "note": "de + le becomes du.",
+      "textId": "ch1-la-vitrine"
+    },
+    {
+      "id": "ch1-eclairs-au-cafe",
+      "type": "sentence_meaning",
+      "front": "Ce sont des éclairs au café.",
+      "back": "Those are coffee éclairs.",
+      "note": "ce sont points out more than one thing.",
+      "textId": "ch1-la-vitrine"
+    },
+    {
+      "id": "ch1-des-tomates",
+      "type": "sentence_meaning",
+      "front": "Des tomates, s'il vous plaît.",
+      "back": "Some tomatoes, please.",
+      "note": "des = some, the plural of un and une.",
+      "textId": "ch1-au-marche"
+    },
+    {
+      "id": "ch1-c-est-cadeau",
+      "type": "sentence_meaning",
+      "front": "Voilà des fraises, c'est cadeau !",
+      "back": "Here are some strawberries, on the house!",
+      "note": "c'est cadeau = it's free (informal).",
+      "textId": "ch1-au-marche"
+    },
+    {
+      "id": "ch1-plat-du-jour",
+      "type": "sentence_meaning",
+      "front": "Le plat du jour : le poulet aux champignons.",
+      "back": "Today's special: chicken with mushrooms.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-les-boissons",
+      "type": "sentence_meaning",
+      "front": "Les boissons : le café au lait, le thé à la menthe, le jus d'orange.",
+      "back": "Drinks: coffee with milk, mint tea, orange juice.",
+      "note": "à la stays two words: only le and les fuse with à.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-le-salon",
+      "type": "sentence_meaning",
+      "front": "Voici le salon : un canapé, une télé, des plantes.",
+      "back": "Here's the living room: a sofa, a TV and some plants.",
+      "textId": "ch1-la-visite"
+    },
+    {
+      "id": "ch1-du-cafe",
+      "type": "sentence_meaning",
+      "front": "Ah, du café !",
+      "back": "Ah, some coffee!",
+      "note": "du = some, for an amount of something.",
+      "textId": "ch1-la-visite"
+    },
+    {
+      "id": "ch1-tarte-aux-fraises",
+      "type": "meaning_sentence",
+      "front": "It's a strawberry tart.",
+      "back": "C'est une tarte aux fraises.",
+      "note": "à + les becomes aux.",
+      "textId": "ch1-la-vitrine"
+    },
+    {
+      "id": "ch1-coin-des-enfants",
+      "type": "meaning_sentence",
+      "front": "Here is the children's corner.",
+      "back": "Voici le coin des enfants.",
+      "note": "de + les becomes des.",
+      "textId": "ch1-la-vitrine"
+    },
+    {
+      "id": "ch1-du-persil",
+      "type": "meaning_sentence",
+      "front": "Some parsley, please.",
+      "back": "Du persil, s'il vous plaît.",
+      "note": "persil is masculine, so some = du.",
+      "textId": "ch1-au-marche"
+    },
+    {
+      "id": "ch1-la-salade-l-ail",
+      "type": "meaning_sentence",
+      "front": "Here's the lettuce, the parsley and the garlic.",
+      "back": "Voici la salade, le persil, l'ail.",
+      "note": "le and la become l' before a vowel.",
+      "textId": "ch1-au-marche"
+    },
+    {
+      "id": "ch1-sandwich-au-jambon",
+      "type": "meaning_sentence",
+      "front": "The ham sandwich",
+      "back": "Le sandwich au jambon",
+      "note": "à + le becomes au.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-mousse-au-chocolat",
+      "type": "meaning_sentence",
+      "front": "Chocolate mousse",
+      "back": "La mousse au chocolat",
+      "note": "French keeps the article where English drops it.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-la-cuisine",
+      "type": "meaning_sentence",
+      "front": "Here's the kitchen: the fridge, the oven and the cupboards.",
+      "back": "Voici la cuisine : le frigo, le four, les placards.",
+      "textId": "ch1-la-visite"
+    },
+    {
+      "id": "ch1-les-cles",
+      "type": "meaning_sentence",
+      "front": "Here are the keys.",
+      "back": "Voici les clés.",
+      "note": "voici (or voilà) works for one thing or several.",
+      "textId": "ch1-la-visite"
+    },
+    {
+      "id": "ch1-cloze-tarte-aux-pommes",
+      "type": "cloze",
+      "front": "La tarte ___ pommes.",
+      "back": "La tarte aux pommes.",
+      "clozeAnswer": "aux",
+      "note": "à + les becomes aux.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-cloze-soupe-du-jour",
+      "type": "cloze",
+      "front": "La soupe ___ jour.",
+      "back": "La soupe du jour.",
+      "clozeAnswer": "du",
+      "note": "de + le becomes du.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-cloze-glace-a-la-vanille",
+      "type": "cloze",
+      "front": "La glace ___ vanille.",
+      "back": "La glace à la vanille.",
+      "clozeAnswer": "à la",
+      "note": "à + la does not fuse.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-cloze-coin-des-enfants",
+      "type": "cloze",
+      "front": "Voici le coin ___ enfants.",
+      "back": "Voici le coin des enfants.",
+      "clozeAnswer": "des",
+      "note": "de + les becomes des.",
+      "textId": "ch1-la-vitrine"
+    },
+    {
+      "id": "ch1-cloze-l-ardoise",
+      "type": "cloze",
+      "front": "Voici ___ardoise du café.",
+      "back": "Voici l'ardoise du café.",
+      "clozeAnswer": "l'",
+      "hint": "the",
+      "note": "ardoise starts with a vowel, so la becomes l'.",
+      "textId": "ch1-ardoise-du-cafe"
+    },
+    {
+      "id": "ch1-cloze-de-la-ciboulette",
+      "type": "cloze",
+      "front": "Du persil, ___ ciboulette, s'il vous plaît.",
+      "back": "Du persil, de la ciboulette, s'il vous plaît.",
+      "clozeAnswer": "de la",
+      "hint": "some",
+      "note": "ciboulette is feminine: de la.",
+      "textId": "ch1-au-marche"
+    },
+    {
+      "id": "ch1-cloze-un-gateau",
+      "type": "cloze",
+      "front": "C'est ___ gâteau au chocolat.",
+      "back": "C'est un gâteau au chocolat.",
+      "clozeAnswer": "un",
+      "hint": "a",
+      "note": "gâteau is masculine: un.",
+      "textId": "ch1-la-vitrine"
+    },
+    {
+      "id": "ch1-cloze-la-cuisine",
+      "type": "cloze",
+      "front": "Voici ___ cuisine.",
+      "back": "Voici la cuisine.",
+      "clozeAnswer": "la",
+      "hint": "the",
+      "note": "cuisine is feminine: la.",
+      "textId": "ch1-la-visite"
+    }
+  ]
+}

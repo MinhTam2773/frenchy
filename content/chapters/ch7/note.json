@@ -1,0 +1,32 @@
+{
+  "chapterId": "ch7",
+  "title": "poser une question",
+  "subtitle": "to ask a question",
+  "rows": [
+    {
+      "label": "rising voice",
+      "fr": "Tu parles anglais ?"
+    },
+    {
+      "label": "est-ce que",
+      "fr": "Est-ce que tu parles anglais ?"
+    },
+    {
+      "label": "inversion",
+      "fr": "Parles-tu anglais ?"
+    },
+    {
+      "label": "inversion + -t-",
+      "fr": "Parle-t-il anglais ?"
+    },
+    {
+      "label": "où + est-ce que",
+      "fr": "Où est-ce que tu habites ?"
+    },
+    {
+      "label": "où + inversion",
+      "fr": "Où habites-tu ?"
+    }
+  ],
+  "tip": "Same question, three ways: raise your voice, start with est-ce que, or swap the verb and pronoun (more formal)."
+}
