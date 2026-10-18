@@ -57,7 +57,7 @@ Tasks are designed to run in parallel: one agent (subagent, worktree or cloud se
 
 **Lead / orchestrator** (Opus 5.5 · High): dispatches every `ready` task in the current wave at once with its recommended model and effort, gives each agent its task ID and this file, reviews and merges PRs in dependency order, resolves conflicts in hot files, and keeps the Progress line and statuses in TODO.md current. Fan-out tasks (T-14, B-10, B-11) run one sub-agent per chapter, and each sub-agent owns exactly one chapter folder.
 
-**Conflicts:** when two tasks need the same contract change, the change goes into `src/shared/schemas/` in one PR that updates both sides. In `TODO.md`, edit only your own task block, the Progress line, and append to LESSONS / KNOWN GAPS / BACKLOG.
+**Conflicts:** when two tasks need the same contract change, the change goes into `src/shared/schemas/` in one PR that updates both sides. In `TODO.md`, edit only your own task block, the Progress line, and append to LESSONS / KNOWN GAPS / BACKLOG. In a parallel wave, use only the L-/G- numbers the lead reserved for your task (L-22).
 
 ## Commands
 

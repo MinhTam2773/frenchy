@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 8 · NEXT 28 (3 in progress: T-03, T-04, T-05) · BACKLOG 20
+**Progress:** DONE 11 · NEXT 25 (7 in progress: T-06 to T-12) · BACKLOG 20
 
 ---
 
@@ -194,26 +194,12 @@ flowchart LR
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [x] Finish: PR to `main` merged with CI green
 
----
-
-## NEXT (MVP)
-
-Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 content, installable as a PWA and deployed on Cloudflare.
-
-### Wave 0
-
-T-01 is done (moved to DONE).
-
-### Wave 1
-
-T-02 is done (moved to DONE).
-
-#### T-03 · UI kit and design tokens
+### T-03 · UI kit and design tokens
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-01 | T-09, T-12 | 1 |
 
-**Status:** in review · **Claimed by:** T-03 subagent (lead session) · **Branch:** `task/T-03-ui-kit`
+**Status:** done · **Claimed by:** T-03 subagent (lead session) · **Branch:** `task/T-03-ui-kit` · **PR:** https://github.com/MinhTam2773/frenchy/pull/7
 **Owns:** `src/client/styles.css` (theme), `src/client/ui/**`
 **Goal:** Reusable components that match the mockups exactly, so screens are just composition.
 **Done when:** every component in the list renders in `Gallery.tsx` in all its states, tests pass, and no component uses raw hex colors.
@@ -231,14 +217,14 @@ T-02 is done (moved to DONE).
 - [x] Contrast test: every text/background token pair used by the kit meets 4.5:1 (small contrast helper + table of pairs)
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+- [x] Finish: PR to `main` merged with CI green
 
-#### T-04 · Shared schemas, fixtures and API contract
+### T-04 · Shared schemas, fixtures and API contract
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-01 | T-06, T-07, T-08, T-09, T-10, T-11, T-15 | 1 |
 
-**Status:** in review · **Claimed by:** T-04 subagent (lead session) · **Branch:** `task/T-04-contracts`
+**Status:** done · **Claimed by:** T-04 subagent (lead session) · **Branch:** `task/T-04-contracts` · **PR:** https://github.com/MinhTam2773/frenchy/pull/8
 **Owns:** `src/shared/schemas/**`, `src/shared/fixtures/**`, `src/shared/constants.ts`, `docs/api-contract.md`
 **Goal:** One typed contract (zod schemas + inferred types) that the client, the worker, the content pipeline and the mocks all import, so parallel tasks agree without talking to each other.
 **Done when:** every schema has a valid fixture and a rejected invalid case in tests, and `docs/api-contract.md` lists every MVP endpoint.
@@ -255,16 +241,17 @@ T-02 is done (moved to DONE).
 - [x] Tests: each schema parses its fixture and rejects a broken copy
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+- [x] Finish: PR to `main` merged with CI green
 
 QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: the client holds the last grade and posts it when the next card is graded or the session ends. Alternative: an undo route that restores the previous card state (see G-20).
+ANSWER (lead, 2026-10-18): keep the default (client holds the last grade). No undo route in MVP.
 
-#### T-05 · Text-to-speech helper
+### T-05 · Text-to-speech helper
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-01 | T-25 | 1 |
 
-**Status:** in review · **Claimed by:** T-05 subagent (lead session) · **Branch:** `task/T-05-tts`
+**Status:** done · **Claimed by:** T-05 subagent (lead session) · **Branch:** `task/T-05-tts` · **PR:** https://github.com/MinhTam2773/frenchy/pull/6
 **Owns:** `src/client/lib/tts/**`
 **Goal:** One small module that speaks French well on every device that can.
 **Done when:** `useTts()` speaks with the best available fr-FR voice, reports `supported=false` cleanly where it can't, and tests pass.
@@ -277,7 +264,21 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 - [x] Tests with a mocked `speechSynthesis`
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+- [x] Finish: PR to `main` merged with CI green
+
+---
+
+## NEXT (MVP)
+
+Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 content, installable as a PWA and deployed on Cloudflare.
+
+### Wave 0
+
+T-01 is done (moved to DONE).
+
+### Wave 1
+
+Wave 1 is done (T-02 to T-05 moved to DONE).
 
 ### Wave 2
 
@@ -286,7 +287,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-04 | T-13, T-22, T-23 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-06-db`
+**Status:** in progress · **Claimed by:** T-06 subagent (lead session) · **Branch:** `task/T-06-db`
 **Owns:** `src/worker/db/**`, `migrations/**`, `drizzle.config.ts`, `scripts/db/seed.ts`
 **Goal:** D1 tables for all MVP user data, plus one helper that makes cross-user reads impossible by construction.
 **Done when:** migrations apply on a fresh local D1, the seed loads mockup-like data, and an isolation test proves user A can't read user B's rows.
@@ -308,7 +309,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-04 | T-14, T-17, T-23, T-25 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-07-course-content`
+**Status:** in progress · **Claimed by:** T-07 subagent (lead session) · **Branch:** `task/T-07-course-content`
 **Owns:** `content/course.json`, `content/grammar.json`, `scripts/content/check.ts`, `src/shared/content/**` (loaders)
 **Goal:** The course map and the "allowed grammar per chapter" list as validated JSON, plus a checker every content task must pass.
 **Done when:** `npm run content:check` validates the course and grammar files, rejects the bad fixtures, and runs in CI.
@@ -329,7 +330,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P1 | Opus 5.5 · High | L | T-04 | T-15, T-24 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-08-lexicon`
+**Status:** in progress · **Claimed by:** T-08 subagent (lead session) · **Branch:** `task/T-08-lexicon`
 **Owns:** `scripts/lexicon/**`, `content/lexicon/**`, `src/shared/lexicon/**`, `docs/LICENSES.md`
 **Goal:** Instant, free word taps: a compact French → English lexicon with form → lemma lookup, shipped as static JSON.
 **Done when:** `lookupForm('vais')` returns *aller* (1st person singular, present), the shards fit the size budget, and the license and attribution are recorded.
@@ -351,7 +352,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-03, T-04 | T-16 to T-21, T-25 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-09-app-shell`
+**Status:** in progress · **Claimed by:** T-09 subagent (lead session) · **Branch:** `task/T-09-app-shell`
 **Owns:** `src/client/App.tsx`, `src/client/routes.tsx`, `src/client/layouts/**`, `src/client/lib/api.ts`, `src/client/lib/query.ts`, `src/client/lib/session.ts`, `src/client/mocks/**`, placeholder pages in `src/client/features/*/`, `src/client/README.md`
 **Goal:** Every MVP route exists with the right layout, typed API calls work, and MSW serves fixture data so screen tasks can run in parallel without a backend.
 **Done when:** every route renders its placeholder inside the right layout, `/dev/ui` shows the gallery, and a sample query returns fixture data through MSW.
@@ -375,7 +376,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-04 | T-18, T-22 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-10-fsrs`
+**Status:** in progress · **Claimed by:** T-10 subagent (lead session) · **Branch:** `task/T-10-fsrs`
 **Owns:** `src/shared/srs/**`
 **Goal:** A thin, tested wrapper around `ts-fsrs` shared by the client (interval previews) and the worker (authoritative scheduling).
 **Done when:** grading is deterministic under a fixed clock with fuzz off, and the interval labels match the format in the Review mockup ("1m", "6m", "1d", "4d").
@@ -394,7 +395,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-04 | T-16, T-19, T-22 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-11-streak`
+**Status:** in progress · **Claimed by:** T-11 subagent (lead session) · **Branch:** `task/T-11-streak`
 **Owns:** `src/shared/streak/**`
 **Goal:** A pure function that turns daily activity rows into the streak, best streak, freezes and calendar, in the user's time zone.
 **Done when:** the tests cover gaps, freezes, the 2-freeze cap, DST changes and time-zone changes, and all pass.
@@ -412,7 +413,7 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-03 | T-30 | 2 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-12-pwa`
+**Status:** in progress · **Claimed by:** T-12 subagent (lead session) · **Branch:** `task/T-12-pwa`
 **Owns:** PWA section of `vite.config.ts` (hot file), `public/icons/**`, `src/client/pwa/**`, PWA meta tags in `index.html`
 **Goal:** Frenchy installs to the home screen on iPhone, Android and desktop, and loads fast from cache.
 **Done when:** Chrome reports the app as installable, the service worker caches the shell and content, and `/api/*` is never cached.
@@ -1224,7 +1225,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-17 | `BottomSheet` is `aria-modal` with a scrim and a focus trap (as T-03 specifies), but the Reader mockup keeps words tappable behind the word sheet. With the scrim, a tap outside closes the sheet instead of selecting the next word | Reader needs two taps to switch words | T-25 (decide: keep modal, or add a non-modal mode) |
 | G-18 | Some mockup targets are under 44 px (streak chip 40, sheet buttons 40, toggle 32, calendar arrows 36) and the Path "done" node is a white check on gold `#FFB020` (about 1.9:1, below the 3:1 for icons). The kit uses 44 px targets; the Path node is not built yet | Screens that copy the mockup literally fail the touch-target and contrast rules | T-17, T-19, T-28 |
 | G-19 | The contract (T-04) adds read-text tracking and per-minute ping dedupe that PLAN §4's data model lacks: T-06 needs a `text_reads` table (`user_id`, `text_id`, `finished_at`, unique per user + text) and a way to count at most one active minute per clock minute in `daily_activity` | Today's "next unread text" and the streak's reading rule need them | T-06, T-22 |
-| G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 |
+| G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 (decided: client-held default) |
 
 ---
 
@@ -1255,3 +1256,4 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-19 · 2026-10-18 · srs · T-04` — **ts-fsrs 5's `Card` has a `learning_steps` field the T-04 spec didn't list, and marks `elapsed_days` deprecated (removed in 6.0) while still requiring it.** → The shared `Card` carries `learningSteps` and `elapsedDays`; check `npm pack ts-fsrs` types before mapping (T-10) and drop `elapsedDays` only when moving to ts-fsrs 6.
 - `L-20 · 2026-10-18 · content · T-04` — **The mockups' dummy data breaks the app's own rules: the Streak calendar can't come from the T-11 default rule (a freeze on Oct 11 after 6 days, missed Oct 3–4 with no freeze), "Au café" claims 9 new words (cap is 8), and "Le matin de Léa" uses a number (Ch 4) in a Ch 10 text.** → Fixtures copy the mockup values as drawn and say so; T-11 tests and T-14 content must follow the rules, not the mockups' numbers.
 - `L-21 · 2026-10-18 · tooling · T-04` — **`@cloudflare/vitest-plugin` pins `zod` to an exact version (4.6.5), so adding current `zod` (4.6.7) leaves a second, dev-only copy nested under the plugin. zod 4's `z.uuid()` also accepts the nil UUID.** → Harmless; don't try to dedupe by pinning our zod down. Don't use the nil UUID as an "invalid id" test case.
+- `L-22 · 2026-10-18 · orchestration · lead` — **All three Wave 1 agents numbered their lessons and gaps from the same "next free" L-NN / G-NN, so every parallel PR collided (and also conflicted at the same append point in TODO.md).** → When dispatching a wave, the lead reserves a block of L- and G- numbers for each task (written in the agent's brief). To merge a wave, chain the branches (each PR merges the one ahead of it) so CI runs once per PR and every merge is clean.
