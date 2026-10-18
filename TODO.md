@@ -680,7 +680,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 **Goal:** Sentence translation and explanation for any text through one provider-agnostic interface, cached so each sentence costs at most once.
 **Done when:** the tests show a cache hit skips the provider, invalid JSON is retried once, and the rate limit works, all with the mock driver.
 
-- [ ] Load the `claude-api` skill before writing any Anthropic API code and use the model ids it gives
+- [x] Load the `claude-api` skill before writing any Anthropic API code and use the model ids it gives
 - [ ] `AiProvider` interface: `translate()`, `explain()`, plus a `chat()` signature for B-03
 - [ ] Drivers: `anthropic`, `openai-compatible` (base URL + key + model), `mock` (tests and local dev without keys)
 - [ ] Routing by env (`AI_TRANSLATE_PROVIDER`, `AI_EXPLAIN_PROVIDER`); keys only as Worker secrets (H-04)
