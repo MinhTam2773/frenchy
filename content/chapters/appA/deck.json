@@ -104,10 +104,10 @@
     {
       "id": "appA-rue-ou-roue",
       "type": "cloze",
-      "front": "Rue ou ___ ?",
-      "back": "Rue ou roue ?",
+      "front": "Rue, ___.",
+      "back": "Rue, roue.",
       "clozeAnswer": "roue",
-      "hint": "Street or wheel?",
+      "hint": "Street, wheel.",
       "note": "Rue has u, roue has ou.",
       "textId": "appA-rue-ou-roue"
     },
