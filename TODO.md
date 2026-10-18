@@ -562,7 +562,7 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-10 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review`
+**Status:** in review · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review`
 **Owns:** `src/client/features/review/**`, `src/client/mocks/handlers/review.ts`
 **Goal:** `Review.dc.html` and `ReviewDone.dc.html`: a fast SRS session with the 3 card types and FSRS interval previews.
 **Done when:** a mocked session can be completed end to end, the stats math is tested, and the screens match the mockups.
@@ -575,7 +575,7 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 - [x] Session complete: cards, correct % (Good + Easy share), time, streak message, "Up next" link
 - [x] Tests: reveal → grade → advance; undo; completion stats
 - [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-19 · Streak and Practice hub screens
