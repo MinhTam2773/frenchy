@@ -27,6 +27,11 @@ describe('content/lexicon shards', () => {
     expect(gzipped).toBeLessThanOrEqual(2 * 1024 * 1024);
   });
 
+  it('keeps each shard small enough that its JS chunk (about 1.3x the JSON) stays under 2 MiB', () => {
+    // Workbox silently skips precaching files over 2 MiB (G-26).
+    for (const name of readdirSync(DIR)) expect(read(name).length, name).toBeLessThan(1_600_000);
+  });
+
   it('holds valid lexemes, filed under the right shard', () => {
     for (const [shard, data] of lemmaShards) {
       for (const [lemma, lexemes] of Object.entries(data)) {
