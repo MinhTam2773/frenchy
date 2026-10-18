@@ -18,3 +18,5 @@ ANTHROPIC_API_KEY=
 OPENAI_COMPATIBLE_BASE_URL=
 OPENAI_COMPATIBLE_API_KEY=
 OPENAI_COMPATIBLE_MODEL=
+# Optional var (not a secret): provider calls per UTC day for the whole app. Unset: 1000 (T-29).
+AI_DAILY_LIMIT=

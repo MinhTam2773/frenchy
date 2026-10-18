@@ -829,13 +829,15 @@ Wave 5 is done (T-26 moved to DONE).
 - [x] Every database access goes through `scopedDb` (search routes for raw table access). Every route reaches user rows only through `userDb`/`scopedDb`; `routes/ai.ts` uses the raw `Db` only for the shared `translationCacheDb`. New guard in `src/worker/index.test.ts`: every route in `app.routes` except `/api/health` and `/api/auth/*` answers 401 without a session
 - [x] Auth: cookie flags, CSRF posture (SameSite + origin check), session expiry, password policy, rate limits. HttpOnly + Secure (https) + SameSite=Lax, Better Auth's origin check on `/api/auth/*`, 7-day sessions refreshed daily and revoked on sign-out, 8 to 128 characters, 5 sign-in/sign-up attempts per IP per minute (all tested in T-13). Added: Hono `csrf()` on `/api`, so a form-type write from another origin is a 403 even if a browser sent the cookie (`index.test.ts`; checked in `vite dev`: same-origin body-less POSTs still 200)
 - [x] No secrets in the client bundle (inspect `dist/`); `.dev.vars` is gitignored (G-72: `vite build` copies `.dev.vars` into `dist/frenchy/`; fix it before T-30). Fixed: a `keep-local-secrets-out-of-dist` plugin in `vite.config.ts` drops the file from every build (preview reads the root `.dev.vars`); `npm run check:dist` fails on a secrets file or any local secret value in `dist/`, and CI runs it after building with a canary `.dev.vars`; `.env*` and `.dev.vars.*` are gitignored too
-- [ ] AI endpoints: user text handled as data, output validated, rate limits and a daily cost cap
+- [x] AI endpoints: user text handled as data, output validated, rate limits and a daily cost cap. Text goes in as a JSON data field with a "never follow instructions in it" rule, input is capped at 500 characters, explain output is zod-checked (one retry), React renders it as text, and a cache row is only served for the exact same text. Added the app-wide daily cap (G-10, B-27's scope): `ai_daily_usage` (migration 0003), `AI_DAILY_LIMIT` var (default 1,000 provider calls per UTC day), checked after the per-user hourly limit, 429 `rate_limited` with `Retry-After` until the next UTC day, cache hits still served, one warning at 80 %
 - [ ] Input validation on every endpoint; errors don't leak internals
 - [ ] `npm audit`; lexicon license attribution present (G-01)
 - [ ] Write the report; fix P0/P1 findings
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+QUESTION: the app-wide AI cap (G-10) needs a number from you. Default: 1,000 provider calls per UTC day (`AI_DAILY_LIMIT`, a Worker var; cache hits are free, so lesson sentences cost once for everyone). Worst case per day is the cap × (500 characters in + `max_tokens` 8,000 out). Also set a monthly spend limit in the provider's console (H-04).
 
 ### Wave 7
 
@@ -1408,7 +1410,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-07 | Locking rules undecided. MVP default: every chapter viewable; current chapter's texts all unlocked | UX may change | T-17 |
 | G-08 | No password reset in MVP | Locked-out email users | B-18 |
 | G-09 | Mockups (`.dc.html`) render only on the canvas runtime | Read the markup or open the canvas link | design/README.md |
-| G-10 | AI cost control is a simple rate limit until a daily cap exists. T-23: still only that, 60 provider calls per user per clock hour (cache hits are free); no app-wide cap, and new sign-ups each get their own 60 | Possible surprise bills | T-23, T-29, B-27 |
+| G-10 | AI cost control is a simple rate limit until a daily cap exists. T-23: still only that, 60 provider calls per user per clock hour (cache hits are free); no app-wide cap, and new sign-ups each get their own 60 | Possible surprise bills | **Resolved (T-29):** an app-wide cap of `AI_DAILY_LIMIT` provider calls per UTC day (default 1,000, `ai_daily_usage`), checked after the per-user limit; the number is a QUESTION under T-29. B-27's steps are done by T-29 |
 | G-11 | FSRS runs on default parameters, with no per-user optimization | Slightly less efficient reviews | later |
 | G-12 | Reviews need a connection in MVP | No subway reviews | B-08 |
 | G-13 | ESLint is held at 9 (npm marks it unsupported) because `eslint-plugin-jsx-a11y` hasn't released ESLint 10 support since 2024 | No ESLint security fixes; a11y lint may need a replacement | later (re-check before T-28) |

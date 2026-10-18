@@ -1,12 +1,12 @@
 import { env, exports } from 'cloudflare:workers';
-import { beforeAll, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest';
 import { explainResponse } from '../../shared/fixtures';
 import { ApiError, ExplainResponse, TranslateResponse } from '../../shared/schemas';
 import { cacheKey } from '../ai/cache';
 import { createProvider } from '../ai/provider';
-import { AI_REQUESTS_PER_HOUR } from '../ai/rate-limit';
+import { AI_REQUESTS_PER_DAY, AI_REQUESTS_PER_HOUR, dailyLimit } from '../ai/rate-limit';
 import type { Completion, TextModel } from '../ai/types';
-import { createDb, scopedDb, translationCacheDb } from '../db';
+import { createDb, schema, scopedDb, translationCacheDb } from '../db';
 import { aiRoutes } from './ai';
 
 const ORIGIN = 'https://frenchy.test';
@@ -205,5 +205,96 @@ describe('rate limit', () => {
     const rows = await scoped.aiUsage.select();
     expect(rows.map((row) => row.requests)).toEqual([1]);
     expect(rows[0]?.windowStart).toBeGreaterThan(lastHour - 3_600_000);
+  });
+});
+
+describe('daily cap for the whole app', () => {
+  const { aiDailyUsage } = schema;
+  const dayOf = (at: number) => new Date(at).toISOString().slice(0, 10);
+
+  function setDay(day: string, requests: number) {
+    return db
+      .insert(aiDailyUsage)
+      .values({ day, requests })
+      .onConflictDoUpdate({ target: aiDailyUsage.day, set: { requests } });
+  }
+  async function usedToday() {
+    const rows = await db.select().from(aiDailyUsage);
+    return rows.find((row) => row.day === dayOf(Date.now()))?.requests;
+  }
+
+  // The counter is shared by every test that reaches a provider, so each test starts at zero.
+  beforeEach(() => setDay(dayOf(Date.now()), 0));
+  afterEach(() => setDay(dayOf(Date.now()), 0));
+
+  test(`after ${AI_REQUESTS_PER_DAY} provider calls today, misses get 429 and hits are still served`, async () => {
+    const { cookie } = await signedInUser();
+    const model = countingModel('Hello.');
+    const app = appWith(model);
+    const cachedText = freshSentence();
+    expect((await post(app, '/translate', { text: cachedText }, cookie)).status).toBe(200);
+
+    await setDay(dayOf(Date.now()), AI_REQUESTS_PER_DAY);
+    const limited = await post(
+      app,
+      '/explain',
+      { sentence: freshSentence(), chapterId: 'ch10' },
+      cookie,
+    );
+    expect(limited.status).toBe(429);
+    expect(ApiError.parse(await limited.json()).error.code).toBe('rate_limited');
+    const retryAfter = Number(limited.headers.get('retry-after'));
+    expect(retryAfter).toBeGreaterThan(0);
+    expect(retryAfter).toBeLessThanOrEqual(86_400);
+    expect(model.calls).toHaveLength(1);
+
+    expect((await post(app, '/translate', { text: cachedText }, cookie)).status).toBe(200);
+  });
+
+  test('a user over their hourly limit does not use up the daily cap', async () => {
+    const { cookie, id } = await signedInUser();
+    const now = Date.now();
+    await scopedDb(db, id).aiUsage.insert({
+      windowStart: now - (now % 3_600_000),
+      requests: AI_REQUESTS_PER_HOUR,
+    });
+    const res = await post(
+      appWith(countingModel()),
+      '/translate',
+      { text: freshSentence() },
+      cookie,
+    );
+    expect(res.status).toBe(429);
+    expect(await usedToday()).toBe(0);
+  });
+
+  test('a new UTC day starts from zero', async () => {
+    const { cookie } = await signedInUser();
+    await setDay(dayOf(Date.now() - 86_400_000), AI_REQUESTS_PER_DAY + 5);
+    const res = await post(
+      appWith(countingModel('Hi.')),
+      '/translate',
+      { text: freshSentence() },
+      cookie,
+    );
+    expect(res.status).toBe(200);
+    expect(await usedToday()).toBe(1);
+  });
+
+  test('logs one warning when 80 % of the cap is used', async () => {
+    const { cookie } = await signedInUser();
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+    await setDay(dayOf(Date.now()), Math.ceil(AI_REQUESTS_PER_DAY * 0.8) - 2);
+    const app = appWith(countingModel());
+    for (let i = 0; i < 3; i++) await post(app, '/translate', { text: freshSentence() }, cookie);
+    expect(warn).toHaveBeenCalledTimes(1);
+    warn.mockRestore();
+  });
+
+  test('AI_DAILY_LIMIT replaces the default only with a positive integer', () => {
+    expect(dailyLimit({ AI_DAILY_LIMIT: '50' })).toBe(50);
+    for (const value of [undefined, '', '0', '-3', '2.5', 'many']) {
+      expect(dailyLimit({ AI_DAILY_LIMIT: value })).toBe(AI_REQUESTS_PER_DAY);
+    }
   });
 });
