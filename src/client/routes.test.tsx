@@ -15,7 +15,6 @@ const fullScreenRoutes = [
   ['/onboarding', 'Onboarding'],
   ['/read/ch10-le-matin-de-lea', 'Reader'],
   ['/review', 'Review'],
-  ['/review/done', 'Session complete'],
   ['/streak', 'Streak'],
 ] as const;
 
