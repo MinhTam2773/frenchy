@@ -1,0 +1,68 @@
+import { expect, type Page, type TestInfo } from '@playwright/test';
+
+export type TestUser = { name: string; email: string; password: string };
+
+/** A unique account per test: the Worker's D1 is shared by every spec of a run. */
+export function newUser(testInfo: TestInfo): TestUser {
+  const stamp = `${Date.now()}-${testInfo.project.name}-${Math.floor(Math.random() * 1e6)}`;
+  return { name: 'E2E Learner', email: `e2e-${stamp}@example.com`, password: 'e2e-password-123' };
+}
+
+/** Sign up through the real form; lands on onboarding. */
+export async function signUp(page: Page, user: TestUser) {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Continue with email' }).click();
+  await expect(page).toHaveURL(/\/sign-up$/);
+  await page.getByLabel('Name').fill(user.name);
+  await page.getByLabel('Email').fill(user.email);
+  await page.getByLabel('Password').fill(user.password);
+  await page.getByRole('button', { name: 'Create account' }).click();
+  await expect(page).toHaveURL(/\/onboarding$/);
+  await expect(
+    page.getByRole('heading', { name: 'Which chapter are you on in the book?' }),
+  ).toBeVisible();
+}
+
+/** Keep the default chapter (Ch 1), pick the goal, and land on Today. */
+export async function finishOnboarding(page: Page, goalMinutes = 30) {
+  await page.getByRole('button', { name: `${goalMinutes} min`, exact: true }).click();
+  await page.getByRole('button', { name: 'Start learning' }).click();
+  await expect(page).toHaveURL(/\/today$/);
+  await expect(page.getByRole('heading', { name: /Bonjour/ })).toBeVisible();
+}
+
+/** Add Chapter 1's starter deck from its chapter page, then come back to Today. */
+export async function addStarterDeck(page: Page) {
+  await page.goto('/chapter/ch1');
+  await page.getByRole('button', { name: /Add to reviews/ }).click();
+  await expect(
+    page.getByRole('status').filter({ hasText: /Added \d+ to your reviews/ }),
+  ).toBeVisible();
+  await page.goto('/today');
+  await expect(page.getByRole('link', { name: 'Start review' })).toBeVisible();
+}
+
+/** Grade every card Good until the "last card" screen. Returns the text of each revealed card. */
+export async function gradeAllCards(page: Page) {
+  const showAnswer = page.getByRole('button', { name: 'Show answer' });
+  const seeResults = page.getByRole('button', { name: 'See results' });
+  const revealed: string[] = [];
+  for (;;) {
+    // Wait for a landmark first (L-108): the next card or the end screen, never a guess.
+    await expect(showAnswer.or(seeResults)).toBeVisible();
+    if (await seeResults.isVisible()) return revealed;
+    await showAnswer.click();
+    const good = page.getByRole('button', { name: /^Good,/ });
+    await expect(good).toBeVisible();
+    revealed.push(await page.locator('body').innerText());
+    await good.click();
+  }
+}
+
+/** Open the first text that Today offers, and wait until the reader has rendered. */
+export async function openReader(page: Page) {
+  await page.goto('/today');
+  await page.locator('a[href^="/read/"]').first().click();
+  await expect(page).toHaveURL(/\/read\//);
+  await expect(page.getByRole('button', { name: 'Finish reading' })).toBeVisible();
+}

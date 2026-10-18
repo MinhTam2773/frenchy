@@ -13,7 +13,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    cloudflare(),
+    // E2E (T-27): a fresh D1 per run lives in a temp dir; unset, wrangler's default .wrangler/state.
+    cloudflare(
+      process.env.E2E_PERSIST_DIR ? { persistState: { path: process.env.E2E_PERSIST_DIR } } : {},
+    ),
     {
       // G-27: MSW's worker (public/) is only for VITE_USE_MOCKS=true; keep it out of real builds.
       name: 'drop-msw-worker',

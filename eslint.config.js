@@ -6,7 +6,14 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', '.wrangler', 'worker-configuration.d.ts']),
+  globalIgnores([
+    'dist',
+    'coverage',
+    '.wrangler',
+    'playwright-report',
+    'test-results',
+    'worker-configuration.d.ts',
+  ]),
   {
     files: ['**/*.{js,ts,tsx}'],
     extends: [js.configs.recommended, tseslint.configs.strict],
@@ -17,7 +24,7 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   {
-    files: ['*.{js,ts}'],
+    files: ['*.{js,ts}', 'e2e/**/*.ts'],
     languageOptions: { globals: globals.node },
   },
 ]);
