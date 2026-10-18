@@ -754,7 +754,7 @@ QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") hav
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-16 to T-23, T-25 | T-27, T-28, T-29, T-30 | 5 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-26-integration`
+**Status:** in progress · **Claimed by:** T-26 agent (wave 4/5 lead session) · **Branch:** `task/T-26-integration`
 **Owns:** cross-cutting fixes; `src/client/mocks/` config; contract fixes in `src/shared/schemas/` (both sides in the same PR)
 **Goal:** The whole MVP runs against the local Worker and local D1 with no mocks.
 **Done when:** the full flow works locally on a fresh database: sign up → onboarding → Today → review → reader save word → review that card → streak updates.
