@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 26 · NEXT 10 (5 ready: T-21 to T-25) · BACKLOG 25
+**Progress:** DONE 26 · NEXT 10 (5 ready: T-21 to T-25) · BACKLOG 26
 
 ---
 
@@ -723,20 +723,22 @@ Notes for T-25 / T-26 / T-29 / B-03:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-05, T-07, T-09, T-15 | T-26 | 4 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-25-reader`
+**Status:** in review ([PR #31](https://github.com/MinhTam2773/frenchy/pull/31)) · **Claimed by:** T-25 agent (wave 4 lead session) · **Branch:** `task/T-25-reader`
 **Owns:** `src/client/features/reader/**`, `src/client/mocks/handlers/reader.ts`
 **Goal:** `Reader.dc.html` and `Sentence.dc.html`: every French word is tappable, sentences can be long-pressed, and anything can be saved to SRS.
 **Done when:** tapping a word shows the right sheet, long-press selects the sentence, saving creates a card (mocked), and it all works with the keyboard.
 
-- [ ] Top bar and audio bar (TTS for the whole text with sentence highlight where supported, speed control)
-- [ ] Paragraphs of token buttons (keyboard reachable), new-word highlight, selected-word style
-- [ ] Word sheet: word + play, pos / lemma / gender / new chips, translation, form, "Save word" (creates a card and sets the word to learning), "Sentence" button
-- [ ] Sentence selection: long-press (~500 ms) selects the sentence; drag selects a range; desktop click-drag or Shift+click
-- [ ] Sentence sheet: translation (from content for lessons, `/api/ai/explain` otherwise), word-by-word gloss, grammar note, "Save sentence" (sentence or cloze card)
-- [ ] "Finish reading" marks the text read (activity) and returns to Today
-- [ ] Performance: memoized tokens; lexicon shards loaded lazily
-- [ ] Tests: tap → sheet data, long-press → sentence, save → card request
-- [ ] Finish: `npm run check` green
+- [x] Top bar and audio bar (TTS for the whole text with sentence highlight where supported, speed control)
+- [x] Paragraphs of token buttons (keyboard reachable), new-word highlight, selected-word style
+- [x] Word sheet: word + play, pos / lemma / gender / new chips, translation, form, "Save word" (creates a card and sets the word to learning), "Sentence" button
+- [x] Sentence selection: long-press (~500 ms) selects the sentence; drag selects a range; desktop click-drag or Shift+click
+- [x] Sentence sheet: translation (from content for lessons, `/api/ai/explain` otherwise), word-by-word gloss, grammar note, "Save sentence" (sentence or cloze card)
+- [x] "Finish reading" marks the text read (activity) and returns to Today
+- [x] Performance: memoized tokens; lexicon shards loaded lazily
+- [x] Tests: tap → sheet data, long-press → sentence, save → card request
+QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") have no spec; left out (B-31). The bar shows sentences read ("2/6") instead.
+
+- [x] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
@@ -1242,7 +1244,6 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
-
 #### B-23 · Start the app offline without being sent to the welcome screen
 | Priority | Model · effort | Size | Depends on | Blocks |
 |---|---|---|---|---|
@@ -1292,6 +1293,22 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-31 · Reader text settings ("Aa") and audio time
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | T-25 | — |
+
+**Status:** ready · **Owns:** `src/client/features/reader/**`
+**Goal:** The Reader mockup's "Aa" button (text size) and the elapsed-time label of the audio bar, which T-25 left out for lack of a spec.
+**Done when:** a text-size choice persists per device and the audio bar shows elapsed / total time (estimated from sentence lengths and rate).
+
+- [ ] Decide sizes (and whether it belongs in profile settings) and the time estimate
+- [ ] Build and test both
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1332,7 +1349,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-14 | Local Node 22.15 is below jsdom 30's minimum (22.22.2), so jsdom stays at 29 | Can't take jsdom updates until Node is upgraded | T-02 (`.nvmrc`) |
 | G-15 | npm 11 (Node 24) warns on `npm ci` that `esbuild` and `workerd` have install scripts "not yet covered by allowScripts"; a later npm major may skip them unless allowed | Installs could silently lack the workerd binary after an npm upgrade | re-check on npm major bumps |
 | G-16 | ~~The UI kit has no router, so links render plain `<a href>` until the app provides `<LinkProvider value={RouterLink}>`~~ **Resolved in T-09:** `App.tsx` wraps the app in `AppProviders`, and a test checks a tab link navigates without a reload | none | T-09 |
-| G-17 | `BottomSheet` is `aria-modal` with a scrim and a focus trap (as T-03 specifies), but the Reader mockup keeps words tappable behind the word sheet. With the scrim, a tap outside closes the sheet instead of selecting the next word | Reader needs two taps to switch words | T-25 (decide: keep modal, or add a non-modal mode) |
+| G-17 | `BottomSheet` is `aria-modal` with a scrim and a focus trap (as T-03 specifies), but the Reader mockup keeps words tappable behind the word sheet. With the scrim, a tap outside closes the sheet instead of selecting the next word | Reader needs two taps to switch words | **Closed by T-25 (L-99):** the word sheet is a non-modal region; the sentence sheet stays the modal `BottomSheet` |
 | G-18 | Some mockup targets are under 44 px (streak chip 40, sheet buttons 40, toggle 32, calendar arrows 36) and the Path "done" node is a white check on gold `#FFB020` (about 1.9:1, below the 3:1 for icons). The kit uses 44 px targets; the Path node is not built yet | Screens that copy the mockup literally fail the touch-target and contrast rules | T-17, T-19, T-28 |
 | G-19 | The contract (T-04) adds read-text tracking and per-minute ping dedupe that PLAN §4's data model lacks: T-06 needs a `text_reads` table (`user_id`, `text_id`, `finished_at`, unique per user + text) and a way to count at most one active minute per clock minute in `daily_activity` | Today's "next unread text" and the streak's reading rule need them | T-06, T-22 (resolved by T-06: `text_reads` per user + text + day, `activity_minutes`) |
 | G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 (decided: client-held default) |
@@ -1358,7 +1375,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-39 | Nothing records progress inside a chapter's book sections, so the Chapter strip can only show all sections done (the learner has moved past the chapter) or none. The mockup's "§2 now" with a part-filled bar has no data behind it. `chapters[].sections` is empty for every chapter until G-06 closes, so the strip is not drawn yet | Section progress is coarse | T-17, B-05 (a per-user `chapter_sections` record if wanted), G-06 |
 | G-40 | `getChapterTexts` returns texts sorted by id, so the chapter page lists readings alphabetically (the fixtures give "Au café" before "Le matin de Léa", the mockup's order is the reverse). The text schema has no `order` field | Readings may not be in the intended reading order | T-14, T-07 (add `order` to `Text`, or number the ids), T-17 reads whatever order `getChapterTexts` gives |
 | G-37 | Today's book and reading cards need content the repo doesn't have: the mockup's "Section 2 of 4" needs per-section progress (nothing stores which section the learner is on, and `course.json` has `sections: []` until G-06 closes), and "next unread text" needs an order for a chapter's texts (`getChapterTexts` sorts by id, so *Au café* would come before *Le matin de Léa*). The card shows PDF pages and takes the first unread text in that order | The book card shows less than the mockup; the next text may not be the one the author intended | T-14, T-17 (add `order` to `Text` or number the ids; decide with the section model) |
-| G-38 | `useActiveMinutes` (`src/client/lib/activity`) is mounted only by the Today page, so time spent in the reader, the review or on other tabs is never pinged and `todayMinutes` undercounts. The base mock's ping always answers 8 minutes | The daily-minutes bar is wrong for a learner who reads or reviews more than they sit on Today | T-26 (mount it once in `TabLayout` and `FullScreenLayout`, which T-16 doesn't own) |
+| G-38 | `useActiveMinutes` (`src/client/lib/activity`) is mounted only by the Today page and (since T-25) the reader, so time spent in the reader, the review or on other tabs is never pinged and `todayMinutes` undercounts. The base mock's ping always answers 8 minutes | The daily-minutes bar is wrong for a learner who reads or reviews more than they sit on Today | T-26 (mount it once in `TabLayout` and `FullScreenLayout`, which T-16 doesn't own) |
 | G-41 | The review session is a single pass: a card graded Again or Hard (due again in 1 to 10 minutes by FSRS's learning steps) is not shown again in the same session, it comes back in the next one. The "1m" on the Again button is true (that is its due time) but the learner won't see it until they start another session. The last grade is also held until the next grade or the end of the session (G-20), so closing the tab on the last card loses it (the card just stays due) | Learning cards get less repetition in one sitting than in Anki-style apps | T-18 follow-up (re-queue cards whose next due is within the session, then the progress count and the "cards" stat need a rule; decide with the user) |
 | G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-15, T-26 (share one helper once both screens exist) |
 | G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
@@ -1369,6 +1386,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-60 | Google sign-in is only tested against a mocked `/api/auth/sign-in/social`. Nothing checks the real round trip (needs H-03 keys): `callbackURL: '/'` relies on the welcome screen redirecting a signed-in user to Today or onboarding, and a failed Google login (user cancels) lands wherever Better Auth's default error page sends it, with no `errorCallbackURL` set | A cancelled Google login may show a raw error page | T-26, T-30 (try it with real keys) |
 | G-63 | `AI_TRANSLATE_PROVIDER` / `AI_EXPLAIN_PROVIDER` unset means the `mock` driver, so a deploy without them answers every translate and explain with `[mock] …` text instead of failing | Learners see placeholder translations in production | T-30 (set both and the key secrets, H-04), T-29 (check) |
 | G-64 | `translation_cache` is shared and has no expiry: it stores the normalized text of everything sent to `/api/ai/*`, including text a learner imports (B-07), unscoped. Another user only gets the row back by sending the exact same text, but the table keeps personal text forever and grows without bound. Answers are never refreshed unless `PROMPT_VERSION` in `src/worker/ai/cache.ts` is bumped | Privacy (account deletion, G-36) and D1 size | T-29 (decide: TTL / store only the hash for imported text), B-07 |
+| G-68 | The sentence sheet takes translation and word-by-word gloss from the lesson's own tokens and calls `/api/ai/explain` only for the grammar note. Selections always snap to whole sentences, so the "translation from `/api/ai/explain` otherwise" path (imported text, a range inside a sentence) is not built; the per-token gloss also can't group *le café* the way the mockup (and `ExplainResponse.gloss`) does | Imported text (B-07) needs that path; T-26 checks the note still loads (and fails quietly) against the real T-23 route | B-07, T-26 |
+| G-69 | The reader imports `annotate()`, so the client build now emits the 54 lexicon shards as lazy chunks (G-26) even though lesson words never load them (every lesson token is annotated). The build now reports `precache 66 entries (15442.83 KiB)` (was about 514 KiB); the largest shard is `forms-r` at 1.64 MB, so none is skipped yet | G-26's cost is now real in the shipped bundle | T-26 (G-26 decision) |
 
 ---
 
@@ -1456,3 +1475,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-90 · 2026-10-18 · ai · T-23` — **The `claude-api` skill says to use Claude Opus 5.5 unless the user names another model, but PLAN §4 (the user's spec) names a Haiku-class model for translate/explain. Claude Haiku 5.5 (`claude-haiku-5-5`) has adaptive thinking on by default (effort `medium`), thinking counts toward `max_tokens`, and assistant prefill returns a 400.** → The `anthropic` driver uses `claude-haiku-5-5` with `output_config.effort: 'low'`, a generous `max_tokens` (only used tokens are billed), JSON asked for in the system prompt (no prefill), zod validation and one retry. A tutor (B-03) is the place for a stronger model.
 - `L-91 · 2026-10-18 · ai · T-23` — **`src/shared/content`'s loaders eagerly `import.meta.glob` every lesson text, so importing `allowedGrammar` from there would bundle all of `content/chapters/**` into the Worker.** → Worker code that needs only the course and grammar imports `content/course.json` and `content/grammar.json` directly (TS resolves JSON imports in the worker project) and calls `allowedGrammarTags` from `shared/content/route`.
 - `L-92 · 2026-10-18 · ai · T-23` — **Driver tests must never reach a real provider, and the Anthropic SDK and `fetch` both take an injected fetch. `@typescript-eslint/no-non-null-assertion` rejects `choices[0]!` even after a zod `.min(1)`.** → Drivers take an optional `fetch` argument and tests pass a fake that records the request; parse "at least one" arrays with `z.tuple([Item], Item)` so `[0]` is typed as present.
+- `L-99 · 2026-10-18 · a11y · T-25` — **G-17: the kit's `BottomSheet` is modal (scrim, focus trap), so with it a tap on another word only closed the sheet. The mockup draws the word sheet as a plain `<section>` with no scrim, and the sentence sheet with one.** → The word sheet is a non-modal `region` ("Word details") in a sticky bottom bar: focus stays on the tapped word, a polite live region announces word + meaning, Escape or Close returns focus to the word, and the next tap just switches it. Only the sentence sheet uses the modal `BottomSheet`. Use a modal sheet only where the page behind it should be inert.
+- `L-100 · 2026-10-18 · client · T-25` — **Sentence highlighting from `onboundary` is unreliable (L-15), but speaking one utterance per sentence always knows which sentence is playing, and pause/resume is just "stop, then restart from that sentence".** → `useReadAloud` queues sentences with a run id (a newer play or a pause wins, like `useTts`). Any whole-text audio with a highlight should do the same; the cost is a short gap between sentences.
+- `L-101 · 2026-10-18 · client · T-25` — **A text of ~100 word buttons is ~100 tab stops before "Finish reading"; and a long-press on touch fires no `click`, so a "skip the click after a long-press" flag left set swallowed the next real tap.** → Word buttons use a roving tabindex (one tab stop, ←/→/Home/End move). Reset gesture flags at `pointerdown`, never only in the `click` they were meant to skip. To let a touch drag extend a selection instead of scrolling, `preventDefault` a non-passive `touchmove` only while selecting.
