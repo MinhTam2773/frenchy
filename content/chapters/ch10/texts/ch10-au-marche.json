@@ -1,0 +1,1042 @@
+{
+  "id": "ch10-au-marche",
+  "chapterId": "ch10",
+  "title": "Au marché",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday",
+              "form": "le samedi = on Saturdays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "matin",
+              "lemma": "matin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "morning"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vais",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "je · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Malik",
+              "lemma": "Malik",
+              "pos": "name",
+              "gloss": "Malik (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Saturday mornings, I go to the market with Malik."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Malik",
+              "lemma": "Malik",
+              "pos": "name",
+              "gloss": "Malik (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ami",
+              "lemma": "ami",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "friend",
+              "form": "feminine: amie"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "from the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quartier",
+              "lemma": "quartier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighborhood"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Malik is a friend from the neighborhood."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "adorons",
+              "lemma": "adorer",
+              "pos": "verb",
+              "gloss": "love",
+              "form": "nous · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "We love the market."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "J'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "achète",
+              "lemma": "acheter",
+              "pos": "verb",
+              "gloss": "buy",
+              "form": "je · present · -er verb (è)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(no word in English)",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tomates",
+              "lemma": "tomate",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tomatoes",
+              "form": "feminine plural"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(no word in English)",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "oignons",
+              "lemma": "oignon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "onions",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salade",
+              "lemma": "salade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "lettuce"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I buy tomatoes, onions and a lettuce."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Malik",
+              "lemma": "Malik",
+              "pos": "name",
+              "gloss": "Malik (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "préfère",
+              "lemma": "préférer",
+              "pos": "verb",
+              "gloss": "prefers",
+              "form": "il / elle · present · -er verb (è)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fruits",
+              "lemma": "fruit",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "fruit",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Malik prefers fruit."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "achète",
+              "lemma": "acheter",
+              "pos": "verb",
+              "gloss": "buys",
+              "form": "il / elle · present · -er verb (è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(no word in English)",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pommes",
+              "lemma": "pomme",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "apples",
+              "form": "feminine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(no word in English)",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fraises",
+              "lemma": "fraise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "strawberries",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He buys apples and strawberries."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marchand",
+              "lemma": "marchand",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "seller",
+              "form": "feminine: marchande",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fruits",
+              "lemma": "fruit",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "fruit",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gentil",
+              "lemma": "gentil",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "kind",
+              "form": "masculine singular · feminine: gentille"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The fruit seller is very kind."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chante",
+              "lemma": "chanter",
+              "pos": "verb",
+              "gloss": "sings",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parle",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "talks",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "clients",
+              "lemma": "client",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "customers",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He sings and he talks with the customers."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "then, next"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rentrons",
+              "lemma": "rentrer",
+              "pos": "verb",
+              "gloss": "go back",
+              "form": "nous · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chez",
+              "lemma": "chez",
+              "pos": "preposition",
+              "gloss": "to … 's place"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Malik",
+              "lemma": "Malik",
+              "pos": "name",
+              "gloss": "Malik (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then we go back to Malik’s place."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prépare",
+              "lemma": "préparer",
+              "pos": "verb",
+              "gloss": "make",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soupe",
+              "lemma": "soupe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "soup"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "légumes",
+              "lemma": "légume",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "vegetables",
+              "form": "masculine plural",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Malik",
+              "lemma": "Malik",
+              "pos": "name",
+              "gloss": "Malik (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "coupe",
+              "lemma": "couper",
+              "pos": "verb",
+              "gloss": "cuts",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fraises",
+              "lemma": "fraise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "strawberries",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I make a vegetable soup and Malik cuts up the strawberries."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mangeons",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eat",
+              "form": "nous · present · -er verb (ge before -ons)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soupe",
+              "lemma": "soupe",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "soup"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "kitchen"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "We eat the soup in the kitchen."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "le soir = in the evening"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mangeons",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eat",
+              "form": "nous · present · -er verb (ge before -ons)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fraises",
+              "lemma": "fraise",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "strawberries",
+              "form": "feminine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la before a feminine noun"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "(part of de la, some)",
+              "form": "partitive article · de la"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "crème",
+              "lemma": "crème",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "cream"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the evening, we eat the strawberries with cream."
+        },
+        {
+          "tokens": [
+            {
+              "t": "C'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "ce becomes c' before a vowel · c'est = it is"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday",
+              "form": "le samedi = on Saturdays"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parfait",
+              "lemma": "parfait",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "perfect",
+              "form": "masculine singular · feminine: parfaite"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "It’s a perfect Saturday."
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "marché",
+    "acheter",
+    "préférer",
+    "fraise",
+    "marchand",
+    "rentrer",
+    "couper",
+    "légume"
+  ],
+  "grammarTags": [
+    "er.present",
+    "pronouns.subject",
+    "articles.definite",
+    "er.spelling-changes",
+    "prepositions.basic",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "nouns.plural",
+    "aller.present",
+    "etre.present",
+    "phrases.c-est"
+  ]
+}

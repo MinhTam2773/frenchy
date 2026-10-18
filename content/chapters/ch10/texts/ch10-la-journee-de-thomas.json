@@ -1,0 +1,987 @@
+{
+  "id": "ch10-la-journee-de-thomas",
+  "chapterId": "ch10",
+  "title": "La journée de Thomas",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Thomas",
+              "lemma": "Thomas",
+              "pos": "name",
+              "gloss": "Thomas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travaille",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "works",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "banque",
+              "lemma": "banque",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bank",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thomas works in a bank."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commence",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "starts",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tôt",
+              "lemma": "tôt",
+              "pos": "adverb",
+              "gloss": "early"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "matin",
+              "lemma": "matin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "morning"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He starts early in the morning."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "banque",
+              "lemma": "banque",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bank"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "on",
+              "form": "à pied = on foot"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pied",
+              "lemma": "pied",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "foot",
+              "form": "à pied = on foot"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He walks to the bank."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "at the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bureau",
+              "lemma": "bureau",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "office",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Thomas",
+              "lemma": "Thomas",
+              "pos": "name",
+              "gloss": "Thomas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "appelle",
+              "lemma": "appeler",
+              "pos": "verb",
+              "gloss": "calls",
+              "form": "il / elle · present · -er verb (ll)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(no word in English)",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "clients",
+              "lemma": "client",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "customers",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prépare",
+              "lemma": "préparer",
+              "pos": "verb",
+              "gloss": "prepares",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(no word in English)",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dossiers",
+              "lemma": "dossier",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "files",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "At the office, Thomas calls customers and he prepares files."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "collègues",
+              "lemma": "collègue",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "colleagues",
+              "form": "plural · un or une collègue: the same word for a man or a woman",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "of",
+              "form": "les collègues de Thomas = Thomas's colleagues"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Thomas",
+              "lemma": "Thomas",
+              "pos": "name",
+              "gloss": "Thomas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sympathiques",
+              "lemma": "sympathique",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice, friendly",
+              "form": "plural · the same for masculine and feminine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thomas’s colleagues are very friendly."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Thomas",
+              "lemma": "Thomas",
+              "pos": "name",
+              "gloss": "Thomas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "déjeune",
+              "lemma": "déjeuner",
+              "pos": "verb",
+              "gloss": "has lunch",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Julie",
+              "lemma": "Julie",
+              "pos": "name",
+              "gloss": "Julie (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "collègue",
+              "lemma": "collègue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "colleague",
+              "form": "the same word for a man or a woman (here a woman)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thomas has lunch with Julie, a colleague."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "ils",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mangent",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eat",
+              "form": "ils / elles · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "restaurant",
+              "lemma": "restaurant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "restaurant"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "italien",
+              "lemma": "italien",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "Italian",
+              "form": "masculine singular · feminine: italienne"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They eat in an Italian restaurant."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Julie",
+              "lemma": "Julie",
+              "pos": "name",
+              "gloss": "Julie (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mange",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eats",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pizza",
+              "lemma": "pizza",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "pizza"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Julie eats a pizza."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Thomas",
+              "lemma": "Thomas",
+              "pos": "name",
+              "gloss": "Thomas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "préfère",
+              "lemma": "préférer",
+              "pos": "verb",
+              "gloss": "prefers",
+              "form": "il / elle · present · -er verb (è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pâtes",
+              "lemma": "pâtes",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "pasta",
+              "form": "feminine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Thomas prefers pasta."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "ils",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parlent",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "talk",
+              "form": "ils / elles · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "about the",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "week-end",
+              "lemma": "week-end",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "weekend"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They talk about the weekend."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "le soir = in the evening"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Thomas",
+              "lemma": "Thomas",
+              "pos": "name",
+              "gloss": "Thomas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rentre",
+              "lemma": "rentrer",
+              "pos": "verb",
+              "gloss": "goes back",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "to"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "maison",
+              "lemma": "maison",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "home",
+              "form": "à la maison = at home, (to) home"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "en",
+              "lemma": "en",
+              "pos": "preposition",
+              "gloss": "by",
+              "form": "en bus = by bus"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bus",
+              "lemma": "bus",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bus"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the evening, Thomas goes home by bus."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dîne",
+              "lemma": "dîner",
+              "pos": "verb",
+              "gloss": "has dinner",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "écoute",
+              "lemma": "écouter",
+              "pos": "verb",
+              "gloss": "listens to",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · de la before a feminine noun"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "(part of de la, some)",
+              "form": "partitive article · de la"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musique",
+              "lemma": "musique",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "music"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He has dinner and he listens to music."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "regarde",
+              "lemma": "regarder",
+              "pos": "verb",
+              "gloss": "watches",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "télévision",
+              "lemma": "télévision",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "television"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "adore",
+              "lemma": "adorer",
+              "pos": "verb",
+              "gloss": "loves",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "livres",
+              "lemma": "livre",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "books",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He doesn’t watch television: he loves books."
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "travailler",
+    "banque",
+    "commencer",
+    "bureau",
+    "appeler",
+    "collègue",
+    "déjeuner",
+    "écouter"
+  ],
+  "grammarTags": [
+    "er.present",
+    "pronouns.subject",
+    "articles.definite",
+    "er.spelling-changes",
+    "prepositions.basic",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "nouns.plural",
+    "aller.present",
+    "etre.present",
+    "adjectives.basic",
+    "negation.ne-pas"
+  ]
+}

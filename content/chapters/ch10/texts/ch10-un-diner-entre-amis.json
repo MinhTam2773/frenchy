@@ -1,0 +1,975 @@
+{
+  "id": "ch10-un-diner-entre-amis",
+  "chapterId": "ch10",
+  "title": "Un dîner entre amis",
+  "kind": "dialogue",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "on Saturday"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "invite",
+              "lemma": "inviter",
+              "pos": "verb",
+              "gloss": "am inviting",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Paul",
+              "lemma": "Paul",
+              "pos": "name",
+              "gloss": "Paul (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Nora",
+              "lemma": "Nora",
+              "pos": "name",
+              "gloss": "Nora (a name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Saturday evening, I’m inviting Paul and Nora."
+        }
+      ]
+    },
+    {
+      "speaker": "Sami",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Super",
+              "lemma": "super",
+              "pos": "interjection",
+              "gloss": "great"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Great!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "so, then"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisiner",
+              "pos": "verb",
+              "gloss": "will cook",
+              "form": "je · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then I’ll cook."
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Paul",
+              "lemma": "Paul",
+              "pos": "name",
+              "gloss": "Paul (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mange",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eats",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "any",
+              "form": "un, une, du, de la become de after ne … pas"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "viande",
+              "lemma": "viande",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "meat",
+              "isNew": true
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "végétarien",
+              "lemma": "végétarien",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "vegetarian",
+              "form": "masculine singular · feminine: végétarienne",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Paul doesn’t eat meat: he’s vegetarian."
+        }
+      ]
+    },
+    {
+      "speaker": "Sami",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "no",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "(no word in English)",
+              "form": "pas de problème = no problem"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "problème",
+              "lemma": "problème",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "problem"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "No problem."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prépare",
+              "lemma": "préparer",
+              "pos": "verb",
+              "gloss": "make",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "some",
+              "form": "indefinite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "légumes",
+              "lemma": "légume",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "vegetables",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "riz",
+              "lemma": "riz",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "rice",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "I’ll make some vegetables and some rice."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Nora",
+              "lemma": "Nora",
+              "pos": "name",
+              "gloss": "Nora (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "adore",
+              "lemma": "adorer",
+              "pos": "verb",
+              "gloss": "loves",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "poisson",
+              "lemma": "poisson",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "fish"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "so, then"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "achète",
+              "lemma": "acheter",
+              "pos": "verb",
+              "gloss": "buy",
+              "form": "je · present · -er verb (è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "some",
+              "form": "partitive article · masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "saumon",
+              "lemma": "saumon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "salmon"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Nora loves fish, so I’ll buy some salmon too."
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "j'",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · je becomes j' before a vowel"
+            },
+            {
+              "t": "achète",
+              "lemma": "acheter",
+              "pos": "verb",
+              "gloss": "buy",
+              "form": "je · present · -er verb (è)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tarte",
+              "lemma": "tarte",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "tart, pie",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "with",
+              "form": "à + les becomes aux · une tarte aux pommes = an apple tart"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pommes",
+              "lemma": "pomme",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "apples",
+              "form": "feminine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boulangerie",
+              "lemma": "boulangerie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bakery"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "And I’ll buy an apple tart at the bakery."
+        }
+      ]
+    },
+    {
+      "speaker": "Sami",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "commençons",
+              "lemma": "commencer",
+              "pos": "verb",
+              "gloss": "start",
+              "form": "nous · present · -er verb (ç before -ons)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "repas",
+              "lemma": "repas",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "meal"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salade",
+              "lemma": "salade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "salad"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mangeons",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eat",
+              "form": "nous · present · -er verb (ge before -ons)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "jardin",
+              "lemma": "jardin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "garden"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "We start the meal with a salad and we eat in the garden."
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Paul",
+              "lemma": "Paul",
+              "pos": "name",
+              "gloss": "Paul (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Nora",
+              "lemma": "Nora",
+              "pos": "name",
+              "gloss": "Nora (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "apportent",
+              "lemma": "apporter",
+              "pos": "verb",
+              "gloss": "are bringing",
+              "form": "ils / elles · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "musique",
+              "lemma": "musique",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "music"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Paul and Nora are bringing the music."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Nous",
+              "lemma": "nous",
+              "pos": "pronoun",
+              "gloss": "we",
+              "form": "subject pronoun · 1st person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dansons",
+              "lemma": "danser",
+              "pos": "verb",
+              "gloss": "are dancing",
+              "form": "nous · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "après",
+              "lemma": "après",
+              "pos": "preposition",
+              "gloss": "after"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dîner",
+              "lemma": "dîner",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dinner"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "We’re dancing after dinner!"
+        }
+      ]
+    },
+    {
+      "speaker": "Sami",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "danse",
+              "lemma": "danser",
+              "pos": "verb",
+              "gloss": "dance",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chante",
+              "lemma": "chanter",
+              "pos": "verb",
+              "gloss": "sing",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "I don’t dance: I sing!"
+        }
+      ]
+    },
+    {
+      "speaker": "Chloé",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "là",
+              "lemma": "là",
+              "pos": "adverb",
+              "gloss": "there",
+              "form": "oh là là = oh dear"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "là",
+              "lemma": "là",
+              "pos": "adverb",
+              "gloss": "there",
+              "form": "oh là là = oh dear"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "voisins",
+              "lemma": "voisin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "neighbors",
+              "form": "masculine plural · feminine: voisine"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh dear, the neighbors!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["inviter", "cuisiner", "viande", "végétarien", "riz", "tarte", "apporter", "danser"],
+  "grammarTags": [
+    "er.present",
+    "pronouns.subject",
+    "articles.definite",
+    "er.spelling-changes",
+    "prepositions.basic",
+    "articles.indefinite",
+    "articles.partitive",
+    "articles.contractions",
+    "nouns.plural",
+    "etre.present",
+    "negation.ne-pas",
+    "adjectives.basic"
+  ]
+}
