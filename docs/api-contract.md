@@ -75,7 +75,7 @@ T-13 also adds a small public config endpoint (whether Google sign-in is on); it
 - `POST /api/cards` with `CardCreate` → `Card`. Dedupes on `type` + `front`: an existing card comes back with `200`, a new one with `201`. The server sets the id and a new FSRS state (due now).
 - `POST /api/cards/starter/:chapterId` → `{ added, total }`. Adds the chapter's `deck.json` cards with `source = { kind: 'starter', ref: <deck card id> }`. Idempotent: cards already added are skipped (`added: 0` the second time). `404` for an unknown chapter.
 - `POST /api/reviews` with `ReviewInput` → the updated `Card`. The server recomputes the next state with T-10 (the client's preview is not trusted), updates the card, inserts the review and counts it in that day's `DailyActivity.reviews`, in one D1 batch. A repeated `id` returns the card without grading again. `404` for a card that isn't the user's.
-- There is no undo route. The review screen's one-step undo (T-18) works by holding the last grade on the client and posting it when the next card is graded or the session ends (open question G-17).
+- There is no undo route. The review screen's one-step undo (T-18) works by holding the last grade on the client and posting it when the next card is graded or the session ends (open question G-20).
 
 Card content rules (checked by the schema):
 
