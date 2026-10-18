@@ -16,6 +16,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'prompt',
       injectRegister: false,
+      includeManifestIcons: false, // icons already match the glob; avoids duplicate entries
       manifest: {
         id: '/',
         name: 'Frenchy',

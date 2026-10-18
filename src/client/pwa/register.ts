@@ -6,7 +6,9 @@ import { Workbox } from 'workbox-window';
  * or null when service workers are unavailable.
  */
 export function registerServiceWorker(onUpdateReady: () => void): (() => void) | null {
-  if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return null;
+  // G-27: a mock build runs MSW's worker, which has the same scope; a page gets only one.
+  const mocks = import.meta.env.VITE_USE_MOCKS === 'true';
+  if (!import.meta.env.PROD || mocks || !('serviceWorker' in navigator)) return null;
   const wb = new Workbox('/sw.js');
   wb.addEventListener('waiting', onUpdateReady);
   // The reload waits for the new worker to take control, so the page never mixes versions.
