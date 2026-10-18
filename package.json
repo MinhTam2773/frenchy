@@ -17,7 +17,9 @@
     "cf-typegen": "wrangler types",
     "db:generate": "drizzle-kit generate",
     "db:migrate:local": "wrangler d1 migrations apply frenchy --local",
-    "db:seed:local": "tsx scripts/db/seed.ts"
+    "db:seed:local": "tsx scripts/db/seed.ts",
+    "lexicon:build": "tsx scripts/lexicon/build.ts",
+    "lexicon:coverage": "tsx scripts/lexicon/coverage.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.104.4",
