@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 26 · NEXT 10 (5 ready: T-21 to T-25) · BACKLOG 22
+**Progress:** DONE 26 · NEXT 10 (5 ready: T-21 to T-25) · BACKLOG 24
 
 ---
 
@@ -701,13 +701,14 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 **Status:** in progress · **Claimed by:** T-24 agent (wave 4 lead session) · **Branch:** `task/T-24-content-qa`
 **Owns:** fixes in `content/chapters/**`, `docs/content-qa.md`
 **Goal:** An independent check (fresh agent, not the T-14 author) that every Stage 1 text and card is correct, natural and at the right level.
+**Notes (decisions, see `docs/content-qa.md`):** `isNew` means new to the course: one text per lemma, the first along the route (L-94). Fixed phrases are a closed list in `text.md`, and the brief's *est-ce que* line now says its tokens are phrase tokens (L-95). Out-of-Owns hunks: `scripts/content/prompts/text.md` (brief), `scripts/lexicon/build.ts` and `coverage.ts` (G-58 fixes, phrase-aware coverage), and `content/lexicon/**`, rebuilt from the same raw dumps as T-08. Coverage went from 87.8 % to 99.2 %.
 **Done when:** `docs/content-qa.md` lists every finding with its fix, lexicon coverage is ≥ 98%, and `content:check` is green.
 
-- [ ] For each text: only allowed grammar, natural French, correct gender, agreement and elision, accurate English translation, correct token annotations
-- [ ] For each deck: one unambiguous cloze answer, correct translations, no duplicates
-- [ ] Run the T-08 coverage report; fix misses (annotations or lexicon additions)
-- [ ] Write `docs/content-qa.md` (finding, location, fix); apply the fixes
-- [ ] List anything a native speaker should still check under G-02
+- [x] For each text: only allowed grammar, natural French, correct gender, agreement and elision, accurate English translation, correct token annotations
+- [x] For each deck: one unambiguous cloze answer, correct translations, no duplicates
+- [x] Run the T-08 coverage report; fix misses (annotations or lexicon additions)
+- [x] Write `docs/content-qa.md` (finding, location, fix); apply the fixes
+- [x] List anything a native speaker should still check under G-02
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1236,6 +1237,41 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-29 · `content:check` enforces course-wide `isNew` and the phrase list
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | B-22 (same file) | B-10, B-11 (helps) |
+
+**Status:** blocked · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Stage 2 to 4 content follows T-24's decisions without a QA pass having to find them by hand (L-94, L-95, G-67).
+**Done when:** `content:check` names the file and sentence for each case below, and Stage 1 passes.
+
+- [ ] A lemma is `isNew` in at most one text, the first along the route (chapter order in `course.json`, then text id order), and the message names the earlier text
+- [ ] A token with pos `phrase` uses a lemma from the closed list in `scripts/content/prompts/text.md` (move the list into a constant the brief points to), and has more than one word in the phrase
+- [ ] A listed phrase (*il y a*, *s'il vous plaît*…) is never annotated word by word
+- [ ] Tests with a tree built by `createContent` (L-75), one per rule
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-30 · Lexicon rebuild hygiene: pinned dumps, no vulgar glosses, coverage in CI
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Opus 5.5 · Medium | S | T-08 | B-10, B-11 (helps), T-30 |
+
+**Status:** blocked (T-08 is still in review) · **Owns:** `scripts/lexicon/**`, `content/lexicon/**`, `docs/LICENSES.md`, one job line in `.github/workflows/ci.yml` (hot file)
+**Goal:** A content task can rebuild the lexicon and get only the changes its content causes, the glosses are fit for learners, and stale shards fail CI (G-65, G-66, G-67).
+**Done when:** a rebuild with an unchanged dump reproduces the shards byte for byte, a different dump fails loudly, and CI fails when coverage drops below 98 %.
+
+- [ ] Record each raw dump's size, Last-Modified and sha256 in `build.ts` and fail on a mismatch; ask the user where an archived copy of the 2026-10-03 kaikki extract may live (it is not committed, rule 5)
+- [ ] Skip senses tagged `vulgar`, `slang`, `offensive` or `derogatory` from the three glosses (*nœud* lists a vulgar sense today), and re-check the content's glosses after the rebuild
+- [ ] `npm run lexicon:coverage -- --min 98` exits non-zero below the threshold; add it to CI
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1261,7 +1297,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | ID | Gap / risk | Impact | Owner task |
 |---|---|---|---|
 | G-01 | Lexicon source license and attribution not verified (Wiktionary text is CC BY-SA / GFDL) | Can't ship the lexicon publicly until checked | T-08, T-29 |
-| G-02 | French content correctness relies on AI QA; nobody on the team is a native speaker | Learner could learn mistakes | T-24, H-08 |
+| G-02 | French content correctness relies on AI QA; nobody on the team is a native speaker. T-24 lists 8 judgment calls for a native speaker in `docs/content-qa.md` → "For a native speaker" (natural short questions, register of *rigoler*, menu articles, the fiction phone range, …) | Learner could learn mistakes | T-24, H-08 |
 | G-03 | Web Speech fr-FR voice quality and availability vary by device (weak on some Android and Linux) | Bad audio for some users | T-05, B-09 |
 | G-04 | iOS PWA limits: storage can be cleared after inactivity; push only for installed apps | Server must stay the source of truth | T-12, B-12 |
 | G-05 | Better Auth on Workers + D1 not yet proven in this repo | Auth plan may change | T-13 |
@@ -1296,8 +1332,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | T-26 (decide: keep precaching for offline taps and raise `maximumFileSizeToCacheInBytes`, or add `**/forms-*.js` / `**/lemmas-*.js` to `globIgnores` and runtime-cache them) |
 | G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
 | G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
-| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
-| G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
+| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*). T-24 kept the lead's reading (adding *Et toi ?* to the greeting exception) and rewrote the four questions found before ch7; the stiffness stays a product choice | Texts can read stiff; QA may flag the same things | the user (or adjust `content/grammar.json`, G-23) |
+| G-58 | ~~Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 %~~ **Resolved by T-24:** the shards predated the content; Lexique spells œ as *oe*, so no œ word had a rank; *où* and *bonsoir* differ in part of speech between the sources; feminine nouns are form-of entries. `build.ts` fixes all four and the lexicon was rebuilt; coverage is 99.2 % (L-96, L-97) | none | T-24 |
 | G-43 | Streak and Practice follow the mockups except: the "~10 min" chip on the flashcards card is not rendered (no rule for estimating minutes), the freeze card uses `text-freeze-ink` (`#1f6fa8`) instead of the mockup's darker `#0E3F63`/`#24506F` (no token), and future calendar days use `text-faint` (about 3.3:1, inactive cells) | Small visual and contrast differences from the mockups | T-19, T-28 |
 | G-39 | Nothing records progress inside a chapter's book sections, so the Chapter strip can only show all sections done (the learner has moved past the chapter) or none. The mockup's "§2 now" with a part-filled bar has no data behind it. `chapters[].sections` is empty for every chapter until G-06 closes, so the strip is not drawn yet | Section progress is coarse | T-17, B-05 (a per-user `chapter_sections` record if wanted), G-06 |
 | G-40 | `getChapterTexts` returns texts sorted by id, so the chapter page lists readings alphabetically (the fixtures give "Au café" before "Le matin de Léa", the mockup's order is the reverse). The text schema has no `order` field | Readings may not be in the intended reading order | T-14, T-07 (add `order` to `Text`, or number the ids), T-17 reads whatever order `getChapterTexts` gives |
@@ -1307,8 +1343,11 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-15, T-26 (share one helper once both screens exist) |
 | G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
 | G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
-| G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons | T-14, T-24 (add these rules to `text.md`; optionally move the token check into `content:check`) |
-| G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins) | B-07 (measure on real imported text), T-24 (`GLOSS_OVERRIDES` for function words) |
+| G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons. T-24 added the token rules to `text.md` and split *Super ! Merci, Sophie.* in the content; the *Le billet… Euh…* case is left to the splitter | T-24 (done), the token check in `content:check` is optional |
+| G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins). T-24 added `GLOSS_OVERRIDES` for *voici*, *voilà*, *il y a*, *ce*, *en*, *après* and *œil*; `PHRASES` in `annotate()` still knows only *est-ce que* and *qu'est-ce que*, not the rest of the closed phrase list | B-07 (measure on real imported text; add the phrase list to `PHRASES`) |
+| G-65 | kaikki.org serves only its latest French extract. T-24's rebuild was reproducible only because the 2026-10-03 file was still online (same size and Last-Modified); once it is replaced, `npm run lexicon:build` will also rewrite entries the content didn't touch, and the raw dumps are not archived anywhere | Content tasks that need a rebuild (B-10, B-11) get large unrelated shard diffs, or can't rebuild at all | B-30 |
+| G-66 | The lexicon keeps Wiktionary's vulgar and slang senses among a word's three glosses (*nœud* lists one); `SKIPPED_SENSE_TAGS` in `build.ts` doesn't skip `vulgar` or `slang` | A learner tapping a word in imported text can see a vulgar gloss | B-30 |
+| G-67 | `content:check` doesn't enforce T-24's rules (`isNew` once per course, the closed phrase list), and `lexicon:coverage` isn't in CI, so stale shards (content lemmas added without a rebuild) go unnoticed | Stage 2 to 4 content can repeat Stage 1's problems | B-29, B-30 |
 
 ---
 
@@ -1387,3 +1426,8 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-72 · 2026-10-18 · tooling · T-15` — **`\u00A0` escapes I wrote in regex literals reached the file as real no-break spaces; the code looked identical, and ESLint's `no-irregular-whitespace` was the only thing that noticed.** → In source, write invisible characters as escapes (`'\u00A0'`, a `NBSP` const in tests) and check with `grep -nP '\xA0'` when lint flags whitespace.
 - `L-73 · 2026-10-18 · testing · T-15` — **Lexicon-backed tests timed out at Vitest's 5 s default (12 of 40 in `annotate.test.ts`) during a parallel run: each shard is a 1 to 2 MB JSON module that Vite transforms on its first import, which took 5 to 8 s on a busy 4-core machine.** → A test file that looks up many words warms the shards it needs once in `beforeAll(..., 120_000)` (see `src/shared/text/annotate.test.ts`), instead of raising every test's timeout.
 - `L-78 · 2026-10-18 · content · T-14` — **Chapter agents marked `isNew` on words an earlier chapter already introduced (*étage*, *commencer*, *voisin*…), the lexicon lacks *où* and *bonsoir*, and the brief still described *est-ce que* as three ordinary tokens after the phrase-lemma convention.** → T-24 decides whether `isNew` means "new to the course" (then dedupe across the route) and fixes the brief line; lexicon gaps go to G-58.
+- `L-94 · 2026-10-18 · content · T-24` — **Each chapter agent marked `isNew` for its own text, so 44 marks repeated words an earlier text had already taught (*fraise* was new four times), and the reader would flag familiar words as new.** → Decision: `isNew` means new to the course. A lemma is marked in one text only, the first along the route (`course.json` order, then text id order); check earlier `newWords` before marking. B-29 makes `content:check` enforce it.
+- `L-95 · 2026-10-18 · content · T-24` — **The phrase convention gave five examples, so agents guessed the rest: *il y a* was word by word in ch12 and a phrase elsewhere, *un peu*, *pas de problème* and *merci beaucoup* went both ways, *voici* and *voilà* got pos `phrase`, and the brief still described *est-ce que* as three ordinary tokens. Wiktionary has an entry for almost every formula, so "it has an entry" can't decide.** → Decision: `text.md` now has a closed list of fixed phrases (*est-ce que* included); everything else is word by word, and a single word is never pos `phrase`. Extend the list in the brief instead of deciding text by text.
+- `L-96 · 2026-10-18 · lexicon · T-24` — **No word with œ was in the lexicon (*cœur*, *sœur*, *œil*), and *où* and *bonsoir* were missing too: Lexique 3.83 spells œ as *oe* and files *où* as a pronoun (Wiktionary: adverb), so the lemma + part-of-speech frequency join gave them no rank and they fell out of the top 10,000. G-58 suspected key normalization, but `formKey()` was fine.** → When joining two dictionaries, test spelling variants (œ / oe) and words whose part of speech differs between the sources, and check the rank of a few core words after `npm run lexicon:build`, not only whether they are present.
+- `L-97 · 2026-10-18 · lexicon · T-24` — **The shards were built before T-14 wrote any content, so the build's "keep every content lemma" rule had nothing to keep, and coverage was 87.8 %. `lexicon:coverage` also counted all 171 phrase tokens as misses, because no single form can carry *il y a*. The raw dumps aren't in the repo, but kaikki.org still served the identical 2026-10-03 extract (same size and Last-Modified), so a rebuild was possible.** → Rerun `npm run lexicon:build` after content adds lemmas (dump URLs in `build.ts`; first check the kaikki file's Last-Modified, see G-65), then `npm run lexicon:coverage`, which now counts a phrase token by its word.
+- `L-98 · 2026-10-18 · content · T-24` — **A ch4 dialogue read out a realistic, dialable French landline (04 70 22 15 81).** → Phone numbers in content use a range reserved for fiction (04 65 71 xx xx and its siblings; confirm with ARCEP before launch). Never invent a realistic number, address or email that could belong to a real person.
