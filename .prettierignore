@@ -3,4 +3,5 @@
 design/
 docs/
 package-lock.json
+content/lexicon/
 worker-configuration.d.ts
