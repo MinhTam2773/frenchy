@@ -5,5 +5,5 @@
     "lib": ["ES2023"],
     "types": ["node", "@cloudflare/vitest-plugin/types"]
   },
-  "include": ["worker-configuration.d.ts", "src/worker", "src/shared"]
+  "include": ["worker-configuration.d.ts", "src/worker", "src/shared", "scripts/db"]
 }

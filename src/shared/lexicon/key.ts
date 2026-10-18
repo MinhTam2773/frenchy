@@ -1,5 +1,3 @@
-// No imports: the Node build scripts load this file directly (type stripping, no bundler).
-
 /** Every shard that exists on disk: one per base letter, plus `other` for anything else. */
 export const SHARDS = [...'abcdefghijklmnopqrstuvwxyz', 'other'] as const;
 export type ShardId = (typeof SHARDS)[number];

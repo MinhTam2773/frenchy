@@ -5,9 +5,9 @@
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { FormShard } from '../../src/shared/lexicon/lookup.ts';
-import { formKey, shardOf, type ShardId } from '../../src/shared/lexicon/key.ts';
-import { contentWords } from './content.ts';
+import type { FormShard } from '../../src/shared/lexicon/lookup';
+import { formKey, shardOf, type ShardId } from '../../src/shared/lexicon/key';
+import { contentWords } from './content';
 
 const ROOT = join(import.meta.dirname, '../..');
 const shards = new Map<ShardId, FormShard>();

@@ -1,0 +1,7 @@
+import { applyD1Migrations, type D1Migration } from 'cloudflare:test';
+import { env } from 'cloudflare:workers';
+
+// `vitest.config.ts` reads `migrations/` in Node and passes them in as this test-only binding.
+const { DB, TEST_MIGRATIONS } = env as Env & { TEST_MIGRATIONS: D1Migration[] };
+
+await applyD1Migrations(DB, TEST_MIGRATIONS);

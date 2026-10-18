@@ -19,11 +19,11 @@ import {
 import { join } from 'node:path';
 import { createInterface } from 'node:readline';
 import { gzipSync } from 'node:zlib';
-import type { FormShard, LemmaShard } from '../../src/shared/lexicon/lookup.ts';
-import { formKey, shardOf, SHARDS, type ShardId } from '../../src/shared/lexicon/key.ts';
-import type { PartOfSpeech } from '../../src/shared/schemas/common.ts';
-import type { FormEntry, Lexeme } from '../../src/shared/schemas/lexicon.ts';
-import { contentWords } from './content.ts';
+import type { FormShard, LemmaShard } from '../../src/shared/lexicon/lookup';
+import { formKey, shardOf, SHARDS, type ShardId } from '../../src/shared/lexicon/key';
+import type { PartOfSpeech } from '../../src/shared/schemas/common';
+import type { FormEntry, Lexeme } from '../../src/shared/schemas/lexicon';
+import { contentWords } from './content';
 
 const ROOT = join(import.meta.dirname, '../..');
 const RAW = process.env.LEXICON_RAW_DIR ?? join(import.meta.dirname, 'raw');

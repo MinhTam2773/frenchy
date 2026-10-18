@@ -1,0 +1,19 @@
+{
+  "id": "ch1-bonjour",
+  "chapterId": "ch1",
+  "title": "Bonjour",
+  "kind": "story",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [{ "t": "Bonjour", "pos": "interjection", "gloss": "hello" }, { "t": "." }],
+          "en": "Hello."
+        }
+      ]
+    }
+  ],
+  "newWords": [],
+  "grammarTags": ["etre.present"]
+}

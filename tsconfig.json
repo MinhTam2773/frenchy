@@ -3,7 +3,6 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.worker.json" },
-    { "path": "./tsconfig.node.json" },
-    { "path": "./scripts/lexicon" }
+    { "path": "./tsconfig.node.json" }
   ]
 }
