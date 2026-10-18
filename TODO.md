@@ -689,8 +689,8 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [x] Per-user rate limit (start at 60 requests/hour)
 - [x] User text is treated as data inside the prompt, never as instructions
 - [x] Tests for the "Done when" cases
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 Notes for T-25 / T-26 / T-29 / B-03:
