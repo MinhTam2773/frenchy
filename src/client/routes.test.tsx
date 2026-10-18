@@ -2,9 +2,9 @@ import { fireEvent, screen } from '@testing-library/react';
 import { expect, test } from 'vitest';
 import { renderAt } from './mocks/renderAt';
 
-// /path and /chapter/:id have their own tests (features/path, features/chapter).
+// Screens with their own tests: /today (features/today: its heading is the greeting),
+// /path and /chapter/:id (features/path, features/chapter).
 const tabRoutes = [
-  ['/today', 'Today'],
   ['/practice', 'Practice'],
   ['/words', 'Words'],
   ['/me', 'Me'],
