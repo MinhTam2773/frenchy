@@ -1,5 +1,96 @@
 @import 'tailwindcss';
 
-/* Design tokens from design/README.md go here (T-03). */
+/* Design tokens from design/README.md. Components use these names only, never raw hex. */
 @theme {
+  --font-sans: Nunito, system-ui, sans-serif;
+  --font-display: Fredoka, Nunito, system-ui, sans-serif;
+
+  --color-primary: #2b59f0;
+  --color-primary-shadow: #1a3cb8;
+  --color-primary-soft: #eef3ff;
+  --color-primary-line: #c9d6ff;
+  --color-primary-pale: #d6e0ff;
+
+  --color-ink: #1b2140;
+  --color-ink-2: #3a4266;
+  --color-muted: #5a6285;
+  --color-faint: #8a91b0;
+  --color-line: #e3e7f5;
+  --color-line-strong: #d7dcec;
+  --color-switch-off: #cdd3e6;
+  --color-surface: #ffffff;
+  --color-ground: #f6f8ff;
+  --color-chip: #f1f3fa;
+
+  --color-gold: #ffb020;
+  --color-gold-shadow: #c98300;
+  --color-gold-soft: #fff4dc;
+  --color-gold-pale: #ffe2a8;
+  --color-gold-ink: #8a5300;
+  --color-new-word: #fff0c7;
+  --color-new-word-line: #f2b322;
+  --color-new-word-ink: #7a4b00;
+
+  --color-flame: #ff7a1a;
+  --color-flame-shadow: #c9560a;
+  --color-flame-ink: #3b1600;
+  --color-flame-text: #b4520a;
+  --color-flame-soft: #fff4e8;
+  --color-flame-line: #ffc999;
+
+  --color-freeze: #2a8bd0;
+  --color-freeze-ink: #1f6fa8;
+  --color-freeze-soft: #eaf5fd;
+  --color-freeze-line: #b5dbf5;
+
+  --color-masc: #2048c8;
+  --color-fem: #b0244b;
+  --color-fem-soft: #fde8ee;
+  --color-fem-dot: #e8436a;
+
+  --color-success: #13804a;
+  --color-success-shadow: #0c5c34;
+  --color-success-soft: #e4f6ec;
+  --color-success-ink: #0f6436;
+  --color-success-line: #a9e2c2;
+
+  --color-danger: #d6335b;
+  --color-danger-shadow: #a5213f;
+  --color-danger-soft: #fde8ee;
+  --color-danger-ink: #a3203f;
+
+  --color-warn: #9a5b00;
+  --color-warn-shadow: #6e4100;
+
+  /* Mascot only */
+  --color-snail: #ffb84d;
+  --color-blush: #ff8fa3;
+
+  --radius-btn: 16px;
+  --radius-btn-sm: 14px;
+  --radius-card: 20px;
+  --radius-sheet: 28px;
+
+  /* Solid "chunky" bottom shadows, no blur. Pressing a button drops them (active:shadow-none). */
+  --shadow-chunk-primary: 0 4px 0 #1a3cb8;
+  --shadow-chunk-success: 0 4px 0 #0c5c34;
+  --shadow-chunk-danger: 0 4px 0 #a5213f;
+  --shadow-chunk-warn: 0 4px 0 #6e4100;
+  --shadow-chunk-line: 0 4px 0 #e3e7f5;
+  --shadow-chunk-primary-line: 0 4px 0 #c9d6ff;
+  --shadow-chunk-primary-sm: 0 3px 0 #1a3cb8;
+  --shadow-chunk-hero: 0 5px 0 #1a3cb8;
+  --shadow-sheet: 0 -10px 30px rgb(27 33 64 / 0.12);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
