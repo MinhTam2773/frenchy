@@ -54,6 +54,7 @@
 "zèbres":[{"lemma":"zèbre","pos":"noun","number":"pl","gender":"m"}],
 "zèle":[{"lemma":"zèle","pos":"noun","number":"sg","gender":"m"}],
 "zèles":[{"lemma":"zèle","pos":"noun","number":"pl","gender":"m"}],
+"zébresse":[{"lemma":"zèbre","pos":"noun","number":"sg","gender":"f"}],
 "zéro":[{"lemma":"zéro","pos":"noun","number":"sg","gender":"m"},{"lemma":"zéro","pos":"number"}],
 "zéros":[{"lemma":"zéro","pos":"noun","number":"pl","gender":"m"}],
 "zézette":[{"lemma":"zézette","pos":"noun","number":"sg","gender":"f"}],

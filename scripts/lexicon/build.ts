@@ -135,11 +135,20 @@ const GLOSS_OVERRIDES: Record<string, string[]> = {
   [lp('pas', 'adverb')]: ['not'],
   [lp('en', 'pronoun')]: ['of it, of them', 'some, any', 'from there'],
   [lp('que', 'pronoun')]: ['what', 'that, which, whom'],
+  [lp('voici', 'preposition')]: ['here is, here are', 'this is (introducing someone)', 'ago'],
+  [lp('voilà', 'preposition')]: ['there is, there are; here it is', 'here you are', 'ago'],
+  [lp('il y a', 'preposition')]: ['there is, there are', 'ago (il y a deux ans)'],
+  [lp('ce', 'pronoun')]: ['it, this, that', "he, she, they (c'est, ce sont)"],
+  [lp('en', 'preposition')]: ['in', 'to (a country)', 'by (en bus)'],
+  [lp('après', 'adverb')]: ['afterwards, later', 'then, next'],
+  [lp('œil', 'noun')]: ['eye', 'eye (of a needle)'],
 };
 
-/** Lexique files the conjunction *que* under its pronoun readings. */
+/** Lexique files the conjunction *que* and *où* under their pronoun readings, *bonsoir* as a noun. */
 const FREQUENCY_ALIASES: Record<string, string> = {
   [lp('que', 'conjunction')]: lp('que', 'pronoun'),
+  [lp('où', 'adverb')]: lp('où', 'pronoun'),
+  [lp('bonsoir', 'interjection')]: lp('bonsoir', 'noun'),
 };
 
 /** Wiktionary tags only some possessive determiners as possessive (*ses*, *mes* aren't). */
@@ -228,6 +237,11 @@ function readFrequencies(path: string): Map<string, number> {
     const [lemma, code] = key.split('\t');
     const target = lp(lemma, LEXIQUE_POS[code]);
     freq.set(target, (freq.get(target) ?? 0) + value);
+  }
+  // Lexique spells œ as oe (coeur, soeur), so Wiktionary's cœur and sœur would get no rank.
+  for (const [key, value] of [...freq]) {
+    const folded = key.replaceAll('oe', 'œ');
+    if (folded !== key && !freq.has(folded)) freq.set(folded, value);
   }
   return freq;
 }
@@ -363,6 +377,9 @@ function readingsOf(
       for (const { form, tags = [] } of table) {
         if (tags.length === 1 && tags[0] === 'plural')
           add(form, { number: 'pl', gender: fixedGender });
+        // Wiktionary files most feminines (boulangère) as form-of entries, listed in this table.
+        else if (fixedGender === 'm' && tags.length === 1 && tags[0] === 'feminine')
+          add(form, { number: 'sg', gender: 'f' });
       }
       break;
     case 'contraction':

@@ -1,14 +1,14 @@
 {
-"Zoé":[{"pos":"name","gender":"f","glosses":["a female given name, equivalent to English Zoë"],"rank":37220}],
-"zanzi":[{"pos":"noun","gender":"m","glosses":["zanzibar (a game played with three dice.)"],"rank":7947}],
-"zigzaguer":[{"pos":"verb","glosses":["to zigzag"],"rank":9878}],
-"zinc":[{"pos":"noun","gender":"m","glosses":["zinc","counter (in a bar, café, etc), bar","small plane"],"rank":4634}],
-"zizi":[{"pos":"noun","gender":"m","glosses":["willy (British), pee-pee (US) (penis)"],"rank":9644}],
-"zone":[{"pos":"noun","gender":"f","glosses":["zone"],"rank":1463}],
-"zoo":[{"pos":"noun","gender":"m","glosses":["zoo"],"rank":4761}],
-"zut":[{"pos":"interjection","glosses":["damn, shoot, dang, cripes, rats, \"dash it!\", \"hang it all!\""],"rank":4415}],
-"zèbre":[{"pos":"noun","gender":"m","glosses":["zebra","guy, chap"],"rank":7470}],
-"zèle":[{"pos":"noun","gender":"m","glosses":["zeal"],"rank":5319}],
-"zéro":[{"pos":"noun","gender":"m","glosses":["zero, nought, oh (in reading numbers)","zero, nought","a zero, a person of very poor value"],"rank":2407},{"pos":"number","glosses":["zero"],"rank":37220}],
-"zézette":[{"pos":"noun","gender":"f","glosses":["vulva"],"rank":7206}]
+"Zoé":[{"pos":"name","gender":"f","glosses":["a female given name, equivalent to English Zoë"],"rank":37284}],
+"zanzi":[{"pos":"noun","gender":"m","glosses":["zanzibar (a game played with three dice.)"],"rank":7966}],
+"zigzaguer":[{"pos":"verb","glosses":["to zigzag"],"rank":9900}],
+"zinc":[{"pos":"noun","gender":"m","glosses":["zinc","counter (in a bar, café, etc), bar","small plane"],"rank":4647}],
+"zizi":[{"pos":"noun","gender":"m","glosses":["willy (British), pee-pee (US) (penis)"],"rank":9665}],
+"zone":[{"pos":"noun","gender":"f","glosses":["zone"],"rank":1469}],
+"zoo":[{"pos":"noun","gender":"m","glosses":["zoo"],"rank":4774}],
+"zut":[{"pos":"interjection","glosses":["damn, shoot, dang, cripes, rats, \"dash it!\", \"hang it all!\""],"rank":4428}],
+"zèbre":[{"pos":"noun","gender":"m","glosses":["zebra","guy, chap"],"rank":7489}],
+"zèle":[{"pos":"noun","gender":"m","glosses":["zeal"],"rank":5334}],
+"zéro":[{"pos":"noun","gender":"m","glosses":["zero, nought, oh (in reading numbers)","zero, nought","a zero, a person of very poor value"],"rank":2414},{"pos":"number","glosses":["zero"],"rank":37284}],
+"zézette":[{"pos":"noun","gender":"f","glosses":["vulva"],"rank":7223}]
 }

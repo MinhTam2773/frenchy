@@ -25,9 +25,13 @@ function readingsOf(word: string) {
 
 const words = contentWords(join(ROOT, 'content'));
 const misses: string[] = [];
-for (const { t, lemma, file } of words) {
+let phraseTokens = 0;
+for (const { t, lemma, pos, file } of words) {
   const readings = readingsOf(t);
-  if (readings.some((reading) => reading.lemma === lemma)) continue;
+  // No single form can carry a multi-word lemma (il y a), so a phrase token counts when the
+  // lexicon knows its word, which is what a lookup can show for it.
+  if (pos === 'phrase') phraseTokens++;
+  if (pos === 'phrase' ? readings.length > 0 : readings.some((r) => r.lemma === lemma)) continue;
   const got =
     readings.length > 0
       ? `lexicon has ${[...new Set(readings.map((r) => r.lemma))].join(', ')}`
@@ -37,5 +41,8 @@ for (const { t, lemma, file } of words) {
 
 const found = words.length - misses.length;
 const percent = words.length > 0 ? ((100 * found) / words.length).toFixed(1) : '100.0';
-console.log(`Lexicon coverage: ${found}/${words.length} word tokens in content/ (${percent}%)`);
+console.log(
+  `Lexicon coverage: ${found}/${words.length} word tokens in content/ (${percent}%; ` +
+    `${phraseTokens} phrase tokens counted by their word)`,
+);
 for (const miss of misses) console.log(`  miss ${miss}`);

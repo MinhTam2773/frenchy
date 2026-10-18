@@ -4,5 +4,6 @@
 "yachts":[{"lemma":"yacht","pos":"noun","number":"pl","gender":"m"}],
 "yaourt":[{"lemma":"yaourt","pos":"noun","number":"sg","gender":"m"}],
 "yaourts":[{"lemma":"yaourt","pos":"noun","number":"pl","gender":"m"}],
+"yeux":[{"lemma":"œil","pos":"noun","number":"pl","gender":"m"}],
 "yoga":[{"lemma":"yoga","pos":"noun","number":"sg","gender":"m"}]
 }
