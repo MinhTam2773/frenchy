@@ -657,7 +657,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 **Goal:** Every MVP endpoint from `docs/api-contract.md`, user-scoped and validated.
 **Done when:** each endpoint has tests, including one proving cross-user isolation, and responses match the shared schemas.
 
-- [ ] `GET /api/profile`, `PATCH /api/profile`
+- [x] `GET /api/profile`, `PATCH /api/profile`
 - [ ] `GET /api/cards/due?limit=`, `GET /api/cards/stats` (new / learning / review counts)
 - [ ] `POST /api/cards` (from a saved word or sentence; dedupe on type + front)
 - [ ] `POST /api/cards/starter/:chapterId` (adds the chapter's starter deck; idempotent)
