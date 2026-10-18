@@ -28,9 +28,9 @@ Every MVP route already exists with a placeholder page, so building a screen is 
 |---|---|
 | `App.tsx` | `AppProviders` (TanStack Query, `LinkProvider` so kit links navigate client-side) and the router |
 | `layouts/TabLayout` | Tab bar screens: `/today`, `/path`, `/practice`, `/words`, `/me` |
-| `layouts/FullScreenLayout` | Everything else: `/`, `/onboarding`, `/chapter/:chapterId`, `/read/:textId`, `/review`, `/review/done`, `/streak` |
+| `layouts/FullScreenLayout` | Everything else: `/`, `/sign-up`, `/sign-in`, `/onboarding`, `/chapter/:chapterId`, `/read/:textId`, `/review`, `/review/done`, `/streak` |
 | `layouts/RequireSession` | Sends signed-out users to `/`; wraps every route except `/` |
-| `lib/session.ts` | `useSession()` returns `{ status: 'loading' \| 'signed-in' \| 'signed-out', user, signOut }`. A stub (always signed in as Léa) until T-21 |
+| `lib/session.ts` | `useSession()` returns `{ status: 'loading' \| 'signed-in' \| 'signed-out', user, signOut }`. Reads Better Auth's `/api/auth/get-session` through TanStack Query. In mock mode the auth mock starts signed in as Léa (`mocks/handlers/auth.ts`; sign out to see the welcome flow) |
 | `/dev/ui` | The UI kit gallery, development builds only |
 
 ## Mocks on and off

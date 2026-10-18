@@ -637,12 +637,12 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 **Goal:** `Main.dc.html` and `Onboarding.dc.html` working with the real Better Auth client.
 **Done when:** a new user can sign up with email locally, pick a chapter and goal, and land on `/today`; tests pass.
 
-- [ ] Welcome: Continue with email, Continue with Google (hidden when Google isn't configured), I already have an account
-- [ ] Email sign-up and sign-in forms: labels, validation, errors announced to screen readers
-- [ ] Onboarding: Stage 1 chapter list (plus "show later stages"), daily goal, save profile, go to `/today`
+- [x] Welcome: Continue with email, Continue with Google (hidden when Google isn't configured), I already have an account
+- [x] Email sign-up and sign-in forms: labels, validation, errors announced to screen readers
+- [x] Onboarding: Stage 1 chapter list (plus "show later stages"), daily goal, save profile, go to `/today`
 - [x] Replace the `useSession()` stub with the real session; keep the guard
-- [ ] Password reset is not in MVP (G-08): show "Forgot password?" only once B-18 lands
-- [ ] Tests: form validation, onboarding saves the profile, guard redirects
+- [x] Password reset is not in MVP (G-08): show "Forgot password?" only once B-18 lands
+- [x] Tests: form validation, onboarding saves the profile, guard redirects
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1236,6 +1236,38 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+
+#### B-23 · Start the app offline without being sent to the welcome screen
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
+
+**Status:** blocked · **Owns:** `src/client/lib/session.ts`
+**Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
+**Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
+
+- [ ] Decide what is remembered (id, name, email in `localStorage`, wrapped in try/catch) and when it expires
+- [ ] `useSession` returns the remembered user when the read fails with a network error, never on a 401
+- [ ] Test: offline start with and without a remembered user
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-24 · Show/hide password on the email forms
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | T-21 | — |
+
+**Status:** blocked · **Owns:** `src/client/features/auth/**`
+**Goal:** Typing a password on a phone without seeing it is error-prone; add a toggle.
+**Done when:** a labelled button flips the field between `password` and `text`, and a test covers it.
+
+- [ ] Add the toggle (`aria-pressed`, 44 px target) to the password field
+- [ ] Test it
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1309,6 +1341,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
 | G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons | T-14, T-24 (add these rules to `text.md`; optionally move the token check into `content:check`) |
 | G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins) | B-07 (measure on real imported text), T-24 (`GLOSS_OVERRIDES` for function words) |
+| G-59 | `MIN_PASSWORD_LENGTH` (8) is defined twice: `src/worker/auth/index.ts` (enforces it) and `src/client/features/auth/validate.ts` (explains it early). T-21 doesn't own the Worker, so it couldn't move the constant to `src/shared/constants.ts` | The two can drift; the Worker's answer still wins, shown as a generic error | T-21, later (move to `@shared/constants`) |
+| G-60 | Google sign-in is only tested against a mocked `/api/auth/sign-in/social`. Nothing checks the real round trip (needs H-03 keys): `callbackURL: '/'` relies on the welcome screen redirecting a signed-in user to Today or onboarding, and a failed Google login (user cancels) lands wherever Better Auth's default error page sends it, with no `errorCallbackURL` set | A cancelled Google login may show a raw error page | T-26, T-30 (try it with real keys) |
 
 ---
 
@@ -1387,3 +1421,8 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-72 · 2026-10-18 · tooling · T-15` — **`\u00A0` escapes I wrote in regex literals reached the file as real no-break spaces; the code looked identical, and ESLint's `no-irregular-whitespace` was the only thing that noticed.** → In source, write invisible characters as escapes (`'\u00A0'`, a `NBSP` const in tests) and check with `grep -nP '\xA0'` when lint flags whitespace.
 - `L-73 · 2026-10-18 · testing · T-15` — **Lexicon-backed tests timed out at Vitest's 5 s default (12 of 40 in `annotate.test.ts`) during a parallel run: each shard is a 1 to 2 MB JSON module that Vite transforms on its first import, which took 5 to 8 s on a busy 4-core machine.** → A test file that looks up many words warms the shards it needs once in `beforeAll(..., 120_000)` (see `src/shared/text/annotate.test.ts`), instead of raising every test's timeout.
 - `L-78 · 2026-10-18 · content · T-14` — **Chapter agents marked `isNew` on words an earlier chapter already introduced (*étage*, *commencer*, *voisin*…), the lexicon lacks *où* and *bonsoir*, and the brief still described *est-ce que* as three ordinary tokens after the phrase-lemma convention.** → T-24 decides whether `isNew` means "new to the course" (then dedupe across the route) and fixes the brief line; lexicon gaps go to G-58.
+- `L-79 · 2026-10-18 · testing · T-21` — **Better Auth's client keeps the `fetch` it saw when `createAuthClient()` ran (`customFetchImpl: fetch`), which is before MSW patches `globalThis.fetch` in tests and in `npm run dev`, so its calls went to the real network (`ECONNREFUSED :3000`).** → `lib/session.ts` passes `fetchOptions: { customFetchImpl: (input, init) => fetch(input, init) }` so `fetch` is looked up on every call.
+- `L-80 · 2026-10-18 · client · T-21` — **Better Auth's own `useSession()` atom keeps its data after unmount and skips a refetch for 1 s after a fresh one, so it leaks state between tests and between quick sign-outs and sign-ins.** → The session lives in TanStack Query (`sessionKey`, one `useQuery` over `authClient.getSession()`), so each app and each test starts clean; sign-in/up call `invalidateQueries({ queryKey: sessionKey })`, and sign-out sets it to `null` and removes every other cached query so the next account sees none of the old data.
+- `L-81 · 2026-10-18 · testing · T-21` — **The auth mock (`mocks/handlers/auth.ts`) starts signed in as Léa, so every other screen's tests keep working, which means `/` redirects to Today and a test of the welcome screen must sign out first. The T-09 tests that looked for the placeholder headings "Welcome" and "Onboarding" (`routes.test.tsx`, `App.test.tsx`, `RequireSession.test.tsx`) had to change.** → Tests that need the signed-out state call `setMockSignedIn(false)` before `renderAt`; `test-setup.ts` runs `resetAuthMock()` after each test. The welcome heading is now `frenchy`.
+- `L-82 · 2026-10-18 · client · T-21` — **A new account needs the blank profile (`currentChapterId: null`) so the welcome screen sends it to onboarding, but the writable profile mock lives in `base.ts`.** → `handlers/auth.ts` answers `GET /api/profile` with `newProfile` only until the first `PATCH /api/profile`, and returns nothing otherwise so the request falls through to `base.ts` (L-56).
+- `L-83 · 2026-10-18 · auth · T-21` — **The Better Auth client returns `{ data, error }` for HTTP failures (`error.status`, `error.code` such as `INVALID_EMAIL_OR_PASSWORD`) but rejects when the network fails, and its messages are English server text.** → The forms handle both paths and map `status`/`code` to their own copy (`authErrorMessage`); a form-level `role="alert"` carries the server error, while field errors are tied to inputs with `aria-describedby` and the first invalid field gets focus.
