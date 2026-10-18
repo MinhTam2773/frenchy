@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 32 · NEXT 5 (T-26 in progress; T-27 to T-30 blocked) · BACKLOG 29
+**Progress:** DONE 32 · NEXT 5 (T-26 in review; T-27 to T-30 blocked) · BACKLOG 29
 
 ---
 
@@ -758,7 +758,7 @@ Wave 4 is done (T-21 to T-25 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-16 to T-23, T-25 | T-27, T-28, T-29, T-30 | 5 |
 
-**Status:** in progress · **Claimed by:** T-26 agent (wave 4/5 lead session) · **Branch:** `task/T-26-integration`
+**Status:** in review · **Claimed by:** T-26 agent (wave 4/5 lead session) · **Branch:** `task/T-26-integration` · **PR:** https://github.com/MinhTam2773/frenchy/pull/35
 **Owns:** cross-cutting fixes; `src/client/mocks/` config; contract fixes in `src/shared/schemas/` (both sides in the same PR)
 **Goal:** The whole MVP runs against the local Worker and local D1 with no mocks.
 **Done when:** the full flow works locally on a fresh database: sign up → onboarding → Today → review → reader save word → review that card → streak updates.
@@ -769,7 +769,7 @@ Wave 4 is done (T-21 to T-25 moved to DONE).
 - [x] Loading skeletons, error + retry, offline banner on every screen (audited every page: each data screen already had a `role="status"` loading line and an error + retry except Practice, which now has one; there is no skeleton spec in `design/`, so the text loaders stay; an offline banner in both layouts, `OfflineBanner.tsx`)
 - [x] Remove leftover placeholders and dead mock code (the Words placeholder and `layouts/Placeholder.tsx`, G-28; `mockServiceWorker.js` dropped from real builds, G-27; Session complete's copy of the next-unread rule, G-42)
 - [x] Finish: `npm run check` green (65 files, 1,029 tests; build `precache 12 entries (1028.04 KiB)`), after merging `main`
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-104 to L-108, G-70 to G-72, B-33)
 - [ ] Finish: PR to `main` merged with CI green
 
 QUESTION: a word saved in the reader now starts before starter-deck cards, but still counts against `NEW_CARDS_PER_DAY` (L-106), so after a full 10-card session it waits until tomorrow. Should saved cards skip the cap? Default: no (reversible: one `orderBy`/limit in `cards.ts`).
