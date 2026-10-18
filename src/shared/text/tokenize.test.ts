@@ -48,6 +48,11 @@ const cases: [name: string, input: string, expected: string[]][] = [
     'grand-mère week-end vingt-deux lui-même',
     ['grand-mère', '[ ]', 'week-end', '[ ]', 'vingt-deux', '[ ]', 'lui-même'],
   ],
+  [
+    'single tokens from the content conventions',
+    'rez-de-chaussée après-midi quatre-vingt-deux',
+    ['rez-de-chaussée', '[ ]', 'après-midi', '[ ]', 'quatre-vingt-deux'],
+  ],
   ['rendez-vous is not an inversion', 'un rendez-vous', ['un', '[ ]', 'rendez-vous']],
   ['c’est-à-dire stays whole', 'c’est-à-dire', ['c’est-à-dire']],
   [
