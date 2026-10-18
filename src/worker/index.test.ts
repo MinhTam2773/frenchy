@@ -1,6 +1,7 @@
 import { exports } from 'cloudflare:workers';
 import { expect, test } from 'vitest';
 import { app } from './index';
+import { newUser, ORIGIN } from './routes/sync-test-helpers';
 
 /** Routes anyone may call. Every other route must answer 401 without a session (T-29). */
 const PUBLIC_ROUTES = ['/api/health', '/api/auth/config', '/api/auth/*'];
@@ -30,4 +31,16 @@ test('every API route except the public ones needs a session', async () => {
     });
     expect(res.status, `${method} ${path}`).toBe(401);
   }
+});
+
+test('a cross-site form-type write is refused even with a session cookie', async () => {
+  const user = await newUser();
+  // What a cross-site <form> could send if a browser ever attached the SameSite=Lax cookie.
+  const post = (origin: string) =>
+    exports.default.fetch(`${ORIGIN}/api/cards/starter/ch10`, {
+      method: 'POST',
+      headers: { cookie: user.cookie, origin, 'content-type': 'text/plain' },
+    });
+  expect((await post('https://evil.test')).status).toBe(403);
+  expect((await post(ORIGIN)).status).toBe(200);
 });
