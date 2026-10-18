@@ -1,0 +1,937 @@
+{
+  "id": "ch12-la-famille-martin",
+  "chapterId": "ch12",
+  "title": "La famille Martin",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Voici",
+              "lemma": "voici",
+              "pos": "phrase",
+              "gloss": "here is",
+              "form": "voici = here is / here are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "famille",
+              "lemma": "famille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "family",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Martin",
+              "lemma": "Martin",
+              "pos": "name",
+              "gloss": "Martin (a family name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Here is the Martin family."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Paul",
+              "lemma": "Paul",
+              "pos": "name",
+              "gloss": "Paul (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "m",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "père",
+              "lemma": "père",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "father",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Paul is the father."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular, masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "grand",
+              "lemma": "grand",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "tall",
+              "form": "masculine singular · feminine: grande"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "calme",
+              "lemma": "calme",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "calm",
+              "form": "masculine singular · feminine: calme (same)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He is tall and very calm."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Anne",
+              "lemma": "Anne",
+              "pos": "name",
+              "gloss": "Anne (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mère",
+              "lemma": "mère",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "mother",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Anne is the mother."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "petite",
+              "lemma": "petit",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "short",
+              "form": "feminine singular · masculine: petit"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "toujours",
+              "lemma": "toujours",
+              "pos": "adverb",
+              "gloss": "always"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "contente",
+              "lemma": "content",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "happy",
+              "form": "feminine singular · masculine: content"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She is short and always happy."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "les + family name = the … family (the name takes no -s)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Martin",
+              "lemma": "Martin",
+              "pos": "name",
+              "gloss": "Martin (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ont",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "f",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fille",
+              "lemma": "fille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "daughter",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fils",
+              "lemma": "fils",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "son",
+              "form": "the final s is pronounced",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The Martins have a daughter and a son."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Zoé",
+              "lemma": "Zoé",
+              "pos": "name",
+              "gloss": "Zoé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudiante",
+              "lemma": "étudiant",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "student",
+              "form": "feminine · masculine: étudiant · no article after être"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Zoé is a student."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sérieuse",
+              "lemma": "sérieux",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "serious",
+              "form": "feminine singular · masculine: sérieux",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "form": "un peu = a little"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "peu",
+              "lemma": "peu",
+              "pos": "adverb",
+              "gloss": "little",
+              "form": "un peu = a little"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "timide",
+              "lemma": "timide",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "shy",
+              "form": "feminine singular · masculine: timide (same)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She is serious and a little shy."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Tom",
+              "lemma": "Tom",
+              "pos": "name",
+              "gloss": "Tom (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "n'",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sérieux",
+              "lemma": "sérieux",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "serious",
+              "form": "masculine singular · feminine: sérieuse"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Tom is not serious."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular, masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "drôle",
+              "lemma": "drôle",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "funny",
+              "form": "masculine singular · feminine: drôle (same)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bavard",
+              "lemma": "bavard",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "chatty",
+              "form": "masculine singular · feminine: bavarde"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He is funny and very chatty."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, masculine or mixed group"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ont",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "have",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chien",
+              "lemma": "chien",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dog"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Max",
+              "lemma": "Max",
+              "pos": "name",
+              "gloss": "Max (the dog's name)"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They also have a dog, Max."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Max",
+              "lemma": "Max",
+              "pos": "name",
+              "gloss": "Max (the dog's name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "noir",
+              "lemma": "noir",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "black",
+              "form": "masculine singular · feminine: noire"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Max is black."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular, masculine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gentil",
+              "lemma": "gentil",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "kind, nice",
+              "form": "masculine singular · feminine: gentille"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a",
+              "form": "un peu = a little"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "peu",
+              "lemma": "peu",
+              "pos": "adverb",
+              "gloss": "little",
+              "form": "un peu = a little"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fou",
+              "lemma": "fou",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "crazy",
+              "form": "masculine singular · feminine: folle"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He is nice and a little crazy."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "on",
+              "gender": "m",
+              "form": "le + day = on that day, every week"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dimanche",
+              "lemma": "dimanche",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Sunday"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "les + family name = the … family (the name takes no -s)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Martin",
+              "lemma": "Martin",
+              "pos": "name",
+              "gloss": "Martin (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "à la maison = at home"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "maison",
+              "lemma": "maison",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "home",
+              "form": "à la maison = at home"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Sundays, the Martins are at home."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, masculine or mixed group"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "sont",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fatigués",
+              "lemma": "fatigué",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "tired",
+              "form": "masculine plural · feminine: fatiguées"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "heureux",
+              "lemma": "heureux",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "happy",
+              "form": "masculine plural (same as singular) · feminine: heureuses",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They are tired and happy."
+        }
+      ]
+    }
+  ],
+  "newWords": ["famille", "père", "mère", "fille", "fils", "sérieux", "drôle", "heureux"],
+  "grammarTags": [
+    "pronouns.subject",
+    "etre.present",
+    "avoir.present",
+    "adjectives.basic",
+    "negation.ne-pas",
+    "phrases.c-est",
+    "articles.definite",
+    "articles.indefinite"
+  ]
+}

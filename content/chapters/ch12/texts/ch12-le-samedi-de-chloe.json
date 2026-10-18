@@ -1,0 +1,844 @@
+{
+  "id": "ch12-le-samedi-de-chloe",
+  "chapterId": "ch12",
+  "title": "Le samedi de Chloé",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "on",
+              "gender": "m",
+              "form": "le + day = on that day, every week"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Chloé",
+              "lemma": "Chloé",
+              "pos": "name",
+              "gloss": "Chloé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ne",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not (ne becomes n' before a vowel)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travail",
+              "lemma": "travail",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "work"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On Saturdays, Chloé doesn't go to work."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "in",
+              "gender": "m",
+              "form": "le matin, le soir = in the morning, in the evening"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "matin",
+              "lemma": "matin",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "morning",
+              "form": "le matin = in the morning"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "to",
+              "form": "à la, à l' = to the"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "piscine",
+              "lemma": "piscine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "swimming pool",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the morning, she goes to the pool."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "il / elle · present · irregular · faire de la natation = to swim"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "form": "partitive article · faire de la natation = to swim"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "gender": "f",
+              "form": "partitive article · faire de la natation = to swim"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "natation",
+              "lemma": "natation",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "swimming",
+              "form": "faire de la natation = to swim",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She goes swimming."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "then, next"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marché",
+              "lemma": "marché",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "market",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then she goes to the market."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "does",
+              "form": "il / elle · present · irregular · faire les courses = to do the shopping"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "courses",
+              "lemma": "course",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "shopping",
+              "form": "feminine plural · faire les courses = to do the shopping",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She does the shopping."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Aujourd'hui",
+              "lemma": "aujourd'hui",
+              "pos": "adverb",
+              "gloss": "today"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "impersonal subject · il fait beau = the weather is nice"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "is (weather)",
+              "form": "il / elle · present · irregular · il fait + adjective = the weather is …"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beau",
+              "lemma": "beau",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "nice",
+              "form": "masculine singular · il fait beau = the weather is nice",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chaud",
+              "lemma": "chaud",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "warm",
+              "form": "masculine singular · il fait chaud = it's warm"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Today the weather is nice and warm."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gloss": "a, an",
+              "gender": "m",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ami",
+              "lemma": "ami",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "friend",
+              "form": "masculine · feminine: amie"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Hugo is a friend."
+        },
+        {
+          "tokens": [
+            {
+              "t": "L'",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "in",
+              "gender": "m",
+              "form": "l'après-midi = in the afternoon · le becomes l' before a vowel"
+            },
+            {
+              "t": "après-midi",
+              "lemma": "après-midi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "afternoon",
+              "form": "l'après-midi = in the afternoon"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Chloé",
+              "lemma": "Chloé",
+              "pos": "name",
+              "gloss": "Chloé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "font",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "ils / elles · present · irregular · faire du vélo = to ride a bike"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "article",
+              "gloss": "(not translated)",
+              "gender": "m",
+              "form": "partitive article · faire du vélo = to ride a bike"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vélo",
+              "lemma": "vélo",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "bike",
+              "form": "faire du vélo = to ride a bike",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "in the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parc",
+              "lemma": "parc",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "park"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the afternoon, Hugo and Chloé ride their bikes in the park."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, masculine or mixed group"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vont",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "go",
+              "form": "ils / elles · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aussi",
+              "lemma": "aussi",
+              "pos": "adverb",
+              "gloss": "also, too"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "to the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "café",
+              "lemma": "café",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "café"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They go to the café, too."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "in",
+              "gender": "m",
+              "form": "le matin, le soir = in the morning, in the evening"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "le soir = in the evening"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Chloé",
+              "lemma": "Chloé",
+              "pos": "name",
+              "gloss": "Chloé (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fatiguée",
+              "lemma": "fatigué",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "tired",
+              "form": "feminine singular · masculine: fatigué"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the evening, Chloé is tired."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "does",
+              "form": "il / elle · present · irregular · faire la cuisine = to cook"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "cooking",
+              "form": "faire la cuisine = to cook",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She cooks."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Puis",
+              "lemma": "puis",
+              "pos": "adverb",
+              "gloss": "then"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular, feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "fait",
+              "lemma": "faire",
+              "pos": "verb",
+              "gloss": "does",
+              "form": "il / elle · present · irregular · faire la vaisselle = to do the dishes"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "gender": "f",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vaisselle",
+              "lemma": "vaisselle",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "dishes",
+              "form": "faire la vaisselle = to do the dishes",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then she does the dishes."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "on",
+              "gender": "m",
+              "form": "le + day = on that day, every week"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "samedi",
+              "lemma": "samedi",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Saturday"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "c'",
+              "lemma": "ce",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "c'est = it is · ce becomes c' before a vowel"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "génial",
+              "lemma": "génial",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "great",
+              "form": "masculine singular · feminine: géniale"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Saturdays are great!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["piscine", "natation", "marché", "course", "beau", "vélo", "cuisine", "vaisselle"],
+  "grammarTags": [
+    "pronouns.subject",
+    "aller.present",
+    "faire.present",
+    "etre.present",
+    "negation.ne-pas",
+    "adjectives.basic",
+    "articles.definite",
+    "articles.partitive",
+    "articles.contractions",
+    "phrases.c-est"
+  ]
+}
