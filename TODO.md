@@ -581,16 +581,16 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-09, T-11 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice`
+**Status:** in review · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice`
 **Owns:** `src/client/features/streak/**`, `src/client/features/practice/**`, `src/client/mocks/handlers/streak.ts`
 **Goal:** `Streak.dc.html` and `Practice.dc.html`.
 **Done when:** both match their mockups with fixture data and tests pass.
 
-- [ ] Streak: hero (current, best), at-risk banner, month calendar (practiced, freeze used, today, missed, future) with previous/next month, freeze card
-- [ ] Practice hub: flashcards card (due, new, learning, review counts) → `/review`; drills, tutor, speaking and import shown as "Coming later"
-- [ ] Tests: calendar cell states from T-11 output; hub counts
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Streak: hero (current, best), at-risk banner, month calendar (practiced, freeze used, today, missed, future) with previous/next month, freeze card
+- [x] Practice hub: flashcards card (due, new, learning, review counts) → `/review`; drills, tutor, speaking and import shown as "Coming later"
+- [x] Tests: calendar cell states from T-11 output; hub counts
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-20 · Me / settings screen
@@ -1286,6 +1286,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
 | G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
 | G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
+| G-43 | Streak and Practice follow the mockups except: the "~10 min" chip on the flashcards card is not rendered (no rule for estimating minutes), the freeze card uses `text-freeze-ink` (`#1f6fa8`) instead of the mockup's darker `#0E3F63`/`#24506F` (no token), and future calendar days use `text-faint` (about 3.3:1, inactive cells) | Small visual and contrast differences from the mockups | T-19, T-28 |
 
 ---
 
@@ -1345,3 +1346,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-75 · 2026-10-18 · testing · lead` — **A T-07 test asserted that the repo had no texts yet, so the first T-14 chapter broke `npm run check` on all eight content branches at once. The brief also showed lemma `de` for indefinite *des* while the T-08 lexicon uses `un`.** → Tests use fixtures or a tree built with `createContent`, never the absence of real content. Indefinite *des* → lemma `un` (brief corrected). Before a fan-out, grep for tests that pin the current state of the folders being filled.
 - `L-76 · 2026-10-18 · content · T-14` — **Under the strict Stage 1 ceiling, early chapters can't use possessives, questions, numbers, *mais* or stressed pronouns, so agents wrote statement-only dialogues and name-heavy texts; several also found the brief's lemma examples drifted from the T-08 lexicon. `content:check` caught neither typography slips (a space after `l'`) nor lemma drift.** → Chapter agents run `npm run lexicon:coverage` and check function words against `content/lexicon/forms-*.json` before picking lemmas; B-22 adds the typography checks; G-57 holds the ceiling question.
 - `L-77 · 2026-10-18 · orchestration · lead` — **Running ~15 agents at once hit the session's rate limit: six agents stopped mid-task at the same moment (work saved), and the load made full `npm run check` runs slow and flaky.** → Keep a wave to about 6–8 concurrent agents; resume stopped agents with SendMessage after the reset instead of starting new ones; let CI run the full suite and use lint/typecheck/targeted tests locally while many agents are running.
+- `L-57 · 2026-10-18 · client · T-19` — **`@testing-library/user-event` is not installed, and the calendar's cells have no text role.** → Tests click with `fireEvent` from `@testing-library/react`; calendar cells are `role="img"` with an `aria-label` such as `October 11, freeze used`, which is what tests query.
+- `L-58 · 2026-10-18 · streak · T-19` — **`StreakResponse.calendar` has no entries for days before the first active day, today (until practiced) or the future, so a client that treats "no entry" as "missed" paints grey cells on days the user never owed.** → `features/streak/calendar.ts` `buildMonth` decides: server status wins, else today, else future, else `none` (no status). A practiced today keeps the practiced fill and adds the today ring. The previous-month button stops at the first calendar month.
+- `L-59 · 2026-10-18 · testing · T-19` — **`getByText('12')` on the Streak page matched both the hero number and the calendar's day 12.** → Query the hero through its label (`getByText('day streak').previousElementSibling`) and build test data with `computeStreak` and `addDays`, not the mockup's numbers (L-20).
