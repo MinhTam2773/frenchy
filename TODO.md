@@ -442,23 +442,30 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-06 | T-21, T-22, T-23 | 3 |
 
-**Status:** in progress · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
+**Status:** in review · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
 **Owns:** `src/worker/auth/**`, `src/worker/middleware/session.ts`, `src/worker/routes/auth.ts`, auth migrations in `migrations/`
 **Goal:** Email and Google sign-in with sessions stored in D1, and a `requireUser` middleware every API route uses.
 **Done when:** the workers-pool tests cover sign up, sign in, session read, a protected route (401 vs 200) and sign out.
 
-- [ ] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
-- [ ] Create the auth instance per request from `env`; mount at `/api/auth/*`
-- [ ] Email + password (minimum length, rate-limited attempts)
-- [ ] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
-- [ ] Generate the Better Auth tables → Drizzle schema → migration; apply locally
-- [ ] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
-- [ ] Create the `profiles` row on first sign-in (onboarding fills it)
-- [ ] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
-- [ ] Tests (workers pool) for the flows in "Done when"
+- [x] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
+- [x] Create the auth instance per request from `env`; mount at `/api/auth/*`
+- [x] Email + password (minimum length, rate-limited attempts)
+- [x] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
+- [x] Generate the Better Auth tables → Drizzle schema → migration; apply locally
+- [x] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
+- [x] Create the `profiles` row on first sign-in (onboarding fills it)
+- [x] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
+- [x] Tests (workers pool) for the flows in "Done when"
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+Notes for T-21 / T-22 / T-23:
+- Go: Better Auth 1.7.10 runs in workerd with D1 through the Drizzle adapter (sign-up, sign-in, session, sign-out, rate limit and Google start all tested). Caveat G-35 (password hashing CPU).
+- `requireUser` (`src/worker/middleware/session.ts`) with `Hono<UserEnv>`: sets `c.var.user` (Better Auth user: `id`, `email`, `name`, `image`, `emailVerified`, `createdAt`, `updatedAt`) and `c.var.session`; 401 `{ error: { code: 'unauthorized' } }` otherwise. Use `scopedDb(createDb(c.env.DB), c.var.user.id)`.
+- `GET /api/auth/config` → `AuthConfig` `{ google }` (`@shared/schemas`). Client: `better-auth/react` `createAuthClient()` with the default `/api/auth` base path. Cookie `better-auth.session_token` (`__Secure-` prefixed over https).
+- The profile row is created on every session create if missing (`onConflictDoNothing`), so `GET /api/profile` always finds one. Time zone defaults to Cloudflare's `request.cf.timezone` or `UTC`; T-21 onboarding should PATCH the device's `Intl.DateTimeFormat().resolvedOptions().timeZone`.
+- QUESTION: password hashing (scrypt) needs more CPU than the Workers Free plan's 10 ms per request (G-35). Default kept: Better Auth's scrypt, which assumes Workers Paid. Alternative: a custom `password.hash/verify` with cheaper parameters (weaker against offline cracking). Decide before T-30.
 
 #### T-14 · Stage 1 content generation (fan-out per chapter)
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
@@ -1295,6 +1302,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-38 | `useActiveMinutes` (`src/client/lib/activity`) is mounted only by the Today page, so time spent in the reader, the review or on other tabs is never pinged and `todayMinutes` undercounts. The base mock's ping always answers 8 minutes | The daily-minutes bar is wrong for a learner who reads or reviews more than they sit on Today | T-26 (mount it once in `TabLayout` and `FullScreenLayout`, which T-16 doesn't own) |
 | G-41 | The review session is a single pass: a card graded Again or Hard (due again in 1 to 10 minutes by FSRS's learning steps) is not shown again in the same session, it comes back in the next one. The "1m" on the Again button is true (that is its due time) but the learner won't see it until they start another session. The last grade is also held until the next grade or the end of the session (G-20), so closing the tab on the last card loses it (the card just stays due) | Learning cards get less repetition in one sitting than in Anki-style apps | T-18 follow-up (re-queue cards whose next due is within the session, then the progress count and the "cards" stat need a rule; decide with the user) |
 | G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-15, T-26 (share one helper once both screens exist) |
+| G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
+| G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
 
 ---
 
@@ -1366,3 +1375,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-54 · 2026-10-18 · testing · T-18` — **A stateful MSW handler (the review mock removes graded cards from `/api/cards/due`) leaked between tests: leaving the review screen posts the held grade, and that POST lands after the next test's `beforeEach` reset. The shared `afterEach` that unmounts runs after a file's own `afterEach`, so the file can't reset first.** → In a test file with a stateful feature handler, call `cleanup()` in your own `afterEach`, wait a few ms for the unmount-time POST, then reset the mock. Export a `reset…Mock()` from the handler file (the shared setup only resets `base.ts`).
 - `L-55 · 2026-10-18 · srs · T-18` — **The grade buttons are previewed when the answer is revealed, but the review is graded a few seconds later; ts-fsrs seeds fuzz from the review time, so previewing at one instant and posting another can show "8d" and store 7d (G-29).** → The screen previews at the reveal time and posts that same instant as `ReviewInput.reviewedAt` (the tap time is only used for `durationMs`). T-22 must grade at `reviewedAt` (and reject or clamp one before the card's `lastReview`: ts-fsrs throws `Invalid delta_t`) and accept a time a few seconds in the past; the review mock does, and tests assert the labels come from `previewIntervals(card, now)` with `Date` frozen, never from the mockup.
 - `L-56 · 2026-10-18 · testing · T-18` — **`handlers/index.ts` puts feature files ahead of `base.ts` in file-name order, so a feature handler for a shared path (`/api/streak`) would shadow `handlers/streak.ts` from another task for every test. An MSW resolver that returns `undefined` falls through to the next matching handler.** → A feature handler that only changes a path in some state returns nothing otherwise (`review.ts` answers `/api/streak` only after a review was graded). Don't override a shared path unconditionally from a feature file; use `server.use` in the test instead.
+- `L-45 · 2026-10-18 · auth · T-13` — **Without `baseURL`, Better Auth decides at startup whether cookies are Secure, can't see the request's https, and so set the session cookie without `Secure`. The cookie name also depends on it (`__Secure-better-auth.session_token` over https, `better-auth.session_token` over http), so an instance built for an https request can't read a cookie set over http, and the other way round.** → `createAuth(env, request)` always gets the request and uses `BETTER_AUTH_URL` or the request's origin as `baseURL`, in `requireUser` too. Auth tests use https URLs everywhere, also for `app.request()` on a test app.
+- `L-46 · 2026-10-18 · auth · T-13` — **Better Auth's default rate-limit storage is memory, which resets with every per-request instance on Workers. It reads the client IP from `x-forwarded-for` by default; with no IP, every client shares one bucket. Built-in rule: `/sign-in*` and `/sign-up*` allow 3 per 10 s per IP + path.** → Use `storage: 'database'` (`rate_limit` table), `ipAddressHeaders: ['cf-connecting-ip']` and explicit `customRules`. Worker tests send a fresh `cf-connecting-ip` per test, or one test's attempts throttle the next.
+- `L-47 · 2026-10-18 · tooling · T-13` — **The Better Auth CLI is now the `auth` npm package (`npx auth@<version> generate --config <file>`). It needs a config file that exports `auth`, and writes Drizzle tables with relations. Adding tables also broke T-06's `db.test.ts`, which lists every table and index. The scratchpad directory is shared by parallel agents: my `check.log` held another worktree's test run.** → Generate the auth schema with a throwaway config and don't add the CLI as a dependency. Update the migration test lists when you add a migration. Give scratch files a task-specific name (`t13-test.log`).
