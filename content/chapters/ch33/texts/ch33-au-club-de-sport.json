@@ -246,37 +246,37 @@
           "tokens": [
             {
               "t": "Qu'",
-              "lemma": "que",
-              "pos": "pronoun",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "what",
-              "form": "question word · que becomes qu' before a vowel · qu'est-ce que = what"
+              "form": "what (asking about a thing)"
             },
             {
               "t": "est",
-              "lemma": "être",
-              "pos": "verb",
-              "gloss": "(question marker)",
-              "form": "il / elle · present · irregular · est-ce que = question marker, not translated"
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "what (asking about a thing)"
             },
             {
               "t": "-"
             },
             {
               "t": "ce",
-              "lemma": "ce",
-              "pos": "pronoun",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "it",
-              "form": "part of est-ce que"
+              "form": "what (asking about a thing)"
             },
             {
               "t": " "
             },
             {
               "t": "que",
-              "lemma": "que",
-              "pos": "conjunction",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "that",
-              "form": "part of est-ce que"
+              "form": "what (asking about a thing)"
             },
             {
               "t": " "
@@ -690,19 +690,15 @@
               "gloss": "well"
             },
             {
-              "t": ", "
-            },
+              "t": "."
+            }
+          ],
+          "en": "Fairly well."
+        },
+        {
+          "tokens": [
             {
-              "t": "mais",
-              "lemma": "mais",
-              "pos": "conjunction",
-              "gloss": "but"
-            },
-            {
-              "t": " "
-            },
-            {
-              "t": "je",
+              "t": "Je",
               "lemma": "je",
               "pos": "pronoun",
               "gloss": "I",
@@ -762,10 +758,49 @@
               "isNew": true
             },
             {
+              "t": ", "
+            },
+            {
+              "t": "alors",
+              "lemma": "alors",
+              "pos": "adverb",
+              "gloss": "so"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "je",
+              "lemma": "je",
+              "pos": "pronoun",
+              "gloss": "I",
+              "form": "subject pronoun · 1st person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travaille",
+              "lemma": "travailler",
+              "pos": "verb",
+              "gloss": "work",
+              "form": "je · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beaucoup",
+              "lemma": "beaucoup",
+              "pos": "adverb",
+              "gloss": "a lot",
+              "form": "travailler beaucoup = to work hard"
+            },
+            {
               "t": " !"
             }
           ],
-          "en": "Fairly well, but I'm short for basketball!"
+          "en": "I'm short for basketball, so I work hard!"
         }
       ]
     },
@@ -776,30 +811,30 @@
           "tokens": [
             {
               "t": "Il",
-              "lemma": "il",
-              "pos": "pronoun",
-              "gloss": "there",
-              "form": "il y a = there is, there are"
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "(it)",
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "part of il y a"
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is, there are"
+              "form": "there is, there are"
             },
             {
               "t": " "
@@ -874,30 +909,30 @@
             },
             {
               "t": "il",
-              "lemma": "il",
-              "pos": "pronoun",
-              "gloss": "there",
-              "form": "il y a = there is, there are"
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "(it)",
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "part of il y a"
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is, there are"
+              "form": "there is, there are"
             },
             {
               "t": " "
@@ -1008,20 +1043,20 @@
           "tokens": [
             {
               "t": "Pourquoi",
-              "lemma": "pourquoi",
-              "pos": "adverb",
+              "lemma": "pourquoi pas",
+              "pos": "phrase",
               "gloss": "why",
-              "form": "pourquoi pas ! = why not!"
+              "form": "why not"
             },
             {
               "t": " "
             },
             {
               "t": "pas",
-              "lemma": "pas",
-              "pos": "adverb",
+              "lemma": "pourquoi pas",
+              "pos": "phrase",
               "gloss": "not",
-              "form": "pourquoi pas ! = why not!"
+              "form": "why not"
             },
             {
               "t": " !"
@@ -1135,18 +1170,17 @@
           "tokens": [
             {
               "t": "D'",
-              "lemma": "de",
-              "pos": "preposition",
+              "lemma": "d'accord",
+              "pos": "phrase",
               "gloss": "in",
-              "form": "d'accord = OK"
+              "form": "OK, agreed"
             },
             {
               "t": "accord",
-              "lemma": "accord",
-              "pos": "noun",
-              "gender": "m",
+              "lemma": "d'accord",
+              "pos": "phrase",
               "gloss": "agreement",
-              "form": "masculine singular · d'accord = OK"
+              "form": "OK, agreed"
             },
             {
               "t": ", "
@@ -1155,7 +1189,7 @@
               "t": "à",
               "lemma": "à",
               "pos": "preposition",
-              "gloss": "see you",
+              "gloss": "until",
               "form": "à + a day = see you on …"
             },
             {

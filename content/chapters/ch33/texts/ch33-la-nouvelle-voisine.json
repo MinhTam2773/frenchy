@@ -578,19 +578,15 @@
               "gloss": "yes"
             },
             {
-              "t": ", "
-            },
+              "t": "."
+            }
+          ],
+          "en": "Yes."
+        },
+        {
+          "tokens": [
             {
-              "t": "mais",
-              "lemma": "mais",
-              "pos": "conjunction",
-              "gloss": "but"
-            },
-            {
-              "t": " "
-            },
-            {
-              "t": "je",
+              "t": "Je",
               "lemma": "je",
               "pos": "pronoun",
               "gloss": "I",
@@ -653,7 +649,7 @@
               "t": " !"
             }
           ],
-          "en": "Yes, but I don't play in the evening!"
+          "en": "I don't play in the evening!"
         }
       ]
     },
@@ -664,31 +660,30 @@
           "tokens": [
             {
               "t": "Pas",
-              "lemma": "pas",
-              "pos": "adverb",
+              "lemma": "pas de problème",
+              "pos": "phrase",
               "gloss": "no",
-              "form": "pas de … = no …"
+              "form": "no problem"
             },
             {
               "t": " "
             },
             {
               "t": "de",
-              "lemma": "de",
-              "pos": "article",
-              "gloss": "(not translated)",
-              "form": "after pas, un / une / des become de"
+              "lemma": "pas de problème",
+              "pos": "phrase",
+              "gloss": "of",
+              "form": "no problem"
             },
             {
               "t": " "
             },
             {
               "t": "problème",
-              "lemma": "problème",
-              "pos": "noun",
-              "gender": "m",
+              "lemma": "pas de problème",
+              "pos": "phrase",
               "gloss": "problem",
-              "form": "masculine singular · masculine despite -e",
+              "form": "no problem",
               "isNew": true
             },
             {
@@ -914,30 +909,30 @@
           "tokens": [
             {
               "t": "Il",
-              "lemma": "il",
-              "pos": "pronoun",
-              "gloss": "there",
-              "form": "il y a = there is, there are"
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "(it)",
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "part of il y a"
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is, there are"
+              "form": "there is, there are"
             },
             {
               "t": " "
@@ -1076,22 +1071,20 @@
             },
             {
               "t": "bonne",
-              "lemma": "bon",
-              "pos": "adjective",
-              "gender": "f",
-              "gloss": "good, nice",
-              "form": "feminine singular · masculine: bon"
+              "lemma": "bonne journée",
+              "pos": "phrase",
+              "gloss": "good",
+              "form": "have a nice day"
             },
             {
               "t": " "
             },
             {
               "t": "journée",
-              "lemma": "journée",
-              "pos": "noun",
-              "gender": "f",
+              "lemma": "bonne journée",
+              "pos": "phrase",
               "gloss": "day",
-              "form": "feminine singular · bonne journée = have a nice day"
+              "form": "have a nice day"
             },
             {
               "t": " !"
@@ -1108,25 +1101,23 @@
           "tokens": [
             {
               "t": "Bonne",
-              "lemma": "bon",
-              "pos": "adjective",
-              "gender": "f",
-              "gloss": "good, nice",
-              "form": "feminine singular · masculine: bon"
+              "lemma": "bonne journée",
+              "pos": "phrase",
+              "gloss": "good",
+              "form": "have a nice day"
             },
             {
               "t": " "
             },
             {
               "t": "journée",
-              "lemma": "journée",
-              "pos": "noun",
-              "gender": "f",
+              "lemma": "bonne journée",
+              "pos": "phrase",
               "gloss": "day",
-              "form": "feminine singular · bonne journée = have a nice day"
+              "form": "have a nice day"
             },
             {
-              "t": ", "
+              "t": " "
             },
             {
               "t": "et",
@@ -1147,12 +1138,21 @@
               "t": " !"
             }
           ],
-          "en": "Have a nice day, and welcome!"
+          "en": "Have a nice day and welcome!"
         }
       ]
     }
   ],
-  "newWords": ["voisin", "étage", "gauche", "professeur", "jouer", "problème", "enfant", "école"],
+  "newWords": [
+    "voisin",
+    "étage",
+    "gauche",
+    "professeur",
+    "jouer",
+    "pas de problème",
+    "enfant",
+    "école"
+  ],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",

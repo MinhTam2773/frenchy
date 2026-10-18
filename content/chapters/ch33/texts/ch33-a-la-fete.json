@@ -287,13 +287,13 @@
               "gloss": "Nantes (a city in western France)"
             },
             {
-              "t": ", "
+              "t": " "
             },
             {
-              "t": "mais",
-              "lemma": "mais",
+              "t": "et",
+              "lemma": "et",
               "pos": "conjunction",
-              "gloss": "but"
+              "gloss": "and"
             },
             {
               "t": " "
@@ -335,7 +335,7 @@
               "t": "."
             }
           ],
-          "en": "I'm from Nantes, but I live in Lille."
+          "en": "I'm from Nantes and I live in Lille."
         },
         {
           "tokens": [
@@ -565,37 +565,37 @@
             },
             {
               "t": "qu'",
-              "lemma": "que",
-              "pos": "pronoun",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "what",
-              "form": "question word · que becomes qu' before a vowel · qu'est-ce que = what"
+              "form": "what (asking about a thing)"
             },
             {
               "t": "est",
-              "lemma": "être",
-              "pos": "verb",
-              "gloss": "(question marker)",
-              "form": "il / elle · present · irregular · est-ce que = question marker, not translated"
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "what (asking about a thing)"
             },
             {
               "t": "-"
             },
             {
               "t": "ce",
-              "lemma": "ce",
-              "pos": "pronoun",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "it",
-              "form": "part of est-ce que"
+              "form": "what (asking about a thing)"
             },
             {
               "t": " "
             },
             {
               "t": "que",
-              "lemma": "que",
-              "pos": "conjunction",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "that",
-              "form": "part of est-ce que"
+              "form": "what (asking about a thing)"
             },
             {
               "t": " "
@@ -936,30 +936,30 @@
           "tokens": [
             {
               "t": "Il",
-              "lemma": "il",
-              "pos": "pronoun",
-              "gloss": "there",
-              "form": "il y a = there is, there are"
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "(it)",
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "y",
-              "lemma": "y",
-              "pos": "pronoun",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "there",
-              "form": "part of il y a"
+              "form": "there is, there are"
             },
             {
               "t": " "
             },
             {
               "t": "a",
-              "lemma": "avoir",
-              "pos": "verb",
+              "lemma": "il y a",
+              "pos": "phrase",
               "gloss": "is, are",
-              "form": "il / elle · present · irregular · il y a = there is, there are"
+              "form": "there is, there are"
             },
             {
               "t": " "
@@ -1019,20 +1019,20 @@
           "tokens": [
             {
               "t": "Avec",
-              "lemma": "avec",
-              "pos": "preposition",
-              "gloss": "with"
+              "lemma": "avec plaisir",
+              "pos": "phrase",
+              "gloss": "with",
+              "form": "with pleasure, I'd love to"
             },
             {
               "t": " "
             },
             {
               "t": "plaisir",
-              "lemma": "plaisir",
-              "pos": "noun",
-              "gender": "m",
+              "lemma": "avec plaisir",
+              "pos": "phrase",
               "gloss": "pleasure",
-              "form": "masculine singular · avec plaisir = I'd love to",
+              "form": "with pleasure, I'd love to",
               "isNew": true
             },
             {
@@ -1098,7 +1098,16 @@
       ]
     }
   ],
-  "newWords": ["appeler", "enchanté", "ici", "étudiant", "vie", "cuisinier", "passer", "plaisir"],
+  "newWords": [
+    "appeler",
+    "enchanté",
+    "ici",
+    "étudiant",
+    "vie",
+    "cuisinier",
+    "passer",
+    "avec plaisir"
+  ],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",

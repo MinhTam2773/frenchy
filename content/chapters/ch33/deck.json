@@ -74,8 +74,8 @@
     {
       "id": "ch33-je-suis-de-nantes",
       "type": "meaning_sentence",
-      "front": "I'm from Nantes, but I live in Lille.",
-      "back": "Je suis de Nantes, mais j'habite à Lille.",
+      "front": "I'm from Nantes and I live in Lille.",
+      "back": "Je suis de Nantes et j'habite à Lille.",
       "note": "de + a city = from, à + a city = in.",
       "textId": "ch33-a-la-fete"
     },

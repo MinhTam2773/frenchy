@@ -421,37 +421,37 @@
             },
             {
               "t": "qu'",
-              "lemma": "que",
-              "pos": "pronoun",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "what",
-              "form": "question word · que becomes qu' before a vowel · qu'est-ce que = what"
+              "form": "what (asking about a thing)"
             },
             {
               "t": "est",
-              "lemma": "être",
-              "pos": "verb",
-              "gloss": "(question marker)",
-              "form": "il / elle · present · irregular · est-ce que = question marker, not translated"
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "what (asking about a thing)"
             },
             {
               "t": "-"
             },
             {
               "t": "ce",
-              "lemma": "ce",
-              "pos": "pronoun",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "it",
-              "form": "part of est-ce que"
+              "form": "what (asking about a thing)"
             },
             {
               "t": " "
             },
             {
               "t": "que",
-              "lemma": "que",
-              "pos": "conjunction",
+              "lemma": "qu'est-ce que",
+              "pos": "phrase",
               "gloss": "that",
-              "form": "part of est-ce que"
+              "form": "what (asking about a thing)"
             },
             {
               "t": " "
@@ -878,21 +878,20 @@
           "tokens": [
             {
               "t": "Un",
-              "lemma": "un",
-              "pos": "article",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "a",
-              "gender": "m",
-              "form": "un peu = a little"
+              "form": "a little"
             },
             {
               "t": " "
             },
             {
               "t": "peu",
-              "lemma": "peu",
-              "pos": "adverb",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "little",
-              "form": "un peu = a little"
+              "form": "a little"
             },
             {
               "t": "."
@@ -932,7 +931,7 @@
               "isNew": true
             },
             {
-              "t": ", "
+              "t": " "
             },
             {
               "t": "et",
@@ -993,7 +992,7 @@
               "t": "."
             }
           ],
-          "en": "I'm a nurse, and I have American patients."
+          "en": "I'm a nurse and I have American patients."
         }
       ]
     },
@@ -1074,18 +1073,17 @@
           "tokens": [
             {
               "t": "D'",
-              "lemma": "de",
-              "pos": "preposition",
+              "lemma": "d'accord",
+              "pos": "phrase",
               "gloss": "in",
-              "form": "d'accord = OK"
+              "form": "OK, agreed"
             },
             {
               "t": "accord",
-              "lemma": "accord",
-              "pos": "noun",
-              "gender": "m",
+              "lemma": "d'accord",
+              "pos": "phrase",
               "gloss": "agreement",
-              "form": "masculine singular · d'accord = OK"
+              "form": "OK, agreed"
             },
             {
               "t": " !"
@@ -1096,16 +1094,7 @@
         {
           "tokens": [
             {
-              "t": "Mais",
-              "lemma": "mais",
-              "pos": "conjunction",
-              "gloss": "but"
-            },
-            {
-              "t": " "
-            },
-            {
-              "t": "après",
+              "t": "Après",
               "lemma": "après",
               "pos": "adverb",
               "gloss": "afterwards"
@@ -1145,7 +1134,7 @@
               "t": " !"
             }
           ],
-          "en": "But afterwards, we speak French!"
+          "en": "Afterwards, we speak French!"
         }
       ]
     }

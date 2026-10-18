@@ -225,7 +225,7 @@
             {
               "t": "Voici",
               "lemma": "voici",
-              "pos": "adverb",
+              "pos": "preposition",
               "gloss": "this is, here is",
               "form": "voici + a person = this is"
             },
@@ -673,30 +673,30 @@
           "tokens": [
             {
               "t": "Est",
-              "lemma": "être",
-              "pos": "verb",
-              "gloss": "(question marker)",
-              "form": "il / elle · present · irregular · est-ce que = question marker, not translated"
+              "lemma": "est-ce que",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "turns a statement into a yes/no question"
             },
             {
               "t": "-"
             },
             {
               "t": "ce",
-              "lemma": "ce",
-              "pos": "pronoun",
+              "lemma": "est-ce que",
+              "pos": "phrase",
               "gloss": "it",
-              "form": "part of est-ce que"
+              "form": "turns a statement into a yes/no question"
             },
             {
               "t": " "
             },
             {
               "t": "que",
-              "lemma": "que",
-              "pos": "conjunction",
+              "lemma": "est-ce que",
+              "pos": "phrase",
               "gloss": "that",
-              "form": "part of est-ce que"
+              "form": "turns a statement into a yes/no question"
             },
             {
               "t": " "
@@ -858,21 +858,20 @@
             },
             {
               "t": "un",
-              "lemma": "un",
-              "pos": "article",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "a",
-              "gender": "m",
-              "form": "un peu = a little"
+              "form": "a little"
             },
             {
               "t": " "
             },
             {
               "t": "peu",
-              "lemma": "peu",
-              "pos": "adverb",
+              "lemma": "un peu",
+              "pos": "phrase",
               "gloss": "little",
-              "form": "un peu = a little"
+              "form": "a little"
             },
             {
               "t": " "
@@ -1061,20 +1060,20 @@
             },
             {
               "t": "avec",
-              "lemma": "avec",
-              "pos": "preposition",
-              "gloss": "with"
+              "lemma": "avec plaisir",
+              "pos": "phrase",
+              "gloss": "with",
+              "form": "with pleasure, I'd love to"
             },
             {
               "t": " "
             },
             {
               "t": "plaisir",
-              "lemma": "plaisir",
-              "pos": "noun",
-              "gender": "m",
+              "lemma": "avec plaisir",
+              "pos": "phrase",
               "gloss": "pleasure",
-              "form": "masculine singular · avec plaisir = I'd love to"
+              "form": "with pleasure, I'd love to"
             },
             {
               "t": "."
@@ -1086,19 +1085,20 @@
           "tokens": [
             {
               "t": "Merci",
-              "lemma": "merci",
-              "pos": "interjection",
-              "gloss": "thank you"
+              "lemma": "merci beaucoup",
+              "pos": "phrase",
+              "gloss": "thank you",
+              "form": "thank you very much"
             },
             {
               "t": " "
             },
             {
               "t": "beaucoup",
-              "lemma": "beaucoup",
-              "pos": "adverb",
+              "lemma": "merci beaucoup",
+              "pos": "phrase",
               "gloss": "very much",
-              "form": "merci beaucoup = thank you very much"
+              "form": "thank you very much"
             },
             {
               "t": " !"
