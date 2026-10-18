@@ -493,7 +493,7 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-04, T-08 | T-25 | 3 |
 
-**Status:** blocked (waiting on T-08) · **Claimed by:** — · **Branch:** `task/T-15-tokenizer`
+**Status:** in progress · **Claimed by:** T-15 subagent (lead session) · **Branch:** `task/T-15-tokenizer`
 **Owns:** `src/shared/text/**`
 **Goal:** Turn any French text into tappable tokens and sentences, and give each word the best lemma and form info available.
 **Done when:** a table-driven test of tricky inputs passes (elision, hyphenated inversion, French punctuation, compounds, abbreviations).
