@@ -90,17 +90,22 @@ describe('allowedGrammar', () => {
 });
 
 describe('texts, notes and decks', () => {
-  it('works with no texts yet', () => {
-    expect(getText('ch10-au-cafe')).toBeUndefined();
-    expect(getChapterTexts('ch10')).toEqual([]);
-    expect(getNote('ch10')).toBeUndefined();
-    expect(getDeck('ch10')).toBeUndefined();
-    expect(Object.keys(contentFiles).filter((file) => file.includes('/texts/'))).toEqual([]);
+  // Course and grammar only, so these tests hold however much real content T-14 has added (L-75).
+  const noChapters = Object.fromEntries(
+    Object.entries(contentFiles).filter(([file]) => !file.startsWith('chapters/')),
+  );
+
+  it('works with no chapter content', () => {
+    const content = createContent(noChapters);
+    expect(content.getText('ch10-au-cafe')).toBeUndefined();
+    expect(content.getChapterTexts('ch10')).toEqual([]);
+    expect(content.getNote('ch10')).toBeUndefined();
+    expect(content.getDeck('ch10')).toBeUndefined();
   });
 
   it('finds content in the layout T-14 writes', () => {
     const content = createContent({
-      ...contentFiles,
+      ...noChapters,
       'chapters/ch10/texts/ch10-au-cafe.json': cafeDialogueText,
       'chapters/ch10/note.json': ch10Note,
       'chapters/ch10/deck.json': ch10Deck,
@@ -113,9 +118,23 @@ describe('texts, notes and decks', () => {
     expect(content.getDeck('ch10')?.cards).toHaveLength(3);
   });
 
+  it('serves the real content tree, whatever it holds', () => {
+    const content = createContent(contentFiles);
+    for (const chapter of getCourse().stages.flatMap((stage) => stage.chapters)) {
+      const texts = getChapterTexts(chapter.id);
+      expect(texts).toEqual(content.getChapterTexts(chapter.id));
+      for (const text of texts) {
+        expect(text.chapterId).toBe(chapter.id);
+        expect(getText(text.id)).toEqual(text);
+      }
+      expect(getNote(chapter.id)).toEqual(content.getNote(chapter.id));
+      expect(getDeck(chapter.id)).toEqual(content.getDeck(chapter.id));
+    }
+  });
+
   it('refuses a text that breaks the schema', () => {
     const content = createContent({
-      ...contentFiles,
+      ...noChapters,
       'chapters/ch10/texts/ch10-bad.json': { id: 'ch10-bad' },
     });
     expect(() => content.getText('ch10-bad')).toThrow();

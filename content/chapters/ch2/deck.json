@@ -1,0 +1,227 @@
+{
+  "chapterId": "ch2",
+  "cards": [
+    {
+      "id": "ch2-voici-la-table",
+      "type": "sentence_meaning",
+      "front": "Voici la table du dîner.",
+      "back": "Here is the dinner table.",
+      "textId": "ch2-la-table-du-diner"
+    },
+    {
+      "id": "ch2-la-table-mise",
+      "type": "sentence_meaning",
+      "front": "Voici une assiette, une fourchette, un couteau et une serviette.",
+      "back": "Here's a plate, a fork, a knife and a napkin.",
+      "note": "-ette is feminine (une assiette, une fourchette); -eau is masculine (un couteau).",
+      "textId": "ch2-la-table-du-diner"
+    },
+    {
+      "id": "ch2-voila-les-chaussures",
+      "type": "sentence_meaning",
+      "front": "Voilà les chaussures.",
+      "back": "Here are the shoes.",
+      "textId": "ch2-la-valise"
+    },
+    {
+      "id": "ch2-voila-le-billet",
+      "type": "sentence_meaning",
+      "front": "Ah, voilà le billet !",
+      "back": "Ah, here's the ticket!",
+      "textId": "ch2-la-valise"
+    },
+    {
+      "id": "ch2-la-boulangerie",
+      "type": "sentence_meaning",
+      "front": "Ici, la boulangerie : du pain, des baguettes et des croissants.",
+      "back": "Here, the bakery: bread, baguettes and croissants.",
+      "note": "Shop names in -erie are feminine.",
+      "textId": "ch2-la-rue-du-marche"
+    },
+    {
+      "id": "ch2-la-librairie",
+      "type": "sentence_meaning",
+      "front": "Voilà aussi la pharmacie et la librairie.",
+      "back": "There's also the pharmacy and the bookshop.",
+      "note": "Une librairie is a bookshop; a library is une bibliothèque.",
+      "textId": "ch2-la-rue-du-marche"
+    },
+    {
+      "id": "ch2-le-lundi",
+      "type": "sentence_meaning",
+      "front": "Le lundi : la natation et la musculation.",
+      "back": "On Mondays: swimming and weight training.",
+      "note": "le + a day = every week on that day.",
+      "textId": "ch2-le-programme-du-club"
+    },
+    {
+      "id": "ch2-le-repos",
+      "type": "sentence_meaning",
+      "front": "Et le dimanche : le repos !",
+      "back": "And on Sundays: rest!",
+      "textId": "ch2-le-programme-du-club"
+    },
+    {
+      "id": "ch2-au-menu",
+      "type": "meaning_sentence",
+      "front": "On the menu: a salad, an omelette and some cheese.",
+      "back": "Au menu : une salade, une omelette et du fromage.",
+      "textId": "ch2-la-table-du-diner"
+    },
+    {
+      "id": "ch2-gateau-au-chocolat",
+      "type": "meaning_sentence",
+      "front": "And here's dessert: a chocolate cake!",
+      "back": "Et voilà le dessert : un gâteau au chocolat !",
+      "textId": "ch2-la-table-du-diner"
+    },
+    {
+      "id": "ch2-manteau-chapeau",
+      "type": "meaning_sentence",
+      "front": "Here's the coat and the hat.",
+      "back": "Voici le manteau et le chapeau.",
+      "note": "-eau is a masculine ending.",
+      "textId": "ch2-la-valise"
+    },
+    {
+      "id": "ch2-les-vetements",
+      "type": "meaning_sentence",
+      "front": "Right, the clothes!",
+      "back": "Bon, les vêtements !",
+      "textId": "ch2-la-valise"
+    },
+    {
+      "id": "ch2-bon-voyage",
+      "type": "meaning_sentence",
+      "front": "Have a good trip, Hugo!",
+      "back": "Bon voyage, Hugo !",
+      "note": "voyage ends in -age, so it is masculine: bon voyage.",
+      "textId": "ch2-la-valise"
+    },
+    {
+      "id": "ch2-boucherie-fromagerie",
+      "type": "meaning_sentence",
+      "front": "Next, the butcher's and the cheese shop.",
+      "back": "Ensuite, la boucherie et la fromagerie.",
+      "textId": "ch2-la-rue-du-marche"
+    },
+    {
+      "id": "ch2-le-quartier",
+      "type": "meaning_sentence",
+      "front": "And there's the neighbourhood!",
+      "back": "Et voilà le quartier !",
+      "textId": "ch2-la-rue-du-marche"
+    },
+    {
+      "id": "ch2-patinage-cyclisme",
+      "type": "meaning_sentence",
+      "front": "On Fridays: skating and cycling.",
+      "back": "Le vendredi : le patinage et le cyclisme.",
+      "note": "-age and -isme are masculine endings.",
+      "textId": "ch2-le-programme-du-club"
+    },
+    {
+      "id": "ch2-randonnee-escalade",
+      "type": "meaning_sentence",
+      "front": "On Saturdays: hiking and climbing.",
+      "back": "Le samedi : la randonnée et l'escalade.",
+      "textId": "ch2-le-programme-du-club"
+    },
+    {
+      "id": "ch2-cloze-la-fourchette",
+      "type": "cloze",
+      "front": "Voici ___ fourchette.",
+      "back": "Voici la fourchette.",
+      "clozeAnswer": "la",
+      "hint": "the",
+      "note": "-ette is a feminine ending.",
+      "textId": "ch2-la-table-du-diner"
+    },
+    {
+      "id": "ch2-cloze-un-gateau",
+      "type": "cloze",
+      "front": "Et voilà le dessert : ___ gâteau au chocolat !",
+      "back": "Et voilà le dessert : un gâteau au chocolat !",
+      "clozeAnswer": "un",
+      "hint": "a",
+      "note": "-eau is a masculine ending.",
+      "textId": "ch2-la-table-du-diner"
+    },
+    {
+      "id": "ch2-cloze-du-fromage",
+      "type": "cloze",
+      "front": "Au menu : une salade et ___ fromage.",
+      "back": "Au menu : une salade et du fromage.",
+      "clozeAnswer": "du",
+      "hint": "some",
+      "note": "fromage ends in -age, so it is masculine: de + le becomes du."
+    },
+    {
+      "id": "ch2-cloze-une-ceinture",
+      "type": "cloze",
+      "front": "Voici ___ ceinture.",
+      "back": "Voici une ceinture.",
+      "clozeAnswer": "une",
+      "hint": "a",
+      "note": "-ure is a feminine ending."
+    },
+    {
+      "id": "ch2-cloze-le-billet",
+      "type": "cloze",
+      "front": "Et voilà ___ billet !",
+      "back": "Et voilà le billet !",
+      "clozeAnswer": "le",
+      "hint": "the",
+      "note": "-et is a masculine ending."
+    },
+    {
+      "id": "ch2-cloze-la-pharmacie",
+      "type": "cloze",
+      "front": "Voilà aussi ___ pharmacie.",
+      "back": "Voilà aussi la pharmacie.",
+      "clozeAnswer": "la",
+      "hint": "the",
+      "note": "Most nouns in -ie are feminine.",
+      "textId": "ch2-la-rue-du-marche"
+    },
+    {
+      "id": "ch2-cloze-un-garage",
+      "type": "cloze",
+      "front": "Au coin, ___ garage.",
+      "back": "Au coin, un garage.",
+      "clozeAnswer": "un",
+      "hint": "a",
+      "note": "-age is a masculine ending.",
+      "textId": "ch2-la-rue-du-marche"
+    },
+    {
+      "id": "ch2-cloze-la-natation",
+      "type": "cloze",
+      "front": "Le lundi : ___ natation.",
+      "back": "Le lundi : la natation.",
+      "clozeAnswer": "la",
+      "hint": "the",
+      "note": "-tion is a feminine ending.",
+      "textId": "ch2-le-programme-du-club"
+    },
+    {
+      "id": "ch2-cloze-le-cyclisme",
+      "type": "cloze",
+      "front": "Le vendredi : ___ cyclisme.",
+      "back": "Le vendredi : le cyclisme.",
+      "clozeAnswer": "le",
+      "hint": "the",
+      "note": "-isme is a masculine ending.",
+      "textId": "ch2-le-programme-du-club"
+    },
+    {
+      "id": "ch2-cloze-un-vetement",
+      "type": "cloze",
+      "front": "Voici ___ vêtement.",
+      "back": "Voici un vêtement.",
+      "clozeAnswer": "un",
+      "hint": "a",
+      "note": "-ment is a masculine ending."
+    }
+  ]
+}
