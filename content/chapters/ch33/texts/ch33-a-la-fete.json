@@ -43,10 +43,10 @@
             },
             {
               "t": "appelle",
-              "lemma": "s'appeler",
+              "lemma": "appeler",
               "pos": "verb",
               "gloss": "am called",
-              "form": "je · present · -er verb (l becomes ll) · je m'appelle = my name is",
+              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is",
               "isNew": true
             },
             {
@@ -85,10 +85,10 @@
             },
             {
               "t": "appelles",
-              "lemma": "s'appeler",
+              "lemma": "appeler",
               "pos": "verb",
               "gloss": "are called",
-              "form": "tu · present · -er verb (l becomes ll)",
+              "form": "tu · present · -er verb (l becomes ll) · s'appeler · tu t'appelles = your name is",
               "isNew": true
             },
             {
@@ -133,10 +133,10 @@
             },
             {
               "t": "appelle",
-              "lemma": "s'appeler",
+              "lemma": "appeler",
               "pos": "verb",
               "gloss": "am called",
-              "form": "je · present · -er verb (l becomes ll) · je m'appelle = my name is",
+              "form": "je · present · -er verb (l becomes ll) · s'appeler · je m'appelle = my name is",
               "isNew": true
             },
             {
@@ -1098,7 +1098,7 @@
       ]
     }
   ],
-  "newWords": ["s'appeler", "enchanté", "ici", "étudiant", "vie", "cuisinier", "passer", "plaisir"],
+  "newWords": ["appeler", "enchanté", "ici", "étudiant", "vie", "cuisinier", "passer", "plaisir"],
   "grammarTags": [
     "phrases.greetings",
     "phrases.introductions",
