@@ -598,19 +598,19 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-09 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings`
+**Status:** in review · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings`
 **Owns:** `src/client/features/settings/**`, `src/client/mocks/handlers/settings.ts`
 **Goal:** The MVP subset of `Settings.dc.html`.
 **Done when:** changing a setting persists through the (mocked) profile API and tests pass.
 
-- [ ] Profile row (name, sync status, streak chip)
-- [ ] Learning: book chapter (opens the chapter picker), daily goal, time zone (auto-detected, editable)
-- [ ] Audio: voice picker (from T-05 voices), speed 0.6–1.0, "Play words when tapped"
-- [ ] Sign out (mocked until T-26)
-- [ ] Not in MVP, so not rendered: daily reminder (B-12), AI providers (B-13)
-- [ ] Tests: settings round-trip through the profile mock
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Profile row (name, sync status, streak chip)
+- [x] Learning: book chapter (opens the chapter picker), daily goal, time zone (auto-detected, editable)
+- [x] Audio: voice picker (from T-05 voices), speed 0.6–1.0, "Play words when tapped"
+- [x] Sign out (mocked until T-26)
+- [x] Not in MVP, so not rendered: daily reminder (B-12), AI providers (B-13)
+- [x] Tests: settings round-trip through the profile mock
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 ### Wave 4
@@ -1264,6 +1264,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-34 | The PWA is verified only in Chromium (installability errors empty, offline shell works). Not checked: real iOS Safari (no `beforeinstallprompt`; the Share-sheet hint is the only install path, and iOS may clear storage after inactivity, see G-04) and Lighthouse (not installed here). Fonts still come from Google Fonts at runtime; the first offline visit before they were cached falls back to system fonts | Install and offline behavior on iPhone is unproven | T-30 (test on a real device), B-20 |
 | G-25 | G-01 checked (T-08): the lexicon uses Wiktionary via kaikki.org and Lexique 3.83, both CC BY-SA 4.0, so `content/lexicon/` is CC BY-SA 4.0 and needs visible attribution (texts in `docs/LICENSES.md`). Nothing in the app shows it yet | Shipping publicly without the credits screen breaks the license | B-21, T-29, T-30 |
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | T-26 (decide: keep precaching for offline taps and raise `maximumFileSizeToCacheInBytes`, or add `**/forms-*.js` / `**/lemmas-*.js` to `globIgnores` and runtime-cache them) |
+| G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
+| G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
 
 ---
 
@@ -1317,3 +1319,5 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-29 · 2026-10-18 · licensing · T-08` — **Decision: the lexicon is built from Wiktionary (kaikki.org's French extract, CC BY-SA 4.0 / GFDL, used under CC BY-SA 4.0) and Lexique 3.83 frequencies (CC BY-SA 4.0). hermitdave/FrequencyWords is also CC BY-SA 4.0 (only its code is MIT), but it ranks surface forms, not lemmas.** → `content/lexicon/` is CC BY-SA 4.0 data; the app code is not affected. Keep `docs/LICENSES.md` current and show its attribution texts in the app before any public release (B-21, G-25). Any new data source needs a compatible license recorded there first.
 - `L-30 · 2026-10-18 · content · T-08` — **The raw dictionaries are messier than they look. kaikki verb tables list only the bare past participle (*allé*); *allée/allés/allées* sit in the participle's own entry. Pronoun "forms" are other pronouns (*nous* lists *je* as its singular). Lexique lemmatizes *la, les, cet, ils* as their own lemmas, stores elided forms without the apostrophe (*l, s, qu*) and files the conjunction *que* under its pronouns. Wiktionary glosses for function words are usage notes ("Forms the partitive article.").** → The build skips a table form that is itself a lemma with the same part of speech, follows participles to their agreement forms, hand-writes elisions, contractions and a few glosses, and is checked by `lookup.test.ts`. T-24 extends `GLOSS_OVERRIDES` in `scripts/lexicon/build.ts` instead of editing shards by hand.
 - `L-31 · 2026-10-18 · tooling · T-08` — **A template-literal `import(\`../../../content/lexicon/forms-${shard}.json\`)` makes Vite emit one lazy chunk per shard and also works in Vitest (no fetch, so MSW is not involved), with no `import.meta.glob` typing in the worker tsconfig. Prettier reads only the root `.gitignore`, so a nested `scripts/lexicon/.gitignore` didn't stop `prettier .` from choking on the 584 MB raw dump. I first ran the scripts with Node's type stripping (`.ts` import extensions, own tsconfig), then switched to `tsx` when T-07's convention (L-27) landed in `main`.** → Lazy-load static JSON by template-literal `import()`, and make every shard id exist as a file (even `{}`) so no import can miss. Put ignore rules for big local files in the root `.gitignore`. Scripts use `tsx` and extensionless imports.
+- `L-60 · 2026-10-18 · testing · T-20` — **The MSW profile state in `mocks/handlers/base.ts` lives in page memory, so it survives in-app navigation but a full browser reload resets it to the fixture. In jsdom, `Intl.supportedValuesOf('timeZone')` works (Node 22) and `speechSynthesis` is absent, so voice tests must `vi.stubGlobal('speechSynthesis', ...)` and `SpeechSynthesisUtterance`.** → "Change a setting, reload, see it kept" is verified by re-rendering the app (`cleanup()` then `renderAt('/me')` in a test) or by navigating away and back in the browser, not by a real reload. A persisted mock (sessionStorage) was not added; do it in `mocks/handlers/settings.ts` only if someone needs it.
+- `L-61 · 2026-10-18 · client · T-20` — **`ProfilePatch` takes `dailyGoalMinutes` as the literal union of `DAILY_GOAL_OPTIONS`, so a callback typed `(minutes: number)` needs a cast to patch it.** → Type the picker callback as `(typeof DAILY_GOAL_OPTIONS)[number]` and map over the constant; no cast needed.
