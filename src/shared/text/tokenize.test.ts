@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { getChapterTexts, getCourse, routeChapters } from '../content';
 import { texts } from '../fixtures';
-import { GapToken, Sentence } from '../schemas';
+import { GapToken, Sentence, type Token } from '../schemas';
 import { tokenize } from './tokenize';
 
 const NBSP = ' ';
@@ -158,11 +159,21 @@ describe('tokenize', () => {
       annotated,
       ...texts.flatMap((t) => t.paragraphs.flatMap((p) => p.sentences)),
     ];
-    for (const { tokens } of sentences) {
-      const ours = tokenize(tokens.map((token) => token.t).join(''));
-      expect(ours.map(({ kind, t }) => ({ kind, t }))).toEqual(
-        tokens.map((token) => ({ kind: 'lemma' in token ? 'word' : 'gap', t: token.t })),
-      );
-    }
+    for (const { tokens } of sentences) expectSameSplit(tokens);
   });
+
+  const lessonTexts = routeChapters(getCourse()).flatMap((chapter) => getChapterTexts(chapter.id));
+  it.each(lessonTexts.map((text) => [text.id, text] as const))(
+    'splits every sentence of lesson text %s like its content tokens (G-55)',
+    (_id, text) => {
+      for (const { tokens } of text.paragraphs.flatMap((p) => p.sentences)) expectSameSplit(tokens);
+    },
+  );
 });
+
+function expectSameSplit(tokens: readonly Token[]): void {
+  const ours = tokenize(tokens.map((token) => token.t).join(''));
+  expect(ours.map(({ kind, t }) => ({ kind, t }))).toEqual(
+    tokens.map((token) => ({ kind: 'lemma' in token ? 'word' : 'gap', t: token.t })),
+  );
+}
