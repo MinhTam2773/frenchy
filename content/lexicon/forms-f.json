@@ -3449,6 +3449,8 @@
 "froissées":[{"lemma":"froisser","pos":"verb","number":"pl","gender":"f","tense":"past","mood":"participle"},{"lemma":"froissé","pos":"adjective","number":"pl","gender":"f"}],
 "froissés":[{"lemma":"froisser","pos":"verb","number":"pl","gender":"m","tense":"past","mood":"participle"},{"lemma":"froissé","pos":"adjective","number":"pl","gender":"m"}],
 "fromage":[{"lemma":"fromage","pos":"noun","number":"sg","gender":"m"}],
+"fromagerie":[{"lemma":"fromagerie","pos":"noun","number":"sg","gender":"f"}],
+"fromageries":[{"lemma":"fromagerie","pos":"noun","number":"pl","gender":"f"}],
 "fromages":[{"lemma":"fromage","pos":"noun","number":"pl","gender":"m"}],
 "fronce":[{"lemma":"froncer","pos":"verb","person":1,"number":"sg","tense":"present","mood":"indicative"},{"lemma":"froncer","pos":"verb","person":3,"number":"sg","tense":"present","mood":"indicative"},{"lemma":"froncer","pos":"verb","person":1,"number":"sg","tense":"present","mood":"subjunctive"},{"lemma":"froncer","pos":"verb","person":3,"number":"sg","tense":"present","mood":"subjunctive"},{"lemma":"froncer","pos":"verb","person":2,"number":"sg","mood":"imperative"}],
 "froncent":[{"lemma":"froncer","pos":"verb","person":3,"number":"pl","tense":"present","mood":"indicative"},{"lemma":"froncer","pos":"verb","person":3,"number":"pl","tense":"present","mood":"subjunctive"}],

@@ -165,7 +165,7 @@
 "ouest":[{"pos":"noun","gender":"m","glosses":["west"],"rank":2250}],
 "ouf":[{"pos":"interjection","glosses":["phew!, whew! (expressing relief)","Used to represent the cry of a pig."],"rank":6416}],
 "ouh":[{"pos":"interjection","glosses":["ooh, ouch","boo, hiss","tuwhit tuwhoo (hoot of an owl)"],"rank":8763}],
-"oui":[{"pos":"adverb","glosses":["yes"],"rank":63}],
+"oui":[{"pos":"adverb","glosses":["yes"],"rank":63},{"pos":"interjection","glosses":["yes"],"rank":37220}],
 "ouragan":[{"pos":"noun","gender":"m","glosses":["hurricane"],"rank":6911}],
 "ours":[{"pos":"noun","gender":"m","glosses":["bear","loner, someone who avoids company","beast, beastly person"],"rank":2760}],
 "ouste":[{"pos":"interjection","glosses":["shoo, begone, hop it!"],"rank":8559}],
@@ -183,5 +183,7 @@
 "ovale":[{"pos":"adjective","glosses":["oval"],"rank":6131}],
 "overdose":[{"pos":"noun","gender":"f","glosses":["overdose (excessive and dangerous dose of a drug)","overdose of, excess of, surfeit of something"],"rank":9070}],
 "oxygène":[{"pos":"noun","gender":"m","glosses":["oxygen","an atom or a nucleus of oxygen in a molecule"],"rank":4791}],
-"ôter":[{"pos":"verb","glosses":["to take away, remove","to take off, remove (clothes, etc.)","to remove, cut (text etc.); to take away (in arithmetic)"],"rank":2145}]
+"où":[{"pos":"adverb","glosses":["where (interrogative)","where (relative pronoun)","at that time; when"],"rank":37220}],
+"ôter":[{"pos":"verb","glosses":["to take away, remove","to take off, remove (clothes, etc.)","to remove, cut (text etc.); to take away (in arithmetic)"],"rank":2145}],
+"œuf":[{"pos":"noun","gender":"m","glosses":["egg","egg; ovum","gondola lift"],"rank":37220}]
 }

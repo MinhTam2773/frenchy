@@ -1329,7 +1329,7 @@
 "ouest":[{"lemma":"ouest","pos":"noun","number":"sg","gender":"m"}],
 "ouf":[{"lemma":"ouf","pos":"interjection"}],
 "ouh":[{"lemma":"ouh","pos":"interjection"}],
-"oui":[{"lemma":"oui","pos":"adverb"}],
+"oui":[{"lemma":"oui","pos":"adverb"},{"lemma":"oui","pos":"interjection"}],
 "ouragan":[{"lemma":"ouragan","pos":"noun","number":"sg","gender":"m"}],
 "ouragans":[{"lemma":"ouragan","pos":"noun","number":"pl","gender":"m"}],
 "ours":[{"lemma":"ours","pos":"noun","number":"sg","gender":"m"}],
@@ -1435,6 +1435,7 @@
 "overdoses":[{"lemma":"overdose","pos":"noun","number":"pl","gender":"f"}],
 "oxygène":[{"lemma":"oxygène","pos":"noun","number":"sg","gender":"m"}],
 "oxygènes":[{"lemma":"oxygène","pos":"noun","number":"pl","gender":"m"}],
+"où":[{"lemma":"où","pos":"adverb"}],
 "ôta":[{"lemma":"ôter","pos":"verb","person":3,"number":"sg","tense":"simple_past","mood":"indicative"}],
 "ôtai":[{"lemma":"ôter","pos":"verb","person":1,"number":"sg","tense":"simple_past","mood":"indicative"}],
 "ôtaient":[{"lemma":"ôter","pos":"verb","person":3,"number":"pl","tense":"imperfect","mood":"indicative"}],
@@ -1473,5 +1474,7 @@
 "ôté":[{"lemma":"ôter","pos":"verb","tense":"past","mood":"participle"}],
 "ôtée":[{"lemma":"ôter","pos":"verb","number":"sg","gender":"f","tense":"past","mood":"participle"}],
 "ôtées":[{"lemma":"ôter","pos":"verb","number":"pl","gender":"f","tense":"past","mood":"participle"}],
-"ôtés":[{"lemma":"ôter","pos":"verb","number":"pl","gender":"m","tense":"past","mood":"participle"}]
+"ôtés":[{"lemma":"ôter","pos":"verb","number":"pl","gender":"m","tense":"past","mood":"participle"}],
+"œuf":[{"lemma":"œuf","pos":"noun","number":"sg","gender":"m"}],
+"œufs":[{"lemma":"œuf","pos":"noun","number":"pl","gender":"m"}]
 }

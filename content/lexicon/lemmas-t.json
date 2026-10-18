@@ -1,4 +1,8 @@
 {
+"Thomas":[{"pos":"name","gender":"m","glosses":["Thomas","a male given name of biblical origin","a common surname originating as a patronymic"],"rank":37220}],
+"Théo":[{"pos":"name","gender":"m","glosses":["a diminutive of the male given name Théophile, equivalent to English Theo; popular in the 1990s and the 2000s"],"rank":37220}],
+"Toronto":[{"pos":"name","gender":"m","glosses":["Toronto"],"rank":37220}],
+"Toulouse":[{"pos":"name","gender":"f","glosses":["Toulouse"],"rank":37220},{"pos":"name","gender":"mf","glosses":["a surname"],"rank":37220}],
 "ta":[{"pos":"possessive","gender":"f","glosses":["your"],"rank":132}],
 "tabac":[{"pos":"noun","gender":"m","glosses":["tobacco (any plant of the genus Nicotiana)","tobacco","smoking, nicotine addiction"],"rank":2172}],
 "tabasser":[{"pos":"verb","glosses":["beat up (to give a beating to)","to thwack, clobber"],"rank":5432}],
@@ -52,6 +56,7 @@
 "tarif":[{"pos":"noun","gender":"m","glosses":["price (usually of a service)"],"rank":6589}],
 "tarir":[{"pos":"verb","glosses":["to dry up","to exhaust, use up","to talk non-stop (about something)"],"rank":8781}],
 "tarte":[{"pos":"noun","gender":"f","glosses":["pie, tart","slap","something easy to do"],"rank":4129}],
+"tartelette":[{"pos":"noun","gender":"f","glosses":["tartlet (small tart)"],"rank":18006}],
 "tartine":[{"pos":"noun","gender":"f","glosses":["tartine","a screed, a ream"],"rank":4691}],
 "taré":[{"pos":"adjective","glosses":["crazy, barking, mad"],"rank":9836}],
 "tas":[{"pos":"noun","gender":"m","glosses":["heap, pile, a great many","thing"],"rank":1005}],

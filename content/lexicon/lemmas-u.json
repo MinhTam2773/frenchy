@@ -2,6 +2,7 @@
 "ulcère":[{"pos":"noun","gender":"m","glosses":["ulcer (an open sore)"],"rank":8472}],
 "ultime":[{"pos":"adjective","glosses":["ultimate"],"rank":3204}],
 "un":[{"pos":"article","gender":"m","glosses":["an, a"],"rank":12},{"pos":"pronoun","gender":"m","glosses":["one, someone"],"rank":207},{"pos":"number","glosses":["one"],"rank":1323}],
+"un peu":[{"pos":"adverb","glosses":["a little, a bit","Used to soften an order or casualize a statement."],"rank":37220}],
 "unanime":[{"pos":"adjective","glosses":["unanimous"],"rank":7824}],
 "unanimité":[{"pos":"noun","gender":"f","glosses":["unanimity"],"rank":9059}],
 "uni":[{"pos":"adjective","glosses":["united","having only one color, feature, etc."],"rank":4078}],

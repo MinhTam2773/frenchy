@@ -3558,6 +3558,7 @@
 "invoqués":[{"lemma":"invoquer","pos":"verb","number":"pl","gender":"m","tense":"past","mood":"participle"}],
 "invraisemblable":[{"lemma":"invraisemblable","pos":"adjective","number":"sg"}],
 "invraisemblables":[{"lemma":"invraisemblable","pos":"adjective","number":"pl"}],
+"inès":[{"lemma":"Inès","pos":"name"}],
 "inédit":[{"lemma":"inédit","pos":"adjective","number":"sg","gender":"m"}],
 "inédite":[{"lemma":"inédit","pos":"adjective","number":"sg","gender":"f"}],
 "inédites":[{"lemma":"inédit","pos":"adjective","number":"pl","gender":"f"}],

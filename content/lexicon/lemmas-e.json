@@ -1,4 +1,5 @@
 {
+"Emma":[{"pos":"name","gender":"f","glosses":["a female given name, equivalent to English Emma"],"rank":37220}],
 "e-mail":[{"pos":"noun","gender":"m","glosses":["An e-mail"],"rank":9012}],
 "eau":[{"pos":"noun","gender":"f","glosses":["In particular, rain","Natural liquid quantities or expanses"],"rank":237}],
 "eau-de-vie":[{"pos":"noun","gender":"f","glosses":["synonym of brandy"],"rank":8046}],
@@ -585,6 +586,7 @@
 "épicier":[{"pos":"noun","gender":"m","glosses":["grocer"],"rank":5922}],
 "épidémie":[{"pos":"noun","gender":"f","glosses":["epidemic (widespread disease)"],"rank":5620}],
 "épier":[{"pos":"verb","glosses":["to spy on, keep an eye on, watch","to ear"],"rank":4417}],
+"épinard":[{"pos":"noun","gender":"m","glosses":["spinach plant (Spinacia oleracea)","spinach (foodstuff)"],"rank":11492}],
 "épine":[{"pos":"noun","gender":"f","glosses":["thorn; spine; prickle","an aperitif made from blackthorn berries"],"rank":4820}],
 "épineux":[{"pos":"adjective","glosses":["spikey; spiny","spikey; abrasive, nettlesome","deliberately difficult or awkward"],"rank":9972}],
 "épingle":[{"pos":"noun","gender":"f","glosses":["pin"],"rank":4084}],
@@ -618,6 +620,7 @@
 "équiper":[{"pos":"verb","glosses":["to supply","to equip"],"rank":5294}],
 "équipier":[{"pos":"noun","gender":"m","glosses":["team member; member of a team"],"rank":9946}],
 "équitable":[{"pos":"adjective","glosses":["just, equitable, fair"],"rank":9078}],
+"équitation":[{"pos":"noun","gender":"f","glosses":["equestrianism, horseriding"],"rank":14504}],
 "équivalent":[{"pos":"noun","gender":"m","glosses":["equivalent"],"rank":7865}],
 "équivaloir":[{"pos":"verb","glosses":["to be equivalent"],"rank":9449}],
 "équivoque":[{"pos":"adjective","glosses":["equivocal"],"rank":9389}],

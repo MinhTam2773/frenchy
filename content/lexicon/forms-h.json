@@ -957,6 +957,7 @@
 "housses":[{"lemma":"housse","pos":"noun","number":"pl","gender":"f"}],
 "hublot":[{"lemma":"hublot","pos":"noun","number":"sg","gender":"m"}],
 "hublots":[{"lemma":"hublot","pos":"noun","number":"pl","gender":"m"}],
+"hugo":[{"lemma":"Hugo","pos":"name"}],
 "huile":[{"lemma":"huile","pos":"noun","number":"sg","gender":"f"}],
 "huiles":[{"lemma":"huile","pos":"noun","number":"pl","gender":"f"}],
 "huit":[{"lemma":"huit","pos":"number"}],

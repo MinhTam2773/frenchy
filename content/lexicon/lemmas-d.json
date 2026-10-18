@@ -1,5 +1,8 @@
 {
+"Daniel":[{"pos":"name","gender":"m","glosses":["Daniel (biblical book and prophet)","a male given name from Hebrew, equivalent to English Daniel"],"rank":37220}],
+"Diallo":[{"pos":"name","gender":"mf","glosses":["Diallo: a surname from Fula"],"rank":37220}],
 "d'abord":[{"pos":"adverb","glosses":["first, at first, right away","primarily","for one thing"],"rank":468}],
+"d'accord":[{"pos":"adverb","glosses":["in agreement"],"rank":37220},{"pos":"interjection","glosses":["sure!, OK!, of course!, naturally!"],"rank":37220}],
 "d'emblée":[{"pos":"adverb","glosses":["straightaway, at once"],"rank":7182}],
 "dactylo":[{"pos":"noun","gender":"mf","glosses":["typist","secretary"],"rank":9767},{"pos":"noun","gender":"f","glosses":["typing; dactylography"],"rank":9767}],
 "daigner":[{"pos":"verb","glosses":["to deign, condescend"],"rank":5716}],

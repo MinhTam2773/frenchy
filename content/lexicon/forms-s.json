@@ -1313,6 +1313,7 @@
 "sapée":[{"lemma":"saper","pos":"verb","number":"sg","gender":"f","tense":"past","mood":"participle"}],
 "sapées":[{"lemma":"saper","pos":"verb","number":"pl","gender":"f","tense":"past","mood":"participle"}],
 "sapés":[{"lemma":"saper","pos":"verb","number":"pl","gender":"m","tense":"past","mood":"participle"}],
+"sara":[{"lemma":"Sara","pos":"name"}],
 "sarcasme":[{"lemma":"sarcasme","pos":"noun","number":"sg","gender":"m"}],
 "sarcasmes":[{"lemma":"sarcasme","pos":"noun","number":"pl","gender":"m"}],
 "sardine":[{"lemma":"sardine","pos":"noun","number":"sg","gender":"f"}],
@@ -3602,6 +3603,7 @@
 "sonorités":[{"lemma":"sonorité","pos":"noun","number":"pl","gender":"f"}],
 "sons":[{"lemma":"son","pos":"noun","number":"pl","gender":"m"}],
 "sont":[{"lemma":"être","pos":"verb","person":3,"number":"pl","tense":"present","mood":"indicative"}],
+"sophie":[{"lemma":"Sophie","pos":"name"}],
 "sophistiqué":[{"lemma":"sophistiqué","pos":"adjective","number":"sg","gender":"m"}],
 "sophistiquée":[{"lemma":"sophistiqué","pos":"adjective","number":"sg","gender":"f"}],
 "sophistiquées":[{"lemma":"sophistiqué","pos":"adjective","number":"pl","gender":"f"}],
@@ -5374,6 +5376,8 @@
 "sucerons":[{"lemma":"sucer","pos":"verb","person":1,"number":"pl","tense":"future","mood":"indicative"}],
 "suceront":[{"lemma":"sucer","pos":"verb","person":3,"number":"pl","tense":"future","mood":"indicative"}],
 "suces":[{"lemma":"sucer","pos":"verb","person":2,"number":"sg","tense":"present","mood":"indicative"},{"lemma":"sucer","pos":"verb","person":2,"number":"sg","tense":"present","mood":"subjunctive"}],
+"sucette":[{"lemma":"sucette","pos":"noun","number":"sg","gender":"f"}],
+"sucettes":[{"lemma":"sucette","pos":"noun","number":"pl","gender":"f"}],
 "sucez":[{"lemma":"sucer","pos":"verb","person":2,"number":"pl","tense":"present","mood":"indicative"},{"lemma":"sucer","pos":"verb","person":2,"number":"pl","mood":"imperative"}],
 "suciez":[{"lemma":"sucer","pos":"verb","person":2,"number":"pl","tense":"imperfect","mood":"indicative"},{"lemma":"sucer","pos":"verb","person":2,"number":"pl","tense":"present","mood":"subjunctive"}],
 "sucions":[{"lemma":"sucer","pos":"verb","person":1,"number":"pl","tense":"imperfect","mood":"indicative"},{"lemma":"sucer","pos":"verb","person":1,"number":"pl","tense":"present","mood":"subjunctive"}],
@@ -5675,7 +5679,7 @@
 "sultan":[{"lemma":"sultan","pos":"noun","number":"sg","gender":"m"}],
 "sultans":[{"lemma":"sultan","pos":"noun","number":"pl","gender":"m"}],
 "suons":[{"lemma":"suer","pos":"verb","person":1,"number":"pl","tense":"present","mood":"indicative"},{"lemma":"suer","pos":"verb","person":1,"number":"pl","mood":"imperative"}],
-"super":[{"lemma":"super","pos":"adjective"}],
+"super":[{"lemma":"super","pos":"adjective"},{"lemma":"super","pos":"interjection"}],
 "superbe":[{"lemma":"superbe","pos":"adjective","number":"sg"},{"lemma":"superbe","pos":"noun","number":"sg"},{"lemma":"superbe","pos":"noun","number":"sg","gender":"f"}],
 "superbes":[{"lemma":"superbe","pos":"adjective","number":"pl"},{"lemma":"superbe","pos":"noun","number":"pl"}],
 "superficiel":[{"lemma":"superficiel","pos":"adjective","number":"sg","gender":"m"}],
@@ -7028,5 +7032,7 @@
 "sûretés":[{"lemma":"sûreté","pos":"noun","number":"pl","gender":"f"}],
 "sûrs":[{"lemma":"sûr","pos":"adjective","number":"pl","gender":"m"}],
 "sût":[{"lemma":"savoir","pos":"verb","person":3,"number":"sg","tense":"imperfect","mood":"subjunctive"}],
-"sûtes":[{"lemma":"savoir","pos":"verb","person":2,"number":"pl","tense":"simple_past","mood":"indicative"}]
+"sûtes":[{"lemma":"savoir","pos":"verb","person":2,"number":"pl","tense":"simple_past","mood":"indicative"}],
+"sœur":[{"lemma":"sœur","pos":"noun","number":"sg","gender":"f"}],
+"sœurs":[{"lemma":"sœur","pos":"noun","number":"pl","gender":"f"}]
 }

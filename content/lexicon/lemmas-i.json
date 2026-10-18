@@ -1,4 +1,5 @@
 {
+"Inès":[{"pos":"name","gender":"f","glosses":["a female given name from Spanish or Ancient Greek"],"rank":37220}],
 "ici":[{"pos":"adverb","glosses":["here"],"rank":73}],
 "ici-bas":[{"pos":"adverb","glosses":["down here, here below","yonder"],"rank":8939}],
 "icône":[{"pos":"noun","gender":"f","glosses":["icon (representation as an object of religious devotion)","icon (small picture that represents something)"],"rank":8948},{"pos":"noun","gender":"mf","glosses":["icon (exemplar person or thing)"],"rank":8948}],
@@ -18,6 +19,7 @@
 "ignorant":[{"pos":"adjective","glosses":["ignorant"],"rank":6958}],
 "ignorer":[{"pos":"verb","glosses":["to ignore","to be unaware of, to be ignorant of"],"rank":580}],
 "il":[{"pos":"pronoun","gender":"m","glosses":["he","it","Impersonal subject; it"],"rank":9}],
+"il y a":[{"pos":"preposition","glosses":["ago"],"rank":37220}],
 "illico":[{"pos":"adverb","glosses":["pronto, right away"],"rank":7295}],
 "illimité":[{"pos":"adjective","glosses":["limitless; infinite; unlimited","indefinite (without a defined ending time/date)"],"rank":8999}],
 "illisible":[{"pos":"adjective","glosses":["unreadable; illegible"],"rank":8216}],

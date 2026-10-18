@@ -593,6 +593,7 @@
 "juive":[{"lemma":"juif","pos":"adjective","number":"sg","gender":"f"}],
 "juives":[{"lemma":"juif","pos":"adjective","number":"pl","gender":"f"}],
 "jules":[{"lemma":"jules","pos":"noun","number":"sg","gender":"m"}],
+"julie":[{"lemma":"Julie","pos":"name"}],
 "jumeau":[{"lemma":"jumeau","pos":"noun","number":"sg","gender":"m"}],
 "jumeaux":[{"lemma":"jumeau","pos":"noun","number":"pl","gender":"m"}],
 "jumelle":[{"lemma":"jumelle","pos":"noun","number":"sg","gender":"f"}],

@@ -1,6 +1,7 @@
 {
 "d'":[{"lemma":"de","pos":"preposition"},{"lemma":"de","pos":"article"}],
 "d'abord":[{"lemma":"d'abord","pos":"adverb"}],
+"d'accord":[{"lemma":"d'accord","pos":"adverb"},{"lemma":"d'accord","pos":"interjection"}],
 "d'emblée":[{"lemma":"d'emblée","pos":"adverb"}],
 "dactylo":[{"lemma":"dactylo","pos":"noun","number":"sg"},{"lemma":"dactylo","pos":"noun","number":"sg","gender":"f"}],
 "dactylos":[{"lemma":"dactylo","pos":"noun","number":"pl"}],
@@ -214,6 +215,7 @@
 "dangereuses":[{"lemma":"dangereux","pos":"adjective","number":"pl","gender":"f"}],
 "dangereux":[{"lemma":"dangereux","pos":"adjective","number":"sg","gender":"m"},{"lemma":"dangereux","pos":"adjective","number":"pl","gender":"m"}],
 "dangers":[{"lemma":"danger","pos":"noun","number":"pl","gender":"m"}],
+"daniel":[{"lemma":"Daniel","pos":"name"}],
 "danois":[{"lemma":"danois","pos":"adjective","number":"sg","gender":"m"},{"lemma":"danois","pos":"adjective","number":"pl","gender":"m"}],
 "danoise":[{"lemma":"danois","pos":"adjective","number":"sg","gender":"f"}],
 "danoises":[{"lemma":"danois","pos":"adjective","number":"pl","gender":"f"}],
@@ -907,6 +909,7 @@
 "diaboliques":[{"lemma":"diabolique","pos":"adjective","number":"pl"}],
 "diagnostic":[{"lemma":"diagnostic","pos":"noun","number":"sg","gender":"m"}],
 "diagnostics":[{"lemma":"diagnostic","pos":"noun","number":"pl","gender":"m"}],
+"diallo":[{"lemma":"Diallo","pos":"name"}],
 "dialogue":[{"lemma":"dialogue","pos":"noun","number":"sg","gender":"m"}],
 "dialogues":[{"lemma":"dialogue","pos":"noun","number":"pl","gender":"m"}],
 "diamant":[{"lemma":"diamant","pos":"noun","number":"sg","gender":"m"}],

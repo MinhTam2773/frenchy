@@ -1,4 +1,7 @@
 {
+"Sara":[{"pos":"name","gender":"f","glosses":["Sarah","a female given name, usually spelled Sarah"],"rank":37220}],
+"Sophie":[{"pos":"name","gender":"f","glosses":["a female given name, equivalent to English Sophia"],"rank":37220}],
+"s'il vous plaît":[{"pos":"phrase","glosses":["please, if you please","here you go, here you are"],"rank":37220}],
 "sa":[{"pos":"possessive","gender":"f","glosses":["his, her, its, their, one's"],"rank":56}],
 "sabbat":[{"pos":"noun","gender":"m","glosses":["Sabbath, biblical seventh day","witches' Sabbath, meeting of witches at midnight","noisy meeting"],"rank":9360}],
 "sable":[{"pos":"noun","gender":"m","glosses":["sand","the heraldic colour sable; black"],"rank":1203}],
@@ -535,6 +538,7 @@
 "succès":[{"pos":"noun","gender":"m","glosses":["success","achievement"],"rank":1499}],
 "succéder":[{"pos":"verb","glosses":["to succeed (to follow in order)","to inherit by right of kinship"],"rank":2988}],
 "sucer":[{"pos":"verb","glosses":["to suck","to give head, to suck off"],"rank":2787}],
+"sucette":[{"pos":"noun","gender":"f","glosses":["lollipop","dummy, pacifier","love bite, hickey"],"rank":10482}],
 "sucre":[{"pos":"noun","gender":"m","glosses":["sugar"],"rank":1994}],
 "sucrer":[{"pos":"verb","glosses":["to sugar (to add sugar to, to sweeten)","to steal, to take away from someone"],"rank":8869}],
 "sucrerie":[{"pos":"noun","gender":"f","glosses":["sugar refinery","confection, sweet, bonbon, candy"],"rank":9063}],
@@ -560,7 +564,7 @@
 "suivre":[{"pos":"verb","glosses":["to follow (literal sense)","to follow; to get","to take (a course or a class)"],"rank":69}],
 "sujet":[{"pos":"noun","gender":"m","glosses":["subject (in a monarchy)","subject","subject (topic, theme)"],"rank":684},{"pos":"adjective","glosses":["subject"],"rank":6799}],
 "sultan":[{"pos":"noun","gender":"m","glosses":["a sultan: a Muslim ruler with a certain title","a silk-ornamented basket","a perfume sachet to put in a linen coffer"],"rank":7514}],
-"super":[{"pos":"adjective","glosses":["superb, great"],"rank":934}],
+"super":[{"pos":"adjective","glosses":["superb, great"],"rank":934},{"pos":"interjection","glosses":["great, fantastic"],"rank":37220}],
 "superbe":[{"pos":"adjective","glosses":["superb; excellent, impressive","haughty"],"rank":1751},{"pos":"noun","gender":"mf","glosses":["proud, arrogant person"],"rank":6333},{"pos":"noun","gender":"f","glosses":["pride, arrogance"],"rank":6333}],
 "superficiel":[{"pos":"adjective","glosses":["surface","superficial, shallow (lacking substance)"],"rank":6498}],
 "superflu":[{"pos":"adjective","glosses":["superfluous"],"rank":8333}],
@@ -673,5 +677,6 @@
 "sévérité":[{"pos":"noun","gender":"f","glosses":["severity, strictness","severity, austerity, rigidity","severity, seriousness"],"rank":7908}],
 "sûr":[{"pos":"adjective","glosses":["sure, certain","trustworthy","safe"],"rank":147}],
 "sûrement":[{"pos":"adverb","glosses":["surely, certainly","probably"],"rank":735}],
-"sûreté":[{"pos":"noun","gender":"f","glosses":["safety","security","surety"],"rank":5018}]
+"sûreté":[{"pos":"noun","gender":"f","glosses":["safety","security","surety"],"rank":5018}],
+"sœur":[{"pos":"noun","gender":"f","glosses":["sister","nun"],"rank":37220}]
 }

@@ -1,4 +1,7 @@
 {
+"Rodin":[{"pos":"name","glosses":["a surname"],"rank":37220}],
+"Roubaix":[{"pos":"name","glosses":["a city in Nord department, France"],"rank":37220}],
+"Roux":[{"pos":"name","gender":"mf","glosses":["a characteristical surname"],"rank":37220}],
 "rabaisser":[{"pos":"verb","glosses":["to humiliate, belittle","to lower, reduce"],"rank":8494}],
 "rabattre":[{"pos":"verb","glosses":["to make something lower","to close, shut (down)","to fold over (covers, curtains etc.)"],"rank":4067}],
 "rabbin":[{"pos":"noun","gender":"m","glosses":["rabbi"],"rank":5057}],
@@ -71,6 +74,7 @@
 "rangée":[{"pos":"noun","gender":"f","glosses":["row (line of objects)","rank"],"rank":4090}],
 "ranimer":[{"pos":"verb","glosses":["to revive","to animate","to motivate, to rally (troops)"],"rank":6224}],
 "rançon":[{"pos":"noun","gender":"f","glosses":["ransom","flipside, other side of the coin"],"rank":5823}],
+"rap":[{"pos":"noun","gender":"m","glosses":["rap; rap music"],"rank":12993}],
 "rapatrier":[{"pos":"verb","glosses":["to repatriate; to send home"],"rank":9775}],
 "rapetisser":[{"pos":"verb","glosses":["to shrink or shorten"],"rank":9736}],
 "rapide":[{"pos":"adjective","glosses":["fast, rapid"],"rank":1217},{"pos":"noun","gender":"m","glosses":["rapid (stretch of river)","express (fast train)"],"rank":7450}],
