@@ -1,0 +1,11 @@
+{
+"wagon":[{"lemma":"wagon","pos":"noun","number":"sg","gender":"m"}],
+"wagons":[{"lemma":"wagon","pos":"noun","number":"pl","gender":"m"}],
+"week-end":[{"lemma":"week-end","pos":"noun","number":"sg","gender":"m"}],
+"week-ends":[{"lemma":"week-end","pos":"noun","number":"pl","gender":"m"}],
+"western":[{"lemma":"western","pos":"noun","number":"sg","gender":"m"}],
+"westerns":[{"lemma":"western","pos":"noun","number":"pl","gender":"m"}],
+"whiskies":[{"lemma":"whisky","pos":"noun","number":"pl","gender":"m"}],
+"whisky":[{"lemma":"whisky","pos":"noun","number":"sg","gender":"m"}],
+"whiskys":[{"lemma":"whisky","pos":"noun","number":"pl","gender":"m"}]
+}
