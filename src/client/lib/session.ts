@@ -1,4 +1,5 @@
-import { useSyncExternalStore } from 'react';
+import { createAuthClient } from 'better-auth/client';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export type SessionUser = { id: string; name: string; email: string };
 
@@ -8,44 +9,40 @@ export type Session = {
   signOut: () => Promise<void>;
 };
 
-// STUB until T-21 swaps in the Better Auth client. Keep the `useSession()` shape so screens don't change.
-const mockUser: SessionUser = {
-  id: '00000000-0000-4000-8000-0000000000f1',
-  name: 'Léa',
-  email: 'lea@example.com',
-};
+/** Talks to the Worker's `/api/auth/*` (Better Auth). Absolute so jsdom tests can fetch it too. */
+export const authClient = createAuthClient({
+  baseURL: globalThis.location?.origin,
+  // Better Auth keeps the `fetch` it saw at creation, which is before MSW patches it in tests
+  // and in `npm run dev`. Looking `fetch` up on every call keeps the mocks in the path.
+  fetchOptions: { customFetchImpl: (input, init) => fetch(input, init) },
+});
 
-let signedIn = true;
-const listeners = new Set<() => void>();
+/** The session lives in the TanStack Query cache, so each app (and each test) starts clean. */
+export const sessionKey = ['session'] as const;
 
-function setSignedIn(next: boolean) {
-  signedIn = next;
-  listeners.forEach((listener) => listener());
+async function fetchUser(): Promise<SessionUser | null> {
+  const { data, error } = await authClient.getSession();
+  if (error) throw new Error(error.message ?? 'Could not read the session');
+  return data ? { id: data.user.id, name: data.user.name, email: data.user.email } : null;
 }
 
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  return () => {
-    listeners.delete(listener);
-  };
-}
-
-const signedInSession: Session = {
-  status: 'signed-in',
-  user: mockUser,
-  signOut: async () => setSignedIn(false),
-};
-const signedOutSession: Session = {
-  status: 'signed-out',
-  user: null,
-  signOut: async () => {},
-};
-
+/**
+ * Who is signed in. A failed read (offline, server down) with no earlier answer counts as signed
+ * out, so the guard sends the user to the welcome screen (B-23 covers starting offline).
+ */
 export function useSession(): Session {
-  return useSyncExternalStore(subscribe, () => (signedIn ? signedInSession : signedOutSession));
-}
+  const queryClient = useQueryClient();
+  const query = useQuery({ queryKey: sessionKey, queryFn: fetchUser });
 
-/** Stub only: sign the mock user back in (the stub forgets nothing else). */
-export function resetStubSession() {
-  setSignedIn(true);
+  async function signOut() {
+    await authClient.signOut();
+    queryClient.setQueryData(sessionKey, null);
+    // The next person on this device must not see this account's profile, cards or streak.
+    queryClient.removeQueries({ predicate: (q) => q.queryKey[0] !== sessionKey[0] });
+  }
+
+  if (query.isPending) return { status: 'loading', user: null, signOut };
+  return query.data
+    ? { status: 'signed-in', user: query.data, signOut }
+    : { status: 'signed-out', user: null, signOut };
 }

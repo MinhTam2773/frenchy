@@ -1,12 +1,10 @@
 import { cleanup, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, expect, test, vi } from 'vitest';
-import { resetStubSession } from '@client/lib/session';
 import { renderAt } from '@client/mocks/renderAt';
 import { api } from '@client/lib/api';
 
 afterEach(() => {
   vi.unstubAllGlobals();
-  resetStubSession();
 });
 
 async function openSettings() {
