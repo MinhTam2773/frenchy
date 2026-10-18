@@ -22,6 +22,7 @@
     "lexicon:coverage": "tsx scripts/lexicon/coverage.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
     "@tanstack/react-query": "^5.104.4",
     "better-auth": "^1.7.10",
     "drizzle-orm": "^0.45.4",
