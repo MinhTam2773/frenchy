@@ -1,0 +1,318 @@
+{
+  "id": "appA-salut-arnaud",
+  "chapterId": "appA",
+  "title": "Salut, Arnaud !",
+  "kind": "dialogue",
+  "minutes": 1,
+  "paragraphs": [
+    {
+      "speaker": "Margot",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "hi",
+              "form": "informal hello or bye · the final t is silent",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Arnaud",
+              "lemma": "Arnaud",
+              "pos": "name",
+              "gloss": "Arnaud",
+              "form": "a name · the final d is silent"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Hi, Arnaud!"
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ça",
+              "lemma": "ça",
+              "pos": "pronoun",
+              "gloss": "it",
+              "form": "Ça va ? = How are you? (fixed phrase)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "va",
+              "lemma": "aller",
+              "pos": "verb",
+              "gloss": "goes",
+              "form": "only in the fixed phrase Ça va ? (lit. \"it goes\")"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "How are you?"
+        }
+      ]
+    },
+    {
+      "speaker": "Arnaud",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Très",
+              "lemma": "très",
+              "pos": "adverb",
+              "gloss": "very",
+              "form": "the final s is silent",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "bien",
+              "lemma": "bien",
+              "pos": "adverb",
+              "gloss": "well",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thanks"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Very well, thanks."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and",
+              "form": "the t is always silent"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "toi",
+              "lemma": "toi",
+              "pos": "pronoun",
+              "gloss": "you",
+              "form": "Et toi ? = And you? (to a friend)"
+            },
+            {
+              "t": " ?"
+            }
+          ],
+          "en": "And you?"
+        }
+      ]
+    },
+    {
+      "speaker": "Margot",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "pas mal = not bad · the final s is silent"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mal",
+              "lemma": "mal",
+              "pos": "adverb",
+              "gloss": "bad",
+              "form": "the final l is said",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Not bad."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Bon",
+              "lemma": "bon",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "happy",
+              "form": "liaison: the n joins the next word (bo-na-ni-ver-saire)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "anniversaire",
+              "lemma": "anniversaire",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "birthday",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Happy birthday!"
+        }
+      ]
+    },
+    {
+      "speaker": "Arnaud",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Oh",
+              "lemma": "oh",
+              "pos": "interjection",
+              "gloss": "oh"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "merci",
+              "lemma": "merci",
+              "pos": "interjection",
+              "gloss": "thanks"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "beaucoup",
+              "lemma": "beaucoup",
+              "pos": "adverb",
+              "gloss": "very much",
+              "form": "the final p is silent",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Oh, thank you very much!"
+        }
+      ]
+    },
+    {
+      "speaker": "Margot",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "À",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at",
+              "form": "À tout à l’heure ! = See you later!"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tout",
+              "lemma": "tout",
+              "pos": "adverb",
+              "gloss": "just",
+              "form": "liaison: tout à sounds like tou-ta · tout à l’heure = in a little while"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "à",
+              "lemma": "à",
+              "pos": "preposition",
+              "gloss": "at"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "la becomes l’ before a vowel or a silent h"
+            },
+            {
+              "t": "heure",
+              "lemma": "heure",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "hour",
+              "form": "the h is silent",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "See you later!"
+        }
+      ]
+    },
+    {
+      "speaker": "Arnaud",
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Salut",
+              "lemma": "salut",
+              "pos": "interjection",
+              "gloss": "bye",
+              "form": "informal hello or bye · the final t is silent"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Margot",
+              "lemma": "Margot",
+              "pos": "name",
+              "gloss": "Margot",
+              "form": "a name · the final t is silent"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Bye, Margot!"
+        }
+      ]
+    }
+  ],
+  "newWords": ["salut", "très", "bien", "mal", "anniversaire", "beaucoup", "heure"],
+  "grammarTags": ["phrases.greetings", "sounds.basic"]
+}

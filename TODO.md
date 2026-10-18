@@ -480,15 +480,15 @@ Notes for T-21 / T-22 / T-23:
 - [x] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
 - [x] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
 - [ ] Fan out, one sub-agent per chapter (tick when that chapter passes `content:check`):
-  - [ ] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
-  - [ ] Ch 1 · Articles
-  - [ ] Ch 2 · Basic gender endings
-  - [ ] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
-  - [ ] Ch 10 · Present tense of -er verbs
-  - [ ] Ch 4 · Numbers
-  - [ ] Ch 7 · Asking questions
+  - [x] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
+  - [x] Ch 1 · Articles
+  - [x] Ch 2 · Basic gender endings
+  - [x] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
+  - [x] Ch 10 · Present tense of -er verbs
+  - [x] Ch 4 · Numbers
+  - [x] Ch 7 · Asking questions
   - [ ] Ch 33 · Conversation: meeting people (dialogues)
-- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json`
+- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json` (7 of 8 so far; ch33 in progress)
 - [ ] `npm run content:check` green for all chapters
 - [ ] Do not self-approve: hand over to T-24 (a different agent)
 - [ ] Finish: `npm run check` green
@@ -522,23 +522,23 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-11 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today`
+**Status:** in review · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today`
 **Owns:** `src/client/features/today/**`, `src/client/lib/activity/**`, `src/client/mocks/handlers/today.ts`
 **Goal:** The daily screen from `Today.dc.html`: review first, then the book, reading and output.
 **Done when:** it matches the mockup at 390 px with fixture data, the edge states work, and tests pass.
 
-- [ ] Header: wordmark, streak chip, freeze chip (both link to `/streak`)
-- [ ] Greeting and daily minutes progress against the goal
-- [ ] Review card: due count, estimated minutes (≈ 35 s per card), Start review → `/review`
-- [ ] Book card: current chapter, current section, PDF page → `/chapter/:id`
-- [ ] Reading card: next unread text of the current chapter → `/read/:id`
-- [ ] Output card: "Write 3–5 sentences" (links to the tutor once B-03 lands; until then a simple notes prompt or hidden, decide in the PR)
-- [ ] `useToday()` combining profile, due count, streak summary and next text; MSW handler
-- [ ] Edge states: 0 due ("All caught up", next due time), streak at risk, no chapter set → onboarding
-- [ ] `useActiveMinutes()`: visibility-aware minute tracking that pings the activity API (mocked for now)
-- [ ] Tests: due count, links, empty state, at-risk state
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Header: wordmark, streak chip, freeze chip (both link to `/streak`). Chips are the kit's 44 px high, not the mockup's 40 (L-18)
+- [x] Greeting and daily minutes progress against the goal
+- [x] Review card: due count, estimated minutes (≈ 35 s per card), Start review → `/review`
+- [x] Book card: current chapter, PDF pages → `/chapter/:id`. "Current section" is not shown: nothing tracks which section the learner is on (G-37)
+- [x] Reading card: next unread text of the current chapter → `/read/:id`; also "all texts read" and "no texts yet" states (content has none until T-14)
+- [x] Output card: "Write 3–5 sentences" (links to the tutor once B-03 lands; until then a simple notes prompt or hidden, decide in the PR). Decision: a static prompt card with no link and no chevron, detail "Use today’s new words in your own notes"; B-03 turns it into a link to the tutor
+- [x] `useToday()` combining profile, due count, streak summary and next text; MSW handler (no `mocks/handlers/today.ts`: `base.ts` already serves every endpoint, and tests override with `server.use`)
+- [x] Edge states: 0 due ("All caught up", next due time), streak at risk, no chapter set → onboarding; also no cards at all, loading and error with retry
+- [x] `useActiveMinutes()`: visibility-aware minute tracking that pings the activity API (mocked for now). Mounted by the Today page only (G-38)
+- [x] Tests: due count, links, empty state, at-risk state
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-17 · Course map and chapter screens
@@ -546,18 +546,20 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-07 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
+**Status:** in review · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
 **Owns:** `src/client/features/path/**`, `src/client/features/chapter/**`, `src/client/mocks/handlers/path.ts`
 **Goal:** `Path.dc.html` and `Chapter.dc.html`: the winding stage path and the chapter page that sits next to the book.
 **Done when:** both match their mockups with the real `course.json`, setting the current chapter works (mocked), and tests pass.
 
-- [ ] Path: stage banner with stage switcher, winding node path (done / current / locked / conversation node styles), labels, "You're here" bubble, mascot
-- [ ] States from `course.json` + `profile.currentChapterId`: before current = done, current, after = locked (locked chapters still open read-only; see G-07)
-- [ ] Chapter: header, title, PDF page range, section progress, pattern / grammar note card, readings list, starter deck "Add to reviews" (calls the starter-deck endpoint)
-- [ ] "Make this my current chapter" action
-- [ ] Hide the drill button until B-01
-- [ ] Desktop: centered column, max width ~480 px
-- [ ] Tests: node states, current-chapter change, readings links
+**Decisions:** appendices are reference nodes (book icon, never done or locked, left out of "n of m chapters done"; G-23); the done node is ink on gold (about 8.6:1) because white on gold is 1.8:1 (L-51); all chapters open from every node (G-07); the mockup's "§2 now" has no data behind it (G-39); `routes.test.tsx` lost its `/path` and `/chapter/ch10` rows because those screens have their own tests now (L-53).
+
+- [x] Path: stage banner with stage switcher, winding node path (done / current / locked / conversation node styles), labels, "You're here" bubble, mascot
+- [x] States from `course.json` + `profile.currentChapterId`: before current = done, current, after = locked (locked chapters still open read-only; see G-07)
+- [x] Chapter: header, title, PDF page range, section progress, pattern / grammar note card, readings list, starter deck "Add to reviews" (calls the starter-deck endpoint)
+- [x] "Make this my current chapter" action
+- [x] Hide the drill button until B-01
+- [x] Desktop: centered column, max width ~480 px
+- [x] Tests: node states, current-chapter change, readings links
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -588,16 +590,16 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-09, T-11 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice`
+**Status:** in review · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice`
 **Owns:** `src/client/features/streak/**`, `src/client/features/practice/**`, `src/client/mocks/handlers/streak.ts`
 **Goal:** `Streak.dc.html` and `Practice.dc.html`.
 **Done when:** both match their mockups with fixture data and tests pass.
 
-- [ ] Streak: hero (current, best), at-risk banner, month calendar (practiced, freeze used, today, missed, future) with previous/next month, freeze card
-- [ ] Practice hub: flashcards card (due, new, learning, review counts) → `/review`; drills, tutor, speaking and import shown as "Coming later"
-- [ ] Tests: calendar cell states from T-11 output; hub counts
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Streak: hero (current, best), at-risk banner, month calendar (practiced, freeze used, today, missed, future) with previous/next month, freeze card
+- [x] Practice hub: flashcards card (due, new, learning, review counts) → `/review`; drills, tutor, speaking and import shown as "Coming later"
+- [x] Tests: calendar cell states from T-11 output; hub counts
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-20 · Me / settings screen
@@ -1213,6 +1215,24 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-22 · Content typography and token-join checks in `content:check`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
+**Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
+
+- [ ] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
+- [ ] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
+- [ ] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
+- [ ] No curly apostrophe in French tokens
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1273,6 +1293,13 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | T-26 (decide: keep precaching for offline taps and raise `maximumFileSizeToCacheInBytes`, or add `**/forms-*.js` / `**/lemmas-*.js` to `globIgnores` and runtime-cache them) |
 | G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
 | G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
+| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
+| G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
+| G-43 | Streak and Practice follow the mockups except: the "~10 min" chip on the flashcards card is not rendered (no rule for estimating minutes), the freeze card uses `text-freeze-ink` (`#1f6fa8`) instead of the mockup's darker `#0E3F63`/`#24506F` (no token), and future calendar days use `text-faint` (about 3.3:1, inactive cells) | Small visual and contrast differences from the mockups | T-19, T-28 |
+| G-39 | Nothing records progress inside a chapter's book sections, so the Chapter strip can only show all sections done (the learner has moved past the chapter) or none. The mockup's "§2 now" with a part-filled bar has no data behind it. `chapters[].sections` is empty for every chapter until G-06 closes, so the strip is not drawn yet | Section progress is coarse | T-17, B-05 (a per-user `chapter_sections` record if wanted), G-06 |
+| G-40 | `getChapterTexts` returns texts sorted by id, so the chapter page lists readings alphabetically (the fixtures give "Au café" before "Le matin de Léa", the mockup's order is the reverse). The text schema has no `order` field | Readings may not be in the intended reading order | T-14, T-07 (add `order` to `Text`, or number the ids), T-17 reads whatever order `getChapterTexts` gives |
+| G-37 | Today's book and reading cards need content the repo doesn't have: the mockup's "Section 2 of 4" needs per-section progress (nothing stores which section the learner is on, and `course.json` has `sections: []` until G-06 closes), and "next unread text" needs an order for a chapter's texts (`getChapterTexts` sorts by id, so *Au café* would come before *Le matin de Léa*). The card shows PDF pages and takes the first unread text in that order | The book card shows less than the mockup; the next text may not be the one the author intended | T-14, T-17 (add `order` to `Text` or number the ids; decide with the section model) |
+| G-38 | `useActiveMinutes` (`src/client/lib/activity`) is mounted only by the Today page, so time spent in the reader, the review or on other tabs is never pinged and `todayMinutes` undercounts. The base mock's ping always answers 8 minutes | The daily-minutes bar is wrong for a learner who reads or reviews more than they sit on Today | T-26 (mount it once in `TabLayout` and `FullScreenLayout`, which T-16 doesn't own) |
 | G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
 | G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
 
@@ -1330,6 +1357,19 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-31 · 2026-10-18 · tooling · T-08` — **A template-literal `import(\`../../../content/lexicon/forms-${shard}.json\`)` makes Vite emit one lazy chunk per shard and also works in Vitest (no fetch, so MSW is not involved), with no `import.meta.glob` typing in the worker tsconfig. Prettier reads only the root `.gitignore`, so a nested `scripts/lexicon/.gitignore` didn't stop `prettier .` from choking on the 584 MB raw dump. I first ran the scripts with Node's type stripping (`.ts` import extensions, own tsconfig), then switched to `tsx` when T-07's convention (L-27) landed in `main`.** → Lazy-load static JSON by template-literal `import()`, and make every shard id exist as a file (even `{}`) so no import can miss. Put ignore rules for big local files in the root `.gitignore`. Scripts use `tsx` and extensionless imports.
 - `L-60 · 2026-10-18 · testing · T-20` — **The MSW profile state in `mocks/handlers/base.ts` lives in page memory, so it survives in-app navigation but a full browser reload resets it to the fixture. In jsdom, `Intl.supportedValuesOf('timeZone')` works (Node 22) and `speechSynthesis` is absent, so voice tests must `vi.stubGlobal('speechSynthesis', ...)` and `SpeechSynthesisUtterance`.** → "Change a setting, reload, see it kept" is verified by re-rendering the app (`cleanup()` then `renderAt('/me')` in a test) or by navigating away and back in the browser, not by a real reload. A persisted mock (sessionStorage) was not added; do it in `mocks/handlers/settings.ts` only if someone needs it.
 - `L-61 · 2026-10-18 · client · T-20` — **`ProfilePatch` takes `dailyGoalMinutes` as the literal union of `DAILY_GOAL_OPTIONS`, so a callback typed `(minutes: number)` needs a cast to patch it.** → Type the picker callback as `(typeof DAILY_GOAL_OPTIONS)[number]` and map over the constant; no cast needed.
+- `L-74 · 2026-10-18 · testing · lead` — **With ~15 agents running test suites on one 4-core box (load average 30–45), Vitest's 5 s test timeout and Testing Library's 1 s `findBy*` wait failed tests that pass alone (lexicon shard parsing takes seconds; screens render slowly).** → The client and worker projects use `testTimeout: 30_000`, and `test-setup.ts` sets `asyncUtilTimeout: 5_000`. Treat a failure that only appears under load as a timing problem, but still confirm it in isolation before calling it that.
+- `L-75 · 2026-10-18 · testing · lead` — **A T-07 test asserted that the repo had no texts yet, so the first T-14 chapter broke `npm run check` on all eight content branches at once. The brief also showed lemma `de` for indefinite *des* while the T-08 lexicon uses `un`.** → Tests use fixtures or a tree built with `createContent`, never the absence of real content. Indefinite *des* → lemma `un` (brief corrected). Before a fan-out, grep for tests that pin the current state of the folders being filled.
+- `L-76 · 2026-10-18 · content · T-14` — **Under the strict Stage 1 ceiling, early chapters can't use possessives, questions, numbers, *mais* or stressed pronouns, so agents wrote statement-only dialogues and name-heavy texts; several also found the brief's lemma examples drifted from the T-08 lexicon. `content:check` caught neither typography slips (a space after `l'`) nor lemma drift.** → Chapter agents run `npm run lexicon:coverage` and check function words against `content/lexicon/forms-*.json` before picking lemmas; B-22 adds the typography checks; G-57 holds the ceiling question.
+- `L-77 · 2026-10-18 · orchestration · lead` — **Running ~15 agents at once hit the session's rate limit: six agents stopped mid-task at the same moment (work saved), and the load made full `npm run check` runs slow and flaky.** → Keep a wave to about 6–8 concurrent agents; resume stopped agents with SendMessage after the reset instead of starting new ones; let CI run the full suite and use lint/typecheck/targeted tests locally while many agents are running.
+- `L-57 · 2026-10-18 · client · T-19` — **`@testing-library/user-event` is not installed, and the calendar's cells have no text role.** → Tests click with `fireEvent` from `@testing-library/react`; calendar cells are `role="img"` with an `aria-label` such as `October 11, freeze used`, which is what tests query.
+- `L-58 · 2026-10-18 · streak · T-19` — **`StreakResponse.calendar` has no entries for days before the first active day, today (until practiced) or the future, so a client that treats "no entry" as "missed" paints grey cells on days the user never owed.** → `features/streak/calendar.ts` `buildMonth` decides: server status wins, else today, else future, else `none` (no status). A practiced today keeps the practiced fill and adds the today ring. The previous-month button stops at the first calendar month.
+- `L-59 · 2026-10-18 · testing · T-19` — **`getByText('12')` on the Streak page matched both the hero number and the calendar's day 12.** → Query the hero through its label (`getByText('day streak').previousElementSibling`) and build test data with `computeStreak` and `addDays`, not the mockup's numbers (L-20).
+- `L-51 · 2026-10-18 · design · T-17` — **The Path mockup counts Appendix A as a done chapter ("4 of 8") and draws the done check white on gold (1.83:1, below 3:1), while G-23 says appendices are references, not steps to finish.** → Appendices are reference nodes: book icon, never done or locked, left out of "n of m chapters done" (Ch 10 reads "3 of 7"), unless one is the current chapter. The done node is `text-ink` on `bg-gold` (8.58:1); `PathPage.test.tsx` pins that white on gold stays under 3:1 and ink passes 4.5:1.
+- `L-52 · 2026-10-18 · testing · T-17` — **`findByRole('button')` returns a button that is still `disabled`, and `fireEvent.click` on it does nothing, so a "Make this my current chapter" test clicked before the profile had loaded and then waited for a state change that never came. A profile 500 also retries once after 1 s (the query client's retry), so `findByRole('alert')` with the default 1 s timeout misses the error state.** → When a control is disabled until a query settles, `await waitFor(() => expect(button).toBeEnabled())` before clicking; for an error state behind a retry, pass `{ timeout: 4000 }`.
+- `L-53 · 2026-10-18 · client · T-17` — **Replacing a placeholder page breaks `routes.test.tsx`, which finds each route by the placeholder's heading (`Path`, `Chapter`), and Tailwind 4's `-translate-x-1/2` and `active:translate-y-[5px]` share one `translate` property, so a node centred with `-translate-y-1/2` jumps when pressed.** → A screen task removes its row from `routes.test.tsx` (one-line hunks, called out in the PR) and covers its route, layout and tab state in its own test. Centre an absolutely positioned pressable with a wrapper div and put the press translate on the inner link.
+- `L-48 · 2026-10-18 · client · T-16` — **Replacing a placeholder page breaks tests that look for its placeholder heading (`routes.test.tsx` and `RequireSession.test.tsx` both wait for a heading named "Today"), and `TabLayout` already renders the `<main>` landmark, so a page that adds its own nests two.** → A screen task that changes its page heading edits those two tests (one line each; other screens will hit the same lines, so keep the hunks tiny) and uses a `<div>`/`<section>`, never `<main>`, inside `TabLayout`.
+- `L-49 · 2026-10-18 · testing · T-16` — **Testing Library does not normalize the no-break space in an accessible `name`, so `findByRole('heading', { name: 'Bonjour !' })` misses "Bonjour&nbsp;!". The base mock's `POST /api/activity/ping` always answers 8 minutes, and `useActiveMinutes` copies the ping's minutes into the cached streak, so a test that sets `todayMinutes` through `/api/streak` alone gets overwritten.** → Match French text with a regexp (`/Bonjour/`). A test that needs other minutes overrides both `/api/streak` and `/api/activity/ping` with `server.use`.
+- `L-50 · 2026-10-18 · testing · T-16` — **MSW's browser worker answers API calls inside the service worker, so Playwright's `page.route` never sees them and can't force an edge state (nothing due, no chapter) in a `npm run dev` page.** → For a browser check of edge states, start a second dev server with `VITE_USE_MOCKS=false` on another port and stub `/api/**` with `page.route` (the app doesn't call the Worker in that case); use the default mocks for the fixture state. Stop the servers with `fuser -k <port>/tcp`, not `pkill -f` (L-43).
 - `L-45 · 2026-10-18 · auth · T-13` — **Without `baseURL`, Better Auth decides at startup whether cookies are Secure, can't see the request's https, and so set the session cookie without `Secure`. The cookie name also depends on it (`__Secure-better-auth.session_token` over https, `better-auth.session_token` over http), so an instance built for an https request can't read a cookie set over http, and the other way round.** → `createAuth(env, request)` always gets the request and uses `BETTER_AUTH_URL` or the request's origin as `baseURL`, in `requireUser` too. Auth tests use https URLs everywhere, also for `app.request()` on a test app.
 - `L-46 · 2026-10-18 · auth · T-13` — **Better Auth's default rate-limit storage is memory, which resets with every per-request instance on Workers. It reads the client IP from `x-forwarded-for` by default; with no IP, every client shares one bucket. Built-in rule: `/sign-in*` and `/sign-up*` allow 3 per 10 s per IP + path.** → Use `storage: 'database'` (`rate_limit` table), `ipAddressHeaders: ['cf-connecting-ip']` and explicit `customRules`. Worker tests send a fresh `cf-connecting-ip` per test, or one test's attempts throttle the next.
 - `L-47 · 2026-10-18 · tooling · T-13` — **The Better Auth CLI is now the `auth` npm package (`npx auth@<version> generate --config <file>`). It needs a config file that exports `auth`, and writes Drizzle tables with relations. Adding tables also broke T-06's `db.test.ts`, which lists every table and index. The scratchpad directory is shared by parallel agents: my `check.log` held another worktree's test run.** → Generate the auth schema with a throwaway config and don't add the CLI as a dependency. Update the migration test lists when you add a migration. Give scratch files a task-specific name (`t13-test.log`).

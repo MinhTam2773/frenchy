@@ -42,7 +42,7 @@ One file per text: `content/chapters/<chapterId>/texts/<textId>.json`, where `te
           { "t": " " },
           { "t": "achète", "lemma": "acheter", "pos": "verb", "gloss": "buys", "form": "il / elle · present · -er verb (è)", "isNew": true },
           { "t": " " },
-          { "t": "des", "lemma": "de", "pos": "article", "gloss": "some" },
+          { "t": "des", "lemma": "un", "pos": "article", "gloss": "some" },
           { "t": " " },
           { "t": "pommes", "lemma": "pomme", "pos": "noun", "gender": "f", "gloss": "apples", "form": "feminine plural" },
           { "t": "." }
@@ -59,7 +59,8 @@ Rules for tokens:
 - Joining every token's `t` must give the exact sentence. Sentences in a paragraph are joined by one space, so don't put leading or trailing spaces in a sentence.
 - **Word tokens** (anything with a letter or digit) need `lemma`, `pos` (see `PartOfSpeech` in `src/shared/schemas/common.ts`), and a contextual English `gloss` ("goes", not "to go"). Add `gender` (`m`/`f`) on nouns, and `form` on inflected words (verbs: person · tense · group; nouns/adjectives: gender and number).
 - Elisions are their own word token: `l'` (lemma `le` or `la` per the noun), `j'` (lemma `je`), `n'`, `d'`, `qu'`, `c'`. The apostrophe stays inside the elided token (`"t": "l'"`), and the next word follows with no gap token.
-- Contractions: `au` → lemma `au`, pos `contraction`, gloss "to the" / "at the"; same for `aux`, `du`, `des` (when it means *de + les*).
+- Articles follow the T-08 lexicon: indefinite *des* → lemma `un` (pos `article`); partitive *du* / *de la* → lemma `du` / `de` (pos `article`).
+- Contractions: `au` → lemma `au`, pos `contraction`, gloss "to the" / "at the"; same for `aux`, `du`, `des` (when it means *de + le* / *de + les*).
 - Hyphenated inversion (`vas-tu`) is two word tokens with a `-` gap token between them; `est-ce que` is three word tokens (`est`, `ce`, `que`) with gaps, all tagged `questions.est-ce-que` in the text.
 - **Gap tokens** hold only spaces and punctuation, including the no-break space before `? ! : ;`.
 - `isNew: true` on at most **8** key words per text (the vocabulary the text teaches). `newWords` lists exactly their lemmas.
@@ -71,3 +72,11 @@ Rules for tokens:
 - `npm run content:check` is green.
 - Read every text once more as a French teacher: is anything unnatural, ahead of the grammar ceiling, or wrongly glossed? Fix it.
 - You do not approve your own content. T-24 (a different agent) reviews it; list anything you are unsure about in your report.
+
+## Conventions decided after the first round (lead, 2026-10-18)
+
+- **Apostrophe:** straight `'` in French tokens and cards (the tokenizer accepts `’` too).
+- **Articles:** definite *le/la/l'/les* → lemma `le` (gender on the token). Indefinite *des* → `un`. Partitive *du* → `du`, *de la* / *de l'* → `de` + `le`. *du/des/au/aux* meaning de/à + le/les → pos `contraction`.
+- **Fixed multi-word phrases** (*s'il vous plaît*, *au revoir*, *il y a*, *d'accord*, *bonne journée*): every token carries the whole phrase as `lemma`, pos `phrase`, and the phrase meaning in `form`; `gloss` is that word's part.
+- **Single tokens:** *aujourd'hui*, *rez-de-chaussée*, *après-midi* and hyphenated numbers (*quatre-vingt-deux*).
+- **Grammar-ceiling readings for Stage 1** (QA confirms; see G-57): *et* may join nouns, adjectives and short clauses; *à* with places is fine from ch10 (and inside *aller à* in ch12); infinitives after *pouvoir/vouloir/devoir/savoir* are fine in ch12; questions wait for ch7 except *Ça va ?*; possessives, demonstratives, stressed pronouns and *mais* wait for their chapters.
