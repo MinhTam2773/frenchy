@@ -310,7 +310,8 @@ test('warns when an answer could not be saved, and keeps going', async () => {
   showAnswer();
   grade(/^Good,/);
 
-  expect(await screen.findByRole('status')).toHaveTextContent('One answer couldn’t be saved');
+  // Not `findByRole('status')`: the layout's offline banner is a status region too.
+  expect(await screen.findByText(/One answer couldn’t be saved/)).toHaveAttribute('role', 'status');
   expect(await screen.findByText(meaning.front)).toBeInTheDocument();
 });
 

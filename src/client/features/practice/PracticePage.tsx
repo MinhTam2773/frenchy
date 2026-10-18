@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '@client/lib/api';
 import { queryKeys } from '@client/lib/query';
-import { Card, Icon, StreakChip, type IconName } from '@client/ui';
+import { Button, Card, Icon, StreakChip, type IconName } from '@client/ui';
 
 const COMING_LATER: { icon: IconName; title: string; hint: string }[] = [
   { icon: 'pencil', title: 'Conjugation drills', hint: 'Present tense · parler, aimer, manger' },
@@ -18,6 +18,16 @@ function FlashcardsCard() {
     { label: 'learning', value: counts?.learning },
     { label: 'review', value: counts?.review },
   ];
+  if (stats.isError) {
+    return (
+      <div role="alert" className="flex flex-col items-start gap-3 px-1">
+        <p className="font-bold">Could not load your flashcards.</p>
+        <Button size="sm" variant="secondary" onClick={() => void stats.refetch()}>
+          Try again
+        </Button>
+      </div>
+    );
+  }
   return (
     <Card tone="primary" to="/review" className="flex flex-col gap-3 p-[18px]">
       <span className="text-[13px] font-extrabold tracking-[0.08em] uppercase">Flashcards</span>

@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react';
+import { fireEvent, screen, within } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { expect, test } from 'vitest';
 import { renderAt } from '@client/mocks/renderAt';
@@ -42,4 +42,20 @@ test('the streak chip links to /streak', async () => {
     'href',
     '/streak',
   );
+});
+
+test('offers a retry when the card counts fail to load', async () => {
+  let fail = true;
+  server.use(
+    http.get('/api/cards/stats', () =>
+      fail
+        ? HttpResponse.json({ error: { code: 'internal', message: 'Down' } }, { status: 500 })
+        : HttpResponse.json(cardStats),
+    ),
+  );
+  renderAt('/practice');
+  expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your flashcards.');
+  fail = false;
+  fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
+  expect(await screen.findByRole('link', { name: /Flashcards/ })).toBeInTheDocument();
 });
