@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 17 · NEXT 19 (8 in progress: T-08, T-13, T-14, T-16 to T-20) · BACKLOG 20
+**Progress:** DONE 26 · NEXT 10 (5 ready: T-21 to T-25) · BACKLOG 22
 
 ---
 
@@ -395,6 +395,192 @@ Notes for T-13 / T-22 / T-23:
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [x] Finish: PR to `main` merged with CI green
 
+### T-13 · Auth backend (Better Auth on Workers + D1)
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · High | M | T-06 | T-21, T-22, T-23 | 3 |
+
+**Status:** done · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api` · **PR:** https://github.com/MinhTam2773/frenchy/pull/25
+**Owns:** `src/worker/auth/**`, `src/worker/middleware/session.ts`, `src/worker/routes/auth.ts`, auth migrations in `migrations/`
+**Goal:** Email and Google sign-in with sessions stored in D1, and a `requireUser` middleware every API route uses.
+**Done when:** the workers-pool tests cover sign up, sign in, session read, a protected route (401 vs 200) and sign out.
+
+- [x] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
+- [x] Create the auth instance per request from `env`; mount at `/api/auth/*`
+- [x] Email + password (minimum length, rate-limited attempts)
+- [x] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
+- [x] Generate the Better Auth tables → Drizzle schema → migration; apply locally
+- [x] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
+- [x] Create the `profiles` row on first sign-in (onboarding fills it)
+- [x] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
+- [x] Tests (workers pool) for the flows in "Done when"
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+Notes for T-21 / T-22 / T-23:
+- Go: Better Auth 1.7.10 runs in workerd with D1 through the Drizzle adapter (sign-up, sign-in, session, sign-out, rate limit and Google start all tested). Caveat G-35 (password hashing CPU).
+- `requireUser` (`src/worker/middleware/session.ts`) with `Hono<UserEnv>`: sets `c.var.user` (Better Auth user: `id`, `email`, `name`, `image`, `emailVerified`, `createdAt`, `updatedAt`) and `c.var.session`; 401 `{ error: { code: 'unauthorized' } }` otherwise. Use `scopedDb(createDb(c.env.DB), c.var.user.id)`.
+- `GET /api/auth/config` → `AuthConfig` `{ google }` (`@shared/schemas`). Client: `better-auth/react` `createAuthClient()` with the default `/api/auth` base path. Cookie `better-auth.session_token` (`__Secure-` prefixed over https).
+- The profile row is created on every session create if missing (`onConflictDoNothing`), so `GET /api/profile` always finds one. Time zone defaults to Cloudflare's `request.cf.timezone` or `UTC`; T-21 onboarding should PATCH the device's `Intl.DateTimeFormat().resolvedOptions().timeZone`.
+- QUESTION: password hashing (scrypt) needs more CPU than the Workers Free plan's 10 ms per request (G-35). Default kept: Better Auth's scrypt, which assumes Workers Paid. Alternative: a custom `password.hash/verify` with cheaper parameters (weaker against offline cracking). Decide before T-30.
+
+### T-14 · Stage 1 content generation (fan-out per chapter)
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · High (one agent per chapter) | L total, M per chapter | T-07 | T-24 | 3 |
+
+**Status:** done · **Claimed by:** lead (briefs) + one T-14 subagent per chapter · **Branch:** `task/T-14-stage1-<chapterId>` (one per chapter) · **PR:** https://github.com/MinhTam2773/frenchy/pull/20 and https://github.com/MinhTam2773/frenchy/pull/27
+**Owns:** `scripts/content/prompts/**` (lead only), `content/chapters/<chapterId>/**` (each sub-agent owns exactly one chapter folder)
+**Goal:** Original, leveled Stage 1 lessons: 3–5 texts per chapter, a grammar note and a starter deck, with every token annotated so the reader is exact.
+**Done when:** all 8 Stage 1 chapters pass `npm run content:check` and are handed to T-24 for QA.
+
+- [x] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
+- [x] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
+- [x] Fan out, one sub-agent per chapter (tick when that chapter passes `content:check`):
+  - [x] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
+  - [x] Ch 1 · Articles
+  - [x] Ch 2 · Basic gender endings
+  - [x] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
+  - [x] Ch 10 · Present tense of -er verbs
+  - [x] Ch 4 · Numbers
+  - [x] Ch 7 · Asking questions
+  - [x] Ch 33 · Conversation: meeting people (dialogues)
+- [x] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json`
+- [x] `npm run content:check` green for all chapters
+- [x] Do not self-approve: hand over to T-24 (a different agent). Each chapter agent's doubts are in its PR (#20, this PR) for T-24
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR(s) to `main` merged with CI green
+
+### T-15 · French tokenizer and word annotation
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · High | M | T-04, T-08 | T-25 | 3 |
+
+**Status:** done · **Claimed by:** T-15 subagent (lead session) · **Branch:** `task/T-15-tokenizer` · **PR:** https://github.com/MinhTam2773/frenchy/pull/26
+**Owns:** `src/shared/text/**`
+**Notes (decisions, see PR):** tokens are `word` / `gap` (a gap is a run of spaces and punctuation), exactly like content `WordToken` / `GapToken`, so the reader treats both alike; a test checks `tokenize()` reproduces annotated lesson sentences token for token. `annotate(tokens, index)` takes the sentence's tokens instead of `(token, context)`. *est-ce que* is three word tokens (as in `text.md`) and each one carries `phrase`. Titles keep their period (`M.`), clock times (`8 h 30`) and numbers (`12,50`) are one token (G-55).
+**Goal:** Turn any French text into tappable tokens and sentences, and give each word the best lemma and form info available.
+**Done when:** a table-driven test of tricky inputs passes (elision, hyphenated inversion, French punctuation, compounds, abbreviations).
+
+- [x] `tokenize(text)` → word, punctuation and space tokens with offsets
+- [x] Elision with both `'` and `’`: l', d', j', m', t', s', n', c', qu', jusqu', lorsqu', puisqu'
+- [x] Hyphens: inversions split (*parles-tu*, *a-t-il*); fixed compounds kept whole (*aujourd'hui*, *peut-être*, *est-ce que* as a phrase)
+- [x] French punctuation spacing (« », non-breaking spaces before ? ! : ;) and numbers
+- [x] `splitSentences(text)` that respects abbreviations (M., Mme, etc.) and ellipses
+- [x] `annotate(token, context)`: content annotation first; otherwise lexicon candidates with simple context rules (*a* vs *à*, *est* as a verb after a subject, verb readings after subject pronouns); otherwise unknown
+- [x] `describeForm()` for the word sheet, e.g. "il / elle · present · -er verb"
+- [x] Table-driven tests
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-16 · Today screen
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | M | T-09, T-11 | T-26 | 3 |
+
+**Status:** done · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today` · **PR:** https://github.com/MinhTam2773/frenchy/pull/23
+**Owns:** `src/client/features/today/**`, `src/client/lib/activity/**`, `src/client/mocks/handlers/today.ts`
+**Goal:** The daily screen from `Today.dc.html`: review first, then the book, reading and output.
+**Done when:** it matches the mockup at 390 px with fixture data, the edge states work, and tests pass.
+
+- [x] Header: wordmark, streak chip, freeze chip (both link to `/streak`). Chips are the kit's 44 px high, not the mockup's 40 (L-18)
+- [x] Greeting and daily minutes progress against the goal
+- [x] Review card: due count, estimated minutes (≈ 35 s per card), Start review → `/review`
+- [x] Book card: current chapter, PDF pages → `/chapter/:id`. "Current section" is not shown: nothing tracks which section the learner is on (G-37)
+- [x] Reading card: next unread text of the current chapter → `/read/:id`; also "all texts read" and "no texts yet" states (content has none until T-14)
+- [x] Output card: "Write 3–5 sentences" (links to the tutor once B-03 lands; until then a simple notes prompt or hidden, decide in the PR). Decision: a static prompt card with no link and no chevron, detail "Use today’s new words in your own notes"; B-03 turns it into a link to the tutor
+- [x] `useToday()` combining profile, due count, streak summary and next text; MSW handler (no `mocks/handlers/today.ts`: `base.ts` already serves every endpoint, and tests override with `server.use`)
+- [x] Edge states: 0 due ("All caught up", next due time), streak at risk, no chapter set → onboarding; also no cards at all, loading and error with retry
+- [x] `useActiveMinutes()`: visibility-aware minute tracking that pings the activity API (mocked for now). Mounted by the Today page only (G-38)
+- [x] Tests: due count, links, empty state, at-risk state
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-17 · Course map and chapter screens
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | M | T-09, T-07 | T-26 | 3 |
+
+**Status:** done · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter` · **PR:** https://github.com/MinhTam2773/frenchy/pull/22
+**Owns:** `src/client/features/path/**`, `src/client/features/chapter/**`, `src/client/mocks/handlers/path.ts`
+**Goal:** `Path.dc.html` and `Chapter.dc.html`: the winding stage path and the chapter page that sits next to the book.
+**Done when:** both match their mockups with the real `course.json`, setting the current chapter works (mocked), and tests pass.
+
+**Decisions:** appendices are reference nodes (book icon, never done or locked, left out of "n of m chapters done"; G-23); the done node is ink on gold (about 8.6:1) because white on gold is 1.8:1 (L-51); all chapters open from every node (G-07); the mockup's "§2 now" has no data behind it (G-39); `routes.test.tsx` lost its `/path` and `/chapter/ch10` rows because those screens have their own tests now (L-53).
+
+- [x] Path: stage banner with stage switcher, winding node path (done / current / locked / conversation node styles), labels, "You're here" bubble, mascot
+- [x] States from `course.json` + `profile.currentChapterId`: before current = done, current, after = locked (locked chapters still open read-only; see G-07)
+- [x] Chapter: header, title, PDF page range, section progress, pattern / grammar note card, readings list, starter deck "Add to reviews" (calls the starter-deck endpoint)
+- [x] "Make this my current chapter" action
+- [x] Hide the drill button until B-01
+- [x] Desktop: centered column, max width ~480 px
+- [x] Tests: node states, current-chapter change, readings links
+- [x] Finish: `npm run check` green (CI)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-18 · Review session and session complete
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Sonnet 5.5 · High | M | T-09, T-10 | T-26 | 3 |
+
+**Status:** done · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review` · **PR:** https://github.com/MinhTam2773/frenchy/pull/24
+**Owns:** `src/client/features/review/**`, `src/client/mocks/handlers/review.ts`
+**Goal:** `Review.dc.html` and `ReviewDone.dc.html`: a fast SRS session with the 3 card types and FSRS interval previews.
+**Done when:** a mocked session can be completed end to end, the stats math is tested, and the screens match the mockups.
+
+- [x] Load due cards (cap per session `DUE_LIMIT.default`, cap new cards per day `NEW_CARDS_PER_DAY`: the contract has no settings field for it); progress bar and count
+- [x] Card renderers: `sentence_meaning` (with TTS button), `meaning_sentence`, `cloze` (blank → filled on reveal)
+- [x] Show answer → 4 grade buttons labelled with `previewIntervals` (T-10)
+- [x] On grade: next state from T-10, optimistic update, POST the review (mocked), next card; one-step undo (the card advances before any POST; the server recomputes the state, and the last grade is held and posted when the next card is graded or the session ends, per G-20)
+- [x] Desktop keys inside the screen only: Space reveals, 1–4 grade
+- [x] Session complete: cards, correct % (Good + Easy share), time, streak message, "Up next" link
+- [x] Tests: reveal → grade → advance; undo; completion stats
+- [x] Finish: `npm run check` green (CI)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-19 · Streak and Practice hub screens
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Sonnet 5.5 · Medium | S | T-09, T-11 | T-26 | 3 |
+
+**Status:** done · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice` · **PR:** https://github.com/MinhTam2773/frenchy/pull/21
+**Owns:** `src/client/features/streak/**`, `src/client/features/practice/**`, `src/client/mocks/handlers/streak.ts`
+**Goal:** `Streak.dc.html` and `Practice.dc.html`.
+**Done when:** both match their mockups with fixture data and tests pass.
+
+- [x] Streak: hero (current, best), at-risk banner, month calendar (practiced, freeze used, today, missed, future) with previous/next month, freeze card
+- [x] Practice hub: flashcards card (due, new, learning, review counts) → `/review`; drills, tutor, speaking and import shown as "Coming later"
+- [x] Tests: calendar cell states from T-11 output; hub counts
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-20 · Me / settings screen
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Sonnet 5.5 · Medium | S | T-09 | T-26 | 3 |
+
+**Status:** done · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings` · **PR:** https://github.com/MinhTam2773/frenchy/pull/18
+**Owns:** `src/client/features/settings/**`, `src/client/mocks/handlers/settings.ts`
+**Goal:** The MVP subset of `Settings.dc.html`.
+**Done when:** changing a setting persists through the (mocked) profile API and tests pass.
+
+- [x] Profile row (name, sync status, streak chip)
+- [x] Learning: book chapter (opens the chapter picker), daily goal, time zone (auto-detected, editable)
+- [x] Audio: voice picker (from T-05 voices), speed 0.6–1.0, "Play words when tapped"
+- [x] Sign out (mocked until T-26)
+- [x] Not in MVP, so not rendered: daily reminder (B-12), AI providers (B-13)
+- [x] Tests: settings round-trip through the profile mock
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
 ---
 
 ## NEXT (MVP)
@@ -437,191 +623,7 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 
 ### Wave 3
 
-#### T-13 · Auth backend (Better Auth on Workers + D1)
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · High | M | T-06 | T-21, T-22, T-23 | 3 |
-
-**Status:** in review · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
-**Owns:** `src/worker/auth/**`, `src/worker/middleware/session.ts`, `src/worker/routes/auth.ts`, auth migrations in `migrations/`
-**Goal:** Email and Google sign-in with sessions stored in D1, and a `requireUser` middleware every API route uses.
-**Done when:** the workers-pool tests cover sign up, sign in, session read, a protected route (401 vs 200) and sign out.
-
-- [x] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
-- [x] Create the auth instance per request from `env`; mount at `/api/auth/*`
-- [x] Email + password (minimum length, rate-limited attempts)
-- [x] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
-- [x] Generate the Better Auth tables → Drizzle schema → migration; apply locally
-- [x] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
-- [x] Create the `profiles` row on first sign-in (onboarding fills it)
-- [x] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
-- [x] Tests (workers pool) for the flows in "Done when"
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-Notes for T-21 / T-22 / T-23:
-- Go: Better Auth 1.7.10 runs in workerd with D1 through the Drizzle adapter (sign-up, sign-in, session, sign-out, rate limit and Google start all tested). Caveat G-35 (password hashing CPU).
-- `requireUser` (`src/worker/middleware/session.ts`) with `Hono<UserEnv>`: sets `c.var.user` (Better Auth user: `id`, `email`, `name`, `image`, `emailVerified`, `createdAt`, `updatedAt`) and `c.var.session`; 401 `{ error: { code: 'unauthorized' } }` otherwise. Use `scopedDb(createDb(c.env.DB), c.var.user.id)`.
-- `GET /api/auth/config` → `AuthConfig` `{ google }` (`@shared/schemas`). Client: `better-auth/react` `createAuthClient()` with the default `/api/auth` base path. Cookie `better-auth.session_token` (`__Secure-` prefixed over https).
-- The profile row is created on every session create if missing (`onConflictDoNothing`), so `GET /api/profile` always finds one. Time zone defaults to Cloudflare's `request.cf.timezone` or `UTC`; T-21 onboarding should PATCH the device's `Intl.DateTimeFormat().resolvedOptions().timeZone`.
-- QUESTION: password hashing (scrypt) needs more CPU than the Workers Free plan's 10 ms per request (G-35). Default kept: Better Auth's scrypt, which assumes Workers Paid. Alternative: a custom `password.hash/verify` with cheaper parameters (weaker against offline cracking). Decide before T-30.
-
-#### T-14 · Stage 1 content generation (fan-out per chapter)
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · High (one agent per chapter) | L total, M per chapter | T-07 | T-24 | 3 |
-
-**Status:** in review · **Claimed by:** lead (briefs) + one T-14 subagent per chapter · **Branch:** `task/T-14-stage1-<chapterId>` (one per chapter)
-**Owns:** `scripts/content/prompts/**` (lead only), `content/chapters/<chapterId>/**` (each sub-agent owns exactly one chapter folder)
-**Goal:** Original, leveled Stage 1 lessons: 3–5 texts per chapter, a grammar note and a starter deck, with every token annotated so the reader is exact.
-**Done when:** all 8 Stage 1 chapters pass `npm run content:check` and are handed to T-24 for QA.
-
-- [x] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
-- [x] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
-- [ ] Fan out, one sub-agent per chapter (tick when that chapter passes `content:check`):
-  - [x] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
-  - [x] Ch 1 · Articles
-  - [x] Ch 2 · Basic gender endings
-  - [x] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
-  - [x] Ch 10 · Present tense of -er verbs
-  - [x] Ch 4 · Numbers
-  - [x] Ch 7 · Asking questions
-  - [x] Ch 33 · Conversation: meeting people (dialogues)
-- [x] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json`
-- [x] `npm run content:check` green for all chapters
-- [x] Do not self-approve: hand over to T-24 (a different agent). Each chapter agent's doubts are in its PR (#20, this PR) for T-24
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR(s) to `main` merged with CI green
-
-#### T-15 · French tokenizer and word annotation
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · High | M | T-04, T-08 | T-25 | 3 |
-
-**Status:** in review · **Claimed by:** T-15 subagent (lead session) · **Branch:** `task/T-15-tokenizer`
-**Owns:** `src/shared/text/**`
-**Notes (decisions, see PR):** tokens are `word` / `gap` (a gap is a run of spaces and punctuation), exactly like content `WordToken` / `GapToken`, so the reader treats both alike; a test checks `tokenize()` reproduces annotated lesson sentences token for token. `annotate(tokens, index)` takes the sentence's tokens instead of `(token, context)`. *est-ce que* is three word tokens (as in `text.md`) and each one carries `phrase`. Titles keep their period (`M.`), clock times (`8 h 30`) and numbers (`12,50`) are one token (G-55).
-**Goal:** Turn any French text into tappable tokens and sentences, and give each word the best lemma and form info available.
-**Done when:** a table-driven test of tricky inputs passes (elision, hyphenated inversion, French punctuation, compounds, abbreviations).
-
-- [x] `tokenize(text)` → word, punctuation and space tokens with offsets
-- [x] Elision with both `'` and `’`: l', d', j', m', t', s', n', c', qu', jusqu', lorsqu', puisqu'
-- [x] Hyphens: inversions split (*parles-tu*, *a-t-il*); fixed compounds kept whole (*aujourd'hui*, *peut-être*, *est-ce que* as a phrase)
-- [x] French punctuation spacing (« », non-breaking spaces before ? ! : ;) and numbers
-- [x] `splitSentences(text)` that respects abbreviations (M., Mme, etc.) and ellipses
-- [x] `annotate(token, context)`: content annotation first; otherwise lexicon candidates with simple context rules (*a* vs *à*, *est* as a verb after a subject, verb readings after subject pronouns); otherwise unknown
-- [x] `describeForm()` for the word sheet, e.g. "il / elle · present · -er verb"
-- [x] Table-driven tests
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-16 · Today screen
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | M | T-09, T-11 | T-26 | 3 |
-
-**Status:** in review · **Claimed by:** T-16 subagent (lead session) · **Branch:** `task/T-16-today`
-**Owns:** `src/client/features/today/**`, `src/client/lib/activity/**`, `src/client/mocks/handlers/today.ts`
-**Goal:** The daily screen from `Today.dc.html`: review first, then the book, reading and output.
-**Done when:** it matches the mockup at 390 px with fixture data, the edge states work, and tests pass.
-
-- [x] Header: wordmark, streak chip, freeze chip (both link to `/streak`). Chips are the kit's 44 px high, not the mockup's 40 (L-18)
-- [x] Greeting and daily minutes progress against the goal
-- [x] Review card: due count, estimated minutes (≈ 35 s per card), Start review → `/review`
-- [x] Book card: current chapter, PDF pages → `/chapter/:id`. "Current section" is not shown: nothing tracks which section the learner is on (G-37)
-- [x] Reading card: next unread text of the current chapter → `/read/:id`; also "all texts read" and "no texts yet" states (content has none until T-14)
-- [x] Output card: "Write 3–5 sentences" (links to the tutor once B-03 lands; until then a simple notes prompt or hidden, decide in the PR). Decision: a static prompt card with no link and no chevron, detail "Use today’s new words in your own notes"; B-03 turns it into a link to the tutor
-- [x] `useToday()` combining profile, due count, streak summary and next text; MSW handler (no `mocks/handlers/today.ts`: `base.ts` already serves every endpoint, and tests override with `server.use`)
-- [x] Edge states: 0 due ("All caught up", next due time), streak at risk, no chapter set → onboarding; also no cards at all, loading and error with retry
-- [x] `useActiveMinutes()`: visibility-aware minute tracking that pings the activity API (mocked for now). Mounted by the Today page only (G-38)
-- [x] Tests: due count, links, empty state, at-risk state
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-17 · Course map and chapter screens
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | M | T-09, T-07 | T-26 | 3 |
-
-**Status:** in review · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
-**Owns:** `src/client/features/path/**`, `src/client/features/chapter/**`, `src/client/mocks/handlers/path.ts`
-**Goal:** `Path.dc.html` and `Chapter.dc.html`: the winding stage path and the chapter page that sits next to the book.
-**Done when:** both match their mockups with the real `course.json`, setting the current chapter works (mocked), and tests pass.
-
-**Decisions:** appendices are reference nodes (book icon, never done or locked, left out of "n of m chapters done"; G-23); the done node is ink on gold (about 8.6:1) because white on gold is 1.8:1 (L-51); all chapters open from every node (G-07); the mockup's "§2 now" has no data behind it (G-39); `routes.test.tsx` lost its `/path` and `/chapter/ch10` rows because those screens have their own tests now (L-53).
-
-- [x] Path: stage banner with stage switcher, winding node path (done / current / locked / conversation node styles), labels, "You're here" bubble, mascot
-- [x] States from `course.json` + `profile.currentChapterId`: before current = done, current, after = locked (locked chapters still open read-only; see G-07)
-- [x] Chapter: header, title, PDF page range, section progress, pattern / grammar note card, readings list, starter deck "Add to reviews" (calls the starter-deck endpoint)
-- [x] "Make this my current chapter" action
-- [x] Hide the drill button until B-01
-- [x] Desktop: centered column, max width ~480 px
-- [x] Tests: node states, current-chapter change, readings links
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-18 · Review session and session complete
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Sonnet 5.5 · High | M | T-09, T-10 | T-26 | 3 |
-
-**Status:** in review · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review`
-**Owns:** `src/client/features/review/**`, `src/client/mocks/handlers/review.ts`
-**Goal:** `Review.dc.html` and `ReviewDone.dc.html`: a fast SRS session with the 3 card types and FSRS interval previews.
-**Done when:** a mocked session can be completed end to end, the stats math is tested, and the screens match the mockups.
-
-- [x] Load due cards (cap per session `DUE_LIMIT.default`, cap new cards per day `NEW_CARDS_PER_DAY`: the contract has no settings field for it); progress bar and count
-- [x] Card renderers: `sentence_meaning` (with TTS button), `meaning_sentence`, `cloze` (blank → filled on reveal)
-- [x] Show answer → 4 grade buttons labelled with `previewIntervals` (T-10)
-- [x] On grade: next state from T-10, optimistic update, POST the review (mocked), next card; one-step undo (the card advances before any POST; the server recomputes the state, and the last grade is held and posted when the next card is graded or the session ends, per G-20)
-- [x] Desktop keys inside the screen only: Space reveals, 1–4 grade
-- [x] Session complete: cards, correct % (Good + Easy share), time, streak message, "Up next" link
-- [x] Tests: reveal → grade → advance; undo; completion stats
-- [ ] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-19 · Streak and Practice hub screens
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Sonnet 5.5 · Medium | S | T-09, T-11 | T-26 | 3 |
-
-**Status:** in review · **Claimed by:** T-19 subagent (lead session) · **Branch:** `task/T-19-streak-practice`
-**Owns:** `src/client/features/streak/**`, `src/client/features/practice/**`, `src/client/mocks/handlers/streak.ts`
-**Goal:** `Streak.dc.html` and `Practice.dc.html`.
-**Done when:** both match their mockups with fixture data and tests pass.
-
-- [x] Streak: hero (current, best), at-risk banner, month calendar (practiced, freeze used, today, missed, future) with previous/next month, freeze card
-- [x] Practice hub: flashcards card (due, new, learning, review counts) → `/review`; drills, tutor, speaking and import shown as "Coming later"
-- [x] Tests: calendar cell states from T-11 output; hub counts
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-20 · Me / settings screen
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Sonnet 5.5 · Medium | S | T-09 | T-26 | 3 |
-
-**Status:** in review · **Claimed by:** T-20 subagent (lead session) · **Branch:** `task/T-20-settings`
-**Owns:** `src/client/features/settings/**`, `src/client/mocks/handlers/settings.ts`
-**Goal:** The MVP subset of `Settings.dc.html`.
-**Done when:** changing a setting persists through the (mocked) profile API and tests pass.
-
-- [x] Profile row (name, sync status, streak chip)
-- [x] Learning: book chapter (opens the chapter picker), daily goal, time zone (auto-detected, editable)
-- [x] Audio: voice picker (from T-05 voices), speed 0.6–1.0, "Play words when tapped"
-- [x] Sign out (mocked until T-26)
-- [x] Not in MVP, so not rendered: daily reminder (B-12), AI providers (B-13)
-- [x] Tests: settings round-trip through the profile mock
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+Wave 3 is done (T-13 to T-20 moved to DONE).
 
 ### Wave 4
 
@@ -630,7 +632,7 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-13 | T-26 | 4 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-21-auth-ui`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-21-auth-ui`
 **Owns:** `src/client/features/auth/**`, `src/client/features/onboarding/**`, `src/client/lib/session.ts` (replaces the T-09 stub)
 **Goal:** `Main.dc.html` and `Onboarding.dc.html` working with the real Better Auth client.
 **Done when:** a new user can sign up with email locally, pick a chapter and goal, and land on `/today`; tests pass.
@@ -650,7 +652,7 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | L | T-06, T-10, T-11, T-13 | T-26 | 4 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-22-sync-api`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-22-sync-api`
 **Owns:** `src/worker/routes/profile.ts`, `cards.ts`, `reviews.ts`, `words.ts`, `activity.ts` (+ one mount line each in `src/worker/index.ts`)
 **Goal:** Every MVP endpoint from `docs/api-contract.md`, user-scoped and validated.
 **Done when:** each endpoint has tests, including one proving cross-user isolation, and responses match the shared schemas.
@@ -673,7 +675,7 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P1 | Opus 5.5 · High | M | T-06, T-07, T-13 | T-26 | 4 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-23-ai`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-23-ai`
 **Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`
 **Goal:** Sentence translation and explanation for any text through one provider-agnostic interface, cached so each sentence costs at most once.
 **Done when:** the tests show a cache hit skips the provider, invalid JSON is retried once, and the rate limit works, all with the mock driver.
@@ -696,7 +698,7 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Extra | M | T-14, T-08 | T-30 | 4 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-24-content-qa`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-24-content-qa`
 **Owns:** fixes in `content/chapters/**`, `docs/content-qa.md`
 **Goal:** An independent check (fresh agent, not the T-14 author) that every Stage 1 text and card is correct, natural and at the right level.
 **Done when:** `docs/content-qa.md` lists every finding with its fix, lexicon coverage is ≥ 98%, and `content:check` is green.
@@ -715,7 +717,7 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-05, T-07, T-09, T-15 | T-26 | 4 |
 
-**Status:** blocked · **Claimed by:** — · **Branch:** `task/T-25-reader`
+**Status:** ready · **Claimed by:** — · **Branch:** `task/T-25-reader`
 **Owns:** `src/client/features/reader/**`, `src/client/mocks/handlers/reader.ts`
 **Goal:** `Reader.dc.html` and `Sentence.dc.html`: every French word is tappable, sentences can be long-pressed, and anything can be saved to SRS.
 **Done when:** tapping a word shows the right sheet, long-press selects the sentence, saving creates a card (mocked), and it all works with the keyboard.
