@@ -36,3 +36,9 @@ export const MAX_NEW_WORDS_PER_TEXT = 8;
 
 /** Longest text the AI endpoints accept, to cap cost per request. */
 export const MAX_AI_TEXT_LENGTH = 500;
+
+/**
+ * How far a client instant (`ActivityPing.at`, `ReviewInput.reviewedAt`, `Reading.finishedAt`) may
+ * lie from the server's now (G-61): older or later is `400`, slightly ahead is clamped to now.
+ */
+export const CLIENT_INSTANT_WINDOW = { pastMs: 24 * 60 * 60_000, futureMs: 5 * 60_000 } as const;

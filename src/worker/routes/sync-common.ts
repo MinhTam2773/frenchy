@@ -2,7 +2,14 @@ import type { Context } from 'hono';
 import { Hono } from 'hono';
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
 import type { z } from 'zod';
-import { Card, Profile, type ApiError, type ApiErrorCode } from '../../shared/schemas';
+import {
+  Card,
+  CLIENT_INSTANT_MESSAGE,
+  clampClientInstant,
+  Profile,
+  type ApiError,
+  type ApiErrorCode,
+} from '../../shared/schemas';
 import { createDb, scopedDb, type ScopedDb, type schema } from '../db';
 import { requireUser, type UserEnv } from '../middleware/session';
 
@@ -77,22 +84,18 @@ export function respond<S extends z.ZodType>(
   return c.json(schema.parse(data) as object, status);
 }
 
-/** Furthest a client instant (`at`, `reviewedAt`, `finishedAt`) may lie in the past. */
-export const MAX_CLIENT_LAG_MS = 24 * 60 * 60_000;
-/** Client clocks run a little ahead; later than this is refused, anything less is clamped to now. */
-export const MAX_CLIENT_LEAD_MS = 5 * 60_000;
-
 /**
  * A client-reported instant, clamped to the server's `now`. Far past or future values are
  * refused: they would be stored as a day of activity years away and stretch the streak calendar.
  */
 export function clientInstant(at: number, now: number, field: string): number {
-  if (at < now - MAX_CLIENT_LAG_MS || at > now + MAX_CLIENT_LEAD_MS) {
+  const clamped = clampClientInstant(at, now);
+  if (clamped === null) {
     throw new ApiFailure(400, 'bad_request', 'Invalid body', [
-      { path: field, message: 'Must be within the last 24 hours' },
+      { path: field, message: CLIENT_INSTANT_MESSAGE },
     ]);
   }
-  return Math.min(at, now);
+  return clamped;
 }
 
 export async function loadProfile(db: ScopedDb): Promise<Profile> {

@@ -15,6 +15,7 @@ To change the contract, edit the schema and both sides (client and worker) in on
 | User data ids | UUID strings (`Uuid`). The server makes card ids; the client makes review ids so a retried POST is applied once. |
 | Content ids | Chapter `ch10` / `appA` (`ChapterId`). Texts and deck cards `<chapterId>-<slug>`, e.g. `ch10-le-matin-de-lea` (`ContentId`). Grammar tags are dotted lowercase, e.g. `er.present` (`GrammarTagId`). |
 | Instants | Integer milliseconds since the epoch, UTC (`EpochMs`). Same in D1 (`integer`). |
+| Client instants | `ActivityPing.at`, `ReviewInput.reviewedAt` and `Reading.finishedAt` come from the device clock, so the server checks them (`clampClientInstant`, `CLIENT_INSTANT_WINDOW`): more than 24 h in the past or more than 5 min in the future is `400 bad_request` with the field as the issue path; a time up to 5 min ahead is clamped to the server's now. A review is never graded before the card's `lastReview` (G-61). |
 | Local days | `YYYY-MM-DD` in the profile's IANA time zone (`LocalDate`). Same in D1 (`text`). |
 | Missing values | Optional fields are left out, never `null`. Only fields typed `.nullable()` use `null`: `Profile.currentChapterId`, `ProfileSettings.voiceURI`, `Card.lastReview`, `CardStats.nextDueAt`. |
 | Lists | Wrapped in an object (`{ cards: [...] }`), so a field can be added later without breaking clients. |

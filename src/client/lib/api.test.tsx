@@ -25,12 +25,13 @@ test('every endpoint in the contract answers with data that matches its schema',
   await expect(api.cards.due(2)).resolves.toEqual({ cards: reviewCards.slice(0, 2) });
   await expect(api.cards.create(wordCardCreate)).resolves.toMatchObject(wordCardCreate);
   await expect(api.cards.addStarterDeck('ch10')).resolves.toMatchObject({ added: 3 });
+  const now = Date.now();
   await expect(
     api.reviews.create({
       id: '00000000-0000-4000-8000-0000000000a1',
       cardId: reviewCards[0].id,
       rating: 3,
-      reviewedAt: 1,
+      reviewedAt: now,
       durationMs: 1,
     }),
   ).resolves.toMatchObject({ id: reviewCards[0].id });
@@ -39,10 +40,10 @@ test('every endpoint in the contract answers with data that matches its schema',
     status: 'known',
   });
   await expect(api.words.list()).resolves.toMatchObject({ words: expect.any(Array) });
-  await expect(api.activity.ping(1)).resolves.toMatchObject({ minutes: expect.any(Number) });
+  await expect(api.activity.ping(now)).resolves.toMatchObject({ minutes: expect.any(Number) });
   await expect(api.activity.readings()).resolves.toMatchObject({ readings: expect.any(Array) });
-  await expect(api.activity.addReading({ textId: 'ch10-au-cafe', finishedAt: 1 })).resolves.toEqual(
-    { textId: 'ch10-au-cafe', finishedAt: 1 },
+  await expect(api.activity.addReading({ textId: 'ch10-au-cafe', finishedAt: now })).resolves.toEqual(
+    { textId: 'ch10-au-cafe', finishedAt: now },
   );
   await expect(api.streak()).resolves.toMatchObject({ today: expect.any(String) });
   await expect(api.ai.translate('Bonjour')).resolves.toHaveProperty('translation');
