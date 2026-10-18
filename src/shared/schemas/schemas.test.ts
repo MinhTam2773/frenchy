@@ -343,6 +343,7 @@ const cases: Record<string, Case> = {
     ],
     invalid: [{ error: { code: 'oops', message: 'x' } }, { message: 'flat' }],
   },
+  AuthConfig: { valid: [{ google: false }], invalid: [{}, { google: 'yes' }] },
 };
 
 const exported = Object.entries(schemas as Record<string, unknown>).filter(

@@ -442,23 +442,30 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-06 | T-21, T-22, T-23 | 3 |
 
-**Status:** in progress · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
+**Status:** in review · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
 **Owns:** `src/worker/auth/**`, `src/worker/middleware/session.ts`, `src/worker/routes/auth.ts`, auth migrations in `migrations/`
 **Goal:** Email and Google sign-in with sessions stored in D1, and a `requireUser` middleware every API route uses.
 **Done when:** the workers-pool tests cover sign up, sign in, session read, a protected route (401 vs 200) and sign out.
 
-- [ ] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
-- [ ] Create the auth instance per request from `env`; mount at `/api/auth/*`
-- [ ] Email + password (minimum length, rate-limited attempts)
-- [ ] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
-- [ ] Generate the Better Auth tables → Drizzle schema → migration; apply locally
-- [ ] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
-- [ ] Create the `profiles` row on first sign-in (onboarding fills it)
-- [ ] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
-- [ ] Tests (workers pool) for the flows in "Done when"
+- [x] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
+- [x] Create the auth instance per request from `env`; mount at `/api/auth/*`
+- [x] Email + password (minimum length, rate-limited attempts)
+- [x] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
+- [x] Generate the Better Auth tables → Drizzle schema → migration; apply locally
+- [x] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
+- [x] Create the `profiles` row on first sign-in (onboarding fills it)
+- [x] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
+- [x] Tests (workers pool) for the flows in "Done when"
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+Notes for T-21 / T-22 / T-23:
+- Go: Better Auth 1.7.10 runs in workerd with D1 through the Drizzle adapter (sign-up, sign-in, session, sign-out, rate limit and Google start all tested). Caveat G-35 (password hashing CPU).
+- `requireUser` (`src/worker/middleware/session.ts`) with `Hono<UserEnv>`: sets `c.var.user` (Better Auth user: `id`, `email`, `name`, `image`, `emailVerified`, `createdAt`, `updatedAt`) and `c.var.session`; 401 `{ error: { code: 'unauthorized' } }` otherwise. Use `scopedDb(createDb(c.env.DB), c.var.user.id)`.
+- `GET /api/auth/config` → `AuthConfig` `{ google }` (`@shared/schemas`). Client: `better-auth/react` `createAuthClient()` with the default `/api/auth` base path. Cookie `better-auth.session_token` (`__Secure-` prefixed over https).
+- The profile row is created on every session create if missing (`onConflictDoNothing`), so `GET /api/profile` always finds one. Time zone defaults to Cloudflare's `request.cf.timezone` or `UTC`; T-21 onboarding should PATCH the device's `Intl.DateTimeFormat().resolvedOptions().timeZone`.
+- QUESTION: password hashing (scrypt) needs more CPU than the Workers Free plan's 10 ms per request (G-35). Default kept: Better Auth's scrypt, which assumes Workers Paid. Alternative: a custom `password.hash/verify` with cheaper parameters (weaker against offline cracking). Decide before T-30.
 
 #### T-14 · Stage 1 content generation (fan-out per chapter)
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
@@ -563,20 +570,20 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-10 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review`
+**Status:** in review · **Claimed by:** T-18 subagent (lead session) · **Branch:** `task/T-18-review`
 **Owns:** `src/client/features/review/**`, `src/client/mocks/handlers/review.ts`
 **Goal:** `Review.dc.html` and `ReviewDone.dc.html`: a fast SRS session with the 3 card types and FSRS interval previews.
 **Done when:** a mocked session can be completed end to end, the stats math is tested, and the screens match the mockups.
 
-- [ ] Load due cards (cap per session, cap new cards per day from settings); progress bar and count
-- [ ] Card renderers: `sentence_meaning` (with TTS button), `meaning_sentence`, `cloze` (blank → filled on reveal)
-- [ ] Show answer → 4 grade buttons labelled with `previewIntervals` (T-10)
-- [ ] On grade: next state from T-10, optimistic update, POST the review (mocked), next card; one-step undo
-- [ ] Desktop keys inside the screen only: Space reveals, 1–4 grade
-- [ ] Session complete: cards, correct % (Good + Easy share), time, streak message, "Up next" link
-- [ ] Tests: reveal → grade → advance; undo; completion stats
+- [x] Load due cards (cap per session `DUE_LIMIT.default`, cap new cards per day `NEW_CARDS_PER_DAY`: the contract has no settings field for it); progress bar and count
+- [x] Card renderers: `sentence_meaning` (with TTS button), `meaning_sentence`, `cloze` (blank → filled on reveal)
+- [x] Show answer → 4 grade buttons labelled with `previewIntervals` (T-10)
+- [x] On grade: next state from T-10, optimistic update, POST the review (mocked), next card; one-step undo (the card advances before any POST; the server recomputes the state, and the last grade is held and posted when the next card is graded or the session ends, per G-20)
+- [x] Desktop keys inside the screen only: Space reveals, 1–4 grade
+- [x] Session complete: cards, correct % (Good + Easy share), time, streak message, "Up next" link
+- [x] Tests: reveal → grade → advance; undo; completion stats
 - [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-19 · Streak and Practice hub screens
@@ -1294,6 +1301,10 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-40 | `getChapterTexts` returns texts sorted by id, so the chapter page lists readings alphabetically (the fixtures give "Au café" before "Le matin de Léa", the mockup's order is the reverse). The text schema has no `order` field | Readings may not be in the intended reading order | T-14, T-07 (add `order` to `Text`, or number the ids), T-17 reads whatever order `getChapterTexts` gives |
 | G-37 | Today's book and reading cards need content the repo doesn't have: the mockup's "Section 2 of 4" needs per-section progress (nothing stores which section the learner is on, and `course.json` has `sections: []` until G-06 closes), and "next unread text" needs an order for a chapter's texts (`getChapterTexts` sorts by id, so *Au café* would come before *Le matin de Léa*). The card shows PDF pages and takes the first unread text in that order | The book card shows less than the mockup; the next text may not be the one the author intended | T-14, T-17 (add `order` to `Text` or number the ids; decide with the section model) |
 | G-38 | `useActiveMinutes` (`src/client/lib/activity`) is mounted only by the Today page, so time spent in the reader, the review or on other tabs is never pinged and `todayMinutes` undercounts. The base mock's ping always answers 8 minutes | The daily-minutes bar is wrong for a learner who reads or reviews more than they sit on Today | T-26 (mount it once in `TabLayout` and `FullScreenLayout`, which T-16 doesn't own) |
+| G-41 | The review session is a single pass: a card graded Again or Hard (due again in 1 to 10 minutes by FSRS's learning steps) is not shown again in the same session, it comes back in the next one. The "1m" on the Again button is true (that is its due time) but the learner won't see it until they start another session. The last grade is also held until the next grade or the end of the session (G-20), so closing the tab on the last card loses it (the card just stays due) | Learning cards get less repetition in one sitting than in Anki-style apps | T-18 follow-up (re-queue cards whose next due is within the session, then the progress count and the "cards" stat need a rule; decide with the user) |
+| G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-15, T-26 (share one helper once both screens exist) |
+| G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
+| G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
 | G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons | T-14, T-24 (add these rules to `text.md`; optionally move the token check into `content:check`) |
 | G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins) | B-07 (measure on real imported text), T-24 (`GLOSS_OVERRIDES` for function words) |
 
@@ -1364,6 +1375,12 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-48 · 2026-10-18 · client · T-16` — **Replacing a placeholder page breaks tests that look for its placeholder heading (`routes.test.tsx` and `RequireSession.test.tsx` both wait for a heading named "Today"), and `TabLayout` already renders the `<main>` landmark, so a page that adds its own nests two.** → A screen task that changes its page heading edits those two tests (one line each; other screens will hit the same lines, so keep the hunks tiny) and uses a `<div>`/`<section>`, never `<main>`, inside `TabLayout`.
 - `L-49 · 2026-10-18 · testing · T-16` — **Testing Library does not normalize the no-break space in an accessible `name`, so `findByRole('heading', { name: 'Bonjour !' })` misses "Bonjour&nbsp;!". The base mock's `POST /api/activity/ping` always answers 8 minutes, and `useActiveMinutes` copies the ping's minutes into the cached streak, so a test that sets `todayMinutes` through `/api/streak` alone gets overwritten.** → Match French text with a regexp (`/Bonjour/`). A test that needs other minutes overrides both `/api/streak` and `/api/activity/ping` with `server.use`.
 - `L-50 · 2026-10-18 · testing · T-16` — **MSW's browser worker answers API calls inside the service worker, so Playwright's `page.route` never sees them and can't force an edge state (nothing due, no chapter) in a `npm run dev` page.** → For a browser check of edge states, start a second dev server with `VITE_USE_MOCKS=false` on another port and stub `/api/**` with `page.route` (the app doesn't call the Worker in that case); use the default mocks for the fixture state. Stop the servers with `fuser -k <port>/tcp`, not `pkill -f` (L-43).
+- `L-54 · 2026-10-18 · testing · T-18` — **A stateful MSW handler (the review mock removes graded cards from `/api/cards/due`) leaked between tests: leaving the review screen posts the held grade, and that POST lands after the next test's `beforeEach` reset. The shared `afterEach` that unmounts runs after a file's own `afterEach`, so the file can't reset first.** → In a test file with a stateful feature handler, call `cleanup()` in your own `afterEach`, wait a few ms for the unmount-time POST, then reset the mock. Export a `reset…Mock()` from the handler file (the shared setup only resets `base.ts`).
+- `L-55 · 2026-10-18 · srs · T-18` — **The grade buttons are previewed when the answer is revealed, but the review is graded a few seconds later; ts-fsrs seeds fuzz from the review time, so previewing at one instant and posting another can show "8d" and store 7d (G-29).** → The screen previews at the reveal time and posts that same instant as `ReviewInput.reviewedAt` (the tap time is only used for `durationMs`). T-22 must grade at `reviewedAt` (and reject or clamp one before the card's `lastReview`: ts-fsrs throws `Invalid delta_t`) and accept a time a few seconds in the past; the review mock does, and tests assert the labels come from `previewIntervals(card, now)` with `Date` frozen, never from the mockup.
+- `L-56 · 2026-10-18 · testing · T-18` — **`handlers/index.ts` puts feature files ahead of `base.ts` in file-name order, so a feature handler for a shared path (`/api/streak`) would shadow `handlers/streak.ts` from another task for every test. An MSW resolver that returns `undefined` falls through to the next matching handler.** → A feature handler that only changes a path in some state returns nothing otherwise (`review.ts` answers `/api/streak` only after a review was graded). Don't override a shared path unconditionally from a feature file; use `server.use` in the test instead.
+- `L-45 · 2026-10-18 · auth · T-13` — **Without `baseURL`, Better Auth decides at startup whether cookies are Secure, can't see the request's https, and so set the session cookie without `Secure`. The cookie name also depends on it (`__Secure-better-auth.session_token` over https, `better-auth.session_token` over http), so an instance built for an https request can't read a cookie set over http, and the other way round.** → `createAuth(env, request)` always gets the request and uses `BETTER_AUTH_URL` or the request's origin as `baseURL`, in `requireUser` too. Auth tests use https URLs everywhere, also for `app.request()` on a test app.
+- `L-46 · 2026-10-18 · auth · T-13` — **Better Auth's default rate-limit storage is memory, which resets with every per-request instance on Workers. It reads the client IP from `x-forwarded-for` by default; with no IP, every client shares one bucket. Built-in rule: `/sign-in*` and `/sign-up*` allow 3 per 10 s per IP + path.** → Use `storage: 'database'` (`rate_limit` table), `ipAddressHeaders: ['cf-connecting-ip']` and explicit `customRules`. Worker tests send a fresh `cf-connecting-ip` per test, or one test's attempts throttle the next.
+- `L-47 · 2026-10-18 · tooling · T-13` — **The Better Auth CLI is now the `auth` npm package (`npx auth@<version> generate --config <file>`). It needs a config file that exports `auth`, and writes Drizzle tables with relations. Adding tables also broke T-06's `db.test.ts`, which lists every table and index. The scratchpad directory is shared by parallel agents: my `check.log` held another worktree's test run.** → Generate the auth schema with a throwaway config and don't add the CLI as a dependency. Update the migration test lists when you add a migration. Give scratch files a task-specific name (`t13-test.log`).
 - `L-71 · 2026-10-18 · text · T-15` — **A character class built by interpolation, `[${APOSTROPHES}${HYPHENS}]` with `HYPHENS = '-‐‑'`, put `ʼ-‐` next to each other, which is a range (U+02BC to U+2010), not three characters. ASCII `-` was no longer a connector, so *peut-être* and *rendez-vous* split while every test of *parles-tu* still passed.** → Escape `-` when interpolating characters into a regex class (`\\${HYPHENS}`), and test the "stays whole" cases, not only the "splits" ones.
 - `L-72 · 2026-10-18 · tooling · T-15` — **`\u00A0` escapes I wrote in regex literals reached the file as real no-break spaces; the code looked identical, and ESLint's `no-irregular-whitespace` was the only thing that noticed.** → In source, write invisible characters as escapes (`'\u00A0'`, a `NBSP` const in tests) and check with `grep -nP '\xA0'` when lint flags whitespace.
 - `L-73 · 2026-10-18 · testing · T-15` — **Lexicon-backed tests timed out at Vitest's 5 s default (12 of 40 in `annotate.test.ts`) during a parallel run: each shard is a 1 to 2 MB JSON module that Vite transforms on its first import, which took 5 to 8 s on a busy 4-core machine.** → A test file that looks up many words warms the shards it needs once in `beforeAll(..., 120_000)` (see `src/shared/text/annotate.test.ts`), instead of raising every test's timeout.
