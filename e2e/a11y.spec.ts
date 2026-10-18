@@ -7,13 +7,22 @@ import { expect, test, type Page } from '@playwright/test';
 // every button and link at least 44 px (inline links in a sentence are exempt).
 // Self-contained on purpose: only `@playwright/test` and `axe-core`, no helpers from other specs.
 
-const axeSource = readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'), 'utf8');
+const axeSource = readFileSync(
+  createRequire(import.meta.url).resolve('axe-core/axe.min.js'),
+  'utf8',
+);
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 const MIN_TARGET = 44;
 
-type Axe = { run: (context: Document, options: unknown) => Promise<{ violations: AxeViolation[] }> };
-type AxeViolation = { id: string; help: string; nodes: { target: string[]; failureSummary?: string }[] };
+type Axe = {
+  run: (context: Document, options: unknown) => Promise<{ violations: AxeViolation[] }>;
+};
+type AxeViolation = {
+  id: string;
+  help: string;
+  nodes: { target: string[]; failureSummary?: string }[];
+};
 
 async function expectAccessible(page: Page, name: string) {
   await page.evaluate(axeSource);
@@ -37,7 +46,9 @@ async function expectAccessible(page: Page, name: string) {
       if (el.hasAttribute('data-token')) continue;
       if (box.width < min - 0.5 || box.height < min - 0.5) {
         const label = el.getAttribute('aria-label') ?? el.textContent ?? '';
-        small.push(`${el.tagName.toLowerCase()} "${label.trim().slice(0, 30)}" ${box.width}x${box.height}`);
+        small.push(
+          `${el.tagName.toLowerCase()} "${label.trim().slice(0, 30)}" ${box.width}x${box.height}`,
+        );
       }
     }
     const sideways = document.documentElement.scrollWidth - document.documentElement.clientWidth;
@@ -86,6 +97,8 @@ test('signed-out screens', async ({ page }) => {
 });
 
 test('every signed-in screen', async ({ page }, testInfo) => {
+  // Eight pages, each loaded and scanned; a slow machine compiles every route on first visit.
+  test.slow();
   await signUp(page, testInfo);
   await expectAccessible(page, 'onboarding');
   await page.getByRole('button', { name: 'Start learning' }).click();
@@ -99,7 +112,9 @@ test('every signed-in screen', async ({ page }, testInfo) => {
     ['/streak', 'Streak'],
   ] as const) {
     await page.goto(path);
-    await expect(page.getByRole('heading', { name: heading, exact: typeof heading === 'string' }).first()).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: heading, exact: typeof heading === 'string' }).first(),
+    ).toBeVisible();
     // Cards load their numbers after the heading shows.
     await page.waitForLoadState('networkidle');
     await expectAccessible(page, path);
@@ -113,7 +128,7 @@ test('every signed-in screen', async ({ page }, testInfo) => {
   await expect(page.getByRole('dialog')).toBeHidden();
 
   await page.goto('/chapter/ch1');
-  await expect(page.getByRole('heading').first()).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible({ timeout: 60_000 });
   await page.waitForLoadState('networkidle');
   await expectAccessible(page, 'chapter');
 });
@@ -147,7 +162,9 @@ test('reader: word sheet and sentence sheet', async ({ page }, testInfo) => {
   // The sentence sheet is modal: Tab stays inside, Escape closes and gives focus back.
   for (let i = 0; i < 12; i++) {
     await page.keyboard.press('Tab');
-    expect(await page.evaluate(() => !!document.activeElement?.closest('[role=dialog]'))).toBe(true);
+    expect(await page.evaluate(() => !!document.activeElement?.closest('[role=dialog]'))).toBe(
+      true,
+    );
   }
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
@@ -157,7 +174,9 @@ test('review: front and back of a card', async ({ page }, testInfo) => {
   await signUp(page, testInfo);
   await page.goto('/chapter/ch1');
   await page.getByRole('button', { name: /Starter deck/ }).click();
-  await expect(page.getByRole('status').filter({ hasText: /Added \d+ to your reviews/ })).toBeVisible();
+  await expect(
+    page.getByRole('status').filter({ hasText: /Added \d+ to your reviews/ }),
+  ).toBeVisible();
 
   await page.goto('/review');
   await expect(page.getByRole('button', { name: 'Show answer' })).toBeVisible();
