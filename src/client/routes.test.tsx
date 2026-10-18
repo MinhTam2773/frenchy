@@ -3,7 +3,7 @@ import { expect, test } from 'vitest';
 import { renderAt } from './mocks/renderAt';
 
 // Screens with their own tests: /today (features/today: its heading is the greeting),
-// /path and /chapter/:id (features/path, features/chapter).
+// /path and /chapter/:id (features/path, features/chapter), /read/:textId (features/reader).
 const tabRoutes = [
   ['/practice', 'Practice'],
   ['/words', 'Words'],
@@ -13,7 +13,6 @@ const tabRoutes = [
 const fullScreenRoutes = [
   ['/', 'Welcome'],
   ['/onboarding', 'Onboarding'],
-  ['/read/ch10-le-matin-de-lea', 'Reader'],
   ['/review', 'Review'],
   ['/streak', 'Streak'],
 ] as const;
