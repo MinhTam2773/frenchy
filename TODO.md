@@ -500,21 +500,22 @@ Notes for T-21 / T-22 / T-23:
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-04, T-08 | T-25 | 3 |
 
-**Status:** blocked (waiting on T-08) · **Claimed by:** — · **Branch:** `task/T-15-tokenizer`
+**Status:** in review · **Claimed by:** T-15 subagent (lead session) · **Branch:** `task/T-15-tokenizer`
 **Owns:** `src/shared/text/**`
+**Notes (decisions, see PR):** tokens are `word` / `gap` (a gap is a run of spaces and punctuation), exactly like content `WordToken` / `GapToken`, so the reader treats both alike; a test checks `tokenize()` reproduces annotated lesson sentences token for token. `annotate(tokens, index)` takes the sentence's tokens instead of `(token, context)`. *est-ce que* is three word tokens (as in `text.md`) and each one carries `phrase`. Titles keep their period (`M.`), clock times (`8 h 30`) and numbers (`12,50`) are one token (G-55).
 **Goal:** Turn any French text into tappable tokens and sentences, and give each word the best lemma and form info available.
 **Done when:** a table-driven test of tricky inputs passes (elision, hyphenated inversion, French punctuation, compounds, abbreviations).
 
-- [ ] `tokenize(text)` → word, punctuation and space tokens with offsets
-- [ ] Elision with both `'` and `’`: l', d', j', m', t', s', n', c', qu', jusqu', lorsqu', puisqu'
-- [ ] Hyphens: inversions split (*parles-tu*, *a-t-il*); fixed compounds kept whole (*aujourd'hui*, *peut-être*, *est-ce que* as a phrase)
-- [ ] French punctuation spacing (« », non-breaking spaces before ? ! : ;) and numbers
-- [ ] `splitSentences(text)` that respects abbreviations (M., Mme, etc.) and ellipses
-- [ ] `annotate(token, context)`: content annotation first; otherwise lexicon candidates with simple context rules (*a* vs *à*, *est* as a verb after a subject, verb readings after subject pronouns); otherwise unknown
-- [ ] `describeForm()` for the word sheet, e.g. "il / elle · present · -er verb"
-- [ ] Table-driven tests
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `tokenize(text)` → word, punctuation and space tokens with offsets
+- [x] Elision with both `'` and `’`: l', d', j', m', t', s', n', c', qu', jusqu', lorsqu', puisqu'
+- [x] Hyphens: inversions split (*parles-tu*, *a-t-il*); fixed compounds kept whole (*aujourd'hui*, *peut-être*, *est-ce que* as a phrase)
+- [x] French punctuation spacing (« », non-breaking spaces before ? ! : ;) and numbers
+- [x] `splitSentences(text)` that respects abbreviations (M., Mme, etc.) and ellipses
+- [x] `annotate(token, context)`: content annotation first; otherwise lexicon candidates with simple context rules (*a* vs *à*, *est* as a verb after a subject, verb readings after subject pronouns); otherwise unknown
+- [x] `describeForm()` for the word sheet, e.g. "il / elle · present · -er verb"
+- [x] Table-driven tests
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-16 · Today screen
@@ -1304,6 +1305,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-15, T-26 (share one helper once both screens exist) |
 | G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
 | G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
+| G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons | T-14, T-24 (add these rules to `text.md`; optionally move the token check into `content:check`) |
+| G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins) | B-07 (measure on real imported text), T-24 (`GLOSS_OVERRIDES` for function words) |
 
 ---
 
@@ -1378,3 +1381,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-45 · 2026-10-18 · auth · T-13` — **Without `baseURL`, Better Auth decides at startup whether cookies are Secure, can't see the request's https, and so set the session cookie without `Secure`. The cookie name also depends on it (`__Secure-better-auth.session_token` over https, `better-auth.session_token` over http), so an instance built for an https request can't read a cookie set over http, and the other way round.** → `createAuth(env, request)` always gets the request and uses `BETTER_AUTH_URL` or the request's origin as `baseURL`, in `requireUser` too. Auth tests use https URLs everywhere, also for `app.request()` on a test app.
 - `L-46 · 2026-10-18 · auth · T-13` — **Better Auth's default rate-limit storage is memory, which resets with every per-request instance on Workers. It reads the client IP from `x-forwarded-for` by default; with no IP, every client shares one bucket. Built-in rule: `/sign-in*` and `/sign-up*` allow 3 per 10 s per IP + path.** → Use `storage: 'database'` (`rate_limit` table), `ipAddressHeaders: ['cf-connecting-ip']` and explicit `customRules`. Worker tests send a fresh `cf-connecting-ip` per test, or one test's attempts throttle the next.
 - `L-47 · 2026-10-18 · tooling · T-13` — **The Better Auth CLI is now the `auth` npm package (`npx auth@<version> generate --config <file>`). It needs a config file that exports `auth`, and writes Drizzle tables with relations. Adding tables also broke T-06's `db.test.ts`, which lists every table and index. The scratchpad directory is shared by parallel agents: my `check.log` held another worktree's test run.** → Generate the auth schema with a throwaway config and don't add the CLI as a dependency. Update the migration test lists when you add a migration. Give scratch files a task-specific name (`t13-test.log`).
+- `L-71 · 2026-10-18 · text · T-15` — **A character class built by interpolation, `[${APOSTROPHES}${HYPHENS}]` with `HYPHENS = '-‐‑'`, put `ʼ-‐` next to each other, which is a range (U+02BC to U+2010), not three characters. ASCII `-` was no longer a connector, so *peut-être* and *rendez-vous* split while every test of *parles-tu* still passed.** → Escape `-` when interpolating characters into a regex class (`\\${HYPHENS}`), and test the "stays whole" cases, not only the "splits" ones.
+- `L-72 · 2026-10-18 · tooling · T-15` — **`\u00A0` escapes I wrote in regex literals reached the file as real no-break spaces; the code looked identical, and ESLint's `no-irregular-whitespace` was the only thing that noticed.** → In source, write invisible characters as escapes (`'\u00A0'`, a `NBSP` const in tests) and check with `grep -nP '\xA0'` when lint flags whitespace.
+- `L-73 · 2026-10-18 · testing · T-15` — **Lexicon-backed tests timed out at Vitest's 5 s default (12 of 40 in `annotate.test.ts`) during a parallel run: each shard is a 1 to 2 MB JSON module that Vite transforms on its first import, which took 5 to 8 s on a busy 4-core machine.** → A test file that looks up many words warms the shards it needs once in `beforeAll(..., 120_000)` (see `src/shared/text/annotate.test.ts`), instead of raising every test's timeout.
