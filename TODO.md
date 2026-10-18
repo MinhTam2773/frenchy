@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 7 · NEXT 29 (4 ready) · BACKLOG 20
+**Progress:** DONE 8 · NEXT 28 (3 in progress: T-03, T-04, T-05) · BACKLOG 20
 
 ---
 
@@ -173,24 +173,12 @@ flowchart LR
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [x] Finish: PR to `main` merged (CI does not exist yet: paste local `npm run check` output in the PR)
 
----
-
-## NEXT (MVP)
-
-Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 content, installable as a PWA and deployed on Cloudflare.
-
-### Wave 0
-
-T-01 is done (moved to DONE).
-
-### Wave 1
-
-#### T-02 · CI on GitHub Actions
+### T-02 · CI on GitHub Actions
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | S | T-01 | T-30 (and safe merging for all) | 1 |
 
-**Status:** in review · **Claimed by:** local session · **Branch:** `task/T-02-ci`
+**Status:** done · **Claimed by:** local session · **Branch:** `task/T-02-ci` · **PR:** https://github.com/MinhTam2773/frenchy/pull/3
 **Owns:** `.github/workflows/ci.yml`, `.github/pull_request_template.md`, `.nvmrc`
 **Goal:** Every PR runs lint, typecheck, tests and build; merging requires green CI.
 **Done when:** a PR shows a passing `ci` check; a deliberately failing test makes it red.
@@ -204,31 +192,45 @@ T-01 is done (moved to DONE).
 - [x] Note in the PR that the user should require the `ci` check on `main` (H-01)
 - [x] Finish: `npm run check` green
 - [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
+- [x] Finish: PR to `main` merged with CI green
+
+---
+
+## NEXT (MVP)
+
+Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 content, installable as a PWA and deployed on Cloudflare.
+
+### Wave 0
+
+T-01 is done (moved to DONE).
+
+### Wave 1
+
+T-02 is done (moved to DONE).
 
 #### T-03 · UI kit and design tokens
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-01 | T-09, T-12 | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-03-ui-kit`
+**Status:** in review · **Claimed by:** T-03 subagent (lead session) · **Branch:** `task/T-03-ui-kit`
 **Owns:** `src/client/styles.css` (theme), `src/client/ui/**`
 **Goal:** Reusable components that match the mockups exactly, so screens are just composition.
 **Done when:** every component in the list renders in `Gallery.tsx` in all its states, tests pass, and no component uses raw hex colors.
 
-- [ ] Read `design/README.md` and skim the mockups for sizes and states
-- [ ] Tailwind theme: all color tokens, Fredoka + Nunito (font links in `index.html`), radii, and solid "chunky" bottom-shadow utilities per variant
-- [ ] `Button` (primary, secondary, success, danger, warn, ghost; renders as a link when given `to`/`href`; press moves 4px down and drops the shadow)
-- [ ] `IconButton` (required `aria-label` at the type level), `Card`, `Chip` (neutral, masc, fem, new, status), `ProgressBar` (`role="progressbar"`), `Toggle` (`role="switch"`), `SegmentedTabs` (`role="tablist"`), `StreakChip`
-- [ ] `TopBar` (back/close, title, right slot) and `TabBar` (5 tabs, active pill, `aria-current="page"`)
-- [ ] `BottomSheet`: drag handle, `aria-modal`, focus trap, Esc closes, focus returns to the trigger
-- [ ] `Icon` set as inline SVG components covering every icon in the mockups
-- [ ] `Mascot` component with `mood="happy" | "cheer"` from the mockup SVG
-- [ ] `Gallery.tsx` showing every component and state (T-09 mounts it at `/dev/ui`)
-- [ ] Tests: Button as link, BottomSheet Esc + focus return, Toggle flips `aria-checked`, TabBar marks current route
-- [ ] Contrast test: every text/background token pair used by the kit meets 4.5:1 (small contrast helper + table of pairs)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Read `design/README.md` and skim the mockups for sizes and states
+- [x] Tailwind theme: all color tokens, Fredoka + Nunito (font links in `index.html`), radii, and solid "chunky" bottom-shadow utilities per variant
+- [x] `Button` (primary, secondary, success, danger, warn, ghost; renders as a link when given `to`/`href`; press moves 4px down and drops the shadow)
+- [x] `IconButton` (required `aria-label` at the type level), `Card`, `Chip` (neutral, masc, fem, new, status), `ProgressBar` (`role="progressbar"`), `Toggle` (`role="switch"`), `SegmentedTabs` (`role="tablist"`), `StreakChip`
+- [x] `TopBar` (back/close, title, right slot) and `TabBar` (5 tabs, active pill, `aria-current="page"`)
+- [x] `BottomSheet`: drag handle, `aria-modal`, focus trap, Esc closes, focus returns to the trigger
+- [x] `Icon` set as inline SVG components covering every icon in the mockups
+- [x] `Mascot` component with `mood="happy" | "cheer"` from the mockup SVG
+- [x] `Gallery.tsx` showing every component and state (T-09 mounts it at `/dev/ui`)
+- [x] Tests: Button as link, BottomSheet Esc + focus return, Toggle flips `aria-checked`, TabBar marks current route
+- [x] Contrast test: every text/background token pair used by the kit meets 4.5:1 (small contrast helper + table of pairs)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-04 · Shared schemas, fixtures and API contract
@@ -262,19 +264,19 @@ QUESTION: Review undo (T-18) has no server endpoint. Default in the contract: th
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-01 | T-25 | 1 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-05-tts`
+**Status:** in review · **Claimed by:** T-05 subagent (lead session) · **Branch:** `task/T-05-tts`
 **Owns:** `src/client/lib/tts/**`
 **Goal:** One small module that speaks French well on every device that can.
 **Done when:** `useTts()` speaks with the best available fr-FR voice, reports `supported=false` cleanly where it can't, and tests pass.
 
-- [ ] `speak(text, { rate, voiceURI })` on the Web Speech API; cancels any utterance in progress
-- [ ] Voice choice: saved voice → best local `fr-FR` → any `fr-*`; handle voices loading late (`voiceschanged`)
-- [ ] Default rate 0.8; allowed range 0.6–1.0
-- [ ] `useTts()` hook: `speak`, `stop`, `speaking`, `supported`, `voices`
-- [ ] Sentence boundary callback (where `onboundary` is supported) so the reader can highlight the spoken sentence
-- [ ] Tests with a mocked `speechSynthesis`
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `speak(text, { rate, voiceURI })` on the Web Speech API; cancels any utterance in progress
+- [x] Voice choice: saved voice → best local `fr-FR` → any `fr-*`; handle voices loading late (`voiceschanged`)
+- [x] Default rate 0.8; allowed range 0.6–1.0
+- [x] `useTts()` hook: `speak`, `stop`, `speaking`, `supported`, `voices`
+- [x] Sentence boundary callback (where `onboundary` is supported) so the reader can highlight the spoken sentence
+- [x] Tests with a mocked `speechSynthesis`
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 ### Wave 2
@@ -1189,7 +1191,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 
 | ID | What | Needed by | Status |
 |---|---|---|---|
-| H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging. `main` is now the default branch (done); requiring `ci` waits until T-02 lands | T-02 onward | open |
+| H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging. `main` is now the default branch (done); T-02 has landed, so the `ci` check can now be required | T-02 onward | open |
 | H-02 | Install wrangler and run `wrangler login` once | T-30 | open |
 | H-03 | Create a Google OAuth client (client id/secret, redirect URIs) | T-13 (optional locally), T-30 | open |
 | H-04 | Provide AI API keys (Anthropic and/or an OpenAI-compatible provider) | T-23 (real calls), T-30 | open |
@@ -1218,6 +1220,9 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-13 | ESLint is held at 9 (npm marks it unsupported) because `eslint-plugin-jsx-a11y` hasn't released ESLint 10 support since 2024 | No ESLint security fixes; a11y lint may need a replacement | later (re-check before T-28) |
 | G-14 | Local Node 22.15 is below jsdom 30's minimum (22.22.2), so jsdom stays at 29 | Can't take jsdom updates until Node is upgraded | T-02 (`.nvmrc`) |
 | G-15 | npm 11 (Node 24) warns on `npm ci` that `esbuild` and `workerd` have install scripts "not yet covered by allowScripts"; a later npm major may skip them unless allowed | Installs could silently lack the workerd binary after an npm upgrade | re-check on npm major bumps |
+| G-16 | The UI kit has no router, so `Button`/`Card`/`TabBar`/`TopBar`/`StreakChip` render plain `<a href>` for `to` until the app provides `<LinkProvider value={RouterLink}>` (exported from `src/client/ui`) | Full page reloads on every link if T-09 forgets the provider | T-09 |
+| G-17 | `BottomSheet` is `aria-modal` with a scrim and a focus trap (as T-03 specifies), but the Reader mockup keeps words tappable behind the word sheet. With the scrim, a tap outside closes the sheet instead of selecting the next word | Reader needs two taps to switch words | T-25 (decide: keep modal, or add a non-modal mode) |
+| G-18 | Some mockup targets are under 44 px (streak chip 40, sheet buttons 40, toggle 32, calendar arrows 36) and the Path "done" node is a white check on gold `#FFB020` (about 1.9:1, below the 3:1 for icons). The kit uses 44 px targets; the Path node is not built yet | Screens that copy the mockup literally fail the touch-target and contrast rules | T-17, T-19, T-28 |
 | G-19 | The contract (T-04) adds read-text tracking and per-minute ping dedupe that PLAN §4's data model lacks: T-06 needs a `text_reads` table (`user_id`, `text_id`, `finished_at`, unique per user + text) and a way to count at most one active minute per clock minute in `daily_activity` | Today's "next unread text" and the streak's reading rule need them | T-06, T-22 |
 | G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 |
 
@@ -1242,6 +1247,11 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-11 · 2026-10-16 · worker · T-01` — **By default, a browser navigation (`Sec-Fetch-Mode: navigate`) to an unmatched path gets the SPA `index.html` without running the Worker, so `/api/*` typed in the address bar would return HTML. The array form `assets.run_worker_first: ["/api/*"]` turns that off for matching paths.** → Keep `/api/*` in `run_worker_first`. Anything else that needs the Worker on navigation (OAuth callbacks outside `/api`) must be added there too.
 - `L-12 · 2026-10-17 · ci · T-02` — **A workflow triggered by `pull_request` plus `push` to `main` never runs for a plain push to another branch, so the "prove it" red run needs a (draft) PR.** → To test CI, push a scratch branch and open a draft PR, then close it with `gh pr close --delete-branch`.
 - `L-13 · 2026-10-17 · ci · T-02` — **`actions/checkout` and `actions/setup-node` are at v7 (node24 runtime), and `.nvmrc` = `24` resolved to Node 24.21.0 on the first run. The worker tests pass in workerd on the runner with no Cloudflare credentials. `ubuntu-latest` moves to Ubuntu 26 on 2026-10-19.** → Keep the job id `ci` (it is the required-check name for H-01). Upgrade local Node to match `.nvmrc` (at least 22.22.2) before taking jsdom 30 (G-14).
+- `L-14 · 2026-10-17 · tooling · lead` — **In cloud sessions the git proxy lets you push new branches but hangs up on branch deletes (`git push --delete`), so a scratch branch can't be removed from the session.** → Don't push throwaway branches from a cloud session; delete leftovers in the GitHub UI (or with `gh` locally).
+- `L-15 · 2026-10-17 · client · T-05` — **`speechSynthesis.cancel()` fires `error` (not `end`) on the interrupted utterance, after the next one has started, so a naive `speaking` flag flips to false mid-speech. Browsers also rarely emit `onboundary` with `name: "sentence"` (mostly `word`).** → `useTts` guards state with a per-call id, so only the latest `speak()` clears `speaking`. T-25 must treat sentence highlighting as optional and keep a no-highlight path.
+- `L-16 · 2026-10-18 · testing · T-03` — **Vitest replaces every CSS import with an empty string, even `?raw`, so a test that parses `styles.css` for tokens got `""`. `new URL(..., import.meta.url)` also throws under jsdom ("URL must be of scheme file").** → To read the theme in a client test, use `readFileSync(join(import.meta.dirname, '../styles.css'))` with `/// <reference types="node" />` at the top of that test file (the app tsconfig does not load Node types otherwise). `src/client/ui/contrast.test.ts` is the example.
+- `L-17 · 2026-10-18 · tooling · T-03` — **`eslint-plugin-react-hooks` 7 (`static-components`) rejects `const C = useContext(X); return <C />`, and `jsx-a11y/anchor-has-content` cannot see children passed through `{...rest}`.** → Render a context-supplied component with `createElement(useContext(X), props)`, and pass `children` explicitly inside `<a>`. Don't add `eslint-disable` for these.
+- `L-18 · 2026-10-18 · design · T-03` — **Several mockup controls are smaller than the 44 px touch rule (streak chip 40, sheet icon buttons 40, toggle 32), and the Path "done" node is white on gold (about 1.9:1).** → The kit follows the CLAUDE.md rule (44 px hit areas; the toggle keeps its 52x32 track inside a 44 px button). When a mockup and a rule disagree, the rule wins and the PR says so (see G-18).
 - `L-19 · 2026-10-18 · srs · T-04` — **ts-fsrs 5's `Card` has a `learning_steps` field the T-04 spec didn't list, and marks `elapsed_days` deprecated (removed in 6.0) while still requiring it.** → The shared `Card` carries `learningSteps` and `elapsedDays`; check `npm pack ts-fsrs` types before mapping (T-10) and drop `elapsedDays` only when moving to ts-fsrs 6.
 - `L-20 · 2026-10-18 · content · T-04` — **The mockups' dummy data breaks the app's own rules: the Streak calendar can't come from the T-11 default rule (a freeze on Oct 11 after 6 days, missed Oct 3–4 with no freeze), "Au café" claims 9 new words (cap is 8), and "Le matin de Léa" uses a number (Ch 4) in a Ch 10 text.** → Fixtures copy the mockup values as drawn and say so; T-11 tests and T-14 content must follow the rules, not the mockups' numbers.
 - `L-21 · 2026-10-18 · tooling · T-04` — **`@cloudflare/vitest-plugin` pins `zod` to an exact version (4.6.5), so adding current `zod` (4.6.7) leaves a second, dev-only copy nested under the plugin. zod 4's `z.uuid()` also accepts the nil UUID.** → Harmless; don't try to dedupe by pinning our zod down. Don't use the nil UUID as an "invalid id" test case.
