@@ -652,7 +652,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | L | T-06, T-10, T-11, T-13 | T-26 | 4 |
 
-**Status:** in progress · **Claimed by:** T-22 agent (wave 4 lead session) · **Branch:** `task/T-22-sync-api`
+**Status:** in review · **Claimed by:** T-22 agent (wave 4 lead session) · **Branch:** `task/T-22-sync-api` · **PR:** https://github.com/MinhTam2773/frenchy/pull/32
 **Owns:** `src/worker/routes/profile.ts`, `cards.ts`, `reviews.ts`, `words.ts`, `activity.ts` (+ one mount line each in `src/worker/index.ts`)
 **Goal:** Every MVP endpoint from `docs/api-contract.md`, user-scoped and validated.
 **Done when:** each endpoint has tests, including one proving cross-user isolation, and responses match the shared schemas.
