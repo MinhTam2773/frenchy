@@ -167,9 +167,9 @@
     {
       "id": "ch7-est-ce-qu-elle-est-bonne",
       "type": "cloze",
-      "front": "Est-ce ___'elle est bonne ?",
+      "front": "Est-ce ___elle est bonne ?",
       "back": "Est-ce qu'elle est bonne ?",
-      "clozeAnswer": "qu",
+      "clozeAnswer": "qu'",
       "note": "que becomes qu' before a vowel.",
       "textId": "ch7-le-premier-jour"
     },

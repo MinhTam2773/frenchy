@@ -295,7 +295,8 @@
               "lemma": "où",
               "pos": "adverb",
               "gloss": "where",
-              "form": "question word"
+              "form": "question word",
+              "isNew": true
             },
             {
               "t": " "
@@ -395,7 +396,7 @@
               "lemma": "port",
               "pos": "noun",
               "gender": "m",
-              "gloss": "harbour",
+              "gloss": "harbor",
               "form": "part of the street’s name"
             },
             {
@@ -748,8 +749,7 @@
               "lemma": "entrée",
               "pos": "noun",
               "gender": "f",
-              "gloss": "admission, entrance",
-              "isNew": true
+              "gloss": "admission, entrance"
             },
             {
               "t": " ?"
@@ -952,8 +952,9 @@
             {
               "t": "voilà",
               "lemma": "voilà",
-              "pos": "phrase",
-              "gloss": "here you are"
+              "pos": "preposition",
+              "gloss": "here you are",
+              "form": "points something out · voilà = here you are, there is"
             },
             {
               "t": "."
@@ -1092,7 +1093,7 @@
       ]
     }
   ],
-  "newWords": ["désolé", "musée", "ouvert", "fermé", "entrée", "gratuit", "plan", "longtemps"],
+  "newWords": ["désolé", "musée", "ouvert", "fermé", "gratuit", "plan", "longtemps", "où"],
   "grammarTags": [
     "questions.inversion",
     "questions.words",

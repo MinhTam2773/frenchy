@@ -178,7 +178,8 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "questions",
-              "form": "feminine plural"
+              "form": "feminine plural",
+              "isNew": true
             },
             {
               "t": "."
@@ -207,7 +208,8 @@
               "lemma": "demander",
               "pos": "verb",
               "gloss": "asks",
-              "form": "il / elle · present · -er verb"
+              "form": "il / elle · present · -er verb",
+              "isNew": true
             },
             {
               "t": " "
@@ -324,14 +326,13 @@
               "lemma": "quartier",
               "pos": "noun",
               "gender": "m",
-              "gloss": "neighbourhood",
-              "isNew": true
+              "gloss": "neighborhood"
             },
             {
               "t": "."
             }
           ],
-          "en": "He lives in the neighbourhood."
+          "en": "He lives in the neighborhood."
         },
         {
           "tokens": [
@@ -575,14 +576,16 @@
               "lemma": "qu'est-ce que",
               "pos": "phrase",
               "gloss": "what",
-              "form": "qu'est-ce que = what (object of the verb)"
+              "form": "qu'est-ce que = what (object of the verb)",
+              "isNew": true
             },
             {
               "t": "est",
               "lemma": "qu'est-ce que",
               "pos": "phrase",
               "gloss": "what",
-              "form": "qu'est-ce que = what (object of the verb)"
+              "form": "qu'est-ce que = what (object of the verb)",
+              "isNew": true
             },
             {
               "t": "-"
@@ -592,7 +595,8 @@
               "lemma": "qu'est-ce que",
               "pos": "phrase",
               "gloss": "what",
-              "form": "qu'est-ce que = what (object of the verb)"
+              "form": "qu'est-ce que = what (object of the verb)",
+              "isNew": true
             },
             {
               "t": " "
@@ -602,7 +606,8 @@
               "lemma": "qu'est-ce que",
               "pos": "phrase",
               "gloss": "what",
-              "form": "qu'est-ce que = what (object of the verb)"
+              "form": "qu'est-ce que = what (object of the verb)",
+              "isNew": true
             },
             {
               "t": " "
@@ -768,8 +773,7 @@
               "pos": "noun",
               "gender": "f",
               "gloss": "shopping",
-              "form": "feminine plural · faire les courses = to do the shopping",
-              "isNew": true
+              "form": "feminine plural · faire les courses = to do the shopping"
             },
             {
               "t": " ? »"
@@ -990,7 +994,16 @@
       ]
     }
   ],
-  "newWords": ["étudiant", "enquête", "liste", "quartier", "trouver", "dame", "course"],
+  "newWords": [
+    "étudiant",
+    "enquête",
+    "liste",
+    "trouver",
+    "dame",
+    "question",
+    "demander",
+    "qu'est-ce que"
+  ],
   "grammarTags": [
     "questions.intonation",
     "questions.est-ce-que",
