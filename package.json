@@ -13,7 +13,9 @@
     "typecheck": "tsc -b",
     "format": "prettier --write .",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "lexicon:build": "node scripts/lexicon/build.ts",
+    "lexicon:coverage": "node scripts/lexicon/coverage.ts"
   },
   "dependencies": {
     "hono": "^4.13.13",

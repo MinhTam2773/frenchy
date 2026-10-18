@@ -335,14 +335,14 @@ Wave 1 is done (T-02 to T-05 moved to DONE).
 **Goal:** Instant, free word taps: a compact French → English lexicon with form → lemma lookup, shipped as static JSON.
 **Done when:** `lookupForm('vais')` returns *aller* (1st person singular, present), the shards fit the size budget, and the license and attribution are recorded.
 
-- [ ] Research the source: Wiktionary-derived data (e.g. wiktextract / kaikki.org French entries with English glosses). Record the license (Wiktionary text is CC BY-SA and GFDL) and the attribution needed in `docs/LICENSES.md`; log the decision as a lesson
-- [ ] If the license blocks what PLAN wants (sharing the app with others), stop, write a `QUESTION:` under this task and in G-01, and propose alternatives
-- [ ] Build script reads the raw dump from a local path (gitignored, never committed) and keeps French entries for the parts of speech we need
-- [ ] Frequency: pick a frequency list with a compatible license; keep the top ~10k lemmas plus every lemma used in `content/`
-- [ ] Output `content/lexicon/lemmas-<shard>.json` (lemma → pos, gender, ≤ 3 glosses, rank) and `content/lexicon/forms-<shard>.json` (form → candidates with person, number, tense, mood), sharded by first letter; budget ≤ 2 MB gzipped total
-- [ ] `src/shared/lexicon/lookup.ts`: `lookupForm(form)` lazy-loads one shard and returns candidates by frequency
-- [ ] Coverage report script: % of word tokens in `content/` found; list the misses
-- [ ] Tests: *vais* → aller, *préfère* → préférer, *heures* → heure (f, pl), *l'* → le/la, *au* = à + le
+- [x] Research the source: Wiktionary-derived data (e.g. wiktextract / kaikki.org French entries with English glosses). Record the license (Wiktionary text is CC BY-SA and GFDL) and the attribution needed in `docs/LICENSES.md`; log the decision as a lesson (kaikki.org French extract of 2026-10-03, used under CC BY-SA 4.0; L-29)
+- [x] If the license blocks what PLAN wants (sharing the app with others), stop, write a `QUESTION:` under this task and in G-01, and propose alternatives (not needed: the owner accepts CC BY-SA attribution + share-alike on the lexicon data; the remaining duty is a credits screen, B-21, see G-25)
+- [x] Build script reads the raw dump from a local path (gitignored, never committed) and keeps French entries for the parts of speech we need (`npm run lexicon:build`; dumps in `scripts/lexicon/raw/`, URLs in the script header)
+- [x] Frequency: pick a frequency list with a compatible license; keep the top ~10k lemmas plus every lemma used in `content/` (Lexique 3.83 lemma frequencies, CC BY-SA 4.0; top 10,000 lemma + pos pairs)
+- [x] Output `content/lexicon/lemmas-<shard>.json` (lemma → pos, gender, ≤ 3 glosses, rank) and `content/lexicon/forms-<shard>.json` (form → candidates with person, number, tense, mood), sharded by first letter; budget ≤ 2 MB gzipped total (27 shards each, a–z + `other`; 10,102 lexemes, 97,544 forms; 14.1 MB raw, 1.04 MB gzipped)
+- [x] `src/shared/lexicon/lookup.ts`: `lookupForm(form)` lazy-loads one shard and returns candidates by frequency (also `lookupLemma(lemma)` for glosses; keys via `formKey()` in `key.ts`)
+- [x] Coverage report script: % of word tokens in `content/` found; list the misses (`npm run lexicon:coverage`; 0 tokens until T-14)
+- [x] Tests: *vais* → aller, *préfère* → préférer, *heures* → heure (f, pl), *l'* → le/la, *au* = à + le (`lookup.test.ts`; `shards.test.ts` checks every shard against the zod schemas and the budget)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1182,6 +1182,22 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-21 · Credits screen with data attributions (needed before T-30)
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
+
+**Status:** blocked · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
+**Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
+**Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
+
+- [ ] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
+- [ ] Link it from the Me screen
+- [ ] Test that both attributions and their license links render
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1226,6 +1242,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-18 | Some mockup targets are under 44 px (streak chip 40, sheet buttons 40, toggle 32, calendar arrows 36) and the Path "done" node is a white check on gold `#FFB020` (about 1.9:1, below the 3:1 for icons). The kit uses 44 px targets; the Path node is not built yet | Screens that copy the mockup literally fail the touch-target and contrast rules | T-17, T-19, T-28 |
 | G-19 | The contract (T-04) adds read-text tracking and per-minute ping dedupe that PLAN §4's data model lacks: T-06 needs a `text_reads` table (`user_id`, `text_id`, `finished_at`, unique per user + text) and a way to count at most one active minute per clock minute in `daily_activity` | Today's "next unread text" and the streak's reading rule need them | T-06, T-22 |
 | G-20 | Review undo (T-18) has no server endpoint. Contract default: the client keeps the last grade and posts it when the next card is graded or the session ends (QUESTION under T-04) | A closed tab can lose the last grade; an undo route would need the previous card state | T-18, T-22 (decided: client-held default) |
+| G-25 | G-01 checked (T-08): the lexicon uses Wiktionary via kaikki.org and Lexique 3.83, both CC BY-SA 4.0, so `content/lexicon/` is CC BY-SA 4.0 and needs visible attribution (texts in `docs/LICENSES.md`). Nothing in the app shows it yet | Shipping publicly without the credits screen breaks the license | B-21, T-29, T-30 |
+| G-26 | Scripts run TypeScript with Node's built-in type stripping (no `tsx`), so they must import with `.ts` extensions and can only import modules whose own imports also carry extensions (not `src/shared/schemas`, type-only imports aside). `scripts/lexicon/tsconfig.json` (with `allowImportingTsExtensions`) is referenced from the root `tsconfig.json`. T-07's `scripts/content/` may pick another runner | Two script conventions; a shared scripts tsconfig without `allowImportingTsExtensions` would fail on `scripts/lexicon` | lead (reconcile after T-07 merges) |
 
 ---
 
@@ -1257,3 +1275,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-20 · 2026-10-18 · content · T-04` — **The mockups' dummy data breaks the app's own rules: the Streak calendar can't come from the T-11 default rule (a freeze on Oct 11 after 6 days, missed Oct 3–4 with no freeze), "Au café" claims 9 new words (cap is 8), and "Le matin de Léa" uses a number (Ch 4) in a Ch 10 text.** → Fixtures copy the mockup values as drawn and say so; T-11 tests and T-14 content must follow the rules, not the mockups' numbers.
 - `L-21 · 2026-10-18 · tooling · T-04` — **`@cloudflare/vitest-plugin` pins `zod` to an exact version (4.6.5), so adding current `zod` (4.6.7) leaves a second, dev-only copy nested under the plugin. zod 4's `z.uuid()` also accepts the nil UUID.** → Harmless; don't try to dedupe by pinning our zod down. Don't use the nil UUID as an "invalid id" test case.
 - `L-22 · 2026-10-18 · orchestration · lead` — **All three Wave 1 agents numbered their lessons and gaps from the same "next free" L-NN / G-NN, so every parallel PR collided (and also conflicted at the same append point in TODO.md).** → When dispatching a wave, the lead reserves a block of L- and G- numbers for each task (written in the agent's brief). To merge a wave, chain the branches (each PR merges the one ahead of it) so CI runs once per PR and every merge is clean.
+- `L-29 · 2026-10-18 · licensing · T-08` — **Decision: the lexicon is built from Wiktionary (kaikki.org's French extract, CC BY-SA 4.0 / GFDL, used under CC BY-SA 4.0) and Lexique 3.83 frequencies (CC BY-SA 4.0). hermitdave/FrequencyWords is also CC BY-SA 4.0 (only its code is MIT), but it ranks surface forms, not lemmas.** → `content/lexicon/` is CC BY-SA 4.0 data; the app code is not affected. Keep `docs/LICENSES.md` current and show its attribution texts in the app before any public release (B-21, G-25). Any new data source needs a compatible license recorded there first.
+- `L-30 · 2026-10-18 · content · T-08` — **The raw dictionaries are messier than they look. kaikki verb tables list only the bare past participle (*allé*); *allée/allés/allées* sit in the participle's own entry. Pronoun "forms" are other pronouns (*nous* lists *je* as its singular). Lexique lemmatizes *la, les, cet, ils* as their own lemmas, stores elided forms without the apostrophe (*l, s, qu*) and files the conjunction *que* under its pronouns. Wiktionary glosses for function words are usage notes ("Forms the partitive article.").** → The build skips a table form that is itself a lemma with the same part of speech, follows participles to their agreement forms, hand-writes elisions, contractions and a few glosses, and is checked by `lookup.test.ts`. T-24 extends `GLOSS_OVERRIDES` in `scripts/lexicon/build.ts` instead of editing shards by hand.
+- `L-31 · 2026-10-18 · tooling · T-08` — **Node ≥ 22.18 runs `.ts` files directly (type stripping), so build scripts need no `tsx`, but every runtime import needs its `.ts` extension; `import type` is erased, so types from `src/shared/schemas` are fine. A template-literal `import(\`…/forms-${shard}.json\`)` makes Vite emit one chunk per shard and also works in Vitest (no fetch, so MSW is not involved). Prettier reads only the root `.gitignore`, so a nested one didn't keep it off the 584 MB raw dump.** → Run scripts with `node scripts/…/x.ts` and typecheck them through a tsconfig with `allowImportingTsExtensions` (G-26). Every shard id must have a file, even `{}`. Put ignore rules for big local files in the root `.gitignore`.
