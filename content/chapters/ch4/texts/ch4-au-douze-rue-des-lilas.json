@@ -1,0 +1,1018 @@
+{
+  "id": "ch4-au-douze-rue-des-lilas",
+  "chapterId": "ch4",
+  "title": "Au douze, rue des Lilas",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "at (number)",
+              "form": "à + le becomes au · au douze = at number twelve"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "douze",
+              "lemma": "douze",
+              "pos": "number",
+              "gloss": "twelve"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "rue",
+              "lemma": "rue",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "street"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "des",
+              "lemma": "des",
+              "pos": "contraction",
+              "gloss": "of the",
+              "form": "de + les becomes des"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Lilas",
+              "lemma": "lilas",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Lilacs (rue des Lilas = Lilac Street)",
+              "form": "masculine plural · same in the singular"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there is",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "immeuble",
+              "lemma": "immeuble",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "apartment building",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "with",
+              "form": "un immeuble de cinq étages = a five-storey building"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinq",
+              "lemma": "cinq",
+              "pos": "number",
+              "gloss": "five"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étages",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floors",
+              "form": "masculine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "At number twelve, rue des Lilas, there is a five-storey apartment building."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rez-de-chaussée",
+              "lemma": "rez-de-chaussée",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "ground floor",
+              "form": "the premier étage is one floor up",
+              "isNew": true
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there is",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "boulangerie",
+              "lemma": "boulangerie",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "bakery"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On the ground floor, there is a bakery."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mrs."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Roux",
+              "lemma": "Roux",
+              "pos": "name",
+              "gloss": "Roux (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "lives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "premier",
+              "lemma": "premier",
+              "pos": "number",
+              "gloss": "first",
+              "form": "ordinal · masculine (feminine: première)",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étage",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floor"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mrs. Roux lives on the first floor."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elle",
+              "lemma": "elle",
+              "pos": "pronoun",
+              "gloss": "she",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular · avoir … ans = to be … years old"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatre-vingt-deux",
+              "lemma": "quatre-vingt-deux",
+              "pos": "number",
+              "gloss": "eighty-two",
+              "form": "82 = 4 × 20 + 2"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ans",
+              "lemma": "an",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "years (old)",
+              "form": "masculine plural · avoir … ans = to be … years old",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "She is eighty-two years old."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "La",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "famille",
+              "lemma": "famille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "family"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Diallo",
+              "lemma": "Diallo",
+              "pos": "name",
+              "gloss": "Diallo (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "lives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "deuxième",
+              "lemma": "deuxième",
+              "pos": "number",
+              "gloss": "second",
+              "form": "ordinal · deux + -ième",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étage",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floor"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The Diallo family lives on the second floor."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "masculine plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ont",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "are",
+              "form": "ils / elles · present · irregular · avoir … ans = to be … years old"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "six",
+              "lemma": "six",
+              "pos": "number",
+              "gloss": "six"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "neuf",
+              "lemma": "neuf",
+              "pos": "number",
+              "gloss": "nine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "onze",
+              "lemma": "onze",
+              "pos": "number",
+              "gloss": "eleven"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ans",
+              "lemma": "an",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "years (old)",
+              "form": "masculine plural · avoir … ans = to be … years old"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The children are six, nine and eleven."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "troisième",
+              "lemma": "troisième",
+              "pos": "number",
+              "gloss": "third",
+              "form": "ordinal · trois + -ième"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étage",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floor"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "l'",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article · le before a vowel"
+            },
+            {
+              "t": "appartement",
+              "lemma": "appartement",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "apartment"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vide",
+              "lemma": "vide",
+              "pos": "adjective",
+              "gloss": "empty",
+              "form": "same in the masculine and feminine"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "On the third floor, the apartment is empty."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "lives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatrième",
+              "lemma": "quatrième",
+              "pos": "number",
+              "gloss": "fourth (floor)",
+              "form": "ordinal · quatre drops its -e: quatrième"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Hugo lives on the fourth."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular · avoir … ans = to be … years old"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vingt",
+              "lemma": "vingt",
+              "pos": "number",
+              "gloss": "twenty"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ans",
+              "lemma": "an",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "years (old)",
+              "form": "masculine plural · avoir … ans = to be … years old"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He is twenty."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étudiant",
+              "lemma": "étudiant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "a student",
+              "form": "feminine: étudiante · no article after être"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He is a student."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Mr."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Benali",
+              "lemma": "Benali",
+              "pos": "name",
+              "gloss": "Benali (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "habite",
+              "lemma": "habiter",
+              "pos": "verb",
+              "gloss": "lives",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "au",
+              "lemma": "au",
+              "pos": "contraction",
+              "gloss": "on the",
+              "form": "à + le becomes au"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cinquième",
+              "lemma": "cinquième",
+              "pos": "number",
+              "gloss": "fifth",
+              "form": "ordinal · cinq adds a u: cinquième"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "étage",
+              "lemma": "étage",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "floor"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mr. Benali lives on the fifth floor."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il",
+              "pos": "pronoun",
+              "gloss": "he",
+              "form": "subject pronoun · 3rd person singular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "avoir",
+              "pos": "verb",
+              "gloss": "has",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "trois",
+              "lemma": "trois",
+              "pos": "number",
+              "gloss": "three"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chats",
+              "lemma": "chat",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "cats",
+              "form": "masculine plural"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "He has three cats."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Il",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there is",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "n'",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas · ne becomes n’ before a vowel"
+            },
+            {
+              "t": "y",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "there",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "a",
+              "lemma": "il y a",
+              "pos": "phrase",
+              "gloss": "is",
+              "form": "fixed phrase · il y a = there is, there are"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "no",
+              "form": "ne … pas"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "d'",
+              "lemma": "de",
+              "pos": "article",
+              "gloss": "any",
+              "form": "pas de becomes pas d’ before a vowel · pas d’ascenseur = no elevator"
+            },
+            {
+              "t": "ascenseur",
+              "lemma": "ascenseur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "elevator, lift",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "There is no elevator."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Hugo",
+              "lemma": "Hugo",
+              "pos": "name",
+              "gloss": "Hugo (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "monte",
+              "lemma": "monter",
+              "pos": "verb",
+              "gloss": "climbs",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "quatre-vingts",
+              "lemma": "quatre-vingts",
+              "pos": "number",
+              "gloss": "eighty",
+              "form": "80 = 4 × 20 · -s only when no number follows"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marches",
+              "lemma": "marche",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "steps",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Hugo climbs eighty steps."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Mr."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Benali",
+              "lemma": "Benali",
+              "pos": "name",
+              "gloss": "Benali (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "monte",
+              "lemma": "monter",
+              "pos": "verb",
+              "gloss": "climbs",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cent",
+              "lemma": "cent",
+              "pos": "number",
+              "gloss": "a hundred"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "marches",
+              "lemma": "marche",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "steps",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Mr. Benali climbs a hundred steps!"
+        }
+      ]
+    }
+  ],
+  "newWords": [
+    "immeuble",
+    "étage",
+    "rez-de-chaussée",
+    "premier",
+    "an",
+    "deuxième",
+    "ascenseur",
+    "marche"
+  ],
+  "grammarTags": [
+    "numbers.0-100",
+    "numbers.ordinal",
+    "phrases.c-est",
+    "articles.contractions",
+    "avoir.present",
+    "etre.present",
+    "er.present",
+    "negation.ne-pas"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "chapterId": "ch4",
+  "title": "les nombres",
+  "subtitle": "numbers from 21 to 99",
+  "rows": [
+    {
+      "label": "21",
+      "fr": "vingt et un",
+      "ending": "et un"
+    },
+    {
+      "label": "22",
+      "fr": "vingt-deux",
+      "ending": "deux"
+    },
+    {
+      "label": "70",
+      "fr": "soixante-dix",
+      "ending": "dix"
+    },
+    {
+      "label": "71",
+      "fr": "soixante et onze",
+      "ending": "et onze"
+    },
+    {
+      "label": "80",
+      "fr": "quatre-vingts",
+      "ending": "s"
+    },
+    {
+      "label": "81",
+      "fr": "quatre-vingt-un",
+      "ending": "un"
+    },
+    {
+      "label": "90",
+      "fr": "quatre-vingt-dix",
+      "ending": "dix"
+    },
+    {
+      "label": "99",
+      "fr": "quatre-vingt-dix-neuf",
+      "ending": "dix-neuf"
+    }
+  ],
+  "tip": "From 70 on, keep counting past 60 and 80: 70 is 60 + 10, and 90 is 4 × 20 + 10."
+}
