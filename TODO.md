@@ -789,9 +789,9 @@ Wave 5 is done (T-26 moved to DONE).
 **Goal:** The core flows are protected by browser tests at phone and desktop sizes.
 **Done when:** the specs pass locally and in CI.
 
-- [ ] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
-- [ ] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
-- [ ] Each run uses a fresh local D1
+- [x] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
+- [x] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
+- [x] Each run uses a fresh local D1
 - [ ] CI job (no Cloudflare login needed)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
@@ -1375,6 +1375,39 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-35 · E2E against the production build (service worker, offline)
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Sonnet 5.5 · High | M | T-27, T-30 | — |
+
+**Status:** ready · **Owns:** `e2e/**`, `playwright.config.ts`, the e2e job in `.github/workflows/ci.yml`
+**Goal:** The E2E suite also runs against `vite build` + `vite preview` (G-74), so the service worker, the precache and the offline banner are exercised, not only `vite dev`.
+**Done when:** a `preview` project (or a second job) runs the happy path against the built app on a fresh D1, plus one offline check (load Today, go offline, reload, the shell still opens).
+
+- [ ] `e2e/server.ts` option to start `vite build && vite preview` (the Cloudflare plugin's `persistState` applies there too; check)
+- [ ] Offline spec: `context.setOffline(true)` after the first visit; shell loads from the precache, `OfflineBanner` shows
+- [ ] Decide whether it replaces the dev-server run in CI or runs next to it (dev is faster to start)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-36 · E2E smoke for the seeded demo account
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | T-27 | — |
+
+**Status:** ready · **Owns:** `e2e/**`, `scripts/db/seed.ts` (accept a persist dir)
+**Goal:** The demo login from `db:seed:local` (L-107) keeps working, and its numbers match what the server computes (G-71).
+**Done when:** a spec signs in as `demo@frenchy.local` on the run's fresh D1 and checks Today, Streak and Review against the seed.
+
+- [ ] `scripts/db/seed.ts` and `getPlatformProxy({ persist })` take `E2E_PERSIST_DIR`; `e2e/server.ts` seeds after migrating
+- [ ] Spec: sign in as the demo user; assert the streak the server computes (5 days, best 6, G-71), cards due, and the Review session
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1462,6 +1495,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-70 | `src/shared/content` bundles every lesson text eagerly (`import.meta.glob`, L-91), so they sit in the main JS chunk: 895 kB raw / 220 kB gzipped with 8 chapters (texts are ~724 kB of JSON), about 90 kB more per chapter. After G-26 this chunk is most of the 1,027 KiB precache. The Worker bundle has them too (2.46 MB raw / 478 KB gzipped): `routes/cards.ts` imports `getChapter`/`getDeck` from `src/shared/content` (the L-91 trap), still under the 3 MB gzipped free-plan limit | First load and every deploy's update grow with the course; the parse cost hits Today on low-end phones | B-33 |
 | G-71 | The demo seed's fixtures say "12-day streak with one freeze" (`seed.ts`, mockups), but the server recomputes freezes from the history (T-11: one earned per 7 practiced days), ignores the seeded `freezeUsed` row, and shows a 5-day streak (best 6) for `demo@frenchy.local` | Screenshots or E2E checks against the seed won't match the mockup numbers | T-27 (assert what the server computes, or reshape the seed's activity) |
 | G-72 | `vite build` (Cloudflare Vite plugin) copies `.dev.vars` into `dist/frenchy/.dev.vars` so `vite preview` has the local secrets. `dist/` is gitignored and `wrangler deploy` reads secrets from `wrangler secret`, but any step that uploads or archives `dist/` (CI artifact, a static host) would ship the local secrets | A local `BETTER_AUTH_SECRET` or AI key could leak through a build artifact | T-29, T-30 (never upload `dist/` wholesale; CI builds have no `.dev.vars`) |
+| G-73 | The chapter page's starter-deck tile is one `<button>` whose accessible name is "Starter deck 24 cards": the action text ("Add to reviews", then "Added 24 to your reviews") sits in a nested `role="status"`, which is not part of the button's name. A screen-reader user hears a button with no verb. The E2E helper finds it by "Starter deck" for that reason | Unclear control for assistive tech | T-28 (put the action in the button's label, keep the status as a live region outside the button) |
+| G-74 | The E2E suite runs against `vite dev` (unbundled, no service worker registered in practice), not the production build, so the PWA precache, offline start and a bundling-only bug are not covered. Real Google sign-in (G-60) and real AI keys are also out of reach in CI | A production-only break passes E2E | B-35 |
 
 ---
 
@@ -1565,3 +1600,8 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-106 · 2026-10-18 · srs · T-26` — **The end-to-end walk failed at "review that card": a word saved in the reader never came up, because `/api/cards/due` let new cards in by `due` then `createdAt` under the 10-a-day cap, and the 24-card Ch 1 starter deck added a minute earlier filled every slot. The saved word would have waited until day 3. Every unit test passed because none mixed a deck with a saved card.** → Under the cap, cards the learner saved come before starter-deck cards (`dueNew` orders by `source_kind = 'starter'` first; `cards.test.ts` reproduces it). Integration bugs hide between features: walk the real flow on a fresh database before calling a wave done.
 - `L-107 · 2026-10-18 · tooling · T-26` — **`npm run db:seed:local` wrote the demo user's cards and streak under `user_id = 'demo-user'`, but no Better Auth user had that id, so nobody could sign in to see the seed data once mocks were off.** → The seed also upserts a Better Auth `user` and a `credential` account (password hashed with `better-auth/crypto`'s `hashPassword`) and prints the login; `db.test.ts` signs in through `/api/auth/sign-in/email`. Seed data is only useful if the real auth path can reach it.
 - `L-108 · 2026-10-18 · testing · T-26` — **In the Playwright walk, `page.locator('[data-token]').count()` right after `waitForURL(/\/read\//)` returned 0 (the reader is a lazy route, so the URL changes before the page renders), and the first review loop graded nothing because "Show answer" wasn't there yet. Neither failed loudly; the script just skipped ahead.** → After a navigation, wait for a landmark of the new screen (`getByRole('button', { name: 'Finish reading' }).waitFor()`) before counting or checking `isVisible()`; prefer `waitFor` over `isVisible` for anything that loads. Worth carrying into T-27.
+- `L-110 · 2026-10-18 · testing · T-27` — **Four of the first seven specs failed at sign-up with "Too many tries": the Worker allows 5 sign-ups per minute per client IP (`AUTH_ATTEMPTS`, stored in D1), and every spec comes from localhost. The page showed it in an `alert`, so the failure looked like a timeout on `/onboarding`.** → `e2e/helpers.ts` exports a `test` whose `extraHTTPHeaders` carries a random `cf-connecting-ip` (Cloudflare sets that header in production and the dev Worker trusts it), so each test is its own client and the limit stays on. Import `test` from `./helpers`, not from `@playwright/test`. Read `error-context.md` in `test-results/` first: its page snapshot names the visible error.
+- `L-111 · 2026-10-18 · testing · T-27` — **Fresh D1 per run without touching `.wrangler/state`:** `e2e/server.ts` makes a temp dir, runs `wrangler d1 migrations apply frenchy --local --persist-to <dir>`, then starts `vite dev` with `E2E_PERSIST_DIR=<dir>`, which `vite.config.ts` passes to the Cloudflare plugin's `persistState` (same `<dir>/v3` layout as wrangler; checked: sign-up wrote into the temp dir, no `.wrangler` appeared). The dir is deleted on exit. `CLOUDFLARE_INCLUDE_PROCESS_ENV=true` hands `BETTER_AUTH_SECRET` and `AI_*_PROVIDER=mock` to the Worker, so CI needs no `.dev.vars` and no Cloudflare login. On a loaded box `vite dev` took 123 s to listen and the first request per route is slow, so `globalSetup` visits every route once with a 180 s timeout (the 30 s default failed), and the config has generous timeouts (webServer 300 s, test 180 s). The full suite (14 tests) took 17 min on a box with load 9; CI should be faster.
+- `L-112 · 2026-10-18 · tooling · T-27` — **`@playwright/test` is pinned to 1.56.1 (exact) because the preinstalled Chromium in cloud sessions is revision 1194, which is Playwright 1.56; with `PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers` it is found without `playwright install`.** → When bumping Playwright, check `ls /opt/pw-browsers`: a newer version wants a newer revision. `E2E_CHROMIUM_PATH` overrides the binary if they ever drift. CI installs its own with `npx playwright install --with-deps chromium`.
+- `L-113 · 2026-10-18 · testing · T-27` — **A full first review session takes all 10 daily new-card slots (`DUE_LIMIT` is 20, `NEW_CARDS_PER_DAY` is 10), so my first happy path "save a word, then review it" found "All caught up": the saved card waits for tomorrow, by the cap rule, not a bug.** → The happy path grades 9 cards and ends the session early (`gradeCards(page, 9)`), leaving one slot; the second session must then hold exactly one card, the saved word. That is a sharper regression test for L-106 than "the word appears among five cards". A test that needs a rule's boundary should build the boundary, not hope for it.
+- `L-114 · 2026-10-18 · a11y · T-27` — **`getByRole('button', { name: /Add to reviews/ })` timed out although the text is on screen: the starter-deck tile is a button whose name is "Starter deck 24 cards", and "Add to reviews" is a nested `role="status"` that does not count toward the name (G-73).** → Locate by role and the name a screen reader gives; when a visible label isn't in the accessible name, that is an app gap to log (G-73), not a reason to fall back to text selectors.

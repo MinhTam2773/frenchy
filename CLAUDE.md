@@ -70,6 +70,7 @@ T-01 creates these. Until it merges, there is no app code.
 | `npm test` / `npm run test:watch` | Vitest (client in jsdom, worker in the Workers pool) |
 | `npm run lint` / `npm run typecheck` / `npm run format` | Individual checks |
 | `npm run content:check` | Validate everything in `content/` (T-07) |
+| `npm run test:e2e` | Playwright on `vite dev` with a fresh local D1, phone + desktop (T-27); CI runs it as the `e2e` job, not part of `check` |
 | `npm run db:migrate:local` / `npm run db:seed:local` | Local D1 (T-06) |
 
 ## Architecture rules
