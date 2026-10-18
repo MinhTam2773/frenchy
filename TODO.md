@@ -1206,6 +1206,24 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-22 · Content typography and token-join checks in `content:check`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
+**Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
+
+- [ ] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
+- [ ] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
+- [ ] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
+- [ ] No curly apostrophe in French tokens
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1266,6 +1284,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | T-26 (decide: keep precaching for offline taps and raise `maximumFileSizeToCacheInBytes`, or add `**/forms-*.js` / `**/lemmas-*.js` to `globIgnores` and runtime-cache them) |
 | G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
 | G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
+| G-57 | Stage 1 grammar ceiling is stricter than everyday A1 French: possessives (*mon*, *sa*), *mais*, stressed pronouns and questions before ch7 are all out, so ch1–ch10 texts are statement-only and name-heavy. The lead's working reading (brief, "Conventions") allows *et*, *à* + place and modal + infinitive. The fixture "Le matin de Léa" breaks the ceiling (*son voisin*, *mais*, *huit heures*) | Texts can read stiff; QA may flag the same things | T-24, then the user (or adjust `content/grammar.json`, G-23) |
+| G-58 | Lexicon gaps found by T-14: no entry for *où*, *il y a*, *qu'est-ce que*, *après-midi*, *épinard*, several -tion/-isme nouns; *sœur* reported unknown (possible œ key-normalization bug). Coverage per chapter 84–96 % | Imported text and word taps miss core words; T-24's ≥ 98 % target | T-24 (extend `scripts/lexicon/build.ts` forced lemmas, check œ) |
 
 ---
 
@@ -1321,3 +1341,5 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-31 · 2026-10-18 · tooling · T-08` — **A template-literal `import(\`../../../content/lexicon/forms-${shard}.json\`)` makes Vite emit one lazy chunk per shard and also works in Vitest (no fetch, so MSW is not involved), with no `import.meta.glob` typing in the worker tsconfig. Prettier reads only the root `.gitignore`, so a nested `scripts/lexicon/.gitignore` didn't stop `prettier .` from choking on the 584 MB raw dump. I first ran the scripts with Node's type stripping (`.ts` import extensions, own tsconfig), then switched to `tsx` when T-07's convention (L-27) landed in `main`.** → Lazy-load static JSON by template-literal `import()`, and make every shard id exist as a file (even `{}`) so no import can miss. Put ignore rules for big local files in the root `.gitignore`. Scripts use `tsx` and extensionless imports.
 - `L-60 · 2026-10-18 · testing · T-20` — **The MSW profile state in `mocks/handlers/base.ts` lives in page memory, so it survives in-app navigation but a full browser reload resets it to the fixture. In jsdom, `Intl.supportedValuesOf('timeZone')` works (Node 22) and `speechSynthesis` is absent, so voice tests must `vi.stubGlobal('speechSynthesis', ...)` and `SpeechSynthesisUtterance`.** → "Change a setting, reload, see it kept" is verified by re-rendering the app (`cleanup()` then `renderAt('/me')` in a test) or by navigating away and back in the browser, not by a real reload. A persisted mock (sessionStorage) was not added; do it in `mocks/handlers/settings.ts` only if someone needs it.
 - `L-61 · 2026-10-18 · client · T-20` — **`ProfilePatch` takes `dailyGoalMinutes` as the literal union of `DAILY_GOAL_OPTIONS`, so a callback typed `(minutes: number)` needs a cast to patch it.** → Type the picker callback as `(typeof DAILY_GOAL_OPTIONS)[number]` and map over the constant; no cast needed.
+- `L-74 · 2026-10-18 · testing · lead` — **With ~15 agents running test suites on one 4-core box (load average 30–45), Vitest's 5 s test timeout and Testing Library's 1 s `findBy*` wait failed tests that pass alone (lexicon shard parsing takes seconds; screens render slowly).** → The client and worker projects use `testTimeout: 30_000`, and `test-setup.ts` sets `asyncUtilTimeout: 5_000`. Treat a failure that only appears under load as a timing problem, but still confirm it in isolation before calling it that.
+- `L-75 · 2026-10-18 · testing · lead` — **A T-07 test asserted that the repo had no texts yet, so the first T-14 chapter broke `npm run check` on all eight content branches at once. The brief also showed lemma `de` for indefinite *des* while the T-08 lexicon uses `un`.** → Tests use fixtures or a tree built with `createContent`, never the absence of real content. Indefinite *des* → lemma `un` (brief corrected). Before a fan-out, grep for tests that pin the current state of the folders being filled.
