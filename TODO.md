@@ -640,7 +640,7 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [ ] Welcome: Continue with email, Continue with Google (hidden when Google isn't configured), I already have an account
 - [ ] Email sign-up and sign-in forms: labels, validation, errors announced to screen readers
 - [ ] Onboarding: Stage 1 chapter list (plus "show later stages"), daily goal, save profile, go to `/today`
-- [ ] Replace the `useSession()` stub with the real session; keep the guard
+- [x] Replace the `useSession()` stub with the real session; keep the guard
 - [ ] Password reset is not in MVP (G-08): show "Forgot password?" only once B-18 lands
 - [ ] Tests: form validation, onboarding saves the profile, guard redirects
 - [ ] Finish: `npm run check` green
