@@ -20,3 +20,7 @@ export const ApiError = z.object({
   }),
 });
 export type ApiError = z.infer<typeof ApiError>;
+
+/** `GET /api/auth/config` (public): which sign-in methods the server has turned on. */
+export const AuthConfig = z.object({ google: z.boolean() });
+export type AuthConfig = z.infer<typeof AuthConfig>;

@@ -442,23 +442,30 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · High | M | T-06 | T-21, T-22, T-23 | 3 |
 
-**Status:** in progress · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
+**Status:** in review · **Claimed by:** T-13 subagent (lead session) · **Branch:** `task/T-13-auth-api`
 **Owns:** `src/worker/auth/**`, `src/worker/middleware/session.ts`, `src/worker/routes/auth.ts`, auth migrations in `migrations/`
 **Goal:** Email and Google sign-in with sessions stored in D1, and a `requireUser` middleware every API route uses.
 **Done when:** the workers-pool tests cover sign up, sign in, session read, a protected route (401 vs 200) and sign out.
 
-- [ ] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
-- [ ] Create the auth instance per request from `env`; mount at `/api/auth/*`
-- [ ] Email + password (minimum length, rate-limited attempts)
-- [ ] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
-- [ ] Generate the Better Auth tables → Drizzle schema → migration; apply locally
-- [ ] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
-- [ ] Create the `profiles` row on first sign-in (onboarding fills it)
-- [ ] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
-- [ ] Tests (workers pool) for the flows in "Done when"
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] First check that the current Better Auth works in the Workers runtime with D1 (Drizzle adapter). If not, stop, log a lesson, and write a `QUESTION:` with an alternative before building
+- [x] Create the auth instance per request from `env`; mount at `/api/auth/*`
+- [x] Email + password (minimum length, rate-limited attempts)
+- [x] Google OAuth when `GOOGLE_CLIENT_ID`/`SECRET` are set (H-03); email-only otherwise, exposed through a small config endpoint the UI can read
+- [x] Generate the Better Auth tables → Drizzle schema → migration; apply locally
+- [x] `requireUser` middleware sets `c.var.user`, otherwise returns a 401 JSON error
+- [x] Create the `profiles` row on first sign-in (onboarding fills it)
+- [x] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
+- [x] Tests (workers pool) for the flows in "Done when"
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+Notes for T-21 / T-22 / T-23:
+- Go: Better Auth 1.7.10 runs in workerd with D1 through the Drizzle adapter (sign-up, sign-in, session, sign-out, rate limit and Google start all tested). Caveat G-35 (password hashing CPU).
+- `requireUser` (`src/worker/middleware/session.ts`) with `Hono<UserEnv>`: sets `c.var.user` (Better Auth user: `id`, `email`, `name`, `image`, `emailVerified`, `createdAt`, `updatedAt`) and `c.var.session`; 401 `{ error: { code: 'unauthorized' } }` otherwise. Use `scopedDb(createDb(c.env.DB), c.var.user.id)`.
+- `GET /api/auth/config` → `AuthConfig` `{ google }` (`@shared/schemas`). Client: `better-auth/react` `createAuthClient()` with the default `/api/auth` base path. Cookie `better-auth.session_token` (`__Secure-` prefixed over https).
+- The profile row is created on every session create if missing (`onConflictDoNothing`), so `GET /api/profile` always finds one. Time zone defaults to Cloudflare's `request.cf.timezone` or `UTC`; T-21 onboarding should PATCH the device's `Intl.DateTimeFormat().resolvedOptions().timeZone`.
+- QUESTION: password hashing (scrypt) needs more CPU than the Workers Free plan's 10 ms per request (G-35). Default kept: Better Auth's scrypt, which assumes Workers Paid. Alternative: a custom `password.hash/verify` with cheaper parameters (weaker against offline cracking). Decide before T-30.
 
 #### T-14 · Stage 1 content generation (fan-out per chapter)
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
@@ -1246,6 +1253,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-22 | `scripts/**` is in no tsconfig, so `tsc -b` doesn't typecheck scripts (only ESLint sees them). T-06 keeps the seed logic in `src/worker/db/seed.ts` and `scripts/db/seed.ts` as thin glue | Type errors in scripts (T-07, T-08 too) show up only at run time | T-07, T-08 (add `scripts` to `tsconfig.node.json`) (resolved: T-07 added `scripts` to `tsconfig.node.json`; `scripts/db` is checked by `tsconfig.worker.json` because it uses D1 types) |
 | G-33 | Workbox precaches the app shell and every JS chunk (514 KiB now) but silently skips files over 2 MiB. Nothing fetches `/content/**` or `/lexicon/**` yet, so the stale-while-revalidate rule for those paths is untested; if T-14/T-08 bundle content as JS chunks instead, it is precached and the size can blow past the limit | Offline start may miss content, or the first visit after a deploy downloads all of it | T-07, T-08, T-14 (check `precache` size in the build output; raise `maximumFileSizeToCacheInBytes` or move content to runtime-cached fetches) |
 | G-34 | The PWA is verified only in Chromium (installability errors empty, offline shell works). Not checked: real iOS Safari (no `beforeinstallprompt`; the Share-sheet hint is the only install path, and iOS may clear storage after inactivity, see G-04) and Lighthouse (not installed here). Fonts still come from Google Fonts at runtime; the first offline visit before they were cached falls back to system fonts | Install and offline behavior on iPhone is unproven | T-30 (test on a real device), B-20 |
+| G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13) |
+| G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
 
 ---
 
@@ -1296,3 +1305,6 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-41 · 2026-10-18 · tooling · T-12` — **`vite-plugin-pwa` 2.0 supports Vite 8 and works with `@cloudflare/vite-plugin`: `sw.js` lands in `dist/client` (the assets directory), but it also copies `manifest.webmanifest` into the Worker output `dist/frenchy` (harmless). It needs `workbox-build` and `workbox-window` installed as peers, injects `<link rel="manifest">` itself (a second one in `index.html` duplicates it), and with `includeManifestIcons` on it lists the icons twice in the precache.** → Keep the plugin config in `vite.config.ts`, don't hand-write the manifest link, and use `injectRegister: false` + `src/client/pwa/register.ts` (no virtual module, no extra tsconfig types).
 - `L-42 · 2026-10-18 · testing · T-12` — **A Workbox `urlPattern` RegExp is matched against the full URL, so `/^\/api\//` never matches. Playwright's `setOffline` does not stop requests made by the service worker, so an "offline" test returned 200 for `/api/health`. A default Playwright context reports `in-incognito` from `Page.getInstallabilityErrors`.** → Match with a function on `url.pathname` (as `vite.config.ts` does). Test offline by stopping the preview server, and check installability in a `launchPersistentContext` profile (no `in-incognito`).
 - `L-43 · 2026-10-18 · tooling · T-12` — **`vite preview` (workerd) keeps serving the asset manifest of the first build: after a rebuild, the new `index.html` pointed at hashed files it answered with HTML ("Expected a JavaScript module but the server responded with text/html"). `pkill -f "vite preview"` inside a Bash call also kills that call's own shell.** → Restart `vite preview` after every build you test, and stop it with the background-task controls, not `pkill -f`.
+- `L-45 · 2026-10-18 · auth · T-13` — **Without `baseURL`, Better Auth decides at startup whether cookies are Secure, can't see the request's https, and so set the session cookie without `Secure`. The cookie name also depends on it (`__Secure-better-auth.session_token` over https, `better-auth.session_token` over http), so an instance built for an https request can't read a cookie set over http, and the other way round.** → `createAuth(env, request)` always gets the request and uses `BETTER_AUTH_URL` or the request's origin as `baseURL`, in `requireUser` too. Auth tests use https URLs everywhere, also for `app.request()` on a test app.
+- `L-46 · 2026-10-18 · auth · T-13` — **Better Auth's default rate-limit storage is memory, which resets with every per-request instance on Workers. It reads the client IP from `x-forwarded-for` by default; with no IP, every client shares one bucket. Built-in rule: `/sign-in*` and `/sign-up*` allow 3 per 10 s per IP + path.** → Use `storage: 'database'` (`rate_limit` table), `ipAddressHeaders: ['cf-connecting-ip']` and explicit `customRules`. Worker tests send a fresh `cf-connecting-ip` per test, or one test's attempts throttle the next.
+- `L-47 · 2026-10-18 · tooling · T-13` — **The Better Auth CLI is now the `auth` npm package (`npx auth@<version> generate --config <file>`). It needs a config file that exports `auth`, and writes Drizzle tables with relations. Adding tables also broke T-06's `db.test.ts`, which lists every table and index. The scratchpad directory is shared by parallel agents: my `check.log` held another worktree's test run.** → Generate the auth schema with a throwaway config and don't add the CLI as a dependency. Update the migration test lists when you add a migration. Give scratch files a task-specific name (`t13-test.log`).

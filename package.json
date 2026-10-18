@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.104.4",
+    "better-auth": "^1.7.10",
     "drizzle-orm": "^0.45.4",
     "hono": "^4.13.13",
     "react": "^19.3.1",

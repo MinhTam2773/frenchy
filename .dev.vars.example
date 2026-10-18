@@ -1,8 +1,13 @@
 # Copy to .dev.vars (gitignored) and fill in values for local dev.
 # Production uses `wrangler secret put <NAME>`.
 
-# Auth (T-13)
+# Auth (T-13). Secret: at least 32 random characters (`openssl rand -base64 32`).
 BETTER_AUTH_SECRET=
+# Optional: public origin (e.g. https://frenchy.example); unset, it is taken from the request.
+BETTER_AUTH_URL=
+# Optional: extra origins allowed to call /api/auth/*, comma-separated.
+BETTER_AUTH_TRUSTED_ORIGINS=
+# Google sign-in turns on only when both are set (H-03).
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
