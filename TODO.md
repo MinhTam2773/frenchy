@@ -685,10 +685,10 @@ Wave 3 is done (T-13 to T-20 moved to DONE).
 - [x] Drivers: `anthropic`, `openai-compatible` (base URL + key + model), `mock` (tests and local dev without keys)
 - [x] Routing by env (`AI_TRANSLATE_PROVIDER`, `AI_EXPLAIN_PROVIDER`); keys only as Worker secrets (H-04)
 - [x] Explain prompt returns strict JSON (translation, word gloss, ≤ 2 notes) pitched at the learner's chapter (from `allowedGrammar`); validate with zod; one retry on invalid JSON
-- [ ] `translation_cache` key = hash of task + normalized text + level
-- [ ] Per-user rate limit (start at 60 requests/hour)
+- [x] `translation_cache` key = hash of task + normalized text + level
+- [x] Per-user rate limit (start at 60 requests/hour)
 - [x] User text is treated as data inside the prompt, never as instructions
-- [ ] Tests for the "Done when" cases
+- [x] Tests for the "Done when" cases
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green

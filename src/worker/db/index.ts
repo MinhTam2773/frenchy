@@ -4,6 +4,7 @@ import type { SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
 import * as schema from './schema';
 import {
   activityMinutes,
+  aiUsage,
   cards,
   dailyActivity,
   profiles,
@@ -27,7 +28,8 @@ type UserTable =
   | typeof wordStatus
   | typeof dailyActivity
   | typeof activityMinutes
-  | typeof textReads;
+  | typeof textReads
+  | typeof aiUsage;
 
 /** Insert values without `userId`: the scope fills it in. */
 export type ScopedInsert<T extends UserTable> = Omit<T['$inferInsert'], 'userId'>;
@@ -71,6 +73,7 @@ export function scopedDb(db: Db, userId: string) {
     dailyActivity: scopedTable(db, dailyActivity, userId),
     activityMinutes: scopedTable(db, activityMinutes, userId),
     textReads: scopedTable(db, textReads, userId),
+    aiUsage: scopedTable(db, aiUsage, userId),
     /** Runs the queries in one D1 transaction. */
     batch: db.batch.bind(db),
   };
