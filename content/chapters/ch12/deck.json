@@ -194,8 +194,8 @@
     {
       "id": "ch12-je-connais-madame-roux",
       "type": "cloze",
-      "front": "Je ___ Madame Roux.",
-      "back": "Je connais Madame Roux.",
+      "front": "Je ___ madame Roux.",
+      "back": "Je connais madame Roux.",
       "clozeAnswer": "connais",
       "hint": "savoir or connaître?",
       "note": "People take connaître.",
