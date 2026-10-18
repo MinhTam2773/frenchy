@@ -1,0 +1,1060 @@
+{
+  "id": "ch10-le-soir-chez-les-moreau",
+  "chapterId": "ch10",
+  "title": "Le soir chez les Moreau",
+  "kind": "story",
+  "minutes": 2,
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "soir",
+              "lemma": "soir",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "evening",
+              "form": "le soir = in the evening"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mrs."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Moreau",
+              "lemma": "Moreau",
+              "pos": "name",
+              "gloss": "Moreau (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rentre",
+              "lemma": "rentrer",
+              "pos": "verb",
+              "gloss": "comes back",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "du",
+              "lemma": "du",
+              "pos": "contraction",
+              "gloss": "from",
+              "form": "de + le becomes du"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "travail",
+              "lemma": "travail",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "work"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "In the evening, Mrs. Moreau comes home from work."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Mr."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Moreau",
+              "lemma": "Moreau",
+              "pos": "name",
+              "gloss": "Moreau (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prépare",
+              "lemma": "préparer",
+              "pos": "verb",
+              "gloss": "makes",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dîner",
+              "lemma": "dîner",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dinner"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "kitchen"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mr. Moreau makes dinner in the kitchen."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "plural · un or une enfant: the same word for a boy or a girl"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Lucas",
+              "lemma": "Lucas",
+              "pos": "name",
+              "gloss": "Lucas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "jouent",
+              "lemma": "jouer",
+              "pos": "verb",
+              "gloss": "play",
+              "form": "ils / elles · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "aux",
+              "lemma": "aux",
+              "pos": "contraction",
+              "gloss": "(no word in English)",
+              "form": "à + les becomes aux · jouer aux cartes = to play cards"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cartes",
+              "lemma": "carte",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "cards",
+              "form": "feminine plural",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dans",
+              "lemma": "dans",
+              "pos": "preposition",
+              "gloss": "in"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salon",
+              "lemma": "salon",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "living room"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The children, Lucas and Emma, play cards in the living room."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "gagne",
+              "lemma": "gagner",
+              "pos": "verb",
+              "gloss": "wins",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "toujours",
+              "lemma": "toujours",
+              "pos": "adverb",
+              "gloss": "always"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Emma always wins."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Lucas",
+              "lemma": "Lucas",
+              "pos": "name",
+              "gloss": "Lucas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "n'",
+              "lemma": "ne",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne becomes n' before a vowel · n' … pas = not"
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "pas",
+              "lemma": "pas",
+              "pos": "adverb",
+              "gloss": "not",
+              "form": "ne … pas = not"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "content",
+              "lemma": "content",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "happy",
+              "form": "masculine singular · feminine: contente"
+            },
+            {
+              "t": " !"
+            }
+          ],
+          "en": "Lucas isn’t happy!"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Mr."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Moreau",
+              "lemma": "Moreau",
+              "pos": "name",
+              "gloss": "Moreau (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "appelle",
+              "lemma": "appeler",
+              "pos": "verb",
+              "gloss": "calls",
+              "form": "il / elle · present · -er verb (ll)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "les",
+              "lemma": "le",
+              "pos": "article",
+              "gloss": "the",
+              "form": "definite article · plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "enfants",
+              "lemma": "enfant",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "children",
+              "form": "plural · un or une enfant: the same word for a boy or a girl"
+            },
+            {
+              "t": " : "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dîner",
+              "lemma": "dîner",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dinner"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "est",
+              "lemma": "être",
+              "pos": "verb",
+              "gloss": "is",
+              "form": "il / elle · present · irregular"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "prêt",
+              "lemma": "prêt",
+              "pos": "adjective",
+              "gender": "m",
+              "gloss": "ready",
+              "form": "masculine singular · feminine: prête"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Mr. Moreau calls the children: dinner is ready."
+        },
+        {
+          "tokens": [
+            {
+              "t": "La",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "famille",
+              "lemma": "famille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "family"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "mange",
+              "lemma": "manger",
+              "pos": "verb",
+              "gloss": "eats",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "omelette",
+              "lemma": "omelette",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "omelet"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "salade",
+              "lemma": "salade",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "salad"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "The family eats an omelet and a salad."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ils",
+              "lemma": "ils",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "parlent",
+              "lemma": "parler",
+              "pos": "verb",
+              "gloss": "talk",
+              "form": "ils / elles · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "de",
+              "lemma": "de",
+              "pos": "preposition",
+              "gloss": "about"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "journée",
+              "lemma": "journée",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "day"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They talk about the day."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "raconte",
+              "lemma": "raconter",
+              "pos": "verb",
+              "gloss": "tells",
+              "form": "il / elle · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "une",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "histoire",
+              "lemma": "histoire",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "story",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "drôle",
+              "lemma": "drôle",
+              "pos": "adjective",
+              "gender": "f",
+              "gloss": "funny",
+              "form": "the same for masculine and feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "tout",
+              "lemma": "tout",
+              "pos": "determiner",
+              "gloss": "all",
+              "form": "tout le monde = everybody"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "monde",
+              "lemma": "monde",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "people",
+              "form": "tout le monde = everybody"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rigole",
+              "lemma": "rigoler",
+              "pos": "verb",
+              "gloss": "laughs",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Emma tells a funny story and everybody laughs."
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "tokens": [
+            {
+              "t": "Après",
+              "lemma": "après",
+              "pos": "preposition",
+              "gloss": "after"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "le",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "dîner",
+              "lemma": "dîner",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "dinner"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "Emma",
+              "lemma": "Emma",
+              "pos": "name",
+              "gloss": "Emma (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Madame",
+              "lemma": "madame",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "Mrs."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Moreau",
+              "lemma": "Moreau",
+              "pos": "name",
+              "gloss": "Moreau (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "lavent",
+              "lemma": "laver",
+              "pos": "verb",
+              "gloss": "wash",
+              "form": "ils / elles · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "vaisselle",
+              "lemma": "vaisselle",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "dishes",
+              "form": "laver la vaisselle = to do the dishes",
+              "isNew": true
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "After dinner, Emma and Mrs. Moreau do the dishes."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Elles",
+              "lemma": "elles",
+              "pos": "pronoun",
+              "gloss": "they",
+              "form": "subject pronoun · 3rd person plural, all feminine"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "chantent",
+              "lemma": "chanter",
+              "pos": "verb",
+              "gloss": "sing",
+              "form": "ils / elles · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "avec",
+              "lemma": "avec",
+              "pos": "preposition",
+              "gloss": "along with"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "radio",
+              "lemma": "radio",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "radio"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "They sing along with the radio."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Lucas",
+              "lemma": "Lucas",
+              "pos": "name",
+              "gloss": "Lucas (a name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "et",
+              "lemma": "et",
+              "pos": "conjunction",
+              "gloss": "and"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Monsieur",
+              "lemma": "monsieur",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "Mr."
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "Moreau",
+              "lemma": "Moreau",
+              "pos": "name",
+              "gloss": "Moreau (a family name)"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "rangent",
+              "lemma": "ranger",
+              "pos": "verb",
+              "gloss": "tidy",
+              "form": "ils / elles · present · -er verb",
+              "isNew": true
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "cuisine",
+              "lemma": "cuisine",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "kitchen"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Lucas and Mr. Moreau tidy the kitchen."
+        },
+        {
+          "tokens": [
+            {
+              "t": "Ensuite",
+              "lemma": "ensuite",
+              "pos": "adverb",
+              "gloss": "then, next"
+            },
+            {
+              "t": ", "
+            },
+            {
+              "t": "la",
+              "lemma": "le",
+              "pos": "article",
+              "gender": "f",
+              "gloss": "the",
+              "form": "definite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "famille",
+              "lemma": "famille",
+              "pos": "noun",
+              "gender": "f",
+              "gloss": "family"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "regarde",
+              "lemma": "regarder",
+              "pos": "verb",
+              "gloss": "watches",
+              "form": "il / elle · present · -er verb"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "un",
+              "lemma": "un",
+              "pos": "article",
+              "gender": "m",
+              "gloss": "a, an",
+              "form": "indefinite article"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "film",
+              "lemma": "film",
+              "pos": "noun",
+              "gender": "m",
+              "gloss": "film, movie"
+            },
+            {
+              "t": " "
+            },
+            {
+              "t": "ensemble",
+              "lemma": "ensemble",
+              "pos": "adverb",
+              "gloss": "together"
+            },
+            {
+              "t": "."
+            }
+          ],
+          "en": "Then the family watches a film together."
+        }
+      ]
+    }
+  ],
+  "newWords": ["jouer", "carte", "gagner", "raconter", "histoire", "laver", "vaisselle", "ranger"],
+  "grammarTags": [
+    "er.present",
+    "pronouns.subject",
+    "articles.definite",
+    "er.spelling-changes",
+    "prepositions.basic",
+    "articles.indefinite",
+    "articles.contractions",
+    "nouns.plural",
+    "etre.present",
+    "negation.ne-pas",
+    "adjectives.basic"
+  ]
+}
