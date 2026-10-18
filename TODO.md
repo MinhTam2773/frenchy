@@ -473,15 +473,15 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 - [x] Lead writes the generation brief `scripts/content/prompts/text.md`: original French only (the book sets topic order, never copy its sentences), only grammar tags allowed up to the chapter, ≤ 8 new words per text, 60–120 words per A1 text, stories and dialogues, natural everyday topics, per-token annotations (lemma, pos, gender, form), English translation per sentence
 - [x] Lead writes the deck brief: 20–30 cards per chapter mixing `sentence_meaning`, `meaning_sentence` and `cloze`, clozes with one unambiguous answer
 - [ ] Fan out, one sub-agent per chapter (tick when that chapter passes `content:check`):
-  - [ ] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
-  - [ ] Ch 1 · Articles
-  - [ ] Ch 2 · Basic gender endings
-  - [ ] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
-  - [ ] Ch 10 · Present tense of -er verbs
-  - [ ] Ch 4 · Numbers
-  - [ ] Ch 7 · Asking questions
+  - [x] App. A · Pronunciation (short texts focused on sounds, plus a sound-pairs note)
+  - [x] Ch 1 · Articles
+  - [x] Ch 2 · Basic gender endings
+  - [x] Ch 12 · *Être*, *avoir*, irregular verbs (also *aller* and *faire*, L-02)
+  - [x] Ch 10 · Present tense of -er verbs
+  - [x] Ch 4 · Numbers
+  - [x] Ch 7 · Asking questions
   - [ ] Ch 33 · Conversation: meeting people (dialogues)
-- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json`
+- [ ] Each chapter folder holds `texts/*.json`, `note.json` (a pattern card like the Chapter mockup) and `deck.json` (7 of 8 so far; ch33 in progress)
 - [ ] `npm run content:check` green for all chapters
 - [ ] Do not self-approve: hand over to T-24 (a different agent)
 - [ ] Finish: `npm run check` green
@@ -1343,3 +1343,5 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-61 · 2026-10-18 · client · T-20` — **`ProfilePatch` takes `dailyGoalMinutes` as the literal union of `DAILY_GOAL_OPTIONS`, so a callback typed `(minutes: number)` needs a cast to patch it.** → Type the picker callback as `(typeof DAILY_GOAL_OPTIONS)[number]` and map over the constant; no cast needed.
 - `L-74 · 2026-10-18 · testing · lead` — **With ~15 agents running test suites on one 4-core box (load average 30–45), Vitest's 5 s test timeout and Testing Library's 1 s `findBy*` wait failed tests that pass alone (lexicon shard parsing takes seconds; screens render slowly).** → The client and worker projects use `testTimeout: 30_000`, and `test-setup.ts` sets `asyncUtilTimeout: 5_000`. Treat a failure that only appears under load as a timing problem, but still confirm it in isolation before calling it that.
 - `L-75 · 2026-10-18 · testing · lead` — **A T-07 test asserted that the repo had no texts yet, so the first T-14 chapter broke `npm run check` on all eight content branches at once. The brief also showed lemma `de` for indefinite *des* while the T-08 lexicon uses `un`.** → Tests use fixtures or a tree built with `createContent`, never the absence of real content. Indefinite *des* → lemma `un` (brief corrected). Before a fan-out, grep for tests that pin the current state of the folders being filled.
+- `L-76 · 2026-10-18 · content · T-14` — **Under the strict Stage 1 ceiling, early chapters can't use possessives, questions, numbers, *mais* or stressed pronouns, so agents wrote statement-only dialogues and name-heavy texts; several also found the brief's lemma examples drifted from the T-08 lexicon. `content:check` caught neither typography slips (a space after `l'`) nor lemma drift.** → Chapter agents run `npm run lexicon:coverage` and check function words against `content/lexicon/forms-*.json` before picking lemmas; B-22 adds the typography checks; G-57 holds the ceiling question.
+- `L-77 · 2026-10-18 · orchestration · lead` — **Running ~15 agents at once hit the session's rate limit: six agents stopped mid-task at the same moment (work saved), and the load made full `npm run check` runs slow and flaky.** → Keep a wave to about 6–8 concurrent agents; resume stopped agents with SendMessage after the reset instead of starting new ones; let CI run the full suite and use lint/typecheck/targeted tests locally while many agents are running.
