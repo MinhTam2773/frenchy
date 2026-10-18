@@ -456,8 +456,8 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 - [ ] Create the `profiles` row on first sign-in (onboarding fills it)
 - [ ] Cookies: secure, httpOnly, `SameSite=Lax`; trusted origins from env
 - [ ] Tests (workers pool) for the flows in "Done when"
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-14 · Stage 1 content generation (fan-out per chapter)
@@ -539,7 +539,7 @@ T-06, T-07 and T-09 to T-12 are done (moved to DONE). T-08 is still in progress.
 |---|---|---|---|---|---|
 | P0 | Sonnet 5.5 · High | M | T-09, T-07 | T-26 | 3 |
 
-**Status:** in progress · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
+**Status:** in review · **Claimed by:** T-17 subagent (lead session) · **Branch:** `task/T-17-path-chapter`
 **Owns:** `src/client/features/path/**`, `src/client/features/chapter/**`, `src/client/mocks/handlers/path.ts`
 **Goal:** `Path.dc.html` and `Chapter.dc.html`: the winding stage path and the chapter page that sits next to the book.
 **Done when:** both match their mockups with the real `course.json`, setting the current chapter works (mocked), and tests pass.
