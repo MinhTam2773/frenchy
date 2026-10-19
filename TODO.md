@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 33 · NEXT 4 (T-27 to T-29 in review; T-30 blocked on human gates) · BACKLOG 35
+**Progress:** DONE 36 · NEXT 1 (T-30 blocked on human gates and B-21) · BACKLOG 35
 
 ---
 
@@ -746,6 +746,68 @@ QUESTION: the mockup's "Aa" text-settings button and the audio time ("0:41") hav
 
 QUESTION: a word saved in the reader now starts before starter-deck cards, but still counts against `NEW_CARDS_PER_DAY` (L-106), so after a full 10-card session it waits until tomorrow. Should saved cards skip the cap? Default: no (reversible: one `orderBy`/limit in `cards.ts`).
 
+### T-27 · End-to-end tests (Playwright)
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | M | T-26 | — | 6 |
+
+**Status:** done · **Claimed by:** Wave 6 agent (T-27) · **Branch:** `task/T-27-e2e` · **PR:** https://github.com/MinhTam2773/frenchy/pull/39
+**Owns:** `e2e/**`, `playwright.config.ts`, an e2e job in `.github/workflows/ci.yml`
+**Goal:** The core flows are protected by browser tests at phone and desktop sizes.
+**Done when:** the specs pass locally and in CI.
+
+- [x] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
+- [x] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
+- [x] Each run uses a fresh local D1
+- [x] CI job (no Cloudflare login needed)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-110 to L-114, G-73, G-74, B-35, B-36)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-28 · Accessibility and mobile QA
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | T-26 | — | 6 |
+
+**Status:** done · **Claimed by:** Wave 6 agent (T-28) · **Branch:** `task/T-28-a11y` · **PR:** https://github.com/MinhTam2773/frenchy/pull/37
+**Owns:** a11y fixes across `src/client/**`, `e2e/a11y.spec.ts`
+**Goal:** WCAG 2.1 AA on every screen, on real phone widths.
+**Done when:** axe reports no violations on any route and the manual checks below pass.
+
+- [x] Automated axe check on every route: `src/client/a11y.test.tsx` (Vitest + `axe-core` in jsdom: structure, every route and the three sheets; runs in `npm test`) and `e2e/a11y.spec.ts` (real Chromium, colour contrast included, also checks targets ≥ 44 px and no sideways scroll; phone + desktop; picked up by T-27's `playwright.config.ts`). Found and fixed: Practice tile contrast 4.2:1, future calendar days 3.1:1, grade buttons failing label-in-name, missing `lang="fr"`
+- [x] Keyboard-only walkthrough: visible focus on every stop (none missing), no traps (Tab leaves every page), the modal sentence sheet and the stage picker trap Tab and return focus on Escape, the non-modal word sheet keeps focus on the word, Escape closes it and focus stays on the word (L-99), Tab from a word goes into the sheet's buttons first
+- [x] Icon buttons have labels (axe `button-name` clean on every route); French text has `lang="fr"` (reader title, session-complete line and Up next title added; mixed English/French strings are G-75)
+- [x] Contrast audit against the tokens (`contrast.test.ts` now covers the pairs the screens use, graphics at 3:1 and the Practice tint); touch targets ≥ 44 px (none under 44 on any screen, the sign-in/up switch link now 44 tall); `prefers-reduced-motion` respected (0 transitions or animations under `reduce`, checked on every screen)
+- [x] Layout at 320, 390, 430, 768 and 1280 px: no sideways scroll or off-screen element on any screen; also at 200 % text size and with WCAG text-spacing overrides at 390 px (fixed the Path stage banner and the Pattern card)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### T-29 · Security review
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · Extra | M | T-26 | T-30 | 6 |
+
+**Status:** done · **Claimed by:** Wave 6 agent (T-29) · **Branch:** `task/T-29-security` · **PR:** https://github.com/MinhTam2773/frenchy/pull/38
+**Owns:** `docs/security-review.md`, fixes anywhere
+**Goal:** No cross-user data access, no leaked secrets and no abusable endpoints before anything is public.
+**Done when:** `docs/security-review.md` lists the findings and every P0/P1 finding is fixed.
+
+- [x] Every database access goes through `scopedDb` (search routes for raw table access). Every route reaches user rows only through `userDb`/`scopedDb`; `routes/ai.ts` uses the raw `Db` only for the shared `translationCacheDb`. New guard in `src/worker/index.test.ts`: every route in `app.routes` except `/api/health` and `/api/auth/*` answers 401 without a session
+- [x] Auth: cookie flags, CSRF posture (SameSite + origin check), session expiry, password policy, rate limits. HttpOnly + Secure (https) + SameSite=Lax, Better Auth's origin check on `/api/auth/*`, 7-day sessions refreshed daily and revoked on sign-out, 8 to 128 characters, 5 sign-in/sign-up attempts per IP per minute (all tested in T-13). Added: Hono `csrf()` on `/api`, so a form-type write from another origin is a 403 even if a browser sent the cookie (`index.test.ts`; checked in `vite dev`: same-origin body-less POSTs still 200)
+- [x] No secrets in the client bundle (inspect `dist/`); `.dev.vars` is gitignored (G-72: `vite build` copies `.dev.vars` into `dist/frenchy/`; fix it before T-30). Fixed: a `keep-local-secrets-out-of-dist` plugin in `vite.config.ts` drops the file from every build (preview reads the root `.dev.vars`); `npm run check:dist` fails on a secrets file or any local secret value in `dist/`, and CI runs it after building with a canary `.dev.vars`; `.env*` and `.dev.vars.*` are gitignored too
+- [x] AI endpoints: user text handled as data, output validated, rate limits and a daily cost cap. Text goes in as a JSON data field with a "never follow instructions in it" rule, input is capped at 500 characters, explain output is zod-checked (one retry), React renders it as text, and a cache row is only served for the exact same text. Added the app-wide daily cap (G-10, B-27's scope): `ai_daily_usage` (migration 0003), `AI_DAILY_LIMIT` var (default 1,000 provider calls per UTC day), checked after the per-user hourly limit, 429 `rate_limited` with `Retry-After` until the next UTC day, cache hits still served, one warning at 80 %
+- [x] Input validation on every endpoint; errors don't leak internals. Every body, query and path parameter goes through a shared zod schema with length bounds (fixed the one unbounded field: `settings.voiceURI`, now at most 500 characters); responses are schema-checked too. Unexpected errors answer a generic `internal` body (ours), an empty 500 (Better Auth) or `Internal Server Error` (Hono) and are only logged
+- [x] `npm audit`; lexicon license attribution present (G-01). `npm audit`: 4 moderate, all one chain (drizzle-kit → @esbuild-kit → esbuild ≤ 0.24.2, GHSA-67mh-4wv8-2f99, esbuild's dev server); drizzle-kit is a CLI (Better Auth's optional peer) and none of it is in the Worker or client bundle, so accepted until drizzle-kit drops @esbuild-kit. Attribution: **not present** in the app (the 54 lexicon shards ship as public JS chunks), so B-21 is a launch blocker for any public deploy
+- [x] Write the report; fix P0/P1 findings. `docs/security-review.md`: 19 findings. Fixed: S-01 P0 (G-72), S-02 P1 (G-10 daily cap), and the P3s S-07 (`csrf()`), S-08 (`voiceURI`), S-09 (route guard). Open with owners: S-03 P2 write burst limit (B-40, G-77), S-04 P2 mock AI in production (T-30, G-63), S-10 P3 headers and body cap (B-39, G-78), S-12 (G-79) and the rest; S-05 attribution is a launch blocker (B-21, add it to T-30's deps); S-06 is the G-35 QUESTION below
+- [x] Finish: `npm run check` green (65 files, 1,038 tests; build `precache 12 entries (1028.05 KiB)`; `check:dist` clean, also after a build with a canary `.dev.vars`), `main` merged (no new commits)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-120 to L-124, G-77 to G-79, B-39, B-40)
+- [x] Finish: PR to `main` merged with CI green
+
+QUESTION: the app-wide AI cap (G-10) needs a number from you. Default: 1,000 provider calls per UTC day (`AI_DAILY_LIMIT`, a Worker var; cache hits are free, so lesson sentences cost once for everyone). Worst case per day is the cap × (500 characters in + `max_tokens` 8,000 out). Also set a monthly spend limit in the provider's console (H-04).
+
+QUESTION: G-35 (S-06): email sign-in needs the Workers Paid plan (scrypt takes about 130 to 310 ms of CPU; the Free plan allows 10 ms). Security recommendation and default: keep Better Auth's scrypt parameters and deploy on Workers Paid, because cheaper hashing makes a leaked `account` table easier to crack. Alternative on the Free plan: Google-only sign-in. Same decision as the QUESTION under T-13.
+
 ---
 
 ## NEXT (MVP)
@@ -779,76 +841,16 @@ Wave 5 is done (T-26 moved to DONE).
 
 ### Wave 6
 
-#### T-27 · End-to-end tests (Playwright)
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Sonnet 5.5 · High | M | T-26 | — | 6 |
-
-**Status:** in review ([PR #39](https://github.com/MinhTam2773/frenchy/pull/39)) · **Claimed by:** Wave 6 agent (T-27) · **Branch:** `task/T-27-e2e`
-**Owns:** `e2e/**`, `playwright.config.ts`, an e2e job in `.github/workflows/ci.yml`
-**Goal:** The core flows are protected by browser tests at phone and desktop sizes.
-**Done when:** the specs pass locally and in CI.
-
-- [x] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
-- [x] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
-- [x] Each run uses a fresh local D1
-- [x] CI job (no Cloudflare login needed)
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-110 to L-114, G-73, G-74, B-35, B-36)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-28 · Accessibility and mobile QA
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P1 | Sonnet 5.5 · High | S | T-26 | — | 6 |
-
-**Status:** in review · **Claimed by:** Wave 6 agent (T-28) · **Branch:** `task/T-28-a11y` · **PR:** https://github.com/MinhTam2773/frenchy/pull/37
-**Owns:** a11y fixes across `src/client/**`, `e2e/a11y.spec.ts`
-**Goal:** WCAG 2.1 AA on every screen, on real phone widths.
-**Done when:** axe reports no violations on any route and the manual checks below pass.
-
-- [x] Automated axe check on every route: `src/client/a11y.test.tsx` (Vitest + `axe-core` in jsdom: structure, every route and the three sheets; runs in `npm test`) and `e2e/a11y.spec.ts` (real Chromium, colour contrast included, also checks targets ≥ 44 px and no sideways scroll; phone + desktop; picked up by T-27's `playwright.config.ts`). Found and fixed: Practice tile contrast 4.2:1, future calendar days 3.1:1, grade buttons failing label-in-name, missing `lang="fr"`
-- [x] Keyboard-only walkthrough: visible focus on every stop (none missing), no traps (Tab leaves every page), the modal sentence sheet and the stage picker trap Tab and return focus on Escape, the non-modal word sheet keeps focus on the word, Escape closes it and focus stays on the word (L-99), Tab from a word goes into the sheet's buttons first
-- [x] Icon buttons have labels (axe `button-name` clean on every route); French text has `lang="fr"` (reader title, session-complete line and Up next title added; mixed English/French strings are G-75)
-- [x] Contrast audit against the tokens (`contrast.test.ts` now covers the pairs the screens use, graphics at 3:1 and the Practice tint); touch targets ≥ 44 px (none under 44 on any screen, the sign-in/up switch link now 44 tall); `prefers-reduced-motion` respected (0 transitions or animations under `reduce`, checked on every screen)
-- [x] Layout at 320, 390, 430, 768 and 1280 px: no sideways scroll or off-screen element on any screen; also at 200 % text size and with WCAG text-spacing overrides at 390 px (fixed the Path stage banner and the Pattern card)
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### T-29 · Security review
-| Priority | Model · effort | Size | Depends on | Blocks | Wave |
-|---|---|---|---|---|---|
-| P0 | Opus 5.5 · Extra | M | T-26 | T-30 | 6 |
-
-**Status:** in review · **Claimed by:** Wave 6 agent (T-29) · **Branch:** `task/T-29-security` · **PR:** https://github.com/MinhTam2773/frenchy/pull/38
-**Owns:** `docs/security-review.md`, fixes anywhere
-**Goal:** No cross-user data access, no leaked secrets and no abusable endpoints before anything is public.
-**Done when:** `docs/security-review.md` lists the findings and every P0/P1 finding is fixed.
-
-- [x] Every database access goes through `scopedDb` (search routes for raw table access). Every route reaches user rows only through `userDb`/`scopedDb`; `routes/ai.ts` uses the raw `Db` only for the shared `translationCacheDb`. New guard in `src/worker/index.test.ts`: every route in `app.routes` except `/api/health` and `/api/auth/*` answers 401 without a session
-- [x] Auth: cookie flags, CSRF posture (SameSite + origin check), session expiry, password policy, rate limits. HttpOnly + Secure (https) + SameSite=Lax, Better Auth's origin check on `/api/auth/*`, 7-day sessions refreshed daily and revoked on sign-out, 8 to 128 characters, 5 sign-in/sign-up attempts per IP per minute (all tested in T-13). Added: Hono `csrf()` on `/api`, so a form-type write from another origin is a 403 even if a browser sent the cookie (`index.test.ts`; checked in `vite dev`: same-origin body-less POSTs still 200)
-- [x] No secrets in the client bundle (inspect `dist/`); `.dev.vars` is gitignored (G-72: `vite build` copies `.dev.vars` into `dist/frenchy/`; fix it before T-30). Fixed: a `keep-local-secrets-out-of-dist` plugin in `vite.config.ts` drops the file from every build (preview reads the root `.dev.vars`); `npm run check:dist` fails on a secrets file or any local secret value in `dist/`, and CI runs it after building with a canary `.dev.vars`; `.env*` and `.dev.vars.*` are gitignored too
-- [x] AI endpoints: user text handled as data, output validated, rate limits and a daily cost cap. Text goes in as a JSON data field with a "never follow instructions in it" rule, input is capped at 500 characters, explain output is zod-checked (one retry), React renders it as text, and a cache row is only served for the exact same text. Added the app-wide daily cap (G-10, B-27's scope): `ai_daily_usage` (migration 0003), `AI_DAILY_LIMIT` var (default 1,000 provider calls per UTC day), checked after the per-user hourly limit, 429 `rate_limited` with `Retry-After` until the next UTC day, cache hits still served, one warning at 80 %
-- [x] Input validation on every endpoint; errors don't leak internals. Every body, query and path parameter goes through a shared zod schema with length bounds (fixed the one unbounded field: `settings.voiceURI`, now at most 500 characters); responses are schema-checked too. Unexpected errors answer a generic `internal` body (ours), an empty 500 (Better Auth) or `Internal Server Error` (Hono) and are only logged
-- [x] `npm audit`; lexicon license attribution present (G-01). `npm audit`: 4 moderate, all one chain (drizzle-kit → @esbuild-kit → esbuild ≤ 0.24.2, GHSA-67mh-4wv8-2f99, esbuild's dev server); drizzle-kit is a CLI (Better Auth's optional peer) and none of it is in the Worker or client bundle, so accepted until drizzle-kit drops @esbuild-kit. Attribution: **not present** in the app (the 54 lexicon shards ship as public JS chunks), so B-21 is a launch blocker for any public deploy
-- [x] Write the report; fix P0/P1 findings. `docs/security-review.md`: 19 findings. Fixed: S-01 P0 (G-72), S-02 P1 (G-10 daily cap), and the P3s S-07 (`csrf()`), S-08 (`voiceURI`), S-09 (route guard). Open with owners: S-03 P2 write burst limit (B-40, G-77), S-04 P2 mock AI in production (T-30, G-63), S-10 P3 headers and body cap (B-39, G-78), S-12 (G-79) and the rest; S-05 attribution is a launch blocker (B-21, add it to T-30's deps); S-06 is the G-35 QUESTION below
-- [x] Finish: `npm run check` green (65 files, 1,038 tests; build `precache 12 entries (1028.05 KiB)`; `check:dist` clean, also after a build with a canary `.dev.vars`), `main` merged (no new commits)
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-120 to L-124, G-77 to G-79, B-39, B-40)
-- [ ] Finish: PR to `main` merged with CI green
-
-QUESTION: the app-wide AI cap (G-10) needs a number from you. Default: 1,000 provider calls per UTC day (`AI_DAILY_LIMIT`, a Worker var; cache hits are free, so lesson sentences cost once for everyone). Worst case per day is the cap × (500 characters in + `max_tokens` 8,000 out). Also set a monthly spend limit in the provider's console (H-04).
-
-QUESTION: G-35 (S-06): email sign-in needs the Workers Paid plan (scrypt takes about 130 to 310 ms of CPU; the Free plan allows 10 ms). Security recommendation and default: keep Better Auth's scrypt parameters and deploy on Workers Paid, because cheaper hashing makes a leaked `account` table easier to crack. Alternative on the Free plan: Google-only sign-in. Same decision as the QUESTION under T-13.
+Wave 6 is done (T-27 to T-29 moved to DONE).
 
 ### Wave 7
 
 #### T-30 · Deploy to Cloudflare
 | Priority | Model · effort | Size | Depends on | Blocks | Wave |
 |---|---|---|---|---|---|
-| P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29 + H-02, H-05, H-06 | MVP launch | 7 |
+| P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
 
-**Status:** blocked (human gate) · **Claimed by:** — · **Branch:** `task/T-30-deploy`
+**Status:** blocked (human gates; B-21 credits screen first, T-29 S-05) · **Claimed by:** — · **Branch:** `task/T-30-deploy`
 **Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
 **Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
 **Done when:** the production URL passes the smoke test and the deploy workflow runs green.
@@ -1233,7 +1235,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
 
-**Status:** blocked · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
+**Status:** ready (T-20 is done; T-29 S-05 makes it a launch blocker) · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
 **Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
 **Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
 
@@ -1299,14 +1301,14 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Opus 5.5 · Medium | S | T-23 | T-30 (before real keys go live) |
 
-**Status:** ready · **Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`, one migration
+**Status:** done in T-29 (PR #38) except the number: the cap ships as `AI_DAILY_LIMIT`, default 1,000 per UTC day, until the user picks one (QUESTION under T-29) · **Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`, one migration
 **Goal:** Close G-10: cap provider calls for the whole app per day, on top of T-23's per-user 60 per hour, so many users (or many sign-ups) can't run up a surprise bill.
 **Done when:** after the daily cap is reached, every cache miss gets 429 `rate_limited` until the next UTC day while cache hits are still served, proven with the mock driver.
 
 - [ ] Decide the cap with the user (number of provider calls or estimated tokens per day) and make it a Worker var
-- [ ] Count in D1 next to `ai_usage` (one row per UTC day), in the same batch as the per-user count
-- [ ] Log a warning line when 80 % of the cap is used
-- [ ] Tests: cap reached → 429 for misses, hits still 200; a new day resets
+- [x] Count in D1 next to `ai_usage` (one row per UTC day), in the same batch as the per-user count (T-29: `ai_daily_usage`, migration 0003, counted after the per-user check, L-123)
+- [x] Log a warning line when 80 % of the cap is used
+- [x] Tests: cap reached → 429 for misses, hits still 200; a new day resets (`routes/ai.test.ts`)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1697,3 +1699,5 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-122 · 2026-10-18 · worker · T-29` — **Hono's `csrf()` checks only form-type requests (`text/plain`, urlencoded, multipart) and treats a missing content type as `text/plain`; JSON is left to the CORS preflight. A body-less POST such as `/api/cards/starter/:id` therefore needs `Sec-Fetch-Site: same-origin` or our `Origin` (browsers always send them), and a script or test that POSTs with neither now gets 403.** → Worker tests and scripts send `origin` (the helpers in `sync-test-helpers.ts` do). A route that must accept cross-site form posts (an OAuth `form_post` callback) has to be left out of `csrf()` on purpose.
 - `L-123 · 2026-10-18 · ai · T-29` — **An app-wide counter checked before the per-user limit lets one user who is already limited use up everyone's daily AI allowance with requests that never reach a provider.** → Check the narrowest limit first and count the shared one only for calls that will really be made (`routes/ai.ts`); a test asserts a limited user leaves `ai_daily_usage` at 0.
 - `L-124 · 2026-10-18 · auth · T-29` — **Better Auth 1.7 links a Google login to an existing account with the same email only when the local account's email is verified (`account.accountLinking.requireLocalEmailVerified`, default true). We never verify emails, so this blocks account pre-hijacking, but a learner who signed up with email and later taps "Continue with Google" gets "account not linked".** → Keep the default. Email verification (B-18) is what lets the two sign-in methods meet; don't set `requireLocalEmailVerified: false` to make the error go away.
+- `L-125 · 2026-10-19 · orchestration · lead` — **Wave 6 lost its agents twice in one night: a container restart (worktrees survived, `node_modules` did not, and only claim commits were pushed) and then the session limit (all three stopped within minutes, everything pushed). Both times SendMessage resumed each agent where it stopped. After the restart, one agent's `pkill -f "npm ci"` killed its own shell (L-119).** → After a restart, check each worktree for `node_modules` and unpushed work before resuming, and say so in the resume message. After a limit, resume as L-109 says.
+- `L-126 · 2026-10-19 · orchestration · lead` — **Each Wave 6 PR was green alone, but chaining them broke typecheck: T-27 added `e2e/` to `tsconfig.node.json` (no DOM lib) and T-28's `e2e/a11y.spec.ts`, written before that config existed, uses `document` inside `page.evaluate`. Also, the auto-mode classifier refused a `git merge` run inside an agent's worktree, so the lead merged on a local branch in the main checkout and pushed that to the task branch.** → When two parallel tasks share a new folder, run the full check (and E2E) on the chained merge before pushing it. Do lead merges on a local branch of the main checkout, not inside agent worktrees.
