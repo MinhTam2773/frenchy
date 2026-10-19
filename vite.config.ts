@@ -13,7 +13,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    cloudflare(),
+    // E2E (T-27): a fresh D1 per run lives in a temp dir; unset, wrangler's default .wrangler/state.
+    cloudflare(
+      process.env.E2E_PERSIST_DIR ? { persistState: { path: process.env.E2E_PERSIST_DIR } } : {},
+    ),
     {
       // G-72: the Cloudflare plugin copies the local secrets into dist/frenchy/.dev.vars for
       // `vite preview`, so any upload of dist/ would ship them. Drop that file from every build;

@@ -31,3 +31,25 @@ jobs:
       - run: printf 'BETTER_AUTH_SECRET=ci-canary-better-auth-secret-0123456789\nANTHROPIC_API_KEY=ci-canary-anthropic-key-0123456789\n' > .dev.vars
       - run: npm run build
       - run: npm run check:dist
+
+  # T-27: browser tests against `vite dev` on a fresh local D1 (e2e/server.ts); no Cloudflare login.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

@@ -77,7 +77,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 33 · NEXT 4 (T-27 to T-29 in review; T-30 blocked on human gates) · BACKLOG 33
+**Progress:** DONE 33 · NEXT 4 (T-27 to T-29 in review; T-30 blocked on human gates) · BACKLOG 35
 
 ---
 
@@ -784,17 +784,17 @@ Wave 5 is done (T-26 moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | M | T-26 | — | 6 |
 
-**Status:** ready · **Claimed by:** — · **Branch:** `task/T-27-e2e`
+**Status:** in review ([PR #39](https://github.com/MinhTam2773/frenchy/pull/39)) · **Claimed by:** Wave 6 agent (T-27) · **Branch:** `task/T-27-e2e`
 **Owns:** `e2e/**`, `playwright.config.ts`, an e2e job in `.github/workflows/ci.yml`
 **Goal:** The core flows are protected by browser tests at phone and desktop sizes.
 **Done when:** the specs pass locally and in CI.
 
-- [ ] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
-- [ ] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
-- [ ] Each run uses a fresh local D1
-- [ ] CI job (no Cloudflare login needed)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
+- [x] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
+- [x] Each run uses a fresh local D1
+- [x] CI job (no Cloudflare login needed)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-110 to L-114, G-73, G-74, B-35, B-36)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-28 · Accessibility and mobile QA
@@ -1379,6 +1379,23 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-35 · E2E against the production build (service worker, offline)
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Sonnet 5.5 · High | M | T-27, T-30 | — |
+
+**Status:** ready · **Owns:** `e2e/**`, `playwright.config.ts`, the e2e job in `.github/workflows/ci.yml`
+**Goal:** The E2E suite also runs against `vite build` + `vite preview` (G-74), so the service worker, the precache and the offline banner are exercised, not only `vite dev`.
+**Done when:** a `preview` project (or a second job) runs the happy path against the built app on a fresh D1, plus one offline check (load Today, go offline, reload, the shell still opens).
+
+- [ ] `e2e/server.ts` option to start `vite build && vite preview` (the Cloudflare plugin's `persistState` applies there too; check)
+- [ ] Offline spec: `context.setOffline(true)` after the first visit; shell loads from the precache, `OfflineBanner` shows
+- [ ] Decide whether it replaces the dev-server run in CI or runs next to it (dev is faster to start)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 #### B-37 · Mark French words inside English strings with `lang="fr"`
 
 | Priority | Model · effort | Size | Depends on | Blocks |
@@ -1393,6 +1410,22 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] A `RichText` component in the kit that turns the markup into `lang="fr"` spans
 - [ ] Use it for chapter titles, notes, tips and the cloze button label
 - [ ] `content:check` rejects unbalanced markup
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-36 · E2E smoke for the seeded demo account
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | T-27 | — |
+
+**Status:** ready · **Owns:** `e2e/**`, `scripts/db/seed.ts` (accept a persist dir)
+**Goal:** The demo login from `db:seed:local` (L-107) keeps working, and its numbers match what the server computes (G-71).
+**Done when:** a spec signs in as `demo@frenchy.local` on the run's fresh D1 and checks Today, Streak and Review against the seed.
+
+- [ ] `scripts/db/seed.ts` and `getPlatformProxy({ persist })` take `E2E_PERSIST_DIR`; `e2e/server.ts` seeds after migrating
+- [ ] Spec: sign in as the demo user; assert the streak the server computes (5 days, best 6, G-71), cards due, and the Review session
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1539,6 +1572,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-70 | `src/shared/content` bundles every lesson text eagerly (`import.meta.glob`, L-91), so they sit in the main JS chunk: 895 kB raw / 220 kB gzipped with 8 chapters (texts are ~724 kB of JSON), about 90 kB more per chapter. After G-26 this chunk is most of the 1,027 KiB precache. The Worker bundle has them too (2.46 MB raw / 478 KB gzipped): `routes/cards.ts` imports `getChapter`/`getDeck` from `src/shared/content` (the L-91 trap), still under the 3 MB gzipped free-plan limit | First load and every deploy's update grow with the course; the parse cost hits Today on low-end phones | B-33 |
 | G-71 | The demo seed's fixtures say "12-day streak with one freeze" (`seed.ts`, mockups), but the server recomputes freezes from the history (T-11: one earned per 7 practiced days), ignores the seeded `freezeUsed` row, and shows a 5-day streak (best 6) for `demo@frenchy.local` | Screenshots or E2E checks against the seed won't match the mockup numbers | T-27 (assert what the server computes, or reshape the seed's activity) |
 | G-72 | `vite build` (Cloudflare Vite plugin) copies `.dev.vars` into `dist/frenchy/.dev.vars` so `vite preview` has the local secrets. `dist/` is gitignored and `wrangler deploy` reads secrets from `wrangler secret`, but any step that uploads or archives `dist/` (CI artifact, a static host) would ship the local secrets | A local `BETTER_AUTH_SECRET` or AI key could leak through a build artifact | **Resolved (T-29):** `vite.config.ts` drops `.dev.vars` from every build and `vite preview` reads the root `.dev.vars` through `process.env`; `npm run check:dist` (in `npm run check`, and in CI after a build with a canary `.dev.vars`) fails on any local secrets file or secret value in `dist/` |
+| G-73 | The chapter page's starter-deck tile is one `<button>` whose accessible name is "Starter deck 24 cards": the action text ("Add to reviews", then "Added 24 to your reviews") sits in a nested `role="status"`, which is not part of the button's name. A screen-reader user hears a button with no verb. The E2E helper finds it by "Starter deck" for that reason | Unclear control for assistive tech | T-28 (put the action in the button's label, keep the status as a live region outside the button) |
+| G-74 | The E2E suite runs against `vite dev` (unbundled, no service worker registered in practice), not the production build, so the PWA precache, offline start and a bundling-only bug are not covered. Real Google sign-in (G-60) and real AI keys are also out of reach in CI | A production-only break passes E2E | B-35 |
 | G-75 | `lang` can only mark a whole element, so strings that mix English and French carry none: chapter titles with French terms (*Passé composé*, *Être, avoir*), grammar tips and notes that quote French examples, button labels like "Save as cloze (hide “Bonjour”)", and accessible names (`aria-label`) such as "Chapter 12, Être, avoir…". Fully French text (reading titles, words, sentences, the praise line) is tagged. WCAG 3.1.2 (language of parts) is met for those and only partly for the mixed strings | A screen reader reads the French words of a mixed string with the English voice | B-37 |
 | G-76 | All T-28 checks ran in Chromium with axe 4.14 and scripted keyboard walks. Not done: a pass with a real screen reader (VoiceOver on iOS, TalkBack on Android), iOS Safari layout and Dynamic Type, the browser's own forced-colors mode, and the long-press sentence gesture without a mouse (a screen-reader user reaches the sentence sheet through the word sheet's "Sentence" button, which is untested with VoiceOver) | Automated checks catch about a third of the issues a person using assistive tech meets | B-38, T-30 (device test) |
 | G-77 | API writes (`/api/reviews`, `/api/cards`, `/api/activity/*`, `/api/words`, `/api/profile`) have no burst rate limit: one account can script thousands of writes (a review is 3 rows), using up the Free plan's daily D1 write allowance for everyone or growing storage without bound (T-29 S-03) | App-wide write outage until the next day; cost on the Paid plan | B-40, T-30 (a Cloudflare rate-limiting rule on `/api/*`) |
@@ -1647,6 +1682,11 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-106 · 2026-10-18 · srs · T-26` — **The end-to-end walk failed at "review that card": a word saved in the reader never came up, because `/api/cards/due` let new cards in by `due` then `createdAt` under the 10-a-day cap, and the 24-card Ch 1 starter deck added a minute earlier filled every slot. The saved word would have waited until day 3. Every unit test passed because none mixed a deck with a saved card.** → Under the cap, cards the learner saved come before starter-deck cards (`dueNew` orders by `source_kind = 'starter'` first; `cards.test.ts` reproduces it). Integration bugs hide between features: walk the real flow on a fresh database before calling a wave done.
 - `L-107 · 2026-10-18 · tooling · T-26` — **`npm run db:seed:local` wrote the demo user's cards and streak under `user_id = 'demo-user'`, but no Better Auth user had that id, so nobody could sign in to see the seed data once mocks were off.** → The seed also upserts a Better Auth `user` and a `credential` account (password hashed with `better-auth/crypto`'s `hashPassword`) and prints the login; `db.test.ts` signs in through `/api/auth/sign-in/email`. Seed data is only useful if the real auth path can reach it.
 - `L-108 · 2026-10-18 · testing · T-26` — **In the Playwright walk, `page.locator('[data-token]').count()` right after `waitForURL(/\/read\//)` returned 0 (the reader is a lazy route, so the URL changes before the page renders), and the first review loop graded nothing because "Show answer" wasn't there yet. Neither failed loudly; the script just skipped ahead.** → After a navigation, wait for a landmark of the new screen (`getByRole('button', { name: 'Finish reading' }).waitFor()`) before counting or checking `isVisible()`; prefer `waitFor` over `isVisible` for anything that loads. Worth carrying into T-27.
+- `L-110 · 2026-10-18 · testing · T-27` — **Four of the first seven specs failed at sign-up with "Too many tries": the Worker allows 5 sign-ups per minute per client IP (`AUTH_ATTEMPTS`, stored in D1), and every spec comes from localhost. The page showed it in an `alert`, so the failure looked like a timeout on `/onboarding`.** → `e2e/helpers.ts` exports a `test` whose `extraHTTPHeaders` carries a random `cf-connecting-ip` (Cloudflare sets that header in production and the dev Worker trusts it), so each test is its own client and the limit stays on. Import `test` from `./helpers`, not from `@playwright/test`. Read `error-context.md` in `test-results/` first: its page snapshot names the visible error.
+- `L-111 · 2026-10-18 · testing · T-27` — **Fresh D1 per run without touching `.wrangler/state`:** `e2e/server.ts` makes a temp dir, runs `wrangler d1 migrations apply frenchy --local --persist-to <dir>`, then starts `vite dev` with `E2E_PERSIST_DIR=<dir>`, which `vite.config.ts` passes to the Cloudflare plugin's `persistState` (same `<dir>/v3` layout as wrangler; checked: sign-up wrote into the temp dir, no `.wrangler` appeared). The dir is deleted on exit. `CLOUDFLARE_INCLUDE_PROCESS_ENV=true` hands `BETTER_AUTH_SECRET` and `AI_*_PROVIDER=mock` to the Worker, so CI needs no `.dev.vars` and no Cloudflare login. On a loaded box `vite dev` took 123 s to listen and the first request per route is slow, so `globalSetup` visits every route once with a 180 s timeout (the 30 s default failed), and the config has generous timeouts (webServer 300 s, test 180 s). The full suite (14 tests) took 17 min on a box with load 9 and 1.1 min on an idle one. Loaded runs also fail `npm test` with timeouts (L-74); re-run in isolation on a quiet box before blaming the change.
+- `L-112 · 2026-10-18 · tooling · T-27` — **`@playwright/test` is pinned to 1.56.1 (exact) because the preinstalled Chromium in cloud sessions is revision 1194, which is Playwright 1.56; with `PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers` it is found without `playwright install`.** → When bumping Playwright, check `ls /opt/pw-browsers`: a newer version wants a newer revision. `E2E_CHROMIUM_PATH` overrides the binary if they ever drift. CI installs its own with `npx playwright install --with-deps chromium`.
+- `L-113 · 2026-10-18 · testing · T-27` — **A full first review session takes all 10 daily new-card slots (`DUE_LIMIT` is 20, `NEW_CARDS_PER_DAY` is 10), so my first happy path "save a word, then review it" found "All caught up": the saved card waits for tomorrow, by the cap rule, not a bug.** → The happy path grades 9 cards and ends the session early (`gradeCards(page, 9)`), leaving one slot; the second session must then hold exactly one card, the saved word. That is a sharper regression test for L-106 than "the word appears among five cards". A test that needs a rule's boundary should build the boundary, not hope for it.
+- `L-114 · 2026-10-18 · a11y · T-27` — **`getByRole('button', { name: /Add to reviews/ })` timed out although the text is on screen: the starter-deck tile is a button whose name is "Starter deck 24 cards", and "Add to reviews" is a nested `role="status"` that does not count toward the name (G-73).** → Locate by role and the name a screen reader gives; when a visible label isn't in the accessible name, that is an app gap to log (G-73), not a reason to fall back to text selectors.
 - `L-115 · 2026-10-18 · a11y · T-28` — **axe in jsdom (Vitest) passed every screen while axe in real Chromium found three violation classes: Practice's tiles at 4.2:1, the streak's future days at 3.1:1, and the review grade buttons failing label-in-name. jsdom has no layout, so it checks structure only (names, roles, landmarks, headings, `lang`), not contrast or visible text.** → Keep both: `src/client/a11y.test.tsx` (runs in `npm test`, catches structure regressions) and `e2e/a11y.spec.ts` (real browser, colour contrast, 44 px targets, sideways scroll; run by T-27's Playwright config). A new screen is not checked until the browser spec visits it. In this sandbox `/opt/pw-browsers/chromium` is a symlink to the binary itself (not a folder), so `executablePath: '/opt/pw-browsers/chromium'`.
 - `L-116 · 2026-10-18 · a11y · T-28` — **The review grade buttons had `aria-label="Good, 3d"` over two flex-column spans ("Good", "3d"); axe's `label-content-name-mismatch` (WCAG 2.5.3, level A) failed all four because it reads the visible text as "Good3d" with no space between the blocks.** → When a control has visible text in several elements, put a real space between them (`{' '}`) so the visible label and the accessible name match; the existing `/^Good,/` tests still work.
 - `L-117 · 2026-10-18 · design · T-28` — **A translucent white tile on the brand blue (`bg-white/15` on `#2b59f0`, the mockup's value) blends to `#4b72f2`, and 12 px white text on it is 4.2:1, so the kit's token pairs (all fine) did not predict the failure; only a measurement of the blended colour did.** → For text on an overlay colour, compute the blended background, not the token: `contrast.test.ts` has a `blend()` helper and pins Practice's `bg-white/10` (4.6:1). Axe catches it in a browser; the token test stops a later "match the mockup" edit.

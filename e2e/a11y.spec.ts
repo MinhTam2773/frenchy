@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { expect, test, type Page } from '@playwright/test';
