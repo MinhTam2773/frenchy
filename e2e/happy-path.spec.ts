@@ -53,7 +53,7 @@ test('sign up, review the starter deck, save a word while reading, review it, st
 
   // Still one practiced day, and the server agrees after a reload.
   await page.goto('/streak');
-  await expect(page.getByRole('heading', { name: 'Streak' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Streak', exact: true })).toBeVisible();
   await page.goto('/today');
   await expect(page.getByRole('link', { name: '1 day streak' })).toBeVisible();
 });

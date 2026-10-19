@@ -7,7 +7,7 @@ test('settings changes persist across a reload and a new sign-in', async ({ page
   await finishOnboarding(page, 30);
 
   await page.goto('/me');
-  await expect(page.getByRole('heading', { name: 'Me' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Me', exact: true })).toBeVisible();
   const goal45 = page.getByRole('radio', { name: '45 min' });
   await expect(page.getByRole('radio', { name: '30 min' })).toBeChecked();
 
@@ -41,7 +41,7 @@ test('settings changes persist across a reload and a new sign-in', async ({ page
 
   // Reload: everything comes back from the server
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'Me' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Me', exact: true })).toBeVisible();
   await expect(page.getByRole('radio', { name: '45 min' })).toBeChecked();
   await expect(page.getByRole('button', { name: /Book chapter/ })).toContainText('Ch 2');
   await expect(page.getByRole('switch', { name: 'Play words when tapped' })).toHaveAttribute(
