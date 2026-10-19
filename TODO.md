@@ -821,7 +821,7 @@ Wave 5 is done (T-26 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Extra | M | T-26 | T-30 | 6 |
 
-**Status:** in progress · **Claimed by:** Wave 6 agent (T-29) · **Branch:** `task/T-29-security`
+**Status:** in review · **Claimed by:** Wave 6 agent (T-29) · **Branch:** `task/T-29-security` · **PR:** https://github.com/MinhTam2773/frenchy/pull/38
 **Owns:** `docs/security-review.md`, fixes anywhere
 **Goal:** No cross-user data access, no leaked secrets and no abusable endpoints before anything is public.
 **Done when:** `docs/security-review.md` lists the findings and every P0/P1 finding is fixed.

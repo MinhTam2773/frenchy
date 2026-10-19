@@ -129,7 +129,7 @@ The 401 test in `sync-common.test.ts` lists endpoints by hand, so a new route th
 - **AI:** learner text goes in as a JSON string field with a rule never to follow instructions inside it (`src/worker/ai/prompts.ts:27`); input is at most 500 characters (`MAX_AI_TEXT_LENGTH`); explain output must parse as `ExplainResponse` (one retry, else 502); keys live only in Worker secrets and the drivers have a 20 s timeout. The client renders AI text as text.
 - **Client bundle:** no secret values or key-shaped strings in `dist/client` (the only matches for `BETTER_AUTH` are Better Auth's own `process.env` getters, empty in a browser); no source maps; only `VITE_USE_MOCKS` is read from `import.meta.env`. The service worker never caches `/api/*` (network-only), so no user data stays on a shared device after sign-out.
 - **Repo:** no env or key file in git history; the demo seed (`demo@frenchy.local`) runs only against the local D1 (`getPlatformProxy`, no remote bindings); CI has `permissions: contents: read` and uses only GitHub's own actions.
-- **Worker size (G-62, G-70):** `dist/frenchy/index.js` is 2.46 MB raw, 478 KB gzipped, under the 3 MB limit; B-33 shrinks it.
+- **Worker size (G-62, G-70):** `dist/frenchy/index.js` is 2.47 MB raw, 482 KB gzipped, under the 3 MB limit; B-33 shrinks it.
 
 ## Before T-30
 
