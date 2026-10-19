@@ -784,7 +784,7 @@ Wave 5 is done (T-26 moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | M | T-26 | — | 6 |
 
-**Status:** in progress · **Claimed by:** Wave 6 agent (T-27) · **Branch:** `task/T-27-e2e`
+**Status:** in review ([PR #39](https://github.com/MinhTam2773/frenchy/pull/39)) · **Claimed by:** Wave 6 agent (T-27) · **Branch:** `task/T-27-e2e`
 **Owns:** `e2e/**`, `playwright.config.ts`, an e2e job in `.github/workflows/ci.yml`
 **Goal:** The core flows are protected by browser tests at phone and desktop sizes.
 **Done when:** the specs pass locally and in CI.
@@ -792,9 +792,9 @@ Wave 5 is done (T-26 moved to DONE).
 - [x] Playwright using the preinstalled Chromium in cloud sessions (never run `playwright install` there); projects for 390×844 and 1280×800
 - [x] Specs: full happy path, word tap in the reader, review session to completion, settings change persists
 - [x] Each run uses a fresh local D1
-- [ ] CI job (no Cloudflare login needed)
+- [x] CI job (no Cloudflare login needed)
 - [x] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-110 to L-114, G-73, G-74, B-35, B-36)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-28 · Accessibility and mobile QA
