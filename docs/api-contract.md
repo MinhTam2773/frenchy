@@ -113,7 +113,7 @@ A day is practiced when it has at least one graded review or one finished readin
 - `POST /api/ai/translate` with `{ text }` (French, 1–500 chars, `MAX_AI_TEXT_LENGTH`) → `{ translation }` (English).
 - `POST /api/ai/explain` with `{ sentence, chapterId }` → `{ translation, gloss: [{ fr, en }], notes }` (at most 2 notes). `ExplainResponse` is also the JSON the model must return; invalid output is retried once, then `502 upstream_error`.
 
-Both are cached in `translation_cache` (key = hash of task + normalized text + level), rate-limited per user (`429 rate_limited`), and treat the text as data, never as instructions (T-23).
+Both are cached in `translation_cache` (key = hash of task + normalized text + level), rate-limited per user (60 provider calls per clock hour) and for the whole app (`AI_DAILY_LIMIT` provider calls per UTC day, default 1,000; T-29), both as `429 rate_limited` with `Retry-After`; cache hits count toward neither. They treat the text as data, never as instructions (T-23).
 
 ## Static content (not endpoints)
 

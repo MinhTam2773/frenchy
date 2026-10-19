@@ -11,6 +11,8 @@ export interface AiSettings {
   OPENAI_COMPATIBLE_BASE_URL?: string;
   OPENAI_COMPATIBLE_API_KEY?: string;
   OPENAI_COMPATIBLE_MODEL?: string;
+  /** Provider calls per UTC day for the whole app (a var, not a secret). Unset: the default. */
+  AI_DAILY_LIMIT?: string;
 }
 
 export type AiTask = 'translate' | 'explain';

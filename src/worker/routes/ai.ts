@@ -12,7 +12,7 @@ import {
 import { cached } from '../ai/cache';
 import { providerFor, type AiSettings, type AiTask } from '../ai/config';
 import { learnerLevel } from '../ai/prompts';
-import { consumeAiRequest } from '../ai/rate-limit';
+import { consumeAiRequest, consumeAppAiRequest, dailyLimit } from '../ai/rate-limit';
 import { AiConfigError, AiUpstreamError, type AiProvider } from '../ai/types';
 import { createDb, scopedDb } from '../db';
 import { requireUser, type UserEnv } from '../middleware/session';
@@ -20,9 +20,13 @@ import { requireUser, type UserEnv } from '../middleware/session';
 type AiEnv = { Bindings: UserEnv['Bindings'] & AiSettings; Variables: UserEnv['Variables'] };
 type ResolveProvider = (env: AiSettings, task: AiTask) => AiProvider;
 
+/** Its message is the one the learner sees. */
 class RateLimited extends Error {
-  constructor(readonly retryAfterSeconds: number) {
-    super('rate limited');
+  constructor(
+    readonly retryAfterSeconds: number,
+    message: string,
+  ) {
+    super(message);
   }
 }
 
@@ -48,8 +52,9 @@ function fail(
 /** `resolve` is swappable so tests can count and script provider calls. */
 export function aiRoutes(resolve: ResolveProvider = providerFor) {
   /**
-   * Cached result, or one rate-limited provider call. Cache hits are free and don't count:
-   * the limit exists to cap provider spend (G-10).
+   * Cached result, or one rate-limited provider call. Cache hits are free and don't count: the
+   * limits exist to cap provider spend (G-10). The user's hourly limit is checked first, so a
+   * user who is already limited can't use up the app's daily allowance.
    */
   async function run<T>(
     c: Context<AiEnv>,
@@ -61,8 +66,21 @@ export function aiRoutes(resolve: ResolveProvider = providerFor) {
   ): Promise<T> {
     const db = createDb(c.env.DB);
     return cached(db, { task, text, level, schema }, async () => {
-      const limit = await consumeAiRequest(scopedDb(db, c.var.user.id), Date.now());
-      if (!limit.ok) throw new RateLimited(limit.retryAfterSeconds);
+      const now = Date.now();
+      const user = await consumeAiRequest(scopedDb(db, c.var.user.id), now);
+      if (!user.ok) {
+        throw new RateLimited(
+          user.retryAfterSeconds,
+          'Too many AI requests this hour; try again later',
+        );
+      }
+      const app = await consumeAppAiRequest(db, now, dailyLimit(c.env));
+      if (!app.ok) {
+        throw new RateLimited(
+          app.retryAfterSeconds,
+          'AI help is used up for today; try again tomorrow',
+        );
+      }
       const provider = resolve(c.env, task);
       return { result: await call(provider), provider: provider.name };
     });
@@ -94,7 +112,7 @@ export function aiRoutes(resolve: ResolveProvider = providerFor) {
     .onError((error, c) => {
       if (error instanceof RateLimited) {
         c.header('retry-after', String(error.retryAfterSeconds));
-        return fail(c, 429, 'rate_limited', 'Too many AI requests this hour; try again later');
+        return fail(c, 429, 'rate_limited', error.message);
       }
       if (error instanceof AiUpstreamError) {
         console.error(error);

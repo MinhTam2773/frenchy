@@ -1,4 +1,4 @@
-import { rmSync } from 'node:fs';
+import { existsSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { cloudflare } from '@cloudflare/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
@@ -14,6 +14,22 @@ export default defineConfig({
     react(),
     tailwindcss(),
     cloudflare(),
+    {
+      // G-72: the Cloudflare plugin copies the local secrets into dist/frenchy/.dev.vars for
+      // `vite preview`, so any upload of dist/ would ship them. Drop that file from every build;
+      // preview reads the root .dev.vars instead (wrangler then takes secrets from process.env).
+      name: 'keep-local-secrets-out-of-dist',
+      enforce: 'post',
+      config(_, { isPreview }) {
+        if (isPreview && existsSync('.dev.vars')) {
+          process.loadEnvFile('.dev.vars');
+          process.env.CLOUDFLARE_INCLUDE_PROCESS_ENV = 'true';
+        }
+      },
+      generateBundle(_, bundle) {
+        delete bundle['.dev.vars'];
+      },
+    },
     {
       // G-27: MSW's worker (public/) is only for VITE_USE_MOCKS=true; keep it out of real builds.
       name: 'drop-msw-worker',

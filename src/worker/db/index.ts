@@ -1,9 +1,10 @@
-import { and, eq, type SQL } from 'drizzle-orm';
+import { and, eq, sql, type SQL } from 'drizzle-orm';
 import { drizzle, type DrizzleD1Database } from 'drizzle-orm/d1';
 import type { SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
 import * as schema from './schema';
 import {
   activityMinutes,
+  aiDailyUsage,
   aiUsage,
   cards,
   dailyActivity,
@@ -87,5 +88,23 @@ export function translationCacheDb(db: Db) {
       db.select().from(translationCache).where(eq(translationCache.key, key)).get(),
     put: (row: typeof translationCache.$inferInsert) =>
       db.insert(translationCache).values(row).onConflictDoNothing(),
+  };
+}
+
+/** Not user data: provider calls per UTC day for the whole app (T-29 daily cap). */
+export function aiDailyUsageDb(db: Db) {
+  return {
+    /** Adds one provider call to `day` (`YYYY-MM-DD`, UTC) and returns that day's total. */
+    async count(day: string): Promise<number> {
+      const [row] = await db
+        .insert(aiDailyUsage)
+        .values({ day, requests: 1 })
+        .onConflictDoUpdate({
+          target: aiDailyUsage.day,
+          set: { requests: sql`${aiDailyUsage.requests} + 1` },
+        })
+        .returning({ requests: aiDailyUsage.requests });
+      return row?.requests ?? 1;
+    },
   };
 }
