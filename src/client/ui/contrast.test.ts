@@ -37,11 +37,53 @@ const PAIRS: ReadonlyArray<[string, string, string]> = [
   ['success-ink', 'success-soft', 'status Chip: known'],
   ['flame-text', 'surface', 'StreakChip'],
   ['freeze-ink', 'surface', 'StreakChip (freeze)'],
+  ['flame-ink', 'flame', 'Streak hero card, practiced calendar day'],
+  ['flame-text', 'flame-soft', 'Streak at-risk note'],
+  ['freeze-ink', 'freeze-soft', 'Streak freeze card'],
+  ['gold-ink', 'gold-soft', 'offline banner'],
+  ['danger-ink', 'surface', 'error text'],
+  ['danger-ink', 'ground', 'error text on the screen background'],
+  // Future calendar days (G-43): readable, not greyed out as if disabled.
+  ['muted', 'surface', 'future and out-of-range calendar days'],
 ];
 
 describe('kit text/background pairs', () => {
   test.each(PAIRS)('%s on %s (%s) is at least 4.5:1', (text, background) => {
     expect(contrastRatio(tokenHex(text), tokenHex(background))).toBeGreaterThanOrEqual(4.5);
+  });
+});
+
+// Icons and other graphics need 3:1 (WCAG 1.4.11).
+const GRAPHIC_PAIRS: ReadonlyArray<[string, string, string]> = [
+  ['surface', 'freeze', 'snowflake on the freeze calendar day and card'],
+  ['ink', 'gold', 'check on a done Path node (G-18)'],
+  ['faint', 'surface', 'chevrons on list rows'],
+];
+
+describe('kit graphic/background pairs', () => {
+  test.each(GRAPHIC_PAIRS)('%s on %s (%s) is at least 3:1', (graphic, background) => {
+    expect(contrastRatio(tokenHex(graphic), tokenHex(background))).toBeGreaterThanOrEqual(3);
+  });
+});
+
+/** The colour of `fg` laid over `bg` at `alpha` opacity, as #rrggbb. */
+function blend(fg: string, bg: string, alpha: number): string {
+  const part = (hex: string, shift: number) => (parseInt(hex.slice(1), 16) >> shift) & 255;
+  const mixed = [16, 8, 0].map((shift) =>
+    Math.round(part(fg, shift) * alpha + part(bg, shift) * (1 - alpha))
+      .toString(16)
+      .padStart(2, '0'),
+  );
+  return `#${mixed.join('')}`;
+}
+
+describe('text on translucent tints', () => {
+  test('Practice flashcard breakdown tiles (white/10 over primary) keep 4.5:1', () => {
+    const tile = blend(tokenHex('surface'), tokenHex('primary'), 0.1);
+    expect(contrastRatio(tokenHex('surface'), tile)).toBeGreaterThanOrEqual(4.5);
+    // white/15 was the mockup's value: 4.2:1, which is why the build uses 10%.
+    const mockupTile = blend(tokenHex('surface'), tokenHex('primary'), 0.15);
+    expect(contrastRatio(tokenHex('surface'), mockupTile)).toBeLessThan(4.5);
   });
 });
 

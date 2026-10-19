@@ -13,8 +13,8 @@ const CELL_LOOK: Record<DayCell['state'], string> = {
   freeze: 'bg-freeze text-white',
   today: 'border-2 border-flame bg-surface text-flame-text',
   missed: 'bg-chip text-muted',
-  future: 'text-faint',
-  none: 'text-faint',
+  future: 'text-muted',
+  none: 'text-muted',
 };
 
 function CalendarCell({ cell }: { cell: DayCell }) {
