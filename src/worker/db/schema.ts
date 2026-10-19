@@ -154,3 +154,10 @@ export const aiUsage = sqliteTable(
   },
   (t) => [primaryKey({ columns: [t.userId, t.windowStart] })],
 );
+
+/** Shared across users: provider calls per UTC day for the whole app (T-29 daily cap, G-10). */
+export const aiDailyUsage = sqliteTable('ai_daily_usage', {
+  /** `YYYY-MM-DD` in UTC. */
+  day: text('day').primaryKey(),
+  requests: integer('requests').notNull(),
+});

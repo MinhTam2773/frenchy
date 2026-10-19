@@ -22,6 +22,10 @@ vi.mock('@shared/content', async (importOriginal) => ({
   getChapterTexts: vi.fn(() => []),
 }));
 
+// "Très bien." sits in its own lang="fr" span, so match the whole paragraph's text.
+const paragraph = (text: string) => (_: string, el: Element | null) =>
+  el?.tagName === 'P' && el.textContent === text;
+
 const stats: SessionStats = { cards: 18, correct: 16, durationMs: 11 * 60_000 };
 
 function renderDone(state?: unknown) {
@@ -54,14 +58,16 @@ test('shows cards, correct share and time for the session', async () => {
 test('says how many cards are still due, once the count is fresh', async () => {
   renderDone(stats);
   expect(
-    await screen.findByText('Très bien. 18 more cards are due right now.'),
+    await screen.findByText(paragraph('Très bien. 18 more cards are due right now.')),
   ).toBeInTheDocument();
 });
 
 test('says when everything is done', async () => {
   server.use(http.get('/api/cards/stats', () => HttpResponse.json(allCaughtUpStats)));
   renderDone(stats);
-  expect(await screen.findByText('Très bien. You’re all caught up.')).toBeInTheDocument();
+  expect(
+    await screen.findByText(paragraph('Très bien. You’re all caught up.')),
+  ).toBeInTheDocument();
 });
 
 test('shows the streak and where it was before this session', async () => {

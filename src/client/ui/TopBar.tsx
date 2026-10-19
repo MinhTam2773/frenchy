@@ -13,6 +13,8 @@ type TopBarNav = {
 
 type TopBarProps = {
   title: string;
+  /** Set to `fr` when the title is French (a reading's title). */
+  titleLang?: string;
   /** Small uppercase line above the title (the reader's "Ch 10 · Reading 1"). */
   overline?: string;
   nav?: TopBarNav;
@@ -22,7 +24,15 @@ type TopBarProps = {
   className?: string;
 };
 
-export function TopBar({ title, overline, nav, end, align = 'start', className }: TopBarProps) {
+export function TopBar({
+  title,
+  titleLang,
+  overline,
+  nav,
+  end,
+  align = 'start',
+  className,
+}: TopBarProps) {
   const centered = align === 'center';
   return (
     <header className={cx('flex items-center gap-2 px-4 pt-3.5 pb-1', className)}>
@@ -39,6 +49,7 @@ export function TopBar({ title, overline, nav, end, align = 'start', className }
           </span>
         )}
         <h1
+          lang={titleLang}
           className={cx(
             'truncate',
             overline ? 'text-base font-extrabold' : 'font-display text-[22px] font-semibold',

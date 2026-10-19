@@ -199,7 +199,7 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
                     onClick={() => grade(rating)}
                     className={`flex h-16 flex-col items-center justify-center gap-0.5 rounded-btn-sm text-white transition-[transform,box-shadow] duration-75 active:translate-y-1 active:shadow-none motion-reduce:transition-none ${GRADE_STYLES[rating]}`}
                   >
-                    <span className="text-[15px] font-extrabold">{GRADE_LABELS[rating]}</span>
+                    <span className="text-[15px] font-extrabold">{GRADE_LABELS[rating]}</span>{' '}
                     <span className="text-xs font-bold">{labels[rating]}</span>
                   </button>
                 ))}

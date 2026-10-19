@@ -8,3 +8,7 @@ coverage/
 playwright-report/
 scripts/lexicon/raw/
 test-results/
+.env
+.env.*
+.dev.vars.*
+!.dev.vars.example

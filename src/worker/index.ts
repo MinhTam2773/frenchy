@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { csrf } from 'hono/csrf';
 import { activityRoute, streakRoute } from './routes/activity';
 import { ai } from './routes/ai';
 import { auth } from './routes/auth';
@@ -11,6 +12,8 @@ import { wordsRoute } from './routes/words';
 // Mount each feature with one `.route()` line; keep the chain so AppType carries every route.
 export const app = new Hono<{ Bindings: Env }>()
   .basePath('/api')
+  // On top of the SameSite=Lax cookie: a form-type write must come from our own origin (T-29).
+  .use(csrf())
   .route('/health', health)
   .route('/auth', auth)
   .route('/ai', ai)

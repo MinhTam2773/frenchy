@@ -41,7 +41,7 @@ function FlashcardsCard() {
       </div>
       <dl className="grid grid-cols-3 gap-2">
         {breakdown.map(({ label, value }) => (
-          <div key={label} className="flex flex-col-reverse rounded-xl bg-white/15 px-2.5 py-2">
+          <div key={label} className="flex flex-col-reverse rounded-xl bg-white/10 px-2.5 py-2">
             <dt className="text-xs font-bold">{label}</dt>
             <dd className="text-lg font-extrabold">{value ?? '–'}</dd>
           </div>

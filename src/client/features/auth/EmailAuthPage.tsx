@@ -119,7 +119,10 @@ function EmailAuthPage({ mode }: { mode: AuthMode }) {
         </Button>
         <p className="text-center text-[15px] font-semibold text-ink-2">
           {copy.switchPrompt}{' '}
-          <Link to={copy.switchTo} className="font-extrabold text-primary">
+          <Link
+            to={copy.switchTo}
+            className="inline-flex min-h-11 items-center px-1 font-extrabold text-primary"
+          >
             {copy.switchLabel}
           </Link>
         </p>

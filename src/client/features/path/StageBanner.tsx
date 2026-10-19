@@ -29,7 +29,7 @@ export function StageBanner({ course, stage, currentChapterId, onChoose }: Stage
         aria-label="Stage"
         className="mx-4 mt-1 flex items-center gap-3 rounded-[22px] bg-primary px-4 py-3.5 text-white shadow-chunk-hero"
       >
-        <div className="flex flex-1 flex-col gap-0.5">
+        <div className="flex min-w-0 flex-1 flex-col gap-0.5 wrap-anywhere">
           <span className="text-xs font-extrabold tracking-[0.08em] uppercase">
             {stageOverline(stage)}
           </span>
