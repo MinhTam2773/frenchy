@@ -802,7 +802,7 @@ Wave 5 is done (T-26 moved to DONE).
 |---|---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-26 | — | 6 |
 
-**Status:** in progress · **Claimed by:** Wave 6 agent (T-28) · **Branch:** `task/T-28-a11y`
+**Status:** in review · **Claimed by:** Wave 6 agent (T-28) · **Branch:** `task/T-28-a11y` · **PR:** https://github.com/MinhTam2773/frenchy/pull/37
 **Owns:** a11y fixes across `src/client/**`, `e2e/a11y.spec.ts`
 **Goal:** WCAG 2.1 AA on every screen, on real phone widths.
 **Done when:** axe reports no violations on any route and the manual checks below pass.
@@ -812,8 +812,8 @@ Wave 5 is done (T-26 moved to DONE).
 - [x] Icon buttons have labels (axe `button-name` clean on every route); French text has `lang="fr"` (reader title, session-complete line and Up next title added; mixed English/French strings are G-75)
 - [x] Contrast audit against the tokens (`contrast.test.ts` now covers the pairs the screens use, graphics at 3:1 and the Practice tint); touch targets ≥ 44 px (none under 44 on any screen, the sign-in/up switch link now 44 tall); `prefers-reduced-motion` respected (0 transitions or animations under `reduce`, checked on every screen)
 - [x] Layout at 320, 390, 430, 768 and 1280 px: no sideways scroll or off-screen element on any screen; also at 200 % text size and with WCAG text-spacing overrides at 390 px (fixed the Path stage banner and the Pattern card)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### T-29 · Security review
