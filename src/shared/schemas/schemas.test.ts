@@ -182,6 +182,9 @@ const cases: Record<string, Case> = {
       broken(f.profile.settings, (s) => {
         s.rate = 1.5;
       }),
+      broken(f.profile.settings, (s) => {
+        s.voiceURI = 'x'.repeat(501);
+      }),
     ],
   },
   Profile: {
@@ -197,7 +200,11 @@ const cases: Record<string, Case> = {
   },
   ProfilePatch: {
     valid: [{}, { dailyGoalMinutes: 30, settings: { rate: 0.9 } }, { currentChapterId: null }],
-    invalid: [{ settings: { rate: 0.2 } }, { currentChapterId: 'chapter-10' }],
+    invalid: [
+      { settings: { rate: 0.2 } },
+      { currentChapterId: 'chapter-10' },
+      { settings: { voiceURI: 'x'.repeat(501) } },
+    ],
   },
 
   // srs

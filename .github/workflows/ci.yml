@@ -27,4 +27,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run content:check
       - run: npm test
+      # G-72: canary secrets (not real ones), so check:dist proves no build copies them into dist/.
+      - run: printf 'BETTER_AUTH_SECRET=ci-canary-better-auth-secret-0123456789\nANTHROPIC_API_KEY=ci-canary-anthropic-key-0123456789\n' > .dev.vars
       - run: npm run build
+      - run: npm run check:dist

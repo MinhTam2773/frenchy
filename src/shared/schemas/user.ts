@@ -6,7 +6,7 @@ export const DailyGoalMinutes = z.literal(DAILY_GOAL_OPTIONS);
 
 export const ProfileSettings = z.object({
   /** `SpeechSynthesisVoice.voiceURI`; null picks the best fr-FR voice on the device. */
-  voiceURI: z.string().min(1).nullable(),
+  voiceURI: z.string().min(1).max(500).nullable(),
   rate: z.number().min(TTS_RATE.min).max(TTS_RATE.max),
   playOnTap: z.boolean(),
 });
