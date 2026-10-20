@@ -2,7 +2,7 @@ import { exports } from 'cloudflare:workers';
 import { expect, test } from 'vitest';
 import { ApiError } from '../shared/schemas';
 import { app } from './index';
-import { MAX_BODY_BYTES } from './middleware/body-limit';
+import { MAX_BODY_BYTES } from './middleware/harden-api';
 import { newUser, ORIGIN } from './routes/sync-test-helpers';
 
 /** Routes anyone may call. Every other route must answer 401 without a session (T-29). */
@@ -17,6 +17,13 @@ test('GET /api/health returns ok', async () => {
 test('unknown API routes get a 404 from the Worker', async () => {
   const res = await exports.default.fetch('http://localhost/api/nope');
   expect(res.status).toBe(404);
+});
+
+test('API answers, errors included, carry X-Content-Type-Options: nosniff', async () => {
+  for (const path of ['/api/health', '/api/nope', '/api/profile']) {
+    const res = await exports.default.fetch(`http://localhost${path}`);
+    expect(res.headers.get('x-content-type-options'), path).toBe('nosniff');
+  }
 });
 
 test('every API route except the public ones needs a session', async () => {
@@ -60,6 +67,7 @@ test('a body over the cap is refused with 413 in the error shape, before the rou
   const big = JSON.stringify({ pad: 'x'.repeat(MAX_BODY_BYTES) });
   const res = await patch(big);
   expect(res.status).toBe(413);
+  expect(res.headers.get('x-content-type-options')).toBe('nosniff');
   expect(ApiError.parse(await res.json()).error.code).toBe('bad_request');
   // A streamed body has no Content-Length, so the bytes are counted as they arrive.
   const stream = new Blob([big]).stream();
