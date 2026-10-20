@@ -19,7 +19,7 @@ To change the contract, edit the schema and both sides (client and worker) in on
 | Local days | `YYYY-MM-DD` in the profile's IANA time zone (`LocalDate`). Same in D1 (`text`). |
 | Missing values | Optional fields are left out, never `null`. Only fields typed `.nullable()` use `null`: `Profile.currentChapterId`, `ProfileSettings.voiceURI`, `Card.lastReview`, `CardStats.nextDueAt`. |
 | Lists | Wrapped in an object (`{ cards: [...] }`), so a field can be added later without breaking clients. |
-| Status codes | `200` OK, `201` created, `400`, `401`, `404`, `429`, `502` (AI provider failed), `500`. |
+| Status codes | `200` OK, `201` created, `400`, `401`, `404`, `413` (body over 64 KB, code `bad_request`), `429`, `502` (AI provider failed), `500`. |
 
 ### Errors
 
