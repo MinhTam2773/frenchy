@@ -1,5 +1,7 @@
 import { z } from 'zod';
 import {
+  AccountDeleted,
+  AccountExport,
   ApiError,
   AuthConfig,
   Card,
@@ -15,6 +17,7 @@ import {
   TranslateResponse,
   WordStatus,
   WordsResponse,
+  type AccountDeleteInput,
   type ApiErrorCode,
   type CardCreate,
   type ProfilePatch,
@@ -74,7 +77,7 @@ export async function readJson<S extends z.ZodType>(
   return parsed.data;
 }
 
-type Init = { method?: 'POST' | 'PUT' | 'PATCH'; body?: unknown };
+type Init = { method?: 'POST' | 'PUT' | 'PATCH' | 'DELETE'; body?: unknown };
 
 function call<S extends z.ZodType>(path: string, schema: S, { method, body }: Init = {}) {
   const init: RequestInit =
@@ -95,6 +98,11 @@ export const api = {
   health: () => call('/health', Health),
   auth: {
     config: () => call('/auth/config', AuthConfig),
+  },
+  account: {
+    export: () => call('/account/export', AccountExport),
+    delete: (input: AccountDeleteInput) =>
+      call('/account', AccountDeleted, { method: 'DELETE', body: input }),
   },
   profile: {
     get: () => call('/profile', Profile),

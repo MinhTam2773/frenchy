@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { csrf } from 'hono/csrf';
 import { hardenApi } from './middleware/harden-api';
+import { accountRoute } from './routes/account';
 import { activityRoute, streakRoute } from './routes/activity';
 import { ai } from './routes/ai';
 import { auth } from './routes/auth';
@@ -19,6 +20,7 @@ export const app = new Hono<{ Bindings: Env }>()
   .route('/health', health)
   .route('/auth', auth)
   .route('/ai', ai)
+  .route('/account', accountRoute)
   .route('/profile', profile)
   .route('/cards', cardsRoute)
   .route('/reviews', reviewsRoute)

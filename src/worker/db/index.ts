@@ -1,6 +1,7 @@
-import { and, eq, sql, type SQL } from 'drizzle-orm';
+import { and, eq, getTableName, is, sql, type SQL } from 'drizzle-orm';
 import { drizzle, type DrizzleD1Database } from 'drizzle-orm/d1';
-import type { SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
+import { getTableConfig, SQLiteTable, type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
+import { account, session, user } from '../auth/schema';
 import * as schema from './schema';
 import {
   activityMinutes,
@@ -31,6 +32,17 @@ type UserTable =
   | typeof activityMinutes
   | typeof textReads
   | typeof aiUsage;
+
+/**
+ * Every table of ours with a `user_id` column, found in the schema so that a new user table is
+ * exported and deleted with the account without anyone remembering (B-16, G-36).
+ */
+export const USER_TABLES = Object.values(schema).filter(
+  (table): table is UserTable =>
+    is(table, SQLiteTable) && getTableConfig(table).columns.some((c) => c.name === 'user_id'),
+);
+
+type BatchQueries = Parameters<Db['batch']>[0];
 
 /** Insert values without `userId`: the scope fills it in. */
 export type ScopedInsert<T extends UserTable> = Omit<T['$inferInsert'], 'userId'>;
@@ -77,6 +89,29 @@ export function scopedDb(db: Db, userId: string) {
     aiUsage: scopedTable(db, aiUsage, userId),
     /** Runs the queries in one D1 transaction. */
     batch: db.batch.bind(db),
+    /** Every row of this user in every user table, keyed by table name, read in one transaction. */
+    async exportAll(): Promise<Record<string, Record<string, unknown>[]>> {
+      const queries = USER_TABLES.map((table) => scopedTable(db, table, userId).select());
+      const results = (await db.batch(queries as unknown as BatchQueries)) as unknown as Record<
+        string,
+        unknown
+      >[][];
+      return Object.fromEntries(USER_TABLES.map((table, i) => [getTableName(table), results[i]]));
+    },
+    /**
+     * Deletes the account in one D1 transaction: every user table's rows, then Better Auth's
+     * sessions, accounts and the user. Nothing links our tables to `user` (G-36), so each is
+     * named here.
+     */
+    async deleteAccount(): Promise<void> {
+      const queries = [
+        ...USER_TABLES.map((table) => scopedTable(db, table, userId).delete()),
+        db.delete(session).where(eq(session.userId, userId)),
+        db.delete(account).where(eq(account.userId, userId)),
+        db.delete(user).where(eq(user.id, userId)),
+      ];
+      await db.batch(queries as unknown as BatchQueries);
+    },
   };
 }
 export type ScopedDb = ReturnType<typeof scopedDb>;
