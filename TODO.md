@@ -1170,10 +1170,10 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 **Goal:** Users can download their data and delete their account.
 **Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
 
-- [ ] `GET /api/account/export` (JSON of all user tables)
-- [ ] `DELETE /api/account` with confirmation; removes every user row and session
+- [x] `GET /api/account/export` (JSON of all user tables, found from the Drizzle schema)
+- [x] `DELETE /api/account` with confirmation (`{ "confirm": "delete" }`); removes every user row and session
 - [ ] Settings UI with a confirm dialog
-- [ ] Tests: export completeness, delete leaves no rows
+- [x] Tests: export completeness, delete leaves no rows (`account.test.ts`; also fails if a migrated table has `user_id` but is missing from export/delete)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green

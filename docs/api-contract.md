@@ -60,6 +60,8 @@ Better Auth's routes keep their own error format.
 | GET | `/api/activity/readings` | — | `ReadingsResponse` | T-22 |
 | POST | `/api/activity/readings` | `Reading` | `Reading` | T-22 |
 | GET | `/api/streak` | — | `StreakResponse` | T-22 |
+| GET | `/api/account/export` | — | `AccountExport` | B-16 |
+| DELETE | `/api/account` | `AccountDeleteInput` | `AccountDeleted` | B-16 |
 | POST | `/api/ai/translate` | `TranslateRequest` | `TranslateResponse` | T-23 |
 | POST | `/api/ai/explain` | `ExplainRequest` | `ExplainResponse` | T-23 |
 
@@ -107,6 +109,11 @@ Card content rules (checked by the schema):
 - `GET /api/streak` → `StreakResponse`: the `StreakSummary` from T-11 over about the last 400 days, plus `today` (the server's local date for the profile's time zone), `todayMinutes`, and `calendar` (every day from the first active day to yesterday, plus today once it is practiced; statuses `practiced`, `freeze`, `missed`).
 
 A day is practiced when it has at least one graded review or one finished reading (T-11 default, H-07). Minutes alone don't count.
+
+### Account
+
+- `GET /api/account/export` → `AccountExport` `{ exportedAt, user: { id, name, email }, tables }`, where `tables` maps each table that has a `user_id` column (found in the Drizzle schema, so a new user table is included automatically) to this user's rows, with our own field names. Session tokens and password hashes are left out. Sent with `Content-Disposition: attachment` and `Cache-Control: no-store`.
+- `DELETE /api/account` with `{ confirm: "delete" }` → `{ deleted: true }`. Removes every row of those tables plus Better Auth's sessions, accounts and user in one D1 batch; the cookie stops working at once (`401`). Any other body is `400 bad_request` and nothing is deleted. Shared tables (`translation_cache`, `ai_daily_usage`) hold no per-user rows and are left alone (G-64, G-86).
 
 ### AI
 

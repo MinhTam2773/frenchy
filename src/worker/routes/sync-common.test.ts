@@ -18,6 +18,8 @@ const ENDPOINTS = [
   ['GET', '/activity/readings'],
   ['POST', '/activity/readings'],
   ['GET', '/streak'],
+  ['GET', '/account/export'],
+  ['DELETE', '/account'],
 ] as const;
 
 describe('every sync endpoint', () => {
