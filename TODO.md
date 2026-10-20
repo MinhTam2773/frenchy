@@ -1451,7 +1451,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (before sharing the app publicly) | Sonnet 5.5 · High | S | T-29 | — |
 
-**Status:** in progress · **Claimed by:** Wave 7a agent (B-39) · **Branch:** `task/B-39-http-hardening` · **Owns:** `public/_headers`, one middleware line in `src/worker/index.ts` (hot file), `src/worker/index.test.ts`
+**Status:** in review ([PR #45](https://github.com/MinhTam2773/frenchy/pull/45)) · **Claimed by:** Wave 7a agent (B-39) · **Branch:** `task/B-39-http-hardening` · **Owns:** `public/_headers`, one middleware line in `src/worker/index.ts` (hot file), `src/worker/index.test.ts`
 **Goal:** Close G-78 (T-29 S-10): the app sends standard security headers and the API refuses oversized bodies.
 **Done when:** `vite preview` serves `/` and a deep link with the headers below, every screen works in Chromium with no CSP violation in the console (fonts, service worker, manifest, TTS), and a test shows an oversized body gets 413 in the contract's error shape.
 
