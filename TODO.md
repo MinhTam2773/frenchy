@@ -1248,7 +1248,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
 
-**Status:** in review · **Claimed by:** Wave 7a agent (B-21) · **Branch:** `task/B-21-credits` · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
+**Status:** in review ([PR #42](https://github.com/MinhTam2773/frenchy/pull/42)) · **Claimed by:** Wave 7a agent (B-21) · **Branch:** `task/B-21-credits` · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
 **Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
 **Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
 
