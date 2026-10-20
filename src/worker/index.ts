@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { csrf } from 'hono/csrf';
+import { limitBody } from './middleware/body-limit';
 import { activityRoute, streakRoute } from './routes/activity';
 import { ai } from './routes/ai';
 import { auth } from './routes/auth';
@@ -14,6 +15,7 @@ export const app = new Hono<{ Bindings: Env }>()
   .basePath('/api')
   // On top of the SameSite=Lax cookie: a form-type write must come from our own origin (T-29).
   .use(csrf())
+  .use(limitBody)
   .route('/health', health)
   .route('/auth', auth)
   .route('/ai', ai)
