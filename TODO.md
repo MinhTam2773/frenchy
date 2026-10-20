@@ -1248,15 +1248,15 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
 
-**Status:** ready (T-20 is done; T-29 S-05 makes it a launch blocker) · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
+**Status:** in review ([PR #42](https://github.com/MinhTam2773/frenchy/pull/42)) · **Claimed by:** Wave 7a agent (B-21) · **Branch:** `task/B-21-credits` · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
 **Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
 **Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
 
-- [ ] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
-- [ ] Link it from the Me screen
-- [ ] Test that both attributions and their license links render
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
+- [x] Link it from the Me screen
+- [x] Test that both attributions and their license links render
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-22 · Content typography and token-join checks in `content:check`
@@ -1749,6 +1749,7 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-124 · 2026-10-18 · auth · T-29` — **Better Auth 1.7 links a Google login to an existing account with the same email only when the local account's email is verified (`account.accountLinking.requireLocalEmailVerified`, default true). We never verify emails, so this blocks account pre-hijacking, but a learner who signed up with email and later taps "Continue with Google" gets "account not linked".** → Keep the default. Email verification (B-18) is what lets the two sign-in methods meet; don't set `requireLocalEmailVerified: false` to make the error go away.
 - `L-125 · 2026-10-19 · orchestration · lead` — **Wave 6 lost its agents twice in one night: a container restart (worktrees survived, `node_modules` did not, and only claim commits were pushed) and then the session limit (all three stopped within minutes, everything pushed). Both times SendMessage resumed each agent where it stopped. After the restart, one agent's `pkill -f "npm ci"` killed its own shell (L-119).** → After a restart, check each worktree for `node_modules` and unpushed work before resuming, and say so in the resume message. After a limit, resume as L-109 says.
 - `L-126 · 2026-10-19 · orchestration · lead` — **Each Wave 6 PR was green alone, but chaining them broke typecheck: T-27 added `e2e/` to `tsconfig.node.json` (no DOM lib) and T-28's `e2e/a11y.spec.ts`, written before that config existed, uses `document` inside `page.evaluate`. Also, the auto-mode classifier refused a `git merge` run inside an agent's worktree, so the lead merged on a local branch in the main checkout and pushed that to the task branch.** → When two parallel tasks share a new folder, run the full check (and E2E) on the chained merge before pushing it. Do lead merges on a local branch of the main checkout, not inside agent worktrees.
+- `L-127 · 2026-10-20 · e2e · B-21` — **The a11y E2E (`e2e/a11y.spec.ts`) says inline links are exempt from the 44 px check, but the code exempts only `[data-token]`, so any `<a>` in a sentence fails at 20 px high.** → Links inside prose need `inline-flex min-h-11 min-w-11 items-center` (the Credits page does this). Don't weaken the check for it; if a future screen has long prose with many links, widen the exemption deliberately in one PR.
 - `L-147 · 2026-10-20 · client · B-23` — **TanStack Query's default `networkMode: 'online'` pauses a query once the browser has fired an `offline` event, so the session query never ran its function and the guard sat on "loading" instead of reaching the remembered-user fallback. A plain `navigator.onLine` spy in a test does not show it (the online manager ignores the property and starts out online); `onlineManager.setOnline(false)` does.** → A query that must answer without the network (the session read) sets `networkMode: 'always'`; test offline behaviour with `onlineManager.setOnline(false)`, and check the test fails without the fix.
 - `L-148 · 2026-10-20 · auth · B-23` — **Better Auth's client behaves two ways: a rejected fetch throws (`TypeError: fetch failed`), but an HTTP error comes back as `{ data: null, error: { status, message } }`. And `get-session` with no session answers 200 with `null`, not 401, so "signed out" is mostly an empty answer.** → Wrap `getSession()` in try/catch for network failures, read `error.status` for HTTP ones, and treat both `null` data and a 401 as signed out. Anything else (5xx, 403, 429) is "don't know", which keeps the remembered user.
 - `L-149 · 2026-10-20 · testing · B-23` — **The client test setup resets MSW and the TanStack cache between cases but not `localStorage`, so once the session read writes to it, an earlier test's remembered user made a later "nobody remembered" test pass for the wrong reason.** → A test file that reads or writes `localStorage` clears it in its own `beforeEach`; `vi.restoreAllMocks()` after storage spies.
