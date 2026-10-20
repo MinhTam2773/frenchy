@@ -1265,16 +1265,16 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
 
-**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** in review ([PR #44](https://github.com/MinhTam2773/frenchy/pull/44)) · **Claimed by:** Wave 7a agent (B-22) · **Branch:** `task/B-22-typography-checks` · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
 **Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
 
-- [ ] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
-- [ ] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
-- [ ] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
-- [ ] No curly apostrophe in French tokens
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
+- [x] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
+- [x] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
+- [x] No curly apostrophe in French tokens
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-23 · Start the app offline without being sent to the welcome screen
@@ -1500,6 +1500,39 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-43 · `content:check` compares lesson tokens with `tokenize()`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-22 | — |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Close G-82: a text whose tokens split differently from `tokenize()` (titles, times, numbers, the euphonic *t*) fails `content:check`, not a T-15 test with a name content agents don't expect.
+**Done when:** `content:check` names the file, sentence and the two splits when they differ, and all Stage 1 texts pass.
+
+- [ ] Run `tokenize()` on each sentence's joined text and compare token by token (word vs gap, and `t`)
+- [ ] Decide whether `splitSentences()` differences (G-55) are reported or ignored (lessons only need the token split)
+- [ ] Tests
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-44 · More typography rules in `content:check`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-22 | — |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Close G-83: the slips B-22 doesn't catch (a space before `,` or `.`, no space after `,`, three dots instead of `…`, straight `"` quotes).
+**Done when:** each rule has a failing and a passing test and the Stage 1 content passes (or the real slips are fixed, typography only).
+
+- [ ] Agree the rules against `text.md` (count how many Stage 1 sentences each would flag before adding it)
+- [ ] Decide how `…` meets `? !` (*Euh… ?* versus *Euh…?*) and write it into `text.md`
+- [ ] Implement and test
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
 
 #### B-49 · A 401 from any API call ends the session and forgets the remembered user
 
@@ -1627,6 +1660,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-77 | API writes (`/api/reviews`, `/api/cards`, `/api/activity/*`, `/api/words`, `/api/profile`) have no burst rate limit: one account can script thousands of writes (a review is 3 rows), using up the Free plan's daily D1 write allowance for everyone or growing storage without bound (T-29 S-03) | App-wide write outage until the next day; cost on the Paid plan | B-40, T-30 (a Cloudflare rate-limiting rule on `/api/*`) |
 | G-78 | No security headers on the static app (CSP, `frame-ancestors` / `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) and no request body size cap on `/api` (T-29 S-10). No XSS sink exists today | Less defence in depth against a future XSS or clickjacking; a huge body is parsed before validation | B-39 |
 | G-79 | `reviews.id` is a global primary key chosen by the client, so a review posted with an id another user already used is a 500 for the second user (reproduced in T-29, S-12). Nothing is exposed and ids are random UUIDs | A colliding client id fails one review | B-08 (move to a `(user_id, id)` key when offline review ids are reworked) |
+| G-82 | `content:check` still doesn't compare a sentence's tokens with `tokenize()` (G-55): B-22 checks only spacing and apostrophes of the joined sentence. A text that splits a title, time, number or *a-t-il* differently still fails only `src/shared/text/tokenize.test.ts` | Content agents see a failure in a test they don't expect, after `content:check` said OK | B-43 |
+| G-83 | B-22 doesn't check a space before `,` `.`, a missing space after `,` `.`, three dots instead of `…`, straight `"` quotes, or how `…` meets `? !` (*Euh… ?*); `text.md` doesn't say either | Slips in these areas reach the reader unnoticed; each is rare so far (Stage 1 was hand-checked in T-24) | B-44 |
 | G-88 | B-23 keeps the signed-in user's id, name and email in `localStorage` (`frenchy.user`, no tokens) for up to 7 days after the last online read. On a shared device, someone who closes the browser without signing out leaves their name and email readable there, and the next person opening the installed PWA offline gets the shell (Today, Me) of that account until they sign out or go online; script on the same origin can read it (no XSS sink exists today, G-78). A 401 from an API call (not from the session read) does not clear it yet | Small privacy leak on shared devices; a revoked session stays "signed in" on screen until the next session read | B-49 (401 handling); the shared-device trade-off is accepted for a personal phone app, revisit before a public launch |
 | G-89 | The session read has no timeout: with a connection that is up but not answering, `fetch` waits for the browser's own timeout (a minute or more), and the guard renders nothing meanwhile instead of using the remembered user. Also: the remembered user only gets the shell; the data behind each screen still comes from the API and has no offline copy (B-08 for reviews) | Slow start on bad networks; empty or error states offline | B-50, B-08 |
 
@@ -1750,6 +1785,11 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-125 · 2026-10-19 · orchestration · lead` — **Wave 6 lost its agents twice in one night: a container restart (worktrees survived, `node_modules` did not, and only claim commits were pushed) and then the session limit (all three stopped within minutes, everything pushed). Both times SendMessage resumed each agent where it stopped. After the restart, one agent's `pkill -f "npm ci"` killed its own shell (L-119).** → After a restart, check each worktree for `node_modules` and unpushed work before resuming, and say so in the resume message. After a limit, resume as L-109 says.
 - `L-126 · 2026-10-19 · orchestration · lead` — **Each Wave 6 PR was green alone, but chaining them broke typecheck: T-27 added `e2e/` to `tsconfig.node.json` (no DOM lib) and T-28's `e2e/a11y.spec.ts`, written before that config existed, uses `document` inside `page.evaluate`. Also, the auto-mode classifier refused a `git merge` run inside an agent's worktree, so the lead merged on a local branch in the main checkout and pushed that to the task branch.** → When two parallel tasks share a new folder, run the full check (and E2E) on the chained merge before pushing it. Do lead merges on a local branch of the main checkout, not inside agent worktrees.
 - `L-127 · 2026-10-20 · e2e · B-21` — **The a11y E2E (`e2e/a11y.spec.ts`) says inline links are exempt from the 44 px check, but the code exempts only `[data-token]`, so any `<a>` in a sentence fails at 20 px high.** → Links inside prose need `inline-flex min-h-11 min-w-11 items-center` (the Credits page does this). Don't weaken the check for it; if a future screen has long prose with many links, widen the exemption deliberately in one PR.
+- `L-132 · 2026-10-20 · content · B-22` — **The four typography rules (stray spaces, no-break space before `? ! : ;` and inside `« »`, a gap after `l'`, curly apostrophes) passed on the whole Stage 1 tree the first time they ran, because T-24 had fixed these by hand. They were checked by breaking sentences in tests, not by the real content.** → Judge a new content rule by the failing test you write for it, not by "the real tree still passes"; the tree passing only says nobody had made the slip yet.
+- `L-133 · 2026-10-20 · content · B-22` — **Spacing rules look at the sentence's joined text, not at token boundaries: the no-break space before `!` is the start of a gap token (` !`), and one text can be split into tokens in several valid ways. Only the apostrophe rule needs tokens (a word ending in `'` followed by a gap).** → Write new spacing checks on `tokens.map(t => t.t).join('')`; look at tokens only when the rule is about what a token is.
+- `L-134 · 2026-10-20 · content · B-22` — **Exceptions the rule needs so it doesn't flag correct French: `?!` stacked marks, a clock time like `8:30`, a mark that opens the sentence. The narrow no-break space (U+202F) is also accepted before `? ! : ;`, though all Stage 1 content uses U+00A0.** → If a rule seems to flag good French, add the exception with a test; don't ask content to change.
+- `L-135 · 2026-10-20 · testing · B-22` — **A plain space and a no-break space look the same in a diff and in terminal output, so a test written with a pasted character can pass or fail for the wrong reason.** → Write them as `\u00a0` (a named `NB` constant) in tests and fixtures, never as a pasted character.
+- `L-136 · 2026-10-20 · tooling · B-22` — **In a worktree-isolated agent, one Bash call that mixed a Python heredoc with `&&` chains and `npm` was refused as "too complex to verify", and nothing in it ran.** → Keep Bash calls to plain single commands (`sed -i`, `npx ...`) in a worktree, and make multi-line edits with the Edit tool.
 - `L-147 · 2026-10-20 · client · B-23` — **TanStack Query's default `networkMode: 'online'` pauses a query once the browser has fired an `offline` event, so the session query never ran its function and the guard sat on "loading" instead of reaching the remembered-user fallback. A plain `navigator.onLine` spy in a test does not show it (the online manager ignores the property and starts out online); `onlineManager.setOnline(false)` does.** → A query that must answer without the network (the session read) sets `networkMode: 'always'`; test offline behaviour with `onlineManager.setOnline(false)`, and check the test fails without the fix.
 - `L-148 · 2026-10-20 · auth · B-23` — **Better Auth's client behaves two ways: a rejected fetch throws (`TypeError: fetch failed`), but an HTTP error comes back as `{ data: null, error: { status, message } }`. And `get-session` with no session answers 200 with `null`, not 401, so "signed out" is mostly an empty answer.** → Wrap `getSession()` in try/catch for network failures, read `error.status` for HTTP ones, and treat both `null` data and a 401 as signed out. Anything else (5xx, 403, 429) is "don't know", which keeps the remembered user.
 - `L-149 · 2026-10-20 · testing · B-23` — **The client test setup resets MSW and the TanStack cache between cases but not `localStorage`, so once the session read writes to it, an earlier test's remembered user made a later "nobody remembered" test pass for the wrong reason.** → A test file that reads or writes `localStorage` clears it in its own `beforeEach`; `vi.restoreAllMocks()` after storage spies.
