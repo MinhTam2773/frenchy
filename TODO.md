@@ -1166,7 +1166,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (before sharing the app with others) | Sonnet 5.5 · High | S | T-13, T-22 | — |
 
-**Status:** in progress · **Claimed by:** Wave 7a agent (B-16) · **Branch:** `task/B-16-account` · **Owns:** `src/worker/routes/account.ts`, account section in Settings
+**Status:** in review · **Claimed by:** Wave 7a agent (B-16) · **Branch:** `task/B-16-account` · **PR:** https://github.com/MinhTam2773/frenchy/pull/46 · **Owns:** `src/worker/routes/account.ts`, account section in Settings
 **Goal:** Users can download their data and delete their account.
 **Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
 
@@ -1174,8 +1174,8 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [x] `DELETE /api/account` with confirmation (`{ "confirm": "delete" }`); removes every user row and session
 - [x] Settings UI with a confirm dialog (`AccountSection.tsx`: download JSON, delete behind a typed "delete"; signs out to the welcome screen)
 - [x] Tests: export completeness, delete leaves no rows (`account.test.ts`; also fails if a migrated table has `user_id` but is missing from export/delete)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-142 to L-145, G-86, G-87, B-47, B-48)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-17 · App store apps with Capacitor (only if needed)
