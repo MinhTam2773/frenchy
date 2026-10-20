@@ -1248,15 +1248,15 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
 
-**Status:** ready (T-20 is done; T-29 S-05 makes it a launch blocker) · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
+**Status:** in review ([PR #42](https://github.com/MinhTam2773/frenchy/pull/42)) · **Claimed by:** Wave 7a agent (B-21) · **Branch:** `task/B-21-credits` · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
 **Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
 **Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
 
-- [ ] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
-- [ ] Link it from the Me screen
-- [ ] Test that both attributions and their license links render
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
+- [x] Link it from the Me screen
+- [x] Test that both attributions and their license links render
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-22 · Content typography and token-join checks in `content:check`
@@ -1752,3 +1752,4 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-143 · 2026-10-20 · worker · B-16` — **Account deletion without Better Auth's `deleteUser` (it needs `user.deleteUser.enabled`, a fresh session or password, and knows nothing of our tables, G-36): one D1 batch in `scopedDb(...).deleteAccount()` removes every user table, then `session`, `account`, `user`. The list of user tables is `USER_TABLES` in `src/worker/db/index.ts`, found by looking for a `user_id` column in the Drizzle schema, and export uses the same list. A table added by hand-written SQL but missing from the schema would be missed, so `account.test.ts` compares the migrated DDL with the list.** → A new per-user table needs nothing extra for export and deletion as long as it is in `schema.ts` with a `user_id` column; the test fails if a migration has one that the schema lacks. A table without `user_id` (a cache, a counter) is never exported or deleted: give personal data a `user_id` (G-86).
 - `L-144 · 2026-10-20 · tooling · B-16` — **In a worktree-isolated agent, the harness refused Bash calls that chain commands with `&&`/`;`, run `python3 -`/heredocs, or use `sed` programs like `1628r file`, with "too complex to verify that it stays inside the worktree".** → Use one plain command per Bash call, make file edits with the Edit and Write tools, and keep scratch files in the scratchpad directory.
 - `L-145 · 2026-10-20 · testing · B-16` — **`playwright.config.ts` serves on `E2E_PORT` (default 5273) and has `reuseExistingServer: false`, so two agents running E2E on one box would collide on the port.** → On a shared box run `E2E_PORT=<unused port> npx playwright test e2e/<spec>`. Deleting an account in E2E logs one harmless `[Better Auth] User not found` warning: the sign-out that follows the deletion looks up a session whose user is gone, and still clears the cookie and lands on the welcome screen.
+- `L-127 · 2026-10-20 · e2e · B-21` — **The a11y E2E (`e2e/a11y.spec.ts`) says inline links are exempt from the 44 px check, but the code exempts only `[data-token]`, so any `<a>` in a sentence fails at 20 px high.** → Links inside prose need `inline-flex min-h-11 min-w-11 items-center` (the Credits page does this). Don't weaken the check for it; if a future screen has long prose with many links, widen the exemption deliberately in one PR.

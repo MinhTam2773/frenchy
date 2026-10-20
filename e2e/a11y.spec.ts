@@ -111,6 +111,7 @@ test('every signed-in screen', async ({ page }, testInfo) => {
     ['/practice', 'Practice'],
     ['/me', 'Me'],
     ['/streak', 'Streak'],
+    ['/credits', 'Credits'],
   ] as const) {
     await page.goto(path);
     await expect(

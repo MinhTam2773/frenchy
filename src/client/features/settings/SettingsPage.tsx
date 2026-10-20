@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { DAILY_GOAL_OPTIONS, TTS_RATE } from '@shared/constants';
 import { getCourse, routeChapters } from '@shared/content';
 import type { Profile, ProfilePatch } from '@shared/schemas';
-import { BottomSheet, Button, Icon, StreakChip, Toggle } from '@client/ui';
+import { BottomSheet, Button, Icon, Link, StreakChip, Toggle } from '@client/ui';
 import { api } from '@client/lib/api';
 import { queryKeys, useProfile } from '@client/lib/query';
 import { useSession } from '@client/lib/session';
@@ -321,6 +321,12 @@ export function SettingsPage() {
           />
         </>
       )}
+      <Section title="About">
+        <Link to="/credits" className={rowClass}>
+          <span className={labelClass}>Credits</span>
+          <Icon name="forward" size={18} className="text-faint" />
+        </Link>
+      </Section>
       <AccountSection />
       <Button variant="secondary" fullWidth onClick={() => void signOut()} className="text-fem">
         Sign out
