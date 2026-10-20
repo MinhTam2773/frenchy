@@ -1282,15 +1282,15 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
 
-**Status:** in progress · **Claimed by:** Wave 7a agent (B-23) · **Branch:** `task/B-23-offline-start` · **Owns:** `src/client/lib/session.ts`
+**Status:** in review ([PR #43](https://github.com/MinhTam2773/frenchy/pull/43)) · **Claimed by:** Wave 7a agent (B-23) · **Branch:** `task/B-23-offline-start` · **Owns:** `src/client/lib/session.ts`
 **Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
 **Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
 
 - [x] Decide what is remembered (id, name, email in `localStorage`, wrapped in try/catch) and when it expires. Remembered: `frenchy.user` = id, name, email and a `savedAt` stamp, never tokens. Expires 7 days after the last successful online read (Better Auth's default session lifetime; `createAuth` sets no `expiresIn`), and is cleared on sign-out (`clearRememberedUser()`, exported for B-16), on a 401 or a "no session" answer, and overwritten when another user signs in
 - [x] `useSession` returns the remembered user when the read fails with a network error, never on a 401. A rejected fetch, `navigator.onLine === false`, a 5xx and any other non-401 HTTP error all fall back to the remembered user (a down server is not proof of sign-out, and the API would 401 the real calls); only a 401 or a 200 `null` signs out
 - [x] Test: offline start with and without a remembered user (`session.test.tsx`: 17 cases; `e2e/offline-start.spec.ts` for the browser, see PR for what it can't prove)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-147 to L-150, G-88, G-89, B-49, B-50)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-24 · Show/hide password on the email forms
