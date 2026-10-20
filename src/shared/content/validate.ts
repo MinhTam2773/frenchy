@@ -1,6 +1,6 @@
 import type { z } from 'zod';
 import { MAX_NEW_WORDS_PER_TEXT } from '../constants';
-import { Course, Deck, Grammar, GrammarNote, Text, type Chapter } from '../schemas';
+import { Course, Deck, Grammar, GrammarNote, Text, type Chapter, type Sentence } from '../schemas';
 import { allowedGrammarTags, routeChapters } from './route';
 
 /**
@@ -256,6 +256,50 @@ function checkText(
       add(file, `Grammar tag "${tag}" is not allowed in ${folder} (it is introduced later)`);
     }
   }
+  text.paragraphs.forEach((paragraph, p) => {
+    paragraph.sentences.forEach((sentence, s) => {
+      for (const message of typographyProblems(sentence)) {
+        add(file, `paragraphs.${p}.sentences.${s}: ${message}`);
+      }
+    });
+  });
+}
+
+const CURLY_APOSTROPHE = /[’‘ʼ]/u;
+const NO_BREAK_SPACE = /[\u00a0\u202F]/u;
+
+/** Typography slips that `text.md` forbids (L-76), one message each. */
+function typographyProblems({ tokens }: Sentence): string[] {
+  const problems: string[] = [];
+  tokens.forEach((token, i) => {
+    if (CURLY_APOSTROPHE.test(token.t)) {
+      problems.push(`token "${token.t}" has a curly apostrophe; use a straight ' (U+0027)`);
+    }
+    const next = tokens[i + 1];
+    if ('lemma' in token && next && !('lemma' in next) && /['’‘ʼ]$/u.test(token.t)) {
+      problems.push(`gap token "${next.t}" after "${token.t}"; the next word follows it directly`);
+    }
+  });
+
+  const text = tokens.map((token) => token.t).join('');
+  if (/^\s|\s$/u.test(text)) problems.push(`"${text}" starts or ends with a space`);
+  if (/\s{2,}/u.test(text)) problems.push(`"${text}" has two spaces in a row`);
+
+  for (const { 0: mark, index } of text.matchAll(/[?!:;«»]/gu)) {
+    const before = text.charAt(index - 1);
+    const after = text.charAt(index + 1);
+    // Stacked marks (?!) and clock times (8:30) take no space; a mark that opens the sentence has nothing before it.
+    if (index === 0 && mark !== '«') continue;
+    if ('?!'.includes(mark) && '?!'.includes(before)) continue;
+    if (mark === ':' && /\d/u.test(before) && /\d/u.test(after)) continue;
+    const side = mark === '«' ? after : before;
+    if (NO_BREAK_SPACE.test(side)) continue;
+    const found = side === ' ' ? 'a plain space' : 'no space';
+    problems.push(
+      `"${text}" has ${found} ${mark === '«' ? 'after' : 'before'} "${mark}"; use a no-break space (U+00A0)`,
+    );
+  }
+  return problems;
 }
 
 /** A word token without a lemma matches neither token schema, so zod only says "Invalid input". */
