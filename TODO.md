@@ -1282,7 +1282,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
 
-**Status:** ready (deps done) · **Owns:** `src/client/lib/session.ts`
+**Status:** in progress · **Claimed by:** Wave 7a agent (B-23) · **Branch:** `task/B-23-offline-start` · **Owns:** `src/client/lib/session.ts`
 **Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
 **Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
 
