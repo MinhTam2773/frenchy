@@ -52,7 +52,7 @@ Tasks in the same **wave** have no dependencies on each other and own different 
 | 5 | T-26 integration | 6 |
 | 6 | T-27 E2E · T-28 a11y QA · T-29 security review | 7 |
 | 7 | T-30 deploy (human gate) | MVP live |
-| 7a | B-21 credits · B-22 typography checks · B-39 security headers · B-16 account export/delete · B-23 offline start · B-33 per-chapter texts | T-30 (B-21), B-29 (B-22) |
+| 7a | B-21 credits · B-22 typography checks · B-39 security headers · B-16 account export/delete · B-23 offline start · B-33 per-chapter texts (done, PRs #42 to #47) | T-30 (B-21), B-29 (B-22) |
 
 Frontend screens (wave 3) are built against **MSW mocks** that use the shared fixtures from T-04, so they don't wait for the backend. T-26 swaps the mocks for the real API.
 
@@ -90,7 +90,7 @@ flowchart LR
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 36 · NEXT 1 (T-30 blocked on human gates and B-21) · BACKLOG 35 (Wave 7a: 6 in progress)
+**Progress:** DONE 42 · NEXT 1 (T-30 blocked on human gates H-02 to H-06) · BACKLOG 35
 
 ---
 
@@ -821,6 +821,108 @@ QUESTION: the app-wide AI cap (G-10) needs a number from you. Default: 1,000 pro
 
 QUESTION: G-35 (S-06): email sign-in needs the Workers Paid plan (scrypt takes about 130 to 310 ms of CPU; the Free plan allows 10 ms). Security recommendation and default: keep Better Auth's scrypt parameters and deploy on Workers Paid, because cheaper hashing makes a leaked `account` table easier to crack. Alternative on the Free plan: Google-only sign-in. Same decision as the QUESTION under T-13.
 
+### B-21 · Credits screen with data attributions (needed before T-30)
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
+
+**Status:** done · **Claimed by:** Wave 7a agent (B-21) · **Branch:** `task/B-21-credits` · **PR:** https://github.com/MinhTam2773/frenchy/pull/42 · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
+**Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
+**Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
+
+- [x] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
+- [x] Link it from the Me screen
+- [x] Test that both attributions and their license links render
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### B-23 · Start the app offline without being sent to the welcome screen
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
+
+**Status:** done · **Claimed by:** Wave 7a agent (B-23) · **Branch:** `task/B-23-offline-start` · **PR:** https://github.com/MinhTam2773/frenchy/pull/43 · **Owns:** `src/client/lib/session.ts`
+**Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
+**Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
+
+- [x] Decide what is remembered (id, name, email in `localStorage`, wrapped in try/catch) and when it expires. Remembered: `frenchy.user` = id, name, email and a `savedAt` stamp, never tokens. Expires 7 days after the last successful online read (Better Auth's default session lifetime; `createAuth` sets no `expiresIn`), and is cleared on sign-out (`clearRememberedUser()`, exported for B-16), on a 401 or a "no session" answer, and overwritten when another user signs in
+- [x] `useSession` returns the remembered user when the read fails with a network error, never on a 401. A rejected fetch, `navigator.onLine === false`, a 5xx and any other non-401 HTTP error all fall back to the remembered user (a down server is not proof of sign-out, and the API would 401 the real calls); only a 401 or a 200 `null` signs out
+- [x] Test: offline start with and without a remembered user (`session.test.tsx`: 17 cases; `e2e/offline-start.spec.ts` for the browser, see PR for what it can't prove)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-147 to L-150, G-88, G-89, B-49, B-50)
+- [x] Finish: PR to `main` merged with CI green
+
+### B-22 · Content typography and token-join checks in `content:check`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
+
+**Status:** done · **Claimed by:** Wave 7a agent (B-22) · **Branch:** `task/B-22-typography-checks` · **PR:** https://github.com/MinhTam2773/frenchy/pull/44 · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
+**Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
+
+- [x] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
+- [x] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
+- [x] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
+- [x] No curly apostrophe in French tokens
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### B-39 · HTTP hardening: security headers and a request body cap
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 (before sharing the app publicly) | Sonnet 5.5 · High | S | T-29 | — |
+
+**Status:** done · **Claimed by:** Wave 7a agent (B-39) · **Branch:** `task/B-39-http-hardening` · **PR:** https://github.com/MinhTam2773/frenchy/pull/45 · **Owns:** `public/_headers`, one middleware line in `src/worker/index.ts` (hot file), `src/worker/index.test.ts`
+**Goal:** Close G-78 (T-29 S-10): the app sends standard security headers and the API refuses oversized bodies.
+**Done when:** `vite preview` serves `/` and a deep link with the headers below, every screen works in Chromium with no CSP violation in the console (fonts, service worker, manifest, TTS), and a test shows an oversized body gets 413 in the contract's error shape.
+
+- [x] `public/_headers` for `/*`: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, and a CSP (`default-src 'self'`, Google Fonts in `style-src` / `font-src`, `img-src 'self' data:`, `frame-ancestors 'none'`); `index.html` has no inline script or style today. Check it also applies to the SPA fallback
+- [x] Verify in `vite preview` and the T-27 E2E run (`vite dev` doesn't apply `_headers`)
+- [x] Hono `bodyLimit` on `/api` (e.g. 64 KB; the largest real body is a card, about 1.5 KB)
+- [x] Tests
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green
+
+### B-16 · Account data export and deletion
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 (before sharing the app with others) | Sonnet 5.5 · High | S | T-13, T-22 | — |
+
+**Status:** done · **Claimed by:** Wave 7a agent (B-16) · **Branch:** `task/B-16-account` · **PR:** https://github.com/MinhTam2773/frenchy/pull/46 · **Owns:** `src/worker/routes/account.ts`, account section in Settings
+**Goal:** Users can download their data and delete their account.
+**Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
+
+- [x] `GET /api/account/export` (JSON of all user tables, found from the Drizzle schema)
+- [x] `DELETE /api/account` with confirmation (`{ "confirm": "delete" }`); removes every user row and session
+- [x] Settings UI with a confirm dialog (`AccountSection.tsx`: download JSON, delete behind a typed "delete"; signs out to the welcome screen)
+- [x] Tests: export completeness, delete leaves no rows (`account.test.ts`; also fails if a migrated table has `user_id` but is missing from export/delete)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-142 to L-145, G-86, G-87, B-47, B-48)
+- [x] Finish: PR to `main` merged with CI green
+
+### B-33 · Load lesson texts per chapter, not in the main bundle
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Opus 5.5 · Medium | M | T-26 | — |
+
+**Status:** done · **Claimed by:** Wave 7a agent (B-33) · **Branch:** `task/B-33-lazy-texts` · **PR:** https://github.com/MinhTam2773/frenchy/pull/47 · **Owns:** `src/shared/content/**`, the screens that read texts (Today, Chapter, Reader, Session complete)
+**Goal:** The main JS chunk stops growing with every chapter's texts (G-70).
+**Done when:** the main chunk holds course, grammar and notes only; a chapter's texts load on demand (and are precached or runtime-cached for offline), and the screens show their loading state meanwhile.
+
+- [x] Split `src/shared/content` loaders: eager course/grammar, lazy `import.meta.glob` per text
+- [x] Make `getText` / `getChapterTexts` async (or wrap them in TanStack Query) and update the callers
+- [x] Decide precache (the texts are small, offline matters) versus runtime cache; check the build's `precache` line
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-152, L-153, G-90)
+- [x] Finish: PR to `main` merged with CI green
+
 ---
 
 ## NEXT (MVP)
@@ -863,7 +965,7 @@ Wave 6 is done (T-27 to T-29 moved to DONE).
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
 
-**Status:** blocked (human gates; B-21 credits screen first, T-29 S-05) · **Claimed by:** — · **Branch:** `task/T-30-deploy`
+**Status:** blocked (human gates H-02 to H-06; B-21 is done, PR #42) · **Claimed by:** — · **Branch:** `task/T-30-deploy`
 **Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
 **Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
 **Done when:** the production URL passes the smoke test and the deploy workflow runs green.
@@ -1161,23 +1263,6 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
-#### B-16 · Account data export and deletion
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P2 (before sharing the app with others) | Sonnet 5.5 · High | S | T-13, T-22 | — |
-
-**Status:** in review · **Claimed by:** Wave 7a agent (B-16) · **Branch:** `task/B-16-account` · **PR:** https://github.com/MinhTam2773/frenchy/pull/46 · **Owns:** `src/worker/routes/account.ts`, account section in Settings
-**Goal:** Users can download their data and delete their account.
-**Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
-
-- [x] `GET /api/account/export` (JSON of all user tables, found from the Drizzle schema)
-- [x] `DELETE /api/account` with confirmation (`{ "confirm": "delete" }`); removes every user row and session
-- [x] Settings UI with a confirm dialog (`AccountSection.tsx`: download JSON, delete behind a typed "delete"; signs out to the welcome screen)
-- [x] Tests: export completeness, delete leaves no rows (`account.test.ts`; also fails if a migrated table has `user_id` but is missing from export/delete)
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-142 to L-145, G-86, G-87, B-47, B-48)
-- [ ] Finish: PR to `main` merged with CI green
-
 #### B-17 · App store apps with Capacitor (only if needed)
 | Priority | Model · effort | Size | Depends on | Blocks |
 |---|---|---|---|---|
@@ -1243,56 +1328,6 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
-#### B-21 · Credits screen with data attributions (needed before T-30)
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P1 | Sonnet 5.5 · Medium | S | T-20 | T-30 |
-
-**Status:** in review ([PR #42](https://github.com/MinhTam2773/frenchy/pull/42)) · **Claimed by:** Wave 7a agent (B-21) · **Branch:** `task/B-21-credits` · **Owns:** `src/client/features/settings/Credits*.tsx` (or a section of the Me screen)
-**Goal:** The CC BY-SA attributions the lexicon needs (G-25) are visible in the app before it is shared publicly.
-**Done when:** a "Credits" link on the Me screen opens a page with both attribution texts from `docs/LICENSES.md` (links included), and a test checks they render.
-
-- [x] Add the Credits page with the Wiktionary/kaikki.org and Lexique 3.83 attributions, worded as in `docs/LICENSES.md`
-- [x] Link it from the Me screen
-- [x] Test that both attributions and their license links render
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### B-22 · Content typography and token-join checks in `content:check`
-
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
-
-**Status:** in review ([PR #44](https://github.com/MinhTam2773/frenchy/pull/44)) · **Claimed by:** Wave 7a agent (B-22) · **Branch:** `task/B-22-typography-checks` · **Owns:** `src/shared/content/validate.ts`, its tests
-**Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
-**Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
-
-- [x] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
-- [x] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
-- [x] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
-- [x] No curly apostrophe in French tokens
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### B-23 · Start the app offline without being sent to the welcome screen
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
-
-**Status:** in review ([PR #43](https://github.com/MinhTam2773/frenchy/pull/43)) · **Claimed by:** Wave 7a agent (B-23) · **Branch:** `task/B-23-offline-start` · **Owns:** `src/client/lib/session.ts`
-**Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
-**Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
-
-- [x] Decide what is remembered (id, name, email in `localStorage`, wrapped in try/catch) and when it expires. Remembered: `frenchy.user` = id, name, email and a `savedAt` stamp, never tokens. Expires 7 days after the last successful online read (Better Auth's default session lifetime; `createAuth` sets no `expiresIn`), and is cleared on sign-out (`clearRememberedUser()`, exported for B-16), on a 401 or a "no session" answer, and overwritten when another user signs in
-- [x] `useSession` returns the remembered user when the read fails with a network error, never on a 401. A rejected fetch, `navigator.onLine === false`, a 5xx and any other non-401 HTTP error all fall back to the remembered user (a down server is not proof of sign-out, and the API would 401 the real calls); only a 401 or a 200 `null` signs out
-- [x] Test: offline start with and without a remembered user (`session.test.tsx`: 17 cases; `e2e/offline-start.spec.ts` for the browser, see PR for what it can't prove)
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-147 to L-150, G-88, G-89, B-49, B-50)
-- [ ] Finish: PR to `main` merged with CI green
-
 #### B-24 · Show/hide password on the email forms
 | Priority | Model · effort | Size | Depends on | Blocks |
 |---|---|---|---|---|
@@ -1348,7 +1383,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | B-22 (same file) | B-10, B-11 (helps) |
 
-**Status:** blocked (B-22) · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** ready (B-22 is done) · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Stage 2 to 4 content follows T-24's decisions without a QA pass having to find them by hand (L-94, L-95, G-67).
 **Done when:** `content:check` names the file and sentence for each case below, and Stage 1 passes.
 
@@ -1375,23 +1410,6 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] `npm run lexicon:coverage -- --min 98` exits non-zero below the threshold; add it to CI
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### B-33 · Load lesson texts per chapter, not in the main bundle
-
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P2 | Opus 5.5 · Medium | M | T-26 | — |
-
-**Status:** in review ([#47](https://github.com/MinhTam2773/frenchy/pull/47)) · **Claimed by:** Wave 7a agent (B-33) · **Branch:** `task/B-33-lazy-texts` · **Owns:** `src/shared/content/**`, the screens that read texts (Today, Chapter, Reader, Session complete)
-**Goal:** The main JS chunk stops growing with every chapter's texts (G-70).
-**Done when:** the main chunk holds course, grammar and notes only; a chapter's texts load on demand (and are precached or runtime-cached for offline), and the screens show their loading state meanwhile.
-
-- [x] Split `src/shared/content` loaders: eager course/grammar, lazy `import.meta.glob` per text
-- [x] Make `getText` / `getChapterTexts` async (or wrap them in TanStack Query) and update the callers
-- [x] Decide precache (the texts are small, offline matters) versus runtime cache; check the build's `precache` line
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-152, L-153, G-90)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-35 · E2E against the production build (service worker, offline)
@@ -1441,24 +1459,6 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 
 - [ ] `scripts/db/seed.ts` and `getPlatformProxy({ persist })` take `E2E_PERSIST_DIR`; `e2e/server.ts` seeds after migrating
 - [ ] Spec: sign in as the demo user; assert the streak the server computes (5 days, best 6, G-71), cards due, and the Review session
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
-#### B-39 · HTTP hardening: security headers and a request body cap
-
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P2 (before sharing the app publicly) | Sonnet 5.5 · High | S | T-29 | — |
-
-**Status:** in review ([PR #45](https://github.com/MinhTam2773/frenchy/pull/45)) · **Claimed by:** Wave 7a agent (B-39) · **Branch:** `task/B-39-http-hardening` · **Owns:** `public/_headers`, one middleware line in `src/worker/index.ts` (hot file), `src/worker/index.test.ts`
-**Goal:** Close G-78 (T-29 S-10): the app sends standard security headers and the API refuses oversized bodies.
-**Done when:** `vite preview` serves `/` and a deep link with the headers below, every screen works in Chromium with no CSP violation in the console (fonts, service worker, manifest, TTS), and a test shows an oversized body gets 413 in the contract's error shape.
-
-- [x] `public/_headers` for `/*`: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, and a CSP (`default-src 'self'`, Google Fonts in `style-src` / `font-src`, `img-src 'self' data:`, `frame-ancestors 'none'`); `index.html` has no inline script or style today. Check it also applies to the SPA fallback
-- [x] Verify in `vite preview` and the T-27 E2E run (`vite dev` doesn't apply `_headers`)
-- [x] Hono `bodyLimit` on `/api` (e.g. 64 KB; the largest real body is a card, about 1.5 KB)
-- [x] Tests
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1540,7 +1540,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | B-23 | — |
 
-**Status:** ready after B-23 merges · **Owns:** `src/client/lib/api.ts`, `src/client/lib/query.ts`, `src/client/lib/session.ts`
+**Status:** ready (B-23 is done) · **Owns:** `src/client/lib/api.ts`, `src/client/lib/query.ts`, `src/client/lib/session.ts`
 **Goal:** Close G-88 (second half): today only the session read clears the remembered user, so a session that expires or is revoked while the app is open leaves the user on screens whose calls all answer 401 until the next reload.
 **Done when:** a test where a protected call answers 401 clears the remembered user, sets the session query to signed out and lands on the welcome screen.
 
@@ -1556,7 +1556,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | B-23 | — |
 
-**Status:** ready after B-23 merges · **Owns:** `src/client/lib/session.ts`
+**Status:** ready (B-23 is done) · **Owns:** `src/client/lib/session.ts`
 **Goal:** Close G-89: on a connection that is "up" but not answering (lie-fi, captive portal), `fetch` can wait a very long time, so the guard renders nothing instead of using the remembered user.
 **Done when:** a test where `/api/auth/get-session` never answers resolves to the remembered user after the timeout (fake timers), and to signed out with nobody remembered.
 
@@ -1571,7 +1571,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (with B-08 / B-23) | Sonnet 5.5 · Medium | S | B-08, B-23, B-16 | — |
 
-**Status:** blocked (B-08 and B-23 add the local data) · **Owns:** `src/client/lib/session.ts` (`signOut`), `src/client/lib/offline/**` (a `clearLocalData()`)
+**Status:** blocked (B-08 adds the rest of the local data; B-23 is done) · **Owns:** `src/client/lib/session.ts` (`signOut`), `src/client/lib/offline/**` (a `clearLocalData()`)
 **Goal:** Signing out, or deleting the account (B-16), leaves nothing of the account on the device: no remembered user (B-23), no queued reviews or cached cards in IndexedDB (B-08).
 **Done when:** after `signOut()` (which the deletion flow calls) a test finds no remembered user and an empty offline store.
 
@@ -1645,7 +1645,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-27 | `public/mockServiceWorker.js` (MSW) is copied into production `dist/client`, and it uses scope `/`, the same as the T-12 PWA service worker; a page can only have one service worker per scope. Mocks are off in production builds, so today it is dead weight, but a build with `VITE_USE_MOCKS=true` plus the PWA worker would fight | Confusing offline behavior in a mock build; a stray script in the deploy | **Resolved (T-26):** mocks are opt-in (`VITE_USE_MOCKS=true`), and a `drop-msw-worker` build step in `vite.config.ts` deletes `mockServiceWorker.js` from `dist/client` unless that variable is set in the shell |
 | G-28 | `MAIN_TABS` in the UI kit includes a Words tab, but the Words screen is Phase 2 (B-02). T-09 routes `/words` to a placeholder so the tab doesn't 404 | MVP users see a dead tab | **Resolved (T-26):** `TabLayout` passes the tabs without Words, and the `/words` route and the placeholder page are gone (it is now a 404); B-02 adds both back |
 | G-23 | The grammar inventory (`content/grammar.json`, 98 tags) and the chapter week ranges for Stages 2 to 4 are my proposal, not read from the book. Stage 1 has a few tags the book may introduce later, added so A1 texts can exist: `phrases.greetings`, `phrases.c-est`, `phrases.introductions`, `negation.ne-pas`, `adjectives.basic`, `prepositions.basic`. `appC` (verb tables) sits last in Stage 4 as a reference node; PLAN only says "use throughout" | Texts may use grammar the learner hasn't met in the book yet; T-17 must show `kind: "appendix"` as a reference, not a step to finish | T-14, T-17, T-24 (re-check against the book when G-06 closes) |
-| G-24 | `getText` is synchronous and `import.meta.glob` is eager, so every text ships in the main bundle (about 37 chapters x 4 texts x annotated tokens could reach several hundred KB) | Slower first load and a bigger service-worker precache | T-29 (measure; move to per-chapter lazy chunks if over budget) |
+| G-24 | `getText` is synchronous and `import.meta.glob` is eager, so every text ships in the main bundle (about 37 chapters x 4 texts x annotated tokens could reach several hundred KB) | Slower first load and a bigger service-worker precache | T-29 (measure; move to per-chapter lazy chunks if over budget). **Resolved (B-33, PR #47):** texts and decks are lazy chunks; see G-70 |
 | G-31 | `computeStreak` derives freezes from the whole run, so a window shorter than the run (T-22's "about the last 400 days") can show wrong `freezesLeft`, `current` and `best` for runs longer than the window | T-22 should pass every `daily_activity` row (one row per active day, so small) or store a checkpoint | T-22 |
 | G-32 | The H-07 default leaves choices the user hasn't confirmed: a freeze day adds nothing to `current`; freezes are earned at 7, 14, 21 counted days of one run (not 7 since the last spend); minutes alone don't count; travelling east can skip a local date and spend a freeze | Streak numbers may differ from what the user expects | T-11, H-07 |
 | G-29 | `previewIntervals` and `grade` use fuzz, and ts-fsrs seeds it from the review time, card reps and difficulty x stability. The client's preview at time A and the server's grade at time B give different day counts (usually off by a day or so for intervals beyond about a week) | A grade button can say "8d" and the stored due can be 7d or 9d | T-18, T-22 (the server should grade at `ReviewInput.reviewedAt`; the client should preview at the same `now` it later posts) |
@@ -1654,7 +1654,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-22 | `scripts/**` is in no tsconfig, so `tsc -b` doesn't typecheck scripts (only ESLint sees them). T-06 keeps the seed logic in `src/worker/db/seed.ts` and `scripts/db/seed.ts` as thin glue | Type errors in scripts (T-07, T-08 too) show up only at run time | T-07, T-08 (add `scripts` to `tsconfig.node.json`) (resolved: T-07 added `scripts` to `tsconfig.node.json`; `scripts/db` is checked by `tsconfig.worker.json` because it uses D1 types) |
 | G-33 | Workbox precaches the app shell and every JS chunk (514 KiB now) but silently skips files over 2 MiB. Nothing fetches `/content/**` or `/lexicon/**` yet, so the stale-while-revalidate rule for those paths is untested; if T-14/T-08 bundle content as JS chunks instead, it is precached and the size can blow past the limit | Offline start may miss content, or the first visit after a deploy downloads all of it | T-07, T-08, T-14 (check `precache` size in the build output; raise `maximumFileSizeToCacheInBytes` or move content to runtime-cached fetches) |
 | G-34 | The PWA is verified only in Chromium (installability errors empty, offline shell works). Not checked: real iOS Safari (no `beforeinstallprompt`; the Share-sheet hint is the only install path, and iOS may clear storage after inactivity, see G-04) and Lighthouse (not installed here). Fonts still come from Google Fonts at runtime; the first offline visit before they were cached falls back to system fonts | Install and offline behavior on iPhone is unproven | T-30 (test on a real device), B-20 |
-| G-25 | G-01 checked (T-08): the lexicon uses Wiktionary via kaikki.org and Lexique 3.83, both CC BY-SA 4.0, so `content/lexicon/` is CC BY-SA 4.0 and needs visible attribution (texts in `docs/LICENSES.md`). Nothing in the app shows it yet | Shipping publicly without the credits screen breaks the license | B-21, T-30. T-29 (S-05): still not shown in the app, so B-21 is a launch blocker for any public deploy; T-30's `Depends on` should list it |
+| G-25 | G-01 checked (T-08): the lexicon uses Wiktionary via kaikki.org and Lexique 3.83, both CC BY-SA 4.0, so `content/lexicon/` is CC BY-SA 4.0 and needs visible attribution (texts in `docs/LICENSES.md`). Nothing in the app shows it yet | Shipping publicly without the credits screen breaks the license | B-21, T-30. T-29 (S-05): still not shown in the app, so B-21 is a launch blocker for any public deploy; T-30's `Depends on` should list it. **Resolved (B-21, PR #42):** a Credits page, linked from Me, shows both attributions with their links |
 | G-26 | (Adds numbers to G-33.) Once anything imports `src/shared/lexicon/lookup.ts` (T-15/T-25), Vite emits the 54 shards as lazy JS chunks: about 18 MB raw, 1 MB gzipped, largest `forms-r-*.js` 2.00 MB, just under Workbox's 2 MiB limit. The PWA's `**/*.js` glob then precaches all of them on first visit. `shards.test.ts` fails if a shard's JSON passes 1.6 MB | First visit downloads the whole lexicon (~1 MB over the wire); one more letter's growth and a shard silently drops out of the offline cache | **Resolved (T-26, L-104):** the shards are in `globIgnores` and runtime-cached (`CacheFirst`, cache `lexicon-shards`, 60 entries) on first lookup; precache is now 12 entries / 1,027 KiB |
 | G-45 | Settings shows "Synced to your account" from the profile mutation state (saving, error, synced), not from real multi-device sync info; the mockup's "2 min ago · phone and laptop" needs a last-sync time the API does not return | The status line says less than the mockup until the real API exists | T-20, T-26 |
 | G-46 | The settings chapter picker is one flat list in route order (appendix and chapters interleaved by learning order, about 40 rows), with no stage grouping or search | Long list to scroll on a phone; B-chapter-picker polish could reuse the onboarding list (T-21) | T-20, T-21 |
@@ -1668,7 +1668,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-41 | The review session is a single pass: a card graded Again or Hard (due again in 1 to 10 minutes by FSRS's learning steps) is not shown again in the same session, it comes back in the next one. The "1m" on the Again button is true (that is its due time) but the learner won't see it until they start another session. The last grade is also held until the next grade or the end of the session (G-20), so closing the tab on the last card loses it (the card just stays due) | Learning cards get less repetition in one sitting than in Anki-style apps | T-18 follow-up (re-queue cards whose next due is within the session, then the progress count and the "cards" stat need a rule; decide with the user) |
 | G-42 | Session complete's "Up next" finds the next unread text of the current chapter itself (`getChapterTexts` + `GET /api/activity/readings`), the same rule as Today's reading card (T-15), and falls back to the chapter page while no text exists (T-14 not merged). "More due" after a session comes from `/api/cards/stats`, not a tomorrow forecast. The "Time" tile is the sum of per-card answer times, not wall-clock | Two copies of the "next unread" rule could drift; the screen was only checked against the chapter fallback with real content | T-26 made "Up next" use Today's `nextUnreadText` (one rule now); "More due" and the Time tile are unchanged |
 | G-35 | Better Auth hashes passwords with scrypt (N=16384, r=16): about 130–310 ms per hash or verify in local workerd. The Workers Free plan allows 10 ms CPU per request, so sign-up and sign-in would fail or be throttled there | Email auth needs Workers Paid, or cheaper custom hashing (weaker) | T-30, human decision (QUESTION under T-13 and T-29; T-29 recommends keeping scrypt on Workers Paid) |
-| G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built) |
+| G-36 | User tables (`profiles`, `cards`, ...) have no foreign key to Better Auth's `user.id` (T-06 made them before the auth tables existed), so deleting a user leaves their data behind. No account deletion in MVP | Orphan rows once account deletion exists | later (add FKs or delete through `scopedDb` when account deletion is built). **Resolved for deletion (B-16, PR #46):** `DELETE /api/account` removes every table with a `user_id` (found from the schema) plus the Better Auth rows in one batch; still no FKs (G-86) |
 | G-55 | `scripts/content/prompts/text.md` doesn't say how lesson texts tokenize titles, times, numbers and the euphonic *t*. `tokenize()` (T-15) makes `M.` / `Mme` / `Dr.` one word token with the period, `8 h 30`, `12h`, `12,50` and `1 000` (no-break space) one token each, `1er` one token, and *a-t-il* five tokens (`a` `-` `t` `-` `il`). `content:check` doesn't compare lesson tokens with `tokenize()`, but `src/shared/text/tokenize.test.ts` does for every text under `content/` (all 29 Stage 1 texts, 373 sentences, match), so a mismatch fails `npm run check`, not `content:check`. `splitSentences()` groups 2 of 187 Stage 1 paragraphs differently from the content: it splits *Super ! Merci, Sophie.* (ch7-le-premier-jour) and *Le billet… Euh… Ah, voilà le billet !* (ch2-la-valise) where the content keeps one sentence | Lesson texts written another way fail a T-15 test whose name content agents may not expect; imported text (B-07) is split into slightly shorter sentences than lessons. T-24 added the token rules to `text.md` and split *Super ! Merci, Sophie.* in the content; the *Le billet… Euh…* case is left to the splitter | T-24 (done), the token check in `content:check` is optional |
 | G-56 | `annotate()`'s context rules are a few heuristics: subject pronoun before or after the verb (skipping *ne* and object pronouns), noun after a determiner, sentence-initial *A* → *à*, *est-ce que* / *qu'est-ce que*. Known misses: a hyphenated compound ending in a pronoun splits (*garde-à-vous* → *garde-à* + *vous*; only *rendez-vous* and *c'est-à-dire* are listed), *ce* is never taken as a subject, a noun subject (*Marie porte*) gives no verb preference, and function-word glosses are raw Wiktionary lines (*que*: "Substitutes for another, previously stated conjunction.") | Imported text (B-07) shows a wrong reading or an odd gloss now and then; lesson texts are unaffected (content annotation wins). T-24 added `GLOSS_OVERRIDES` for *voici*, *voilà*, *il y a*, *ce*, *en*, *après* and *œil*; `PHRASES` in `annotate()` still knows only *est-ce que* and *qu'est-ce que*, not the rest of the closed phrase list | B-07 (measure on real imported text; add the phrase list to `PHRASES`) |
 | G-59 | `MIN_PASSWORD_LENGTH` (8) is defined twice: `src/worker/auth/index.ts` (enforces it) and `src/client/features/auth/validate.ts` (explains it early). T-21 doesn't own the Worker, so it couldn't move the constant to `src/shared/constants.ts` | The two can drift; the Worker's answer still wins, shown as a generic error | T-21, later (move to `@shared/constants`) |
@@ -1682,7 +1682,7 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-65 | kaikki.org serves only its latest French extract. T-24's rebuild was reproducible only because the 2026-10-03 file was still online (same size and Last-Modified); once it is replaced, `npm run lexicon:build` will also rewrite entries the content didn't touch, and the raw dumps are not archived anywhere | Content tasks that need a rebuild (B-10, B-11) get large unrelated shard diffs, or can't rebuild at all | B-30 |
 | G-66 | The lexicon keeps Wiktionary's vulgar and slang senses among a word's three glosses (*nœud* lists one); `SKIPPED_SENSE_TAGS` in `build.ts` doesn't skip `vulgar` or `slang` | A learner tapping a word in imported text can see a vulgar gloss | B-30 |
 | G-67 | `content:check` doesn't enforce T-24's rules (`isNew` once per course, the closed phrase list), and `lexicon:coverage` isn't in CI, so stale shards (content lemmas added without a rebuild) go unnoticed | Stage 2 to 4 content can repeat Stage 1's problems | B-29, B-30 |
-| G-70 | `src/shared/content` bundles every lesson text eagerly (`import.meta.glob`, L-91), so they sit in the main JS chunk: 895 kB raw / 220 kB gzipped with 8 chapters (texts are ~724 kB of JSON), about 90 kB more per chapter. After G-26 this chunk is most of the 1,027 KiB precache. The Worker bundle has them too (2.46 MB raw / 478 KB gzipped): `routes/cards.ts` imports `getChapter`/`getDeck` from `src/shared/content` (the L-91 trap), still under the 3 MB gzipped free-plan limit | First load and every deploy's update grow with the course; the parse cost hits Today on low-end phones | B-33 |
+| G-70 | `src/shared/content` bundles every lesson text eagerly (`import.meta.glob`, L-91), so they sit in the main JS chunk: 895 kB raw / 220 kB gzipped with 8 chapters (texts are ~724 kB of JSON), about 90 kB more per chapter. After G-26 this chunk is most of the 1,027 KiB precache. The Worker bundle has them too (2.46 MB raw / 478 KB gzipped): `routes/cards.ts` imports `getChapter`/`getDeck` from `src/shared/content` (the L-91 trap), still under the 3 MB gzipped free-plan limit | First load and every deploy's update grow with the course; the parse cost hits Today on low-end phones | B-33. **Resolved (B-33, PR #47):** main chunk 896 → 581 kB (221 → 178 kB gzip), Worker 2.47 → 1.98 MB; precache 54 entries, 1,045 KiB (G-90) |
 | G-71 | The demo seed's fixtures say "12-day streak with one freeze" (`seed.ts`, mockups), but the server recomputes freezes from the history (T-11: one earned per 7 practiced days), ignores the seeded `freezeUsed` row, and shows a 5-day streak (best 6) for `demo@frenchy.local` | Screenshots or E2E checks against the seed won't match the mockup numbers | T-27 (assert what the server computes, or reshape the seed's activity) |
 | G-72 | `vite build` (Cloudflare Vite plugin) copies `.dev.vars` into `dist/frenchy/.dev.vars` so `vite preview` has the local secrets. `dist/` is gitignored and `wrangler deploy` reads secrets from `wrangler secret`, but any step that uploads or archives `dist/` (CI artifact, a static host) would ship the local secrets | A local `BETTER_AUTH_SECRET` or AI key could leak through a build artifact | **Resolved (T-29):** `vite.config.ts` drops `.dev.vars` from every build and `vite preview` reads the root `.dev.vars` through `process.env`; `npm run check:dist` (in `npm run check`, and in CI after a build with a canary `.dev.vars`) fails on any local secrets file or secret value in `dist/` |
 | G-73 | The chapter page's starter-deck tile is one `<button>` whose accessible name is "Starter deck 24 cards": the action text ("Add to reviews", then "Added 24 to your reviews") sits in a nested `role="status"`, which is not part of the button's name. A screen-reader user hears a button with no verb. The E2E helper finds it by "Starter deck" for that reason | Unclear control for assistive tech | T-28 (put the action in the button's label, keep the status as a live region outside the button) |
@@ -1694,12 +1694,12 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-79 | `reviews.id` is a global primary key chosen by the client, so a review posted with an id another user already used is a 500 for the second user (reproduced in T-29, S-12). Nothing is exposed and ids are random UUIDs | A colliding client id fails one review | B-08 (move to a `(user_id, id)` key when offline review ids are reworked) |
 | G-82 | `content:check` still doesn't compare a sentence's tokens with `tokenize()` (G-55): B-22 checks only spacing and apostrophes of the joined sentence. A text that splits a title, time, number or *a-t-il* differently still fails only `src/shared/text/tokenize.test.ts` | Content agents see a failure in a test they don't expect, after `content:check` said OK | B-43 |
 | G-83 | B-22 doesn't check a space before `,` `.`, a missing space after `,` `.`, three dots instead of `…`, straight `"` quotes, or how `…` meets `? !` (*Euh… ?*); `text.md` doesn't say either | Slips in these areas reach the reader unnoticed; each is rare so far (Stage 1 was hand-checked in T-24) | B-44 |
-| G-88 | B-23 keeps the signed-in user's id, name and email in `localStorage` (`frenchy.user`, no tokens) for up to 7 days after the last online read. On a shared device, someone who closes the browser without signing out leaves their name and email readable there, and the next person opening the installed PWA offline gets the shell (Today, Me) of that account until they sign out or go online; script on the same origin can read it (no XSS sink exists today, G-78). A 401 from an API call (not from the session read) does not clear it yet | Small privacy leak on shared devices; a revoked session stays "signed in" on screen until the next session read | B-49 (401 handling); the shared-device trade-off is accepted for a personal phone app, revisit before a public launch |
-| G-89 | The session read has no timeout: with a connection that is up but not answering, `fetch` waits for the browser's own timeout (a minute or more), and the guard renders nothing meanwhile instead of using the remembered user. Also: the remembered user only gets the shell; the data behind each screen still comes from the API and has no offline copy (B-08 for reviews) | Slow start on bad networks; empty or error states offline | B-50, B-08 |
 | G-84 | `public/_headers` is proven only in `vite preview` (Miniflare's assets handling). Nothing has been deployed, so the headers on the real Cloudflare edge (deep link, `sw.js`, `manifest.webmanifest`) and the absence of HSTS are unchecked. HSTS is a zone setting (Cloudflare dashboard, SSL/TLS, Edge Certificates), not something `_headers` should set before the custom domain is final | A header could differ in production, or a CSP violation only a real origin triggers (a Google redirect, a new third party) could go unseen | T-30 (smoke test: `curl -I` of `/` and a deep link must show the four headers), H-09 |
 | G-85 | The CSP allows Google Fonts (`style-src` + `font-src`), which also sends each learner's IP to Google on every cold cache. Any new third party (analytics, error reporting, a CDN for audio) needs a CSP change in the same PR, or the browser silently blocks it. There is no `report-uri`, so a violation seen only on a learner's phone is invisible | Self-hosting the fonts (B-20) lets the CSP drop both Google hosts and the third-party request | B-20 (drop `fonts.googleapis.com` / `fonts.gstatic.com` from `public/_headers` in the same PR) |
 | G-86 | Account deletion (B-16) removes every row with a `user_id` plus Better Auth's `session`, `account` and `user`. It does not touch rows nobody owns: `translation_cache` (the AI answer for the exact text sent, G-64), `ai_daily_usage` (a count per day), `rate_limit` (keyed by IP and path) and `verification` (keyed by identifier; unused until B-18). Today `translation_cache` holds only lesson sentences the client sent, so nothing in it is specific to the deleted user | `translation_cache` could hold text a learner typed once B-07 imports personal text; `verification` rows (reset tokens) would outlive the account | B-07 must use a per-user cache (a `user_id` column puts it in the export and the deletion automatically, because both are derived from the Drizzle schema); B-48 for `verification` |
 | G-87 | Deleting the account signs this browser out (`signOut()` clears the cookie and the query cache) but cannot reach other devices' local data. Their cookie stops working at once (the session row is gone), yet B-23's remembered user (`localStorage`) and B-08's offline store (IndexedDB) would stay there until the app is opened and signed out | Another person on a shared device could see the deleted user's name, queued reviews or cached cards | B-47 (clear local data on sign-out, and when the session read answers 401) |
+| G-88 | B-23 keeps the signed-in user's id, name and email in `localStorage` (`frenchy.user`, no tokens) for up to 7 days after the last online read. On a shared device, someone who closes the browser without signing out leaves their name and email readable there, and the next person opening the installed PWA offline gets the shell (Today, Me) of that account until they sign out or go online; script on the same origin can read it (no XSS sink exists today, G-78). A 401 from an API call (not from the session read) does not clear it yet | Small privacy leak on shared devices; a revoked session stays "signed in" on screen until the next session read | B-49 (401 handling); the shared-device trade-off is accepted for a personal phone app, revisit before a public launch |
+| G-89 | The session read has no timeout: with a connection that is up but not answering, `fetch` waits for the browser's own timeout (a minute or more), and the guard renders nothing meanwhile instead of using the remembered user. Also: the remembered user only gets the shell; the data behind each screen still comes from the API and has no offline copy (B-08 for reviews) | Slow start on bad networks; empty or error states offline | B-50, B-08 |
 | G-90 | B-33 precaches every lesson text and deck as its own chunk (`**/*.js`): 54 entries / 1,034 KiB with 8 chapters, about 5 more entries and ~90 KiB per chapter, all downloaded when the service worker installs. A text not yet precached (first visit, before the SW installs) needs the network once | Install grows with the course (the main chunk no longer does); with ~37 chapters the precache would be ~3.5 MB | later (move texts to a per-chapter runtime cache, or precache only the current chapter, if install size matters) |
 
 ---
@@ -1821,24 +1821,26 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-124 · 2026-10-18 · auth · T-29` — **Better Auth 1.7 links a Google login to an existing account with the same email only when the local account's email is verified (`account.accountLinking.requireLocalEmailVerified`, default true). We never verify emails, so this blocks account pre-hijacking, but a learner who signed up with email and later taps "Continue with Google" gets "account not linked".** → Keep the default. Email verification (B-18) is what lets the two sign-in methods meet; don't set `requireLocalEmailVerified: false` to make the error go away.
 - `L-125 · 2026-10-19 · orchestration · lead` — **Wave 6 lost its agents twice in one night: a container restart (worktrees survived, `node_modules` did not, and only claim commits were pushed) and then the session limit (all three stopped within minutes, everything pushed). Both times SendMessage resumed each agent where it stopped. After the restart, one agent's `pkill -f "npm ci"` killed its own shell (L-119).** → After a restart, check each worktree for `node_modules` and unpushed work before resuming, and say so in the resume message. After a limit, resume as L-109 says.
 - `L-126 · 2026-10-19 · orchestration · lead` — **Each Wave 6 PR was green alone, but chaining them broke typecheck: T-27 added `e2e/` to `tsconfig.node.json` (no DOM lib) and T-28's `e2e/a11y.spec.ts`, written before that config existed, uses `document` inside `page.evaluate`. Also, the auto-mode classifier refused a `git merge` run inside an agent's worktree, so the lead merged on a local branch in the main checkout and pushed that to the task branch.** → When two parallel tasks share a new folder, run the full check (and E2E) on the chained merge before pushing it. Do lead merges on a local branch of the main checkout, not inside agent worktrees.
-- `L-142 · 2026-10-20 · testing · B-16` — **A test that asked D1 which tables have a `user_id` column failed with `D1_ERROR: not authorized: SQLITE_AUTH`, both with `pragma_table_info(m.name)` in a join and with a `PRAGMA table_info("t")` statement in the Workers test pool.** → To inspect the migrated schema from a test, read the DDL: `SELECT name, sql FROM sqlite_master WHERE type = 'table'` works. `account.test.ts` matches `/\buser_id\b/` in it.
-- `L-143 · 2026-10-20 · worker · B-16` — **Account deletion without Better Auth's `deleteUser` (it needs `user.deleteUser.enabled`, a fresh session or password, and knows nothing of our tables, G-36): one D1 batch in `scopedDb(...).deleteAccount()` removes every user table, then `session`, `account`, `user`. The list of user tables is `USER_TABLES` in `src/worker/db/index.ts`, found by looking for a `user_id` column in the Drizzle schema, and export uses the same list. A table added by hand-written SQL but missing from the schema would be missed, so `account.test.ts` compares the migrated DDL with the list.** → A new per-user table needs nothing extra for export and deletion as long as it is in `schema.ts` with a `user_id` column; the test fails if a migration has one that the schema lacks. A table without `user_id` (a cache, a counter) is never exported or deleted: give personal data a `user_id` (G-86).
-- `L-144 · 2026-10-20 · tooling · B-16` — **In a worktree-isolated agent, the harness refused Bash calls that chain commands with `&&`/`;`, run `python3 -`/heredocs, or use `sed` programs like `1628r file`, with "too complex to verify that it stays inside the worktree".** → Use one plain command per Bash call, make file edits with the Edit and Write tools, and keep scratch files in the scratchpad directory.
-- `L-145 · 2026-10-20 · testing · B-16` — **`playwright.config.ts` serves on `E2E_PORT` (default 5273) and has `reuseExistingServer: false`, so two agents running E2E on one box would collide on the port.** → On a shared box run `E2E_PORT=<unused port> npx playwright test e2e/<spec>`. Deleting an account in E2E logs one harmless `[Better Auth] User not found` warning: the sign-out that follows the deletion looks up a session whose user is gone, and still clears the cookie and lands on the welcome screen.
 - `L-127 · 2026-10-20 · e2e · B-21` — **The a11y E2E (`e2e/a11y.spec.ts`) says inline links are exempt from the 44 px check, but the code exempts only `[data-token]`, so any `<a>` in a sentence fails at 20 px high.** → Links inside prose need `inline-flex min-h-11 min-w-11 items-center` (the Credits page does this). Don't weaken the check for it; if a future screen has long prose with many links, widen the exemption deliberately in one PR.
 - `L-132 · 2026-10-20 · content · B-22` — **The four typography rules (stray spaces, no-break space before `? ! : ;` and inside `« »`, a gap after `l'`, curly apostrophes) passed on the whole Stage 1 tree the first time they ran, because T-24 had fixed these by hand. They were checked by breaking sentences in tests, not by the real content.** → Judge a new content rule by the failing test you write for it, not by "the real tree still passes"; the tree passing only says nobody had made the slip yet.
 - `L-133 · 2026-10-20 · content · B-22` — **Spacing rules look at the sentence's joined text, not at token boundaries: the no-break space before `!` is the start of a gap token (` !`), and one text can be split into tokens in several valid ways. Only the apostrophe rule needs tokens (a word ending in `'` followed by a gap).** → Write new spacing checks on `tokens.map(t => t.t).join('')`; look at tokens only when the rule is about what a token is.
 - `L-134 · 2026-10-20 · content · B-22` — **Exceptions the rule needs so it doesn't flag correct French: `?!` stacked marks, a clock time like `8:30`, a mark that opens the sentence. The narrow no-break space (U+202F) is also accepted before `? ! : ;`, though all Stage 1 content uses U+00A0.** → If a rule seems to flag good French, add the exception with a test; don't ask content to change.
 - `L-135 · 2026-10-20 · testing · B-22` — **A plain space and a no-break space look the same in a diff and in terminal output, so a test written with a pasted character can pass or fail for the wrong reason.** → Write them as `\u00a0` (a named `NB` constant) in tests and fixtures, never as a pasted character.
 - `L-136 · 2026-10-20 · tooling · B-22` — **In a worktree-isolated agent, one Bash call that mixed a Python heredoc with `&&` chains and `npm` was refused as "too complex to verify", and nothing in it ran.** → Keep Bash calls to plain single commands (`sed -i`, `npx ...`) in a worktree, and make multi-line edits with the Edit tool.
-- `L-147 · 2026-10-20 · client · B-23` — **TanStack Query's default `networkMode: 'online'` pauses a query once the browser has fired an `offline` event, so the session query never ran its function and the guard sat on "loading" instead of reaching the remembered-user fallback. A plain `navigator.onLine` spy in a test does not show it (the online manager ignores the property and starts out online); `onlineManager.setOnline(false)` does.** → A query that must answer without the network (the session read) sets `networkMode: 'always'`; test offline behaviour with `onlineManager.setOnline(false)`, and check the test fails without the fix.
-- `L-148 · 2026-10-20 · auth · B-23` — **Better Auth's client behaves two ways: a rejected fetch throws (`TypeError: fetch failed`), but an HTTP error comes back as `{ data: null, error: { status, message } }`. And `get-session` with no session answers 200 with `null`, not 401, so "signed out" is mostly an empty answer.** → Wrap `getSession()` in try/catch for network failures, read `error.status` for HTTP ones, and treat both `null` data and a 401 as signed out. Anything else (5xx, 403, 429) is "don't know", which keeps the remembered user.
-- `L-149 · 2026-10-20 · testing · B-23` — **The client test setup resets MSW and the TanStack cache between cases but not `localStorage`, so once the session read writes to it, an earlier test's remembered user made a later "nobody remembered" test pass for the wrong reason.** → A test file that reads or writes `localStorage` clears it in its own `beforeEach`; `vi.restoreAllMocks()` after storage spies.
-- `L-150 · 2026-10-20 · e2e · B-23` — **A full offline reload cannot be tested on `vite dev` (G-74: no service worker, so the document itself needs the dev server). What can be proven in the browser is the app's own part: abort `**/api/**` with `page.route(..., route.abort())`, reload, and the remembered user keeps Today; clear cookies instead and the welcome screen shows.** → Offline-start E2E uses route aborts; the real installed-PWA offline reload stays a device check (B-35 runs the suite against `vite preview`).
 - `L-137 · 2026-10-20 · worker · B-39` — **`public/_headers` is applied by the assets layer only to files it serves (`index.html`, the SPA fallback for `/read/...`, `/assets/*`, `sw.js`, `manifest.webmanifest`), not to anything the Worker returns. With `run_worker_first: ["/api/*"]` (L-11) the `/api/*` answers, 404s and the 413 carry none of them (checked in `vite preview`: `curl -I` of `/api/health` has no CSP).** → Headers for `/api/*` come from Worker middleware: `src/worker/middleware/harden-api.ts` sets `X-Content-Type-Options: nosniff` on every API answer, errors included. Don't add `/api/*` rules to `_headers`; they would not apply. The CSP is not needed on JSON.
 - `L-138 · 2026-10-20 · client · B-39` — **Zod 4 probes `new Function('')` once, when the first schema is built, and catches the failure. With a CSP that has no `'unsafe-eval'` the catch hides the error but the browser still fires a `securitypolicyviolation` event and logs a console error, on every page load. It is the only violation the app produced.** → `src/client/zod-jitless.ts` (`z.config({ jitless: true })`) is the first import of `main.tsx`; a call after the imports is too late, because the probe runs while the schema modules load. Never add `'unsafe-eval'` to the CSP. A new dependency that evals shows up the same way: walk the screens with a `securitypolicyviolation` listener (an `addInitScript`), not by reading the console, which also fills with unrelated network errors.
 - `L-139 · 2026-10-20 · client · B-39` — **The CSP needs fewer holes than expected. No `style-src 'unsafe-inline'` or `style-src-attr` is needed: React's `style={{}}` goes through the CSSOM (not blocked), Tailwind is a built CSS file, and `index.html` has no inline script or style. The sources that are needed are `fonts.googleapis.com` in `style-src` and `fonts.gstatic.com` in `font-src`. Not needed: Web Speech TTS (local, no network), the service worker (`worker-src 'self'`), the manifest (`manifest-src 'self'`), `data:` icons beyond `img-src data:`, and Better Auth's Google redirect (a top-level navigation; `signIn.social` first `fetch`es our own `/api/auth/sign-in/social`).** → Keep the policy as `public/_headers` has it. Negative checks in Chromium: an injected inline script, a cross-origin `fetch`, `<img>` and `<iframe>` each raise their violation, and a page on another origin cannot frame the app. A web font or analytics host added later needs its directive.
 - `L-140 · 2026-10-20 · worker · B-39` — **Hono's `bodyLimit` checks `Content-Length` when there is one and otherwise counts the streamed bytes, so a body without the header is stopped too. Workerd sets `Content-Length` itself, so a test cannot send a header that lies; the streamed case needs a `ReadableStream` body with `duplex: 'half'`. The contract has no 413 code, so the 413 answers with `code: 'bad_request'` (the status carries the meaning) and no schema change.** → `docs/api-contract.md` lists `413`; `index.test.ts` covers a plain big body and a streamed one. If clients ever need to tell it apart from a 400, add `payload_too_large` to `ApiErrorCode` in `src/shared/schemas` in one PR with the client.
 - `L-141 · 2026-10-20 · e2e · B-39` — **Playwright's `extraHTTPHeaders` (the E2E `test` fixture sets `cf-connecting-ip` with it) is sent to every origin, not just the app. A preflighted cross-origin request then fails: the Google Fonts files were blocked by CORS ("Request header field cf-connecting-ip is not allowed") in the first CSP walk. Also, this sandbox cannot reach `fonts.googleapis.com`, so every run logs `net::ERR_FAILED` for the font CSS; it is the network, not the CSP.** → Scope such headers to our own origin (`page.route` on `/api/**`) when a spec cares about third-party requests, and read console errors with that noise in mind. The E2E suite is unaffected (fonts are not asserted).
+- `L-142 · 2026-10-20 · testing · B-16` — **A test that asked D1 which tables have a `user_id` column failed with `D1_ERROR: not authorized: SQLITE_AUTH`, both with `pragma_table_info(m.name)` in a join and with a `PRAGMA table_info("t")` statement in the Workers test pool.** → To inspect the migrated schema from a test, read the DDL: `SELECT name, sql FROM sqlite_master WHERE type = 'table'` works. `account.test.ts` matches `/\buser_id\b/` in it.
+- `L-143 · 2026-10-20 · worker · B-16` — **Account deletion without Better Auth's `deleteUser` (it needs `user.deleteUser.enabled`, a fresh session or password, and knows nothing of our tables, G-36): one D1 batch in `scopedDb(...).deleteAccount()` removes every user table, then `session`, `account`, `user`. The list of user tables is `USER_TABLES` in `src/worker/db/index.ts`, found by looking for a `user_id` column in the Drizzle schema, and export uses the same list. A table added by hand-written SQL but missing from the schema would be missed, so `account.test.ts` compares the migrated DDL with the list.** → A new per-user table needs nothing extra for export and deletion as long as it is in `schema.ts` with a `user_id` column; the test fails if a migration has one that the schema lacks. A table without `user_id` (a cache, a counter) is never exported or deleted: give personal data a `user_id` (G-86).
+- `L-144 · 2026-10-20 · tooling · B-16` — **In a worktree-isolated agent, the harness refused Bash calls that chain commands with `&&`/`;`, run `python3 -`/heredocs, or use `sed` programs like `1628r file`, with "too complex to verify that it stays inside the worktree".** → Use one plain command per Bash call, make file edits with the Edit and Write tools, and keep scratch files in the scratchpad directory.
+- `L-145 · 2026-10-20 · testing · B-16` — **`playwright.config.ts` serves on `E2E_PORT` (default 5273) and has `reuseExistingServer: false`, so two agents running E2E on one box would collide on the port.** → On a shared box run `E2E_PORT=<unused port> npx playwright test e2e/<spec>`. Deleting an account in E2E logs one harmless `[Better Auth] User not found` warning: the sign-out that follows the deletion looks up a session whose user is gone, and still clears the cookie and lands on the welcome screen.
+- `L-147 · 2026-10-20 · client · B-23` — **TanStack Query's default `networkMode: 'online'` pauses a query once the browser has fired an `offline` event, so the session query never ran its function and the guard sat on "loading" instead of reaching the remembered-user fallback. A plain `navigator.onLine` spy in a test does not show it (the online manager ignores the property and starts out online); `onlineManager.setOnline(false)` does.** → A query that must answer without the network (the session read) sets `networkMode: 'always'`; test offline behaviour with `onlineManager.setOnline(false)`, and check the test fails without the fix.
+- `L-148 · 2026-10-20 · auth · B-23` — **Better Auth's client behaves two ways: a rejected fetch throws (`TypeError: fetch failed`), but an HTTP error comes back as `{ data: null, error: { status, message } }`. And `get-session` with no session answers 200 with `null`, not 401, so "signed out" is mostly an empty answer.** → Wrap `getSession()` in try/catch for network failures, read `error.status` for HTTP ones, and treat both `null` data and a 401 as signed out. Anything else (5xx, 403, 429) is "don't know", which keeps the remembered user.
+- `L-149 · 2026-10-20 · testing · B-23` — **The client test setup resets MSW and the TanStack cache between cases but not `localStorage`, so once the session read writes to it, an earlier test's remembered user made a later "nobody remembered" test pass for the wrong reason.** → A test file that reads or writes `localStorage` clears it in its own `beforeEach`; `vi.restoreAllMocks()` after storage spies.
+- `L-150 · 2026-10-20 · e2e · B-23` — **A full offline reload cannot be tested on `vite dev` (G-74: no service worker, so the document itself needs the dev server). What can be proven in the browser is the app's own part: abort `**/api/**` with `page.route(..., route.abort())`, reload, and the remembered user keeps Today; clear cookies instead and the welcome screen shows.** → Offline-start E2E uses route aborts; the real installed-PWA offline reload stays a device check (B-35 runs the suite against `vite preview`).
 - `L-152 · 2026-10-20 · build · B-33` — **Re-exporting an eager `import.meta.glob` (`contentFiles`) from the same module whose loaders lazy-glob the same files made every dynamic import ineffective: Rolldown warned `INEFFECTIVE_DYNAMIC_IMPORT` for all 42 files and kept them in the main chunk, although no app code used `contentFiles`. Tree-shaking an unused export does not change chunk assignment.** → The eager tree lives in its own module (`src/shared/content/files.ts`) that only tests and tooling import. After adding a lazy chunk, grep the build log for `INEFFECTIVE_DYNAMIC_IMPORT` as well as checking the `precache` line (L-104).
 - `L-153 · 2026-10-20 · worker · B-33` — **The Worker only needs to know that a text exists, and `import.meta.glob(texts, { eager: true, import: 'id' })` gives exactly that: Vite's JSON plugin emits each top-level key as a named export, so the bundle keeps just the ids. `dist/frenchy/index.js` went from 2,472 kB / 482 kB gzipped to 1,977 kB / 435 kB.** → Worker code reads content through `shared/content/server` (course, decks, text ids). A lazy glob would not help there: the Worker build code-splits it into modules that are still uploaded.
+- `L-157 · 2026-10-20 · testing · lead` — **After chaining B-16 onto B-39 in a reused lead worktree, two `AccountSection` tests failed with "MSW intercepted a request without a matching request handler", though they passed on B-16 alone. Vitest's transform cache (`node_modules/.vitest-cache`) is keyed by the importing file, so `mocks/handlers/index.ts` (unchanged) kept its old `import.meta.glob` result and never saw the new `handlers/account.ts`. Clearing `node_modules/.vite` alone did not help.** → After merging branches that add files picked up by an `import.meta.glob`, `rm -rf node_modules/.vitest-cache node_modules/.vite` before trusting a failure; CI (fresh install) is not affected.
+- `L-158 · 2026-10-20 · orchestration · lead` — **Wave 7a's six agents finished in 20 to 33 minutes with no restarts. PRs arrived out of the planned order (B-23 before B-22), which was fine because no two Owns lists overlapped beyond one-line hunks. Chaining each PR onto the previous chained head as it arrived, without waiting for merges, kept every PR to one CI run, and all six chained merges conflicted only in TODO.md appends (plus one import line in `src/worker/index.ts` and one in `validate.test.ts`). The GitHub merge tool's `expectedHeadSha` needs the full 40-character SHA: a short or retyped one fails. One agent stopped its preview servers with a `ps | grep | xargs kill` pattern (L-119).** → Chain as PRs arrive, in a lead worktree outside `.claude/worktrees/` with its own `npm ci`; read the head SHA with `git rev-parse` before merging. Briefs should repeat "never kill by pattern" for servers too, not only `npm ci`.
