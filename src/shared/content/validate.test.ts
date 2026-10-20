@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { cafeDialogueText, ch10Deck, ch10Note, leaMorningText } from '../fixtures';
-import type { Course, Deck, Grammar, Text } from '../schemas';
+import type { Course, Deck, Grammar, Text, Token, WordToken } from '../schemas';
 import { contentFiles } from './files';
 import { validateContent, type ContentFiles } from './validate';
 
@@ -273,6 +273,104 @@ describe('validateContent texts', () => {
       'chapters/ch10/readme.md: Unexpected file; expected chapters/<chapterId>/texts/<id>.json, note.json or deck.json',
       'chapters/ch99/note.json: Folder "ch99" is not a chapter in course.json',
     ]);
+  });
+});
+
+describe('validateContent typography', () => {
+  const NB = '\u00a0';
+  const where = `${CAFE}: paragraphs.0.sentences.0:`;
+  const wordTemplate = cafeDialogueText.paragraphs[0].sentences[0].tokens[0] as WordToken;
+
+  /** Edits the tokens of the first sentence ("Bonjour, Léa\u00a0!") and returns the problems. */
+  function withTokens(change: (tokens: Token[]) => void): string[] {
+    return problemsOf(withText((t) => change(t.paragraphs[0].sentences[0].tokens)));
+  }
+
+  /** Replaces the whole sentence: each part is a word (`true`) or a gap (`false`) with this text. */
+  function replaceWith(...parts: [isWord: boolean, t: string][]): string[] {
+    return withTokens((tokens) => {
+      tokens.splice(
+        0,
+        tokens.length,
+        ...parts.map(([isWord, t]): Token => (isWord ? { ...wordTemplate, t } : { t })),
+      );
+    });
+  }
+
+  it('accepts no-break spaces, « », clock times and stacked marks', () => {
+    expect(
+      replaceWith(
+        [false, `«${NB}`],
+        [true, 'Quoi'],
+        [false, `${NB}?!${NB}»${NB}; `],
+        [true, '8'],
+        [false, ':'],
+        [true, '30'],
+        [false, `${NB}:`],
+      ),
+    ).toEqual([]);
+  });
+
+  it('rejects a space at the start or the end of a sentence', () => {
+    expect(withTokens((tokens) => tokens.unshift({ t: ' ' }))).toEqual([
+      `${where} " Bonjour, Léa${NB}!" starts or ends with a space`,
+    ]);
+    expect(withTokens((tokens) => tokens.push({ t: ' ' }))).toEqual([
+      `${where} "Bonjour, Léa${NB}! " starts or ends with a space`,
+    ]);
+  });
+
+  it('rejects two spaces in a row', () => {
+    const problems = withTokens((tokens) => {
+      tokens[1] = { t: ',  ' };
+    });
+    expect(problems).toEqual([`${where} "Bonjour,  Léa${NB}!" has two spaces in a row`]);
+  });
+
+  it('rejects a plain space or no space before ? ! : ;', () => {
+    for (const [gap, found] of [
+      [' !', 'a plain space'],
+      ['!', 'no space'],
+      [' ?', 'a plain space'],
+      [' :', 'a plain space'],
+      [' ;', 'a plain space'],
+    ]) {
+      const problems = withTokens((tokens) => {
+        tokens[3] = { t: gap };
+      });
+      expect(problems).toEqual([
+        `${where} "Bonjour, Léa${gap}" has ${found} before "${gap.slice(-1)}"; use a no-break space (U+00A0)`,
+      ]);
+    }
+  });
+
+  it('rejects a plain space inside « »', () => {
+    expect(replaceWith([false, '« '], [true, 'Oui'], [false, ' »'])).toEqual([
+      `${where} "« Oui »" has a plain space after "«"; use a no-break space (U+00A0)`,
+      `${where} "« Oui »" has a plain space before "»"; use a no-break space (U+00A0)`,
+    ]);
+  });
+
+  it("rejects a gap token right after a word ending in an apostrophe (l' + ardoise)", () => {
+    expect(replaceWith([true, "l'"], [false, ' '], [true, 'ardoise'])).toEqual([
+      `${where} gap token " " after "l'"; the next word follows it directly`,
+    ]);
+  });
+
+  it('rejects a curly apostrophe in a token', () => {
+    expect(replaceWith([true, 'l’'], [true, 'ardoise'])).toEqual([
+      `${where} token "l’" has a curly apostrophe; use a straight ' (U+0027)`,
+    ]);
+  });
+
+  it('names the sentence that is wrong', () => {
+    const problems = problemsOf(
+      withText((t) => {
+        t.paragraphs[1].sentences[1].tokens.push({ t: ' ' });
+      }),
+    );
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toMatch(`${CAFE}: paragraphs.1.sentences.1: `);
   });
 });
 

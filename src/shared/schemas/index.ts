@@ -7,3 +7,4 @@ export * from './words';
 export * from './activity';
 export * from './ai';
 export * from './api';
+export * from './account';

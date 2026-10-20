@@ -1166,16 +1166,16 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (before sharing the app with others) | Sonnet 5.5 · High | S | T-13, T-22 | — |
 
-**Status:** ready (deps done) · **Owns:** `src/worker/routes/account.ts`, account section in Settings
+**Status:** in review · **Claimed by:** Wave 7a agent (B-16) · **Branch:** `task/B-16-account` · **PR:** https://github.com/MinhTam2773/frenchy/pull/46 · **Owns:** `src/worker/routes/account.ts`, account section in Settings
 **Goal:** Users can download their data and delete their account.
 **Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
 
-- [ ] `GET /api/account/export` (JSON of all user tables)
-- [ ] `DELETE /api/account` with confirmation; removes every user row and session
-- [ ] Settings UI with a confirm dialog
-- [ ] Tests: export completeness, delete leaves no rows
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] `GET /api/account/export` (JSON of all user tables, found from the Drizzle schema)
+- [x] `DELETE /api/account` with confirmation (`{ "confirm": "delete" }`); removes every user row and session
+- [x] Settings UI with a confirm dialog (`AccountSection.tsx`: download JSON, delete behind a typed "delete"; signs out to the welcome screen)
+- [x] Tests: export completeness, delete leaves no rows (`account.test.ts`; also fails if a migrated table has `user_id` but is missing from export/delete)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-142 to L-145, G-86, G-87, B-47, B-48)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-17 · App store apps with Capacitor (only if needed)
@@ -1265,16 +1265,16 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
 
-**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** in review ([PR #44](https://github.com/MinhTam2773/frenchy/pull/44)) · **Claimed by:** Wave 7a agent (B-22) · **Branch:** `task/B-22-typography-checks` · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
 **Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
 
-- [ ] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
-- [ ] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
-- [ ] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
-- [ ] No curly apostrophe in French tokens
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Tokens of a sentence join to a string with no leading/trailing space and no double spaces
+- [x] A no-break space (U+00A0) before `? ! : ;` and inside `« »`; a plain space there is an error
+- [x] No gap token right after a word ending in an apostrophe (`l'` + `ardoise`)
+- [x] No curly apostrophe in French tokens
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-23 · Start the app offline without being sent to the welcome screen
@@ -1451,14 +1451,14 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (before sharing the app publicly) | Sonnet 5.5 · High | S | T-29 | — |
 
-**Status:** ready · **Owns:** `public/_headers`, one middleware line in `src/worker/index.ts` (hot file), `src/worker/index.test.ts`
+**Status:** in review ([PR #45](https://github.com/MinhTam2773/frenchy/pull/45)) · **Claimed by:** Wave 7a agent (B-39) · **Branch:** `task/B-39-http-hardening` · **Owns:** `public/_headers`, one middleware line in `src/worker/index.ts` (hot file), `src/worker/index.test.ts`
 **Goal:** Close G-78 (T-29 S-10): the app sends standard security headers and the API refuses oversized bodies.
 **Done when:** `vite preview` serves `/` and a deep link with the headers below, every screen works in Chromium with no CSP violation in the console (fonts, service worker, manifest, TTS), and a test shows an oversized body gets 413 in the contract's error shape.
 
-- [ ] `public/_headers` for `/*`: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, and a CSP (`default-src 'self'`, Google Fonts in `style-src` / `font-src`, `img-src 'self' data:`, `frame-ancestors 'none'`); `index.html` has no inline script or style today. Check it also applies to the SPA fallback
-- [ ] Verify in `vite preview` and the T-27 E2E run (`vite dev` doesn't apply `_headers`)
-- [ ] Hono `bodyLimit` on `/api` (e.g. 64 KB; the largest real body is a card, about 1.5 KB)
-- [ ] Tests
+- [x] `public/_headers` for `/*`: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, and a CSP (`default-src 'self'`, Google Fonts in `style-src` / `font-src`, `img-src 'self' data:`, `frame-ancestors 'none'`); `index.html` has no inline script or style today. Check it also applies to the SPA fallback
+- [x] Verify in `vite preview` and the T-27 E2E run (`vite dev` doesn't apply `_headers`)
+- [x] Hono `bodyLimit` on `/api` (e.g. 64 KB; the largest real body is a card, about 1.5 KB)
+- [x] Tests
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1500,6 +1500,39 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-43 · `content:check` compares lesson tokens with `tokenize()`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-22 | — |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Close G-82: a text whose tokens split differently from `tokenize()` (titles, times, numbers, the euphonic *t*) fails `content:check`, not a T-15 test with a name content agents don't expect.
+**Done when:** `content:check` names the file, sentence and the two splits when they differ, and all Stage 1 texts pass.
+
+- [ ] Run `tokenize()` on each sentence's joined text and compare token by token (word vs gap, and `t`)
+- [ ] Decide whether `splitSentences()` differences (G-55) are reported or ignored (lessons only need the token split)
+- [ ] Tests
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-44 · More typography rules in `content:check`
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-22 | — |
+
+**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Goal:** Close G-83: the slips B-22 doesn't catch (a space before `,` or `.`, no space after `,`, three dots instead of `…`, straight `"` quotes).
+**Done when:** each rule has a failing and a passing test and the Stage 1 content passes (or the real slips are fixed, typography only).
+
+- [ ] Agree the rules against `text.md` (count how many Stage 1 sentences each would flag before adding it)
+- [ ] Decide how `…` meets `? !` (*Euh… ?* versus *Euh…?*) and write it into `text.md`
+- [ ] Implement and test
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
 
 #### B-49 · A 401 from any API call ends the session and forgets the remembered user
 
@@ -1529,6 +1562,38 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 
 - [ ] Pass `AbortSignal.timeout(~5000)` to `authClient.getSession` and treat the abort as a network failure
 - [ ] Test it with a handler that never responds
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-47 · Clear device-local data on sign-out and account deletion
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 (with B-08 / B-23) | Sonnet 5.5 · Medium | S | B-08, B-23, B-16 | — |
+
+**Status:** blocked (B-08 and B-23 add the local data) · **Owns:** `src/client/lib/session.ts` (`signOut`), `src/client/lib/offline/**` (a `clearLocalData()`)
+**Goal:** Signing out, or deleting the account (B-16), leaves nothing of the account on the device: no remembered user (B-23), no queued reviews or cached cards in IndexedDB (B-08).
+**Done when:** after `signOut()` (which the deletion flow calls) a test finds no remembered user and an empty offline store.
+
+- [ ] One `clearLocalData()` that B-08 and B-23 each register their stores with (or that clears them by name), called from `useSession().signOut`
+- [ ] Decide for queued reviews that are not synced yet: drop them on deletion, keep them on a plain sign-out (the next sign-in of the same user can still send them)
+- [ ] Tests: sign-out clears the remembered user; account deletion clears the queue too
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-48 · Delete Better Auth `verification` rows with the account
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-18, B-16 | — |
+
+**Status:** blocked (B-18 starts creating `verification` rows) · **Owns:** `deleteAccount` in `src/worker/db/index.ts`, test in `src/worker/routes/account.test.ts`
+**Goal:** Reset and verification tokens do not outlive the account (G-86).
+**Done when:** a test creates a verification row for the user's email, deletes the account, and finds no row.
+
+- [ ] Check how Better Auth keys `verification.identifier` for each flow B-18 enables (the email, or a prefix plus the email)
+- [ ] Add that delete to the `deleteAccount` batch, by the user's email
+- [ ] Test: the row is gone after `DELETE /api/account`, another user's row stays
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
@@ -1625,10 +1690,16 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-75 | `lang` can only mark a whole element, so strings that mix English and French carry none: chapter titles with French terms (*Passé composé*, *Être, avoir*), grammar tips and notes that quote French examples, button labels like "Save as cloze (hide “Bonjour”)", and accessible names (`aria-label`) such as "Chapter 12, Être, avoir…". Fully French text (reading titles, words, sentences, the praise line) is tagged. WCAG 3.1.2 (language of parts) is met for those and only partly for the mixed strings | A screen reader reads the French words of a mixed string with the English voice | B-37 |
 | G-76 | All T-28 checks ran in Chromium with axe 4.14 and scripted keyboard walks. Not done: a pass with a real screen reader (VoiceOver on iOS, TalkBack on Android), iOS Safari layout and Dynamic Type, the browser's own forced-colors mode, and the long-press sentence gesture without a mouse (a screen-reader user reaches the sentence sheet through the word sheet's "Sentence" button, which is untested with VoiceOver) | Automated checks catch about a third of the issues a person using assistive tech meets | B-38, T-30 (device test) |
 | G-77 | API writes (`/api/reviews`, `/api/cards`, `/api/activity/*`, `/api/words`, `/api/profile`) have no burst rate limit: one account can script thousands of writes (a review is 3 rows), using up the Free plan's daily D1 write allowance for everyone or growing storage without bound (T-29 S-03) | App-wide write outage until the next day; cost on the Paid plan | B-40, T-30 (a Cloudflare rate-limiting rule on `/api/*`) |
-| G-78 | No security headers on the static app (CSP, `frame-ancestors` / `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) and no request body size cap on `/api` (T-29 S-10). No XSS sink exists today | Less defence in depth against a future XSS or clickjacking; a huge body is parsed before validation | B-39 |
+| G-78 | ~~No security headers on the static app (CSP, `frame-ancestors` / `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) and no request body size cap on `/api` (T-29 S-10)~~ **Resolved in B-39:** `public/_headers` (CSP, `X-Frame-Options`, `nosniff`, `Referrer-Policy`) on the static app, `nosniff` and a 64 KB `bodyLimit` (413) on `/api`. No XSS sink exists today | Less defence in depth against a future XSS or clickjacking; a huge body is parsed before validation | B-39 |
 | G-79 | `reviews.id` is a global primary key chosen by the client, so a review posted with an id another user already used is a 500 for the second user (reproduced in T-29, S-12). Nothing is exposed and ids are random UUIDs | A colliding client id fails one review | B-08 (move to a `(user_id, id)` key when offline review ids are reworked) |
+| G-82 | `content:check` still doesn't compare a sentence's tokens with `tokenize()` (G-55): B-22 checks only spacing and apostrophes of the joined sentence. A text that splits a title, time, number or *a-t-il* differently still fails only `src/shared/text/tokenize.test.ts` | Content agents see a failure in a test they don't expect, after `content:check` said OK | B-43 |
+| G-83 | B-22 doesn't check a space before `,` `.`, a missing space after `,` `.`, three dots instead of `…`, straight `"` quotes, or how `…` meets `? !` (*Euh… ?*); `text.md` doesn't say either | Slips in these areas reach the reader unnoticed; each is rare so far (Stage 1 was hand-checked in T-24) | B-44 |
 | G-88 | B-23 keeps the signed-in user's id, name and email in `localStorage` (`frenchy.user`, no tokens) for up to 7 days after the last online read. On a shared device, someone who closes the browser without signing out leaves their name and email readable there, and the next person opening the installed PWA offline gets the shell (Today, Me) of that account until they sign out or go online; script on the same origin can read it (no XSS sink exists today, G-78). A 401 from an API call (not from the session read) does not clear it yet | Small privacy leak on shared devices; a revoked session stays "signed in" on screen until the next session read | B-49 (401 handling); the shared-device trade-off is accepted for a personal phone app, revisit before a public launch |
 | G-89 | The session read has no timeout: with a connection that is up but not answering, `fetch` waits for the browser's own timeout (a minute or more), and the guard renders nothing meanwhile instead of using the remembered user. Also: the remembered user only gets the shell; the data behind each screen still comes from the API and has no offline copy (B-08 for reviews) | Slow start on bad networks; empty or error states offline | B-50, B-08 |
+| G-84 | `public/_headers` is proven only in `vite preview` (Miniflare's assets handling). Nothing has been deployed, so the headers on the real Cloudflare edge (deep link, `sw.js`, `manifest.webmanifest`) and the absence of HSTS are unchecked. HSTS is a zone setting (Cloudflare dashboard, SSL/TLS, Edge Certificates), not something `_headers` should set before the custom domain is final | A header could differ in production, or a CSP violation only a real origin triggers (a Google redirect, a new third party) could go unseen | T-30 (smoke test: `curl -I` of `/` and a deep link must show the four headers), H-09 |
+| G-85 | The CSP allows Google Fonts (`style-src` + `font-src`), which also sends each learner's IP to Google on every cold cache. Any new third party (analytics, error reporting, a CDN for audio) needs a CSP change in the same PR, or the browser silently blocks it. There is no `report-uri`, so a violation seen only on a learner's phone is invisible | Self-hosting the fonts (B-20) lets the CSP drop both Google hosts and the third-party request | B-20 (drop `fonts.googleapis.com` / `fonts.gstatic.com` from `public/_headers` in the same PR) |
+| G-86 | Account deletion (B-16) removes every row with a `user_id` plus Better Auth's `session`, `account` and `user`. It does not touch rows nobody owns: `translation_cache` (the AI answer for the exact text sent, G-64), `ai_daily_usage` (a count per day), `rate_limit` (keyed by IP and path) and `verification` (keyed by identifier; unused until B-18). Today `translation_cache` holds only lesson sentences the client sent, so nothing in it is specific to the deleted user | `translation_cache` could hold text a learner typed once B-07 imports personal text; `verification` rows (reset tokens) would outlive the account | B-07 must use a per-user cache (a `user_id` column puts it in the export and the deletion automatically, because both are derived from the Drizzle schema); B-48 for `verification` |
+| G-87 | Deleting the account signs this browser out (`signOut()` clears the cookie and the query cache) but cannot reach other devices' local data. Their cookie stops working at once (the session row is gone), yet B-23's remembered user (`localStorage`) and B-08's offline store (IndexedDB) would stay there until the app is opened and signed out | Another person on a shared device could see the deleted user's name, queued reviews or cached cards | B-47 (clear local data on sign-out, and when the session read answers 401) |
 | G-90 | B-33 precaches every lesson text and deck as its own chunk (`**/*.js`): 54 entries / 1,034 KiB with 8 chapters, about 5 more entries and ~90 KiB per chapter, all downloaded when the service worker installs. A text not yet precached (first visit, before the SW installs) needs the network once | Install grows with the course (the main chunk no longer does); with ~37 chapters the precache would be ~3.5 MB | later (move texts to a per-chapter runtime cache, or precache only the current chapter, if install size matters) |
 
 ---
@@ -1750,10 +1821,24 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-124 · 2026-10-18 · auth · T-29` — **Better Auth 1.7 links a Google login to an existing account with the same email only when the local account's email is verified (`account.accountLinking.requireLocalEmailVerified`, default true). We never verify emails, so this blocks account pre-hijacking, but a learner who signed up with email and later taps "Continue with Google" gets "account not linked".** → Keep the default. Email verification (B-18) is what lets the two sign-in methods meet; don't set `requireLocalEmailVerified: false` to make the error go away.
 - `L-125 · 2026-10-19 · orchestration · lead` — **Wave 6 lost its agents twice in one night: a container restart (worktrees survived, `node_modules` did not, and only claim commits were pushed) and then the session limit (all three stopped within minutes, everything pushed). Both times SendMessage resumed each agent where it stopped. After the restart, one agent's `pkill -f "npm ci"` killed its own shell (L-119).** → After a restart, check each worktree for `node_modules` and unpushed work before resuming, and say so in the resume message. After a limit, resume as L-109 says.
 - `L-126 · 2026-10-19 · orchestration · lead` — **Each Wave 6 PR was green alone, but chaining them broke typecheck: T-27 added `e2e/` to `tsconfig.node.json` (no DOM lib) and T-28's `e2e/a11y.spec.ts`, written before that config existed, uses `document` inside `page.evaluate`. Also, the auto-mode classifier refused a `git merge` run inside an agent's worktree, so the lead merged on a local branch in the main checkout and pushed that to the task branch.** → When two parallel tasks share a new folder, run the full check (and E2E) on the chained merge before pushing it. Do lead merges on a local branch of the main checkout, not inside agent worktrees.
+- `L-142 · 2026-10-20 · testing · B-16` — **A test that asked D1 which tables have a `user_id` column failed with `D1_ERROR: not authorized: SQLITE_AUTH`, both with `pragma_table_info(m.name)` in a join and with a `PRAGMA table_info("t")` statement in the Workers test pool.** → To inspect the migrated schema from a test, read the DDL: `SELECT name, sql FROM sqlite_master WHERE type = 'table'` works. `account.test.ts` matches `/\buser_id\b/` in it.
+- `L-143 · 2026-10-20 · worker · B-16` — **Account deletion without Better Auth's `deleteUser` (it needs `user.deleteUser.enabled`, a fresh session or password, and knows nothing of our tables, G-36): one D1 batch in `scopedDb(...).deleteAccount()` removes every user table, then `session`, `account`, `user`. The list of user tables is `USER_TABLES` in `src/worker/db/index.ts`, found by looking for a `user_id` column in the Drizzle schema, and export uses the same list. A table added by hand-written SQL but missing from the schema would be missed, so `account.test.ts` compares the migrated DDL with the list.** → A new per-user table needs nothing extra for export and deletion as long as it is in `schema.ts` with a `user_id` column; the test fails if a migration has one that the schema lacks. A table without `user_id` (a cache, a counter) is never exported or deleted: give personal data a `user_id` (G-86).
+- `L-144 · 2026-10-20 · tooling · B-16` — **In a worktree-isolated agent, the harness refused Bash calls that chain commands with `&&`/`;`, run `python3 -`/heredocs, or use `sed` programs like `1628r file`, with "too complex to verify that it stays inside the worktree".** → Use one plain command per Bash call, make file edits with the Edit and Write tools, and keep scratch files in the scratchpad directory.
+- `L-145 · 2026-10-20 · testing · B-16` — **`playwright.config.ts` serves on `E2E_PORT` (default 5273) and has `reuseExistingServer: false`, so two agents running E2E on one box would collide on the port.** → On a shared box run `E2E_PORT=<unused port> npx playwright test e2e/<spec>`. Deleting an account in E2E logs one harmless `[Better Auth] User not found` warning: the sign-out that follows the deletion looks up a session whose user is gone, and still clears the cookie and lands on the welcome screen.
 - `L-127 · 2026-10-20 · e2e · B-21` — **The a11y E2E (`e2e/a11y.spec.ts`) says inline links are exempt from the 44 px check, but the code exempts only `[data-token]`, so any `<a>` in a sentence fails at 20 px high.** → Links inside prose need `inline-flex min-h-11 min-w-11 items-center` (the Credits page does this). Don't weaken the check for it; if a future screen has long prose with many links, widen the exemption deliberately in one PR.
+- `L-132 · 2026-10-20 · content · B-22` — **The four typography rules (stray spaces, no-break space before `? ! : ;` and inside `« »`, a gap after `l'`, curly apostrophes) passed on the whole Stage 1 tree the first time they ran, because T-24 had fixed these by hand. They were checked by breaking sentences in tests, not by the real content.** → Judge a new content rule by the failing test you write for it, not by "the real tree still passes"; the tree passing only says nobody had made the slip yet.
+- `L-133 · 2026-10-20 · content · B-22` — **Spacing rules look at the sentence's joined text, not at token boundaries: the no-break space before `!` is the start of a gap token (` !`), and one text can be split into tokens in several valid ways. Only the apostrophe rule needs tokens (a word ending in `'` followed by a gap).** → Write new spacing checks on `tokens.map(t => t.t).join('')`; look at tokens only when the rule is about what a token is.
+- `L-134 · 2026-10-20 · content · B-22` — **Exceptions the rule needs so it doesn't flag correct French: `?!` stacked marks, a clock time like `8:30`, a mark that opens the sentence. The narrow no-break space (U+202F) is also accepted before `? ! : ;`, though all Stage 1 content uses U+00A0.** → If a rule seems to flag good French, add the exception with a test; don't ask content to change.
+- `L-135 · 2026-10-20 · testing · B-22` — **A plain space and a no-break space look the same in a diff and in terminal output, so a test written with a pasted character can pass or fail for the wrong reason.** → Write them as `\u00a0` (a named `NB` constant) in tests and fixtures, never as a pasted character.
+- `L-136 · 2026-10-20 · tooling · B-22` — **In a worktree-isolated agent, one Bash call that mixed a Python heredoc with `&&` chains and `npm` was refused as "too complex to verify", and nothing in it ran.** → Keep Bash calls to plain single commands (`sed -i`, `npx ...`) in a worktree, and make multi-line edits with the Edit tool.
 - `L-147 · 2026-10-20 · client · B-23` — **TanStack Query's default `networkMode: 'online'` pauses a query once the browser has fired an `offline` event, so the session query never ran its function and the guard sat on "loading" instead of reaching the remembered-user fallback. A plain `navigator.onLine` spy in a test does not show it (the online manager ignores the property and starts out online); `onlineManager.setOnline(false)` does.** → A query that must answer without the network (the session read) sets `networkMode: 'always'`; test offline behaviour with `onlineManager.setOnline(false)`, and check the test fails without the fix.
 - `L-148 · 2026-10-20 · auth · B-23` — **Better Auth's client behaves two ways: a rejected fetch throws (`TypeError: fetch failed`), but an HTTP error comes back as `{ data: null, error: { status, message } }`. And `get-session` with no session answers 200 with `null`, not 401, so "signed out" is mostly an empty answer.** → Wrap `getSession()` in try/catch for network failures, read `error.status` for HTTP ones, and treat both `null` data and a 401 as signed out. Anything else (5xx, 403, 429) is "don't know", which keeps the remembered user.
 - `L-149 · 2026-10-20 · testing · B-23` — **The client test setup resets MSW and the TanStack cache between cases but not `localStorage`, so once the session read writes to it, an earlier test's remembered user made a later "nobody remembered" test pass for the wrong reason.** → A test file that reads or writes `localStorage` clears it in its own `beforeEach`; `vi.restoreAllMocks()` after storage spies.
 - `L-150 · 2026-10-20 · e2e · B-23` — **A full offline reload cannot be tested on `vite dev` (G-74: no service worker, so the document itself needs the dev server). What can be proven in the browser is the app's own part: abort `**/api/**` with `page.route(..., route.abort())`, reload, and the remembered user keeps Today; clear cookies instead and the welcome screen shows.** → Offline-start E2E uses route aborts; the real installed-PWA offline reload stays a device check (B-35 runs the suite against `vite preview`).
+- `L-137 · 2026-10-20 · worker · B-39` — **`public/_headers` is applied by the assets layer only to files it serves (`index.html`, the SPA fallback for `/read/...`, `/assets/*`, `sw.js`, `manifest.webmanifest`), not to anything the Worker returns. With `run_worker_first: ["/api/*"]` (L-11) the `/api/*` answers, 404s and the 413 carry none of them (checked in `vite preview`: `curl -I` of `/api/health` has no CSP).** → Headers for `/api/*` come from Worker middleware: `src/worker/middleware/harden-api.ts` sets `X-Content-Type-Options: nosniff` on every API answer, errors included. Don't add `/api/*` rules to `_headers`; they would not apply. The CSP is not needed on JSON.
+- `L-138 · 2026-10-20 · client · B-39` — **Zod 4 probes `new Function('')` once, when the first schema is built, and catches the failure. With a CSP that has no `'unsafe-eval'` the catch hides the error but the browser still fires a `securitypolicyviolation` event and logs a console error, on every page load. It is the only violation the app produced.** → `src/client/zod-jitless.ts` (`z.config({ jitless: true })`) is the first import of `main.tsx`; a call after the imports is too late, because the probe runs while the schema modules load. Never add `'unsafe-eval'` to the CSP. A new dependency that evals shows up the same way: walk the screens with a `securitypolicyviolation` listener (an `addInitScript`), not by reading the console, which also fills with unrelated network errors.
+- `L-139 · 2026-10-20 · client · B-39` — **The CSP needs fewer holes than expected. No `style-src 'unsafe-inline'` or `style-src-attr` is needed: React's `style={{}}` goes through the CSSOM (not blocked), Tailwind is a built CSS file, and `index.html` has no inline script or style. The sources that are needed are `fonts.googleapis.com` in `style-src` and `fonts.gstatic.com` in `font-src`. Not needed: Web Speech TTS (local, no network), the service worker (`worker-src 'self'`), the manifest (`manifest-src 'self'`), `data:` icons beyond `img-src data:`, and Better Auth's Google redirect (a top-level navigation; `signIn.social` first `fetch`es our own `/api/auth/sign-in/social`).** → Keep the policy as `public/_headers` has it. Negative checks in Chromium: an injected inline script, a cross-origin `fetch`, `<img>` and `<iframe>` each raise their violation, and a page on another origin cannot frame the app. A web font or analytics host added later needs its directive.
+- `L-140 · 2026-10-20 · worker · B-39` — **Hono's `bodyLimit` checks `Content-Length` when there is one and otherwise counts the streamed bytes, so a body without the header is stopped too. Workerd sets `Content-Length` itself, so a test cannot send a header that lies; the streamed case needs a `ReadableStream` body with `duplex: 'half'`. The contract has no 413 code, so the 413 answers with `code: 'bad_request'` (the status carries the meaning) and no schema change.** → `docs/api-contract.md` lists `413`; `index.test.ts` covers a plain big body and a streamed one. If clients ever need to tell it apart from a 400, add `payload_too_large` to `ApiErrorCode` in `src/shared/schemas` in one PR with the client.
+- `L-141 · 2026-10-20 · e2e · B-39` — **Playwright's `extraHTTPHeaders` (the E2E `test` fixture sets `cf-connecting-ip` with it) is sent to every origin, not just the app. A preflighted cross-origin request then fails: the Google Fonts files were blocked by CORS ("Request header field cf-connecting-ip is not allowed") in the first CSP walk. Also, this sandbox cannot reach `fonts.googleapis.com`, so every run logs `net::ERR_FAILED` for the font CSS; it is the network, not the CSP.** → Scope such headers to our own origin (`page.route` on `/api/**`) when a spec cares about third-party requests, and read console errors with that noise in mind. The E2E suite is unaffected (fonts are not asserted).
 - `L-152 · 2026-10-20 · build · B-33` — **Re-exporting an eager `import.meta.glob` (`contentFiles`) from the same module whose loaders lazy-glob the same files made every dynamic import ineffective: Rolldown warned `INEFFECTIVE_DYNAMIC_IMPORT` for all 42 files and kept them in the main chunk, although no app code used `contentFiles`. Tree-shaking an unused export does not change chunk assignment.** → The eager tree lives in its own module (`src/shared/content/files.ts`) that only tests and tooling import. After adding a lazy chunk, grep the build log for `INEFFECTIVE_DYNAMIC_IMPORT` as well as checking the `precache` line (L-104).
 - `L-153 · 2026-10-20 · worker · B-33` — **The Worker only needs to know that a text exists, and `import.meta.glob(texts, { eager: true, import: 'id' })` gives exactly that: Vite's JSON plugin emits each top-level key as a named export, so the bundle keeps just the ids. `dist/frenchy/index.js` went from 2,472 kB / 482 kB gzipped to 1,977 kB / 435 kB.** → Worker code reads content through `shared/content/server` (course, decks, text ids). A lazy glob would not help there: the Worker build code-splits it into modules that are still uploaded.

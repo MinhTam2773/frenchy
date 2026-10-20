@@ -351,6 +351,27 @@ const cases: Record<string, Case> = {
     invalid: [{ error: { code: 'oops', message: 'x' } }, { message: 'flat' }],
   },
   AuthConfig: { valid: [{ google: false }], invalid: [{}, { google: 'yes' }] },
+
+  // account
+  AccountDeleteInput: {
+    valid: [{ confirm: 'delete' }],
+    invalid: [{}, { confirm: 'yes' }, { confirm: 'DELETE' }],
+  },
+  AccountDeleted: { valid: [{ deleted: true }], invalid: [{}, { deleted: false }] },
+  AccountExport: {
+    valid: [
+      {
+        exportedAt: 1_760_000_000_000,
+        user: { id: 'u1', name: 'Léa', email: 'lea@example.com' },
+        tables: { cards: [{ id: 'c1', userId: 'u1' }], word_status: [] },
+      },
+    ],
+    invalid: [
+      {},
+      { exportedAt: 1, user: { id: '', name: 'Léa', email: 'a@b.c' }, tables: {} },
+      { exportedAt: 1, user: { id: 'u1', name: 'Léa', email: 'a@b.c' }, tables: { cards: 'no' } },
+    ],
+  },
 };
 
 const exported = Object.entries(schemas as Record<string, unknown>).filter(

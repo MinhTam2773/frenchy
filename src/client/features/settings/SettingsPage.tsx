@@ -8,6 +8,7 @@ import { api } from '@client/lib/api';
 import { queryKeys, useProfile } from '@client/lib/query';
 import { useSession } from '@client/lib/session';
 import { useTts } from '@client/lib/tts/useTts';
+import { AccountSection } from './AccountSection';
 
 const SAMPLE_SENTENCE = 'Bonjour, je m’appelle Léa.';
 /** The "automatic" option's value; the profile stores it as `voiceURI: null`. */
@@ -326,6 +327,7 @@ export function SettingsPage() {
           <Icon name="forward" size={18} className="text-faint" />
         </Link>
       </Section>
+      <AccountSection />
       <Button variant="secondary" fullWidth onClick={() => void signOut()} className="text-fem">
         Sign out
       </Button>
