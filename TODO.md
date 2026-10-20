@@ -1500,6 +1500,38 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-47 · Clear device-local data on sign-out and account deletion
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 (with B-08 / B-23) | Sonnet 5.5 · Medium | S | B-08, B-23, B-16 | — |
+
+**Status:** blocked (B-08 and B-23 add the local data) · **Owns:** `src/client/lib/session.ts` (`signOut`), `src/client/lib/offline/**` (a `clearLocalData()`)
+**Goal:** Signing out, or deleting the account (B-16), leaves nothing of the account on the device: no remembered user (B-23), no queued reviews or cached cards in IndexedDB (B-08).
+**Done when:** after `signOut()` (which the deletion flow calls) a test finds no remembered user and an empty offline store.
+
+- [ ] One `clearLocalData()` that B-08 and B-23 each register their stores with (or that clears them by name), called from `useSession().signOut`
+- [ ] Decide for queued reviews that are not synced yet: drop them on deletion, keep them on a plain sign-out (the next sign-in of the same user can still send them)
+- [ ] Tests: sign-out clears the remembered user; account deletion clears the queue too
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-48 · Delete Better Auth `verification` rows with the account
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-18, B-16 | — |
+
+**Status:** blocked (B-18 starts creating `verification` rows) · **Owns:** `deleteAccount` in `src/worker/db/index.ts`, test in `src/worker/routes/account.test.ts`
+**Goal:** Reset and verification tokens do not outlive the account (G-86).
+**Done when:** a test creates a verification row for the user's email, deletes the account, and finds no row.
+
+- [ ] Check how Better Auth keys `verification.identifier` for each flow B-18 enables (the email, or a prefix plus the email)
+- [ ] Add that delete to the `deleteAccount` batch, by the user's email
+- [ ] Test: the row is gone after `DELETE /api/account`, another user's row stays
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1594,6 +1626,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-77 | API writes (`/api/reviews`, `/api/cards`, `/api/activity/*`, `/api/words`, `/api/profile`) have no burst rate limit: one account can script thousands of writes (a review is 3 rows), using up the Free plan's daily D1 write allowance for everyone or growing storage without bound (T-29 S-03) | App-wide write outage until the next day; cost on the Paid plan | B-40, T-30 (a Cloudflare rate-limiting rule on `/api/*`) |
 | G-78 | No security headers on the static app (CSP, `frame-ancestors` / `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) and no request body size cap on `/api` (T-29 S-10). No XSS sink exists today | Less defence in depth against a future XSS or clickjacking; a huge body is parsed before validation | B-39 |
 | G-79 | `reviews.id` is a global primary key chosen by the client, so a review posted with an id another user already used is a 500 for the second user (reproduced in T-29, S-12). Nothing is exposed and ids are random UUIDs | A colliding client id fails one review | B-08 (move to a `(user_id, id)` key when offline review ids are reworked) |
+| G-86 | Account deletion (B-16) removes every row with a `user_id` plus Better Auth's `session`, `account` and `user`. It does not touch rows nobody owns: `translation_cache` (the AI answer for the exact text sent, G-64), `ai_daily_usage` (a count per day), `rate_limit` (keyed by IP and path) and `verification` (keyed by identifier; unused until B-18). Today `translation_cache` holds only lesson sentences the client sent, so nothing in it is specific to the deleted user | `translation_cache` could hold text a learner typed once B-07 imports personal text; `verification` rows (reset tokens) would outlive the account | B-07 must use a per-user cache (a `user_id` column puts it in the export and the deletion automatically, because both are derived from the Drizzle schema); B-48 for `verification` |
+| G-87 | Deleting the account signs this browser out (`signOut()` clears the cookie and the query cache) but cannot reach other devices' local data. Their cookie stops working at once (the session row is gone), yet B-23's remembered user (`localStorage`) and B-08's offline store (IndexedDB) would stay there until the app is opened and signed out | Another person on a shared device could see the deleted user's name, queued reviews or cached cards | B-47 (clear local data on sign-out, and when the session read answers 401) |
 
 ---
 
@@ -1714,3 +1748,7 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-124 · 2026-10-18 · auth · T-29` — **Better Auth 1.7 links a Google login to an existing account with the same email only when the local account's email is verified (`account.accountLinking.requireLocalEmailVerified`, default true). We never verify emails, so this blocks account pre-hijacking, but a learner who signed up with email and later taps "Continue with Google" gets "account not linked".** → Keep the default. Email verification (B-18) is what lets the two sign-in methods meet; don't set `requireLocalEmailVerified: false` to make the error go away.
 - `L-125 · 2026-10-19 · orchestration · lead` — **Wave 6 lost its agents twice in one night: a container restart (worktrees survived, `node_modules` did not, and only claim commits were pushed) and then the session limit (all three stopped within minutes, everything pushed). Both times SendMessage resumed each agent where it stopped. After the restart, one agent's `pkill -f "npm ci"` killed its own shell (L-119).** → After a restart, check each worktree for `node_modules` and unpushed work before resuming, and say so in the resume message. After a limit, resume as L-109 says.
 - `L-126 · 2026-10-19 · orchestration · lead` — **Each Wave 6 PR was green alone, but chaining them broke typecheck: T-27 added `e2e/` to `tsconfig.node.json` (no DOM lib) and T-28's `e2e/a11y.spec.ts`, written before that config existed, uses `document` inside `page.evaluate`. Also, the auto-mode classifier refused a `git merge` run inside an agent's worktree, so the lead merged on a local branch in the main checkout and pushed that to the task branch.** → When two parallel tasks share a new folder, run the full check (and E2E) on the chained merge before pushing it. Do lead merges on a local branch of the main checkout, not inside agent worktrees.
+- `L-142 · 2026-10-20 · testing · B-16` — **A test that asked D1 which tables have a `user_id` column failed with `D1_ERROR: not authorized: SQLITE_AUTH`, both with `pragma_table_info(m.name)` in a join and with a `PRAGMA table_info("t")` statement in the Workers test pool.** → To inspect the migrated schema from a test, read the DDL: `SELECT name, sql FROM sqlite_master WHERE type = 'table'` works. `account.test.ts` matches `/\buser_id\b/` in it.
+- `L-143 · 2026-10-20 · worker · B-16` — **Account deletion without Better Auth's `deleteUser` (it needs `user.deleteUser.enabled`, a fresh session or password, and knows nothing of our tables, G-36): one D1 batch in `scopedDb(...).deleteAccount()` removes every user table, then `session`, `account`, `user`. The list of user tables is `USER_TABLES` in `src/worker/db/index.ts`, found by looking for a `user_id` column in the Drizzle schema, and export uses the same list. A table added by hand-written SQL but missing from the schema would be missed, so `account.test.ts` compares the migrated DDL with the list.** → A new per-user table needs nothing extra for export and deletion as long as it is in `schema.ts` with a `user_id` column; the test fails if a migration has one that the schema lacks. A table without `user_id` (a cache, a counter) is never exported or deleted: give personal data a `user_id` (G-86).
+- `L-144 · 2026-10-20 · tooling · B-16` — **In a worktree-isolated agent, the harness refused Bash calls that chain commands with `&&`/`;`, run `python3 -`/heredocs, or use `sed` programs like `1628r file`, with "too complex to verify that it stays inside the worktree".** → Use one plain command per Bash call, make file edits with the Edit and Write tools, and keep scratch files in the scratchpad directory.
+- `L-145 · 2026-10-20 · testing · B-16` — **`playwright.config.ts` serves on `E2E_PORT` (default 5273) and has `reuseExistingServer: false`, so two agents running E2E on one box would collide on the port.** → On a shared box run `E2E_PORT=<unused port> npx playwright test e2e/<spec>`. Deleting an account in E2E logs one harmless `[Better Auth] User not found` warning: the sign-out that follows the deletion looks up a session whose user is gone, and still clears the cookie and lands on the welcome screen.
