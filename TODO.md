@@ -1282,15 +1282,15 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
 
-**Status:** ready (deps done) · **Owns:** `src/client/lib/session.ts`
+**Status:** in review ([PR #43](https://github.com/MinhTam2773/frenchy/pull/43)) · **Claimed by:** Wave 7a agent (B-23) · **Branch:** `task/B-23-offline-start` · **Owns:** `src/client/lib/session.ts`
 **Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
 **Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
 
-- [ ] Decide what is remembered (id, name, email in `localStorage`, wrapped in try/catch) and when it expires
-- [ ] `useSession` returns the remembered user when the read fails with a network error, never on a 401
-- [ ] Test: offline start with and without a remembered user
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Decide what is remembered (id, name, email in `localStorage`, wrapped in try/catch) and when it expires. Remembered: `frenchy.user` = id, name, email and a `savedAt` stamp, never tokens. Expires 7 days after the last successful online read (Better Auth's default session lifetime; `createAuth` sets no `expiresIn`), and is cleared on sign-out (`clearRememberedUser()`, exported for B-16), on a 401 or a "no session" answer, and overwritten when another user signs in
+- [x] `useSession` returns the remembered user when the read fails with a network error, never on a 401. A rejected fetch, `navigator.onLine === false`, a 5xx and any other non-401 HTTP error all fall back to the remembered user (a down server is not proof of sign-out, and the API would 401 the real calls); only a 401 or a 200 `null` signs out
+- [x] Test: offline start with and without a remembered user (`session.test.tsx`: 17 cases; `e2e/offline-start.spec.ts` for the browser, see PR for what it can't prove)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-147 to L-150, G-88, G-89, B-49, B-50)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-24 · Show/hide password on the email forms
@@ -1534,6 +1534,38 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
+#### B-49 · A 401 from any API call ends the session and forgets the remembered user
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-23 | — |
+
+**Status:** ready after B-23 merges · **Owns:** `src/client/lib/api.ts`, `src/client/lib/query.ts`, `src/client/lib/session.ts`
+**Goal:** Close G-88 (second half): today only the session read clears the remembered user, so a session that expires or is revoked while the app is open leaves the user on screens whose calls all answer 401 until the next reload.
+**Done when:** a test where a protected call answers 401 clears the remembered user, sets the session query to signed out and lands on the welcome screen.
+
+- [ ] On `ApiClientError` with `status === 401`, call `clearRememberedUser()` and set the session query data to `null` (one place, e.g. the query client's `QueryCache` `onError`)
+- [ ] Test it; check it does not fire for the sign-in form's own wrong-password answer (Better Auth, not `api.ts`)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-50 · Give up on a hanging session read after a few seconds
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-23 | — |
+
+**Status:** ready after B-23 merges · **Owns:** `src/client/lib/session.ts`
+**Goal:** Close G-89: on a connection that is "up" but not answering (lie-fi, captive portal), `fetch` can wait a very long time, so the guard renders nothing instead of using the remembered user.
+**Done when:** a test where `/api/auth/get-session` never answers resolves to the remembered user after the timeout (fake timers), and to signed out with nobody remembered.
+
+- [ ] Pass `AbortSignal.timeout(~5000)` to `authClient.getSession` and treat the abort as a network failure
+- [ ] Test it with a handler that never responds
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ---
 
 ## KNOWN GAPS
@@ -1630,6 +1662,8 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | G-79 | `reviews.id` is a global primary key chosen by the client, so a review posted with an id another user already used is a 500 for the second user (reproduced in T-29, S-12). Nothing is exposed and ids are random UUIDs | A colliding client id fails one review | B-08 (move to a `(user_id, id)` key when offline review ids are reworked) |
 | G-82 | `content:check` still doesn't compare a sentence's tokens with `tokenize()` (G-55): B-22 checks only spacing and apostrophes of the joined sentence. A text that splits a title, time, number or *a-t-il* differently still fails only `src/shared/text/tokenize.test.ts` | Content agents see a failure in a test they don't expect, after `content:check` said OK | B-43 |
 | G-83 | B-22 doesn't check a space before `,` `.`, a missing space after `,` `.`, three dots instead of `…`, straight `"` quotes, or how `…` meets `? !` (*Euh… ?*); `text.md` doesn't say either | Slips in these areas reach the reader unnoticed; each is rare so far (Stage 1 was hand-checked in T-24) | B-44 |
+| G-88 | B-23 keeps the signed-in user's id, name and email in `localStorage` (`frenchy.user`, no tokens) for up to 7 days after the last online read. On a shared device, someone who closes the browser without signing out leaves their name and email readable there, and the next person opening the installed PWA offline gets the shell (Today, Me) of that account until they sign out or go online; script on the same origin can read it (no XSS sink exists today, G-78). A 401 from an API call (not from the session read) does not clear it yet | Small privacy leak on shared devices; a revoked session stays "signed in" on screen until the next session read | B-49 (401 handling); the shared-device trade-off is accepted for a personal phone app, revisit before a public launch |
+| G-89 | The session read has no timeout: with a connection that is up but not answering, `fetch` waits for the browser's own timeout (a minute or more), and the guard renders nothing meanwhile instead of using the remembered user. Also: the remembered user only gets the shell; the data behind each screen still comes from the API and has no offline copy (B-08 for reviews) | Slow start on bad networks; empty or error states offline | B-50, B-08 |
 
 ---
 
@@ -1756,3 +1790,7 @@ Add a lesson whenever something surprised you, an assumption was wrong, you foun
 - `L-134 · 2026-10-20 · content · B-22` — **Exceptions the rule needs so it doesn't flag correct French: `?!` stacked marks, a clock time like `8:30`, a mark that opens the sentence. The narrow no-break space (U+202F) is also accepted before `? ! : ;`, though all Stage 1 content uses U+00A0.** → If a rule seems to flag good French, add the exception with a test; don't ask content to change.
 - `L-135 · 2026-10-20 · testing · B-22` — **A plain space and a no-break space look the same in a diff and in terminal output, so a test written with a pasted character can pass or fail for the wrong reason.** → Write them as `\u00a0` (a named `NB` constant) in tests and fixtures, never as a pasted character.
 - `L-136 · 2026-10-20 · tooling · B-22` — **In a worktree-isolated agent, one Bash call that mixed a Python heredoc with `&&` chains and `npm` was refused as "too complex to verify", and nothing in it ran.** → Keep Bash calls to plain single commands (`sed -i`, `npx ...`) in a worktree, and make multi-line edits with the Edit tool.
+- `L-147 · 2026-10-20 · client · B-23` — **TanStack Query's default `networkMode: 'online'` pauses a query once the browser has fired an `offline` event, so the session query never ran its function and the guard sat on "loading" instead of reaching the remembered-user fallback. A plain `navigator.onLine` spy in a test does not show it (the online manager ignores the property and starts out online); `onlineManager.setOnline(false)` does.** → A query that must answer without the network (the session read) sets `networkMode: 'always'`; test offline behaviour with `onlineManager.setOnline(false)`, and check the test fails without the fix.
+- `L-148 · 2026-10-20 · auth · B-23` — **Better Auth's client behaves two ways: a rejected fetch throws (`TypeError: fetch failed`), but an HTTP error comes back as `{ data: null, error: { status, message } }`. And `get-session` with no session answers 200 with `null`, not 401, so "signed out" is mostly an empty answer.** → Wrap `getSession()` in try/catch for network failures, read `error.status` for HTTP ones, and treat both `null` data and a 401 as signed out. Anything else (5xx, 403, 429) is "don't know", which keeps the remembered user.
+- `L-149 · 2026-10-20 · testing · B-23` — **The client test setup resets MSW and the TanStack cache between cases but not `localStorage`, so once the session read writes to it, an earlier test's remembered user made a later "nobody remembered" test pass for the wrong reason.** → A test file that reads or writes `localStorage` clears it in its own `beforeEach`; `vi.restoreAllMocks()` after storage spies.
+- `L-150 · 2026-10-20 · e2e · B-23` — **A full offline reload cannot be tested on `vite dev` (G-74: no service worker, so the document itself needs the dev server). What can be proven in the browser is the app's own part: abort `**/api/**` with `page.route(..., route.abort())`, reload, and the remembered user keeps Today; clear cookies instead and the welcome screen shows.** → Offline-start E2E uses route aborts; the real installed-PWA offline reload stays a device check (B-35 runs the suite against `vite preview`).
