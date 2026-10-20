@@ -1265,7 +1265,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | T-07 | T-24 (helps) |
 
-**Status:** in progress · **Claimed by:** Wave 7a agent (B-22) · **Branch:** `task/B-22-typography-checks` · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** in review ([PR #44](https://github.com/MinhTam2773/frenchy/pull/44)) · **Claimed by:** Wave 7a agent (B-22) · **Branch:** `task/B-22-typography-checks` · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Catch annotation mistakes every T-14 agent had to check by hand.
 **Done when:** `content:check` flags each case below with file + sentence, and the Stage 1 content passes.
 
