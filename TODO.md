@@ -52,6 +52,7 @@ Tasks in the same **wave** have no dependencies on each other and own different 
 | 5 | T-26 integration | 6 |
 | 6 | T-27 E2E · T-28 a11y QA · T-29 security review | 7 |
 | 7 | T-30 deploy (human gate) | MVP live |
+| 7a | B-21 credits · B-22 typography checks · B-39 security headers · B-16 account export/delete · B-23 offline start · B-33 per-chapter texts | T-30 (B-21), B-29 (B-22) |
 
 Frontend screens (wave 3) are built against **MSW mocks** that use the shared fixtures from T-04, so they don't wait for the backend. T-26 swaps the mocks for the real API.
 
@@ -75,9 +76,21 @@ flowchart LR
   T02 & T12 & T24 & T26 & T29 --> T30[T-30 Deploy]
 ```
 
+**Wave 7a (pre-launch backlog, 2026-10-20).** Six `ready` tasks (L-77): the two P1s (B-21 unblocks T-30, B-22 unblocks B-29), then the P2s that matter before the app is shared (B-39, B-16, B-23) and B-33 (G-70, the main chunk grows with every chapter). Skipped: tasks waiting on a user decision or a human gate (B-30 G-65, B-40 limits, B-18 H-09, B-09, B-38), Phase 2/3 features. Next in line: B-08 offline reviews (Opus · High) and B-19 tap-to-translate in review cards (it shares the reader with B-33, so after it). Overlaps to watch: B-21 and B-16 both add to `SettingsPage.tsx` (new components in their own files, one-line hunks there; B-16 merges after B-21); B-39 and B-16 both add a line to `src/worker/index.ts`; B-22 owns `src/shared/content/validate.ts`, which B-33 must leave alone. Merge order: B-21, B-22, B-39, B-16, B-23, B-33.
+
+| Task | L- | G- | B- |
+|---|---|---|---|
+| B-21 | L-127 to L-131 | G-80, G-81 | B-41, B-42 |
+| B-22 | L-132 to L-136 | G-82, G-83 | B-43, B-44 |
+| B-39 | L-137 to L-141 | G-84, G-85 | B-45, B-46 |
+| B-16 | L-142 to L-146 | G-86, G-87 | B-47, B-48 |
+| B-23 | L-147 to L-151 | G-88, G-89 | B-49, B-50 |
+| B-33 | L-152 to L-156 | G-90, G-91 | B-51, B-52 |
+| lead | L-157 on | G-92 on | B-53 on |
+
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
 
-**Progress:** DONE 36 · NEXT 1 (T-30 blocked on human gates and B-21) · BACKLOG 35
+**Progress:** DONE 36 · NEXT 1 (T-30 blocked on human gates and B-21) · BACKLOG 35 (Wave 7a: 6 in progress)
 
 ---
 
@@ -878,7 +891,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · Medium | M | T-26, T-08 | — |
 
-**Status:** blocked · **Owns:** `src/client/features/drills/**`, `src/shared/drills/**`, `content/verbs.json`
+**Status:** ready (deps done; Phase 2) · **Owns:** `src/client/features/drills/**`, `src/shared/drills/**`, `content/verbs.json`
 **Goal:** `Drills.dc.html`: typed and audio conjugation drills by tense and verb group, unlocked by stage.
 **Done when:** a drill session works end to end, accent-only mistakes are flagged as "almost", and tests pass.
 
@@ -898,7 +911,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · Medium | M | T-22, T-25 | B-07 |
 
-**Status:** blocked · **Owns:** `src/client/features/words/**`, `src/worker/routes/words.ts` (extend), reader highlight changes
+**Status:** ready (deps done; Phase 2) · **Owns:** `src/client/features/words/**`, `src/worker/routes/words.ts` (extend), reader highlight changes
 **Goal:** LingQ-style new → learning → known, visible in the reader and in `Words.dc.html`.
 **Done when:** statuses update from reading and reviewing, the reader highlights unknown words, and the Words screen filters and searches.
 
@@ -917,7 +930,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · High | L | T-23, T-07, T-26 | B-06 |
 
-**Status:** blocked · **Owns:** `src/client/features/tutor/**`, `src/worker/routes/tutor.ts`, `src/worker/ai/prompts/tutor.ts`, migration for `tutor_messages`
+**Status:** ready (deps done; Phase 3) · **Owns:** `src/client/features/tutor/**`, `src/worker/routes/tutor.ts`, `src/worker/ai/prompts/tutor.ts`, migration for `tutor_messages`
 **Goal:** `Tutor.dc.html`: a chat that only uses grammar up to the learner's chapter and corrects mistakes inline.
 **Done when:** a chat streams replies, corrections render as in the mockup, a correction can be saved to SRS, and daily cost caps hold.
 
@@ -938,7 +951,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · High | M | T-23 | — |
 
-**Status:** blocked · **Owns:** `scripts/cli-bridge/**`, `src/worker/ai/drivers/cli-bridge.ts`
+**Status:** ready (deps done) · **Owns:** `scripts/cli-bridge/**`, `src/worker/ai/drivers/cli-bridge.ts`
 **Goal:** Use your own Claude Code / Codex subscription for the tutor and content generation when running locally (PLAN §5).
 **Done when:** with `DEV_CLI_BRIDGE_URL` set locally, the tutor works through the bridge, and a production build can't enable it.
 
@@ -956,7 +969,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-23 | — |
 
-**Status:** blocked · **Owns:** `src/worker/ai/drivers/ollama.ts`
+**Status:** ready (deps done) · **Owns:** `src/worker/ai/drivers/ollama.ts`
 **Goal:** Free offline experiments with a local model.
 **Done when:** with `OLLAMA_URL` set locally, translate and explain work through Ollama.
 
@@ -973,7 +986,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Opus 5.5 · Extra (research), then Opus 5.5 · High (build) | L | B-03 | — |
 
-**Status:** blocked · **Owns:** `docs/speaking-research.md`, `src/client/features/speaking/**`, related worker routes
+**Status:** blocked (B-03) · **Owns:** `docs/speaking-research.md`, `src/client/features/speaking/**`, related worker routes
 **Goal:** Answer by voice, get pronunciation feedback, and hold a voice conversation (Speak / Praktika style).
 **Done when:** the research doc has a decision the user approved, and answering a review card by voice works on iPhone and Android Chrome.
 
@@ -992,7 +1005,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Opus 5.5 · Medium | M | T-15, T-23, T-25, B-02 | — |
 
-**Status:** blocked · **Owns:** `src/client/features/import/**`, `src/worker/routes/import.ts`, migration for `user_texts`
+**Status:** blocked (B-02) · **Owns:** `src/client/features/import/**`, `src/worker/routes/import.ts`, migration for `user_texts`
 **Goal:** Paste text, a URL, lyrics or subtitles (.srt / .vtt) and read it with tap-to-translate.
 **Done when:** all four input types import and open in the reader, with unknown words falling back to cached AI translation.
 
@@ -1010,7 +1023,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · High | M | T-26, T-12 | — |
 
-**Status:** blocked · **Owns:** `src/client/lib/offline/**`, review sync changes in `src/worker/routes/reviews.ts`
+**Status:** ready (deps done) · **Owns:** `src/client/lib/offline/**`, review sync changes in `src/worker/routes/reviews.ts`
 **Goal:** Review on the subway: queue reviews offline and sync later without losing or double-counting any.
 **Done when:** a session done offline syncs correctly on reconnect, with tests for duplicates and out-of-order replays.
 
@@ -1028,7 +1041,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Opus 5.5 · Medium | M | T-24, T-30 + user approval of a TTS provider and cost | — |
 
-**Status:** blocked · **Owns:** `scripts/audio/**`, audio fields in content JSON, player in `src/client/features/reader/audio/**`
+**Status:** blocked (T-30 + the user picks a TTS provider) · **Owns:** `scripts/audio/**`, audio fields in content JSON, player in `src/client/features/reader/audio/**`
 **Goal:** Natural audio for lesson texts on every device, independent of browser voices (G-03).
 **Done when:** Stage 1 texts play R2 audio with sentence highlighting, falling back to Web Speech.
 
@@ -1045,7 +1058,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · High per chapter + Opus 5.5 · Extra QA | L | T-24 | B-11 |
 
-**Status:** blocked · **Owns:** `content/chapters/<chapterId>/**` per chapter, `docs/content-qa.md`
+**Status:** ready (T-24 is done; B-29 and B-30 should land first) · **Owns:** `content/chapters/<chapterId>/**` per chapter, `docs/content-qa.md`
 **Goal:** Stage 2 "Getting around" (A1 → A2) lessons using the T-14 pipeline.
 **Done when:** every Stage 2 chapter passes `content:check` and an independent QA pass.
 
@@ -1070,7 +1083,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Opus 5.5 · High per chapter + Opus 5.5 · Extra QA | L | B-10 | — |
 
-**Status:** blocked · **Owns:** `content/chapters/<chapterId>/**` per chapter
+**Status:** blocked (B-10) · **Owns:** `content/chapters/<chapterId>/**` per chapter
 **Goal:** Stage 3 "Telling stories" (A2 → B1) and Stage 4 "Nuance" (B1+) lessons.
 **Done when:** every chapter below passes `content:check` and QA.
 
@@ -1086,7 +1099,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Opus 5.5 · Medium | M | T-30, T-12 | — |
 
-**Status:** blocked · **Owns:** `src/worker/push/**`, `src/client/features/settings/reminders/**`, Cron Trigger config
+**Status:** blocked (T-30) · **Owns:** `src/worker/push/**`, `src/client/features/settings/reminders/**`, Cron Trigger config
 **Goal:** "8:00 pm, if you haven't practiced" reminders from the Settings mockup.
 **Done when:** a subscribed device gets one reminder at the chosen local time only on days without activity.
 
@@ -1103,7 +1116,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · High | S | T-23, T-20 | — |
 
-**Status:** blocked · **Owns:** `src/client/features/settings/ai/**`, settings fields in the profile
+**Status:** ready (deps done) · **Owns:** `src/client/features/settings/ai/**`, settings fields in the profile
 **Goal:** Choose which provider handles translation and the tutor from the app (PLAN §5), not only through env vars.
 **Done when:** changing a provider in Settings changes which driver serves the next request.
 
@@ -1120,7 +1133,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-17, T-22 | — |
 
-**Status:** blocked · **Owns:** `src/client/features/chapter/mistakes/**`, a `book_mistakes` table
+**Status:** ready (deps done) · **Owns:** `src/client/features/chapter/mistakes/**`, a `book_mistakes` table
 **Goal:** PLAN's weekly routine: note which book exercises went wrong and get them back once a week.
 **Done when:** a logged exercise shows up in a weekly "Redo these" card on Today.
 
@@ -1136,7 +1149,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-22 | — |
 
-**Status:** blocked · **Owns:** `src/client/features/stats/**`, `GET /api/stats`
+**Status:** ready (deps done) · **Owns:** `src/client/features/stats/**`, `GET /api/stats`
 **Goal:** Reviews per day, retention, minutes and words learned over time.
 **Done when:** the screen shows the last 30 days from real data.
 
@@ -1153,7 +1166,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (before sharing the app with others) | Sonnet 5.5 · High | S | T-13, T-22 | — |
 
-**Status:** blocked · **Owns:** `src/worker/routes/account.ts`, account section in Settings
+**Status:** ready (deps done) · **Owns:** `src/worker/routes/account.ts`, account section in Settings
 **Goal:** Users can download their data and delete their account.
 **Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
 
@@ -1170,7 +1183,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Opus 5.5 · Medium | L | T-30 | — |
 
-**Status:** blocked · **Owns:** `capacitor.config.ts`, `ios/`, `android/`
+**Status:** blocked (T-30 + the user confirms it is needed) · **Owns:** `capacitor.config.ts`, `ios/`, `android/`
 **Goal:** Wrap the same React app as iOS and Android store apps with native notifications (PLAN §4 Platforms).
 **Done when:** debug builds run on a simulator and emulator against production.
 
@@ -1187,7 +1200,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · Medium | S | T-13, T-21 + H-09 | — |
 
-**Status:** blocked · **Owns:** email driver in `src/worker/auth/email.ts`, reset screens in `src/client/features/auth/**`
+**Status:** blocked (H-09: email provider) · **Owns:** email driver in `src/worker/auth/email.ts`, reset screens in `src/client/features/auth/**`
 **Goal:** Close G-08 so email users can recover their accounts.
 **Done when:** a reset email arrives and the new password works.
 
@@ -1204,7 +1217,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | S | T-18, T-25 | — |
 
-**Status:** blocked · **Owns:** shared word-sheet component extraction, review card renderer changes
+**Status:** ready (deps done) · **Owns:** shared word-sheet component extraction, review card renderer changes
 **Goal:** PLAN says tap-to-translate works on every surface; MVP covers only the reader.
 **Done when:** French words on review cards open the same word sheet as the reader.
 
@@ -1220,7 +1233,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Haiku 5.5 | S | T-12 | — |
 
-**Status:** blocked · **Owns:** `public/fonts/**`, font CSS
+**Status:** ready (deps done) · **Owns:** `public/fonts/**`, font CSS
 **Goal:** Fredoka and Nunito load with no network.
 **Done when:** the app renders with the right fonts in airplane mode after the first visit.
 
@@ -1269,7 +1282,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | M | T-21, T-26 | — |
 
-**Status:** blocked · **Owns:** `src/client/lib/session.ts`
+**Status:** ready (deps done) · **Owns:** `src/client/lib/session.ts`
 **Goal:** An installed PWA opened with no connection keeps the signed-in user instead of treating an unreadable session as signed out.
 **Done when:** a test where `/api/auth/get-session` fails after an earlier success (or with a remembered user) still renders a protected screen.
 
@@ -1285,7 +1298,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-21 | — |
 
-**Status:** blocked · **Owns:** `src/client/features/auth/**`
+**Status:** ready (deps done) · **Owns:** `src/client/features/auth/**`
 **Goal:** Typing a password on a phone without seeing it is error-prone; add a toggle.
 **Done when:** a labelled button flips the field between `password` and `text`, and a test covers it.
 
@@ -1335,7 +1348,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | B-22 (same file) | B-10, B-11 (helps) |
 
-**Status:** blocked · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** blocked (B-22) · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Stage 2 to 4 content follows T-24's decisions without a QA pass having to find them by hand (L-94, L-95, G-67).
 **Done when:** `content:check` names the file and sentence for each case below, and Stage 1 passes.
 
@@ -1387,7 +1400,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | M | T-27, T-30 | — |
 
-**Status:** ready · **Owns:** `e2e/**`, `playwright.config.ts`, the e2e job in `.github/workflows/ci.yml`
+**Status:** blocked (T-30) · **Owns:** `e2e/**`, `playwright.config.ts`, the e2e job in `.github/workflows/ci.yml`
 **Goal:** The E2E suite also runs against `vite build` + `vite preview` (G-74), so the service worker, the precache and the offline banner are exercised, not only `vite dev`.
 **Done when:** a `preview` project (or a second job) runs the happy path against the built app on a fresh D1, plus one offline check (load Today, go offline, reload, the shell still opens).
 
