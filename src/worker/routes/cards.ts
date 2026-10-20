@@ -1,6 +1,6 @@
 import { and, asc, eq, gt, gte, like, lte, ne, sql } from 'drizzle-orm';
 import { NEW_CARDS_PER_DAY } from '../../shared/constants';
-import { getChapter, getDeck } from '../../shared/content';
+import { getChapter, getDeck } from '../../shared/content/server';
 import {
   Card,
   CardCreate,

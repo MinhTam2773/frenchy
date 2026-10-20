@@ -1,7 +1,7 @@
 import { fireEvent, screen, within } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { beforeEach, expect, test, vi } from 'vitest';
-import { getChapterTexts } from '@shared/content';
+import { loadChapterTexts } from '@shared/content';
 import {
   allCaughtUpStats,
   cafeDialogueText,
@@ -17,11 +17,11 @@ import { server } from '@client/mocks/server';
 // content/ has no lesson texts until T-14 lands, so the texts come from fixtures.
 vi.mock('@shared/content', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@shared/content')>()),
-  getChapterTexts: vi.fn(),
+  loadChapterTexts: vi.fn(),
 }));
 
 beforeEach(() => {
-  vi.mocked(getChapterTexts).mockReturnValue([leaMorningText, cafeDialogueText]);
+  vi.mocked(loadChapterTexts).mockResolvedValue([leaMorningText, cafeDialogueText]);
 });
 
 async function renderToday() {
@@ -105,7 +105,7 @@ test('the reading card says when every text is read', async () => {
 });
 
 test('the reading card copes with a chapter that has no texts yet', async () => {
-  vi.mocked(getChapterTexts).mockReturnValue([]);
+  vi.mocked(loadChapterTexts).mockResolvedValue([]);
   await renderToday();
   expect(screen.getByText('Texts are on their way')).toBeInTheDocument();
   expect(screen.queryByRole('link', { name: /Texts are on their way/ })).not.toBeInTheDocument();

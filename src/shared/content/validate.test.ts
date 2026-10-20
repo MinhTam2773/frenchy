@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { cafeDialogueText, ch10Deck, ch10Note, leaMorningText } from '../fixtures';
 import type { Course, Deck, Grammar, Text } from '../schemas';
-import { contentFiles } from './index';
+import { contentFiles } from './files';
 import { validateContent, type ContentFiles } from './validate';
 
 const CAFE = 'chapters/ch10/texts/ch10-au-cafe.json';

@@ -11,9 +11,9 @@ vi.setConfig({ testTimeout: 15_000 });
 // covers the screen with content.
 vi.mock('@shared/content', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@shared/content')>()),
-  getChapterTexts: () => [],
+  loadChapterTexts: async () => [],
   getNote: () => undefined,
-  getDeck: () => undefined,
+  loadDeck: async () => undefined,
 }));
 
 describe('chapter page', () => {

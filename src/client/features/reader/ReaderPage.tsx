@@ -2,10 +2,11 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { TTS_RATE } from '@shared/constants';
-import { getChapter, getChapterTexts, getText } from '@shared/content';
+import { getChapter, getChapterTextIds } from '@shared/content';
 import type { Text, WordsResponse } from '@shared/schemas';
 import { annotate } from '@shared/text';
 import { api } from '@client/lib/api';
+import { useText } from '@client/lib/content';
 import { queryKeys, useProfile } from '@client/lib/query';
 import { Button, TopBar } from '@client/ui';
 import { AudioBar, nextRate } from './AudioBar';
@@ -30,8 +31,31 @@ function focusWord(index: number) {
 
 export function ReaderPage() {
   const { textId = '' } = useParams();
-  const text = getText(textId);
-  if (!text) {
+  const { data: text, isError, refetch } = useText(textId);
+  if (isError) {
+    return (
+      <div className="flex min-h-dvh flex-col gap-4 bg-surface">
+        <TopBar title="Reader" nav={{ icon: 'close', label: 'Close reader', to: '/today' }} />
+        <div role="alert" className="flex flex-col items-start gap-3 px-4">
+          <p className="font-bold">Couldn’t load this text.</p>
+          <Button variant="secondary" size="sm" onClick={() => void refetch()}>
+            Try again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+  if (text === undefined) {
+    return (
+      <div className="flex min-h-dvh flex-col gap-4 bg-surface">
+        <TopBar title="Reader" nav={{ icon: 'close', label: 'Close reader', to: '/today' }} />
+        <p role="status" className="px-4 text-muted">
+          Loading text…
+        </p>
+      </div>
+    );
+  }
+  if (text === null) {
     return (
       <div className="flex min-h-dvh flex-col gap-4 bg-surface">
         <TopBar
@@ -130,7 +154,7 @@ function Reader({ text }: { text: Text }) {
   }, [picked, selection?.open]);
 
   const chapter = getChapter(text.chapterId);
-  const readingNumber = getChapterTexts(text.chapterId).findIndex((t) => t.id === text.id) + 1;
+  const readingNumber = getChapterTextIds(text.chapterId).indexOf(text.id) + 1;
   const overline = [
     chapter && (chapter.kind === 'appendix' ? `App. ${chapter.number}` : `Ch ${chapter.number}`),
     readingNumber > 0 && `Reading ${readingNumber}`,

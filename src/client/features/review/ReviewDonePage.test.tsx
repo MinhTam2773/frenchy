@@ -7,7 +7,7 @@ import { AppProviders } from '@client/App';
 import { resetReviewMock } from '@client/mocks/handlers/review';
 import { server } from '@client/mocks/server';
 import { routes } from '@client/routes';
-import { getChapter, getChapterTexts } from '@shared/content';
+import { getChapter, loadChapterTexts } from '@shared/content';
 import { allCaughtUpStats, streak } from '@shared/fixtures';
 import type { Text } from '@shared/schemas';
 import type { SessionStats } from './session';
@@ -19,7 +19,7 @@ configure({ asyncUtilTimeout: 5000 });
 // No lesson texts exist until T-14, so "Up next" is steered from here.
 vi.mock('@shared/content', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@shared/content')>()),
-  getChapterTexts: vi.fn(() => []),
+  loadChapterTexts: vi.fn(async () => []),
 }));
 
 // "Très bien." sits in its own lang="fr" span, so match the whole paragraph's text.
@@ -42,7 +42,7 @@ function renderDone(state?: unknown) {
 
 beforeEach(() => {
   resetReviewMock();
-  vi.mocked(getChapterTexts).mockReturnValue([]);
+  vi.mocked(loadChapterTexts).mockResolvedValue([]);
 });
 
 test('shows cards, correct share and time for the session', async () => {
@@ -91,7 +91,7 @@ test('does not claim a rise when today already counted', async () => {
 test('points to the next unread text of the current chapter', async () => {
   const text = (id: string, title: string) => ({ id, title }) as Text;
   // Fixture readings include ch12 only, so the first Ch 10 text is next; reading it moves on.
-  vi.mocked(getChapterTexts).mockReturnValue([
+  vi.mocked(loadChapterTexts).mockResolvedValue([
     text('ch10-le-matin-de-lea', 'Le matin de Léa'),
     text('ch10-au-cafe', 'Au café'),
   ]);
@@ -103,7 +103,7 @@ test('points to the next unread text of the current chapter', async () => {
 
 test('skips texts that were already read', async () => {
   const text = (id: string, title: string) => ({ id, title }) as Text;
-  vi.mocked(getChapterTexts).mockReturnValue([
+  vi.mocked(loadChapterTexts).mockResolvedValue([
     text('ch10-le-matin-de-lea', 'Le matin de Léa'),
     text('ch10-au-cafe', 'Au café'),
   ]);

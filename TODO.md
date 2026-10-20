@@ -1387,9 +1387,9 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 **Goal:** The main JS chunk stops growing with every chapter's texts (G-70).
 **Done when:** the main chunk holds course, grammar and notes only; a chapter's texts load on demand (and are precached or runtime-cached for offline), and the screens show their loading state meanwhile.
 
-- [ ] Split `src/shared/content` loaders: eager course/grammar, lazy `import.meta.glob` per text
-- [ ] Make `getText` / `getChapterTexts` async (or wrap them in TanStack Query) and update the callers
-- [ ] Decide precache (the texts are small, offline matters) versus runtime cache; check the build's `precache` line
+- [x] Split `src/shared/content` loaders: eager course/grammar, lazy `import.meta.glob` per text
+- [x] Make `getText` / `getChapterTexts` async (or wrap them in TanStack Query) and update the callers
+- [x] Decide precache (the texts are small, offline matters) versus runtime cache; check the build's `precache` line
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green

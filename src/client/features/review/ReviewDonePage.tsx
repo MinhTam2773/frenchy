@@ -2,9 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import { Navigate, useLocation } from 'react-router';
 import { nextUnreadText } from '@client/features/today/nextUnreadText';
 import { api } from '@client/lib/api';
+import { useChapterTexts } from '@client/lib/content';
 import { queryKeys, useProfile } from '@client/lib/query';
 import { Button, Icon, Link, Mascot } from '@client/ui';
-import { getChapter, getChapterTexts } from '@shared/content';
+import { getChapter } from '@shared/content';
 import type { StreakResponse } from '@shared/schemas';
 import { correctPercent, formatDuration, SessionStats } from './session';
 
@@ -139,10 +140,11 @@ function UpNext() {
   const profile = useProfile();
   const readings = useQuery({ queryKey: queryKeys.readings, queryFn: api.activity.readings });
   const chapterId = profile.data?.currentChapterId;
-  if (!chapterId || !readings.data) return null;
+  const texts = useChapterTexts(chapterId);
+  if (!chapterId || !readings.data || !texts.data) return null;
 
   // Same rule as Today's reading card (G-42).
-  const pick = nextUnreadText(getChapterTexts(chapterId), readings.data.readings);
+  const pick = nextUnreadText(texts.data, readings.data.readings);
   const text = pick.kind === 'next' ? pick.text : undefined;
   const chapter = getChapter(chapterId);
   const target = text
