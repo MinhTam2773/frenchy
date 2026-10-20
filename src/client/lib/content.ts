@@ -2,8 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { loadChapterTexts, loadDeck, loadText } from '@shared/content';
 
 // Lesson texts and decks are static chunks loaded on demand (G-70): never stale, and a failed load
-// (offline before the chunk was cached) is retried like any query.
-const STATIC = { staleTime: Infinity, gcTime: Infinity } as const;
+// (offline before the chunk was cached) is retried like any query. `always`: they come from the
+// service worker's precache, so being offline must not pause them (L-147).
+const STATIC = { staleTime: Infinity, gcTime: Infinity, networkMode: 'always' } as const;
 
 export function useChapterTexts(chapterId: string | null | undefined) {
   return useQuery({
