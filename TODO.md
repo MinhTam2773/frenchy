@@ -1383,7 +1383,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · Medium | M | T-26 | — |
 
-**Status:** ready · **Owns:** `src/shared/content/**`, the screens that read texts (Today, Chapter, Reader, Session complete)
+**Status:** in progress · **Claimed by:** Wave 7a agent (B-33) · **Branch:** `task/B-33-lazy-texts` · **Owns:** `src/shared/content/**`, the screens that read texts (Today, Chapter, Reader, Session complete)
 **Goal:** The main JS chunk stops growing with every chapter's texts (G-70).
 **Done when:** the main chunk holds course, grammar and notes only; a chapter's texts load on demand (and are precached or runtime-cached for offline), and the screens show their loading state meanwhile.
 
