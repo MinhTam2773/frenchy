@@ -1383,7 +1383,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 | Opus 5.5 · Medium | M | T-26 | — |
 
-**Status:** in progress · **Claimed by:** Wave 7a agent (B-33) · **Branch:** `task/B-33-lazy-texts` · **Owns:** `src/shared/content/**`, the screens that read texts (Today, Chapter, Reader, Session complete)
+**Status:** in review ([#47](https://github.com/MinhTam2773/frenchy/pull/47)) · **Claimed by:** Wave 7a agent (B-33) · **Branch:** `task/B-33-lazy-texts` · **Owns:** `src/shared/content/**`, the screens that read texts (Today, Chapter, Reader, Session complete)
 **Goal:** The main JS chunk stops growing with every chapter's texts (G-70).
 **Done when:** the main chunk holds course, grammar and notes only; a chapter's texts load on demand (and are precached or runtime-cached for offline), and the screens show their loading state meanwhile.
 
@@ -1391,7 +1391,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [x] Make `getText` / `getChapterTexts` async (or wrap them in TanStack Query) and update the callers
 - [x] Decide precache (the texts are small, offline matters) versus runtime cache; check the build's `precache` line
 - [x] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons; L-152, L-153, G-90)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-35 · E2E against the production build (service worker, offline)
