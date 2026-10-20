@@ -14,8 +14,9 @@ vi.mock('@shared/content', async (importOriginal) => {
   const { texts: fixtureTexts } = await import('@shared/fixtures');
   return {
     ...actual,
-    getText: (id: string) => fixtureTexts.find((t) => t.id === id),
-    getChapterTexts: (chapterId: string) => fixtureTexts.filter((t) => t.chapterId === chapterId),
+    loadText: async (id: string) => fixtureTexts.find((t) => t.id === id),
+    getChapterTextIds: (chapterId: string) =>
+      fixtureTexts.filter((t) => t.chapterId === chapterId).map((t) => t.id),
   };
 });
 

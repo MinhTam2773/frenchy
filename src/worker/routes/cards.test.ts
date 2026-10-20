@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { describe, expect, test } from 'vitest';
 import { NEW_CARDS_PER_DAY } from '../../shared/constants';
-import { getDeck } from '../../shared/content';
+import { getDeck } from '../../shared/content/server';
 import {
   ApiError,
   Card,

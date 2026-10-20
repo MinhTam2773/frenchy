@@ -13,7 +13,7 @@ import {
   translateResponse,
   words as wordsFixture,
 } from '@shared/fixtures';
-import { getChapter, getDeck, getText } from '@shared/content';
+import { getChapter, hasText, loadDeck } from '@shared/content';
 import {
   ActivityPing,
   CardCreate,
@@ -116,11 +116,11 @@ export const handlers: RequestHandler[] = [
     createdCards = [...createdCards, card];
     return HttpResponse.json(card, { status: 201 });
   }),
-  http.post('/api/cards/starter/:chapterId', ({ params }) => {
+  http.post('/api/cards/starter/:chapterId', async ({ params }) => {
     const chapterId = String(params.chapterId);
     if (!getChapter(chapterId)) return apiError('not_found', 'Chapter not found', 404);
     // The fixture chapter keeps the fixture deck, so its screens and this answer agree.
-    const deck = chapterId === ch10Deck.chapterId ? ch10Deck : getDeck(chapterId);
+    const deck = chapterId === ch10Deck.chapterId ? ch10Deck : await loadDeck(chapterId);
     const total = deck?.cards.length ?? 0;
     const added = startedDecks.has(chapterId) ? 0 : total;
     startedDecks.add(chapterId);
@@ -158,7 +158,7 @@ export const handlers: RequestHandler[] = [
     const input = Reading.safeParse(await request.json());
     if (!input.success) return badBody(input.error);
     const { textId } = input.data;
-    if (!getText(textId) && !fixtureTexts.some((t) => t.id === textId)) {
+    if (!hasText(textId) && !fixtureTexts.some((t) => t.id === textId)) {
       return apiError('not_found', 'Text not found', 404);
     }
     const finishedAt = clientInstant(input.data.finishedAt, 'finishedAt');

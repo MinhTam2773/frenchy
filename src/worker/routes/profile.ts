@@ -1,4 +1,4 @@
-import { getChapter } from '../../shared/content';
+import { getChapter } from '../../shared/content/server';
 import { Profile, ProfilePatch } from '../../shared/schemas';
 import {
   loadProfile,

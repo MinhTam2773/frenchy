@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { getChapterTexts, getCourse, routeChapters } from '../content';
+import { getCourse, loadChapterTexts, routeChapters } from '../content';
 import { texts } from '../fixtures';
 import { GapToken, Sentence, type Token } from '../schemas';
 import { tokenize } from './tokenize';
+
+const lessonTexts = (
+  await Promise.all(routeChapters(getCourse()).map((chapter) => loadChapterTexts(chapter.id)))
+).flat();
 
 const NBSP = ' ';
 const NNBSP = ' ';
@@ -162,7 +166,6 @@ describe('tokenize', () => {
     for (const { tokens } of sentences) expectSameSplit(tokens);
   });
 
-  const lessonTexts = routeChapters(getCourse()).flatMap((chapter) => getChapterTexts(chapter.id));
   it.each(lessonTexts.map((text) => [text.id, text] as const))(
     'splits every sentence of lesson text %s like its content tokens (G-55)',
     (_id, text) => {

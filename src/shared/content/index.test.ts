@@ -1,16 +1,18 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { cafeDialogueText, ch10Deck, ch10Note } from '../fixtures';
+import { contentFiles } from './files';
 import {
   allowedGrammar,
-  contentFiles,
   createContent,
   getChapter,
-  getChapterTexts,
+  getChapterTextIds,
   getCourse,
-  getDeck,
   getGrammar,
   getNote,
-  getText,
+  hasText,
+  loadChapterTexts,
+  loadDeck,
+  loadText,
 } from './index';
 
 // PLAN §2, "Beginner route through the book".
@@ -95,48 +97,90 @@ describe('texts, notes and decks', () => {
     Object.entries(contentFiles).filter(([file]) => !file.startsWith('chapters/')),
   );
 
-  it('works with no chapter content', () => {
+  it('works with no chapter content', async () => {
     const content = createContent(noChapters);
-    expect(content.getText('ch10-au-cafe')).toBeUndefined();
-    expect(content.getChapterTexts('ch10')).toEqual([]);
+    expect(content.hasText('ch10-au-cafe')).toBe(false);
+    expect(await content.loadText('ch10-au-cafe')).toBeUndefined();
+    expect(await content.loadChapterTexts('ch10')).toEqual([]);
+    expect(content.getChapterTextIds('ch10')).toEqual([]);
     expect(content.getNote('ch10')).toBeUndefined();
-    expect(content.getDeck('ch10')).toBeUndefined();
+    expect(await content.loadDeck('ch10')).toBeUndefined();
   });
 
-  it('finds content in the layout T-14 writes', () => {
+  it('finds content in the layout T-14 writes', async () => {
     const content = createContent({
       ...noChapters,
       'chapters/ch10/texts/ch10-au-cafe.json': cafeDialogueText,
       'chapters/ch10/note.json': ch10Note,
       'chapters/ch10/deck.json': ch10Deck,
     });
-    expect(content.getText('ch10-au-cafe')?.title).toBe('Au café');
-    expect(content.getText('ch10-nowhere')).toBeUndefined();
-    expect(content.getChapterTexts('ch10').map((text) => text.id)).toEqual(['ch10-au-cafe']);
-    expect(content.getChapterTexts('ch4')).toEqual([]);
+    expect(content.hasText('ch10-au-cafe')).toBe(true);
+    expect((await content.loadText('ch10-au-cafe'))?.title).toBe('Au café');
+    expect(await content.loadText('ch10-nowhere')).toBeUndefined();
+    expect((await content.loadChapterTexts('ch10')).map((text) => text.id)).toEqual([
+      'ch10-au-cafe',
+    ]);
+    expect(await content.loadChapterTexts('ch4')).toEqual([]);
     expect(content.getNote('ch10')?.title).toBe('parler');
-    expect(content.getDeck('ch10')?.cards).toHaveLength(3);
+    expect((await content.loadDeck('ch10'))?.cards).toHaveLength(3);
   });
 
-  it('serves the real content tree, whatever it holds', () => {
+  it('loads texts and decks only when a chapter asks, once per chapter', async () => {
+    const load = vi.fn(async () => cafeDialogueText);
+    const loadOther = vi.fn(async () => ({ ...cafeDialogueText, id: 'ch10-zoo' }));
+    const loadDeckFile = vi.fn(async () => ch10Deck);
+    const content = createContent(noChapters, {
+      'chapters/ch10/texts/ch10-zoo.json': loadOther,
+      'chapters/ch10/texts/ch10-au-cafe.json': load,
+      'chapters/ch10/deck.json': loadDeckFile,
+    });
+    expect(content.hasText('ch10-zoo')).toBe(true);
+    expect(content.getChapterTextIds('ch10')).toEqual(['ch10-au-cafe', 'ch10-zoo']);
+    expect(load).not.toHaveBeenCalled();
+
+    expect((await content.loadText('ch10-zoo'))?.id).toBe('ch10-zoo');
+    expect((await content.loadChapterTexts('ch10')).map((text) => text.id)).toEqual([
+      'ch10-au-cafe',
+      'ch10-zoo',
+    ]);
+    expect(load).toHaveBeenCalledTimes(1);
+    expect(loadDeckFile).not.toHaveBeenCalled();
+    expect((await content.loadDeck('ch10'))?.chapterId).toBe('ch10');
+  });
+
+  it('retries a chapter whose texts failed to load', async () => {
+    const load = vi
+      .fn<() => Promise<unknown>>()
+      .mockRejectedValueOnce(new Error('offline'))
+      .mockResolvedValue(cafeDialogueText);
+    const content = createContent(noChapters, { 'chapters/ch10/texts/ch10-au-cafe.json': load });
+    await expect(content.loadChapterTexts('ch10')).rejects.toThrow('offline');
+    expect((await content.loadChapterTexts('ch10')).map((text) => text.id)).toEqual([
+      'ch10-au-cafe',
+    ]);
+  });
+
+  it('serves the real content tree, whatever it holds', async () => {
     const content = createContent(contentFiles);
     for (const chapter of getCourse().stages.flatMap((stage) => stage.chapters)) {
-      const texts = getChapterTexts(chapter.id);
-      expect(texts).toEqual(content.getChapterTexts(chapter.id));
+      const texts = await loadChapterTexts(chapter.id);
+      expect(texts).toEqual(await content.loadChapterTexts(chapter.id));
+      expect(getChapterTextIds(chapter.id)).toEqual(texts.map((text) => text.id));
       for (const text of texts) {
         expect(text.chapterId).toBe(chapter.id);
-        expect(getText(text.id)).toEqual(text);
+        expect(hasText(text.id)).toBe(true);
+        expect(await loadText(text.id)).toEqual(text);
       }
       expect(getNote(chapter.id)).toEqual(content.getNote(chapter.id));
-      expect(getDeck(chapter.id)).toEqual(content.getDeck(chapter.id));
+      expect(await loadDeck(chapter.id)).toEqual(await content.loadDeck(chapter.id));
     }
   });
 
-  it('refuses a text that breaks the schema', () => {
+  it('refuses a text that breaks the schema', async () => {
     const content = createContent({
       ...noChapters,
       'chapters/ch10/texts/ch10-bad.json': { id: 'ch10-bad' },
     });
-    expect(() => content.getText('ch10-bad')).toThrow();
+    await expect(content.loadText('ch10-bad')).rejects.toThrow();
   });
 });

@@ -1,5 +1,5 @@
 import { asc, eq, sql } from 'drizzle-orm';
-import { getText } from '../../shared/content';
+import { hasText } from '../../shared/content/server';
 import {
   ActivityPing,
   DailyActivity,
@@ -66,7 +66,7 @@ export const activityRoute = syncRouter()
   })
   .post('/readings', async (c) => {
     const input = parseInput(Reading, await readJson(c), 'body');
-    if (!getText(input.textId)) throw notFound('Text');
+    if (!hasText(input.textId)) throw notFound('Text');
     const finishedAt = clientInstant(input.finishedAt, Date.now(), 'finishedAt');
     const db = userDb(c);
     const { timeZone } = await loadProfile(db);
