@@ -2,6 +2,7 @@ import type { RouteObject } from 'react-router';
 import { SignInPage, SignUpPage } from '@client/features/auth/EmailAuthPage';
 import { WelcomePage } from '@client/features/auth/WelcomePage';
 import { ChapterPage } from '@client/features/chapter/ChapterPage';
+import { CreditsPage } from '@client/features/settings/CreditsPage';
 import { NotFoundPage } from '@client/features/not-found/NotFoundPage';
 import { OnboardingPage } from '@client/features/onboarding/OnboardingPage';
 import { PathPage } from '@client/features/path/PathPage';
@@ -51,6 +52,7 @@ export const routes: RouteObject[] = [
                 }),
               },
               { path: '/streak', element: <StreakPage /> },
+              { path: '/credits', element: <CreditsPage /> },
             ],
           },
         ],
