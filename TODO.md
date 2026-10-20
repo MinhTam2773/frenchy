@@ -1166,7 +1166,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (before sharing the app with others) | Sonnet 5.5 · High | S | T-13, T-22 | — |
 
-**Status:** ready (deps done) · **Owns:** `src/worker/routes/account.ts`, account section in Settings
+**Status:** in progress · **Claimed by:** Wave 7a agent (B-16) · **Branch:** `task/B-16-account` · **Owns:** `src/worker/routes/account.ts`, account section in Settings
 **Goal:** Users can download their data and delete their account.
 **Done when:** export returns all of the user's rows as JSON, and delete removes every row and session for that user.
 
