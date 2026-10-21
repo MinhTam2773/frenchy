@@ -107,6 +107,14 @@ test('the review card, front and back, has no axe violations', async () => {
   await expectNoViolations();
 });
 
+test('the review card with an open word sheet has no axe violations', async () => {
+  renderAt('/review');
+  fireEvent.click(await screen.findByRole('button', { name: 'écoute' }));
+  const sheet = await screen.findByRole('region', { name: 'Word details' });
+  await within(sheet).findByText(/listen/, {}, { timeout: 20_000 });
+  await expectNoViolations();
+});
+
 test('the stage picker sheet has no axe violations', async () => {
   renderAt('/path');
   fireEvent.click(await screen.findByRole('button', { name: 'Choose stage' }));

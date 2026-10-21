@@ -88,3 +88,19 @@ export async function openReader(page: Page) {
   await expect(page).toHaveURL(/\/read\//);
   await expect(page.getByRole('button', { name: 'Finish reading' })).toBeVisible();
 }
+
+/**
+ * Grade cards until one whose front has French words you can tap (an English front has none), and
+ * return those word buttons. The deck is shuffled by due time, so the first card is not a given.
+ */
+export async function reachTappableFront(page: Page) {
+  const showAnswer = page.getByRole('button', { name: 'Show answer' });
+  const words = page.locator('[data-word^="front-"]');
+  for (let i = 0; i < 24; i++) {
+    await expect(showAnswer).toBeVisible();
+    if ((await words.count()) > 0) return words;
+    await showAnswer.click();
+    await page.getByRole('button', { name: /^Good,/ }).click();
+  }
+  throw new Error('No card with a tappable front in the deck');
+}

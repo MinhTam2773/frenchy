@@ -12,3 +12,4 @@ export { StreakChip } from './StreakChip';
 export { MAIN_TABS, TabBar, type TabBarItem } from './TabBar';
 export { Toggle } from './Toggle';
 export { TopBar } from './TopBar';
+export { WordPanel } from './WordPanel';

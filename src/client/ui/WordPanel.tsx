@@ -1,17 +1,23 @@
 import type { WordInfo } from '@shared/text';
-import { Button, Chip, Icon, IconButton } from '@client/ui';
+import { Button } from './Button';
+import { Chip } from './Chip';
+import { Icon } from './Icon';
+import { IconButton } from './IconButton';
 
 type WordPanelProps = {
   /** Undefined while the annotation loads. */
   info: WordInfo | undefined;
   word: string;
-  saved: boolean;
-  saving: boolean;
-  saveFailed: boolean;
+  /** The lookup failed (offline, shard not cached), so `info` will not arrive. */
+  lookupFailed?: boolean;
+  saved?: boolean;
+  saving?: boolean;
+  saveFailed?: boolean;
   canSpeak: boolean;
   onPlay: () => void;
-  onSave: () => void;
-  onSentence: () => void;
+  /** Each action shows only when its handler is given, so a surface can leave out what it can't do. */
+  onSave?: () => void;
+  onSentence?: () => void;
   onClose: () => void;
 };
 
@@ -21,11 +27,12 @@ const GENDER_CHIPS = {
 } as const;
 
 /**
- * The tap-a-word sheet. Not a modal dialog (G-17): the text above stays tappable, so tapping
- * another word just switches the sheet, and focus stays on the word that was picked.
+ * The tap-a-word sheet, shared by the reader and the review cards. Not a modal dialog (G-17): the
+ * text above stays tappable, so tapping another word just switches the sheet, and focus stays on
+ * the word that was picked.
  */
 export function WordPanel(props: WordPanelProps) {
-  const { info, word, saved, saving, saveFailed } = props;
+  const { info, word, saved = false, saving = false, saveFailed = false } = props;
   const gender = info?.gender === 'm' || info?.gender === 'f' ? GENDER_CHIPS[info.gender] : null;
   const showLemma =
     info &&
@@ -82,27 +89,38 @@ export function WordPanel(props: WordPanelProps) {
           </div>
         </>
       )}
+      {props.lookupFailed && !info && (
+        <p role="alert" className="m-0 text-sm font-bold text-danger-ink">
+          Couldn’t look this word up. Check your connection.
+        </p>
+      )}
       {saveFailed && (
         <p role="alert" className="m-0 text-sm font-bold text-danger-ink">
           Couldn’t save. Try again.
         </p>
       )}
-      <div className="flex gap-2.5 pt-1">
-        <Button
-          size="sm"
-          variant={saved ? 'success' : 'primary'}
-          className="flex-1"
-          disabled={!info || info.glosses.length === 0 || saving}
-          aria-disabled={saved || undefined}
-          onClick={saved ? undefined : props.onSave}
-        >
-          <Icon name={saved ? 'check' : 'plus'} size={20} strokeWidth={3} />
-          {saved ? 'Saved to reviews' : saving ? 'Saving…' : 'Save word'}
-        </Button>
-        <Button size="sm" variant="secondary" onClick={props.onSentence}>
-          Sentence
-        </Button>
-      </div>
+      {(props.onSave || props.onSentence) && (
+        <div className="flex gap-2.5 pt-1">
+          {props.onSave && (
+            <Button
+              size="sm"
+              variant={saved ? 'success' : 'primary'}
+              className="flex-1"
+              disabled={!info || info.glosses.length === 0 || saving}
+              aria-disabled={saved || undefined}
+              onClick={saved ? undefined : props.onSave}
+            >
+              <Icon name={saved ? 'check' : 'plus'} size={20} strokeWidth={3} />
+              {saved ? 'Saved to reviews' : saving ? 'Saving…' : 'Save word'}
+            </Button>
+          )}
+          {props.onSentence && (
+            <Button size="sm" variant="secondary" onClick={props.onSentence}>
+              Sentence
+            </Button>
+          )}
+        </div>
+      )}
     </section>
   );
 }
