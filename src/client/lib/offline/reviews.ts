@@ -46,9 +46,10 @@ const noop = () => undefined;
 let chain: Promise<void> = Promise.resolve();
 let retryTimer: ReturnType<typeof setTimeout> | undefined;
 
-function enqueue(work: () => Promise<void>): Promise<void> {
-  chain = chain.then(work).catch(noop);
-  return chain;
+function enqueue<T>(work: () => Promise<T>, fallback: T): Promise<T> {
+  const run = chain.then(work).catch(() => fallback);
+  chain = run.then(noop);
+  return run;
 }
 
 function scheduleRetry(userId: string) {
@@ -78,7 +79,8 @@ async function send({
   }
 }
 
-async function flush(userId: string) {
+async function flush(userId: string): Promise<number> {
+  let saved = 0;
   const ready = (await listPending(userId))
     .filter((review) => review.heldBy !== PAGE_ID)
     .sort((a, b) => a.reviewedAt - b.reviewedAt);
@@ -87,23 +89,26 @@ async function flush(userId: string) {
     const outcome = await send(review);
     if (outcome === 'retry') {
       scheduleRetry(userId);
-      return;
+      break;
     }
     await settlePending(review, outcome === 'saved');
+    if (outcome === 'saved') saved += 1;
     update({
       pending: ready.length - index - 1,
       dropped: snapshot.dropped + (outcome === 'dropped' ? 1 : 0),
     });
   }
+  return saved;
 }
 
 /**
  * Posts this user's queued reviews, oldest `reviewedAt` first, one at a time. The server ignores a
  * review id it has already applied, so a replay after a lost answer counts once. Stops at the
- * first network or server error and keeps the rest for the next try. Never rejects.
+ * first network or server error and keeps the rest for the next try. Resolves with how many
+ * reviews the server saved; never rejects.
  */
-export function syncReviews(userId: string): Promise<void> {
-  return enqueue(() => flush(userId));
+export function syncReviews(userId: string): Promise<number> {
+  return enqueue(() => flush(userId), 0);
 }
 
 /** Keeps a session's last grade on the device while it can still be undone (G-20). */
@@ -158,5 +163,5 @@ export function clearOfflineData(): Promise<void> {
   return enqueue(async () => {
     update({ pending: 0, dropped: 0 });
     await clearStores();
-  });
+  }, undefined);
 }
