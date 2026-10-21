@@ -162,7 +162,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-28 | — |
 
-**Status:** in progress · **Claimed by:** Wave 7b agent (B-53) · **Branch:** `task/B-53-starter-deck-name` · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
+**Status:** in review (PR #53: https://github.com/MinhTam2773/frenchy/pull/53) · **Claimed by:** Wave 7b agent (B-53) · **Branch:** `task/B-53-starter-deck-name` · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
 **Goal:** Close G-73: a screen-reader user hears what the starter-deck button does, not just "Starter deck 24 cards".
 **Done when:** the button's accessible name carries the action (then the result), the status stays a live region outside the button, and the tests and E2E helpers find the button by that name.
 
