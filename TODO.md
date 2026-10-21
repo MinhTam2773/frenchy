@@ -116,9 +116,9 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 **Goal:** `npx prettier --check .` is clean, so an agent can run Prettier on its own files without reformatting someone else's (L-34, L-161).
 **Done when:** `npx prettier --check .` reports no files, and the diff is formatting only.
 
-- [ ] `npx prettier --write` on `src/client/features/settings/CreditsPage.tsx`, `src/client/layouts/OfflineBanner.test.tsx`, `src/client/lib/api.test.tsx`, `src/client/lib/tts/speech.ts`, `src/client/lib/tts/useTts.test.tsx`, `src/client/lib/tts/useTts.ts`, `src/client/mocks/handlers/base.test.ts`, `src/client/ui/Button.tsx`, `src/worker/routes/cards.test.ts`
-- [ ] Add the generated files to `.prettierignore`: `migrations/meta/`, `public/mockServiceWorker.js`
-- [ ] Ask the lead whether `npm run lint` should also run `prettier --check .`
+- [x] `npx prettier --write` on `src/client/features/settings/CreditsPage.tsx`, `src/client/layouts/OfflineBanner.test.tsx`, `src/client/lib/api.test.tsx`, `src/client/lib/tts/speech.ts`, `src/client/lib/tts/useTts.test.tsx`, `src/client/lib/tts/useTts.ts`, `src/client/mocks/handlers/base.test.ts`, `src/client/ui/Button.tsx`, `src/worker/routes/cards.test.ts`
+- [x] Add the generated files to `.prettierignore`: `migrations/meta/`, `public/mockServiceWorker.js`
+- [x] Ask the lead whether `npm run lint` should also run `prettier --check .` (lead: separate task B-57)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
