@@ -13,8 +13,11 @@ const deck: Deck = {
   cards: ch10Deck.cards.map((card) => ({ ...card, textId: card.textId && 'ch10-au-cafe' })),
 };
 
+// The real course and grammar, but none of the real texts: a rule that looks across texts (isNew)
+// must not meet the lessons already written (L-75).
 const good: ContentFiles = {
-  ...contentFiles,
+  'course.json': contentFiles['course.json'],
+  'grammar.json': contentFiles['grammar.json'],
   [CAFE]: cafeDialogueText,
   'chapters/ch10/note.json': ch10Note,
   'chapters/ch10/deck.json': deck,
@@ -371,6 +374,133 @@ describe('validateContent typography', () => {
     );
     expect(problems).toHaveLength(1);
     expect(problems[0]).toMatch(`${CAFE}: paragraphs.1.sentences.1: `);
+  });
+});
+
+/** A one-sentence text; `parts` are words (`[t, lemma, extra]`) and gaps (a plain string). */
+type Part = string | [t: string, lemma: string, extra?: Partial<WordToken>];
+
+function miniText(id: string, parts: Part[], chapterId = id.split('-')[0]): Text {
+  const tokens = parts.map((part): Token => {
+    if (typeof part === 'string') return { t: part };
+    const [t, lemma, extra] = part;
+    return { t, lemma, pos: 'noun', gloss: lemma, ...extra };
+  });
+  const newWords = tokens.flatMap((token) =>
+    'isNew' in token && token.isNew ? [token.lemma] : [],
+  );
+  return {
+    id,
+    chapterId,
+    title: id,
+    kind: 'story',
+    minutes: 1,
+    paragraphs: [{ sentences: [{ tokens, en: 'x' }] }],
+    newWords: [...new Set(newWords)],
+    grammarTags: [],
+  };
+}
+
+const textPath = (text: Text) => `chapters/${text.chapterId}/texts/${text.id}.json`;
+
+function withTexts(...texts: Text[]): ContentFiles {
+  return { ...good, ...Object.fromEntries(texts.map((text) => [textPath(text), text])) };
+}
+
+const NEW = { isNew: true } as const;
+
+describe('validateContent isNew once per course', () => {
+  const first = miniText('ch10-aaa', [['fraise', 'fraise', NEW]]);
+
+  it('accepts a lemma that is new in one text and plain in the others', () => {
+    const later = miniText('ch10-bbb', [['fraise', 'fraise']]);
+    expect(problemsOf(withTexts(first, later))).toEqual([]);
+  });
+
+  it('rejects a lemma marked again in a later text of the same chapter, naming the earlier one', () => {
+    const again = miniText('ch10-bbb', [['une', 'un'], ' ', ['fraise', 'fraise', NEW]]);
+    expect(problemsOf(withTexts(first, again))).toEqual([
+      `${textPath(again)}: paragraphs.0.sentences.0: "fraise" is marked isNew, but ch10-aaa comes first along the route and already marks it; mark it in one text only`,
+    ]);
+  });
+
+  it('follows the route, not the alphabet, across chapters (ch12 comes before ch10)', () => {
+    const ch10 = miniText('ch10-aaa', [['fraise', 'fraise', NEW]]);
+    const ch12 = miniText('ch12-zzz', [['fraise', 'fraise', NEW]]);
+    expect(problemsOf(withTexts(ch10, ch12))).toEqual([
+      `${textPath(ch10)}: paragraphs.0.sentences.0: "fraise" is marked isNew, but ch12-zzz comes first along the route and already marks it; mark it in one text only`,
+    ]);
+  });
+
+  it('reports a lemma once per text, even for a phrase marked on every word', () => {
+    const phrase = (t: string) => [t, 'un peu', { ...NEW, pos: 'phrase' }] as Part;
+    const a = miniText('ch10-aaa', [phrase('un'), ' ', phrase('peu')]);
+    const b = miniText('ch10-bbb', [phrase('un'), ' ', phrase('peu')]);
+    expect(problemsOf(withTexts(a, b))).toEqual([
+      `${textPath(b)}: paragraphs.0.sentences.0: "un peu" is marked isNew, but ch10-aaa comes first along the route and already marks it; mark it in one text only`,
+    ]);
+  });
+});
+
+describe('validateContent phrase list', () => {
+  const sentence = (...parts: Part[]) => problemsOf(withTexts(miniText('ch10-aaa', parts)));
+  const where = `${textPath(miniText('ch10-aaa', []))}: paragraphs.0.sentences.0:`;
+  const phrase = (t: string, lemma: string): Part => [t, lemma, { pos: 'phrase' }];
+
+  it('accepts listed phrases with every word marked, even around "n\'y"', () => {
+    expect(
+      sentence(phrase('Il', 'il y a'), ' ', phrase('y', 'il y a'), ' ', phrase('a', 'il y a')),
+    ).toEqual([]);
+    expect(
+      sentence(
+        phrase('il', 'il y a'),
+        ' ',
+        ["n'", 'ne'],
+        phrase('y', 'il y a'),
+        ' ',
+        phrase('a', 'il y a'),
+        ' ',
+        ['pas', 'pas'],
+      ),
+    ).toEqual([]);
+  });
+
+  it('rejects pos phrase on a lemma outside the closed list', () => {
+    expect(sentence(phrase('ça', 'ça va'), ' ', phrase('va', 'ça va'))).toEqual([
+      `${where} "ça va" has pos phrase but is not in the closed phrase list (src/shared/content/phrases.ts); annotate its words one by one, and a single word is never a phrase`,
+    ]);
+  });
+
+  it('rejects a single word with pos phrase (voilà)', () => {
+    expect(sentence(phrase('Voilà', 'voilà'))).toEqual([
+      `${where} "voilà" has pos phrase but is not in the closed phrase list (src/shared/content/phrases.ts); annotate its words one by one, and a single word is never a phrase`,
+    ]);
+  });
+
+  it('rejects a listed phrase with only some of its words marked', () => {
+    expect(sentence(['Un', 'un'], ' ', phrase('peu', 'un peu'))).toEqual([
+      `${where} "un peu" has 2 words but 1 token(s) carry it; every word of a phrase gets lemma "un peu" and pos phrase`,
+    ]);
+  });
+
+  it('rejects a listed phrase annotated word by word', () => {
+    expect(sentence(['Il', 'il'], ' ', ['y', 'y'], ' ', ['a', 'avoir'])).toEqual([
+      `${where} "il y a" is a fixed phrase; give every word of it lemma "il y a" and pos phrase instead of annotating it word by word`,
+    ]);
+  });
+
+  it("flags the longest phrase only: qu'est-ce que word by word is one problem", () => {
+    expect(
+      sentence(["Qu'", 'que'], ['est', 'être'], '-', ['ce', 'ce'], ' ', ['que', 'que']),
+    ).toEqual([
+      `${where} "qu'est-ce que" is a fixed phrase; give every word of it lemma "qu'est-ce que" and pos phrase instead of annotating it word by word`,
+    ]);
+  });
+
+  it("leaves look-alikes alone (c'est ce que has no hyphen)", () => {
+    expect(sentence(["C'", 'ce'], ['est', 'être'], ' ', ['ce', 'ce'], ' ', ['que', 'que'])).toEqual(
+      [],
+    );
   });
 });
 
