@@ -212,7 +212,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | S | — | — |
 
-**Status:** in progress · **Claimed by:** Wave 7b agent (B-56) · **Branch:** `task/B-56-docs-refresh` · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
+**Status:** in review · **Claimed by:** Wave 7b agent (B-56) · **Branch:** `task/B-56-docs-refresh` · **PR:** https://github.com/MinhTam2773/frenchy/pull/54 · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
 **Goal:** The docs agents read agree with the code (found in the 2026-10-20 context audit). `CLAUDE.md` says PLAN wins over the mockups, so a stale PLAN misleads.
 **Done when:** every item below is fixed, and nothing else in those files changes.
 
@@ -239,8 +239,8 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
   - the MVP tab bar has 4 tabs (G-28);
   - targets are 44 px where the mockup draws less (L-18);
   - "lesson L-04 in TODO.md" becomes `LESSONS/L-04.md`
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status), new lessons and gaps (L-192) in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
 
 ---
