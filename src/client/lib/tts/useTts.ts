@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { frenchVoices, isSupported, speak as speakText, stop as stopSpeech, type SpeakOptions } from './speech';
+import {
+  frenchVoices,
+  isSupported,
+  speak as speakText,
+  stop as stopSpeech,
+  type SpeakOptions,
+} from './speech';
 
 export function useTts() {
   const supported = isSupported();
