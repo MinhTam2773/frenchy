@@ -182,9 +182,9 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 **Goal:** PLAN says tap-to-translate works on every surface; MVP covers only the reader.
 **Done when:** French words on review cards open the same word sheet as the reader.
 
-- [ ] Move the word sheet into a shared component used by reader and review
-- [ ] Tokenize card text with T-15; tap opens the sheet without revealing the answer early
-- [ ] Tests
+- [x] Move the word sheet into a shared component used by reader and review (`src/client/ui/WordPanel.tsx`, exported from the kit; Save word, Sentence and a lookup-failed message are optional)
+- [x] Tokenize card text with T-15; tap opens the sheet without revealing the answer early (`tokenize()` + `annotate()` through `ReviewStage`; a one-word front stays plain until the reveal, L-184)
+- [x] Tests (`WordPanel.test.tsx`, `cardWords.test.ts`, `ReviewPage.test.tsx`, `a11y.test.tsx`; `e2e/review.spec.ts`, `e2e/a11y.spec.ts`)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green

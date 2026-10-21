@@ -541,3 +541,34 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+#### B-65 · Show a lookup failure in the reader's word sheet
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Haiku 5.5 | S | B-19 | — |
+
+**Status:** ready (after B-19 merges) · **Owns:** `src/client/features/reader/ReaderPage.tsx`, `src/client/features/reader/ReaderPage.test.tsx`
+**Goal:** `WordPanel` now takes `lookupFailed` and says "Couldn’t look this word up. Check your connection."; the reader still leaves the sheet showing only the word if its lexicon query fails (offline, shard not cached).
+**Done when:** a test makes the reader's lookup reject and finds the message in the sheet.
+
+- [ ] Pass `lookupFailed={infoQuery.isError}` (keep the query object instead of only `.data`)
+- [ ] Test: a rejected lookup shows the message, a later tap on a known word clears it
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-66 · Save a word from the review sheet after the reveal
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-19 | — |
+
+**Status:** ready (after B-19 merges); needs a product call (G-99 is related) · **Owns:** `src/client/features/review/ReviewStage.tsx`, its test
+**Goal:** The review's word sheet has no Save word (a card already exists for the sentence). After the answer is shown, a learner who meets an unknown word in the French back may want a card for it, as in the reader.
+**Done when:** after the reveal, the sheet offers Save word, which creates the same card and word status the reader's does and is not offered for a word already saved.
+
+- [ ] Decide with the user whether this belongs in review (it adds new cards mid-session; the session list does not change)
+- [ ] Reuse `wordCard()` from the reader's model and the same `api.cards.create` / `api.words.put` mutation; show "Saved to reviews" from `queryKeys.words`
+- [ ] Tests: offered after the reveal only; saved state; the session's own card list is unchanged
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green

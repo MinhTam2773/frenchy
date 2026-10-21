@@ -72,7 +72,9 @@ test('tapping a word on a card shows its meaning and keeps the answer hidden', a
   await expect(sheet).toBeVisible();
   // The meaning arrives from the lexicon; nothing of the card's back is shown.
   await expect(sheet.getByRole('heading')).toBeVisible();
-  await expect(sheet).not.toContainText('No translation yet');
+  const meaning = sheet.locator('span.text-xl');
+  await expect(meaning).toBeVisible();
+  await expect(meaning).not.toHaveText('No translation yet');
   await expect(page.getByRole('button', { name: 'Show answer' })).toBeVisible();
   await expect(page.getByRole('button', { name: /^Good,/ })).toBeHidden();
   await expect(page.getByText(/^0\/\d+$/)).toBeVisible();
