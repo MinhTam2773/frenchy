@@ -178,7 +178,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | S | T-18, T-25 | — |
 
-**Status:** ready (deps done) · **Owns:** shared word-sheet component extraction, review card renderer changes
+**Status:** in progress · **Claimed by:** Wave 7b agent (B-19) · **Branch:** `task/B-19-review-word-sheet` · **Owns:** shared word-sheet component extraction, review card renderer changes
 **Goal:** PLAN says tap-to-translate works on every surface; MVP covers only the reader.
 **Done when:** French words on review cards open the same word sheet as the reader.
 
