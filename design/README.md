@@ -10,13 +10,13 @@ The mockups are the visual spec for the MVP and later phases. Build screens to m
 
 | Mockup file | Screen | Phase | TODO task |
 |---|---|---|---|
-| `Main.dc.html` | Welcome / sign in | MVP | T-08b |
-| `Onboarding.dc.html` | Where are you in the book + daily goal | MVP | T-08b |
-| `Today.dc.html` | Daily screen (review first, book, read, output) | MVP | T-15 |
-| `Path.dc.html` | Course map (stage → chapters) | MVP | T-16 |
-| `Chapter.dc.html` | Chapter detail (book sections, pattern, readings, deck) | MVP | T-16 |
-| `Reader.dc.html` | Reader + tap-a-word sheet (interactive) | MVP | T-17b |
-| `Sentence.dc.html` | Long-press sentence sheet (translation, gloss, grammar note) | MVP | T-17b |
+| `Main.dc.html` | Welcome / sign in | MVP | T-21 |
+| `Onboarding.dc.html` | Where are you in the book + daily goal | MVP | T-21 |
+| `Today.dc.html` | Daily screen (review first, book, read, output) | MVP | T-16 |
+| `Path.dc.html` | Course map (stage → chapters) | MVP | T-17 |
+| `Chapter.dc.html` | Chapter detail (book sections, pattern, readings, deck) | MVP | T-17 |
+| `Reader.dc.html` | Reader + tap-a-word sheet (interactive) | MVP | T-25 |
+| `Sentence.dc.html` | Long-press sentence sheet (translation, gloss, grammar note) | MVP | T-25 |
 | `Practice.dc.html` | Practice hub | MVP | T-19 |
 | `Review.dc.html` | SRS review, 3 card types, 4 grades (interactive) | MVP | T-18 |
 | `ReviewDone.dc.html` | Session complete | MVP | T-18 |
@@ -57,7 +57,7 @@ Use these as Tailwind theme tokens (T-03). Never hard-code hex values in compone
 | `danger` | `#D6335B` (shadow `#A5213F`), soft `#FDE8EE` | Wrong, Again grade, sign out |
 | `warn` | `#9A5B00` (shadow `#6E4100`) | Hard grade |
 
-Contrast rule: white text only on `primary`, `success`, `danger`, `warn`, `freeze`. Bright fills (`gold`, `flame`, `#178A4C`-style mid greens) fail WCAG AA with white text (see lesson L-04 in `TODO.md`).
+Contrast rule: white text only on `primary`, `success`, `danger`, `warn`, `freeze`. Bright fills (`gold`, `flame`, `#178A4C`-style mid greens) fail WCAG AA with white text (see `LESSONS/L-04.md`).
 
 ### Type
 
@@ -73,9 +73,9 @@ Contrast rule: white text only on `primary`, `success`, `danger`, `warn`, `freez
 - **Cards:** white, 2px `line` border, radius 20–22px, shadow `0 4px 0 #E3E7F5`.
 - **Chips:** height 28–30px, fully rounded.
 - **Bottom sheets:** radius 28px on top, drag handle 44×5px.
-- **Tab bar:** 78px, 5 tabs (Today, Path, Practice, Words, Me). The active tab has a soft-blue pill behind its icon.
+- **Tab bar:** 78px. The mockups draw 5 tabs (Today, Path, Practice, Words, Me); the MVP has 4, without Words, which comes back with B-02 (G-28). The active tab has a soft-blue pill behind its icon.
 - **Icons:** inline stroke SVG, 2.2–2.4 stroke width, round caps. No emoji.
-- **Touch targets:** at least 44×44px.
+- **Touch targets:** at least 44×44px. Where a mockup draws less (streak chip 40, sheet icon buttons 40, toggle 32), build the 44px hit area anyway (L-18).
 
 ### Mascot
 

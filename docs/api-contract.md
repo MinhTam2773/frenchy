@@ -19,7 +19,7 @@ To change the contract, edit the schema and both sides (client and worker) in on
 | Local days | `YYYY-MM-DD` in the profile's IANA time zone (`LocalDate`). Same in D1 (`text`). |
 | Missing values | Optional fields are left out, never `null`. Only fields typed `.nullable()` use `null`: `Profile.currentChapterId`, `ProfileSettings.voiceURI`, `Card.lastReview`, `CardStats.nextDueAt`. |
 | Lists | Wrapped in an object (`{ cards: [...] }`), so a field can be added later without breaking clients. |
-| Status codes | `200` OK, `201` created, `400`, `401`, `404`, `413` (body over 64 KB, code `bad_request`), `429`, `502` (AI provider failed), `500`. |
+| Status codes | `200` OK, `201` created, `400`, `401`, `403` (a form-type write from another origin; see below), `404`, `413` (body over 64 KB, code `bad_request`), `429`, `502` (AI provider failed), `500`. |
 
 ### Errors
 
@@ -39,6 +39,8 @@ Every non-2xx answer from our routes has the `ApiError` body:
 | `internal` | 500 |
 
 Better Auth's routes keep their own error format.
+
+`403` is the exception: Hono's `csrf()` runs before every route and refuses a write whose content type is a form type (`text/plain`, urlencoded, multipart) or missing, unless `Sec-Fetch-Site` is `same-origin` or `Origin` is ours. The answer is the plain text `Forbidden`, not an `ApiError`. Browsers always send those headers, and JSON writes are left to the CORS preflight, so the app never sees it. A script or test that POSTs a body-less request (such as `/api/cards/starter/:chapterId`) must send `Origin` (L-122).
 
 ## Endpoints
 
@@ -84,7 +86,7 @@ Better Auth's routes keep their own error format.
 - `POST /api/cards` with `CardCreate` → `Card`. Dedupes on `type` + `front`: an existing card comes back with `200`, a new one with `201`. The server sets the id and a new FSRS state (due now).
 - `POST /api/cards/starter/:chapterId` → `{ added, total }`. Adds the chapter's `deck.json` cards with `source = { kind: 'starter', ref: <deck card id> }`. Idempotent: cards already added are skipped (`added: 0` the second time). `404` for an unknown chapter.
 - `POST /api/reviews` with `ReviewInput` → the updated `Card`. The server recomputes the next state with T-10 (the client's preview is not trusted), updates the card, inserts the review and counts it in that day's `DailyActivity.reviews`, in one D1 batch. A repeated `id` returns the card without grading again. `404` for a card that isn't the user's.
-- There is no undo route. The review screen's one-step undo (T-18) works by holding the last grade on the client and posting it when the next card is graded or the session ends (open question G-20).
+- There is no undo route. The review screen's one-step undo (T-18) works by holding the last grade on the client and posting it when the next card is graded or the session ends (decided, G-20; a closed tab can lose the last grade).
 
 Card content rules (checked by the schema):
 
@@ -106,14 +108,14 @@ Card content rules (checked by the schema):
 - `POST /api/activity/ping` with `{ at }` → today's `DailyActivity`. The client sends one ping per active minute (T-16 `useActiveMinutes`); the server adds at most one minute per clock minute, so retries and two open tabs don't double-count.
 - `POST /api/activity/readings` with `{ textId, finishedAt }` → `Reading`. "Finish reading" (T-25). Stores the first finish per text (later calls return it unchanged) and counts a reading in that day's `DailyActivity.readings` at most once per text per day. `404` for a text id that isn't in `content/`.
 - `GET /api/activity/readings` → `{ readings: Reading[] }`, for "next unread text" (Today) and the readings list (Chapter).
-- `GET /api/streak` → `StreakResponse`: the `StreakSummary` from T-11 over about the last 400 days, plus `today` (the server's local date for the profile's time zone), `todayMinutes`, and `calendar` (every day from the first active day to yesterday, plus today once it is practiced; statuses `practiced`, `freeze`, `missed`).
+- `GET /api/streak` → `StreakResponse`: the `StreakSummary` from T-11 over every `daily_activity` row (a shorter window would give wrong freezes, G-31), plus `today` (the server's local date for the profile's time zone), `todayMinutes`, and `calendar` (every day from the first active day to yesterday, plus today once it is practiced; statuses `practiced`, `freeze`, `missed`).
 
 A day is practiced when it has at least one graded review or one finished reading (T-11 default, H-07). Minutes alone don't count.
 
 ### Account
 
 - `GET /api/account/export` → `AccountExport` `{ exportedAt, user: { id, name, email }, tables }`, where `tables` maps each table that has a `user_id` column (found in the Drizzle schema, so a new user table is included automatically) to this user's rows, with our own field names. Session tokens and password hashes are left out. Sent with `Content-Disposition: attachment` and `Cache-Control: no-store`.
-- `DELETE /api/account` with `{ confirm: "delete" }` → `{ deleted: true }`. Removes every row of those tables plus Better Auth's sessions, accounts and user in one D1 batch; the cookie stops working at once (`401`). Any other body is `400 bad_request` and nothing is deleted. Shared tables (`translation_cache`, `ai_daily_usage`) hold no per-user rows and are left alone (G-64, G-86).
+- `DELETE /api/account` with `{ confirm: "delete" }` → `{ deleted: true }`. Removes every row of those tables plus Better Auth's sessions, accounts and user in one D1 batch; the cookie stops working at once (`401`). Any other body is `400 bad_request` and nothing is deleted. Rows nobody owns are left alone: `translation_cache`, `ai_daily_usage`, `rate_limit` (keyed by IP and path) and `verification` (keyed by identifier, unused until B-18) (G-64, G-86).
 
 ### AI
 

@@ -1,5 +1,12 @@
 # Security review (T-29)
 
+> **Status as of 2026-10-21 (B-56).** The report below is the T-29 report as written. Since then:
+> - **S-05 is fixed by B-21** (PR #42): a Credits page, linked from Me, shows both attributions (G-25 resolved).
+> - **S-10 is fixed by B-39**: `public/_headers` (CSP, `X-Frame-Options`, `nosniff`, `Referrer-Policy`) on the static app, `nosniff` and a 64 KB `bodyLimit` (413) on `/api` (G-78 resolved).
+> - **S-17 is fixed by B-16** (PR #46): `scopedDb(...).deleteAccount()` removes every user table plus sessions, accounts and the user in one batch. There are still no foreign keys; rows nobody owns (`translation_cache`, `ai_daily_usage`, `rate_limit`, `verification`) stay (G-36 resolved for deletion, G-86 open).
+> - **"Before T-30":** item 2 is done (B-21 landed and is in T-30's `Depends on`). Item 4 is half done: B-39 landed, B-40 (write burst limit, S-03) is still open. Items 1 and 3 are unchanged.
+> - **Worker size (G-62, G-70):** after B-33 `dist/frenchy/index.js` is about 1.99 MB raw and 434 KB gzipped (it was 2.47 MB and 482 KB).
+
 A review of the MVP before anything is public: the Worker API (`src/worker/**`), Better Auth, the AI layer, the build output and the client bundle, as merged on `main` after T-26 (PR #36). It was done by an agent that didn't write the code under review. Every P0 and P1 finding is fixed on the branch `task/T-29-security`. The rest are listed with their owner task, or as accepted with the reason.
 
 ## How it was checked

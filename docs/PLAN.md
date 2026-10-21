@@ -147,11 +147,11 @@ Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
 | DB | Cloudflare D1 (SQLite) + Drizzle ORM and migrations | Free tier, no pausing; typed queries |
 | Auth | Better Auth (email + Google), sessions stored in D1 | Cloudflare has no consumer auth; runs on Workers |
 | Files | Cloudflare R2 | Pre-generated TTS audio (later) |
-| SRS | `ts-fsrs` on the client | Open-source FSRS implementation |
+| SRS | `ts-fsrs` through `src/shared/srs`: the client previews intervals, the server recomputes and stores the card | Open-source FSRS implementation; one scheduler for both sides |
 | TTS | Browser Web Speech API (fr-FR) first; R2 audio later | Free, good enough for MVP |
-| Dictionary | Pre-built offline lexicon (Wiktionary-derived data; license to verify) + lemmatizer, shipped as static JSON | Instant, free word taps |
+| Dictionary | Pre-built offline lexicon (Wiktionary-derived data, CC BY-SA 4.0, verified in G-25; attribution on the Credits page, B-21) + lemmatizer, shipped as static JSON | Instant, free word taps |
 | AI | **Provider-agnostic layer** (see below), called only from the Worker | Keys stay server-side; swap providers without code changes |
-| Tests | Vitest; `@cloudflare/vitest-pool-workers` for the API | Tests run in the real Workers runtime |
+| Tests | Vitest; `@cloudflare/vitest-plugin` for the API (L-07) | Tests run in the real Workers runtime |
 
 ### Platforms
 - **Now:** one PWA for iPhone, Android, Windows, Mac and Linux. On phones it is installed with "Add to Home Screen".
@@ -165,7 +165,7 @@ Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
  ┌──────────────────────────────────────────┐
  │ React SPA                                │
  │  - course map, reader, SRS, daily screen │
- │  - ts-fsrs scheduling                    │
+ │  - ts-fsrs interval preview              │
  │  - lexicon + lesson JSON (cached by SW)  │
  └───────────────┬──────────────────────────┘
                  │ HTTPS, same origin
@@ -174,7 +174,9 @@ Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
  │  static assets ── SPA files              │
  │  Hono /api/*                             │
  │   /api/auth/*   Better Auth              │
- │   /api/sync     cards, reviews, status   │
+ │   /api/profile  /api/cards  /api/reviews │
+ │   /api/words    /api/activity            │
+ │   /api/streak   /api/account             │
  │   /api/ai/*     translate, explain, chat │
  └──┬──────────────┬──────────────┬─────────┘
     │ D1           │ R2           │ fetch
@@ -185,7 +187,7 @@ Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
 
 - **Static content** (lesson texts, starter decks, grammar notes, lexicon) is JSON in the repo, built into the SPA and cached by the service worker. It never touches D1.
 - **User data** lives in D1. Every query is scoped by the session's user id through one helper, because D1 has no row-level security.
-- **Reviews**: the client grades a card and computes the next due date with `ts-fsrs`, then posts the review. The server stores it and updates the card. For MVP the app needs a connection; offline review (queue in IndexedDB, sync later) is a follow-up.
+- **Reviews**: the client grades a card, previews the next intervals with `ts-fsrs` for the buttons, and posts the review. The server recomputes the card with the same scheduler, then stores the review and the new card state. For MVP the app needs a connection; offline review (queue in IndexedDB, sync later) is a follow-up.
 - **Streak**: one row per user per day with activity. The streak and freeze are computed from those rows in the user's time zone.
 - **Secrets** (AI keys, auth secret) are set with `wrangler secret put` and never sent to the client.
 
@@ -195,14 +197,14 @@ Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
 | Local | `npm run dev` (Vite + local Worker via `workerd`) | Local D1 file; `cli-bridge` available |
 | Production | `wrangler deploy` (later: deploy on push to `main`) | Production D1 + R2 |
 
-### Repo layout (planned)
+### Repo layout
 ```
 src/client/    React app
 src/worker/    Hono API, auth, AI drivers
 src/shared/    types and schemas shared by both
 content/       generated + reviewed lesson JSON, lexicon
 migrations/    Drizzle / D1 migrations
-scripts/       content generation, cli-bridge
+scripts/       content check, lexicon build, DB seed, dist security check
 ```
 
 ### AI strategy
@@ -211,7 +213,7 @@ scripts/       content generation, cli-bridge
   - any OpenAI-compatible endpoint (OpenRouter, Groq, Gemini, etc.)
   - the Anthropic API
   - a local model (Ollama)
-  - Choice via env vars or a settings page. Translations are cached in the DB so each sentence costs at most once.
+  - Choice today is by env vars (`AI_TRANSLATE_PROVIDER`, `AI_EXPLAIN_PROVIDER`; `src/worker/ai/config.ts`); a settings page is B-13 and not built. Only the `anthropic`, `openai-compatible` and `mock` drivers exist so far. Translations are cached in the DB so each sentence costs at most once.
 - Coding-agent subscriptions (Claude Code / Cursor / Codex) are for **building** the app and generating content, not for serving app users at runtime. Their terms and rate limits are not designed for that.
 
 ### Data model (sketch)
@@ -221,13 +223,17 @@ Static JSON in `content/` (not in the DB):
 - starter decks per chapter
 
 D1 tables:
-- `user`, `session`, `account`, `verification` (created by Better Auth)
+- `user`, `session`, `account`, `verification`, `rate_limit` (created by Better Auth)
 - `profiles` (user id, current chapter, time zone, settings JSON)
 - `cards` (user id, type sentence/meaning/cloze, front, back, source, FSRS state, due, updated_at)
 - `reviews` (card id, user id, rating, reviewed_at) for stats
 - `word_status` (user id, lemma, new/learning/known)
-- `daily_activity` (user id, date, minutes, reviews, freeze_used) for the streak
-- `translation_cache` (text hash, text, result, provider, created_at)
+- `daily_activity` (user id, date, minutes, reviews, readings, freeze_used) for the streak. `freeze_used` is stored but not read: the streak derives freezes from the other columns (L-38)
+- `activity_minutes` (user id, clock minute): one row per active minute, so a repeated ping adds a minute once
+- `text_reads` (user id, text id, date, finished_at): one row per text per local day it was finished
+- `translation_cache` (key, task, text, result, provider, created_at), shared across users
+- `ai_usage` (user id, window start, requests): per-user AI requests per clock hour
+- `ai_daily_usage` (UTC day, requests): provider calls per day for the whole app
 
 ## 5. Decisions
 
@@ -241,7 +247,7 @@ D1 tables:
 
 ### AI providers
 
-The app talks to AI through one `AiProvider` interface: `translate()`, `explain()`, `chat()`. Each task is routed to a provider in settings, so providers can be mixed.
+The app talks to AI through one `AiProvider` interface: `translate()`, `explain()`, `chat()`. Each task is routed to a provider (by env today, see AI strategy), so providers can be mixed.
 
 | Driver | How it works | Where it runs | Use for |
 |---|---|---|---|
