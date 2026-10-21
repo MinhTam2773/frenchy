@@ -212,7 +212,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | S | — | — |
 
-**Status:** ready · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
+**Status:** in progress · **Claimed by:** Wave 7b agent (B-56) · **Branch:** `task/B-56-docs-refresh` · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
 **Goal:** The docs agents read agree with the code (found in the 2026-10-20 context audit). `CLAUDE.md` says PLAN wins over the mockups, so a stale PLAN misleads.
 **Done when:** every item below is fixed, and nothing else in those files changes.
 
