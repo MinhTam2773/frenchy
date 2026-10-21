@@ -42,9 +42,9 @@ test('every endpoint in the contract answers with data that matches its schema',
   await expect(api.words.list()).resolves.toMatchObject({ words: expect.any(Array) });
   await expect(api.activity.ping(now)).resolves.toMatchObject({ minutes: expect.any(Number) });
   await expect(api.activity.readings()).resolves.toMatchObject({ readings: expect.any(Array) });
-  await expect(api.activity.addReading({ textId: 'ch10-au-cafe', finishedAt: now })).resolves.toEqual(
-    { textId: 'ch10-au-cafe', finishedAt: now },
-  );
+  await expect(
+    api.activity.addReading({ textId: 'ch10-au-cafe', finishedAt: now }),
+  ).resolves.toEqual({ textId: 'ch10-au-cafe', finishedAt: now });
   await expect(api.streak()).resolves.toMatchObject({ today: expect.any(String) });
   await expect(api.ai.translate('Bonjour')).resolves.toHaveProperty('translation');
   await expect(api.ai.explain('Bonjour', 'ch10')).resolves.toHaveProperty('gloss');

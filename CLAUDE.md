@@ -94,7 +94,7 @@ Tasks are designed to run in parallel: one agent (subagent, worktree or cloud se
 | Command | Does |
 |---|---|
 | `npm run dev` | Vite + local Worker (workerd) with local D1 |
-| `npm run check` | lint + typecheck + test + build + `check:dist` (no local secrets in `dist/`). Must be green before every PR. CI also runs `content:check` (B-55 adds it here) |
+| `npm run check` | lint + typecheck + `content:check` + test + build + `check:dist` (no local secrets in `dist/`). Must be green before every PR. CI runs the same steps one by one (it needs a canary `.dev.vars` before the build) |
 | `npm test` / `npm run test:watch` | Vitest (client in jsdom, worker in the Workers pool) |
 | `npm run lint` / `npm run typecheck` / `npm run format` | Individual checks |
 | `npm run content:check` | Validate everything in `content/` (T-07) |

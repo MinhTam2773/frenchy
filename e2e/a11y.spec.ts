@@ -176,7 +176,7 @@ test('reader: word sheet and sentence sheet', async ({ page }, testInfo) => {
 test('review: front and back of a card', async ({ page }, testInfo) => {
   await signUp(page, testInfo);
   await page.goto('/chapter/ch1');
-  await page.getByRole('button', { name: /Starter deck/ }).click();
+  await page.getByRole('button', { name: /Add to reviews/ }).click();
   await expect(
     page.getByRole('status').filter({ hasText: /Added \d+ to your reviews/ }),
   ).toBeVisible();

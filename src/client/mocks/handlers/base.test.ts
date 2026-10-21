@@ -72,9 +72,9 @@ test('a bad body is a 400 with issues', async () => {
 });
 
 test('unknown chapters and texts are 404s', async () => {
-  await expect(
-    rejection(api.profile.patch({ currentChapterId: 'ch99' })),
-  ).resolves.toMatchObject({ status: 404 });
+  await expect(rejection(api.profile.patch({ currentChapterId: 'ch99' }))).resolves.toMatchObject({
+    status: 404,
+  });
   await expect(
     rejection(api.activity.addReading({ textId: 'ch1-nowhere', finishedAt: Date.now() })),
   ).resolves.toMatchObject({ status: 404 });

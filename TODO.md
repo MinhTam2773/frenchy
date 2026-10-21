@@ -39,7 +39,7 @@ The **lead / orchestrator** session runs on Opus 5.5 · High.
 **Task block format:** every task has an ID, a meta table, `Owns` (files the task may create or change), a goal, a "done when", and checkbox steps. Tick a step (`- [x]`) the moment it is done, in the same commit as the work.
 
 **Finish steps** (the last three steps of every task):
-1. `npm run check` is green (lint + typecheck + test + build + the `dist/` secrets check).
+1. `npm run check` is green (lint + typecheck + content check + test + build + the `dist/` secrets check).
 2. TODO.md updated (steps ticked, status set); new lessons and gaps added to `LESSONS/` and `KNOWNGAPS/`.
 3. PR to `main` merged with CI green.
 
@@ -112,13 +112,13 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P3 | Haiku 5.5 | S | — | — |
 
-**Status:** ready · **Owns:** the nine files below, `.prettierignore`
+**Status:** in review ([PR #51](https://github.com/MinhTam2773/frenchy/pull/51)) · **Claimed by:** Wave 7b agent (acd8767d) · **Branch:** task/B-54-prettier · **Owns:** the nine files below, `.prettierignore`
 **Goal:** `npx prettier --check .` is clean, so an agent can run Prettier on its own files without reformatting someone else's (L-34, L-161).
 **Done when:** `npx prettier --check .` reports no files, and the diff is formatting only.
 
-- [ ] `npx prettier --write` on `src/client/features/settings/CreditsPage.tsx`, `src/client/layouts/OfflineBanner.test.tsx`, `src/client/lib/api.test.tsx`, `src/client/lib/tts/speech.ts`, `src/client/lib/tts/useTts.test.tsx`, `src/client/lib/tts/useTts.ts`, `src/client/mocks/handlers/base.test.ts`, `src/client/ui/Button.tsx`, `src/worker/routes/cards.test.ts`
-- [ ] Add the generated files to `.prettierignore`: `migrations/meta/`, `public/mockServiceWorker.js`
-- [ ] Ask the lead whether `npm run lint` should also run `prettier --check .`
+- [x] `npx prettier --write` on `src/client/features/settings/CreditsPage.tsx`, `src/client/layouts/OfflineBanner.test.tsx`, `src/client/lib/api.test.tsx`, `src/client/lib/tts/speech.ts`, `src/client/lib/tts/useTts.test.tsx`, `src/client/lib/tts/useTts.ts`, `src/client/mocks/handlers/base.test.ts`, `src/client/ui/Button.tsx`, `src/worker/routes/cards.test.ts`
+- [x] Add the generated files to `.prettierignore`: `migrations/meta/`, `public/mockServiceWorker.js`
+- [x] Ask the lead whether `npm run lint` should also run `prettier --check .` (lead: separate task B-57)
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
@@ -146,14 +146,14 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · Medium | S | — | — |
 
-**Status:** ready · **Owns:** the `check` script in `package.json` (hot file), the `content:check` step in `.github/workflows/ci.yml` (hot file), the `npm run check` row in `CLAUDE.md`
+**Status:** in review (https://github.com/MinhTam2773/frenchy/pull/52) · **Claimed by:** Wave 7b agent (B-55) · **Branch:** task/B-55-check-content · **Owns:** the `check` script in `package.json` (hot file), the `content:check` step in `.github/workflows/ci.yml` (hot file), the `npm run check` row in `CLAUDE.md`
 **Goal:** A green `npm run check` means CI's checks pass too. Today CI runs `content:check` as its own step and the local check skips it, so a broken content file shows up only in CI.
 **Done when:** `npm run check` fails on a broken content file, and CI runs `content:check` once.
 
-- [ ] Add `npm run content:check` to the `check` script, after `typecheck`
-- [ ] Drop the separate CI step, or keep it for a clearer failure line (decide in the PR)
-- [ ] Add `content:check` to the `npm run check` row in `CLAUDE.md`
-- [ ] Finish: `npm run check` green
+- [x] Add `npm run content:check` to the `check` script, after `typecheck`
+- [x] Kept the separate CI step (decided: CI cannot run `npm run check` as one step because it writes a canary `.dev.vars` before the build; the step is already once, between typecheck and test, so no double run)
+- [x] Add `content:check` to the `npm run check` row in `CLAUDE.md`
+- [x] Finish: `npm run check` green (also proved red on a broken course.json, reverted)
 - [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
 
@@ -162,13 +162,13 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-28 | — |
 
-**Status:** ready · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
+**Status:** in review (PR #53: https://github.com/MinhTam2773/frenchy/pull/53) · **Claimed by:** Wave 7b agent (B-53) · **Branch:** `task/B-53-starter-deck-name` · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
 **Goal:** Close G-73: a screen-reader user hears what the starter-deck button does, not just "Starter deck 24 cards".
 **Done when:** the button's accessible name carries the action (then the result), the status stays a live region outside the button, and the tests and E2E helpers find the button by that name.
 
-- [ ] Put the action text in the button's name, keeping visible label and name in step (WCAG 2.5.3, L-116), and move the `role="status"` out of the button
-- [ ] Update the E2E locators that match `/Starter deck/` (L-114)
-- [ ] Test: the name before and after adding; the status is announced
+- [x] Put the action text in the button's name, keeping visible label and name in step (WCAG 2.5.3, L-116), and move the `role="status"` out of the button
+- [x] Update the E2E locators that match `/Starter deck/` (L-114)
+- [x] Test: the name before and after adding; the status is announced
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
