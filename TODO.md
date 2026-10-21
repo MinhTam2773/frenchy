@@ -60,7 +60,7 @@ The waves so far are recorded in `DONE.md` → History.
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`, `BACKLOG.md`.
 
-**Progress:** DONE 50 · NEXT 1 (T-30 blocked on human gates H-02 to H-06) · BACKLOG 35 · open gaps 50 (9 with no owner)
+**Progress:** DONE 49 · NEXT 1 (T-30 blocked on human gates H-02 to H-06) · BACKLOG 35 · open gaps 50 (9 with no owner)
 
 ---
 
