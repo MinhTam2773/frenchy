@@ -541,3 +541,65 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+#### B-65 · Show a lookup failure in the reader's word sheet
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Haiku 5.5 | S | B-19 | — |
+
+**Status:** ready (after B-19 merges) · **Owns:** `src/client/features/reader/ReaderPage.tsx`, `src/client/features/reader/ReaderPage.test.tsx`
+**Goal:** `WordPanel` now takes `lookupFailed` and says "Couldn’t look this word up. Check your connection."; the reader still leaves the sheet showing only the word if its lexicon query fails (offline, shard not cached).
+**Done when:** a test makes the reader's lookup reject and finds the message in the sheet.
+
+- [ ] Pass `lookupFailed={infoQuery.isError}` (keep the query object instead of only `.data`)
+- [ ] Test: a rejected lookup shows the message, a later tap on a known word clears it
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-66 · Save a word from the review sheet after the reveal
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-19 | — |
+
+**Status:** ready (after B-19 merges); needs a product call (G-99 is related) · **Owns:** `src/client/features/review/ReviewStage.tsx`, its test
+**Goal:** The review's word sheet has no Save word (a card already exists for the sentence). After the answer is shown, a learner who meets an unknown word in the French back may want a card for it, as in the reader.
+**Done when:** after the reveal, the sheet offers Save word, which creates the same card and word status the reader's does and is not offered for a word already saved.
+
+- [ ] Decide with the user whether this belongs in review (it adds new cards mid-session; the session list does not change)
+- [ ] Reuse `wordCard()` from the reader's model and the same `api.cards.create` / `api.words.put` mutation; show "Saved to reviews" from `queryKeys.words`
+- [ ] Tests: offered after the reveal only; saved state; the session's own card list is unchanged
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-57 · Run `prettier --check .` in `npm run check`
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-54 | — |
+
+**Status:** blocked (B-54 merges first, so the check starts green) · **Owns:** the `check` script in `package.json` (hot file, one line)
+**Goal:** Prettier drift cannot come back unnoticed: `npm run check` fails when a file Prettier should format is not clean (L-161, L-34).
+**Done when:** `npm run check` runs `prettier --check .`, and a deliberately misformatted file makes it fail.
+
+- [ ] Add `prettier --check .` to the `check` script (not to `lint`, per the lead's decision on B-54)
+- [ ] Decide with the lead whether Markdown joins the check (`*.md` is in `.prettierignore`, see G-91)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-67 · Warm the lexicon shards of the cards saved for offline review
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · High | S | B-08, B-19 | — |
+
+**Status:** blocked (B-08 and B-19 merge first) · **Owns:** `src/client/lib/offline/**` (the due-list save), the lexicon shard loader it calls
+**Goal:** On the subway, tapping a word on a review card works for every card the app saved for offline use (G-100).
+**Done when:** after the due list is saved online, the shards for every French word on those cards are in the runtime cache, and a test shows a lookup answering with the network cut.
+
+- [ ] When `loadDueCards` saves a due list, tokenize each card's French (`sideTokens`, both sides) and fetch the shards of their lemmas once, in the background
+- [ ] Skip shards already cached; never block the review screen on it
+- [ ] Test with `onlineManager.setOnline(false)` and aborted shard requests (L-147, L-150)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green

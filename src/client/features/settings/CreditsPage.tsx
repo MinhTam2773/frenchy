@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 import { TopBar } from '@client/ui';
 
-const linkClass = 'inline-flex min-h-11 min-w-11 items-center font-bold text-primary underline underline-offset-2';
+const linkClass =
+  'inline-flex min-h-11 min-w-11 items-center font-bold text-primary underline underline-offset-2';
 const CC_BY_SA = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {

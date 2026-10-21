@@ -187,7 +187,7 @@ Decided 2026-10-16: **Vite + React SPA (PWA) + Hono API, all on Cloudflare.**
 
 - **Static content** (lesson texts, starter decks, grammar notes, lexicon) is JSON in the repo, built into the SPA and cached by the service worker. It never touches D1.
 - **User data** lives in D1. Every query is scoped by the session's user id through one helper, because D1 has no row-level security.
-- **Reviews**: the client grades a card, previews the next intervals with `ts-fsrs` for the buttons, and posts the review. The server recomputes the card with the same scheduler, then stores the review and the new card state. For MVP the app needs a connection; offline review (queue in IndexedDB, sync later) is a follow-up.
+- **Reviews**: the client grades a card, previews the next intervals with `ts-fsrs` for the buttons, and posts the review. The server recomputes the card with the same scheduler, then stores the review and the new card state. Offline review (B-08): graded reviews queue in IndexedDB and sync through the same endpoint when the connection is back; an offline session uses the due list saved the last time the app was online.
 - **Streak**: one row per user per day with activity. The streak and freeze are computed from those rows in the user's time zone.
 - **Secrets** (AI keys, auth secret) are set with `wrangler secret put` and never sent to the client.
 

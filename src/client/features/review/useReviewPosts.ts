@@ -1,48 +1,42 @@
-import { useCallback, useRef, useState } from 'react';
-import { api, ApiClientError } from '@client/lib/api';
+import { useCallback, useRef } from 'react';
+import { discardReview, holdReview, queueReview } from '@client/lib/offline';
 import type { ReviewInput } from '@shared/schemas';
 
-const RETRY_DELAYS_MS = [500, 2000];
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-/** A network failure or a 5xx may pass; a 4xx will not. The client-made id makes a retry safe. */
-async function postWithRetry(review: ReviewInput): Promise<void> {
-  for (let attempt = 0; ; attempt += 1) {
-    try {
-      await api.reviews.create(review);
-      return;
-    } catch (error) {
-      const retryable =
-        error instanceof ApiClientError && (error.status === 0 || error.status >= 500);
-      if (!retryable || attempt >= RETRY_DELAYS_MS.length) throw error;
-      await wait(RETRY_DELAYS_MS[attempt]);
-    }
-  }
-}
-
 /**
- * Posts graded reviews in the background so the next card never waits on the network. Each review
- * id is posted once, however many times `post` is called with it.
+ * Saves graded reviews on the device and syncs them in the background, so the next card never
+ * waits on the network and a session works offline (B-08). Each review id is queued once, however
+ * many times `post` is called with it; the server ignores an id it has already applied.
  */
-export function useReviewPosts() {
+export function useReviewPosts(userId: string) {
   const sent = useRef(new Set<string>());
-  const inFlight = useRef(new Set<Promise<void>>());
-  const [failed, setFailed] = useState(0);
+  const work = useRef(new Set<Promise<void>>());
 
-  const post = useCallback((review: ReviewInput) => {
-    if (sent.current.has(review.id)) return;
-    sent.current.add(review.id);
-    const request = postWithRetry(review)
-      .catch(() => setFailed((count) => count + 1))
-      .finally(() => inFlight.current.delete(request));
-    inFlight.current.add(request);
+  const track = useCallback((promise: Promise<void>) => {
+    work.current.add(promise);
+    void promise.finally(() => work.current.delete(promise));
   }, []);
 
-  /** Resolves when every review posted so far has finished, successfully or not. */
+  /** The session's last grade: kept on the device, but not synced while it can be undone. */
+  const hold = useCallback(
+    (review: ReviewInput) => track(holdReview(userId, review)),
+    [track, userId],
+  );
+
+  const discard = useCallback((id: string) => track(discardReview(userId, id)), [track, userId]);
+
+  const post = useCallback(
+    (review: ReviewInput) => {
+      if (sent.current.has(review.id)) return;
+      sent.current.add(review.id);
+      track(queueReview(userId, review));
+    },
+    [track, userId],
+  );
+
+  /** Resolves when every review posted so far is queued and has had one try at syncing. */
   const settled = useCallback(async () => {
-    await Promise.all([...inFlight.current]);
+    await Promise.all([...work.current]);
   }, []);
 
-  return { post, settled, failed };
+  return { hold, discard, post, settled };
 }

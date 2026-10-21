@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { expect, test, type Page } from '@playwright/test';
+import { reachTappableFront } from './helpers';
 
 // T-28. axe in a real browser (so colour contrast is checked) on every route and on the sheets,
 // at phone and desktop width, plus two layout checks axe does not make: no sideways scroll, and
@@ -43,8 +44,8 @@ async function expectAccessible(page: Page, name: string) {
     for (const el of document.querySelectorAll<HTMLElement>(targets)) {
       const box = el.getBoundingClientRect();
       if (box.width === 0 || box.height === 0 || el.classList.contains('sr-only')) continue;
-      // Words in the reader are text in a paragraph; they are the inline-link exemption.
-      if (el.hasAttribute('data-token')) continue;
+      // Words in the reader and on review cards are text in a paragraph; they are the inline-link exemption.
+      if (el.hasAttribute('data-token') || el.hasAttribute('data-word')) continue;
       if (box.width < min - 0.5 || box.height < min - 0.5) {
         const label = el.getAttribute('aria-label') ?? el.textContent ?? '';
         small.push(
@@ -175,7 +176,7 @@ test('reader: word sheet and sentence sheet', async ({ page }, testInfo) => {
 test('review: front and back of a card', async ({ page }, testInfo) => {
   await signUp(page, testInfo);
   await page.goto('/chapter/ch1');
-  await page.getByRole('button', { name: /Starter deck/ }).click();
+  await page.getByRole('button', { name: /Add to reviews/ }).click();
   await expect(
     page.getByRole('status').filter({ hasText: /Added \d+ to your reviews/ }),
   ).toBeVisible();
@@ -183,6 +184,11 @@ test('review: front and back of a card', async ({ page }, testInfo) => {
   await page.goto('/review');
   await expect(page.getByRole('button', { name: 'Show answer' })).toBeVisible();
   await expectAccessible(page, 'review front');
+  const words = await reachTappableFront(page);
+  await words.first().click();
+  await expect(page.getByRole('region', { name: 'Word details' })).toBeVisible();
+  await expectAccessible(page, 'review front with the word sheet');
+  await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Show answer' }).click();
   await expect(page.getByRole('button', { name: /^Good/ })).toBeVisible();
   await expectAccessible(page, 'review back');

@@ -15,7 +15,11 @@ export interface SpeakOptions {
 }
 
 export function isSupported(): boolean {
-  return typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  return (
+    typeof window !== 'undefined' &&
+    'speechSynthesis' in window &&
+    'SpeechSynthesisUtterance' in window
+  );
 }
 
 export function clampRate(rate: number | undefined): number {

@@ -5,3 +5,5 @@ docs/
 package-lock.json
 content/lexicon/
 worker-configuration.d.ts
+migrations/meta/
+public/mockServiceWorker.js

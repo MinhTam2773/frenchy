@@ -1,6 +1,16 @@
-import { cleanup, configure, fireEvent, screen, waitFor, within } from '@testing-library/react';
+import { onlineManager } from '@tanstack/react-query';
+import {
+  act,
+  cleanup,
+  configure,
+  fireEvent,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
+import { readDueCards } from '@client/lib/offline/store';
 import { apiError } from '@client/mocks/handlers/base';
 import { resetReviewMock } from '@client/mocks/handlers/review';
 import { renderAt } from '@client/mocks/renderAt';
@@ -51,12 +61,20 @@ function recordReviews(status = 200) {
   return posted;
 }
 
+/**
+ * French text is a row of word buttons, so `getByText` can't see it whole. This matches the
+ * paragraph by its full text instead.
+ */
+const para = (text: string | RegExp) => (_: string, element: Element | null) =>
+  element?.tagName === 'P' &&
+  (typeof text === 'string' ? element.textContent === text : text.test(element.textContent ?? ''));
+
 const showAnswer = () => fireEvent.click(screen.getByRole('button', { name: 'Show answer' }));
 const grade = (name: string | RegExp) => fireEvent.click(screen.getByRole('button', { name }));
 
 async function answerAll(rating: (typeof RATINGS)[number]) {
   for (const card of reviewCards) {
-    await screen.findByText(card.type === 'cloze' ? /^Nous/ : card.front);
+    await screen.findByText(para(card.type === 'cloze' ? /^Nous/ : card.front));
     showAnswer();
     grade(new RegExp(`^${GRADE_LABELS[rating]},`));
   }
@@ -64,7 +82,7 @@ async function answerAll(rating: (typeof RATINGS)[number]) {
 
 test('completes a session end to end and shows the results', async () => {
   renderAt('/review');
-  expect(await screen.findByText(sentence.front)).toBeInTheDocument();
+  expect(await screen.findByText(para(sentence.front))).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Review' })).toBeInTheDocument();
   expect(screen.queryByRole('navigation', { name: 'Main' })).not.toBeInTheDocument();
   expect(screen.getByRole('progressbar', { name: 'Review progress' })).toHaveAttribute(
@@ -91,7 +109,7 @@ test('completes a session end to end and shows the results', async () => {
 test('labels the grade buttons with the FSRS preview for each card', async () => {
   renderAt('/review');
   for (const card of reviewCards) {
-    await screen.findByText(card.type === 'cloze' ? /^Nous/ : card.front);
+    await screen.findByText(para(card.type === 'cloze' ? /^Nous/ : card.front));
     expect(screen.queryByRole('button', { name: /^Good,/ })).not.toBeInTheDocument();
     showAnswer();
     const labels = previewIntervals(card, FIXTURE_NOW);
@@ -107,10 +125,10 @@ test('labels the grade buttons with the FSRS preview for each card', async () =>
 test('posts each review with the preview time, and holds the last grade until the next one', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   await new Promise((resolve) => setTimeout(resolve, 50));
   expect(posted).toHaveLength(0);
 
@@ -139,22 +157,22 @@ test('posts each review with the preview time, and holds the last grade until th
 test('undo brings the card back with its answer and the undone grade is never posted', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   expect(screen.queryByRole('button', { name: 'Undo' })).not.toBeInTheDocument();
 
   showAnswer();
   grade(/^Again,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   expect(screen.getByText('1/3')).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('button', { name: 'Undo' }));
-  expect(await screen.findByText(sentence.front)).toBeInTheDocument();
+  expect(await screen.findByText(para(sentence.front))).toBeInTheDocument();
   expect(screen.getByText('0/3')).toBeInTheDocument();
   expect(screen.getByText(sentence.back)).toBeInTheDocument();
   expect(screen.queryByRole('button', { name: 'Undo' })).not.toBeInTheDocument();
 
   grade(/^Easy,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   showAnswer();
   grade(/^Good,/);
   await screen.findByText(meaning.front);
@@ -163,7 +181,8 @@ test('undo brings the card back with its answer and the undone grade is never po
   fireEvent.click(await screen.findByRole('button', { name: 'See results' }));
   await screen.findByRole('heading', { name: 'Session complete!' });
 
-  expect(posted.map((r) => [r.cardId, r.rating])).toEqual([
+  // Sorted: with Date frozen every review has the same `reviewedAt`, so the sync order is a tie.
+  expect(posted.map((r) => [r.cardId, r.rating]).sort()).toEqual([
     [sentence.id, 4],
     [cloze.id, 3],
     [meaning.id, 3],
@@ -175,12 +194,12 @@ test('can undo the last card from the end-of-session screen', async () => {
   renderAt('/review');
   await answerAll(3);
   fireEvent.click(await screen.findByRole('button', { name: 'Undo last answer' }));
-  expect(await screen.findByText(meaning.back)).toBeInTheDocument();
+  expect(await screen.findByText(para(meaning.back))).toBeInTheDocument();
   expect(screen.getByText('2/3')).toBeInTheDocument();
   grade(/^Again,/);
   fireEvent.click(await screen.findByRole('button', { name: 'See results' }));
   await screen.findByRole('heading', { name: 'Session complete!' });
-  expect(posted.at(-1)).toMatchObject({ cardId: meaning.id, rating: 1 });
+  expect(posted.find((r) => r.cardId === meaning.id)).toMatchObject({ rating: 1 });
   expect(posted).toHaveLength(3);
   expect(screen.getByText('Correct').nextSibling).toHaveTextContent('67%');
 });
@@ -188,7 +207,7 @@ test('can undo the last card from the end-of-session screen', async () => {
 test('Space reveals and 1 to 4 grade, only once the answer is showing', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
 
   fireEvent.keyDown(document.body, { key: '3' });
   expect(screen.queryByText(sentence.back)).not.toBeInTheDocument();
@@ -197,11 +216,11 @@ test('Space reveals and 1 to 4 grade, only once the answer is showing', async ()
   fireEvent.keyDown(document.body, { key: ' ' });
   expect(screen.getByText(sentence.back)).toBeInTheDocument();
   fireEvent.keyDown(document.body, { key: '2' });
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   expect(screen.getByText('1/3')).toBeInTheDocument();
 
   fireEvent.keyDown(document.body, { key: ' ', ctrlKey: true });
-  expect(screen.queryByText(cloze.back)).not.toBeInTheDocument();
+  expect(screen.queryByText(para(cloze.back))).not.toBeInTheDocument();
 
   fireEvent.keyDown(document.body, { key: ' ' });
   fireEvent.keyDown(document.body, { key: '4' });
@@ -212,7 +231,7 @@ test('Space reveals and 1 to 4 grade, only once the answer is showing', async ()
 test('stops listening for keys when the screen is left', async () => {
   const posted = recordReviews();
   const { unmount } = renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   unmount();
   fireEvent.keyDown(document.body, { key: ' ' });
   fireEvent.keyDown(document.body, { key: '3' });
@@ -222,11 +241,11 @@ test('stops listening for keys when the screen is left', async () => {
 
 test('shows a cloze with a blank, then the answer in the blank', async () => {
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
 
-  const front = await screen.findByText(/^Nous/);
+  const front = await screen.findByText(para(/^Nous/));
   expect(front).toHaveAttribute('lang', 'fr');
   expect(within(front).getByText('blank')).toBeInTheDocument();
   expect(screen.getByText(cloze.hint ?? '')).toBeInTheDocument();
@@ -235,16 +254,19 @@ test('shows a cloze with a blank, then the answer in the blank', async () => {
   showAnswer();
   expect(within(front).getByText('parlons')).toBeInTheDocument();
   expect(within(front).queryByText('blank')).not.toBeInTheDocument();
-  expect(screen.getByText(cloze.back)).toHaveAttribute('lang', 'fr');
+  // The filled-in front and the back both read as the whole sentence.
+  const sentences = screen.getAllByText(para(cloze.back));
+  expect(sentences).toHaveLength(2);
+  sentences.forEach((p) => expect(p).toHaveAttribute('lang', 'fr'));
   expect(screen.getByText(cloze.note ?? '')).toBeInTheDocument();
 });
 
 test('an English front has no audio until the French answer is shown', async () => {
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   showAnswer();
   grade(/^Good,/);
 
@@ -259,7 +281,7 @@ test('an English front has no audio until the French answer is shown', async () 
 
 test('the play button reads the French sentence', async () => {
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   fireEvent.click(screen.getByRole('button', { name: 'Play audio' }));
   expect(tts.speak).toHaveBeenCalledWith(sentence.front, expect.anything());
 });
@@ -278,7 +300,8 @@ test('asks for one session of cards and keeps to the new-card limit', async () =
   );
   renderAt('/review');
   expect(await screen.findByText('0/10')).toBeInTheDocument();
-  expect(asked).toEqual(['20']);
+  // The app also saves the due list for offline use (B-08), with the same limit.
+  expect(new Set(asked)).toEqual(new Set(['20']));
 });
 
 test('says so when nothing is due', async () => {
@@ -297,31 +320,33 @@ test('offers a retry when the cards cannot be loaded', async () => {
 
   server.resetHandlers();
   fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
-  expect(await screen.findByText(sentence.front)).toBeInTheDocument();
+  expect(await screen.findByText(para(sentence.front))).toBeInTheDocument();
 });
 
 test('warns when an answer could not be saved, and keeps going', async () => {
   recordReviews(404);
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   showAnswer();
   grade(/^Good,/);
 
-  // Not `findByRole('status')`: the layout's offline banner is a status region too.
-  expect(await screen.findByText(/One answer couldn’t be saved/)).toHaveAttribute('role', 'status');
+  // The layout's banner says so, inside its status region.
+  expect(await screen.findByText(/One review couldn’t be saved/)).toBeInTheDocument();
   expect(await screen.findByText(meaning.front)).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Dismiss' }));
+  expect(screen.queryByText(/couldn’t be saved/)).not.toBeInTheDocument();
 });
 
 test('ending early posts the held grade and leaves the review', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
 
   fireEvent.click(screen.getByRole('button', { name: 'End review' }));
   await waitFor(() => expect(posted).toHaveLength(1));
@@ -329,4 +354,171 @@ test('ending early posts the held grade and leaves the review', async () => {
   await waitFor(() =>
     expect(screen.queryByRole('progressbar', { name: 'Review progress' })).not.toBeInTheDocument(),
   );
+});
+
+// Lexicon shards are 1-2 MB modules; the first lookup can be slow on a busy machine.
+const LOOKUP = { timeout: 20_000 };
+const wordSheet = () => screen.findByRole('region', { name: 'Word details' });
+
+test('tapping a word on the front shows its meaning, not the answer, and grades nothing', async () => {
+  const posted = recordReviews();
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+
+  const word = screen.getByRole('button', { name: 'écoute' });
+  word.focus();
+  fireEvent.click(word);
+  const sheet = await wordSheet();
+  expect(await within(sheet).findByText(/listen/, {}, LOOKUP)).toBeInTheDocument();
+  expect(within(sheet).getByRole('heading', { name: 'écoute' })).toHaveAttribute('lang', 'fr');
+  // Only the word: no Save word / Sentence here (the sentence's translation is the answer).
+  expect(within(sheet).queryByRole('button', { name: 'Sentence' })).not.toBeInTheDocument();
+  expect(within(sheet).queryByRole('button', { name: 'Save word' })).not.toBeInTheDocument();
+
+  // The answer is still hidden and nothing was graded.
+  expect(screen.queryByText(sentence.back)).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Show answer' })).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /^Good,/ })).not.toBeInTheDocument();
+  expect(screen.getByText('0/3')).toBeInTheDocument();
+  // A non-modal region: focus stays on the word, and Space on a word is not "Show answer".
+  expect(word).toHaveFocus();
+  fireEvent.keyDown(word, { key: ' ' });
+  expect(screen.queryByText(sentence.back)).not.toBeInTheDocument();
+
+  // The next tap just switches the sheet.
+  fireEvent.click(screen.getByRole('button', { name: 'radio' }));
+  expect(await within(await wordSheet()).findByRole('heading', { name: 'radio' })).toBeVisible();
+  expect(screen.getAllByRole('region', { name: 'Word details' })).toHaveLength(1);
+
+  fireEvent.keyDown(document, { key: 'Escape' });
+  expect(screen.queryByRole('region', { name: 'Word details' })).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'radio' })).toHaveFocus();
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  expect(posted).toHaveLength(0);
+});
+
+test('opening the word sheet keeps the preview time of the reveal', async () => {
+  const posted = recordReviews();
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  fireEvent.click(screen.getByRole('button', { name: 'écoute' }));
+  await within(await wordSheet()).findByText(/listen/, {}, LOOKUP);
+  vi.setSystemTime(FIXTURE_NOW + 60_000);
+  showAnswer();
+  vi.setSystemTime(FIXTURE_NOW + 90_000);
+  grade(/^Good,/);
+  await screen.findByText(para(/^Nous/));
+  fireEvent.click(screen.getByRole('button', { name: 'End review' }));
+  await waitFor(() => expect(posted).toHaveLength(1));
+  expect(posted[0]).toMatchObject({ cardId: sentence.id, reviewedAt: FIXTURE_NOW + 60_000 });
+});
+
+test('the words of a card are one tab stop; the arrow keys move between them', async () => {
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  const words = ['Elle', 'écoute', 'la', 'radio'].map((name) =>
+    screen.getByRole('button', { name }),
+  );
+  expect(words.map((w) => w.tabIndex)).toEqual([0, -1, -1, -1]);
+  words[0].focus();
+  fireEvent.keyDown(words[0], { key: 'ArrowRight' });
+  expect(words[1]).toHaveFocus();
+  expect(words.map((w) => w.tabIndex)).toEqual([-1, 0, -1, -1]);
+  fireEvent.keyDown(words[1], { key: 'End' });
+  expect(words[3]).toHaveFocus();
+  fireEvent.keyDown(words[3], { key: 'ArrowRight' });
+  expect(words[3]).toHaveFocus();
+  fireEvent.keyDown(words[3], { key: 'Home' });
+  expect(words[0]).toHaveFocus();
+});
+
+test('a cloze front is tappable around the blank, and the answer is tappable once shown', async () => {
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  showAnswer();
+  grade(/^Good,/);
+  await screen.findByText(para(/^Nous/));
+
+  fireEvent.click(screen.getByRole('button', { name: 'maison' }));
+  expect(await within(await wordSheet()).findByText(/house|home/, {}, LOOKUP)).toBeInTheDocument();
+  expect(screen.queryByText(cloze.note ?? '')).not.toBeInTheDocument();
+
+  // Revealing swaps the blank for the answer, so the sheet about the old text is dropped.
+  showAnswer();
+  expect(screen.queryByRole('region', { name: 'Word details' })).not.toBeInTheDocument();
+  fireEvent.click(screen.getAllByRole('button', { name: 'parlons' })[0]);
+  expect(await within(await wordSheet()).findByRole('heading', { name: 'parlons' })).toBeVisible();
+});
+
+test('the French back is tappable once the answer is shown', async () => {
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  showAnswer();
+  grade(/^Good,/);
+  await screen.findByText(para(/^Nous/));
+  showAnswer();
+  grade(/^Good,/);
+  await screen.findByText(meaning.front);
+
+  // English front: plain text.
+  expect(within(screen.getByText(meaning.front)).queryByRole('button')).not.toBeInTheDocument();
+  showAnswer();
+  fireEvent.click(screen.getByRole('button', { name: 'chat' }));
+  expect(await within(await wordSheet()).findByText(/cat/, {}, LOOKUP)).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /^Good,/ })).toBeInTheDocument();
+});
+
+test('a front that is a single word stays plain until the answer is shown', async () => {
+  const single: Card = { ...sentence, front: 'écouter', back: 'to listen' };
+  server.use(http.get('/api/cards/due', () => HttpResponse.json({ cards: [single] })));
+  renderAt('/review');
+  await screen.findByText('écouter');
+  expect(screen.queryByRole('button', { name: 'écouter' })).not.toBeInTheDocument();
+  showAnswer();
+  fireEvent.click(screen.getByRole('button', { name: 'écouter' }));
+  expect(await within(await wordSheet()).findByText(/listen/, {}, LOOKUP)).toBeInTheDocument();
+});
+
+const LEA_ID = '00000000-0000-4000-8000-0000000000f1'; // the auth mock's user
+
+/** Offline the way the app sees it: navigator, TanStack Query (L-147) and every API call. */
+function setOffline(offline: boolean) {
+  vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(!offline);
+  onlineManager.setOnline(!offline);
+  if (offline) server.use(http.all('*/api/*', () => HttpResponse.error()));
+  else server.resetHandlers();
+}
+
+const fire = (name: 'online' | 'offline') =>
+  act(() => {
+    window.dispatchEvent(new Event(name));
+  });
+
+test('a session done offline uses the saved due list and syncs on reconnect', async () => {
+  // Online first: the app saves the due list (and remembers the user) for later.
+  renderAt('/today');
+  await waitFor(async () => expect(await readDueCards(LEA_ID)).toHaveLength(reviewCards.length));
+  cleanup();
+
+  try {
+    setOffline(true);
+    fire('offline');
+    renderAt('/review');
+    await answerAll(3);
+    expect(await screen.findByText(/You’re offline\. 2 reviews waiting to sync\./)).toBeVisible();
+    fireEvent.click(screen.getByRole('button', { name: 'See results' }));
+    expect(await screen.findByRole('heading', { name: 'Session complete!' })).toBeInTheDocument();
+    expect(await screen.findByText(/3 reviews waiting to sync/)).toBeInTheDocument();
+
+    setOffline(false);
+    const posted = recordReviews();
+    fire('online');
+    await waitFor(() => expect(posted).toHaveLength(3));
+    expect(new Set(posted.map((r) => r.cardId))).toEqual(new Set(reviewCards.map((c) => c.id)));
+    await waitFor(() => expect(screen.queryByText(/waiting to sync/)).not.toBeInTheDocument());
+  } finally {
+    onlineManager.setOnline(true);
+    vi.restoreAllMocks();
+  }
 });

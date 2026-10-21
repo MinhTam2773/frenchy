@@ -8,7 +8,7 @@ import { annotate } from '@shared/text';
 import { api } from '@client/lib/api';
 import { useText } from '@client/lib/content';
 import { queryKeys, useProfile } from '@client/lib/query';
-import { Button, TopBar } from '@client/ui';
+import { Button, TopBar, WordPanel } from '@client/ui';
 import { AudioBar, nextRate } from './AudioBar';
 import {
   buildReaderModel,
@@ -23,7 +23,6 @@ import {
 import { ReaderText } from './ReaderText';
 import { SentenceSheet } from './SentenceSheet';
 import { useReadAloud } from './useReadAloud';
-import { WordPanel } from './WordPanel';
 
 function focusWord(index: number) {
   document.querySelector<HTMLElement>(`[data-token="${index}"]`)?.focus();

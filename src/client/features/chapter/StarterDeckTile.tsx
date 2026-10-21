@@ -18,9 +18,11 @@ export function StarterDeckTile({ chapterId, cardCount }: StarterDeckTileProps) 
 
   let action = 'Add to reviews';
   if (add.isPending) action = 'Adding…';
+  let result = '';
   if (add.isSuccess) {
-    action =
+    result =
       add.data.added > 0 ? `Added ${add.data.added} to your reviews` : 'Already in your reviews';
+    action = result;
   }
 
   return (
@@ -33,14 +35,16 @@ export function StarterDeckTile({ chapterId, cardCount }: StarterDeckTileProps) 
       >
         <span className="text-xs font-extrabold tracking-[0.08em] text-gold-ink uppercase">
           Starter deck
-        </span>
+        </span>{' '}
         <span className="text-base font-extrabold">
           {cardCount} {cardCount === 1 ? 'card' : 'cards'}
-        </span>
-        <span role="status" className="text-[13px] font-bold text-gold-ink">
-          {action}
-        </span>
+        </span>{' '}
+        <span className="text-[13px] font-bold text-gold-ink">{action}</span>
       </button>
+      {/* Outside the button so it is announced; the button's own name carries the action (G-73). */}
+      <span role="status" className="sr-only">
+        {result}
+      </span>
       {add.isError && (
         <p role="alert" className="text-sm font-bold text-danger-ink">
           Could not add the deck. Try again.
