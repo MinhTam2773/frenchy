@@ -515,7 +515,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P2 (with B-08 / B-23) | Sonnet 5.5 · Medium | S | B-08, B-23, B-16 | — |
 
-**Status:** blocked (B-08 adds the rest of the local data; B-23 is done) · **Owns:** `src/client/lib/session.ts` (`signOut`), `src/client/lib/offline/**` (a `clearLocalData()`)
+**Status:** ready (B-08, B-23 and B-16 are done) · **Owns:** `src/client/lib/session.ts` (`signOut`), `src/client/lib/offline/**` (a `clearLocalData()`)
 **Goal:** Signing out, or deleting the account (B-16), leaves nothing of the account on the device: no remembered user (B-23), no queued reviews or cached cards in IndexedDB (B-08).
 **Done when:** after `signOut()` (which the deletion flow calls) a test finds no remembered user and an empty offline store.
 
