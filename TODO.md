@@ -194,7 +194,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Opus 5.5 · High | M | T-26, T-12 | — |
 
-**Status:** ready (deps done) · **Owns:** `src/client/lib/offline/**`, review sync changes in `src/worker/routes/reviews.ts`
+**Status:** in progress · **Claimed by:** Wave 7b agent (B-08) · **Branch:** `task/B-08-offline-reviews` · **Owns:** `src/client/lib/offline/**`, review sync changes in `src/worker/routes/reviews.ts`
 **Goal:** Review on the subway: queue reviews offline and sync later without losing or double-counting any.
 **Done when:** a session done offline syncs correctly on reconnect, with tests for duplicates and out-of-order replays.
 
