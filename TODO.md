@@ -146,7 +146,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · Medium | S | — | — |
 
-**Status:** ready · **Owns:** the `check` script in `package.json` (hot file), the `content:check` step in `.github/workflows/ci.yml` (hot file), the `npm run check` row in `CLAUDE.md`
+**Status:** in progress · **Claimed by:** Wave 7b agent (B-55) · **Branch:** task/B-55-check-content · **Owns:** the `check` script in `package.json` (hot file), the `content:check` step in `.github/workflows/ci.yml` (hot file), the `npm run check` row in `CLAUDE.md`
 **Goal:** A green `npm run check` means CI's checks pass too. Today CI runs `content:check` as its own step and the local check skips it, so a broken content file shows up only in CI.
 **Done when:** `npm run check` fails on a broken content file, and CI runs `content:check` once.
 
