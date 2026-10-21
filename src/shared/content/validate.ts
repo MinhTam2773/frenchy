@@ -1,6 +1,8 @@
 import type { z } from 'zod';
 import { MAX_NEW_WORDS_PER_TEXT } from '../constants';
 import { Course, Deck, Grammar, GrammarNote, Text, type Chapter, type Sentence } from '../schemas';
+import { tokenize } from '../text/tokenize';
+import { PHRASES } from './phrases';
 import { allowedGrammarTags, routeChapters } from './route';
 
 /**
@@ -177,6 +179,7 @@ function checkChapterFiles(
   const knownTags = grammar && new Set(grammar.map((tag) => tag.id));
   const textIds = new Set<string>();
   const decks: [file: string, folder: string, raw: unknown][] = [];
+  const texts: ParsedText[] = [];
 
   for (const [file, raw] of Object.entries(files)) {
     if (!file.startsWith('chapters/')) continue;
@@ -197,7 +200,8 @@ function checkChapterFiles(
 
     if (text) {
       const allowed = course && grammar && new Set(allowedGrammarTags(course, grammar, folder));
-      checkText(file, folder, text[2], raw, { allowed, known: knownTags }, add);
+      const parsed = checkText(file, folder, text[2], raw, { allowed, known: knownTags }, add);
+      if (parsed) texts.push({ file, folder, text: parsed });
       textIds.add(text[2]);
     } else if (other?.[2] === 'note') {
       const note = parse(file, GrammarNote, raw, add);
@@ -208,6 +212,8 @@ function checkChapterFiles(
       decks.push([file, folder, raw]);
     }
   }
+
+  if (course) checkNewWords(course, texts, add);
 
   // Decks last: their cards point at texts from any folder.
   for (const [file, folder, raw] of decks) {
@@ -234,11 +240,11 @@ function checkText(
   raw: unknown,
   tags: { allowed?: ReadonlySet<string>; known?: ReadonlySet<string> },
   add: Add,
-): void {
+): Text | undefined {
   const lemmaless = findTokensWithoutLemma(raw);
   for (const { path, word } of lemmaless) add(file, `${path}: word token "${word}" has no lemma`);
   const text = parse(file, Text, raw, add, new Set(lemmaless.map((l) => l.path)));
-  if (!text) return;
+  if (!text) return undefined;
 
   if (text.chapterId !== folder) {
     add(file, `chapterId "${text.chapterId}" does not match its folder "${folder}"`);
@@ -258,11 +264,97 @@ function checkText(
   }
   text.paragraphs.forEach((paragraph, p) => {
     paragraph.sentences.forEach((sentence, s) => {
-      for (const message of typographyProblems(sentence)) {
+      for (const message of [...typographyProblems(sentence), ...phraseProblems(sentence)]) {
         add(file, `paragraphs.${p}.sentences.${s}: ${message}`);
       }
     });
   });
+  return text;
+}
+
+type ParsedText = { file: string; folder: string; text: Text };
+
+/**
+ * `isNew` means new to the course (L-94): a lemma is marked in one text only, the first along the
+ * route (chapter order in course.json, then text id order within a chapter).
+ */
+function checkNewWords(course: Course, texts: ParsedText[], add: Add): void {
+  const chapterOrder = new Map(routeChapters(course).map((chapter, i) => [chapter.id, i]));
+  const route = [...texts].sort(
+    (a, b) =>
+      (chapterOrder.get(a.folder) ?? 0) - (chapterOrder.get(b.folder) ?? 0) ||
+      (a.text.id < b.text.id ? -1 : a.text.id > b.text.id ? 1 : 0),
+  );
+  const firstMarked = new Map<string, string>();
+  for (const { file, text } of route) {
+    const here = new Set<string>();
+    text.paragraphs.forEach((paragraph, p) => {
+      paragraph.sentences.forEach((sentence, s) => {
+        for (const token of sentence.tokens) {
+          if (!('lemma' in token) || !token.isNew || here.has(token.lemma)) continue;
+          here.add(token.lemma);
+          const earlier = firstMarked.get(token.lemma);
+          if (earlier === undefined) firstMarked.set(token.lemma, text.id);
+          else {
+            add(
+              file,
+              `paragraphs.${p}.sentences.${s}: "${token.lemma}" is marked isNew, but ${earlier} comes first along the route and already marks it; mark it in one text only`,
+            );
+          }
+        }
+      });
+    });
+  }
+}
+
+/** Each phrase as the sequence of token texts `tokenize` gives it, longest first so *qu'est-ce que* wins. */
+const PHRASE_TOKENS = PHRASES.map((phrase) => {
+  const tokens = tokenize(phrase);
+  return {
+    phrase,
+    parts: tokens.map((token) => token.t),
+    words: tokens.filter((token) => token.kind === 'word').length,
+  };
+}).sort((a, b) => b.parts.length - a.parts.length);
+
+/** The closed phrase list (T-24, L-95): pos `phrase` only for a listed phrase, on all of its words. */
+function phraseProblems({ tokens }: Sentence): string[] {
+  const problems: string[] = [];
+
+  const carried = new Map<string, number>();
+  for (const token of tokens) {
+    if ('pos' in token && token.pos === 'phrase') {
+      carried.set(token.lemma, (carried.get(token.lemma) ?? 0) + 1);
+    }
+  }
+  for (const [lemma, count] of carried) {
+    const listed = PHRASE_TOKENS.find((entry) => entry.phrase === lemma);
+    if (!listed) {
+      problems.push(
+        `"${lemma}" has pos phrase but is not in the closed phrase list (src/shared/content/phrases.ts); annotate its words one by one, and a single word is never a phrase`,
+      );
+    } else if (count % listed.words !== 0) {
+      problems.push(
+        `"${lemma}" has ${listed.words} words but ${count} token(s) carry it; every word of a phrase gets lemma "${lemma}" and pos phrase`,
+      );
+    }
+  }
+
+  const covered = new Set<number>();
+  for (const { phrase, parts } of PHRASE_TOKENS) {
+    for (let start = 0; start + parts.length <= tokens.length; start++) {
+      const window = tokens.slice(start, start + parts.length);
+      if (window.some((_, k) => covered.has(start + k))) continue;
+      if (!window.every((token, k) => token.t.toLowerCase() === parts[k])) continue;
+      window.forEach((_, k) => covered.add(start + k));
+      if (!window.some((token) => 'pos' in token && token.pos === 'phrase')) {
+        problems.push(
+          `"${phrase}" is a fixed phrase; give every word of it lemma "${phrase}" and pos phrase instead of annotating it word by word`,
+        );
+      }
+    }
+  }
+  return problems;
 }
 
 const CURLY_APOSTROPHE = /[’‘ʼ]/u;

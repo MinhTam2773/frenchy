@@ -106,11 +106,10 @@ describe('readings', () => {
 describe('starter deck', () => {
   test('adds the deck to the reviews through the starter-deck endpoint', async () => {
     renderView();
-    const tile = await screen.findByRole('button', { name: /Starter deck/ });
-    expect(tile).toHaveTextContent('3 cards');
-    expect(tile).toHaveTextContent('Add to reviews');
+    const tile = await screen.findByRole('button', { name: 'Starter deck 3 cards Add to reviews' });
     fireEvent.click(tile);
-    expect(await screen.findByText('Added 3 to your reviews')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Added 3 to your reviews');
+    expect(tile).toHaveAccessibleName('Starter deck 3 cards Added 3 to your reviews');
     expect(tile).toBeDisabled();
   });
 
@@ -119,8 +118,8 @@ describe('starter deck', () => {
       http.post('/api/cards/starter/:chapterId', () => HttpResponse.json({ added: 0, total: 3 })),
     );
     renderView();
-    fireEvent.click(await screen.findByRole('button', { name: /Starter deck/ }));
-    expect(await screen.findByText('Already in your reviews')).toBeInTheDocument();
+    fireEvent.click(await screen.findByRole('button', { name: /Add to reviews/ }));
+    expect(await screen.findByRole('status')).toHaveTextContent('Already in your reviews');
   });
 
   test('posts to the chapter being shown', async () => {
@@ -132,8 +131,8 @@ describe('starter deck', () => {
       }),
     );
     renderView();
-    fireEvent.click(await screen.findByRole('button', { name: /Starter deck/ }));
-    await screen.findByText('Added 3 to your reviews');
+    fireEvent.click(await screen.findByRole('button', { name: /Add to reviews/ }));
+    await screen.findByText('Added 3 to your reviews', { selector: '[role="status"]' });
     expect(chapterId).toBe('ch10');
   });
 
@@ -144,7 +143,7 @@ describe('starter deck', () => {
       ),
     );
     renderView();
-    const tile = await screen.findByRole('button', { name: /Starter deck/ });
+    const tile = await screen.findByRole('button', { name: /Add to reviews/ });
     fireEvent.click(tile);
     expect(await screen.findByRole('alert')).toHaveTextContent('Could not add the deck');
     expect(tile).toBeEnabled();
@@ -194,14 +193,14 @@ describe('header and actions', () => {
 
   test('has no drill button until B-01', async () => {
     renderView();
-    await screen.findByRole('button', { name: /Starter deck/ });
+    await screen.findByRole('button', { name: /Add to reviews/ });
     expect(screen.queryByRole('link', { name: /drill|conjugate/i })).not.toBeInTheDocument();
   });
 
   test('keeps the page usable when the profile fails to load', async () => {
     server.use(http.get('/api/profile', () => HttpResponse.json({}, { status: 404 })));
     renderView();
-    expect(await screen.findByRole('button', { name: /Starter deck/ })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: /Add to reviews/ })).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Make this my current chapter' }),
     ).toBeInTheDocument();
