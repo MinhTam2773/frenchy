@@ -162,13 +162,13 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-28 | — |
 
-**Status:** ready · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
+**Status:** in review (PR #53: https://github.com/MinhTam2773/frenchy/pull/53) · **Claimed by:** Wave 7b agent (B-53) · **Branch:** `task/B-53-starter-deck-name` · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
 **Goal:** Close G-73: a screen-reader user hears what the starter-deck button does, not just "Starter deck 24 cards".
 **Done when:** the button's accessible name carries the action (then the result), the status stays a live region outside the button, and the tests and E2E helpers find the button by that name.
 
-- [ ] Put the action text in the button's name, keeping visible label and name in step (WCAG 2.5.3, L-116), and move the `role="status"` out of the button
-- [ ] Update the E2E locators that match `/Starter deck/` (L-114)
-- [ ] Test: the name before and after adding; the status is announced
+- [x] Put the action text in the button's name, keeping visible label and name in step (WCAG 2.5.3, L-116), and move the `role="status"` out of the button
+- [x] Update the E2E locators that match `/Starter deck/` (L-114)
+- [x] Test: the name before and after adding; the status is announced
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
