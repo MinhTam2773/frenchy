@@ -178,15 +178,15 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | S | T-18, T-25 | — |
 
-**Status:** in progress · **Claimed by:** Wave 7b agent (B-19) · **Branch:** `task/B-19-review-word-sheet` · **Owns:** shared word-sheet component extraction, review card renderer changes
+**Status:** in review ([PR #56](https://github.com/MinhTam2773/frenchy/pull/56)) · **Claimed by:** Wave 7b agent (B-19) · **Branch:** `task/B-19-review-word-sheet` · **Owns:** shared word-sheet component extraction, review card renderer changes
 **Goal:** PLAN says tap-to-translate works on every surface; MVP covers only the reader.
 **Done when:** French words on review cards open the same word sheet as the reader.
 
 - [x] Move the word sheet into a shared component used by reader and review (`src/client/ui/WordPanel.tsx`, exported from the kit; Save word, Sentence and a lookup-failed message are optional)
 - [x] Tokenize card text with T-15; tap opens the sheet without revealing the answer early (`tokenize()` + `annotate()` through `ReviewStage`; a one-word front stays plain until the reveal, L-184)
 - [x] Tests (`WordPanel.test.tsx`, `cardWords.test.ts`, `ReviewPage.test.tsx`, `a11y.test.tsx`; `e2e/review.spec.ts`, `e2e/a11y.spec.ts`)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green (73 files, 1,142 tests; `precache 55 entries (1049.97 KiB)`), `main` merged
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-08 · Offline reviews
