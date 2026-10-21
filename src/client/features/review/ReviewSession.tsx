@@ -7,7 +7,7 @@ import { Button, IconButton, Mascot, ProgressBar } from '@client/ui';
 import { GRADE_LABELS, RATINGS } from '@shared/constants';
 import type { Card, Rating, StreakResponse } from '@shared/schemas';
 import { previewIntervals } from '@shared/srs';
-import { ReviewCard } from './ReviewCard';
+import { ReviewStage } from './ReviewStage';
 import {
   computeStats,
   currentCard,
@@ -139,14 +139,14 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
   }
 
   const french = card ? frenchToSpeak(card, revealed) : null;
-  const onPlay =
-    supported && french
-      ? () =>
-          void speak(french, {
-            rate: profile.data?.settings.rate,
-            voiceURI: profile.data?.settings.voiceURI ?? undefined,
-          })
-      : null;
+  const speakFrench = supported
+    ? (text: string) =>
+        void speak(text, {
+          rate: profile.data?.settings.rate,
+          voiceURI: profile.data?.settings.voiceURI ?? undefined,
+        })
+    : null;
+  const onPlay = speakFrench && french ? () => speakFrench(french) : null;
 
   const undoButton = (
     <button
@@ -178,15 +178,15 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
       {card ? (
         <>
           <h1 className="sr-only">Review</h1>
-          <div className="flex flex-1 flex-col gap-3.5 px-5 pt-2">
-            <ReviewCard
-              card={card}
-              revealed={revealed}
-              onPlay={onPlay}
-              sectionRef={cardRef}
-              aside={state.undoable ? undoButton : null}
-            />
-          </div>
+          <ReviewStage
+            key={card.id}
+            card={card}
+            revealed={revealed}
+            onPlay={onPlay}
+            onSpeak={speakFrench}
+            sectionRef={cardRef}
+            aside={state.undoable ? undoButton : null}
+          />
           <div className="px-5 pt-[18px] pb-[30px]">
             {labels ? (
               <div className="grid grid-cols-4 gap-2">

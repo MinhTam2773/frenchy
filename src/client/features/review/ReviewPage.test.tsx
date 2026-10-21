@@ -51,12 +51,20 @@ function recordReviews(status = 200) {
   return posted;
 }
 
+/**
+ * French text is a row of word buttons, so `getByText` can't see it whole. This matches the
+ * paragraph by its full text instead.
+ */
+const para = (text: string | RegExp) => (_: string, element: Element | null) =>
+  element?.tagName === 'P' &&
+  (typeof text === 'string' ? element.textContent === text : text.test(element.textContent ?? ''));
+
 const showAnswer = () => fireEvent.click(screen.getByRole('button', { name: 'Show answer' }));
 const grade = (name: string | RegExp) => fireEvent.click(screen.getByRole('button', { name }));
 
 async function answerAll(rating: (typeof RATINGS)[number]) {
   for (const card of reviewCards) {
-    await screen.findByText(card.type === 'cloze' ? /^Nous/ : card.front);
+    await screen.findByText(para(card.type === 'cloze' ? /^Nous/ : card.front));
     showAnswer();
     grade(new RegExp(`^${GRADE_LABELS[rating]},`));
   }
@@ -64,7 +72,7 @@ async function answerAll(rating: (typeof RATINGS)[number]) {
 
 test('completes a session end to end and shows the results', async () => {
   renderAt('/review');
-  expect(await screen.findByText(sentence.front)).toBeInTheDocument();
+  expect(await screen.findByText(para(sentence.front))).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Review' })).toBeInTheDocument();
   expect(screen.queryByRole('navigation', { name: 'Main' })).not.toBeInTheDocument();
   expect(screen.getByRole('progressbar', { name: 'Review progress' })).toHaveAttribute(
@@ -91,7 +99,7 @@ test('completes a session end to end and shows the results', async () => {
 test('labels the grade buttons with the FSRS preview for each card', async () => {
   renderAt('/review');
   for (const card of reviewCards) {
-    await screen.findByText(card.type === 'cloze' ? /^Nous/ : card.front);
+    await screen.findByText(para(card.type === 'cloze' ? /^Nous/ : card.front));
     expect(screen.queryByRole('button', { name: /^Good,/ })).not.toBeInTheDocument();
     showAnswer();
     const labels = previewIntervals(card, FIXTURE_NOW);
@@ -107,10 +115,10 @@ test('labels the grade buttons with the FSRS preview for each card', async () =>
 test('posts each review with the preview time, and holds the last grade until the next one', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   await new Promise((resolve) => setTimeout(resolve, 50));
   expect(posted).toHaveLength(0);
 
@@ -139,22 +147,22 @@ test('posts each review with the preview time, and holds the last grade until th
 test('undo brings the card back with its answer and the undone grade is never posted', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   expect(screen.queryByRole('button', { name: 'Undo' })).not.toBeInTheDocument();
 
   showAnswer();
   grade(/^Again,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   expect(screen.getByText('1/3')).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('button', { name: 'Undo' }));
-  expect(await screen.findByText(sentence.front)).toBeInTheDocument();
+  expect(await screen.findByText(para(sentence.front))).toBeInTheDocument();
   expect(screen.getByText('0/3')).toBeInTheDocument();
   expect(screen.getByText(sentence.back)).toBeInTheDocument();
   expect(screen.queryByRole('button', { name: 'Undo' })).not.toBeInTheDocument();
 
   grade(/^Easy,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   showAnswer();
   grade(/^Good,/);
   await screen.findByText(meaning.front);
@@ -175,7 +183,7 @@ test('can undo the last card from the end-of-session screen', async () => {
   renderAt('/review');
   await answerAll(3);
   fireEvent.click(await screen.findByRole('button', { name: 'Undo last answer' }));
-  expect(await screen.findByText(meaning.back)).toBeInTheDocument();
+  expect(await screen.findByText(para(meaning.back))).toBeInTheDocument();
   expect(screen.getByText('2/3')).toBeInTheDocument();
   grade(/^Again,/);
   fireEvent.click(await screen.findByRole('button', { name: 'See results' }));
@@ -188,7 +196,7 @@ test('can undo the last card from the end-of-session screen', async () => {
 test('Space reveals and 1 to 4 grade, only once the answer is showing', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
 
   fireEvent.keyDown(document.body, { key: '3' });
   expect(screen.queryByText(sentence.back)).not.toBeInTheDocument();
@@ -197,11 +205,11 @@ test('Space reveals and 1 to 4 grade, only once the answer is showing', async ()
   fireEvent.keyDown(document.body, { key: ' ' });
   expect(screen.getByText(sentence.back)).toBeInTheDocument();
   fireEvent.keyDown(document.body, { key: '2' });
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   expect(screen.getByText('1/3')).toBeInTheDocument();
 
   fireEvent.keyDown(document.body, { key: ' ', ctrlKey: true });
-  expect(screen.queryByText(cloze.back)).not.toBeInTheDocument();
+  expect(screen.queryByText(para(cloze.back))).not.toBeInTheDocument();
 
   fireEvent.keyDown(document.body, { key: ' ' });
   fireEvent.keyDown(document.body, { key: '4' });
@@ -212,7 +220,7 @@ test('Space reveals and 1 to 4 grade, only once the answer is showing', async ()
 test('stops listening for keys when the screen is left', async () => {
   const posted = recordReviews();
   const { unmount } = renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   unmount();
   fireEvent.keyDown(document.body, { key: ' ' });
   fireEvent.keyDown(document.body, { key: '3' });
@@ -222,11 +230,11 @@ test('stops listening for keys when the screen is left', async () => {
 
 test('shows a cloze with a blank, then the answer in the blank', async () => {
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
 
-  const front = await screen.findByText(/^Nous/);
+  const front = await screen.findByText(para(/^Nous/));
   expect(front).toHaveAttribute('lang', 'fr');
   expect(within(front).getByText('blank')).toBeInTheDocument();
   expect(screen.getByText(cloze.hint ?? '')).toBeInTheDocument();
@@ -235,16 +243,19 @@ test('shows a cloze with a blank, then the answer in the blank', async () => {
   showAnswer();
   expect(within(front).getByText('parlons')).toBeInTheDocument();
   expect(within(front).queryByText('blank')).not.toBeInTheDocument();
-  expect(screen.getByText(cloze.back)).toHaveAttribute('lang', 'fr');
+  // The filled-in front and the back both read as the whole sentence.
+  const sentences = screen.getAllByText(para(cloze.back));
+  expect(sentences).toHaveLength(2);
+  sentences.forEach((p) => expect(p).toHaveAttribute('lang', 'fr'));
   expect(screen.getByText(cloze.note ?? '')).toBeInTheDocument();
 });
 
 test('an English front has no audio until the French answer is shown', async () => {
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   showAnswer();
   grade(/^Good,/);
 
@@ -259,7 +270,7 @@ test('an English front has no audio until the French answer is shown', async () 
 
 test('the play button reads the French sentence', async () => {
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   fireEvent.click(screen.getByRole('button', { name: 'Play audio' }));
   expect(tts.speak).toHaveBeenCalledWith(sentence.front, expect.anything());
 });
@@ -297,16 +308,16 @@ test('offers a retry when the cards cannot be loaded', async () => {
 
   server.resetHandlers();
   fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
-  expect(await screen.findByText(sentence.front)).toBeInTheDocument();
+  expect(await screen.findByText(para(sentence.front))).toBeInTheDocument();
 });
 
 test('warns when an answer could not be saved, and keeps going', async () => {
   recordReviews(404);
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
   showAnswer();
   grade(/^Good,/);
 
@@ -318,10 +329,10 @@ test('warns when an answer could not be saved, and keeps going', async () => {
 test('ending early posts the held grade and leaves the review', async () => {
   const posted = recordReviews();
   renderAt('/review');
-  await screen.findByText(sentence.front);
+  await screen.findByText(para(sentence.front));
   showAnswer();
   grade(/^Good,/);
-  await screen.findByText(/^Nous/);
+  await screen.findByText(para(/^Nous/));
 
   fireEvent.click(screen.getByRole('button', { name: 'End review' }));
   await waitFor(() => expect(posted).toHaveLength(1));
