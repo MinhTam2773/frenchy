@@ -214,11 +214,11 @@ QUESTION: a review queued offline for more than 24 h gets the server's `400` (G-
 |---|---|---|---|---|
 | P2 | Sonnet 5.5 · High | S | — | — |
 
-**Status:** ready · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
+**Status:** in review · **Claimed by:** Wave 7b agent (B-56) · **Branch:** `task/B-56-docs-refresh` · **PR:** https://github.com/MinhTam2773/frenchy/pull/54 · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
 **Goal:** The docs agents read agree with the code (found in the 2026-10-20 context audit). `CLAUDE.md` says PLAN wins over the mockups, so a stale PLAN misleads.
 **Done when:** every item below is fixed, and nothing else in those files changes.
 
-- [ ] `docs/PLAN.md` §4:
+- [x] `docs/PLAN.md` §4:
   - tests use `@cloudflare/vitest-plugin` (L-07);
   - the client previews intervals and the server recomputes and stores the card (T-22), not "the client computes the next due date";
   - the diagram's `/api/sync` becomes the real routes (`profile`, `cards`, `reviews`, `words`, `activity`, `streak`, `account`);
@@ -226,23 +226,23 @@ QUESTION: a review queued offline for more than 24 h gets the server's `400` (G-
   - the data model adds `activity_minutes`, `text_reads`, `ai_usage`, `ai_daily_usage` and `rate_limit`, and notes that `freeze_used` is not read (L-38);
   - the repo layout is no longer "planned";
   - AI routing is by env today (B-13)
-- [ ] `docs/HANDOFF.md`: mark it as the 2026-10-16 snapshot from before T-01 ("No app code yet", "Start with T-01"), or fold what is still useful into PLAN §5 (ask the lead)
-- [ ] `docs/api-contract.md`:
+- [x] `docs/HANDOFF.md`: mark it as the 2026-10-16 snapshot from before T-01 ("No app code yet", "Start with T-01"), or fold what is still useful into PLAN §5 (ask the lead)
+- [x] `docs/api-contract.md`:
   - `/api/streak` uses every row, not "about the last 400 days" (G-31);
   - G-20 is decided, not an open question;
   - account deletion also leaves `rate_limit` and `verification` (G-86);
   - list the 403 from `csrf()` (L-122)
-- [ ] `docs/LICENSES.md`:
+- [x] `docs/LICENSES.md`:
   - the credits screen exists (B-21);
   - "What we changed" adds T-24's `GLOSS_OVERRIDES`, the œ/oe frequency join, `FREQUENCY_ALIASES` and the feminine-noun forms (CC BY-SA asks for changes to be described)
-- [ ] `docs/security-review.md`: a dated status note at the top (S-05 fixed by B-21, S-10 by B-39, S-17 by B-16; "Before T-30" items 2 and 4 partly done; Worker size after B-33), leaving the T-29 report as written
-- [ ] `design/README.md`:
+- [x] `docs/security-review.md`: a dated status note at the top (S-05 fixed by B-21, S-10 by B-39, S-17 by B-16; "Before T-30" items 2 and 4 partly done; Worker size after B-33), leaving the T-29 report as written
+- [x] `design/README.md`:
   - screen index task IDs (T-08b → T-21, T-15 → T-16, T-16 → T-17, T-17b → T-25);
   - the MVP tab bar has 4 tabs (G-28);
   - targets are 44 px where the mockup draws less (L-18);
   - "lesson L-04 in TODO.md" becomes `LESSONS/L-04.md`
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status), new lessons and gaps (L-192) in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green
 
 ---

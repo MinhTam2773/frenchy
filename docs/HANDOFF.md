@@ -2,6 +2,8 @@
 
 Context for continuing this project in a new session (local or cloud). Read with `docs/PLAN.md`.
 
+> **Snapshot from 2026-10-16, before T-01.** Lines such as "No app code yet" and "Start with T-01" were true then and are not now. For the current state read `TODO.md`, `DONE.md` and `docs/PLAN.md`; `cli-bridge` below is a plan and is not built.
+
 ## Where we are
 - Requirements gathered, learning plan + app spec written (`docs/PLAN.md`). **No app code yet.**
 - **Tech stack decided** (2026-10-16): Vite + React PWA + Hono API on Cloudflare Workers, D1 + Drizzle, R2, Better Auth. Architecture is in `docs/PLAN.md` §4.
