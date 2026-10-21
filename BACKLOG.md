@@ -357,24 +357,6 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
-#### B-27 · Global daily AI spend cap
-
-| Priority | Model · effort | Size | Depends on | Blocks |
-|---|---|---|---|---|
-| P1 | Opus 5.5 · Medium | S | T-23 | T-30 (before real keys go live) |
-
-**Status:** done in T-29 (PR #38) except the number: the cap ships as `AI_DAILY_LIMIT`, default 1,000 per UTC day, until the user picks one (QUESTION under T-29) · **Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`, one migration
-**Goal:** Close G-10: cap provider calls for the whole app per day, on top of T-23's per-user 60 per hour, so many users (or many sign-ups) can't run up a surprise bill.
-**Done when:** after the daily cap is reached, every cache miss gets 429 `rate_limited` until the next UTC day while cache hits are still served, proven with the mock driver.
-
-- [ ] Decide the cap with the user (number of provider calls or estimated tokens per day) and make it a Worker var
-- [x] Count in D1 next to `ai_usage` (one row per UTC day), in the same batch as the per-user count (T-29: `ai_daily_usage`, migration 0003, counted after the per-user check, L-123)
-- [x] Log a warning line when 80 % of the cap is used
-- [x] Tests: cap reached → 429 for misses, hits still 200; a new day resets (`routes/ai.test.ts`)
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
-- [ ] Finish: PR to `main` merged with CI green
-
 #### B-31 · Reader text settings ("Aa") and audio time
 
 | Priority | Model · effort | Size | Depends on | Blocks |
@@ -610,4 +592,88 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Test: the row is gone after `DELETE /api/account`, another user's row stays
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-53 · Starter-deck button names its action
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | T-28 | — |
+
+**Status:** ready · **Owns:** `src/client/features/chapter/StarterDeckTile.tsx`, its test, the starter-deck locators in `e2e/helpers.ts` and `e2e/a11y.spec.ts`
+**Goal:** Close G-73: a screen-reader user hears what the starter-deck button does, not just "Starter deck 24 cards".
+**Done when:** the button's accessible name carries the action (then the result), the status stays a live region outside the button, and the tests and E2E helpers find the button by that name.
+
+- [ ] Put the action text in the button's name, keeping visible label and name in step (WCAG 2.5.3, L-116), and move the `role="status"` out of the button
+- [ ] Update the E2E locators that match `/Starter deck/` (L-114)
+- [ ] Test: the name before and after adding; the status is announced
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-54 · Prettier pass over files that drifted
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Haiku 5.5 | S | — | — |
+
+**Status:** ready · **Owns:** the nine files below, `.prettierignore`
+**Goal:** `npx prettier --check .` is clean, so an agent can run Prettier on its own files without reformatting someone else's (L-34, L-161).
+**Done when:** `npx prettier --check .` reports no files, and the diff is formatting only.
+
+- [ ] `npx prettier --write` on `src/client/features/settings/CreditsPage.tsx`, `src/client/layouts/OfflineBanner.test.tsx`, `src/client/lib/api.test.tsx`, `src/client/lib/tts/speech.ts`, `src/client/lib/tts/useTts.test.tsx`, `src/client/lib/tts/useTts.ts`, `src/client/mocks/handlers/base.test.ts`, `src/client/ui/Button.tsx`, `src/worker/routes/cards.test.ts`
+- [ ] Add the generated files to `.prettierignore`: `migrations/meta/`, `public/mockServiceWorker.js`
+- [ ] Ask the lead whether `npm run lint` should also run `prettier --check .`
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-55 · `npm run check` runs `content:check`
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Sonnet 5.5 · Medium | S | — | — |
+
+**Status:** ready · **Owns:** the `check` script in `package.json` (hot file), the `content:check` step in `.github/workflows/ci.yml` (hot file), the `npm run check` row in `CLAUDE.md`
+**Goal:** A green `npm run check` means CI's checks pass too. Today CI runs `content:check` as its own step and the local check skips it, so a broken content file shows up only in CI.
+**Done when:** `npm run check` fails on a broken content file, and CI runs `content:check` once.
+
+- [ ] Add `npm run content:check` to the `check` script, after `typecheck`
+- [ ] Drop the separate CI step, or keep it for a clearer failure line (decide in the PR)
+- [ ] Add `content:check` to the `npm run check` row in `CLAUDE.md`
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
+- [ ] Finish: PR to `main` merged with CI green
+
+#### B-56 · Refresh the docs that disagree with the code
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P2 | Sonnet 5.5 · High | S | — | — |
+
+**Status:** ready · **Owns:** `docs/PLAN.md`, `docs/HANDOFF.md`, `docs/api-contract.md`, `docs/LICENSES.md`, `docs/security-review.md`, `design/README.md`
+**Goal:** The docs agents read agree with the code (found in the 2026-10-20 context audit). `CLAUDE.md` says PLAN wins over the mockups, so a stale PLAN misleads.
+**Done when:** every item below is fixed, and nothing else in those files changes.
+
+- [ ] `docs/PLAN.md` §4:
+  - tests use `@cloudflare/vitest-plugin` (L-07);
+  - the client previews intervals and the server recomputes and stores the card (T-22), not "the client computes the next due date";
+  - the diagram's `/api/sync` becomes the real routes (`profile`, `cards`, `reviews`, `words`, `activity`, `streak`, `account`);
+  - the dictionary license is verified (G-25, B-21);
+  - the data model adds `activity_minutes`, `text_reads`, `ai_usage`, `ai_daily_usage` and `rate_limit`, and notes that `freeze_used` is not read (L-38);
+  - the repo layout is no longer "planned";
+  - AI routing is by env today (B-13)
+- [ ] `docs/HANDOFF.md`: mark it as the 2026-10-16 snapshot from before T-01 ("No app code yet", "Start with T-01"), or fold what is still useful into PLAN §5 (ask the lead)
+- [ ] `docs/api-contract.md`:
+  - `/api/streak` uses every row, not "about the last 400 days" (G-31);
+  - G-20 is decided, not an open question;
+  - account deletion also leaves `rate_limit` and `verification` (G-86);
+  - list the 403 from `csrf()` (L-122)
+- [ ] `docs/LICENSES.md`:
+  - the credits screen exists (B-21);
+  - "What we changed" adds T-24's `GLOSS_OVERRIDES`, the œ/oe frequency join, `FREQUENCY_ALIASES` and the feminine-noun forms (CC BY-SA asks for changes to be described)
+- [ ] `docs/security-review.md`: a dated status note at the top (S-05 fixed by B-21, S-10 by B-39, S-17 by B-16; "Before T-30" items 2 and 4 partly done; Worker size after B-33), leaving the T-29 report as written
+- [ ] `design/README.md`:
+  - screen index task IDs (T-08b → T-21, T-15 → T-16, T-16 → T-17, T-17b → T-25);
+  - the MVP tab bar has 4 tabs (G-28);
+  - targets are 44 px where the mockup draws less (L-18);
+  - "lesson L-04 in TODO.md" becomes `LESSONS/L-04.md`
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status), new lessons and gaps in `LESSONS/` and `KNOWNGAPS/`
 - [ ] Finish: PR to `main` merged with CI green

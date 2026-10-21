@@ -799,6 +799,24 @@ QUESTION: G-35 (S-06): email sign-in needs the Workers Paid plan (scrypt takes a
 - [x] Finish: TODO.md updated (steps ticked, status, lessons; L-147 to L-150, G-88, G-89, B-49, B-50)
 - [x] Finish: PR to `main` merged with CI green
 
+### B-27 · Global daily AI spend cap
+
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Opus 5.5 · Medium | S | T-23 | T-30 (before real keys go live) |
+
+**Status:** done in T-29 (PR #38) except the number: the cap ships as `AI_DAILY_LIMIT`, default 1,000 per UTC day, until the user picks one (QUESTION under T-29) · **Owns:** `src/worker/ai/**`, `src/worker/routes/ai.ts`, one migration
+**Goal:** Close G-10: cap provider calls for the whole app per day, on top of T-23's per-user 60 per hour, so many users (or many sign-ups) can't run up a surprise bill.
+**Done when:** after the daily cap is reached, every cache miss gets 429 `rate_limited` until the next UTC day while cache hits are still served, proven with the mock driver.
+
+- [ ] Decide the cap with the user (number of provider calls or estimated tokens per day) and make it a Worker var
+- [x] Count in D1 next to `ai_usage` (one row per UTC day), in the same batch as the per-user count (T-29: `ai_daily_usage`, migration 0003, counted after the per-user check, L-123)
+- [x] Log a warning line when 80 % of the cap is used
+- [x] Tests: cap reached → 429 for misses, hits still 200; a new day resets (`routes/ai.test.ts`)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
+
 ### B-33 · Load lesson texts per chapter, not in the main bundle
 
 | Priority | Model · effort | Size | Depends on | Blocks |
