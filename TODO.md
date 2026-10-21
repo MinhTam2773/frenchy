@@ -133,10 +133,10 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 **Goal:** Stage 2 to 4 content follows T-24's decisions without a QA pass having to find them by hand (L-94, L-95, G-67).
 **Done when:** `content:check` names the file and sentence for each case below, and Stage 1 passes.
 
-- [ ] A lemma is `isNew` in at most one text, the first along the route (chapter order in `course.json`, then text id order), and the message names the earlier text
-- [ ] A token with pos `phrase` uses a lemma from the closed list in `scripts/content/prompts/text.md` (move the list into a constant the brief points to), and has more than one word in the phrase
-- [ ] A listed phrase (*il y a*, *s'il vous plaît*…) is never annotated word by word
-- [ ] Tests with a tree built by `createContent` (L-75), one per rule
+- [x] A lemma is `isNew` in at most one text, the first along the route (chapter order in `course.json`, then text id order), and the message names the earlier text
+- [x] A token with pos `phrase` uses a lemma from the closed list in `scripts/content/prompts/text.md` (move the list into a constant the brief points to), and has more than one word in the phrase
+- [x] A listed phrase (*il y a*, *s'il vous plaît*…) is never annotated word by word
+- [x] Tests with a tree built by `createContent` (L-75), one per rule
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
