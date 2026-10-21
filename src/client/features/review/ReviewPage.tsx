@@ -1,18 +1,27 @@
 import type { ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '@client/lib/api';
+import { loadDueCards } from '@client/lib/offline';
 import { queryKeys } from '@client/lib/query';
+import { useSession } from '@client/lib/session';
 import { Button, Mascot } from '@client/ui';
 import { DUE_LIMIT, NEW_CARDS_PER_DAY } from '@shared/constants';
 import { ReviewSession } from './ReviewSession';
 import { capNewCards } from './session';
 
 export function ReviewPage() {
+  const { user } = useSession();
+  return user ? <DueReview userId={user.id} /> : null;
+}
+
+function DueReview({ userId }: { userId: string }) {
   // The session works on the list it started with, so a refetch must not swap cards mid-way, and
   // leaving the screen drops the list so the next visit asks the server again.
   const due = useQuery({
     queryKey: [...queryKeys.dueCards, { limit: DUE_LIMIT.default }],
-    queryFn: () => api.cards.due(DUE_LIMIT.default),
+    // Offline, the last saved due list stands in (B-08); 'always' lets the query run (L-147).
+    queryFn: () => loadDueCards(userId, DUE_LIMIT.default),
+    networkMode: 'always',
     staleTime: Infinity,
     gcTime: 0,
   });
@@ -39,7 +48,7 @@ export function ReviewPage() {
     );
   }
 
-  const cards = capNewCards(due.data.cards, NEW_CARDS_PER_DAY);
+  const cards = capNewCards(due.data, NEW_CARDS_PER_DAY);
   if (cards.length === 0) {
     return (
       <Message title="You’re all caught up" body="No cards are due right now.">
@@ -49,7 +58,7 @@ export function ReviewPage() {
       </Message>
     );
   }
-  return <ReviewSession cards={cards} />;
+  return <ReviewSession cards={cards} userId={userId} />;
 }
 
 function Message({ title, body, children }: { title: string; body: string; children: ReactNode }) {

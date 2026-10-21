@@ -194,17 +194,19 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P2 | Opus 5.5 · High | M | T-26, T-12 | — |
 
-**Status:** ready (deps done) · **Owns:** `src/client/lib/offline/**`, review sync changes in `src/worker/routes/reviews.ts`
+**Status:** in review ([PR #57](https://github.com/MinhTam2773/frenchy/pull/57)) · **Claimed by:** Wave 7b agent (B-08) · **Branch:** `task/B-08-offline-reviews` · **Owns:** `src/client/lib/offline/**`, review sync changes in `src/worker/routes/reviews.ts`
 **Goal:** Review on the subway: queue reviews offline and sync later without losing or double-counting any.
 **Done when:** a session done offline syncs correctly on reconnect, with tests for duplicates and out-of-order replays.
 
-- [ ] IndexedDB store for due cards and pending reviews
-- [ ] Each review gets an idempotency key; the server ignores repeats
-- [ ] Server replays queued reviews in `reviewed_at` order
-- [ ] Offline banner and pending-count indicator
-- [ ] Tests: offline → online sync, duplicates, ordering
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] IndexedDB store for due cards and pending reviews
+- [x] Each review gets an idempotency key; the server ignores repeats
+- [x] Server replays queued reviews in `reviewed_at` order (through the existing endpoint: the client sends the queue oldest `reviewedAt` first, one at a time, stopping at the first failure; the L-84 clamp keeps a late or out-of-order arrival from moving `last_review` back. No batch endpoint)
+- [x] Offline banner and pending-count indicator
+- [x] Tests: offline → online sync, duplicates, ordering (plus another user's colliding id, a stale review, and an E2E in `e2e/offline-review.spec.ts`)
+QUESTION: a review queued offline for more than 24 h gets the server's `400` (G-61). Default taken (safe and reversible): drop it, say so in the banner ("N reviews couldn't be saved. Those cards will come back in your next review."), and leave the card due. The alternative is a 7-day window for reviews only: the grade is kept, but a late sync counts reviews on a past day and can change the streak calendar after the fact. Which do you want? (G-102)
+
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-56 · Refresh the docs that disagree with the code

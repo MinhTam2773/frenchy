@@ -78,6 +78,59 @@ describe('POST /api/reviews', () => {
     expect(await reviewsToday(user)).toBe(1);
   });
 
+  test("another user's review with the same id is applied for them too (G-79)", async () => {
+    const a = await newUser();
+    const b = await newUser();
+    const id = crypto.randomUUID();
+    const cardA = await addCard(a);
+    const cardB = await addCard(b);
+    expect((await postReview(a, review(cardA, { id }))).status).toBe(200);
+
+    const res = await postReview(b, review(cardB, { id, rating: 1 }));
+    expect(res.status).toBe(200);
+    expect(Card.parse(await res.json())).toMatchObject({ id: cardB.id, reps: 1, lapses: 0 });
+    expect(await b.db.reviews.select()).toMatchObject([{ id, cardId: cardB.id, rating: 1 }]);
+    expect(await a.db.reviews.select()).toMatchObject([{ id, cardId: cardA.id, rating: 3 }]);
+    expect(await reviewsToday(a)).toBe(1);
+    expect(await reviewsToday(b)).toBe(1);
+  });
+
+  test('a session replayed after going offline, with repeats, counts each review once', async () => {
+    const user = await newUser();
+    const cards = [
+      await addCard(user, 'Je parle.'),
+      await addCard(user, 'Tu parles.'),
+      await addCard(user, 'Il parle.'),
+    ];
+    const now = Date.now();
+    const queued = cards.map((card, i) => review(card, { reviewedAt: now - (3 - i) * MINUTE }));
+    // The first two reached the server but their answers were lost, so the queue sends them again.
+    for (const input of queued.slice(0, 2)) await postReview(user, input);
+    for (const input of queued) expect((await postReview(user, input)).status).toBe(200);
+
+    const rows = await user.db.cards.select();
+    expect(rows.map((row) => row.reps)).toEqual([1, 1, 1]);
+    expect(await user.db.reviews.select()).toHaveLength(3);
+    expect(await reviewsToday(user)).toBe(3);
+  });
+
+  test('an out-of-order replay never moves the last review back', async () => {
+    const user = await newUser();
+    const card = await addCard(user);
+    const now = Date.now();
+    const later = review(card, { reviewedAt: now - MINUTE, rating: 3 });
+    const earlier = review(card, { reviewedAt: now - 3 * MINUTE, rating: 1 });
+    await postReview(user, later);
+    const res = await postReview(user, earlier);
+    expect(res.status).toBe(200);
+    expect(Card.parse(await res.json()).lastReview).toBe(later.reviewedAt);
+    const stored = await user.db.reviews.select();
+    expect(stored.map((row) => row.reviewedAt).sort()).toEqual([
+      later.reviewedAt,
+      later.reviewedAt,
+    ]);
+  });
+
   test('counts the review on the local day of the profile time zone', async () => {
     const user = await newUser();
     await user.api('/profile', { method: 'PATCH', body: { timeZone: 'Pacific/Kiritimati' } });

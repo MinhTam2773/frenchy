@@ -30,12 +30,12 @@ function isTypingTarget(target: EventTarget | null) {
   return target instanceof Element && target.closest('input, textarea, select, [contenteditable]');
 }
 
-export function ReviewSession({ cards }: { cards: Card[] }) {
+export function ReviewSession({ cards, userId }: { cards: Card[]; userId: string }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const profile = useProfile();
   const { speak, stop, supported } = useTts();
-  const { post, settled, failed } = useReviewPosts();
+  const { hold, discard, post, settled } = useReviewPosts(userId);
   const [state, dispatch] = useReducer(sessionReducer, cards, (list) =>
     startSession(list, Date.now()),
   );
@@ -60,6 +60,12 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
     },
     [post],
   );
+
+  // The held grade is also kept on the device, so closing the tab doesn't lose it (G-20).
+  const held = state.undoable ? state.results.at(-1)?.review : undefined;
+  useEffect(() => {
+    if (held) hold(held);
+  }, [held, hold]);
 
   const latest = useRef(state);
   useEffect(() => {
@@ -90,8 +96,9 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
 
   const undo = useCallback(() => {
     stop();
+    if (held) discard(held.id);
     dispatch({ type: 'undo' });
-  }, [stop]);
+  }, [stop, held, discard]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -209,7 +216,6 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
                 Show answer
               </Button>
             )}
-            <SaveWarning failed={failed} />
           </div>
         </>
       ) : (
@@ -228,20 +234,9 @@ export function ReviewSession({ cards }: { cards: Card[] }) {
                 Undo last answer
               </Button>
             )}
-            <SaveWarning failed={failed} />
           </div>
         </>
       )}
     </div>
-  );
-}
-
-function SaveWarning({ failed }: { failed: number }) {
-  if (failed === 0) return null;
-  return (
-    <p role="status" className="mt-3 text-center text-sm font-bold text-danger-ink">
-      {failed === 1 ? 'One answer' : `${failed} answers`} couldn’t be saved. They will come back in
-      your next review.
-    </p>
   );
 }

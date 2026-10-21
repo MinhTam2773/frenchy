@@ -587,3 +587,19 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+#### B-67 · Warm the lexicon shards of the cards saved for offline review
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · High | S | B-08, B-19 | — |
+
+**Status:** blocked (B-08 and B-19 merge first) · **Owns:** `src/client/lib/offline/**` (the due-list save), the lexicon shard loader it calls
+**Goal:** On the subway, tapping a word on a review card works for every card the app saved for offline use (G-100).
+**Done when:** after the due list is saved online, the shards for every French word on those cards are in the runtime cache, and a test shows a lookup answering with the network cut.
+
+- [ ] When `loadDueCards` saves a due list, tokenize each card's French (`sideTokens`, both sides) and fetch the shards of their lemmas once, in the background
+- [ ] Skip shards already cached; never block the review screen on it
+- [ ] Test with `onlineManager.setOnline(false)` and aborted shard requests (L-147, L-150)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
