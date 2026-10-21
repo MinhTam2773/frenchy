@@ -48,7 +48,7 @@ export async function finishOnboarding(page: Page, goalMinutes = 30) {
 /** Add Chapter 1's starter deck from its chapter page, then come back to Today. */
 export async function addStarterDeck(page: Page) {
   await page.goto('/chapter/ch1');
-  await page.getByRole('button', { name: /Starter deck/ }).click();
+  await page.getByRole('button', { name: /Add to reviews/ }).click();
   await expect(
     page.getByRole('status').filter({ hasText: /Added \d+ to your reviews/ }),
   ).toBeVisible();
