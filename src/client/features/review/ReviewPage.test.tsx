@@ -341,3 +341,127 @@ test('ending early posts the held grade and leaves the review', async () => {
     expect(screen.queryByRole('progressbar', { name: 'Review progress' })).not.toBeInTheDocument(),
   );
 });
+
+// Lexicon shards are 1-2 MB modules; the first lookup can be slow on a busy machine.
+const LOOKUP = { timeout: 20_000 };
+const wordSheet = () => screen.findByRole('region', { name: 'Word details' });
+
+test('tapping a word on the front shows its meaning, not the answer, and grades nothing', async () => {
+  const posted = recordReviews();
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+
+  const word = screen.getByRole('button', { name: 'écoute' });
+  word.focus();
+  fireEvent.click(word);
+  const sheet = await wordSheet();
+  expect(await within(sheet).findByText(/listen/, {}, LOOKUP)).toBeInTheDocument();
+  expect(within(sheet).getByRole('heading', { name: 'écoute' })).toHaveAttribute('lang', 'fr');
+  // Only the word: no Save word / Sentence here (the sentence's translation is the answer).
+  expect(within(sheet).queryByRole('button', { name: 'Sentence' })).not.toBeInTheDocument();
+  expect(within(sheet).queryByRole('button', { name: 'Save word' })).not.toBeInTheDocument();
+
+  // The answer is still hidden and nothing was graded.
+  expect(screen.queryByText(sentence.back)).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Show answer' })).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /^Good,/ })).not.toBeInTheDocument();
+  expect(screen.getByText('0/3')).toBeInTheDocument();
+  // A non-modal region: focus stays on the word, and Space on a word is not "Show answer".
+  expect(word).toHaveFocus();
+  fireEvent.keyDown(word, { key: ' ' });
+  expect(screen.queryByText(sentence.back)).not.toBeInTheDocument();
+
+  // The next tap just switches the sheet.
+  fireEvent.click(screen.getByRole('button', { name: 'radio' }));
+  expect(await within(await wordSheet()).findByRole('heading', { name: 'radio' })).toBeVisible();
+  expect(screen.getAllByRole('region', { name: 'Word details' })).toHaveLength(1);
+
+  fireEvent.keyDown(document, { key: 'Escape' });
+  expect(screen.queryByRole('region', { name: 'Word details' })).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'radio' })).toHaveFocus();
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  expect(posted).toHaveLength(0);
+});
+
+test('opening the word sheet keeps the preview time of the reveal', async () => {
+  const posted = recordReviews();
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  fireEvent.click(screen.getByRole('button', { name: 'écoute' }));
+  await within(await wordSheet()).findByText(/listen/, {}, LOOKUP);
+  vi.setSystemTime(FIXTURE_NOW + 60_000);
+  showAnswer();
+  vi.setSystemTime(FIXTURE_NOW + 90_000);
+  grade(/^Good,/);
+  await screen.findByText(para(/^Nous/));
+  fireEvent.click(screen.getByRole('button', { name: 'End review' }));
+  await waitFor(() => expect(posted).toHaveLength(1));
+  expect(posted[0]).toMatchObject({ cardId: sentence.id, reviewedAt: FIXTURE_NOW + 60_000 });
+});
+
+test('the words of a card are one tab stop; the arrow keys move between them', async () => {
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  const words = ['Elle', 'écoute', 'la', 'radio'].map((name) =>
+    screen.getByRole('button', { name }),
+  );
+  expect(words.map((w) => w.tabIndex)).toEqual([0, -1, -1, -1]);
+  words[0].focus();
+  fireEvent.keyDown(words[0], { key: 'ArrowRight' });
+  expect(words[1]).toHaveFocus();
+  expect(words.map((w) => w.tabIndex)).toEqual([-1, 0, -1, -1]);
+  fireEvent.keyDown(words[1], { key: 'End' });
+  expect(words[3]).toHaveFocus();
+  fireEvent.keyDown(words[3], { key: 'ArrowRight' });
+  expect(words[3]).toHaveFocus();
+  fireEvent.keyDown(words[3], { key: 'Home' });
+  expect(words[0]).toHaveFocus();
+});
+
+test('a cloze front is tappable around the blank, and the answer is tappable once shown', async () => {
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  showAnswer();
+  grade(/^Good,/);
+  await screen.findByText(para(/^Nous/));
+
+  fireEvent.click(screen.getByRole('button', { name: 'maison' }));
+  expect(await within(await wordSheet()).findByText(/house|home/, {}, LOOKUP)).toBeInTheDocument();
+  expect(screen.queryByText(cloze.note ?? '')).not.toBeInTheDocument();
+
+  // Revealing swaps the blank for the answer, so the sheet about the old text is dropped.
+  showAnswer();
+  expect(screen.queryByRole('region', { name: 'Word details' })).not.toBeInTheDocument();
+  fireEvent.click(screen.getAllByRole('button', { name: 'parlons' })[0]);
+  expect(await within(await wordSheet()).findByRole('heading', { name: 'parlons' })).toBeVisible();
+});
+
+test('the French back is tappable once the answer is shown', async () => {
+  renderAt('/review');
+  await screen.findByText(para(sentence.front));
+  showAnswer();
+  grade(/^Good,/);
+  await screen.findByText(para(/^Nous/));
+  showAnswer();
+  grade(/^Good,/);
+  await screen.findByText(meaning.front);
+
+  // English front: plain text.
+  expect(within(screen.getByText(meaning.front)).queryByRole('button')).not.toBeInTheDocument();
+  showAnswer();
+  fireEvent.click(screen.getByRole('button', { name: 'chat' }));
+  expect(await within(await wordSheet()).findByText(/cat/, {}, LOOKUP)).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /^Good,/ })).toBeInTheDocument();
+});
+
+test('a front that is a single word stays plain until the answer is shown', async () => {
+  const single: Card = { ...sentence, front: 'écouter', back: 'to listen' };
+  server.use(http.get('/api/cards/due', () => HttpResponse.json({ cards: [single] })));
+  renderAt('/review');
+  await screen.findByText('écouter');
+  expect(screen.queryByRole('button', { name: 'écouter' })).not.toBeInTheDocument();
+  showAnswer();
+  fireEvent.click(screen.getByRole('button', { name: 'écouter' }));
+  expect(await within(await wordSheet()).findByText(/listen/, {}, LOOKUP)).toBeInTheDocument();
+});
