@@ -541,3 +541,18 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+#### B-57 · Run `prettier --check .` in `npm run check`
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P3 | Sonnet 5.5 · Medium | S | B-54 | — |
+
+**Status:** blocked (B-54 merges first, so the check starts green) · **Owns:** the `check` script in `package.json` (hot file, one line)
+**Goal:** Prettier drift cannot come back unnoticed: `npm run check` fails when a file Prettier should format is not clean (L-161, L-34).
+**Done when:** `npm run check` runs `prettier --check .`, and a deliberately misformatted file makes it fail.
+
+- [ ] Add `prettier --check .` to the `check` script (not to `lint`, per the lead's decision on B-54)
+- [ ] Decide with the lead whether Markdown joins the check (`*.md` is in `.prettierignore`, see G-91)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green
