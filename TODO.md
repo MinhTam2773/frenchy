@@ -112,7 +112,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P3 | Haiku 5.5 | S | — | — |
 
-**Status:** in progress · **Claimed by:** Wave 7b agent (acd8767d) · **Branch:** task/B-54-prettier · **Owns:** the nine files below, `.prettierignore`
+**Status:** in review ([PR #51](https://github.com/MinhTam2773/frenchy/pull/51)) · **Claimed by:** Wave 7b agent (acd8767d) · **Branch:** task/B-54-prettier · **Owns:** the nine files below, `.prettierignore`
 **Goal:** `npx prettier --check .` is clean, so an agent can run Prettier on its own files without reformatting someone else's (L-34, L-161).
 **Done when:** `npx prettier --check .` reports no files, and the diff is formatting only.
 
