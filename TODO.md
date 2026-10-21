@@ -199,7 +199,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 **Done when:** a session done offline syncs correctly on reconnect, with tests for duplicates and out-of-order replays.
 
 - [ ] IndexedDB store for due cards and pending reviews
-- [ ] Each review gets an idempotency key; the server ignores repeats
+- [x] Each review gets an idempotency key; the server ignores repeats
 - [ ] Server replays queued reviews in `reviewed_at` order
 - [ ] Offline banner and pending-count indicator
 - [ ] Tests: offline → online sync, duplicates, ordering

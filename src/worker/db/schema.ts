@@ -63,8 +63,11 @@ export const cards = sqliteTable(
 export const reviews = sqliteTable(
   'reviews',
   {
-    /** Made by the client, so a retried POST is applied once. */
-    id: text('id').primaryKey(),
+    /**
+     * Made by the client, so a retried or replayed POST is applied once. Unique per user, not
+     * globally: another user's id can't collide (G-79).
+     */
+    id: text('id').notNull(),
     userId: text('user_id').notNull(),
     cardId: text('card_id')
       .notNull()
@@ -73,7 +76,10 @@ export const reviews = sqliteTable(
     reviewedAt: integer('reviewed_at').notNull(),
     durationMs: integer('duration_ms').notNull(),
   },
-  (t) => [index('reviews_user_reviewed_at_idx').on(t.userId, t.reviewedAt)],
+  (t) => [
+    primaryKey({ columns: [t.userId, t.id] }),
+    index('reviews_user_reviewed_at_idx').on(t.userId, t.reviewedAt),
+  ],
 );
 
 export const wordStatus = sqliteTable(
