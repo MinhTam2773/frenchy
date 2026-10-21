@@ -198,10 +198,10 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 **Goal:** Review on the subway: queue reviews offline and sync later without losing or double-counting any.
 **Done when:** a session done offline syncs correctly on reconnect, with tests for duplicates and out-of-order replays.
 
-- [ ] IndexedDB store for due cards and pending reviews
+- [x] IndexedDB store for due cards and pending reviews
 - [x] Each review gets an idempotency key; the server ignores repeats
 - [ ] Server replays queued reviews in `reviewed_at` order
-- [ ] Offline banner and pending-count indicator
+- [x] Offline banner and pending-count indicator
 - [ ] Tests: offline → online sync, duplicates, ordering
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)

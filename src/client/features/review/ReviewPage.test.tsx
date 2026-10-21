@@ -1,6 +1,16 @@
-import { cleanup, configure, fireEvent, screen, waitFor, within } from '@testing-library/react';
+import { onlineManager } from '@tanstack/react-query';
+import {
+  act,
+  cleanup,
+  configure,
+  fireEvent,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
+import { readDueCards } from '@client/lib/offline/store';
 import { apiError } from '@client/mocks/handlers/base';
 import { resetReviewMock } from '@client/mocks/handlers/review';
 import { renderAt } from '@client/mocks/renderAt';
@@ -163,7 +173,8 @@ test('undo brings the card back with its answer and the undone grade is never po
   fireEvent.click(await screen.findByRole('button', { name: 'See results' }));
   await screen.findByRole('heading', { name: 'Session complete!' });
 
-  expect(posted.map((r) => [r.cardId, r.rating])).toEqual([
+  // Sorted: with Date frozen every review has the same `reviewedAt`, so the sync order is a tie.
+  expect(posted.map((r) => [r.cardId, r.rating]).sort()).toEqual([
     [sentence.id, 4],
     [cloze.id, 3],
     [meaning.id, 3],
@@ -180,7 +191,7 @@ test('can undo the last card from the end-of-session screen', async () => {
   grade(/^Again,/);
   fireEvent.click(await screen.findByRole('button', { name: 'See results' }));
   await screen.findByRole('heading', { name: 'Session complete!' });
-  expect(posted.at(-1)).toMatchObject({ cardId: meaning.id, rating: 1 });
+  expect(posted.find((r) => r.cardId === meaning.id)).toMatchObject({ rating: 1 });
   expect(posted).toHaveLength(3);
   expect(screen.getByText('Correct').nextSibling).toHaveTextContent('67%');
 });
@@ -278,7 +289,8 @@ test('asks for one session of cards and keeps to the new-card limit', async () =
   );
   renderAt('/review');
   expect(await screen.findByText('0/10')).toBeInTheDocument();
-  expect(asked).toEqual(['20']);
+  // The app also saves the due list for offline use (B-08), with the same limit.
+  expect(new Set(asked)).toEqual(new Set(['20']));
 });
 
 test('says so when nothing is due', async () => {
@@ -310,9 +322,11 @@ test('warns when an answer could not be saved, and keeps going', async () => {
   showAnswer();
   grade(/^Good,/);
 
-  // Not `findByRole('status')`: the layout's offline banner is a status region too.
-  expect(await screen.findByText(/One answer couldn’t be saved/)).toHaveAttribute('role', 'status');
+  // The layout's banner says so, inside its status region.
+  expect(await screen.findByText(/One review couldn’t be saved/)).toBeInTheDocument();
   expect(await screen.findByText(meaning.front)).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Dismiss' }));
+  expect(screen.queryByText(/couldn’t be saved/)).not.toBeInTheDocument();
 });
 
 test('ending early posts the held grade and leaves the review', async () => {
@@ -329,4 +343,47 @@ test('ending early posts the held grade and leaves the review', async () => {
   await waitFor(() =>
     expect(screen.queryByRole('progressbar', { name: 'Review progress' })).not.toBeInTheDocument(),
   );
+});
+
+const LEA_ID = '00000000-0000-4000-8000-0000000000f1'; // the auth mock's user
+
+/** Offline the way the app sees it: navigator, TanStack Query (L-147) and every API call. */
+function setOffline(offline: boolean) {
+  vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(!offline);
+  onlineManager.setOnline(!offline);
+  if (offline) server.use(http.all('*/api/*', () => HttpResponse.error()));
+  else server.resetHandlers();
+}
+
+const fire = (name: 'online' | 'offline') =>
+  act(() => {
+    window.dispatchEvent(new Event(name));
+  });
+
+test('a session done offline uses the saved due list and syncs on reconnect', async () => {
+  // Online first: the app saves the due list (and remembers the user) for later.
+  renderAt('/today');
+  await waitFor(async () => expect(await readDueCards(LEA_ID)).toHaveLength(reviewCards.length));
+  cleanup();
+
+  try {
+    setOffline(true);
+    fire('offline');
+    renderAt('/review');
+    await answerAll(3);
+    expect(await screen.findByText(/You’re offline\. 2 reviews waiting to sync\./)).toBeVisible();
+    fireEvent.click(screen.getByRole('button', { name: 'See results' }));
+    expect(await screen.findByRole('heading', { name: 'Session complete!' })).toBeInTheDocument();
+    expect(await screen.findByText(/3 reviews waiting to sync/)).toBeInTheDocument();
+
+    setOffline(false);
+    const posted = recordReviews();
+    fire('online');
+    await waitFor(() => expect(posted).toHaveLength(3));
+    expect(new Set(posted.map((r) => r.cardId))).toEqual(new Set(reviewCards.map((c) => c.id)));
+    await waitFor(() => expect(screen.queryByText(/waiting to sync/)).not.toBeInTheDocument());
+  } finally {
+    onlineManager.setOnline(true);
+    vi.restoreAllMocks();
+  }
 });
