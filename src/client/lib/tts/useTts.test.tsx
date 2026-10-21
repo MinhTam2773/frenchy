@@ -2,8 +2,20 @@ import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useTts } from './useTts';
 
-const fr = { voiceURI: 'fr', name: 'fr', lang: 'fr-FR', localService: true, default: false } as SpeechSynthesisVoice;
-const en = { voiceURI: 'en', name: 'en', lang: 'en-US', localService: true, default: false } as SpeechSynthesisVoice;
+const fr = {
+  voiceURI: 'fr',
+  name: 'fr',
+  lang: 'fr-FR',
+  localService: true,
+  default: false,
+} as SpeechSynthesisVoice;
+const en = {
+  voiceURI: 'en',
+  name: 'en',
+  lang: 'en-US',
+  localService: true,
+  default: false,
+} as SpeechSynthesisVoice;
 
 class FakeUtterance {
   onend: (() => void) | null = null;
