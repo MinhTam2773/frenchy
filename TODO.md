@@ -200,9 +200,11 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 
 - [x] IndexedDB store for due cards and pending reviews
 - [x] Each review gets an idempotency key; the server ignores repeats
-- [ ] Server replays queued reviews in `reviewed_at` order
+- [x] Server replays queued reviews in `reviewed_at` order (through the existing endpoint: the client sends the queue oldest `reviewedAt` first, one at a time, stopping at the first failure; the L-84 clamp keeps a late or out-of-order arrival from moving `last_review` back. No batch endpoint)
 - [x] Offline banner and pending-count indicator
-- [ ] Tests: offline → online sync, duplicates, ordering
+- [x] Tests: offline → online sync, duplicates, ordering (plus another user's colliding id, a stale review, and an E2E in `e2e/offline-review.spec.ts`)
+QUESTION: a review queued offline for more than 24 h gets the server's `400` (G-61). Default taken (safe and reversible): drop it, say so in the banner ("N reviews couldn't be saved. Those cards will come back in your next review."), and leave the card due. The alternative is a 7-day window for reviews only: the grade is kept, but a late sync counts reviews on a past day and can change the streak calendar after the fact. Which do you want? (G-102)
+
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
