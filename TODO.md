@@ -1,9 +1,16 @@
 # Frenchy TODO
 
-The single source of truth for what is done, what is next, and what we learned. Every agent reads this before starting and updates it while working (rules in `CLAUDE.md`).
+What is next and what needs the user. Every agent reads this before starting and updates its own task block while working (rules in `CLAUDE.md`).
 
+- Elsewhere:
+  - Finished tasks: `DONE.md`
+  - Later tasks: `BACKLOG.md`
+  - Lessons: `LESSONS/`, one file each
+  - Gaps and risks: `KNOWNGAPS/`, one file each
+
+  Grep those folders; don't read them end to end.
 - Spec: `docs/PLAN.md` · Visual spec: `design/README.md` + `design/mockups/` · Live canvas: https://claude.ai/artifact/Hguy86o9nTJ88gJ1Rvvd37
-- Sections: [Legend](#legend) · [Orchestration plan](#orchestration-plan) · [DONE](#done) · [NEXT (MVP)](#next-mvp) · [BACKLOG](#backlog) · [KNOWN GAPS](#known-gaps) · [LESSONS](#lessons)
+- Sections: [Legend](#legend) · [Orchestration plan](#orchestration-plan) · [NEXT (MVP)](#next-mvp) · [Needs you](#needs-you)
 
 ---
 
@@ -32,8 +39,8 @@ The **lead / orchestrator** session runs on Opus 5.5 · High.
 **Task block format:** every task has an ID, a meta table, `Owns` (files the task may create or change), a goal, a "done when", and checkbox steps. Tick a step (`- [x]`) the moment it is done, in the same commit as the work.
 
 **Finish steps** (the last three steps of every task):
-1. `npm run check` is green (lint + typecheck + test + build).
-2. TODO.md updated: steps ticked, status set, new lessons logged.
+1. `npm run check` is green (lint + typecheck + test + build + the `dist/` secrets check).
+2. TODO.md updated (steps ticked, status set); new lessons and gaps added to `LESSONS/` and `KNOWNGAPS/`.
 3. PR to `main` merged with CI green.
 
 ---
@@ -42,9 +49,18 @@ The **lead / orchestrator** session runs on Opus 5.5 · High.
 
 Tasks in the same **wave** have no dependencies on each other and own different files, so they can run **in parallel** (one subagent, worktree or cloud session per task). Start a wave when every task it depends on is merged. A task can start early as soon as its own deps are merged, without waiting for the whole previous wave.
 
-**Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`.
+**Dispatching a task:**
+- **Brief:** the lead pastes the full text of the lessons and gaps that apply into the agent's brief. It finds them by grepping `LESSONS/` and `KNOWNGAPS/` for the task ID, its area and the paths in its `Owns` list (commands in each folder's `CLAUDE.md`).
+- **Reserved numbers:** the lead reserves L-, G- and B- numbers for each parallel task (L-22).
+- **Backlog tasks:** a backlog task's block moves from `BACKLOG.md` into NEXT when it is dispatched.
 
-**Progress:** DONE 42 · NEXT 1 (T-30 blocked on human gates H-02 to H-06) · BACKLOG 35
+The waves so far are recorded in `DONE.md` → History.
+
+**Next in line** (from the Wave 7a plan): B-08 offline reviews (Opus · High), then B-19 tap-to-translate in review cards.
+
+**Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`, `BACKLOG.md`.
+
+**Progress:** DONE 43 · NEXT 1 (T-30 blocked on human gates H-02 to H-06) · BACKLOG 38 · open gaps 48 (9 with no owner)
 
 ---
 
@@ -78,9 +94,9 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 
 ---
 
-## KNOWN GAPS
+## Needs you
 
-### Needs you (human gates)
+### Human gates
 
 Agents can't do these. A task that needs one stays `blocked` until it's done.
 
@@ -95,3 +111,29 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | H-07 | Confirm the streak rule (what counts as a practiced day; default in T-11) | T-11 (can proceed with the default) | open |
 | H-08 | Decide whether to pay for a native-speaker content review | T-24 follow-up | open |
 | H-09 | Pick an email provider for password reset | B-18 | open |
+
+### Open questions
+
+Decisions only the user can make. Agents use the default until one is answered. The full text is under the task named in brackets.
+
+1. **Email sign-in needs Workers Paid (G-35).**
+   - The problem: scrypt takes about 130 to 310 ms of CPU per sign-in, and the Free plan allows 10 ms.
+   - Default: keep scrypt and deploy on Workers Paid.
+   - Alternative on the Free plan: Google-only sign-in.
+   - Blocks T-30. (QUESTIONs under T-13 and T-29 in `DONE.md`.)
+2. **AI daily cap.**
+   - `AI_DAILY_LIMIT` is the number of provider calls per UTC day for the whole app. Default: 1,000.
+   - Also set a monthly spend limit in the provider's console (H-04).
+   - Needed before real keys go live in T-30. (QUESTION under T-29; B-27 in `DONE.md`.)
+3. **Saved cards and the daily new-card cap.**
+   - A word saved in the reader counts against `NEW_CARDS_PER_DAY` (10).
+   - Should saved cards skip the cap? Default: no. (QUESTION under T-26 in `DONE.md`.)
+4. **Where an archived lexicon dump may live (G-65).**
+   - kaikki.org serves only its latest extract, and the dump can't be committed (rule 5).
+   - Blocks B-30, which B-10 waits on.
+5. **Write burst limit (B-40).**
+   - For example, 120 writes per user per 60 s.
+   - Needed before the app is shared publicly.
+6. **Stage 1 grammar ceiling (G-57).**
+   - Keep the strict ceiling (early texts read stiff), or loosen `content/grammar.json`.
+   - Decide before Stage 2 content (B-10).

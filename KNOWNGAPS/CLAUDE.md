@@ -49,6 +49,6 @@ Close it in place. Never delete or renumber a file.
 ## Finding gaps
 
 - `head -qn1 KNOWNGAPS/G-*.md | grep ' · open · '` lists the open gaps.
-- `grep -l 'owner: B-08' KNOWNGAPS/G-*.md | xargs cat` prints one task's gaps whole.
+- `grep -l 'owner: [^·]*B-08' KNOWNGAPS/G-*.md | xargs cat` prints one task's gaps whole.
 - `grep -l '<path or keyword>' KNOWNGAPS/G-*.md` finds gaps by file or topic.
 - Don't read the whole folder. The lead pastes the gaps a task needs into its brief.

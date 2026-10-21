@@ -12,6 +12,6 @@ T-NN: <summary>
 
 ## Checklist
 
-- [ ] TODO.md updated (steps ticked, status, lessons)
+- [ ] TODO.md updated (steps ticked, status)
 - [ ] `npm run check` is green
-- [ ] Lessons logged in TODO.md → LESSONS (or none)
+- [ ] New lessons and gaps added to `LESSONS/` and `KNOWNGAPS/` (or none)

@@ -4,17 +4,31 @@ Frenchy is a phone-first French learning PWA that sits next to the book *Practic
 
 | Read | For |
 |---|---|
-| `TODO.md` | What to do next, task steps, dependencies, gaps, **lessons** |
+| `TODO.md` | What to do next: Legend, orchestration, NEXT, and what needs the user |
+| `BACKLOG.md` · `DONE.md` | Later tasks · finished tasks (read only the block you need) |
+| `LESSONS/` · `KNOWNGAPS/` | One file per lesson · per gap or risk. Grep them, don't read them all; rules in each folder's `CLAUDE.md` |
 | `docs/PLAN.md` | Product spec, learning route, architecture, data model, AI strategy |
 | `design/README.md` + `design/mockups/` | Visual spec, design tokens, screen index |
 | `docs/HANDOFF.md` | Background on decisions so far |
 
 ## Always (non-negotiable)
 
-1. **Read `TODO.md` first**, including KNOWN GAPS and LESSONS, before you touch anything. Work only on a task you have claimed (see "Working on a task").
-2. **Keep `TODO.md` updated as you go.** Tick each step (`- [ ]` → `- [x]`) the moment it is done, in the same commit as the work. Update the task's `Status` and `Claimed by`. Move it to DONE when its PR merges and update the Progress line. Never tick a step you didn't verify.
-3. **Log every new lesson** in TODO.md → LESSONS, in the format given there: anything that surprised you, an assumption that turned out wrong, a bug's root cause, a workaround that wasn't obvious, or a correction from the user. Check whether a lesson already covers it first. If a lesson changes how everyone should work, also update this file.
-4. **Add what you discover.** New work you find goes into BACKLOG (or NEXT if it blocks the MVP) as a full task block. A new risk or open question goes into KNOWN GAPS. Don't silently widen your current task.
+1. **Read `TODO.md` first, then your task block and the lessons and gaps in your brief**, before you touch anything.
+   - **No brief?** Find them yourself: grep `LESSONS/` and `KNOWNGAPS/` for your task ID, its area and the paths in your `Owns` list, and read the files that match. Don't read the folders end to end.
+   - Work only on a task you have claimed (see "Working on a task").
+2. **Keep `TODO.md` updated as you go.**
+   - Tick each step (`- [ ]` → `- [x]`) the moment it is done, in the same commit as the work.
+   - Update the task's `Status` and `Claimed by`.
+   - Move the task to `DONE.md` when its PR merges, and update the Progress line.
+   - Never tick a step you didn't verify.
+3. **Log every new lesson** as a new file in `LESSONS/`. Read `LESSONS/CLAUDE.md` first for the format and numbering.
+   - Log anything that surprised you, an assumption that turned out wrong, a bug's root cause, a workaround that wasn't obvious, or a correction from the user.
+   - Check whether a lesson already covers it first.
+   - If a lesson changes how everyone should work, also update this file.
+4. **Add what you discover.** Don't silently widen your current task.
+   - New work you find goes into `BACKLOG.md` as a full task block (or into NEXT in `TODO.md` if it blocks the MVP).
+   - A new risk or open question goes into `KNOWNGAPS/` (rules in `KNOWNGAPS/CLAUDE.md`). If the user has to decide it, also add it under Needs you in `TODO.md`.
+   - When your work closes a gap, mark it resolved in place.
 5. **Never commit the book** (PDF, extracted text, scans) or any secret (`.dev.vars`, API keys, tokens).
 6. **Ask before anything outward-facing or hard to undo:** creating Cloudflare resources, deploying, pushing to `main` directly, deleting data, signing up for or paying for a service, sharing anything publicly.
 
@@ -26,7 +40,7 @@ These follow Andrej Karpathy's observations about how LLM coding agents go wrong
 - State your assumptions before you implement. If something is ambiguous, don't pick an interpretation silently: list the options and their trade-offs.
 - If a simpler approach exists than the one asked for, say so. Push back when it's warranted.
 - If you're confused, stop and name exactly what's unclear. Don't paper over it with plausible code.
-- In a parallel run where nobody can answer right away: write a `QUESTION:` line under your task in TODO.md (and in KNOWN GAPS if it affects others). Continue only with a safe, reversible default, and say in the PR that you did.
+- In a parallel run where nobody can answer right away: write a `QUESTION:` line under your task block (and a gap in `KNOWNGAPS/` if it affects others; one only the user can answer also goes under Needs you in `TODO.md`). Continue only with a safe, reversible default, and say in the PR that you did.
 
 ### 2. Simplicity first
 - Write the minimum code that solves the problem. No features beyond the task, no speculative "flexibility" or configuration, no abstractions for single-use code, no handling for impossible cases.
@@ -36,7 +50,7 @@ These follow Andrej Karpathy's observations about how LLM coding agents go wrong
 ### 3. Surgical changes
 - Touch only what the task needs. Every changed line should trace back to a step in your task.
 - Don't "improve" nearby code, comments or formatting, and don't refactor what isn't broken. Match the existing style.
-- Clean up only your own mess: remove imports, variables and files that *your* change made unused. If you notice unrelated dead code or a bug, add it to TODO.md instead of fixing it in passing.
+- Clean up only your own mess: remove imports, variables and files that *your* change made unused. If you notice unrelated dead code or a bug, add it to `BACKLOG.md` or `KNOWNGAPS/` instead of fixing it in passing.
 - Stay inside your task's `Owns` list. If you must edit a file outside it, keep the hunk minimal and call it out in the PR.
 
 ### 4. Goal-driven execution
@@ -52,21 +66,35 @@ Tasks are designed to run in parallel: one agent (subagent, worktree or cloud se
 2. **Claim:** in a small first commit on your branch, set `Status: in progress` and `Claimed by: <session or agent name>`. Branch name: `task/T-NN-<slug>` from the latest `main`.
 3. **Scope:** stay inside the task's `Owns` list. Hot files (listed in TODO.md) get small additive hunks only.
 4. **Build:** follow the steps in order and tick each one as it's verified. The recommended model and effort in the task table is the default for whoever runs it.
-5. **Finish:** run `npm run check`, merge the latest `main` into your branch (no rebasing or force-pushing shared branches), re-run checks, then open a PR to `main` titled `T-NN: <summary>` using the PR template. When the PR merges, the task moves to DONE.
+5. **Finish:** run `npm run check`, merge the latest `main` into your branch (no rebasing or force-pushing shared branches), re-run checks, then open a PR to `main` titled `T-NN: <summary>` using the PR template. When the PR merges, the task moves to `DONE.md`.
 6. **Unblock others:** after a merge, the lead re-checks which `blocked` tasks became `ready` and updates their status.
 
-**Lead / orchestrator** (Opus 5.5 · High): dispatches every `ready` task in the current wave at once with its recommended model and effort, gives each agent its task ID and this file, reviews and merges PRs in dependency order, resolves conflicts in hot files, and keeps the Progress line and statuses in TODO.md current. Fan-out tasks (T-14, B-10, B-11) run one sub-agent per chapter, and each sub-agent owns exactly one chapter folder.
+**Lead / orchestrator** (Opus 5.5 · High):
+- Dispatches every `ready` task in the current wave at once, with its recommended model and effort.
+- Gives each agent its task ID, this file and a **brief that contains the full text of the lessons and gaps that apply**.
+  - To find them, grep `LESSONS/` and `KNOWNGAPS/` for the task ID, its area and the paths in its `Owns` list. For example: `grep -l 'src/worker/routes' LESSONS/L-*.md | xargs cat`, or `grep -l 'owner: [^·]*B-08' KNOWNGAPS/G-*.md | xargs cat`.
+  - Skip lessons whose status isn't `active`, and gaps that are `resolved`.
+  - Agents shouldn't need to search the folders themselves.
+- Reserves L-, G- and B- numbers for each parallel task (L-22).
+- Moves a backlog task's block into NEXT when dispatching it.
+- Reviews and merges PRs in dependency order, and resolves conflicts in hot files.
+- Keeps the Progress line, task statuses and gap owners current.
+  - After each wave, `head -qn1 KNOWNGAPS/G-*.md` shows gaps with `owner: none` or a finished owner.
+- Fan-out tasks (B-10, B-11) run one sub-agent per chapter, and each sub-agent owns exactly one chapter folder.
 
-**Conflicts:** when two tasks need the same contract change, the change goes into `src/shared/schemas/` in one PR that updates both sides. In `TODO.md`, edit only your own task block, the Progress line, and append to LESSONS / KNOWN GAPS / BACKLOG. In a parallel wave, use only the L-/G- numbers the lead reserved for your task (L-22).
+**Conflicts:**
+- When two tasks need the same contract change, the change goes into `src/shared/schemas/` in one PR that updates both sides.
+- In `TODO.md`, edit only your own task block and the Progress line.
+- Append new task blocks to `BACKLOG.md`.
+- In `LESSONS/` and `KNOWNGAPS/`, add new files. There is no shared index to edit. Change an existing gap only to close it.
+- In a parallel wave, use only the L-, G- and B- numbers the lead reserved for your task (L-22).
 
 ## Commands
-
-T-01 creates these. Until it merges, there is no app code.
 
 | Command | Does |
 |---|---|
 | `npm run dev` | Vite + local Worker (workerd) with local D1 |
-| `npm run check` | lint + typecheck + test + build. Must be green before every PR |
+| `npm run check` | lint + typecheck + test + build + `check:dist` (no local secrets in `dist/`). Must be green before every PR. CI also runs `content:check` (B-55 adds it here) |
 | `npm test` / `npm run test:watch` | Vitest (client in jsdom, worker in the Workers pool) |
 | `npm run lint` / `npm run typecheck` / `npm run format` | Individual checks |
 | `npm run content:check` | Validate everything in `content/` (T-07) |
@@ -113,4 +141,4 @@ T-01 creates these. Until it merges, there is no app code.
 
 - `main` is protected: every task merges through a PR with green CI. Never force-push `main`.
 - Branches are `task/T-NN-<slug>`. Commit messages start with the task ID: `T-07: add content validator`.
-- The PR body says what changed, how it was verified (paste the check output), which TODO steps were ticked, and any lessons logged.
+- The PR body says what changed, how it was verified (paste the check output), which TODO steps were ticked, and any lessons and gaps added.
