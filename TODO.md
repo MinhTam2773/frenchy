@@ -129,7 +129,7 @@ Seven `ready` tasks (L-77), owning different files. Merge order: B-54 (formattin
 |---|---|---|---|---|
 | P1 | Sonnet 5.5 · High | S | B-22 (same file) | B-10, B-11 (helps) |
 
-**Status:** ready (B-22 is done) · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** in progress · **Claimed by:** Wave 7b agent (B-29) · **Branch:** `task/B-29-isnew-phrases` · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Stage 2 to 4 content follows T-24's decisions without a QA pass having to find them by hand (L-94, L-95, G-67).
 **Done when:** `content:check` names the file and sentence for each case below, and Stage 1 passes.
 
