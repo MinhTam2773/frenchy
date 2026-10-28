@@ -450,15 +450,16 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | B-22 | — |
 
-**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** in review · **Claimed by:** orca codex worker · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Close G-82: a text whose tokens split differently from `tokenize()` (titles, times, numbers, the euphonic *t*) fails `content:check`, not a T-15 test with a name content agents don't expect.
 **Done when:** `content:check` names the file, sentence and the two splits when they differ, and all Stage 1 texts pass.
+**QUESTION:** Defaulted to ignore `splitSentences()` differences and validate only each lesson sentence's token split against `tokenize()`.
 
-- [ ] Run `tokenize()` on each sentence's joined text and compare token by token (word vs gap, and `t`)
-- [ ] Decide whether `splitSentences()` differences (G-55) are reported or ignored (lessons only need the token split)
-- [ ] Tests
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Run `tokenize()` on each sentence's joined text and compare token by token (word vs gap, and `t`)
+- [x] Decide whether `splitSentences()` differences (G-55) are reported or ignored (lessons only need the token split)
+- [x] Tests
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-44 · More typography rules in `content:check`
