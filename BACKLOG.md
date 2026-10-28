@@ -18,8 +18,8 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Optionally turn missed forms into cloze cards
 - [ ] Show the drill button on the chapter page (T-17) and the Practice tile
 - [ ] Tests: engine selection, accent-tolerant compare, UI flow
-- [x] Finish: `npm run check` green
-- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-02 · Known-word tracking and My words (Phase 2)
@@ -506,8 +506,8 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 
 - [x] Pass `AbortSignal.timeout(~5000)` to `authClient.getSession` and treat the abort as a network failure
 - [x] Test it with a handler that never responds
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-47 · Clear device-local data on sign-out and account deletion
