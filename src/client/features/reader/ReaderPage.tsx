@@ -211,7 +211,7 @@ function Reader({ text }: { text: Text }) {
         end={
           <button
             type="button"
-            aria-label={`Text size: ${textSize.name}. Change to ${nextTextSize.name}`}
+            aria-label={`Aa, text size: ${textSize.name}. Change to ${nextTextSize.name}`}
             onClick={cycleTextSize}
             className="size-11 shrink-0 rounded-xl font-display text-lg font-semibold text-muted hover:bg-chip"
           >

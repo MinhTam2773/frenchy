@@ -64,8 +64,15 @@ export function AudioBar({
       ? 0
       : Math.min(timer.elapsedMs / 1000, durations[current] ?? 0);
   const elapsed = Math.min(total, finished + within);
-  const elapsedLabel = formatTime(elapsed);
-  const totalLabel = formatTime(Math.ceil(total));
+  const elapsedSeconds = Math.ceil(elapsed);
+  const totalSeconds = Math.ceil(total);
+  const elapsedLabel = formatTime(elapsedSeconds);
+  const totalLabel = formatTime(totalSeconds);
+
+  function toggle() {
+    if (!playing) setTimer(null);
+    onToggle();
+  }
 
   return (
     <div className="mx-4 mt-1 flex items-center gap-3 rounded-2xl border-2 border-line bg-ground py-2 pr-3 pl-2">
@@ -74,16 +81,17 @@ export function AudioBar({
         variant="solid"
         iconSize={20}
         aria-label={playing ? 'Pause audio' : 'Play audio'}
-        onClick={onToggle}
+        onClick={toggle}
       />
       <ProgressBar
-        value={elapsed}
-        max={Math.max(total, 1)}
+        value={elapsedSeconds}
+        max={Math.max(totalSeconds, 1)}
         size="sm"
         aria-label="Audio progress"
         className="flex-1"
       />
       <span
+        role="timer"
         aria-label={`Audio time elapsed ${elapsedLabel} of ${totalLabel}`}
         className="whitespace-nowrap text-[13px] font-extrabold text-muted"
       >
