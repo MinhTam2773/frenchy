@@ -372,9 +372,9 @@ describe('validateContent typography', () => {
         t.paragraphs[1].sentences[1].tokens.push({ t: ' ' });
       }),
     );
-    expect(problems.some((problem) => problem.startsWith(`${CAFE}: paragraphs.1.sentences.1: `))).toBe(
-      true,
-    );
+    expect(
+      problems.some((problem) => problem.startsWith(`${CAFE}: paragraphs.1.sentences.1: `)),
+    ).toBe(true);
   });
 });
 

@@ -265,7 +265,11 @@ function checkText(
   text.paragraphs.forEach((paragraph, p) => {
     paragraph.sentences.forEach((sentence, s) => {
       const split = tokenSplitProblem(sentence);
-      const messages = [...(split ? [split] : []), ...typographyProblems(sentence), ...phraseProblems(sentence)];
+      const messages = [
+        ...(split ? [split] : []),
+        ...typographyProblems(sentence),
+        ...phraseProblems(sentence),
+      ];
       for (const message of messages) {
         add(file, `paragraphs.${p}.sentences.${s}: ${message}`);
       }
@@ -290,7 +294,9 @@ function tokenSplitProblem(sentence: Sentence): string | undefined {
 }
 
 function sameSplit(a: readonly SplitToken[], b: readonly SplitToken[]): boolean {
-  return a.length === b.length && a.every((token, i) => token.kind === b[i].kind && token.t === b[i].t);
+  return (
+    a.length === b.length && a.every((token, i) => token.kind === b[i].kind && token.t === b[i].t)
+  );
 }
 
 function showSplit(tokens: readonly SplitToken[]): string {
