@@ -329,7 +329,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | T-25 | — |
 
-**Status:** ready · **Owns:** `src/client/features/reader/**`
+**Status:** in progress · **Claimed by:** orca cursor worker · **Branch:** `task/B-31-reader-text-settings` · **Owns:** `src/client/features/reader/**`
 **Goal:** The Reader mockup's "Aa" button (text size) and the elapsed-time label of the audio bar, which T-25 left out for lack of a spec.
 **Done when:** a text-size choice persists per device and the audio bar shows elapsed / total time (estimated from sentence lengths and rate).
 
@@ -338,6 +338,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+QUESTION: defaulted to a reader-only, per-device cycle of three sizes (18 / 21 / 24 px), and audio time estimated at 180 words per minute at 1×, divided by the selected speech rate.
 
 #### B-30 · Lexicon rebuild hygiene: pinned dumps, no vulgar glosses, coverage in CI
 
