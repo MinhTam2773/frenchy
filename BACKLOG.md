@@ -500,7 +500,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | B-23 | — |
 
-**Status:** ready (B-23 is done) · **Owns:** `src/client/lib/session.ts`
+**Status:** in progress · **Claimed by:** orca cursor worker · **Owns:** `src/client/lib/session.ts`
 **Goal:** Close G-89: on a connection that is "up" but not answering (lie-fi, captive portal), `fetch` can wait a very long time, so the guard renders nothing instead of using the remembered user.
 **Done when:** a test where `/api/auth/get-session` never answers resolves to the remembered user after the timeout (fake timers), and to signed out with nobody remembered.
 
