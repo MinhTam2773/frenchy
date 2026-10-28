@@ -18,8 +18,8 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 - [ ] Optionally turn missed forms into cloze cards
 - [ ] Show the drill button on the chapter page (T-17) and the Practice tile
 - [ ] Tests: engine selection, accent-tolerant compare, UI flow
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-02 · Known-word tracking and My words (Phase 2)
