@@ -10,6 +10,7 @@ type Voice = { rate: number; voiceURI: string | null };
 export function useReadAloud(sentences: readonly string[], voice: Voice) {
   const { speak, stop, supported } = useTts();
   const [current, setCurrent] = useState<number | null>(null);
+  const [completed, setCompleted] = useState(0);
   const [playing, setPlaying] = useState(false);
   const run = useRef(0);
   // Read at each sentence start, so a speed change applies from the next sentence.
@@ -31,12 +32,14 @@ export function useReadAloud(sentences: readonly string[], voice: Voice) {
 
   async function playFrom(from: number) {
     const id = ++run.current;
+    if (from === 0) setCompleted(0);
     setPlaying(true);
     for (let i = from; i < sentences.length; i++) {
       setCurrent(i);
       await speak(sentences[i], options());
       // Paused, or another play started: that one owns the state now.
       if (run.current !== id) return;
+      setCompleted(i + 1);
     }
     setPlaying(false);
     setCurrent(null);
@@ -59,5 +62,5 @@ export function useReadAloud(sentences: readonly string[], voice: Voice) {
     void speak(text, { ...options(), ...(rate === undefined ? {} : { rate }) });
   }
 
-  return { supported, playing, current, toggle, say };
+  return { supported, playing, current, completed, toggle, say };
 }

@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import { renderAt } from '@client/mocks/renderAt';
@@ -29,7 +29,10 @@ vi.mock('@client/lib/tts/useTts', () => ({
 }));
 
 afterEach(() => {
+  vi.useRealTimers();
   vi.clearAllMocks();
+  tts.speak.mockImplementation(() => Promise.resolve());
+  localStorage.clear();
 });
 
 const PATH = `/read/${leaMorningText.id}`;
@@ -74,6 +77,25 @@ describe('reader', () => {
     expect(word(article, 'tartine')).toHaveAccessibleName(/^tartine\s*\(new word\)$/);
     expect(screen.getByRole('button', { name: 'Finish reading' })).toBeInTheDocument();
     expect(screen.queryByRole('navigation', { name: 'Main' })).not.toBeInTheDocument();
+  });
+
+  test('keeps the chosen reader text size on this device after a remount', async () => {
+    const first = renderAt(PATH);
+    await screen.findByRole('heading', { name: 'Le matin de Léa' });
+    const settings = screen.getByRole('button', {
+      name: 'Aa, text size: Default. Change to Large',
+    });
+    expect(settings).toHaveAccessibleName(/Aa/);
+    fireEvent.click(settings);
+    expect(screen.getByRole('article')).toHaveStyle({ fontSize: '24px' });
+
+    first.unmount();
+    renderAt(PATH);
+    await screen.findByRole('heading', { name: 'Le matin de Léa' });
+    expect(screen.getByRole('article')).toHaveStyle({ fontSize: '24px' });
+    expect(
+      screen.getByRole('button', { name: 'Aa, text size: Large. Change to Compact' }),
+    ).toBeInTheDocument();
   });
 
   test('tapping a word shows its sheet, and tapping another word switches it', async () => {
@@ -264,8 +286,33 @@ describe('reader', () => {
       rate: 0.8,
       voiceURI: undefined,
     });
+    expect(await screen.findByText('0:19 / 0:19')).toBeInTheDocument();
     fireEvent.click(speed);
     expect(screen.getByRole('button', { name: 'Playback speed 1×' })).toBeInTheDocument();
+    expect(screen.getByText('0:15 / 0:15')).toBeInTheDocument();
+  });
+
+  test('shows elapsed and estimated total audio time, and resets the sample on resume', async () => {
+    await openReader();
+    tts.speak.mockImplementation(() => new Promise<void>(() => undefined));
+    vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval', 'Date'] });
+
+    expect(screen.getByText('0:00 / 0:19')).toBeInTheDocument();
+    expect(screen.getByRole('timer')).toHaveAccessibleName('Audio time elapsed 0:00 of 0:19');
+    fireEvent.click(screen.getByRole('button', { name: 'Play audio' }));
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1_000);
+    });
+    expect(screen.getByText('0:01 / 0:19')).toBeInTheDocument();
+    expect(screen.getByRole('progressbar', { name: 'Audio progress' })).toHaveAttribute(
+      'aria-valuenow',
+      '1',
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Pause audio' }));
+    expect(screen.getByText('0:01 / 0:19')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Play audio' }));
+    expect(screen.getByText('0:00 / 0:19')).toBeInTheDocument();
   });
 
   test('the word sheet plays the word', async () => {

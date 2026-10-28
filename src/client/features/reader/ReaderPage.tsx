@@ -24,6 +24,24 @@ import { ReaderText } from './ReaderText';
 import { SentenceSheet } from './SentenceSheet';
 import { useReadAloud } from './useReadAloud';
 
+const TEXT_SIZE_STORAGE_KEY = 'frenchy.reader.textSize';
+const TEXT_SIZES = [
+  { name: 'Compact', pixels: 18 },
+  { name: 'Default', pixels: 21 },
+  { name: 'Large', pixels: 24 },
+] as const;
+const DEFAULT_TEXT_SIZE_INDEX = 1;
+
+function readTextSizeIndex(): number {
+  try {
+    const saved = globalThis.localStorage?.getItem(TEXT_SIZE_STORAGE_KEY);
+    const index = TEXT_SIZES.findIndex(({ name }) => name === saved);
+    return index < 0 ? DEFAULT_TEXT_SIZE_INDEX : index;
+  } catch {
+    return DEFAULT_TEXT_SIZE_INDEX;
+  }
+}
+
 function focusWord(index: number) {
   document.querySelector<HTMLElement>(`[data-token="${index}"]`)?.focus();
 }
@@ -83,7 +101,10 @@ function Reader({ text }: { text: Text }) {
   const [picked, setPicked] = useState<number | null>(null);
   const [selection, setSelection] = useState<Selection | null>(null);
   const [chosenRate, setChosenRate] = useState<number | null>(null);
+  const [textSizeIndex, setTextSizeIndex] = useState(readTextSizeIndex);
   const rate = chosenRate ?? profile?.settings.rate ?? TTS_RATE.default;
+  const textSize = TEXT_SIZES[textSizeIndex] ?? TEXT_SIZES[DEFAULT_TEXT_SIZE_INDEX];
+  const nextTextSize = TEXT_SIZES[(textSizeIndex + 1) % TEXT_SIZES.length] ?? TEXT_SIZES[0];
   const sentenceTexts = useMemo(() => model.sentences.map((s) => s.text), [model]);
   const audio = useReadAloud(sentenceTexts, { rate, voiceURI: profile?.settings.voiceURI ?? null });
 
@@ -128,6 +149,18 @@ function Reader({ text }: { text: Text }) {
     setPicked(index);
     const token = tokenAt(model, index);
     if (profile?.settings.playOnTap && audio.supported) audio.say(token.t);
+  }
+
+  function cycleTextSize() {
+    setTextSizeIndex((current) => {
+      const next = (current + 1) % TEXT_SIZES.length;
+      try {
+        globalThis.localStorage?.setItem(TEXT_SIZE_STORAGE_KEY, TEXT_SIZES[next]?.name ?? '');
+      } catch {
+        // Blocked or full storage leaves the choice in memory for this visit.
+      }
+      return next;
+    });
   }
 
   function openSentences(anchor: number, to: number) {
@@ -175,12 +208,23 @@ function Reader({ text }: { text: Text }) {
         overline={overline || undefined}
         align="center"
         nav={{ icon: 'close', label: 'Close reader', to: `/chapter/${text.chapterId}` }}
+        end={
+          <button
+            type="button"
+            aria-label={`Aa, text size: ${textSize.name}. Change to ${nextTextSize.name}`}
+            onClick={cycleTextSize}
+            className="size-11 shrink-0 rounded-xl font-display text-lg font-semibold text-muted hover:bg-chip"
+          >
+            Aa
+          </button>
+        }
       />
       {audio.supported && (
         <AudioBar
           playing={audio.playing}
-          done={audio.current ?? 0}
-          total={model.sentences.length}
+          current={audio.current}
+          completed={audio.completed}
+          sentences={sentenceTexts}
           rate={rate}
           onToggle={audio.toggle}
           onRate={() => setChosenRate(nextRate(rate))}
@@ -189,6 +233,7 @@ function Reader({ text }: { text: Text }) {
       <div className="flex-1 pb-6">
         <ReaderText
           model={model}
+          textSize={textSize.pixels}
           selectedWord={picked}
           range={selection}
           speaking={audio.current}
