@@ -264,7 +264,9 @@ function checkText(
   }
   text.paragraphs.forEach((paragraph, p) => {
     paragraph.sentences.forEach((sentence, s) => {
-      for (const message of [...typographyProblems(sentence), ...phraseProblems(sentence)]) {
+      const split = tokenSplitProblem(sentence);
+      const messages = [...(split ? [split] : []), ...typographyProblems(sentence), ...phraseProblems(sentence)];
+      for (const message of messages) {
         add(file, `paragraphs.${p}.sentences.${s}: ${message}`);
       }
     });
@@ -273,6 +275,27 @@ function checkText(
 }
 
 type ParsedText = { file: string; folder: string; text: Text };
+
+type SplitToken = { kind: 'word' | 'gap'; t: string };
+
+function tokenSplitProblem(sentence: Sentence): string | undefined {
+  const text = sentence.tokens.map((token) => token.t).join('');
+  const lesson = sentence.tokens.map((token): SplitToken => ({
+    kind: 'lemma' in token ? 'word' : 'gap',
+    t: token.t,
+  }));
+  const expected = tokenize(text).map((token): SplitToken => ({ kind: token.kind, t: token.t }));
+  if (sameSplit(lesson, expected)) return undefined;
+  return `token split differs from tokenize() for "${text}"; lesson split: ${showSplit(lesson)}; tokenize() split: ${showSplit(expected)}`;
+}
+
+function sameSplit(a: readonly SplitToken[], b: readonly SplitToken[]): boolean {
+  return a.length === b.length && a.every((token, i) => token.kind === b[i].kind && token.t === b[i].t);
+}
+
+function showSplit(tokens: readonly SplitToken[]): string {
+  return tokens.map((token) => `${token.kind}(${JSON.stringify(token.t)})`).join(' ');
+}
 
 /**
  * `isNew` means new to the course (L-94): a lemma is marked in one text only, the first along the
