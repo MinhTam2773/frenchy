@@ -450,7 +450,7 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | B-22 | — |
 
-**Status:** ready · **Owns:** `src/shared/content/validate.ts`, its tests
+**Status:** in progress · **Claimed by:** orca codex worker · **Owns:** `src/shared/content/validate.ts`, its tests
 **Goal:** Close G-82: a text whose tokens split differently from `tokenize()` (titles, times, numbers, the euphonic *t*) fails `content:check`, not a T-15 test with a name content agents don't expect.
 **Done when:** `content:check` names the file, sentence and the two splits when they differ, and all Stage 1 texts pass.
 
