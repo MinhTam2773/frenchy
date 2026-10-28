@@ -501,14 +501,14 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 |---|---|---|---|---|
 | P3 | Sonnet 5.5 · Medium | S | B-23 | — |
 
-**Status:** ready (B-23 is done) · **Owns:** `src/client/lib/session.ts`
+**Status:** in progress · **Claimed by:** orca cursor worker · **Owns:** `src/client/lib/session.ts`
 **Goal:** Close G-89: on a connection that is "up" but not answering (lie-fi, captive portal), `fetch` can wait a very long time, so the guard renders nothing instead of using the remembered user.
 **Done when:** a test where `/api/auth/get-session` never answers resolves to the remembered user after the timeout (fake timers), and to signed out with nobody remembered.
 
-- [ ] Pass `AbortSignal.timeout(~5000)` to `authClient.getSession` and treat the abort as a network failure
-- [ ] Test it with a handler that never responds
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Pass `AbortSignal.timeout(~5000)` to `authClient.getSession` and treat the abort as a network failure
+- [x] Test it with a handler that never responds
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
 #### B-47 · Clear device-local data on sign-out and account deletion

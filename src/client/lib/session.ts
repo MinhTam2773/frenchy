@@ -23,6 +23,7 @@ export const sessionKey = ['session'] as const;
 const REMEMBERED_KEY = 'frenchy.user';
 /** Better Auth's default session lifetime (7 days; `createAuth` doesn't override it). */
 const REMEMBERED_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+const SESSION_TIMEOUT_MS = 5000;
 
 type Remembered = SessionUser & { savedAt: number };
 
@@ -78,7 +79,9 @@ async function fetchUser(): Promise<SessionUser | null> {
   let result: Awaited<ReturnType<typeof authClient.getSession>>;
   try {
     if (globalThis.navigator?.onLine === false) throw new TypeError('offline');
-    result = await authClient.getSession();
+    result = await authClient.getSession({
+      fetchOptions: { signal: AbortSignal.timeout(SESSION_TIMEOUT_MS) },
+    });
   } catch (networkError) {
     const remembered = readRemembered();
     if (remembered) return remembered;

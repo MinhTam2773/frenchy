@@ -1,13 +1,13 @@
-import { fireEvent, renderHook, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, renderHook, screen, waitFor } from '@testing-library/react';
 import { onlineManager, QueryClientProvider } from '@tanstack/react-query';
-import { http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from 'msw';
 import type { ReactNode } from 'react';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 import { setMockSignedIn } from '@client/mocks/handlers/auth';
 import { renderAt } from '@client/mocks/renderAt';
 import { server } from '@client/mocks/server';
 import { createQueryClient } from './query';
-import { clearRememberedUser, useSession } from './session';
+import { clearRememberedUser, sessionKey, useSession } from './session';
 
 const LEA = { id: '00000000-0000-4000-8000-0000000000f1', name: 'Léa', email: 'lea@example.com' };
 const REMEMBERED_KEY = 'frenchy.user';
@@ -31,8 +31,33 @@ function failNetwork() {
   server.use(http.get('/api/auth/get-session', () => HttpResponse.error()));
 }
 
-function renderSession() {
+function neverAnswer() {
+  server.use(
+    http.get('/api/auth/get-session', async () => {
+      await delay('infinite');
+      return HttpResponse.json(null);
+    }),
+  );
+}
+
+async function advanceTime(ms: number) {
+  await act(() => vi.advanceTimersByTimeAsync(ms));
+}
+
+function driveAbortTimeoutWithFakeTimers() {
+  let timeoutSignal: AbortSignal | undefined;
+  vi.spyOn(AbortSignal, 'timeout').mockImplementation((ms) => {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), ms);
+    timeoutSignal = controller.signal;
+    return timeoutSignal;
+  });
+  return () => timeoutSignal;
+}
+
+function renderSession({ retry }: { retry?: boolean } = {}) {
   const client = createQueryClient();
+  if (retry !== undefined) client.setQueryDefaults(sessionKey, { retry });
   const wrapper = ({ children }: { children: ReactNode }) => (
     <QueryClientProvider client={client}>{children}</QueryClientProvider>
   );
@@ -76,6 +101,49 @@ test('offline start with a remembered user is signed in as that user', async () 
   const { result } = renderSession();
   await waitFor(() => expect(result.current.status).toBe('signed-in'));
   expect(result.current.user).toEqual(LEA);
+});
+
+test('a hanging session read falls back to the remembered user after five seconds', async () => {
+  vi.useFakeTimers();
+  try {
+    const getTimeoutSignal = driveAbortTimeoutWithFakeTimers();
+    remember();
+    neverAnswer();
+    const { result } = renderSession();
+    expect(result.current.status).toBe('loading');
+
+    await advanceTime(0);
+    expect(AbortSignal.timeout).toHaveBeenCalledWith(5000);
+    act(() => vi.advanceTimersByTime(5000));
+    expect(getTimeoutSignal()?.aborted).toBe(true);
+    vi.useRealTimers();
+
+    await waitFor(() => expect(result.current.status).toBe('signed-in'));
+    expect(result.current.user).toEqual(LEA);
+  } finally {
+    vi.useRealTimers();
+  }
+});
+
+test('a hanging session read with nobody remembered eventually counts as signed out', async () => {
+  vi.useFakeTimers();
+  try {
+    const getTimeoutSignal = driveAbortTimeoutWithFakeTimers();
+    neverAnswer();
+    const { result } = renderSession({ retry: false });
+    expect(result.current.status).toBe('loading');
+
+    await advanceTime(0);
+    expect(AbortSignal.timeout).toHaveBeenCalledWith(5000);
+    act(() => vi.advanceTimersByTime(5000));
+    expect(getTimeoutSignal()?.aborted).toBe(true);
+    vi.useRealTimers();
+
+    await waitFor(() => expect(result.current.status).toBe('signed-out'));
+    expect(result.current.user).toBeNull();
+  } finally {
+    vi.useRealTimers();
+  }
 });
 
 test('offline start with a remembered user still renders a protected screen', async () => {
