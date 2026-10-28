@@ -18,6 +18,7 @@ const SCROLL_SLOP_PX = 10;
 
 type ReaderTextProps = {
   model: ReaderModel;
+  textSize: number;
   selectedWord: number | null;
   range: SentenceRange | null;
   speaking: number | null;
@@ -53,7 +54,7 @@ const indexOf = (el: Element) => Number((el as HTMLElement).dataset.token);
 
 /** The paragraphs as word buttons. One tab stop; arrow keys move between words. */
 export function ReaderText(props: ReaderTextProps) {
-  const { model, selectedWord, range, speaking } = props;
+  const { model, textSize, selectedWord, range, speaking } = props;
   const article = useRef<HTMLElement>(null);
   const gesture = useRef<Gesture | null>(null);
   const suppressClick = useRef(false);
@@ -173,6 +174,7 @@ export function ReaderText(props: ReaderTextProps) {
       ref={article}
       lang="fr"
       aria-describedby="reader-hint"
+      style={{ fontSize: textSize }}
       className="flex flex-col gap-3.5 px-[22px] pt-[18px] select-none [-webkit-touch-callout:none]"
     >
       {model.paragraphs.map((paragraph, p) => (
@@ -182,7 +184,7 @@ export function ReaderText(props: ReaderTextProps) {
               {paragraph.speaker}
             </span>
           )}
-          <p className="m-0 text-[21px] leading-[1.7] font-semibold text-ink">
+          <p className="m-0 text-[length:inherit] leading-[1.7] font-semibold text-ink">
             {paragraph.sentences.map((sentence, s) => (
               <span key={sentence.index}>
                 {s > 0 && ' '}

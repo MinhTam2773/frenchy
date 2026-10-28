@@ -333,10 +333,10 @@ Phase 2 and 3 and later work. A backlog task moves to NEXT when its deps are don
 **Goal:** The Reader mockup's "Aa" button (text size) and the elapsed-time label of the audio bar, which T-25 left out for lack of a spec.
 **Done when:** a text-size choice persists per device and the audio bar shows elapsed / total time (estimated from sentence lengths and rate).
 
-- [ ] Decide sizes (and whether it belongs in profile settings) and the time estimate
-- [ ] Build and test both
-- [ ] Finish: `npm run check` green
-- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Decide sizes (and whether it belongs in profile settings) and the time estimate
+- [x] Build and test both
+- [x] Finish: `npm run check` green
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 QUESTION: defaulted to a reader-only, per-device cycle of three sizes (18 / 21 / 24 px), and audio time estimated at 180 words per minute at 1×, divided by the selected speech rate.
 
