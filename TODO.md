@@ -60,7 +60,7 @@ The waves so far are recorded in `DONE.md` → History.
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`, `BACKLOG.md`.
 
-**Progress:** DONE 49 · NEXT 1 (T-30 in progress; H-03, H-04, H-06 open) · BACKLOG 35 · open gaps 50 (9 with no owner)
+**Progress:** DONE 49 · NEXT 1 (T-30 in progress) · BACKLOG 36 · open gaps 50 (9 with no owner)
 
 ---
 
@@ -75,7 +75,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
 
-**Status:** in progress (H-03, H-04, H-06 still open) · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
+**Status:** in progress (waiting on the Google client secret and the user's sign-up smoke test) · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
 **User decisions (2026-10-30):** use the default for every open question under Needs you; Workers Paid approved and active (G-35); go-ahead to create Cloudflare resources given (H-05).
 **Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
 **Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
@@ -84,10 +84,10 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 - [x] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
 - [x] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc` (D1 `frenchy`, region WNAM; nothing uses R2, so the `AUDIO` binding is removed)
 - [x] Apply migrations to production D1 (0000 to 0004)
-- [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04) (`BETTER_AUTH_SECRET` set, random, never printed; Google and AI wait on H-03 and H-04)
+- [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04) (`BETTER_AUTH_SECRET` set, random, never printed. AI: Gemini through the `openai-compatible` driver, model `gemini-3.8-flash`, key pasted by the user. Google waits on the client secret)
 - [ ] `wrangler deploy`; smoke test: `/api/health`, sign up, one review, reader word tap (deployed to https://frenchy.tamnguyen277353.workers.dev; `/api/health` 200, `/api/*` navigation returns JSON, `/`, `/course`, `sw.js`, manifest carry the four `_headers` (G-84), welcome screen renders with no console errors. Sign up, review and word tap wait on Workers Paid (G-35) and are for the user: agents don't create accounts on production)
-- [ ] Add the production redirect URI to the Google OAuth client
-- [ ] `deploy.yml` on push to `main` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets (H-06) (workflow written: runs after `ci` passes on a push to `main`; unverified until the user adds the secrets)
+- [x] Add the production redirect URI to the Google OAuth client (project `frenchy-513316`, client "Frenchy web"; the consent screen is in Testing with the user as the only test user, G-103, B-68)
+- [ ] `deploy.yml` on push to `main` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets (H-06) (workflow written: runs after `ci` passes on a push to `main`; both secrets set 2026-10-31; first run happens when PR #62 merges)
 - [x] README: how to deploy and how to roll back
 - [x] Finish: `npm run check` green (1172/1173 in the full run; the one failure, ReaderPage "Finish reading", is the L-74 load flake and passes alone, 17/17)
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
@@ -109,10 +109,10 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 |---|---|---|---|
 | H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging. `main` is now the default branch (done); T-02 has landed, so the `ci` check can now be required | T-02 onward | open |
 | H-02 | Install wrangler and run `wrangler login` once | T-30 | done (2026-10-30) |
-| H-03 | Create a Google OAuth client (client id/secret, redirect URIs) | T-13 (optional locally), T-30 | open |
-| H-04 | Provide AI API keys (Anthropic and/or an OpenAI-compatible provider) | T-23 (real calls), T-30 | open |
+| H-03 | Create a Google OAuth client (client id/secret, redirect URIs) | T-13 (optional locally), T-30 | done (2026-10-31; publishing it is B-68) |
+| H-04 | Provide AI API keys (Anthropic and/or an OpenAI-compatible provider) | T-23 (real calls), T-30 | done (2026-10-31, Gemini) |
 | H-05 | Approve creating Cloudflare resources (D1, R2, Worker) | T-30 | done (2026-10-30) |
-| H-06 | Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` to GitHub repo secrets | T-30 | open |
+| H-06 | Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` to GitHub repo secrets | T-30 | done (2026-10-31) |
 | H-07 | Confirm the streak rule (what counts as a practiced day; default in T-11) | T-11 (can proceed with the default) | open |
 | H-08 | Decide whether to pay for a native-speaker content review | T-24 follow-up | open |
 | H-09 | Pick an email provider for password reset | B-18 | open |

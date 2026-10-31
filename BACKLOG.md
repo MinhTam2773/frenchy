@@ -605,3 +605,20 @@ QUESTION: defaulted to a reader-only, per-device cycle of three sizes (18 / 21 /
 - [ ] Finish: `npm run check` green
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
+
+#### B-68 · Privacy policy and terms pages, then publish Google sign-in
+| Priority | Model · effort | Size | Depends on | Blocks |
+|---|---|---|---|---|
+| P1 | Sonnet 5.5 · Medium | S | T-30 | Google sign-in for everyone (G-103) |
+
+**Status:** blocked (T-30 merges first; the policy text needs the user's review) · **Owns:** new `src/client/features/legal/**`, its two routes in `src/client/routes.tsx`, a link on the welcome screen and in Settings
+**Goal:** Google lets any account use "Continue with Google", not just the test users.
+**Done when:** `/privacy` and `/terms` load without signing in, the user has approved their text, and the Google Auth Platform app (project `frenchy-513316`) is published.
+
+- [ ] Draft a short privacy policy (what is stored: email, name, progress, reviews; AI requests send sentence text to Gemini; no ads, no selling) and terms; the user approves both
+- [ ] Add `/privacy` and `/terms` as public routes, linked from the welcome screen and Settings
+- [ ] User: fill Branding (home page, privacy and terms links, authorized domain), then Audience → Publish app
+- [ ] Sign in with a Google account that is not a test user
+- [ ] Finish: `npm run check` green
+- [ ] Finish: TODO.md updated (steps ticked, status, lessons)
+- [ ] Finish: PR to `main` merged with CI green

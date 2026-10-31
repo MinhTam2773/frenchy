@@ -56,7 +56,7 @@ npx wrangler d1 migrations apply frenchy --remote
 npx wrangler deploy
 ```
 
-Secrets live only in Cloudflare: `npx wrangler secret put <NAME>` (names in `.dev.vars.example`). Until `AI_TRANSLATE_PROVIDER`, `AI_EXPLAIN_PROVIDER` and a key are set, translations come back as `[mock] …`.
+Secrets and settings live only in Cloudflare: `npx wrangler secret put <NAME>` (names in `.dev.vars.example`). Production uses Gemini through the OpenAI-compatible driver: both `AI_*_PROVIDER` are `openai-compatible`, `OPENAI_COMPATIBLE_BASE_URL` is `https://generativelanguage.googleapis.com/v1beta/openai`, `OPENAI_COMPATIBLE_MODEL` is `gemini-3.8-flash`, and the key comes from Google AI Studio. Google sign-in uses the OAuth client in Google Cloud project `frenchy-513316` (redirect URI `/api/auth/callback/google`).
 
 ### Roll back
 
