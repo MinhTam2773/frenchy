@@ -84,12 +84,12 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 - [x] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
 - [x] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc` (D1 `frenchy`, region WNAM; nothing uses R2, so the `AUDIO` binding is removed)
 - [x] Apply migrations to production D1 (0000 to 0004)
-- [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04)
-- [ ] `wrangler deploy`; smoke test: `/api/health`, sign up, one review, reader word tap
+- [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04) (`BETTER_AUTH_SECRET` set, random, never printed; Google and AI wait on H-03 and H-04)
+- [ ] `wrangler deploy`; smoke test: `/api/health`, sign up, one review, reader word tap (deployed to https://frenchy.tamnguyen277353.workers.dev; `/api/health` 200, `/api/*` navigation returns JSON, `/`, `/course`, `sw.js`, manifest carry the four `_headers` (G-84), welcome screen renders with no console errors. Sign up, review and word tap wait on Workers Paid (G-35) and are for the user: agents don't create accounts on production)
 - [ ] Add the production redirect URI to the Google OAuth client
-- [ ] `deploy.yml` on push to `main` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets (H-06)
-- [ ] README: how to deploy and how to roll back
-- [ ] Finish: `npm run check` green
+- [ ] `deploy.yml` on push to `main` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets (H-06) (workflow written: runs after `ci` passes on a push to `main`; unverified until the user adds the secrets)
+- [x] README: how to deploy and how to roll back
+- [x] Finish: `npm run check` green (1172/1173 in the full run; the one failure, ReaderPage "Finish reading", is the L-74 load flake and passes alone, 17/17)
 - [ ] Finish: TODO.md updated (steps ticked, status, lessons)
 - [ ] Finish: PR to `main` merged with CI green
 
