@@ -60,7 +60,7 @@ The waves so far are recorded in `DONE.md` → History.
 
 **Hot files** (several tasks touch them; keep edits to small additive hunks and merge `main` before opening the PR): `package.json`, `vite.config.ts`, `src/worker/index.ts` (one route-mount line per feature), `src/client/routes.tsx`, `src/client/mocks/handlers/index.ts`, `.github/workflows/ci.yml`, `TODO.md`, `BACKLOG.md`.
 
-**Progress:** DONE 49 · NEXT 1 (T-30 blocked on human gates H-02 to H-06) · BACKLOG 35 · open gaps 50 (9 with no owner)
+**Progress:** DONE 49 · NEXT 1 (T-30 in progress; H-03, H-04, H-06 open) · BACKLOG 35 · open gaps 50 (9 with no owner)
 
 ---
 
@@ -75,12 +75,13 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
 
-**Status:** blocked (human gates H-02 to H-06; B-21 is done, PR #42) · **Claimed by:** — · **Branch:** `task/T-30-deploy`
+**Status:** in progress (H-03, H-04, H-06 still open) · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
+**User decisions (2026-10-30):** use the default for every open question under Needs you; Workers Paid approved (G-35), the user upgrades the plan when asked; go-ahead to create Cloudflare resources given (H-05).
 **Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
 **Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
 **Done when:** the production URL passes the smoke test and the deploy workflow runs green.
 
-- [ ] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
+- [x] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
 - [ ] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc`
 - [ ] Apply migrations to production D1
 - [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04)
@@ -107,10 +108,10 @@ Agents can't do these. A task that needs one stays `blocked` until it's done.
 | ID | What | Needed by | Status |
 |---|---|---|---|
 | H-01 | Make `main` the default branch on GitHub and require the `ci` check before merging. `main` is now the default branch (done); T-02 has landed, so the `ci` check can now be required | T-02 onward | open |
-| H-02 | Install wrangler and run `wrangler login` once | T-30 | open |
+| H-02 | Install wrangler and run `wrangler login` once | T-30 | done (2026-10-30) |
 | H-03 | Create a Google OAuth client (client id/secret, redirect URIs) | T-13 (optional locally), T-30 | open |
 | H-04 | Provide AI API keys (Anthropic and/or an OpenAI-compatible provider) | T-23 (real calls), T-30 | open |
-| H-05 | Approve creating Cloudflare resources (D1, R2, Worker) | T-30 | open |
+| H-05 | Approve creating Cloudflare resources (D1, R2, Worker) | T-30 | done (2026-10-30) |
 | H-06 | Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` to GitHub repo secrets | T-30 | open |
 | H-07 | Confirm the streak rule (what counts as a practiced day; default in T-11) | T-11 (can proceed with the default) | open |
 | H-08 | Decide whether to pay for a native-speaker content review | T-24 follow-up | open |
