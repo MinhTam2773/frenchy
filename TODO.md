@@ -76,7 +76,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 | P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
 
 **Status:** in progress (H-03, H-04, H-06 still open) · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
-**User decisions (2026-10-30):** use the default for every open question under Needs you; Workers Paid approved (G-35), the user upgrades the plan when asked; go-ahead to create Cloudflare resources given (H-05).
+**User decisions (2026-10-30):** use the default for every open question under Needs you; Workers Paid approved and active (G-35); go-ahead to create Cloudflare resources given (H-05).
 **Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
 **Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
 **Done when:** the production URL passes the smoke test and the deploy workflow runs green.
@@ -125,7 +125,7 @@ Decisions only the user can make. Agents use the default until one is answered. 
    - The problem: scrypt takes about 130 to 310 ms of CPU per sign-in, and the Free plan allows 10 ms.
    - Default: keep scrypt and deploy on Workers Paid.
    - Alternative on the Free plan: Google-only sign-in.
-   - Blocks T-30. (QUESTIONs under T-13 and T-29 in `DONE.md`.)
+   - **Decided 2026-10-30:** Workers Paid, keep scrypt (the account is on Paid).
 2. **AI daily cap.**
    - `AI_DAILY_LIMIT` is the number of provider calls per UTC day for the whole app. Default: 1,000.
    - Also set a monthly spend limit in the provider's console (H-04).
