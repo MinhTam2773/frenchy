@@ -75,7 +75,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 |---|---|---|---|---|---|
 | P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
 
-**Status:** in progress (waiting on the Google client secret and the user's sign-up smoke test) · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
+**Status:** in progress (waiting on the user's smoke test: sign up, one review, word tap, Google sign-in) · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
 **User decisions (2026-10-30):** use the default for every open question under Needs you; Workers Paid approved and active (G-35); go-ahead to create Cloudflare resources given (H-05).
 **Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
 **Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
@@ -84,7 +84,7 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 - [x] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
 - [x] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc` (D1 `frenchy`, region WNAM; nothing uses R2, so the `AUDIO` binding is removed)
 - [x] Apply migrations to production D1 (0000 to 0004)
-- [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04) (`BETTER_AUTH_SECRET` set, random, never printed. AI: Gemini through the `openai-compatible` driver, model `gemini-3.8-flash`, key pasted by the user. Google waits on the client secret)
+- [x] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04) (`BETTER_AUTH_SECRET` set, random, never printed. AI: Gemini through the `openai-compatible` driver, model `gemini-3.8-flash`. The user pasted the Gemini key and the Google client id and secret. Checked: `POST /api/auth/sign-in/social` returns an accounts.google.com URL with `redirect_uri` `…/api/auth/callback/google`, and the welcome screen shows "Continue with Google")
 - [ ] `wrangler deploy`; smoke test: `/api/health`, sign up, one review, reader word tap (deployed to https://frenchy.tamnguyen277353.workers.dev; `/api/health` 200, `/api/*` navigation returns JSON, `/`, `/course`, `sw.js`, manifest carry the four `_headers` (G-84), welcome screen renders with no console errors. Sign up, review and word tap wait on Workers Paid (G-35) and are for the user: agents don't create accounts on production)
 - [x] Add the production redirect URI to the Google OAuth client (project `frenchy-513316`, client "Frenchy web"; the consent screen is in Testing with the user as the only test user, G-103, B-68)
 - [ ] `deploy.yml` on push to `main` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets (H-06) (workflow written: runs after `ci` passes on a push to `main`; both secrets set 2026-10-31; first run happens when PR #62 merges)
