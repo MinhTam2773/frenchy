@@ -82,8 +82,8 @@ Goal: course map + reader + tap-to-translate + SRS + daily streak, with Stage 1 
 **Done when:** the production URL passes the smoke test and the deploy workflow runs green.
 
 - [x] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
-- [ ] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc`
-- [ ] Apply migrations to production D1
+- [x] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc` (D1 `frenchy`, region WNAM; nothing uses R2, so the `AUDIO` binding is removed)
+- [x] Apply migrations to production D1 (0000 to 0004)
 - [ ] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04)
 - [ ] `wrangler deploy`; smoke test: `/api/health`, sign up, one review, reader word tap
 - [ ] Add the production redirect URI to the Google OAuth client
