@@ -732,6 +732,29 @@ QUESTION: the app-wide AI cap (G-10) needs a number from you. Default: 1,000 pro
 
 QUESTION: G-35 (S-06): email sign-in needs the Workers Paid plan (scrypt takes about 130 to 310 ms of CPU; the Free plan allows 10 ms). Security recommendation and default: keep Better Auth's scrypt parameters and deploy on Workers Paid, because cheaper hashing makes a leaked `account` table easier to crack. Alternative on the Free plan: Google-only sign-in. Same decision as the QUESTION under T-13.
 
+### T-30 · Deploy to Cloudflare
+| Priority | Model · effort | Size | Depends on | Blocks | Wave |
+|---|---|---|---|---|---|
+| P0 | Opus 5.5 · Medium | M | T-02, T-12, T-24, T-26, T-29, B-21 + H-02, H-05, H-06 | MVP launch | 7 |
+
+**Status:** done · **PR:** https://github.com/MinhTam2773/frenchy/pull/62 · **Claimed by:** Claude Code desktop session (with the user) · **Branch:** `task/T-30-deploy`
+**User decisions (2026-10-30):** use the default for every open question under Needs you; Workers Paid approved and active (G-35); go-ahead to create Cloudflare resources given (H-05).
+**Owns:** `wrangler.jsonc` (production ids), `.github/workflows/deploy.yml`, deploy section of `README.md`
+**Goal:** Frenchy is live on Cloudflare and deploys on every push to `main`.
+**Done when:** the production URL passes the smoke test and the deploy workflow runs green.
+
+- [x] Get the user's explicit go-ahead before creating any Cloudflare resource (H-05); the user has run `wrangler login` (H-02)
+- [x] Create the production D1 database (and an R2 bucket only if something uses it); put the ids in `wrangler.jsonc` (D1 `frenchy`, region WNAM; nothing uses R2, so the `AUDIO` binding is removed)
+- [x] Apply migrations to production D1 (0000 to 0004)
+- [x] Set secrets with `wrangler secret put`: `BETTER_AUTH_SECRET`, Google OAuth (H-03), AI keys (H-04) (`BETTER_AUTH_SECRET` set, random, never printed. AI: Gemini through the `openai-compatible` driver, model `gemini-3.8-flash`. The user pasted the Gemini key and the Google client id and secret. Checked: `POST /api/auth/sign-in/social` returns an accounts.google.com URL with `redirect_uri` `…/api/auth/callback/google`, and the welcome screen shows "Continue with Google")
+- [x] `wrangler deploy`; smoke test: `/api/health`, sign up, one review, reader word tap (deployed to https://frenchy.tamnguyen277353.workers.dev; `/api/health` 200, `/api/*` navigation returns JSON, `/`, `/course`, `sw.js`, manifest carry the four `_headers` (G-84), welcome screen renders with no console errors. The user signed up, did one review and tapped a word with a real Gemini translation on 2026-10-31; agents don't create accounts on production)
+- [x] Add the production redirect URI to the Google OAuth client (project `frenchy-513316`, client "Frenchy web"; the consent screen is in Testing with the user as the only test user, G-103, B-68)
+- [x] `deploy.yml` on push to `main` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets (H-06) (both secrets set 2026-10-31; first run after the PR #62 merge went green in 1m28s: no migrations to apply, version `c0c08727` live, `/api/health` ok, all 8 Worker secrets kept)
+- [x] README: how to deploy and how to roll back
+- [x] Finish: `npm run check` green (1172/1173 in the full run; the one failure, ReaderPage "Finish reading", is the L-74 load flake and passes alone, 17/17)
+- [x] Finish: TODO.md updated (steps ticked, status, lessons)
+- [x] Finish: PR to `main` merged with CI green (PR #62, `ci` and `e2e` green)
+
 ### B-16 · Account data export and deletion
 | Priority | Model · effort | Size | Depends on | Blocks |
 |---|---|---|---|---|
